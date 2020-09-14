@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/hunte/source/repos/Game1/Game1/Content/Credits.spritefont","C:/Users/hunte/source/repos/Game1/Game1/Content/bin/Windows/Content/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2005,21521,0.3002338
+"C:/Users/hunte/source/repos/Game1/Game1/Content/Images/guyRun.png","C:/Users/hunte/source/repos/Game1/Game1/Content/bin/Windows/Content/Images/guyRun.xnb","TextureProcessor","Texture2DContent",8547,589909,0.7855467
