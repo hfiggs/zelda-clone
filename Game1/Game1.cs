@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿//Authors: Jared Perkins
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Controller;
 using Game1.Sprite;
