@@ -50,6 +50,12 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Controller\IController.cs" />
+    <Compile Include="Player\PlayerStateFactory.cs" />
+    <Compile Include="Player\PlayerIdleRight.cs" />
+    <Compile Include="Player\IPlayerState.cs" />
+    <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\PlayerSpriteFactory.cs" />
+    <Compile Include="Player\IPlayer.cs" />
     <Compile Include="Sprite\TextSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
