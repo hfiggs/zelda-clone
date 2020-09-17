@@ -1,3 +1,10 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/hunte/source/repos/Game1/Game1/Content/Credits.spritefont","C:/Users/hunte/source/repos/Game1/Game1/Content/bin/Windows/Content/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2005,21521,0.3002338
-"C:/Users/hunte/source/repos/Game1/Game1/Content/Images/guyRun.png","C:/Users/hunte/source/repos/Game1/Game1/Content/bin/Windows/Content/Images/guyRun.xnb","TextureProcessor","Texture2DContent",8547,589909,0.7855467
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Credits.spritefont","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2065,21521,0.2499852
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/bosses.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/bosses.xnb","TextureProcessor","Texture2DContent",24440,584981,0.0297308
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/Dungeon1.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/Dungeon1.xnb","TextureProcessor","Texture2DContent",58937,6560921,0.1661586
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/enemies.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/enemies.xnb","TextureProcessor","Texture2DContent",18943,416869,0.0109122
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/guyRun.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/guyRun.xnb","TextureProcessor","Texture2DContent",8547,589909,0.0133929
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/items.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/items.xnb","TextureProcessor","Texture2DContent",6408,138325,0.0044631
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/Link.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/Link.xnb","TextureProcessor","Texture2DContent",19462,460125,0.010937
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/NPCs.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/NPCs.xnb","TextureProcessor","Texture2DContent",3775,85061,0.0029917
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/tiles.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/tiles.xnb","TextureProcessor","Texture2DContent",74652,5826381,0.1522735
