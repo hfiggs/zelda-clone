@@ -9,6 +9,7 @@ namespace Game1.Player
     class Player : IPlayer
     {
         int health;
+        PlayerStateFactory stateFactory;
         //enum currentItem;
         IPlayerState state;
 
@@ -52,12 +53,12 @@ namespace Game1.Player
             throw new NotImplementedException();
         }
 
-        public void Update()
+        public void Update(GameTime time)
         {
             throw new NotImplementedException();
         }
 
-        public Rectangle getLocation()
+        public Rectangle GetLocation()
         {
             throw new NotImplementedException();
         }
