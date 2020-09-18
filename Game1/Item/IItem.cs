@@ -10,6 +10,6 @@ namespace Game1.Item
     interface IItem
     {
         void Update();
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch,  Vector2 position);
     }
 }
