@@ -4,8 +4,8 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/hunte/source/repos/Game1/Game1/Content/Credits.spritefont</File>
-    <File>C:/Users/hunte/source/repos/Game1/Game1/Content/Images/guyRun.png</File>
+    <File>C:/Users/jeff1/Source/Repos/3902 LoZ/Game1/Content/Credits.spritefont</File>
+    <File>C:/Users/jeff1/Source/Repos/3902 LoZ/Game1/Content/Images/guyRun.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/hunte/source/repos/Game1/Game1/Content/Images/guyRun.png</SourceFile>
-  <SourceTime>2020-09-04T00:37:27.5671967-04:00</SourceTime>
-  <DestFile>C:/Users/hunte/source/repos/Game1/Game1/Content/bin/Windows/Content/Images/guyRun.xnb</DestFile>
-  <DestTime>2020-09-04T01:16:22.3254354-04:00</DestTime>
+  <SourceFile>C:/Users/jeff1/Source/Repos/3902 LoZ/Game1/Content/Images/guyRun.png</SourceFile>
+  <SourceTime>2020-09-14T14:47:51.5103341-04:00</SourceTime>
+  <DestFile>C:/Users/jeff1/Source/Repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/guyRun.xnb</DestFile>
+  <DestTime>2020-09-18T13:14:42.3647808-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
