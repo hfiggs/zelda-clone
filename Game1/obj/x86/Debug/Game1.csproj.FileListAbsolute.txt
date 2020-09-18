@@ -25,14 +25,7 @@ C:\Users\hunte\source\repos\Game1\Game1\obj\x86\Debug\Game1.csproj.CopyComplete
 C:\Users\hunte\source\repos\Game1\Game1\obj\x86\Debug\Game1.exe
 C:\Users\hunte\source\repos\Game1\Game1\obj\x86\Debug\Game1.pdb
 C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Font.xnb
-C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Images\bosses.xnb
-C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Images\Dungeon1.xnb
-C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Images\enemies.xnb
 C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Images\guyRun.xnb
-C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Images\items.xnb
-C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Images\Link.xnb
-C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Images\NPCs.xnb
-C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Images\tiles.xnb
 C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Content\Credits.xnb
 C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Game1.exe
 C:\Users\jperk\source\repos\3902 LoZ\Game1\bin\Windows\x86\Debug\Game1.pdb
