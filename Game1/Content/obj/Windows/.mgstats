@@ -1,3 +1,0 @@
-Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Credits.spritefont","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2065,21521,0.3129754
-"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/guyRun.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/guyRun.xnb","TextureProcessor","Texture2DContent",8547,589909,0.0461277
