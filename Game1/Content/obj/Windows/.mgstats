@@ -1,0 +1,10 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Credits.spritefont","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2065,21521,0.258416
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/bosses.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/bosses.xnb","TextureProcessor","Texture2DContent",24440,584981,0.0297601
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/Dungeon1.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/Dungeon1.xnb","TextureProcessor","Texture2DContent",58937,6560921,0.1641756
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/enemies.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/enemies.xnb","TextureProcessor","Texture2DContent",18943,416869,0.0119035
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/guyRun.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/guyRun.xnb","TextureProcessor","Texture2DContent",8547,589909,0.0123993
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/items.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/items.xnb","TextureProcessor","Texture2DContent",6408,138325,0.0044646
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/Link.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/Link.xnb","TextureProcessor","Texture2DContent",19462,460125,0.0104163
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/NPCs.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/NPCs.xnb","TextureProcessor","Texture2DContent",3775,85061,0.0034719
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/tiles.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/tiles.xnb","TextureProcessor","Texture2DContent",74652,5826381,0.1483045

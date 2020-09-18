@@ -4,10 +4,24 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/jeff1/Source/Repos/3902 LoZ/Game1/Content/Credits.spritefont</File>
-    <File>C:/Users/jeff1/Source/Repos/3902 LoZ/Game1/Content/Images/guyRun.png</File>
+    <File>C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Credits.spritefont</File>
+    <File>C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/bosses.png</File>
+    <File>C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/Dungeon1.png</File>
+    <File>C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/enemies.png</File>
+    <File>C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/guyRun.png</File>
+    <File>C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/items.png</File>
+    <File>C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/Link.png</File>
+    <File>C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/NPCs.png</File>
+    <File>C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/tiles.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
