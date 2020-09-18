@@ -20,7 +20,12 @@ namespace Game1.Player
 
         void ReceiveDamage();
 
+        void Update();
+
         void Draw();
+
+
+        Rectangle getLocation();
 
     }
 }

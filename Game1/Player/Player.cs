@@ -1,6 +1,7 @@
 ﻿//Authors: Jared Perkins, Hunter Figgs
 
 
+using Microsoft.Xna.Framework;
 using System;
 
 namespace Game1.Player
@@ -47,6 +48,16 @@ namespace Game1.Player
         }
 
         public void ReceiveDamage()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Rectangle getLocation()
         {
             throw new NotImplementedException();
         }
