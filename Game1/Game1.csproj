@@ -56,6 +56,7 @@
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\PlayerSpriteFactory.cs" />
     <Compile Include="Player\IPlayer.cs" />
+    <Compile Include="Sprite\PlayerSprite.cs" />
     <Compile Include="Sprite\TextSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />

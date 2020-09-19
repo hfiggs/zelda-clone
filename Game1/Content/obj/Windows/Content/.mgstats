@@ -1,3 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/hunte/source/repos/Game1/Game1/Content/Credits.spritefont","C:/Users/hunte/source/repos/Game1/Game1/Content/bin/Windows/Content/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2005,21521,0.3002338
-"C:/Users/hunte/source/repos/Game1/Game1/Content/Images/guyRun.png","C:/Users/hunte/source/repos/Game1/Game1/Content/bin/Windows/Content/Images/guyRun.xnb","TextureProcessor","Texture2DContent",8547,589909,0.7855467
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Credits.spritefont","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2065,21521,0.2480004
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/guyRun.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Images/guyRun.xnb","TextureProcessor","Texture2DContent",8547,589909,0.0287669
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Link.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/Link.xnb","TextureProcessor","Texture2DContent",2757,101473,0.1041301
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/LinkItem.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Content/LinkItem.xnb","TextureProcessor","Texture2DContent",450,4869,0.0014874
