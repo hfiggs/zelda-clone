@@ -37,94 +37,94 @@ namespace Game1.Player
             linkItemSheet = content.Load<Texture2D>("LinkItem");
         }
 
-        public ISprite CreateWalkLeftSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateWalkLeftSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,1,2,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,1,2);
         }
 
-        public ISprite CreateWalkRightSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateWalkRightSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,3,2,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,3,2);
         }
 
-        public ISprite CreateWalkDownSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateWalkDownSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,0,2,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,0,2);
         }
 
-        public ISprite CreateWalkUpSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateWalkUpSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,2,2,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,2,2);
         }
 
-        public ISprite CreateIdleLeftSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateIdleLeftSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,1,1,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,1,1);
         }
 
-        public ISprite CreateIdleRightSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateIdleRightSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,3,1,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,3,1);
         }
 
-        public ISprite CreateIdleUpSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateIdleUpSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,2,1,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,2,1);
         }
 
-        public ISprite CreateIdleDownSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateIdleDownSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,0,1,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,0,1);
         }
 
-        public ISprite CreateAttackLeftSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateAttackLeftSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,1,4,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,1,4);
         }
 
-        public ISprite CreateAttackRightSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateAttackRightSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,3,4,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,3,4);
         }
 
-        public ISprite CreateAttackUpSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateAttackUpSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,2,4,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,2,4);
         }
 
-        public ISprite CreateAttackDownSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateAttackDownSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,0,4,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,0,4);
         }
 
-        public ISprite CreateUseItemLeftSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateUseItemLeftSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,1,3,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,1,3);
         }
 
-        public ISprite CreateUseItemRightSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateUseItemRightSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,3,3,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,3,3);
         }
 
-        public ISprite CreateUseItemUpSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateUseItemUpSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,2,3,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,2,3);
         }
 
-        public ISprite CreateUseItemDownSprite(bool damaged, Vector2 start, Vector2 end)
+        public ISprite CreateUseItemDownSprite(bool damaged)
         {
-            return new PlayerSprite(linkSpritesheet,damaged,4,4,0,3,start,end);
+            return new PlayerSprite(linkSpritesheet,damaged,4,4,0,3);
         }
 
-        public ISprite CreateOneHandItemSprite(Vector2 location)
+        public ISprite CreateOneHandItemSprite()
         {
-            return new PlayerSprite(linkItemSheet,false,1,2,0,1,location,location);
+            return new PlayerSprite(linkItemSheet,false,1,2,0,1);
         }
 
-        public ISprite CreateTwoHandItemSprite(Vector2 location)
+        public ISprite CreateTwoHandItemSprite()
         {
-            return new PlayerSprite(linkItemSheet,false,1,2,1,1,location,location);
+            return new PlayerSprite(linkItemSheet,false,1,2,1,1);
         }
     }
 }

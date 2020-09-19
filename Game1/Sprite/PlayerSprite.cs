@@ -17,11 +17,8 @@ namespace Game1.Sprite
         private int columnLocation;
         private int maxRow;
 
-        private Vector2 currentLocation;
-        private Vector2 end;
-        private Vector2 increment;
 
-        public PlayerSprite(Texture2D texture, bool damaged, int rows, int columns, int frameColumn, int maxRow, Vector2 start, Vector2 end)
+        public PlayerSprite(Texture2D texture, bool damaged, int rows, int columns, int frameColumn, int maxRow)
 		{
             this.texture = texture;
             this.damaged = damaged;
@@ -31,11 +28,9 @@ namespace Game1.Sprite
             columnLocation = width * frameColumn;
             //calculate frame height
             height = texture.Height / rows;
-            this.currentLocation = end;
             this.maxRow = maxRow;
             currentRow = 0;
 
-            increment = (end - currentLocation) / maxRow;
 		}
 
         public void Update()
@@ -45,8 +40,6 @@ namespace Game1.Sprite
             {
                 currentRow = 0;
             }
-
-            currentLocation = currentLocation + increment;
 
             if(damaged)
             {
@@ -61,11 +54,11 @@ namespace Game1.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
 
             Rectangle sourceRect = new Rectangle(columnLocation, height*currentRow, width, height);
-            Rectangle destinationRect = new Rectangle((int)currentLocation.X, (int)currentLocation.Y, width * 3,height * 3);
+            Rectangle destinationRect = new Rectangle((int)location.X,(int)location.Y, width * 3,height * 3);
 
             
             spriteBatch.Draw(texture, destinationRect, sourceRect, color);
