@@ -18,7 +18,6 @@ namespace Game1
         private List<IController> controllerList;
 
         public ISprite Sprite { get; set; }
-        private ISprite creditsSprite;
 
         public Game1()
         {
@@ -50,11 +49,10 @@ namespace Game1
 
             //TEMP TEMP TEMP TEMP
             playerFactory.LoadAllTextures(Content);
-            Sprite = playerFactory.CreateTwoHandItemSprite(new Vector2(100, 100));
+            Sprite = playerFactory.CreateTwoHandItemSprite();
             //TEMP TEMP TEMP TEMP
 
             var creditsFont = Content.Load<SpriteFont>("Credits");
-            creditsSprite = new TextSprite(creditsFont, new Vector2(220, 400), "Credits\nProgram Made By: Hunter Figgs.3\nSprites from: Created them myself on PiskelApp.com");
         }
 
         protected override void UnloadContent()
@@ -90,9 +88,7 @@ namespace Game1
 
             spriteBatch.Begin();
 
-            Sprite.Draw(spriteBatch);
-
-            creditsSprite.Draw(spriteBatch);
+            Sprite.Draw(spriteBatch,new Vector2(250,250));
 
             spriteBatch.End();
 
