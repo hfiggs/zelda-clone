@@ -1,4 +1,7 @@
-﻿//Authors: Jared Perkins
+﻿/* Authors:
+ * Jared Perkins
+ * Jeffrey Gaydos
+ */
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
