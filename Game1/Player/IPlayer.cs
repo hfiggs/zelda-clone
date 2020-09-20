@@ -1,10 +1,12 @@
-﻿//Authors: Jared Perkins, Hunter Figgs
+﻿/* Authors:
+ * Jared Perkins
+ * Hunter Figgs */
 
 using Microsoft.Xna.Framework;
 
 namespace Game1.Player
 {
-    interface IPlayer
+    public interface IPlayer
     {
         void MoveLeft();
 

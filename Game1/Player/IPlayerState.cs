@@ -1,5 +1,8 @@
-﻿//Authors: Jared Perkins, Hunter Figgs
+﻿/* Author:
+ * Jared Perkins
+ * Hunter Figgs */
 
+using Microsoft.Xna.Framework;
 
 using Game1.Sprite;
 
@@ -21,7 +24,9 @@ namespace Game1.Player
 
         void ReceiveDamage();
 
-        ISprite getSprite();
+        void Update(GameTime time);
+
+        ISprite Sprite { get; }
 
     }
 }

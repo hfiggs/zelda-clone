@@ -1,4 +1,5 @@
 ﻿/* Authors:
+ * Hunter Figgs
  * Jared Perkins
  * Jeffrey Gaydos
  */
@@ -22,6 +23,8 @@ namespace Game1
 
         public ISprite Sprite { get; set; }
 
+        public IPlayer Player { get; private set; }
+
         public Game1()
         {
             Graphics = new GraphicsDeviceManager(this);
@@ -34,28 +37,24 @@ namespace Game1
             controllerList = new List<IController>();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new MouseController(this));
-            
 
             IsMouseVisible = true;
 
             base.Initialize();
         }
 
-        //TEMP TEMP TEMP TEMP
-        PlayerSpriteFactory playerFactory = PlayerSpriteFactory.Instance;
-        //TEMP TEMP TEMP TEMP
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            var spriteTexture = Content.Load<Texture2D>("Images/guyRun");
-
             //TEMP TEMP TEMP TEMP
-            playerFactory.LoadAllTextures(Content);
-            Sprite = playerFactory.CreateTwoHandItemSprite();
+            PlayerSpriteFactory.Instance.LoadAllTextures(Content);
+            Sprite = PlayerSpriteFactory.Instance.CreateTwoHandItemSprite();
             //TEMP TEMP TEMP TEMP
 
-            var creditsFont = Content.Load<SpriteFont>("Credits");
+            //TEMP TEMP TEMP TEMP
+            Player = new Player1(new Vector2(400, 250), spriteBatch);
+            //TEMP TEMP TEMP TEMP
         }
 
         protected override void UnloadContent()
@@ -67,7 +66,7 @@ namespace Game1
         {
             foreach(IController controller in controllerList)
             {
-               // controller.Update();
+               controller.Update();
             }
 
             //Sprite.Update();
@@ -78,10 +77,13 @@ namespace Game1
             {
                 Sprite.Update();
             }
-
-            x++;
             //TEMP TEMP TEMP TEMP
-            
+
+            //TEMP TEMP TEMP TEMP
+            //Player.MoveRight();
+            Player.Update(gameTime);
+            //TEMP TEMP TEMP TEMP
+
             base.Update(gameTime);
         }
 
@@ -92,6 +94,8 @@ namespace Game1
             spriteBatch.Begin();
 
             Sprite.Draw(spriteBatch,new Vector2(250,250));
+
+            Player.Draw();
 
             spriteBatch.End();
 
