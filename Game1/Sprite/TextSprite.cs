@@ -20,9 +20,9 @@ namespace Game1.Sprite
         {
             // Do nothing
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 positon)
         {
-            spriteBatch.DrawString(font, text, position, Color.Black);
+            spriteBatch.DrawString(font, text, this.position, Color.Black);
         }
     }
 }
