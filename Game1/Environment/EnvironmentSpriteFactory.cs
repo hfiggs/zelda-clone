@@ -11,7 +11,7 @@ namespace Game1.Environment
 		private Texture2D doors;
 		private Texture2D tiles;
 
-		public Instance = new EnvironmentSpriteFactory();
+		public EnvironmentSpriteFactory instance = new EnvironmentSpriteFactory();
 
 		private EnvironmentSpriteFactory()
 		{
@@ -23,9 +23,33 @@ namespace Game1.Environment
 			this.tiles = content.Load<Texture2D>("images/ss_tiles");
 		}
 
-		public ISprite createFloor(Vector2 position)
-        {
-			return new NotAnimatedNotMovingSprite(tiles, 0, 0, position);
-        }
+		/*
+		 * Factory methods for images found in ss_tiles.png
+		 */
+
+		public ISprite createFloor()
+		{
+			return new ItemSprite(tiles, 0, 0);
+		}
+
+		public ISprite createBlock()
+		{
+			return new ItemSprite(tiles, 0, 1);
+		}
+
+		public ISprite createStatueFish()
+		{
+			return new ItemSprite(tiles, 0, 2);
+		}
+
+		public ISprite createStatueDragon()
+		{
+			return new ItemSprite(tiles, 0, 3);
+		}
+
+		public ISprite createStatueDragon()
+		{
+			return new ItemSprite(tiles, 0, 3);
+		}
 	}
 }
