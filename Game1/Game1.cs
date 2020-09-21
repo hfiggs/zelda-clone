@@ -73,9 +73,9 @@ namespace Game1
 
             spriteBatch.Begin();
 
-            Sprite.Draw(spriteBatch);
+            Sprite.Draw(spriteBatch, new Vector2());
 
-            creditsSprite.Draw(spriteBatch);
+            creditsSprite.Draw(spriteBatch, new Vector2());
 
             spriteBatch.End();
 
