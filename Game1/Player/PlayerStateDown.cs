@@ -17,7 +17,7 @@ namespace Game1.Player
         private int frameCount;
 
         private float timeUntilNextFrame; // ms
-        private int moveSpeed = 15d;
+        private int moveSpeed = 15;
         private const float animationTime = 100f; // ms per frame
 
         public PlayerStateDown(PlayerStateFactory stateFactory, Vector2 position)
