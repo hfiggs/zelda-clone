@@ -11,6 +11,8 @@ namespace Game1.Player
         public ISprite Sprite { get; private set; }
 
         private bool isMoving;
+        private bool isAttacking;
+        private int frameCount;
         private float timeUntilNextFrame; // ms
 
         private const float animationTime = 150f; // ms per frame
@@ -18,35 +20,49 @@ namespace Game1.Player
         public PlayerStateUp(PlayerStateFactory stateFactory)
         {
             this.stateFactory = stateFactory;
-            Sprite = PlayerSpriteFactory.Instance.CreateWalkUpSprite(false);
+            Sprite = PlayerSpriteFactory.Instance.CreateIdleUpSprite(false);
 
             isMoving = false;
+            isAttacking = false;
             timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
         {
-            throw new System.NotImplementedException();
+            if (!isAttacking && !isMoving)
+            {
+                Sprite = PlayerSpriteFactory.Instance.CreateAttackUpSprite(false);
+                isAttacking = true;
+                frameCount = 4;
+            }
         }
 
         public void MoveDown()
         {
-            stateFactory.SetState(new PlayerStateDown(stateFactory));
+            if(!isAttacking)
+                stateFactory.SetState(new PlayerStateDown(stateFactory));
         }
 
         public void MoveLeft()
         {
-            stateFactory.SetState(new PlayerStateLeft(stateFactory));
+            if(!isAttacking)
+                stateFactory.SetState(new PlayerStateLeft(stateFactory));
         }
 
         public void MoveRight()
         {
-            stateFactory.SetState(new PlayerStateRight(stateFactory));
+            if(!isAttacking)
+                stateFactory.SetState(new PlayerStateRight(stateFactory));
         }
 
         public void MoveUp()
         {
-            isMoving = true;
+            if (!isAttacking && !isMoving)
+            {
+                Sprite = PlayerSpriteFactory.Instance.CreateWalkUpSprite(false);
+                isMoving = true;
+                frameCount = 2;
+            }
         }
 
         public void ReceiveDamage()
@@ -60,7 +76,7 @@ namespace Game1.Player
         public void Update(GameTime time)
         {
 
-            if(isMoving)
+            if(isMoving || isAttacking)
             {
                 timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
 
@@ -68,10 +84,18 @@ namespace Game1.Player
                 {
                     Sprite.Update();
                     timeUntilNextFrame += animationTime;
+
+                    frameCount--;
+
+                    if (frameCount <= 0)
+                    {
+                        Sprite = PlayerSpriteFactory.Instance.CreateIdleUpSprite(false);
+                        isMoving = false;
+                        isAttacking = false;
+                    }
                 }
             }
 
-            isMoving = false;
         }
     }
 }

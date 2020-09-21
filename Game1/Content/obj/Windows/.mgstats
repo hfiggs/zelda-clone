@@ -1,5 +1,9 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Credits.spritefont","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2065,21521,0.2494838
-"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/guyRun.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/guyRun.xnb","TextureProcessor","Texture2DContent",8547,589909,0.0292927
-"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Link.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Link.xnb","TextureProcessor","Texture2DContent",2757,101473,0.1016813
-"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/LinkItem.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/LinkItem.xnb","TextureProcessor","Texture2DContent",450,4869,0.0019838
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Credits.spritefont","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Credits.xnb","FontDescriptionProcessor","SpriteFontContent",2065,21521,0.2519682
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/guyRun.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/guyRun.xnb","TextureProcessor","Texture2DContent",8547,589909,0.0292328
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Images/items.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Images/items.xnb","TextureProcessor","Texture2DContent",7609,256085,0.0059537
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Link Down.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Link Down.xnb","TextureProcessor","Texture2DContent",755,9733,0.1011834
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Link Left.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Link Left.xnb","TextureProcessor","Texture2DContent",810,15529,0.0019833
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Link Right.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Link Right.xnb","TextureProcessor","Texture2DContent",839,14965,0.0014883
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/Link Up.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/Link Up.xnb","TextureProcessor","Texture2DContent",626,9085,0.0014879
+"C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/LinkItem.png","C:/Users/jperk/source/repos/3902 LoZ/Game1/Content/bin/Windows/LinkItem.xnb","TextureProcessor","Texture2DContent",450,4869,0.0014893

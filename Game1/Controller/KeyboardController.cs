@@ -22,7 +22,8 @@ namespace Game1.Controller
                 { Keys.Up, new PlayerUpCommand(game) },
                 { Keys.Left, new PlayerLeftCommand(game) },
                 { Keys.Down, new PlayerDownCommand(game) },
-                { Keys.Right, new PlayerRightCommand(game) }
+                { Keys.Right, new PlayerRightCommand(game) },
+                { Keys.Space, new PlayerAttackCommand(game)}
             };
         }
 

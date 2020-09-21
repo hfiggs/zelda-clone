@@ -36,7 +36,7 @@ namespace Game1
         {
             controllerList = new List<IController>();
             controllerList.Add(new KeyboardController(this));
-            controllerList.Add(new MouseController(this));
+           // controllerList.Add(new MouseController(this));
 
             IsMouseVisible = true;
 
@@ -49,7 +49,7 @@ namespace Game1
 
             //TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
-            Sprite = PlayerSpriteFactory.Instance.CreateTwoHandItemSprite();
+            Sprite = PlayerSpriteFactory.Instance.CreateAttackLeftSprite(false);
             //TEMP TEMP TEMP TEMP
 
             //TEMP TEMP TEMP TEMP
