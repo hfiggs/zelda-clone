@@ -5,6 +5,7 @@
 using Microsoft.Xna.Framework;
 
 using Game1.Sprite;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
@@ -25,6 +26,8 @@ namespace Game1.Player
         void ReceiveDamage();
 
         void Update(GameTime time);
+
+        void Draw(SpriteBatch spriteBatch);
 
         ISprite Sprite { get; }
 

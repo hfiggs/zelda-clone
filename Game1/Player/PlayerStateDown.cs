@@ -2,6 +2,7 @@
 
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
@@ -11,42 +12,61 @@ namespace Game1.Player
         public ISprite Sprite { get; private set; }
 
         private bool isMoving;
+        private bool isAttacking;
+        private Vector2 position;
+        private int frameCount;
+
         private float timeUntilNextFrame; // ms
+        private int moveSpeed = 15d;
+        private const float animationTime = 100f; // ms per frame
 
-        private const float animationTime = 150f; // ms per frame
-
-        public PlayerStateDown(PlayerStateFactory stateFactory)
+        public PlayerStateDown(PlayerStateFactory stateFactory, Vector2 position)
         {
             this.stateFactory = stateFactory;
-            Sprite = PlayerSpriteFactory.Instance.CreateWalkDownSprite(false);
+            Sprite = PlayerSpriteFactory.Instance.CreateIdleDownSprite(false);
+            this.position = position;
 
             isMoving = false;
+            isAttacking = false;
             timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
         {
-            throw new System.NotImplementedException();
+            if(!isMoving && !isAttacking)
+            {
+                Sprite = PlayerSpriteFactory.Instance.CreateAttackDownSprite(false);
+                frameCount = 4;
+                isAttacking = true;
+            }
         }
 
         public void MoveDown()
         {
-            isMoving = true;
+            if (!isMoving && !isAttacking)
+            {
+                Sprite = PlayerSpriteFactory.Instance.CreateWalkDownSprite(false);
+                frameCount = 2;
+                isMoving = true;
+            }
         }
 
         public void MoveLeft()
         {
-            stateFactory.SetState(new PlayerStateLeft(stateFactory));
+            if (!isMoving && !isAttacking)
+                stateFactory.SetState(new PlayerStateLeft(stateFactory,position));
         }
 
         public void MoveRight()
         {
-            stateFactory.SetState(new PlayerStateRight(stateFactory));
+            if (!isMoving && !isAttacking)
+                stateFactory.SetState(new PlayerStateRight(stateFactory,position));
         }
 
         public void MoveUp()
         {
-            stateFactory.SetState(new PlayerStateUp(stateFactory));
+            if (!isMoving && !isAttacking)
+                stateFactory.SetState(new PlayerStateUp(stateFactory,position));
         }
 
         public void ReceiveDamage()
@@ -60,7 +80,7 @@ namespace Game1.Player
         public void Update(GameTime time)
         {
 
-            if(isMoving)
+            if(isMoving || isAttacking)
             {
                 timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
 
@@ -68,10 +88,23 @@ namespace Game1.Player
                 {
                     Sprite.Update();
                     timeUntilNextFrame += animationTime;
+                    frameCount--;
+                    if(isMoving)
+                        position.Y += moveSpeed;
+                    
+                    if(frameCount <= 0)
+                    {
+                        Sprite = PlayerSpriteFactory.Instance.CreateIdleDownSprite(false);
+                        isMoving = false;
+                        isAttacking = false;
+                    }
                 }
             }
+        }
 
-            isMoving = false;
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            Sprite.Draw(spriteBatch, position);
         }
     }
 }

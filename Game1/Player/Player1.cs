@@ -11,18 +11,18 @@ namespace Game1.Player
 {
     class Player1 : IPlayer
     {
-        private Vector2 position;
+       //private Vector2 position;
         //enum currentItem;
 
         public Player1(Vector2 position, SpriteBatch spriteBatch)
         {
-            this.position = position;
-            PlayerStateFactory.Instance.Initialize(spriteBatch);
+            //this.position = position;
+            PlayerStateFactory.Instance.Initialize(spriteBatch, position);
         }
 
         public void Draw()
         {
-            PlayerStateFactory.Instance.Draw(position);
+            PlayerStateFactory.Instance.Draw();
         }
 
         public void MoveLeft()
