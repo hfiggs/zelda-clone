@@ -33,29 +33,52 @@ namespace Game1.Environment
 
 		public ISprite createFloor()
 		{
-			//TODO: Concrete implementations of the ISprite class (should have position)
-			//TODO: Using SpriteSheet, create instances of those concrete classes and return them(all in the sprite factory)
-			return new ItemSprite(tiles, 0, 0);
+			return new Floor(tiles);
 		}
 
 		public ISprite createBlock()
 		{
-			return new ItemSprite(tiles, 0, 1);
+			return new Block(tiles);
 		}
 
 		public ISprite createStatueFish()
 		{
-			return new ItemSprite(tiles, 0, 2);
+			return new StatueFish(tiles);
 		}
 
 		public ISprite createStatueDragon()
 		{
-			return new ItemSprite(tiles, 0, 3);
+			return new StatueDragon(tiles);
 		}
 
-		public ISprite createStatueDragon()
+		public ISprite createBlack()
 		{
-			return new ItemSprite(tiles, 0, 3);
+			return new Black(tiles);
 		}
+
+		public ISprite createSand()
+        {
+			return new Sand(tiles);
+        }
+
+		public ISprite createWater()
+        {
+			return new Water(tiles);
+        }
+
+		public ISprite createStairs()
+        {
+			return new Stairs(tiles);
+        }
+
+		public ISprite createBricks()
+        {
+			return new Bricks(tiles);
+        }
+
+		public ISprite createLadder()
+        {
+			return new Ladder(tiles);
+        }
 	}
 }

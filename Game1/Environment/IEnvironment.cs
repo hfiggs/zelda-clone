@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Sprite;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace Game1.Environment
 {
-    interface IEnvironment
+    public interface IEnvironment : ISprite
     {
-        void Draw(SpriteBatch spritebatch, Vector2 position);
-
-        void Update();
+        //extendable (collision?)
     }
 }
