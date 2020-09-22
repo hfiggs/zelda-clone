@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+using System;
 using Game1.Sprite;
-
+using Game1.Controller;
+using System.Collections.Generic;
 
 namespace Game1.Environment
 {
 	public class EnvironmentSpriteFactory
 	{
-		private Texture2D doors;
-		private Texture2D tiles;
+		private SpriteSheet doors;
+		private SpriteSheet tiles;
 
 		public EnvironmentSpriteFactory instance = new EnvironmentSpriteFactory();
 
@@ -17,10 +19,12 @@ namespace Game1.Environment
 		{
 		}
 
-		public LoadContent()
+		public void LoadContent(ContentManager content)
 		{
-			this.doors = content.Load<Texture2D>("images/ss_doors");
-			this.tiles = content.Load<Texture2D>("images/ss_tiles");
+			Texture2D doors = content.Load<Texture2D>("images/ss_doors");
+			Texture2D tiles = content.Load<Texture2D>("images/ss_tiles");
+			this.doors = new SpriteSheet(doors, 5, 4);
+			this.tiles = new SpriteSheet(tiles, 4, 3);
 		}
 
 		/*
@@ -29,6 +33,8 @@ namespace Game1.Environment
 
 		public ISprite createFloor()
 		{
+			//TODO: Concrete implementations of the ISprite class (should have position)
+			//TODO: Using SpriteSheet, create instances of those concrete classes and return them(all in the sprite factory)
 			return new ItemSprite(tiles, 0, 0);
 		}
 
