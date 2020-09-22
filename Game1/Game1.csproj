@@ -69,6 +69,15 @@
     <Compile Include="Command\SpriteNotAnimatedMovingCommand.cs" />
     <Compile Include="Command\SpriteNotAnimatedNotMovingCommand.cs" />
     <Compile Include="Command\SpriteAnimatedNotMovingCommand.cs" />
+    <Compile Include="Environment\Bricks.cs" />
+    <Compile Include="Environment\Ladder.cs" />
+    <Compile Include="Environment\StatueFish.cs" />
+    <Compile Include="Environment\StatueDragon.cs" />
+    <Compile Include="Environment\Black.cs" />
+    <Compile Include="Environment\Sand.cs" />
+    <Compile Include="Environment\Water.cs" />
+    <Compile Include="Environment\Stairs.cs" />
+    <Compile Include="Environment\Floor.cs" />
     <Compile Include="Environment\Block.cs" />
     <Compile Include="Environment\EnvironmentSpriteFactory.cs" />
     <Compile Include="Environment\IEnvironment.cs" />
