@@ -11,8 +11,6 @@ namespace Game1.Player
         public ISprite Sprite { get; private set; }
 
         private bool isMoving;
-        private bool isAttacking;
-        private int frameCount;
         private float timeUntilNextFrame; // ms
 
         private const float animationTime = 150f; // ms per frame
@@ -20,49 +18,35 @@ namespace Game1.Player
         public PlayerStateUp(PlayerStateFactory stateFactory)
         {
             this.stateFactory = stateFactory;
-            Sprite = PlayerSpriteFactory.Instance.CreateIdleUpSprite(false);
+            Sprite = PlayerSpriteFactory.Instance.CreateWalkUpSprite(false);
 
             isMoving = false;
-            isAttacking = false;
             timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
         {
-            if (!isAttacking && !isMoving)
-            {
-                Sprite = PlayerSpriteFactory.Instance.CreateAttackUpSprite(false);
-                isAttacking = true;
-                frameCount = 4;
-            }
+            stateFactory.SetState(new PlayerStateUpAttack(stateFactory));
         }
 
         public void MoveDown()
         {
-            if(!isAttacking)
                 stateFactory.SetState(new PlayerStateDown(stateFactory));
         }
 
         public void MoveLeft()
         {
-            if(!isAttacking)
                 stateFactory.SetState(new PlayerStateLeft(stateFactory));
         }
 
         public void MoveRight()
         {
-            if(!isAttacking)
                 stateFactory.SetState(new PlayerStateRight(stateFactory));
         }
 
         public void MoveUp()
         {
-            if (!isAttacking && !isMoving)
-            {
-                Sprite = PlayerSpriteFactory.Instance.CreateWalkUpSprite(false);
-                isMoving = true;
-                frameCount = 2;
-            }
+            isMoving = true;
         }
 
         public void ReceiveDamage()
@@ -76,7 +60,7 @@ namespace Game1.Player
         public void Update(GameTime time)
         {
 
-            if(isMoving || isAttacking)
+            if(isMoving)
             {
                 timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
 
@@ -84,17 +68,10 @@ namespace Game1.Player
                 {
                     Sprite.Update();
                     timeUntilNextFrame += animationTime;
-
-                    frameCount--;
-
-                    if (frameCount <= 0)
-                    {
-                        Sprite = PlayerSpriteFactory.Instance.CreateIdleUpSprite(false);
-                        isMoving = false;
-                        isAttacking = false;
-                    }
                 }
             }
+
+            isMoving = false;
 
         }
     }

@@ -26,7 +26,7 @@ namespace Game1.Player
 
         public void Attack()
         {
-            throw new System.NotImplementedException();
+            stateFactory.SetState(new PlayerStateDownAttack(stateFactory));
         }
 
         public void MoveDown()

@@ -54,6 +54,10 @@
     <Compile Include="Player\PlayerStateFactory.cs" />
     <Compile Include="Player\PlayerStateLeft.cs" />
     <Compile Include="Player\PlayerStateDown.cs" />
+    <Compile Include="Player\PlayerStateRightAttack.cs" />
+    <Compile Include="Player\PlayerStateLeftAttack.cs" />
+    <Compile Include="Player\PlayerStateDownAttack.cs" />
+    <Compile Include="Player\PlayerStateUpAttack.cs" />
     <Compile Include="Player\PlayerStateUp.cs" />
     <Compile Include="Player\PlayerStateRight.cs" />
     <Compile Include="Player\IPlayerState.cs" />
