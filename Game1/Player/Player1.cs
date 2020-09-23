@@ -12,7 +12,6 @@ namespace Game1.Player
     class Player1 : IPlayer
     {
         private Vector2 position;
-        //enum currentItem;
 
         public Player1(Vector2 position, SpriteBatch spriteBatch)
         {

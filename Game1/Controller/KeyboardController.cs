@@ -23,7 +23,15 @@ namespace Game1.Controller
                 { Keys.Left, new PlayerLeftCommand(game) },
                 { Keys.Down, new PlayerDownCommand(game) },
                 { Keys.Right, new PlayerRightCommand(game) },
-                { Keys.Space, new PlayerAttackCommand(game)}
+                { Keys.Space, new PlayerAttackCommand(game) },
+                { Keys.D1, new PlayerUseItemCommand(game, 1) },
+                { Keys.NumPad1, new PlayerUseItemCommand(game, 1) },
+                { Keys.D2, new PlayerUseItemCommand(game, 2) },
+                { Keys.NumPad2, new PlayerUseItemCommand(game, 2) },
+                { Keys.D3, new PlayerUseItemCommand(game, 3) },
+                { Keys.NumPad3, new PlayerUseItemCommand(game, 3) },
+                { Keys.D4, new PlayerUseItemCommand(game, 4) },
+                { Keys.NumPad4, new PlayerUseItemCommand(game, 4) }
             };
         }
 

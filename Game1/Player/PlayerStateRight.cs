@@ -55,7 +55,7 @@ namespace Game1.Player
         }
         public void UseItem()
         {
-            throw new System.NotImplementedException();
+            stateFactory.SetState(new PlayerStateRightUse(stateFactory));
         }
         public void Update(GameTime time)
         {
