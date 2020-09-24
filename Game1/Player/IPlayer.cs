@@ -28,5 +28,6 @@ namespace Game1.Player
 
         Rectangle GetLocation();
 
+        char GetDirection();
     }
 }

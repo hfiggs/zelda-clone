@@ -11,17 +11,14 @@ namespace Game1.Player
 {
     class Player1 : IPlayer
     {
-        private Vector2 position;
-
         public Player1(Vector2 position, SpriteBatch spriteBatch)
         {
-            this.position = position;
-            PlayerStateFactory.Instance.Initialize(spriteBatch);
+            PlayerStateFactory.Instance.Initialize(spriteBatch, position);
         }
 
         public void Draw()
         {
-            PlayerStateFactory.Instance.Draw(position);
+            PlayerStateFactory.Instance.Draw();
         }
 
         public void MoveLeft()
@@ -66,7 +63,12 @@ namespace Game1.Player
 
         public Rectangle GetLocation()
         {
-            throw new NotImplementedException();
+            return PlayerStateFactory.Instance.GetLocation();
+        }
+
+        public char GetDirection()
+        {
+            return PlayerStateFactory.Instance.GetDirection();
         }
     }
 }

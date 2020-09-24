@@ -72,7 +72,6 @@
     <Compile Include="Sprite\PlayerSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
-    <Compile Include="Controller\MouseController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

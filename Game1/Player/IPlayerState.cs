@@ -26,7 +26,10 @@ namespace Game1.Player
 
         void Update(GameTime time);
 
-        ISprite Sprite { get; }
+        Vector2 GetPosition();
 
+        char GetDirection();
+
+        ISprite Sprite { get; }
     }
 }

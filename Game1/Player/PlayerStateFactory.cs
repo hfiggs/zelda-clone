@@ -17,9 +17,9 @@ namespace Game1.Player
         {
         }
 
-        public void Initialize(SpriteBatch spriteBatch)
+        public void Initialize(SpriteBatch spriteBatch, Vector2 position)
         {
-            state = new PlayerStateRight(this);
+            state = new PlayerStateRight(this, position);
 
             this.spriteBatch = spriteBatch;
         }
@@ -29,9 +29,9 @@ namespace Game1.Player
             this.state = state;
         }
 
-        public void Draw(Vector2 position)
+        public void Draw()
         {
-            state.Sprite.Draw(spriteBatch, position);
+            state.Sprite.Draw(spriteBatch, state.GetPosition());
         }
 
         public void MoveLeft()
@@ -74,5 +74,16 @@ namespace Game1.Player
             state.Update(time);
         }
 
+        public Rectangle GetLocation()
+        {
+            // TODO: this sucks
+            return new Rectangle((int)state.GetPosition().X, (int)state.GetPosition().Y, 15, 15);
+        }
+
+        public char GetDirection()
+        {
+            // TODO: this sucks
+            return state.GetDirection();
+        }
     }
 }
