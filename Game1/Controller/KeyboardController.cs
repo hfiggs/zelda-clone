@@ -12,6 +12,8 @@ namespace Game1.Controller
     class KeyboardController : IController
     {
         private Dictionary<Keys, ICommand> commands;
+        private Stack<Keys> movement = new Stack<Keys>();
+        private Keys currentMove = new Keys();
 
         public KeyboardController(Game1 game)
         {
@@ -41,13 +43,66 @@ namespace Game1.Controller
         public void Update()
         {
             var keys = Keyboard.GetState().GetPressedKeys();
+            
+
             foreach(Keys k in keys)
             {
-                if (commands.ContainsKey(k))
+
+                switch (k)
                 {
-                    commands[k].Execute();
+                    case Keys.W:
+                        movement.Push(Keys.W);
+                        break;
+                    case Keys.A:
+                        movement.Push(Keys.A);
+                        break;
+                    case Keys.S:
+                        movement.Push(Keys.S);
+                        break;
+                    case Keys.D:
+                        movement.Push(Keys.D);
+                        break;
+                    case Keys.Up:
+                        movement.Push(Keys.Up);
+                        break;
+                    case Keys.Down:
+                        movement.Push(Keys.Down);
+                        break;
+                    case Keys.Left:
+                        movement.Push(Keys.Left);
+                        break;
+                    case Keys.Right:
+                        movement.Push(Keys.Right);
+                        break;
+                    default:
+                        if(commands.ContainsKey(k))
+                            commands[k].Execute();
+                        break;
+                }
+
+            }
+
+
+            if (movement.Count == 1)
+            {
+                Keys keyCheck = movement.Pop();
+                currentMove = keyCheck;
+                commands[keyCheck].Execute();
+            }
+            else
+            {
+                while (movement.Count > 0)
+                {
+                    Keys keyCheck = movement.Pop();
+                    if (currentMove != keyCheck)
+                    {
+                        commands[keyCheck].Execute();
+                        break;
+                    }
                 }
             }
+
+            movement.Clear();
         }
     }
 }
