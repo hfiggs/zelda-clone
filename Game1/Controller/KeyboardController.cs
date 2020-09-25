@@ -48,36 +48,14 @@ namespace Game1.Controller
             foreach(Keys k in keys)
             {
 
-                switch (k)
+                if(k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D || k == Keys.Up || k == Keys.Down || k == Keys.Left || k == Keys.Right)
                 {
-                    case Keys.W:
-                        movement.Push(Keys.W);
-                        break;
-                    case Keys.A:
-                        movement.Push(Keys.A);
-                        break;
-                    case Keys.S:
-                        movement.Push(Keys.S);
-                        break;
-                    case Keys.D:
-                        movement.Push(Keys.D);
-                        break;
-                    case Keys.Up:
-                        movement.Push(Keys.Up);
-                        break;
-                    case Keys.Down:
-                        movement.Push(Keys.Down);
-                        break;
-                    case Keys.Left:
-                        movement.Push(Keys.Left);
-                        break;
-                    case Keys.Right:
-                        movement.Push(Keys.Right);
-                        break;
-                    default:
-                        if(commands.ContainsKey(k))
-                            commands[k].Execute();
-                        break;
+                    movement.Push(k);
+                }
+                else
+                {
+                    if (commands.ContainsKey(k))
+                        commands[k].Execute();
                 }
 
             }
