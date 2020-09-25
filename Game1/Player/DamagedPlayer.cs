@@ -8,18 +8,22 @@ namespace Game1.Player
     {
         Game1 game;
         IPlayer decoratedPlayer;
+        Color[] flickers = { Color.LightBlue, Color.Orange, Color.Red };
+        int currentFlicker = 0;
+        Color damageColor = Color.White;
 
         const int duration = 1000; // ms
         int timer;
+        int flickerTimer;
 
-        const int flickerDuration = 100; // ms
+        const int flickerDuration = 62; // ms
 
         public DamagedPlayer(Game1 game, IPlayer decoratedPlayer)
         {
             this.game = game;
             this.decoratedPlayer = decoratedPlayer;
-
             timer = duration;
+            flickerTimer = 0;
         }
 
         public void Attack()
@@ -29,9 +33,21 @@ namespace Game1.Player
 
         public void Draw(Color color)
         {
-            Color damagedColor = timer % flickerDuration < flickerDuration / 2 ? Color.Red : color;
             
-            decoratedPlayer.Draw(damagedColor);
+            if (flickerTimer >= flickerDuration)
+            {
+                flickerTimer = 0;
+                if (currentFlicker >= flickers.Length)
+                {
+                    currentFlicker = 0;
+                    damageColor = color;
+                }
+                else
+                    damageColor = flickers[currentFlicker];
+               
+                currentFlicker++;
+            }
+            decoratedPlayer.Draw(damageColor);
         }
 
         public char GetDirection()
@@ -72,6 +88,7 @@ namespace Game1.Player
         public void Update(GameTime time)
         {
             timer -= (int)time.ElapsedGameTime.TotalMilliseconds;
+            flickerTimer += (int)time.ElapsedGameTime.TotalMilliseconds;
 
             if (timer <= 0)
                 RemoveDecorator();
