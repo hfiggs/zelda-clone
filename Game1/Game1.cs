@@ -19,7 +19,7 @@ namespace Game1
 
         private List<IController> controllerList;
 
-        public IPlayer Player { get; private set; }
+        public IPlayer Player { get; set; }
 
         public Game1()
         {
@@ -47,7 +47,7 @@ namespace Game1
             // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
 
-            Player = new Player1(new Vector2(400, 250), spriteBatch);
+            Player = new Player1(this, new Vector2(400, 250), spriteBatch);
             // TEMP TEMP TEMP TEMP
         }
 
@@ -77,7 +77,7 @@ namespace Game1
             spriteBatch.Begin();
 
             // TEMP TEMP TEMP TEMP
-            Player.Draw();
+            Player.Draw(Color.White);
             // TEMP TEMP TEMP TEMP
 
             spriteBatch.End();

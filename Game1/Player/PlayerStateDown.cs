@@ -18,14 +18,13 @@ namespace Game1.Player
         private Vector2 position;
 
         private float timeUntilNextFrame; // ms
-        private Color color = Color.White;
         private const int moveSpeed = 5;
         private const float animationTime = 150f; // ms per frame
 
         public PlayerStateDown(PlayerStateFactory stateFactory, Vector2 position)
         {
             this.stateFactory = stateFactory;
-            Sprite = PlayerSpriteFactory.Instance.CreateWalkDownSprite(color);
+            Sprite = PlayerSpriteFactory.Instance.CreateWalkDownSprite();
 
             isMoving = false;
             timeUntilNextFrame = animationTime;
@@ -59,11 +58,6 @@ namespace Game1.Player
         {
             if (!isMoving)
                 stateFactory.SetState(new PlayerStateUp(stateFactory, position));
-        }
-
-        public void ReceiveDamage()
-        {
-            throw new System.NotImplementedException();
         }
 
         public void UseItem()

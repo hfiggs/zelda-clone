@@ -7,8 +7,6 @@ namespace Game1.Sprite
 	public class PlayerSprite : ISprite
 	{
         private Texture2D texture;
-        private bool damaged;
-        private Color color;
 
         private int height;
         private int width;
@@ -17,11 +15,9 @@ namespace Game1.Sprite
         private int columnLocation;
         private int maxRow;
 
-
-        public PlayerSprite(Texture2D texture, Color color, int rows, int columns, int frameColumn, int maxRow)
+        public PlayerSprite(Texture2D texture, int rows, int columns, int frameColumn, int maxRow)
 		{
             this.texture = texture;
-            this.color = color;
             //calculate frame width
             width = (texture.Width / columns);
             //calculate frame column
@@ -42,7 +38,7 @@ namespace Game1.Sprite
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
 
             Rectangle sourceRect = new Rectangle(columnLocation, height*currentRow, width, height);

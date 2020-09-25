@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\PlayerDamageCommand.cs" />
     <Compile Include="Command\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerAttackCommand.cs" />
     <Compile Include="Command\DoNothingCommand.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Controller\IController.cs" />
+    <Compile Include="Player\DamagedPlayer.cs" />
     <Compile Include="Player\PlayerStateDownUse.cs" />
     <Compile Include="Player\PlayerStateFactory.cs" />
     <Compile Include="Player\PlayerStateLeft.cs" />

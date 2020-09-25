@@ -22,8 +22,6 @@ namespace Game1.Player
 
         void Attack();
 
-        void ReceiveDamage();
-
         void Update(GameTime time);
 
         Vector2 GetPosition();

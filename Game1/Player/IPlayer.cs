@@ -24,7 +24,7 @@ namespace Game1.Player
 
         void Update(GameTime time);
 
-        void Draw();
+        void Draw(Color color);
 
         Rectangle GetLocation();
 

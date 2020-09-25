@@ -29,9 +29,9 @@ namespace Game1.Player
             this.state = state;
         }
 
-        public void Draw()
+        public void Draw(Color color)
         {
-            state.Sprite.Draw(spriteBatch, state.GetPosition());
+            state.Sprite.Draw(spriteBatch, state.GetPosition(), color);
         }
 
         public void MoveLeft()
@@ -64,11 +64,6 @@ namespace Game1.Player
             state.Attack();
         }
 
-        public void ReceiveDamage()
-        {
-            state.ReceiveDamage();
-        }
-
         public void Update(GameTime time)
         {
             state.Update(time);
@@ -82,7 +77,6 @@ namespace Game1.Player
 
         public char GetDirection()
         {
-            // TODO: this sucks
             return state.GetDirection();
         }
     }

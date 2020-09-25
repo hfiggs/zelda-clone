@@ -3,9 +3,6 @@
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Game1.Command;
-using System.Runtime.InteropServices;
-using System.CodeDom;
-using System.Linq;
 
 namespace Game1.Controller
 {
@@ -20,6 +17,7 @@ namespace Game1.Controller
             commands = new Dictionary<Keys, ICommand>
             {
                 { Keys.D0, new QuitCommand(game) },
+
                 { Keys.W, new PlayerUpCommand(game) },
                 { Keys.A, new PlayerLeftCommand(game) },
                 { Keys.S, new PlayerDownCommand(game) },
@@ -28,7 +26,12 @@ namespace Game1.Controller
                 { Keys.Left, new PlayerLeftCommand(game) },
                 { Keys.Down, new PlayerDownCommand(game) },
                 { Keys.Right, new PlayerRightCommand(game) },
-                { Keys.Space, new PlayerAttackCommand(game) },
+
+                { Keys.Z, new PlayerAttackCommand(game) },
+                { Keys.N, new PlayerAttackCommand(game) },
+
+                { Keys.E, new PlayerDamageCommand(game) },
+
                 { Keys.D1, new PlayerUseItemCommand(game, 1) },
                 { Keys.NumPad1, new PlayerUseItemCommand(game, 1) },
                 { Keys.D2, new PlayerUseItemCommand(game, 2) },

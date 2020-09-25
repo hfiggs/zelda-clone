@@ -3,22 +3,24 @@
  * Hunter Figgs */
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace Game1.Player
 {
     class Player1 : IPlayer
     {
-        public Player1(Vector2 position, SpriteBatch spriteBatch)
+        Game1 game;
+
+        public Player1(Game1 game, Vector2 position, SpriteBatch spriteBatch)
         {
+            this.game = game;
+
             PlayerStateFactory.Instance.Initialize(spriteBatch, position);
         }
 
-        public void Draw()
+        public void Draw(Color color)
         {
-            PlayerStateFactory.Instance.Draw();
+            PlayerStateFactory.Instance.Draw(color);
         }
 
         public void MoveLeft()
@@ -53,7 +55,8 @@ namespace Game1.Player
 
         public void ReceiveDamage()
         {
-            PlayerStateFactory.Instance.ReceiveDamage();
+            // wrap damage decorator around this
+            game.Player = new DamagedPlayer(game, this);
         }
 
         public void Update(GameTime time)

@@ -15,14 +15,14 @@ namespace Game1.Player
 
         private float timeUntilNextFrame; // ms
         private int frameCount;
-        private Color color = Color.White;
+
         private const float animationTime = 150f; // ms per frame
         private const int animationFrames = 3;
 
         public PlayerStateUpUse(PlayerStateFactory stateFactory, Vector2 position)
         {
             this.stateFactory = stateFactory;
-            Sprite = PlayerSpriteFactory.Instance.CreateUseItemUpSprite(color);
+            Sprite = PlayerSpriteFactory.Instance.CreateUseItemUpSprite();
 
             this.position = position;
 
@@ -51,11 +51,6 @@ namespace Game1.Player
         }
 
         public void MoveUp()
-        {
-            // Do nothing
-        }
-
-        public void ReceiveDamage()
         {
             // Do nothing
         }
