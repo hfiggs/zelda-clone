@@ -15,14 +15,14 @@ namespace Game1.Player
 
         private float timeUntilNextFrame; // ms
         private int frameCount;
-
+        private Color color = Color.White;
         private const float animationTime = 150f; // ms per frame
         private const int animationFrames = 4;
 
         public PlayerStateRightAttack(PlayerStateFactory stateFactory, Vector2 position)
         {
             this.stateFactory = stateFactory;
-            Sprite = PlayerSpriteFactory.Instance.CreateAttackRightSprite(false);
+            Sprite = PlayerSpriteFactory.Instance.CreateAttackRightSprite(color);
 
             this.position = position;
 

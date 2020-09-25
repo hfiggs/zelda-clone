@@ -8,7 +8,7 @@ namespace Game1.Sprite
 	{
         private Texture2D texture;
         private bool damaged;
-        private Color color = Color.White;
+        private Color color;
 
         private int height;
         private int width;
@@ -18,10 +18,10 @@ namespace Game1.Sprite
         private int maxRow;
 
 
-        public PlayerSprite(Texture2D texture, bool damaged, int rows, int columns, int frameColumn, int maxRow)
+        public PlayerSprite(Texture2D texture, Color color, int rows, int columns, int frameColumn, int maxRow)
 		{
             this.texture = texture;
-            this.damaged = damaged;
+            this.color = color;
             //calculate frame width
             width = (texture.Width / columns);
             //calculate frame column
@@ -39,18 +39,6 @@ namespace Game1.Sprite
             if(currentRow == maxRow)
             {
                 currentRow = 0;
-            }
-
-            if(damaged)
-            {
-                if (color == Color.White)
-                {
-                    color = Color.Blue;
-                }
-                else
-                {
-                    color = Color.White;
-                }
             }
         }
 

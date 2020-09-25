@@ -3,6 +3,9 @@
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Game1.Command;
+using System.Runtime.InteropServices;
+using System.CodeDom;
+using System.Linq;
 
 namespace Game1.Controller
 {
@@ -38,7 +41,6 @@ namespace Game1.Controller
         public void Update()
         {
             var keys = Keyboard.GetState().GetPressedKeys();
-
             foreach(Keys k in keys)
             {
                 if (commands.ContainsKey(k))

@@ -16,6 +16,7 @@ namespace Game1.Player
 
         private bool isMoving;
         private Vector2 position;
+        private Color color = Color.White;
 
         private float timeUntilNextFrame; // ms
 
@@ -25,7 +26,7 @@ namespace Game1.Player
         public PlayerStateUp(PlayerStateFactory stateFactory, Vector2 position)
         {
             this.stateFactory = stateFactory;
-            Sprite = PlayerSpriteFactory.Instance.CreateWalkUpSprite(false);
+            Sprite = PlayerSpriteFactory.Instance.CreateWalkUpSprite(color);
 
             isMoving = false;
             timeUntilNextFrame = animationTime;

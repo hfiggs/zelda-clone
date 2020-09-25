@@ -43,94 +43,94 @@ namespace Game1.Player
             linkDownSheet = content.Load<Texture2D>("Link Down");
         }
 
-        public ISprite CreateWalkLeftSprite(bool damaged)
+        public ISprite CreateWalkLeftSprite(Color color)
         {
-            return new PlayerSprite(linkLeftSheet,damaged,4,1,0,2);
+            return new PlayerSprite(linkLeftSheet,color,4,1,0,2);
         }
 
-        public ISprite CreateWalkRightSprite(bool damaged)
+        public ISprite CreateWalkRightSprite(Color color)
         {
-            return new PlayerSprite(linkRightSheet,false,4,1,0,2);
+            return new PlayerSprite(linkRightSheet, color,4,1,0,2);
         }
 
-        public ISprite CreateWalkDownSprite(bool damaged)
+        public ISprite CreateWalkDownSprite(Color color)
         {
-            return new PlayerSprite(linkDownSheet, false, 4, 1,0,2);
+            return new PlayerSprite(linkDownSheet, color, 4, 1,0,2);
         }
 
-        public ISprite CreateWalkUpSprite(bool damaged)
+        public ISprite CreateWalkUpSprite(Color color)
         {
-            return new PlayerSprite(linkUpSheet,damaged,4,1,0,2);
+            return new PlayerSprite(linkUpSheet,color,4,1,0,2);
         }
 
-        public ISprite CreateIdleLeftSprite(bool damaged)
+        public ISprite CreateIdleLeftSprite(Color color)
         {
-            return new PlayerSprite(linkLeftSheet,damaged,4,1,0,1);
+            return new PlayerSprite(linkLeftSheet,color,4,1,0,1);
         }
 
-        public ISprite CreateIdleRightSprite(bool damaged)
+        public ISprite CreateIdleRightSprite(Color color)
         {
-            return new PlayerSprite(linkRightSheet,damaged,4,1,0,1);
+            return new PlayerSprite(linkRightSheet,color,4,1,0,1);
         }
 
-        public ISprite CreateIdleUpSprite(bool damaged)
+        public ISprite CreateIdleUpSprite(Color color)
         {
-            return new PlayerSprite(linkUpSheet,damaged,4,1,0,1);
+            return new PlayerSprite(linkUpSheet,color,4,1,0,1);
         }
 
-        public ISprite CreateIdleDownSprite(bool damaged)
+        public ISprite CreateIdleDownSprite(Color color)
         {
-            return new PlayerSprite(linkDownSheet,damaged,4,1,0,1);
+            return new PlayerSprite(linkDownSheet,color,4,1,0,1);
         }
 
-        public ISprite CreateAttackLeftSprite(bool damaged)
+        public ISprite CreateAttackLeftSprite(Color color)
         {
-            return new PlayerSprite(linkLeftSheet, damaged, 4, 1, 0, 4);
+            return new PlayerSprite(linkLeftSheet, color, 4, 1, 0, 4);
         }
 
-        public ISprite CreateAttackRightSprite(bool damaged)
+        public ISprite CreateAttackRightSprite(Color color)
         {
-            return new PlayerSprite(linkRightSheet,damaged,4,1,0,4);
+            return new PlayerSprite(linkRightSheet,color,4,1,0,4);
         }
 
-        public ISprite CreateAttackUpSprite(bool damaged)
+        public ISprite CreateAttackUpSprite(Color color)
         {
-            return new PlayerSprite(linkUpSheet,damaged,4,1,0,4);
+            return new PlayerSprite(linkUpSheet,color,4,1,0,4);
         }
 
-        public ISprite CreateAttackDownSprite(bool damaged)
+        public ISprite CreateAttackDownSprite(Color color)
         {
-            return new PlayerSprite(linkDownSheet,damaged,4,1,0,4);
+            return new PlayerSprite(linkDownSheet,color,4,1,0,4);
         }
 
-        public ISprite CreateUseItemLeftSprite(bool damaged)
+        public ISprite CreateUseItemLeftSprite(Color color)
         {
-            return new PlayerSprite(linkLeftSheet,damaged,4,1,0,3);
+            return new PlayerSprite(linkLeftSheet,color,4,1,0,3);
         }
 
-        public ISprite CreateUseItemRightSprite(bool damaged)
+        public ISprite CreateUseItemRightSprite(Color color)
         {
-            return new PlayerSprite(linkRightSheet,damaged,4,1,0,3);
+            return new PlayerSprite(linkRightSheet,color,4,1,0,3);
         }
 
-        public ISprite CreateUseItemUpSprite(bool damaged)
+        public ISprite CreateUseItemUpSprite(Color color)
         {
-            return new PlayerSprite(linkUpSheet,damaged,4,1,0,3);
+            return new PlayerSprite(linkUpSheet,color,4,1,0,3);
         }
 
-        public ISprite CreateUseItemDownSprite(bool damaged)
+        public ISprite CreateUseItemDownSprite(Color color)
         {
-            return new PlayerSprite(linkDownSheet,damaged,4,1,0,3);
+            return new PlayerSprite(linkDownSheet,color,4,1,0,3);
         }
 
-        public ISprite CreateOneHandItemSprite()
+        public ISprite CreateOneHandItemSprite(Color color)
         {
-            return new PlayerSprite(linkItemSheet,false,1,2,0,1);
+            return new PlayerSprite(linkItemSheet,color,1,2,0,1);
         }
 
-        public ISprite CreateTwoHandItemSprite()
+        public ISprite CreateTwoHandItemSprite(Color color)
         {
-            return new PlayerSprite(linkItemSheet,false,1,2,1,1);
+            return new PlayerSprite(linkItemSheet,color,1,2,1,1);
         }
     }
 }
