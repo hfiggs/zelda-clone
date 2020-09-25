@@ -12,6 +12,8 @@ namespace Game1.Player
         const int duration = 1000; // ms
         int timer;
 
+        const int flickerDuration = 100; // ms
+
         public DamagedPlayer(Game1 game, IPlayer decoratedPlayer)
         {
             this.game = game;
@@ -27,7 +29,9 @@ namespace Game1.Player
 
         public void Draw(Color color)
         {
-            decoratedPlayer.Draw(Color.Red);
+            Color damagedColor = timer % flickerDuration < flickerDuration / 2 ? Color.Red : color;
+            
+            decoratedPlayer.Draw(damagedColor);
         }
 
         public char GetDirection()
