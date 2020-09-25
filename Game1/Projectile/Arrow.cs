@@ -23,11 +23,9 @@ namespace Game1.Projectile
         }
         public void Update()
         {
-            if (direction = 'N' || direction = 'W')
-            {
+            if (direction = 'N' || direction = 'W') {
                 modifier -= 2;
-            } else
-            {
+            } else {
                 modifier += 2;
             }
         }
@@ -35,30 +33,31 @@ namespace Game1.Projectile
         {
             Rectangle sourceRectangle;
             Rectangle destinationRectangle;
+            int columnOfSprite = sprite.GetColumnOfSprite();
 
             switch (direction)
             {
                 case 'N':
-                    sourceRectangle = sprite.PickSprite(0, 0);
+                    sourceRectangle = sprite.PickSprite(columnOfSprite, 0);
                     destinationRectangle = new Rectangle((int)position.X, (int)position.Y + modifier, sourceRectangle.Width, sourceRectangle.Height);
                     break;
                 case 'S':
-                    sourceRectangle = sprite.PickSprite(0, 1);
+                    sourceRectangle = sprite.PickSprite(columnOfSprite, 1);
                     destinationRectangle = new Rectangle((int)position.X, (int)position.Y + modifier, sourceRectangle.Width, sourceRectangle.Height);
                     break;
                 case 'W':
-                    sourceRectangle = sprite.PickSprite(0, 2);
+                    sourceRectangle = sprite.PickSprite(columnOfSprite, 2);
                     destinationRectangle = new Rectangle((int)position.X + modifier, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
                     break;
                 case 'E':
-                    sourceRectangle = sprite.PickSprite(0, 3);
+                    sourceRectangle = sprite.PickSprite(columnOfSprite, 3);
                     destinationRectangle = new Rectangle((int)position.X + modifier, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
                     break;
                 default:
                     break;
             }
 
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, Color.White);
         }
     }
 }

@@ -10,18 +10,16 @@ using System.Threading.Tasks;
 
 namespace Game1.Projectile
 {
-    class Boomerang : IProjectile
+    class enemyBoomerang : IProjectile
     {
         private int xModifier, yModifier, counter, rowModifier;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
         private ProjectileSpriteSheet sprite;
         private bool returned;
-        private Vector2 position;
 
-        public Boomerang(char direction, Vector2 position)
+        public enemyBoomerang(char direction)
         {
             this.direction = direction;
-            this.position = position;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
             xModifier = 0;
             yModifier = 0;
@@ -43,24 +41,22 @@ namespace Game1.Projectile
                 } else {
                     xModifier += 2;
                 }
-            } else if (!returned) {
-                Rectangle currentLocation = sprite.PickSprite(0, 0);
-                currentLocation.Location = new Point((double)(position.X + xModifier), (double)(position.Y + yModifier));
-                Rectangle playerRectangle = // TODO: initialize player rectangle
-
-                if (currentLocation.X < playerRectangle.X) {
+            } else if (counter == 100) {
+                if (direction = 'N') {
+                    yModifier += 2;
+                } else if (direction == 'S') {
+                    yModifier -= 2;
+                } else if (direction == 'W') {
                     xModifier += 2;
-                } else if (currentLocation.X > playerRectangle.X) {
+                } else {
                     xModifier -= 2;
                 }
-
-                if (currentLocation.Y < playerRectangle.Y) {
-                    yModifier += 2;
-                } else if (currentLocation.Y > playerRectangle.Y) {
-                    yModifier -= 2;
-                }
-
-                returned = currentLocation.IntersectsWith(playerRectangle);
+            }
+            
+            // Stop drawing and updating position of boomerang if it has returned to its owner
+            if (xModifier == 0 && yModifier == 0) {
+                counter++;
+                returned = true;
             }
 
             // Used to change sprite sheet row to allow for flashing
@@ -72,7 +68,8 @@ namespace Game1.Projectile
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            if (!returned) {
+            if (!returned)
+            {
                 int columnOfSprite = sprite.GetColumnOfSprite();
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
                 Rectangle destinationRectangle = new Rectangle((int)position.X + xModifier, (int)position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);

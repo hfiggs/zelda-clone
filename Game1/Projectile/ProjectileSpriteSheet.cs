@@ -12,13 +12,14 @@ namespace Game1.Projectile
     class ProjectileSpriteSheet
     {
         private Texture2D projectileSprites;
-        private int rows, columns;
+        private int rows, columns, columnOfSprite;
 
-        public ProjectileSpriteSheet(Texture2D spriteSheet, int columns, int rows)
+        public ProjectileSpriteSheet(Texture2D spriteSheet, int columns, int rows, int columnOfSprite)
         {
             projectileSprites = spriteSheet;
-            this.columns = columns;
             this.rows = rows;
+            this.columns = columns;
+            this.columnOfSprite = columnOfSprite;
         }
 
         public Rectangle PickSprite(int column, int row)
@@ -32,6 +33,11 @@ namespace Game1.Projectile
         public Texture2D GetTexture()
         {
             return projectileSprites;
+        }
+
+        public int GetColumnOfSprite()
+        {
+            return columnOfSprite;
         }
     }
 }

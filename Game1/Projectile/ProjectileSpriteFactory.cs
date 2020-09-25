@@ -34,22 +34,22 @@ namespace Game1.Projectile
 
 		public ISprite CreateSwordBeamSprite()
 		{
-			return new SwordBeamSprite(projectileSpritesheet, 5, 4);
+			return new SwordBeamSprite(projectileSpritesheet, 5, 4, 1);
 		}
 
 		public ISprite CreateArrowSprite()
 		{
-			return new ArrowSprite(projectileSpritesheet, 5, 4);
+			return new ArrowSprite(projectileSpritesheet, 5, 4, 0);
 		}
 
 		public ISprite CreateBoomerangSprite()
 		{
-			return new BoomerangSprite(projectileSpritesheet, 5, 4);
+			return new BoomerangSprite(projectileSpritesheet, 5, 4, 3);
 		}
 
 		public ISprite CreateFireballsSprite()
 		{
-			return new FireballSprite(projectileSpritesheet, 5, 4);
+			return new FireballSprite(projectileSpritesheet, 5, 4, 4);
 		}
 	}
 }
