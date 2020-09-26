@@ -12,6 +12,7 @@ namespace Game1.Environment
 	{
 		private SpriteSheet doors;
 		private SpriteSheet tiles;
+		private SpriteSheet room;
 
 		public static EnvironmentSpriteFactory instance = new EnvironmentSpriteFactory();
 
@@ -23,8 +24,10 @@ namespace Game1.Environment
 		{
 			Texture2D doors = content.Load<Texture2D>("images/ss_doors");
 			Texture2D tiles = content.Load<Texture2D>("images/ss_tiles");
+			Texture2D room = content.Load<Texture2D>("images/room_base");
 			this.doors = new SpriteSheet(doors, 5, 4);
 			this.tiles = new SpriteSheet(tiles, 4, 3);
+			this.room = new SpriteSheet(room, 1, 1);
 		}
 
 		/*
@@ -180,5 +183,10 @@ namespace Game1.Environment
 		{
 			return new EnvironmentSprite(doors, 4, 3);
 		}
+
+		public ISprite createRoom()
+        {
+			return new EnvironmentSprite(room, 0, 0);
+        }
 	}
 }

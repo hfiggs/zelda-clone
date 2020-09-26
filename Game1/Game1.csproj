@@ -91,6 +91,7 @@
     <Compile Include="Environment\Doors\DoorNBlank.cs" />
     <Compile Include="Environment\DoorTop.cs" />
     <Compile Include="Environment\EnvironmentSprite.cs" />
+    <Compile Include="Environment\RoomBorder.cs" />
     <Compile Include="Environment\Tiles\Bricks.cs" />
     <Compile Include="Environment\DoorTopBlank.cs" />
     <Compile Include="Environment\Tiles\Ladder.cs" />
