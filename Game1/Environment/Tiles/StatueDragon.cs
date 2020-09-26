@@ -11,23 +11,15 @@ namespace Game1.Environment
 {
     class StatueDragon : IEnvironment
     {
-        SpriteSheet spriteSheet;
-
+        private ISprite sprite;
         public StatueDragon(SpriteSheet spriteSheet)
         {
-            this.spriteSheet = spriteSheet;
+            sprite = EnvironmentSpriteFactory.instance.createStatueDragon();
         }
 
-        public void Draw(SpriteBatch spritebatch, Vector2 position)
+        public void BehaviorUpdate()
         {
-            Rectangle sourceRect = spriteSheet.PickSprite(3, 0);
-            Rectangle destRect = new Rectangle(position.ToPoint(), new Point(sourceRect.Width, sourceRect.Height));
-            spritebatch.Draw(spriteSheet.GetTexture(), destRect, sourceRect, Color.White);
-        }
-
-        public void Update()
-        {
-            //Extensible later
+            throw new NotImplementedException("For later collision mechanics");
         }
     }
 }

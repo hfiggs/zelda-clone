@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Game1.Environment
 {
-    public interface IEnvironment : ISprite
+    public interface IEnvironment
     {
-        //extendable (collision?)
+        public void BehaviorUpdate()
     }
 }
