@@ -51,5 +51,15 @@ namespace Game1.Sprite
         {
             return new ItemSprite(itemSpritesheet, 6, 1);
         }
+
+        public ISprite CreateBombSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 5, 0);
+        }
+
+        public ISprite CreateTriforceSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 8, 3);
+        }
     }
 }

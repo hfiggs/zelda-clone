@@ -25,10 +25,6 @@ namespace Game1.Controller
             commands = new Dictionary<Input, ICommand>
             {
                 { Input.Quit, new QuitCommand(game) },
-                { Input.Q1, new SpriteNotAnimatedNotMovingCommand(game) },
-                { Input.Q2, new SpriteAnimatedNotMovingCommand(game) },
-                { Input.Q3, new SpriteNotAnimatedMovingCommand(game) },
-                { Input.Q4, new SpriteAnimatedMovingCommand(game) },
                 { Input.Nothing, new DoNothingCommand() }
             };
 

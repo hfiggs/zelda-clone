@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Game1.Controller;
 using Game1.Sprite;
 using System.Collections.Generic;
+using Game1.Item;
 
 namespace Game1
 {
@@ -16,10 +17,9 @@ namespace Game1
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
 
+        private IItem item;
         private List<IController> controllerList;
 
-        public ISprite Sprite { get; set; }
-        private ISprite creditsSprite;
 
         public Game1()
         {
@@ -32,7 +32,7 @@ namespace Game1
         {
             controllerList = new List<IController>();
             controllerList.Add(new KeyboardController(this));
-            controllerList.Add(new MouseController(this));
+           // controllerList.Add(new MouseController(this));
 
             IsMouseVisible = true;
 
@@ -43,11 +43,11 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            var spriteTexture = Content.Load<Texture2D>("Images/guyRun");
-            Sprite = new NotAnimatedNotMovingSprite(spriteTexture, 3, 3, new Vector2(336, 200));
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            item = new Triforce();
 
-            var creditsFont = Content.Load<SpriteFont>("Credits");
-            creditsSprite = new TextSprite(creditsFont, new Vector2(220, 400), "Credits\nProgram Made By: Hunter Figgs.3\nSprites from: Created them myself on PiskelApp.com");
+            var spriteTexture = Content.Load<Texture2D>("Images/guyRun");
+            
         }
 
         protected override void UnloadContent()
@@ -62,7 +62,6 @@ namespace Game1
                 controller.Update();
             }
 
-            Sprite.Update();
 
             base.Update(gameTime);
         }
@@ -73,9 +72,7 @@ namespace Game1
 
             spriteBatch.Begin();
 
-            Sprite.Draw(spriteBatch, new Vector2());
-
-            creditsSprite.Draw(spriteBatch, new Vector2());
+            item.Draw(spriteBatch, new Vector2(250, 250));
 
             spriteBatch.End();
 

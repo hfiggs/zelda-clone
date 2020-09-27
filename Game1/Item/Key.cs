@@ -23,7 +23,7 @@ namespace Game1.Item
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            mySprite.Draw(spriteBatch, position);
+            mySprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }
