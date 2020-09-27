@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Controller;
 using Game1.Sprite;
+using Game1.Enemy;
 using System.Collections.Generic;
 
 namespace Game1
@@ -15,11 +16,10 @@ namespace Game1
     {
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
-
+        private IEnemy enemy;
+        private IEnemy enemy2;
         private List<IController> controllerList;
 
-        public ISprite Sprite { get; set; }
-        private ISprite creditsSprite;
 
         public Game1()
         {
@@ -32,7 +32,7 @@ namespace Game1
         {
             controllerList = new List<IController>();
             controllerList.Add(new KeyboardController(this));
-            controllerList.Add(new MouseController(this));
+           // controllerList.Add(new MouseController(this));
 
             IsMouseVisible = true;
 
@@ -42,12 +42,10 @@ namespace Game1
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            enemy = new Skeleton(new Vector2(250,250), spriteBatch);
+            enemy2 = new Skeleton(new Vector2(100, 100), spriteBatch);
 
-            var spriteTexture = Content.Load<Texture2D>("Images/guyRun");
-            Sprite = new NotAnimatedNotMovingSprite(spriteTexture, 3, 3, new Vector2(336, 200));
-
-            var creditsFont = Content.Load<SpriteFont>("Credits");
-            creditsSprite = new TextSprite(creditsFont, new Vector2(220, 400), "Credits\nProgram Made By: Hunter Figgs.3\nSprites from: Created them myself on PiskelApp.com");
         }
 
         protected override void UnloadContent()
@@ -61,9 +59,8 @@ namespace Game1
             {
                 controller.Update();
             }
-
-            Sprite.Update();
-
+            enemy.Update(gameTime, new Rectangle(0, 0, 800, 400));
+            enemy2.Update(gameTime, new Rectangle(0, 0, 400, 400));
             base.Update(gameTime);
         }
 
@@ -72,11 +69,8 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-
-            Sprite.Draw(spriteBatch);
-
-            creditsSprite.Draw(spriteBatch);
-
+            enemy.Draw();
+            enemy2.Draw();
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -43,23 +43,23 @@
   <ItemGroup>
     <Compile Include="Command\DoNothingCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
-    <Compile Include="Command\SpriteAnimatedMovingCommand.cs" />
-    <Compile Include="Command\SpriteNotAnimatedMovingCommand.cs" />
-    <Compile Include="Command\SpriteNotAnimatedNotMovingCommand.cs" />
-    <Compile Include="Command\SpriteAnimatedNotMovingCommand.cs" />
+    <Compile Include="Enemy\EnemyStateFactory.cs" />
+    <Compile Include="Enemy\EnemyStateSkeletonMoving.cs" />
+    <Compile Include="Enemy\IEnemy.cs" />
+    <Compile Include="Enemy\IEnemyState.cs" />
+    <Compile Include="Enemy\Skeleton.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Controller\IController.cs" />
-    <Compile Include="Sprite\TextSprite.cs" />
+    <Compile Include="Sprite\EnemySprite.cs" />
+    <Compile Include="Sprite\EnemySpriteFactory.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Controller\MouseController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sprite\AnimatedMovingSprite.cs" />
-    <Compile Include="Sprite\NotAnimatedMovingSprite.cs" />
-    <Compile Include="Sprite\NotAnimatedNotMovingSprite.cs" />
-    <Compile Include="Sprite\AnimatedNotMovingSprite.cs" />
+    <Compile Include="Sprite\ItemSprite.cs" />
+    <Compile Include="Sprite\ItemSpriteFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
