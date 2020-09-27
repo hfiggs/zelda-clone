@@ -36,157 +36,157 @@ namespace Game1.Environment
 
 		public ISprite createFloor()
 		{
-			return new EnvironmentSprite(tiles, 0, 0);
+			return new EnvironmentSprite(tiles, 0, 0, 0);
 		}
 
 		public ISprite createBlock()
 		{
-			return new EnvironmentSprite(tiles, 1, 0);
+			return new EnvironmentSprite(tiles, 1, 0, 1);
 		}
 
 		public ISprite createStatueFish()
 		{
-			return new EnvironmentSprite(tiles, 2, 0);
+			return new EnvironmentSprite(tiles, 2, 0, 2);
 		}
 
 		public ISprite createStatueDragon()
 		{
-			return new EnvironmentSprite(tiles, 3, 0);
+			return new EnvironmentSprite(tiles, 3, 0, 3);
 		}
 
 		public ISprite createBlack()
 		{
-			return new EnvironmentSprite(tiles, 0, 1);
+			return new EnvironmentSprite(tiles, 0, 1, 4);
 		}
 
 		public ISprite createSand()
         {
-			return new EnvironmentSprite(tiles, 1, 1);
+			return new EnvironmentSprite(tiles, 1, 1, 5);
 		}
 
 		public ISprite createWater()
         {
-			return new EnvironmentSprite(tiles, 2, 1);
+			return new EnvironmentSprite(tiles, 2, 1, 6);
 		}
 
 		public ISprite createStairs()
         {
-			return new EnvironmentSprite(tiles, 3, 1);
+			return new EnvironmentSprite(tiles, 3, 1, 7);
 		}
 
 		public ISprite createBricks()
         {
-			return new EnvironmentSprite(tiles, 0, 2);
+			return new EnvironmentSprite(tiles, 0, 2, 8);
 		}
 
 		public ISprite createLadder()
         {
-			return new EnvironmentSprite(tiles, 1, 2);
+			return new EnvironmentSprite(tiles, 1, 2, 9);
 		}
 
 		public ISprite createDoorNBlank()
         {
-			return new EnvironmentSprite(doors, 0, 0);
+			return new EnvironmentSprite(doors, 0, 0, 10);
 		}
 
 		public ISprite createDoorNOpen()
 		{
-			return new EnvironmentSprite(doors, 1, 0);
+			return new EnvironmentSprite(doors, 1, 0, 11);
 		}
 
 		public ISprite createDoorNLocked()
 		{
-			return new EnvironmentSprite(doors, 2, 0);
+			return new EnvironmentSprite(doors, 2, 0, 12);
 		}
 
 		public ISprite createDoorNClosed()
 		{
-			return new EnvironmentSprite(doors, 3, 0);
+			return new EnvironmentSprite(doors, 3, 0, 13);
 		}
 
 		public ISprite createDoorNHole()
 		{
-			return new EnvironmentSprite(doors, 4, 0);
+			return new EnvironmentSprite(doors, 4, 0, 14);
 		}
 
 		public ISprite createDoorWBlank()
 		{
-			return new EnvironmentSprite(doors, 0, 1);
+			return new EnvironmentSprite(doors, 0, 1, 15);
 		}
 
 		public ISprite createDoorWOpen()
 		{
-			return new EnvironmentSprite(doors, 1, 1);
+			return new EnvironmentSprite(doors, 1, 1, 16);
 		}
 
 		public ISprite createDoorWLocked()
 		{
-			return new EnvironmentSprite(doors, 2, 1);
+			return new EnvironmentSprite(doors, 2, 1, 17);
 		}
 
 		public ISprite createDoorWClosed()
 		{
-			return new EnvironmentSprite(doors, 3, 1);
+			return new EnvironmentSprite(doors, 3, 1, 18);
 		}
 
 		public ISprite createDoorWHole()
 		{
-			return new EnvironmentSprite(doors, 4, 1);
+			return new EnvironmentSprite(doors, 4, 1, 19);
 		}
 
 		public ISprite createDoorEBlank()
 		{
-			return new EnvironmentSprite(doors, 0, 2);
+			return new EnvironmentSprite(doors, 0, 2, 20);
 		}
 
 		public ISprite createDoorEOpen()
 		{
-			return new EnvironmentSprite(doors, 1, 2);
+			return new EnvironmentSprite(doors, 1, 2, 21);
 		}
 
 		public ISprite createDoorELocked()
 		{
-			return new EnvironmentSprite(doors, 2, 2);
+			return new EnvironmentSprite(doors, 2, 2, 22);
 		}
 
 		public ISprite createDoorEClosed()
 		{
-			return new EnvironmentSprite(doors, 3, 2);
+			return new EnvironmentSprite(doors, 3, 2, 23);
 		}
 
 		public ISprite createDoorEHole()
 		{
-			return new EnvironmentSprite(doors, 4, 2);
+			return new EnvironmentSprite(doors, 4, 2, 24);
 		}
 
 		public ISprite createDoorSBlank()
 		{
-			return new EnvironmentSprite(doors, 0, 3);
+			return new EnvironmentSprite(doors, 0, 3, 25);
 		}
 
 		public ISprite createDoorSOpen()
 		{
-			return new EnvironmentSprite(doors, 1, 3);
+			return new EnvironmentSprite(doors, 1, 3, 26);
 		}
 
 		public ISprite createDoorSLocked()
 		{
-			return new EnvironmentSprite(doors, 2, 3);
+			return new EnvironmentSprite(doors, 2, 3, 27);
 		}
 
 		public ISprite createDoorSClosed()
 		{
-			return new EnvironmentSprite(doors, 3, 3);
+			return new EnvironmentSprite(doors, 3, 3, 28);
 		}
 
 		public ISprite createDoorSHole()
 		{
-			return new EnvironmentSprite(doors, 4, 3);
+			return new EnvironmentSprite(doors, 4, 3, 29);
 		}
 
 		public ISprite createRoom()
         {
-			return new EnvironmentSprite(room, 0, 0);
+			return new EnvironmentSprite(room, 0, 0, 30);
         }
 	}
 }

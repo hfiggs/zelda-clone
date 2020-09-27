@@ -11,6 +11,6 @@ namespace Game1.Environment
 {
     public interface IEnvironment
     {
-        public void BehaviorUpdate()
+        void BehaviorUpdate();
     }
 }

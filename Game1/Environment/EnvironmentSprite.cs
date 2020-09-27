@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Game1.Environment.Tiles
+using Game1.Environment;
 
 namespace Game1.Environment
 {
@@ -15,12 +15,14 @@ namespace Game1.Environment
         private SpriteSheet spriteSheet;
         private int column;
         private int row;
+        private int spriteID;
 
-        public EnvironmentSprite(SpriteSheet spriteSheet, int column, int row)
+        public EnvironmentSprite(SpriteSheet spriteSheet, int column, int row, int spriteID)
         {
             this.spriteSheet = spriteSheet;
             this.column = column;
             this.row = row;
+            this.spriteID = spriteID;
         }
 
         public void Draw(SpriteBatch spritebatch, Vector2 position)
@@ -33,6 +35,11 @@ namespace Game1.Environment
         public void Update()
         {
             //Environment Objects have no sprite animations
+        }
+
+        public int GetSpriteID()
+        {
+            return spriteID;
         }
     }
 }
