@@ -40,7 +40,7 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            Random random = new Random();
+            Random random = new Random(Guid.NewGuid().GetHashCode());
             Sprite.Update();
 
             totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
@@ -71,7 +71,7 @@ namespace Game1.Enemy
         }
         private Vector2 GetRandomDirection()
         {
-            Random random = new Random();
+            Random random = new Random(Guid.NewGuid().GetHashCode());
             int randomDirection = random.Next(4);
 
             switch (randomDirection)
