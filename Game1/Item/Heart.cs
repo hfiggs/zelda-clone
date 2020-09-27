@@ -1,20 +1,19 @@
-﻿using Game1;
-using Game1.Item;
+﻿using Game1.Item;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-public class Triforce : IItem
+public class Heart : IItem
 {
     Color color = Color.White;
     int timeTillSwap;
     const int flashTimer = 250; //ms
     ISprite mySprite;
 
-	public Triforce()
+    public Heart()
 	{
-        mySprite = ItemSpriteFactory.Instance.CreateTriforceSprite();
+        mySprite = ItemSpriteFactory.Instance.CreateHeartSprite();
         timeTillSwap = flashTimer;
 	}
 
@@ -26,10 +25,10 @@ public class Triforce : IItem
     public void Update(GameTime gameTime)
     {
         timeTillSwap -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-        if(timeTillSwap <= 0)
+        if (timeTillSwap <= 0)
         {
             if (color.Equals(Color.White))
-                color = Color.CornflowerBlue;
+                color = Color.Red;
             else
                 color = Color.White;
 

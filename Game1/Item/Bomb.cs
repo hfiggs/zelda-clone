@@ -18,9 +18,9 @@ namespace Game1.Item
             mySprite.Draw(spriteBatch, position, Color.White);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            //Do Nothing
         }
     }
 }

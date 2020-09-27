@@ -61,5 +61,10 @@ namespace Game1.Sprite
         {
             return new ItemSprite(itemSpritesheet, 8, 3);
         }
+
+        public ISprite CreateHeartSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 6, 3);
+        }
     }
 }

@@ -44,7 +44,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            item = new Triforce();
+            item = new Heart();
 
             var spriteTexture = Content.Load<Texture2D>("Images/guyRun");
             
@@ -62,7 +62,7 @@ namespace Game1
                 controller.Update();
             }
 
-
+            item.Update(gameTime);
             base.Update(gameTime);
         }
 

@@ -48,6 +48,7 @@
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Item\Bomb.cs" />
     <Compile Include="Item\Compass.cs" />
+    <Compile Include="Item\Heart.cs" />
     <Compile Include="Item\HeartContainer.cs" />
     <Compile Include="Item\IItem.cs" />
     <Compile Include="Item\Key.cs" />

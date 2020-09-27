@@ -17,7 +17,7 @@ namespace Game1.Item
         {
             mySprite = ItemSpriteFactory.Instance.CreateCompassSprite();
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
         }

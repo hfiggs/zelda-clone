@@ -17,9 +17,9 @@ namespace Game1.Item
         {
             mySprite = ItemSpriteFactory.Instance.CreateHeartContainerSprite();
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-
+            //Do Nothing
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
