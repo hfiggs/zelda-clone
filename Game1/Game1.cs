@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Game1.Controller;
 using Game1.Sprite;
 using System.Collections.Generic;
+using Game1.Projectile;
 
 namespace Game1
 {
@@ -16,10 +17,8 @@ namespace Game1
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
 
-        private List<IController> controllerList;
-
-        public ISprite Sprite { get; set; }
-        private ISprite creditsSprite;
+        private IProjectile projectile;
+        private Rectangle rec = new Rectangle(0, 0, 0, 0);
 
         public Game1()
         {
@@ -30,9 +29,7 @@ namespace Game1
         // Initialization that does not require content
         protected override void Initialize()
         {
-            controllerList = new List<IController>();
-            controllerList.Add(new KeyboardController(this));
-            controllerList.Add(new MouseController(this));
+            
 
             IsMouseVisible = true;
 
@@ -43,11 +40,9 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            var spriteTexture = Content.Load<Texture2D>("Images/guyRun");
-            Sprite = new NotAnimatedNotMovingSprite(spriteTexture, 3, 3, new Vector2(336, 200));
+            ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
 
-            var creditsFont = Content.Load<SpriteFont>("Credits");
-            creditsSprite = new TextSprite(creditsFont, new Vector2(220, 400), "Credits\nProgram Made By: Hunter Figgs.3\nSprites from: Created them myself on PiskelApp.com");
+            projectile = new Boomerang('N', new Vector2(400, 200));
         }
 
         protected override void UnloadContent()
@@ -57,25 +52,18 @@ namespace Game1
 
         protected override void Update(GameTime gameTime)
         {
-            foreach(IController controller in controllerList)
-            {
-                controller.Update();
-            }
-
-            Sprite.Update();
+            projectile.Update();
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
 
-            Sprite.Draw(spriteBatch);
-
-            creditsSprite.Draw(spriteBatch);
+            projectile.Draw(spriteBatch, new Vector2(400, 220));
 
             spriteBatch.End();
 

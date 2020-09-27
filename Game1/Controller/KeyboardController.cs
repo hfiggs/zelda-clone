@@ -12,11 +12,7 @@ namespace Game1.Controller
         {
             commands = new Dictionary<Keys, ICommand>
             {
-                { Keys.D0, new QuitCommand(game) },
-                { Keys.D1, new SpriteNotAnimatedNotMovingCommand(game) },
-                { Keys.D2, new SpriteAnimatedNotMovingCommand(game) },
-                { Keys.D3, new SpriteNotAnimatedMovingCommand(game) },
-                { Keys.D4, new SpriteAnimatedMovingCommand(game) }
+                { Keys.D0, new QuitCommand(game) }
             };
         }
 

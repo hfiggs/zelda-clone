@@ -31,7 +31,6 @@ namespace Game1.Projectile
         public void Update()
         {
             if (counter < 100) {
-                counter++;
                 if (direction == 'N') {
                     yModifier -= 2;
                 } else if (direction == 'S') {
@@ -41,7 +40,7 @@ namespace Game1.Projectile
                 } else {
                     xModifier += 2;
                 }
-            } else if (counter == 100) {
+            } else if (counter < 200) {
                 if (direction == 'N') {
                     yModifier += 2;
                 } else if (direction == 'S') {
@@ -52,7 +51,9 @@ namespace Game1.Projectile
                     xModifier -= 2;
                 }
             }
-            
+
+            counter++;
+
             // Stop drawing and updating position of boomerang if it has returned to its owner
             if (xModifier == 0 && yModifier == 0) {
                 counter++;
@@ -60,16 +61,17 @@ namespace Game1.Projectile
             }
 
             // Used to change sprite sheet row to allow for flashing
-            if (rowModifier == 3) {
-                rowModifier = 0;
-            } else {
-                rowModifier++;
+            if (counter % 5 == 0) { 
+                if (rowModifier == 3) {
+                    rowModifier = 0;
+                } else {
+                    rowModifier++;
+                }
             }
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            if (!returned)
-            {
+            if (!returned) {
                 int columnOfSprite = sprite.GetColumnOfSprite();
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
                 Rectangle destinationRectangle = new Rectangle((int)position.X + xModifier, (int)position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);

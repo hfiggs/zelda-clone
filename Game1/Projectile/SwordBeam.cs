@@ -11,7 +11,7 @@ namespace Game1.Projectile
 {
     class SwordBeam : IProjectile
     {
-        private int modifier, columnModifier;
+        private int modifier, columnModifier, counter;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
         private ProjectileSpriteSheet sprite;
 
@@ -21,20 +21,28 @@ namespace Game1.Projectile
             sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamSprite();
             modifier = 0;
             columnModifier = 0;
+            counter = 0;
         }
         public void Update()
         {
             if (direction == 'N' || direction == 'W') {
-                modifier -= 2;
+                modifier -= 5;
             } else {
-                modifier += 2;
+                modifier += 5;
             }
 
             // Used to change sprite sheet column and allow for flashing
-            if (columnModifier == 0) {
-                columnModifier = 1;
+            if (counter == 5) {
+                if (columnModifier == 0) {
+                    columnModifier = 1;
+                }
+                else {
+                    columnModifier = 0;
+                }
+
+                counter = 0;
             } else {
-                columnModifier = 0;
+                counter++;
             }
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 position)

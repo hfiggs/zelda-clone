@@ -24,9 +24,9 @@ namespace Game1.Projectile
         public void Update()
         {
             if (direction == 'N' || direction == 'W') {
-                modifier -= 2;
+                modifier -= 5;
             } else {
-                modifier += 2;
+                modifier += 5;
             }
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
