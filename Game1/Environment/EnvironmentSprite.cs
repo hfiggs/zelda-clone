@@ -16,25 +16,43 @@ namespace Game1.Environment
         private int column;
         private int row;
         private int spriteID;
+        private Rectangle sourceRect;
+        private bool animated;
 
-        public EnvironmentSprite(SpriteSheet spriteSheet, int column, int row, int spriteID)
+        private int delayTime = 0;
+
+        public EnvironmentSprite(SpriteSheet spriteSheet, int column, int row, int spriteID, bool animated)
         {
             this.spriteSheet = spriteSheet;
             this.column = column;
             this.row = row;
             this.spriteID = spriteID;
+            sourceRect = spriteSheet.PickSprite(column, row);
+            this.animated = animated;
         }
 
         public void Draw(SpriteBatch spritebatch, Vector2 position)
         {
-            Rectangle sourceRect = spriteSheet.PickSprite(column, row);
             Rectangle destRect = new Rectangle(position.ToPoint(), new Point(sourceRect.Width, sourceRect.Height));
             spritebatch.Draw(spriteSheet.GetTexture(), destRect, sourceRect, Color.White);
         }
 
         public void Update()
         {
-            //Environment Objects have no sprite animations
+            if (animated && delayTime > 2)
+            {
+                if (column == 2)
+                {
+                    sourceRect = spriteSheet.PickSprite(column = 3, 2);
+                } else if(column == 3)
+                {
+                    sourceRect = spriteSheet.PickSprite(column = 2, 2);
+                }
+                delayTime = 0;
+            } else
+            {
+                delayTime++;
+            }
         }
 
         public int GetSpriteID()

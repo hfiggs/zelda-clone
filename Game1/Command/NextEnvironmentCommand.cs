@@ -111,8 +111,12 @@ namespace Game1.Command
                     game.environmentSprite = EnvironmentSpriteFactory.instance.createRoom();
                     break;
                 case 30:
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createFire();
+                    break;
+                case 31:
                     game.environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
                     break;
+
                 default:
                     Console.Error.WriteLine("Unknown SpriteID given to PrevEnvironmnetCommand->Execute()");
                     break;

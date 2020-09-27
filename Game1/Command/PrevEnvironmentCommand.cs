@@ -21,96 +21,99 @@ namespace Game1.Command
             switch (gameSprite.GetSpriteID())
             {
                 case 0:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createRoom();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createFire();
                     break;
                 case 1:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createRoom();
                     break;
                 case 2:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createBlock();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
                     break;
                 case 3:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createStatueFish();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createBlock();
                     break;
                 case 4:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createStatueDragon();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createStatueFish();
                     break;
                 case 5:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createBlack();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createStatueDragon();
                     break;
                 case 6:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createSand();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createBlack();
                     break;
                 case 7:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createWater();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createSand();
                     break;
                 case 8:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createStairs();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createWater();
                     break;
                 case 9:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createBricks();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createStairs();
                     break;
                 case 10:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createLadder();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createBricks();
                     break;
                 case 11:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNBlank();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createLadder();
                     break;
                 case 12:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNOpen();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNBlank();
                     break;
                 case 13:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNLocked();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNOpen();
                     break;
                 case 14:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNClosed();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNLocked();
                     break;
                 case 15:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNHole();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNClosed();
                     break;
                 case 16:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWBlank();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorNHole();
                     break;
                 case 17:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWBlank();
                     break;
                 case 18:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWLocked();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
                     break;
                 case 19:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWClosed();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWLocked();
                     break;
                 case 20:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWHole();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWClosed();
                     break;
                 case 21:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorEBlank();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorWHole();
                     break;
                 case 22:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorEOpen();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorEBlank();
                     break;
                 case 23:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorELocked();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorEOpen();
                     break;
                 case 24:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorEClosed();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorELocked();
                     break;
                 case 25:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorEHole();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorEClosed();
                     break;
                 case 26:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorSBlank();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorEHole();
                     break;
                 case 27:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorSOpen();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorSBlank();
                     break;
                 case 28:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorSLocked();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorSOpen();
                     break;
                 case 29:
-                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorSClosed();
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorSLocked();
                     break;
                 case 30:
+                    game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorSClosed();
+                    break;
+                case 31:
                     game.environmentSprite = EnvironmentSpriteFactory.instance.createDoorSHole();
                     break;
                 default:
