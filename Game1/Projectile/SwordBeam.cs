@@ -24,7 +24,7 @@ namespace Game1.Projectile
         }
         public void Update()
         {
-            if (direction = 'N' || direction = 'W') {
+            if (direction == 'N' || direction == 'W') {
                 modifier -= 2;
             } else {
                 modifier += 2;
@@ -61,7 +61,9 @@ namespace Game1.Projectile
                     sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, 3);
                     destinationRectangle = new Rectangle((int)position.X + modifier, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
                     break;
-                default:
+                default: // Shouldn't ever happen
+                    sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, 0);
+                    destinationRectangle = new Rectangle(0, 0, sourceRectangle.Width, sourceRectangle.Height);
                     break;
             }
 

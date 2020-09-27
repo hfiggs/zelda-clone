@@ -28,11 +28,11 @@ namespace Game1.Projectile
             returned = false;
 
         }
-        public void Update(position)
+        public void Update()
         {
             if (counter < 100) {
                 counter++;
-                if (direction = 'N') {
+                if (direction == 'N') {
                     yModifier -= 2;
                 } else if (direction == 'S') {
                     yModifier += 2;
@@ -42,7 +42,7 @@ namespace Game1.Projectile
                     xModifier += 2;
                 }
             } else if (counter == 100) {
-                if (direction = 'N') {
+                if (direction == 'N') {
                     yModifier += 2;
                 } else if (direction == 'S') {
                     yModifier -= 2;

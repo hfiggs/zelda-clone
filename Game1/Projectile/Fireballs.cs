@@ -22,7 +22,7 @@ namespace Game1.Projectile
             yModifier = 0;
             rowModifier = 0;
             this.position = position;
-            // TODO: assign playerRec
+            Rectangle playerRec = new Rectangle(0, 0, 0, 0); // TODO: assign playerRec
             xDistance = (int)position.X - (int)playerRec.X;
             yDistance = (int)position.Y - (int)playerRec.Y;
         }

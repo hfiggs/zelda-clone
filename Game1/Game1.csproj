@@ -50,6 +50,14 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Controller\IController.cs" />
+    <Compile Include="Projectile\Arrow.cs" />
+    <Compile Include="Projectile\Boomerang.cs" />
+    <Compile Include="Projectile\enemyBoomerang.cs" />
+    <Compile Include="Projectile\Fireballs.cs" />
+    <Compile Include="Projectile\IProjectile.cs" />
+    <Compile Include="Projectile\ProjectileSpriteFactory.cs" />
+    <Compile Include="Projectile\ProjectileSpriteSheet.cs" />
+    <Compile Include="Projectile\SwordBeam.cs" />
     <Compile Include="Sprite\TextSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />

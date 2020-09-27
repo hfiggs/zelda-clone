@@ -11,7 +11,7 @@ namespace Game1.Projectile
 {
 	class ProjectileSpriteFactory
 	{
-		private Texture2D projectileSpritesheet;
+		private Texture2D projectileSpriteSheet;
 
 		private static ProjectileSpriteFactory instance = new ProjectileSpriteFactory();
 
@@ -32,24 +32,24 @@ namespace Game1.Projectile
 			projectileSpriteSheet = content.Load<Texture2D>("images/projectiles");
 		}
 
-		public ISprite CreateSwordBeamSprite()
+		public ProjectileSpriteSheet CreateSwordBeamSprite()
 		{
-			return new SwordBeamSprite(projectileSpritesheet, 5, 4, 1);
+			return new ProjectileSpriteSheet(projectileSpriteSheet, 5, 4, 1);
 		}
 
-		public ISprite CreateArrowSprite()
+		public ProjectileSpriteSheet CreateArrowSprite()
 		{
-			return new ArrowSprite(projectileSpritesheet, 5, 4, 0);
+			return new ProjectileSpriteSheet(projectileSpriteSheet, 5, 4, 0);
 		}
 
-		public ISprite CreateBoomerangSprite()
+		public ProjectileSpriteSheet CreateBoomerangSprite()
 		{
-			return new BoomerangSprite(projectileSpritesheet, 5, 4, 3);
+			return new ProjectileSpriteSheet(projectileSpriteSheet, 5, 4, 3);
 		}
 
-		public ISprite CreateFireballsSprite()
+		public ProjectileSpriteSheet CreateFireballsSprite()
 		{
-			return new FireballSprite(projectileSpritesheet, 5, 4, 4);
+			return new ProjectileSpriteSheet(projectileSpriteSheet, 5, 4, 4);
 		}
 	}
 }

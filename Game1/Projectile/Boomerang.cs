@@ -30,11 +30,11 @@ namespace Game1.Projectile
             returned = false;
 
         }
-        public void Update(position)
+        public void Update()
         {
             if (counter < 100) {
                 counter++;
-                if (direction = 'N') {
+                if (direction == 'N') {
                     yModifier -= 2;
                 } else if (direction == 'S') {
                     yModifier += 2;
@@ -45,8 +45,8 @@ namespace Game1.Projectile
                 }
             } else if (!returned) {
                 Rectangle currentLocation = sprite.PickSprite(0, 0);
-                currentLocation.Location = new Point((double)(position.X + xModifier), (double)(position.Y + yModifier));
-                Rectangle playerRectangle = // TODO: initialize player rectangle
+                currentLocation.Location = new Point((int)position.X + xModifier, (int)position.Y + yModifier);
+                Rectangle playerRectangle = new Rectangle(0, 0, 0, 0); // TODO: initialize player rectangle
 
                 if (currentLocation.X < playerRectangle.X) {
                     xModifier += 2;
@@ -60,7 +60,7 @@ namespace Game1.Projectile
                     yModifier -= 2;
                 }
 
-                returned = currentLocation.IntersectsWith(playerRectangle);
+                returned = currentLocation.Intersects(playerRectangle);
             }
 
             // Used to change sprite sheet row to allow for flashing
