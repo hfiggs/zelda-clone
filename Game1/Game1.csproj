@@ -41,21 +41,39 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\PlayerDamageCommand.cs" />
+    <Compile Include="Command\PlayerUseItemCommand.cs" />
+    <Compile Include="Command\PlayerAttackCommand.cs" />
+    <Compile Include="Command\DoNothingCommand.cs" />
+    <Compile Include="Command\PlayerLeftCommand.cs" />
+    <Compile Include="Command\PlayerDownCommand.cs" />
+    <Compile Include="Command\PlayerUpCommand.cs" />
+    <Compile Include="Command\PlayerRightCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Controller\IController.cs" />
-    <Compile Include="Projectile\Arrow.cs" />
-    <Compile Include="Projectile\Boomerang.cs" />
-    <Compile Include="Projectile\enemyBoomerang.cs" />
-    <Compile Include="Projectile\Fireballs.cs" />
-    <Compile Include="Projectile\IProjectile.cs" />
-    <Compile Include="Projectile\ProjectileSpriteFactory.cs" />
-    <Compile Include="Projectile\ProjectileSpriteSheet.cs" />
-    <Compile Include="Projectile\SwordBeam.cs" />
+    <Compile Include="Player\DamagedPlayer.cs" />
+    <Compile Include="Player\PlayerStateDownUse.cs" />
+    <Compile Include="Player\PlayerStateFactory.cs" />
+    <Compile Include="Player\PlayerStateLeft.cs" />
+    <Compile Include="Player\PlayerStateDown.cs" />
+    <Compile Include="Player\PlayerStateLeftUse.cs" />
+    <Compile Include="Player\PlayerStateRightUse.cs" />
+    <Compile Include="Player\PlayerStateRightAttack.cs" />
+    <Compile Include="Player\PlayerStateLeftAttack.cs" />
+    <Compile Include="Player\PlayerStateDownAttack.cs" />
+    <Compile Include="Player\PlayerStateUpUse.cs" />
+    <Compile Include="Player\PlayerStateUpAttack.cs" />
+    <Compile Include="Player\PlayerStateUp.cs" />
+    <Compile Include="Player\PlayerStateRight.cs" />
+    <Compile Include="Player\IPlayerState.cs" />
+    <Compile Include="Player\Player1.cs" />
+    <Compile Include="Player\PlayerSpriteFactory.cs" />
+    <Compile Include="Player\IPlayer.cs" />
+    <Compile Include="Sprite\PlayerSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
-    <Compile Include="Controller\MouseController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

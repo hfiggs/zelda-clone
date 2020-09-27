@@ -2,17 +2,17 @@
 
 namespace Game1.Command
 {
-    class QuitCommand : ICommand
+    class PlayerRightCommand : ICommand
     {
         private Game1 game;
 
-        public QuitCommand(Game1 game)
+        public PlayerRightCommand(Game1 game)
         {
             this.game = game;
         }
         public void Execute()
         {
-            game.Exit();
+            game.Player.MoveRight();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿/* Authors:
+ * Hunter Figgs
  * Jared Perkins
  * Jeffrey Gaydos
  */
@@ -6,9 +7,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Controller;
-using Game1.Sprite;
 using System.Collections.Generic;
-using Game1.Projectile;
+using Game1.Player;
 
 namespace Game1
 {
@@ -17,8 +17,9 @@ namespace Game1
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
 
-        private IProjectile projectile;
-        private Rectangle rec = new Rectangle(0, 0, 0, 0);
+        private List<IController> controllerList;
+
+        public IPlayer Player { get; set; }
 
         public Game1()
         {
@@ -29,7 +30,10 @@ namespace Game1
         // Initialization that does not require content
         protected override void Initialize()
         {
-            
+            controllerList = new List<IController>
+            {
+                new KeyboardController(this)
+            };
 
             IsMouseVisible = true;
 
@@ -40,9 +44,11 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
+            // TEMP TEMP TEMP TEMP
+            PlayerSpriteFactory.Instance.LoadAllTextures(Content);
 
-            projectile = new Boomerang('N', new Vector2(400, 200));
+            Player = new Player1(this, new Vector2(400, 250), spriteBatch);
+            // TEMP TEMP TEMP TEMP
         }
 
         protected override void UnloadContent()
@@ -52,18 +58,27 @@ namespace Game1
 
         protected override void Update(GameTime gameTime)
         {
-            projectile.Update();
+            foreach(IController controller in controllerList)
+            {
+               controller.Update();
+            }
+
+            // TEMP TEMP TEMP TEMP
+            Player.Update(gameTime);
+            // TEMP TEMP TEMP TEMP
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
 
-            projectile.Draw(spriteBatch, new Vector2(400, 220));
+            // TEMP TEMP TEMP TEMP
+            Player.Draw(Color.White);
+            // TEMP TEMP TEMP TEMP
 
             spriteBatch.End();
 

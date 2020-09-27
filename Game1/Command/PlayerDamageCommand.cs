@@ -2,17 +2,18 @@
 
 namespace Game1.Command
 {
-    class QuitCommand : ICommand
+    class PlayerDamageCommand : ICommand
     {
         private Game1 game;
 
-        public QuitCommand(Game1 game)
+        public PlayerDamageCommand(Game1 game)
         {
             this.game = game;
         }
+
         public void Execute()
         {
-            game.Exit();
+            game.Player.ReceiveDamage();
         }
     }
 }
