@@ -8,21 +8,14 @@ using System.Threading.Tasks;
 
 namespace Game1.Enemy
 {
-    class EnemyStateFactory
+    class SkeletonStateMachine
     {
         private IEnemyState state;
         private SpriteBatch spriteBatch;
 
-        public static EnemyStateFactory Instance { get; } = new EnemyStateFactory();
-
-        private EnemyStateFactory()
+        public SkeletonStateMachine(SpriteBatch spriteBatch, Vector2 position)
         {
-        }
-
-        public void InitializeSkeleton(SpriteBatch spriteBatch, Vector2 position)
-        {
-            state = new EnemyStateSkeletonMoving(this, position);
-
+            state = new SkeletonStateMoving(this, position);
             this.spriteBatch = spriteBatch;
         }
 

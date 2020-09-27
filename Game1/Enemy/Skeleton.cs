@@ -10,29 +10,30 @@ namespace Game1.Enemy
 {
     class Skeleton : IEnemy
     {
+        private SkeletonStateMachine stateMachine;
         public Skeleton(Vector2 position, SpriteBatch spriteBatch)
         {
-            EnemyStateFactory.Instance.InitializeSkeleton(spriteBatch, position);
+            stateMachine = new SkeletonStateMachine(spriteBatch, position);
         }
 
         public void Attack()
         {
-            EnemyStateFactory.Instance.BasicAttack();
+            stateMachine.BasicAttack();
         }
 
         public void ReceiveDamage()
         {
-            EnemyStateFactory.Instance.ReceiveDamage();
+            stateMachine.ReceiveDamage();
         }
 
         public void Draw()
         {
-            EnemyStateFactory.Instance.Draw();
+            stateMachine.Draw();
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            EnemyStateFactory.Instance.Update(gameTime, drawingLimits);
+            stateMachine.Update(gameTime, drawingLimits);
         }
     }
 }

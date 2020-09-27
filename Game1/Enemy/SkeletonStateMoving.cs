@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace Game1.Enemy
 {
-    class EnemyStateSkeletonMoving : IEnemyState
+    class SkeletonStateMoving : IEnemyState
     {
-        private EnemyStateFactory stateFactory;
+        private SkeletonStateMachine stateMachine;
         public ISprite Sprite { get; private set; }
         private Vector2 position;
         private Vector2 direction;
-        private const int moveSpeed = 5;
+        private const int moveSpeed = 1;
         private double totalElapsedSeconds = 0;
         double MovementChangeTimeSeconds;
 
-        public EnemyStateSkeletonMoving(EnemyStateFactory stateFactory, Vector2 position)
+        public SkeletonStateMoving(SkeletonStateMachine stateMachine, Vector2 position)
         {
-            this.stateFactory = stateFactory;
+            this.stateMachine = stateMachine;
             this.position = position;
             this.direction = GetRandomDirection();
             this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
