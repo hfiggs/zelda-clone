@@ -38,7 +38,7 @@ namespace Game1.Enemy.OldMan
 
         public void Update(GameTime gameTime, Rectangle drawingLimits5)
         {
-            // TODO: Logic for determining when to fade out sprite
+            // TODO: Logic for determining text and when to fade out sprite
         }
     }
 }

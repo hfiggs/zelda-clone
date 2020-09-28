@@ -21,9 +21,10 @@ namespace Game1
     {
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
-        private IEnemy enemy;
+        private IEnemy skeleton;
         private IEnemy oldMan;
-        private IEnemy spikeTrapEnemy;
+        private IEnemy merchant;
+        private IEnemy spikeTrap;
         private List<IController> controllerList;
 
         public IPlayer Player { get; set; }
@@ -51,10 +52,11 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
-            enemy = new Skeleton(new Vector2(250,250), spriteBatch);
-            oldMan = new OldMan(spriteBatch, new Vector2(100, 100));
 
-            spikeTrapEnemy = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
+            skeleton = new Skeleton(new Vector2(250,250), spriteBatch);
+            oldMan = new OldMan(spriteBatch, new Vector2(100, 100));
+            merchant = new Merchant(new Vector2(250,250), spriteBatch);
+            spikeTrap = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
 
             // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
@@ -74,10 +76,11 @@ namespace Game1
             {
                controller.Update();
             }
-            enemy.Update(gameTime, new Rectangle(0, 0, 800, 400));
-            oldMan.Update(gameTime, new Rectangle(0, 0, 400, 400));
 
-            spikeTrapEnemy.Update(gameTime, new Rectangle(0, 0, 800, 400));
+            skeleton.Update(gameTime, new Rectangle(0, 0, 800, 400));
+            oldMan.Update(gameTime, new Rectangle(0, 0, 400, 400));
+            merchant.Update(gameTime, new Rectangle(0, 0, 400, 400));
+            spikeTrap.Update(gameTime, new Rectangle(0, 0, 800, 400));
 
             // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
@@ -91,10 +94,11 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
-            enemy.Draw();
-            oldMan.Draw();
 
-            spikeTrapEnemy.Draw();
+            skeleton.Draw();
+            oldMan.Draw();
+            merchant.Draw();
+            spikeTrap.Draw();
 
             // TEMP TEMP TEMP TEMP
             Player.Draw(Color.White);
