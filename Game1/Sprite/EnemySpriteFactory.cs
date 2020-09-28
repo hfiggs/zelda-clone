@@ -13,6 +13,8 @@ namespace Game1.Enemy
     {
         private Texture2D enemySpritesheet;
 
+        private Texture2D spikeTrapSpritesheet;
+
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 
         public static EnemySpriteFactory Instance
@@ -30,11 +32,17 @@ namespace Game1.Enemy
         public void LoadAllTextures(ContentManager content)
         {
             enemySpritesheet = content.Load<Texture2D>("images/enemies");
+            spikeTrapSpritesheet = content.Load<Texture2D>("images/spiketrap");
         }
 
         public ISprite CreateSkeletonSprite()
         {
-            return new EnemySprite(enemySpritesheet, 14, 4, 2);
+            return new EnemySprite(enemySpritesheet, 14, 4, 15, 8, 2);
+        }
+
+        public ISprite CreateSpikeTrapSprite()
+        {
+            return new EnemySprite(spikeTrapSpritesheet, 1, 1, 1, 1, 1);
         }
     }
 }

@@ -14,17 +14,19 @@ namespace Game1.Enemy
         private Texture2D texture;
         private int row;
         private int column;
-        private int columns = 15;
-        private int rows = 8;
+        private int maxColumns;
+        private int maxRows;
 
         private int delay;
         private int currentFrame;
         private int totalFrames;
-        public EnemySprite(Texture2D texture, int column, int row, int totalFrames)
+        public EnemySprite(Texture2D texture, int column, int row, int maxColumns, int maxRows, int totalFrames)
         {
             this.texture = texture;
-            this.row = row;
             this.column = column;
+            this.row = row;
+            this.maxColumns = maxColumns;
+            this.maxRows = maxRows;
             this.totalFrames = totalFrames;
         }
 
@@ -42,17 +44,17 @@ namespace Game1.Enemy
                 currentFrame = 0;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, Color color)
         {
-            int width = texture.Width / columns;
-            int height = texture.Height / rows;
+            int width = texture.Width / maxColumns;
+            int height = texture.Height / maxRows;
 
             Console.WriteLine(width + "+" + height);
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * (row + +currentFrame), width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, color);
         }
     }
 }

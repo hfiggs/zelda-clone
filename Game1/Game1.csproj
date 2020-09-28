@@ -43,11 +43,14 @@
   <ItemGroup>
     <Compile Include="Command\DoNothingCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
+    <Compile Include="Enemy\EnemyStateMachine.cs" />
     <Compile Include="Enemy\IEnemy.cs" />
     <Compile Include="Enemy\IEnemyState.cs" />
     <Compile Include="Enemy\Skeleton.cs" />
     <Compile Include="Enemy\SkeletonStateMachine.cs" />
     <Compile Include="Enemy\SkeletonStateMoving.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrap.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Controller\IController.cs" />
