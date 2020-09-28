@@ -27,7 +27,6 @@ namespace Game1
         public ISprite environmentSprite;
 
         public LinkedList<IItem> itemList;
-        private Vector2 itemPosition;
 
         public Game1()
         {
@@ -58,7 +57,7 @@ namespace Game1
             environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
 
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            itemPosition = new Vector2(200, 200);
+            var itemPosition = new Vector2(200, 200);
             itemList = new LinkedList<IItem>();
             itemList.AddLast(new Bomb(itemPosition));
             itemList.AddLast(new Bow(itemPosition));
