@@ -57,5 +57,10 @@ namespace Game1.Enemy
         {
             return new EnemySprite(merchantSpritesheet, 0, 0, 1, 1, 0);
         }
+
+        public ISprite CreateJellySprite()
+        {
+            return new EnemySprite(enemySpritesheet, 14, 6, 15, 8, 2);
+        }
     }
 }
