@@ -50,7 +50,7 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
-            enemy = new Skeleton(new Vector2(250,250), spriteBatch);
+            enemy = new Merchant(new Vector2(250,250), spriteBatch);
             enemy2 = new Skeleton(new Vector2(100, 100), spriteBatch);
 
             spikeTrapEnemy = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
