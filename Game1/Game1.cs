@@ -1,4 +1,5 @@
 ﻿/* Authors:
+ * Hunter Figgs
  * Jared Perkins
  * Jeffrey Gaydos
  */
@@ -9,6 +10,7 @@ using Game1.Controller;
 using Game1.Sprite;
 using Game1.Enemy;
 using System.Collections.Generic;
+using Game1.Player;
 
 namespace Game1
 {
@@ -20,6 +22,7 @@ namespace Game1
         private IEnemy enemy2;
         private List<IController> controllerList;
 
+        public IPlayer Player { get; set; }
 
         public Game1()
         {
@@ -30,9 +33,10 @@ namespace Game1
         // Initialization that does not require content
         protected override void Initialize()
         {
-            controllerList = new List<IController>();
-            controllerList.Add(new KeyboardController(this));
-           // controllerList.Add(new MouseController(this));
+            controllerList = new List<IController>
+            {
+                new KeyboardController(this)
+            };
 
             IsMouseVisible = true;
 
@@ -46,6 +50,11 @@ namespace Game1
             enemy = new Skeleton(new Vector2(250,250), spriteBatch);
             enemy2 = new Skeleton(new Vector2(100, 100), spriteBatch);
 
+            // TEMP TEMP TEMP TEMP
+            PlayerSpriteFactory.Instance.LoadAllTextures(Content);
+
+            Player = new Player1(this, new Vector2(400, 250), spriteBatch);
+            // TEMP TEMP TEMP TEMP
         }
 
         protected override void UnloadContent()
@@ -57,10 +66,15 @@ namespace Game1
         {
             foreach(IController controller in controllerList)
             {
-                controller.Update();
+               controller.Update();
             }
             enemy.Update(gameTime, new Rectangle(0, 0, 800, 400));
             enemy2.Update(gameTime, new Rectangle(0, 0, 400, 400));
+
+            // TEMP TEMP TEMP TEMP
+            Player.Update(gameTime);
+            // TEMP TEMP TEMP TEMP
+
             base.Update(gameTime);
         }
 
@@ -71,6 +85,11 @@ namespace Game1
             spriteBatch.Begin();
             enemy.Draw();
             enemy2.Draw();
+
+            // TEMP TEMP TEMP TEMP
+            Player.Draw(Color.White);
+            // TEMP TEMP TEMP TEMP
+
             spriteBatch.End();
 
             base.Draw(gameTime);
