@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Game1.Controller;
 using System.Collections.Generic;
 using Game1.Player;
+using Game1.Projectile;
 
 namespace Game1
 {
@@ -20,7 +21,9 @@ namespace Game1
         private List<IController> controllerList;
 
         public IPlayer Player { get; set; }
-
+        // TEMP TEMP TEMP TEMP 
+        private IProjectile projectile;
+        // TEMP TEMP TEMP TEMP
         public Game1()
         {
             Graphics = new GraphicsDeviceManager(this);
@@ -46,8 +49,10 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
+            ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
 
             Player = new Player1(this, new Vector2(400, 250), spriteBatch);
+            projectile = new BombProjectile(new Point(400, 200));
             // TEMP TEMP TEMP TEMP
         }
 
@@ -65,6 +70,7 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
+            projectile.Update();
             // TEMP TEMP TEMP TEMP
 
             base.Update(gameTime);
@@ -78,6 +84,7 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             Player.Draw(Color.White);
+            projectile.Draw(spriteBatch);
             // TEMP TEMP TEMP TEMP
 
             spriteBatch.End();

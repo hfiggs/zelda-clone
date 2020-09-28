@@ -11,32 +11,43 @@ namespace Game1.Projectile
 {
     class SwordBeam : IProjectile
     {
-        private int modifier, columnModifier, counter;
+        private int xModifier, yModifier, columnModifier, counter, rowModifier;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
         private ProjectileSpriteSheet sprite;
+        private Point position;
 
-        public SwordBeam(char direction)
+        public SwordBeam(char direction, Point position)
         {
             this.direction = direction;
+            this.position = position;
             sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamSprite();
-            modifier = 0;
+            xModifier = 0;
+            yModifier = 0;
             columnModifier = 0;
+            rowModifier = 0;
             counter = 0;
         }
         public void Update()
         {
-            if (direction == 'N' || direction == 'W') {
-                modifier -= 5;
-            } else {
-                modifier += 5;
+            if (direction == 'N') {
+                yModifier -= 5;
+                rowModifier = 0;
+            } else if (direction == 'S') {
+                yModifier += 5;
+                rowModifier = 1;
+            } else if (direction == 'W') {
+                xModifier -= 5;
+                rowModifier = 2;
+            } else if (direction == 'E') {
+                xModifier += 5;
+                rowModifier = 3;
             }
 
             // Used to change sprite sheet column and allow for flashing
             if (counter == 5) {
                 if (columnModifier == 0) {
                     columnModifier = 1;
-                }
-                else {
+                } else {
                     columnModifier = 0;
                 }
 
@@ -45,35 +56,11 @@ namespace Game1.Projectile
                 counter++;
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle sourceRectangle;
-            Rectangle destinationRectangle;
             int columnOfSprite = sprite.GetColumnOfSprite();
-
-            switch (direction)
-            {
-                case 'N':
-                    sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, 0);
-                    destinationRectangle = new Rectangle((int)position.X, (int)position.Y + modifier, sourceRectangle.Width, sourceRectangle.Height);
-                    break;
-                case 'S':
-                    sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, 1);
-                    destinationRectangle = new Rectangle((int)position.X, (int)position.Y + modifier, sourceRectangle.Width, sourceRectangle.Height);
-                    break;
-                case 'W':
-                    sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, 2);
-                    destinationRectangle = new Rectangle((int)position.X + modifier, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
-                    break;
-                case 'E':
-                    sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, 3);
-                    destinationRectangle = new Rectangle((int)position.X + modifier, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
-                    break;
-                default: // Shouldn't ever happen
-                    sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, 0);
-                    destinationRectangle = new Rectangle(0, 0, sourceRectangle.Width, sourceRectangle.Height);
-                    break;
-            }
+            Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, rowModifier); ;
+            Rectangle destinationRectangle = new Rectangle(position.X + xModifier, position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);
 
             spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, Color.White);
         }

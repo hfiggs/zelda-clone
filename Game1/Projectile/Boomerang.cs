@@ -1,4 +1,4 @@
-﻿using Game1.Sprite;
+﻿using Game1.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -16,22 +16,21 @@ namespace Game1.Projectile
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
         private ProjectileSpriteSheet sprite;
         private bool returned;
-        private Vector2 position;
+        private IPlayer player;
+        private Point position;
 
-        public Boomerang(char direction, Vector2 position)
-        {
+        public Boomerang(char direction, IPlayer player) {
             this.direction = direction;
-            this.position = position;
+            this.player = player;
+            position = player.GetLocation().Location;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
             xModifier = 0;
             yModifier = 0;
             rowModifier = 0;
             counter = 0;
             returned = false;
-
         }
-        public void Update()
-        {
+        public void Update() {
             if (counter < 100) {
                 if (direction == 'N') {
                     yModifier -= 2;
@@ -44,8 +43,8 @@ namespace Game1.Projectile
                 }
             } else if (!returned) {
                 Rectangle currentLocation = sprite.PickSprite(0, 0);
-                currentLocation.Location = new Point((int)position.X + xModifier, (int)position.Y + yModifier);
-                Rectangle playerRectangle = new Rectangle(0, 360, 50, 50); // TODO: initialize player rectangle
+                currentLocation.Location = new Point(position.X + xModifier, position.Y + yModifier);
+                Rectangle playerRectangle = player.GetLocation();
 
                 if (currentLocation.X < playerRectangle.X) {
                     xModifier += 2;
@@ -73,12 +72,11 @@ namespace Game1.Projectile
                 }
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
-        {
+        public void Draw(SpriteBatch spriteBatch) {
             if (!returned) {
                 int columnOfSprite = sprite.GetColumnOfSprite();
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
-                Rectangle destinationRectangle = new Rectangle((int)position.X + xModifier, (int)position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);
+                Rectangle destinationRectangle = new Rectangle(position.X + xModifier, position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);
                 spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, Color.White);
             }
         }

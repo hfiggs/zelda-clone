@@ -71,6 +71,15 @@
     <Compile Include="Player\Player1.cs" />
     <Compile Include="Player\PlayerSpriteFactory.cs" />
     <Compile Include="Player\IPlayer.cs" />
+    <Compile Include="Projectile\Arrow.cs" />
+    <Compile Include="Projectile\Boomerang.cs" />
+    <Compile Include="Projectile\BombProjectile.cs" />
+    <Compile Include="Projectile\enemyBoomerang.cs" />
+    <Compile Include="Projectile\Fireballs.cs" />
+    <Compile Include="Projectile\IProjectile.cs" />
+    <Compile Include="Projectile\ProjectileSpriteFactory.cs" />
+    <Compile Include="Projectile\ProjectileSpriteSheet.cs" />
+    <Compile Include="Projectile\SwordBeam.cs" />
     <Compile Include="Sprite\PlayerSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />

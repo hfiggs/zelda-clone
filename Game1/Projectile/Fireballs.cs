@@ -14,9 +14,9 @@ namespace Game1.Projectile
     {
         private int xModifier, yModifier, rowModifier, yDistance, xDistance, counter, topAndBottomModifier;
         private ProjectileSpriteSheet sprite;
-        private Vector2 position;
+        private Point position;
 
-        public Fireballs(Vector2 position, Rectangle rec)
+        public Fireballs(Point position, Rectangle rec)
         {
             sprite = ProjectileSpriteFactory.Instance.CreateFireballsSprite();
             xModifier = 0;
@@ -25,7 +25,7 @@ namespace Game1.Projectile
             counter = 0;
             topAndBottomModifier = 0; // For top and bottom fireballs
             this.position = position;
-            Rectangle playerRec = rec; // TODO: assign playerRec
+            Rectangle playerRec = rec;
             xDistance = (int)position.X - playerRec.X;
             yDistance = (int)position.Y - playerRec.Y;
         }
@@ -59,13 +59,13 @@ namespace Game1.Projectile
 
             xModifier -= 5;
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
             int columnOfSprite = sprite.GetColumnOfSprite();
             Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
-            Rectangle middleFireball = new Rectangle((int)position.X + xModifier, (int)position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);
-            Rectangle upperFireball = new Rectangle((int)position.X + xModifier, (int)position.Y + yModifier - topAndBottomModifier, sourceRectangle.Width, sourceRectangle.Height);
-            Rectangle lowerFireball = new Rectangle((int)position.X + xModifier, (int)position.Y + yModifier + topAndBottomModifier, sourceRectangle.Width, sourceRectangle.Height);
+            Rectangle middleFireball = new Rectangle(position.X + xModifier, position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);
+            Rectangle upperFireball = new Rectangle(position.X + xModifier, position.Y + yModifier - topAndBottomModifier, sourceRectangle.Width, sourceRectangle.Height);
+            Rectangle lowerFireball = new Rectangle(position.X + xModifier, position.Y + yModifier + topAndBottomModifier, sourceRectangle.Width, sourceRectangle.Height);
             spriteBatch.Draw(sprite.GetTexture(), middleFireball, sourceRectangle, Color.White);
             spriteBatch.Draw(sprite.GetTexture(), upperFireball, sourceRectangle, Color.White);
             spriteBatch.Draw(sprite.GetTexture(), lowerFireball, sourceRectangle, Color.White);

@@ -16,10 +16,12 @@ namespace Game1.Projectile
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
         private ProjectileSpriteSheet sprite;
         private bool returned;
+        private Point position;
 
-        public enemyBoomerang(char direction)
+        public enemyBoomerang(char direction, Point position)
         {
             this.direction = direction;
+            this.position = position;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
             xModifier = 0;
             yModifier = 0;
@@ -69,12 +71,12 @@ namespace Game1.Projectile
                 }
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
             if (!returned) {
                 int columnOfSprite = sprite.GetColumnOfSprite();
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
-                Rectangle destinationRectangle = new Rectangle((int)position.X + xModifier, (int)position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);
+                Rectangle destinationRectangle = new Rectangle(position.X + xModifier, position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);
                 spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, Color.White);
             }
         }

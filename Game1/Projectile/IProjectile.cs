@@ -11,6 +11,6 @@ namespace Game1.Projectile
     interface IProjectile
     {
         void Update();
-        void Draw(SpriteBatch spriteBatch, Vector2 position);
+        void Draw(SpriteBatch spriteBatch);
     }
 }
