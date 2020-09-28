@@ -2,21 +2,18 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Item
 {
-    class HeartContainer : IItem
-    {
+	public class RupeeBlue : IItem
+	{
         ISprite mySprite;
 
-        public HeartContainer()
-        {
-            mySprite = ItemSpriteFactory.Instance.CreateHeartContainerSprite();
-        }
+		public RupeeBlue()
+		{
+            mySprite = ItemSpriteFactory.Instance.CreateBlueRupeeSprite();
+		}
+
         public void Update(GameTime gameTime)
         {
             //Do Nothing

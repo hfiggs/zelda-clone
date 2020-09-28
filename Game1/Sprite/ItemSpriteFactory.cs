@@ -51,5 +51,55 @@ namespace Game1.Sprite
         {
             return new ItemSprite(itemSpritesheet, 6, 1);
         }
+
+        public ISprite CreateBombSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 5, 0);
+        }
+
+        public ISprite CreateTriforceSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 8, 3);
+        }
+
+        public ISprite CreateHeartSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 6, 3);
+        }
+
+        public ISprite CreateBoomerangSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 7, 0);
+        }
+
+        public ISprite CreateFairySpriteOne()
+        {
+            return new ItemSprite(itemSpritesheet,4,1);
+        }
+
+        public ISprite CreateFairySpriteTwo()
+        {
+            return new ItemSprite(itemSpritesheet,3,1);
+        }
+
+        public ISprite CreateBlueRupeeSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 5, 3);
+        }
+
+        public ISprite CreateYellowRupeeSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 4, 3);
+        }
+
+        public ISprite CreateBowSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 8, 0);
+        }
+
+        public ISprite CreateClockSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 9, 0);
+        }
     }
 }

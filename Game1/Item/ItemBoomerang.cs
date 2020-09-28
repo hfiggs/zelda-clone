@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Game1.Item
 {
-    class HeartContainer : IItem
+    class Item_Boomerang : IItem
     {
         ISprite mySprite;
 
-        public HeartContainer()
+        public Item_Boomerang()
         {
-            mySprite = ItemSpriteFactory.Instance.CreateHeartContainerSprite();
+            mySprite = ItemSpriteFactory.Instance.CreateBoomerangSprite();
         }
         public void Update(GameTime gameTime)
         {

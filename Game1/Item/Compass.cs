@@ -17,13 +17,13 @@ namespace Game1.Item
         {
             mySprite = ItemSpriteFactory.Instance.CreateCompassSprite();
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            mySprite.Draw(spriteBatch, position);
+            mySprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }

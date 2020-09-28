@@ -10,7 +10,7 @@ namespace Game1.Item
 {
     interface IItem
     {
-        void Update();
+        void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch,  Vector2 position);
     }
 }
