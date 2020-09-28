@@ -14,6 +14,8 @@ namespace Game1.Enemy
 
         private Texture2D merchantSpritesheet;
 
+        private Texture2D batSpritesheet;
+
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 
 
@@ -35,6 +37,7 @@ namespace Game1.Enemy
             spikeTrapSpritesheet = content.Load<Texture2D>("images/spiketrap");
             oldManSpritesheet = content.Load<Texture2D>("images/oldman");
             merchantSpritesheet = content.Load<Texture2D>("Merchant");
+            batSpritesheet = content.Load<Texture2D>("images/bat");
         }
 
         public ISprite CreateSkeletonSprite()
@@ -61,6 +64,11 @@ namespace Game1.Enemy
         public ISprite CreateJellySprite()
         {
             return new EnemySprite(enemySpritesheet, 14, 6, 15, 8, 2);
+        }
+
+        public ISprite CreateBatSprite()
+        {
+            return new EnemySprite(batSpritesheet, 0, 0, 1, 2, 2);
         }
     }
 }
