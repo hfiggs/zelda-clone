@@ -11,15 +11,15 @@ namespace Game1.Enemy
 {
     class SkeletonStateMoving : IEnemyState
     {
-        private SkeletonStateMachine stateMachine;
+        private EnemyStateMachine stateMachine;
         public ISprite Sprite { get; private set; }
         private Vector2 position;
         private Vector2 direction;
-        private const int moveSpeed = 1;
+        private const int moveSpeed = 2;
         private double totalElapsedSeconds = 0;
         double MovementChangeTimeSeconds;
 
-        public SkeletonStateMoving(SkeletonStateMachine stateMachine, Vector2 position)
+        public SkeletonStateMoving(EnemyStateMachine stateMachine, Vector2 position)
         {
             this.stateMachine = stateMachine;
             this.position = position;
