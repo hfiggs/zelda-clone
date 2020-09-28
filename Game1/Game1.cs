@@ -81,7 +81,7 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
             // TEMP TEMP TEMP TEMP
             Player.Draw(Color.White);
