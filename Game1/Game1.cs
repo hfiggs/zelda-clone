@@ -10,6 +10,7 @@ using Game1.Controller;
 using System.Collections.Generic;
 using Game1.Player;
 using Game1.Sprite;
+using Game1.Environment;
 
 namespace Game1
 {
@@ -21,6 +22,8 @@ namespace Game1
         private List<IController> controllerList;
 
         public IPlayer Player { get; set; }
+        
+        ISprite environmentSprite;
 
         public Game1()
         {
