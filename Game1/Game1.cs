@@ -1,4 +1,5 @@
 ﻿/* Authors:
+ * Hunter Figgs
  * Jared Perkins
  * Jeffrey Gaydos
  */
@@ -6,9 +7,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Controller;
-using Game1.Sprite;
 using System.Collections.Generic;
-using Game1.Item;
+using Game1.Player;
+using Game1.Sprite;
+using Game1.Environment;
 
 namespace Game1
 {
@@ -17,9 +19,11 @@ namespace Game1
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
 
-        private IItem item;
         private List<IController> controllerList;
 
+        public IPlayer Player { get; set; }
+        
+        public ISprite environmentSprite;
 
         public Game1()
         {
@@ -30,9 +34,10 @@ namespace Game1
         // Initialization that does not require content
         protected override void Initialize()
         {
-            controllerList = new List<IController>();
-            controllerList.Add(new KeyboardController(this));
-           // controllerList.Add(new MouseController(this));
+            controllerList = new List<IController>
+            {
+                new KeyboardController(this)
+            };
 
             IsMouseVisible = true;
 
@@ -43,10 +48,13 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            item = new Clock();
-            var spriteTexture = Content.Load<Texture2D>("Images/guyRun");
-            
+            // TEMP TEMP TEMP TEMP
+            PlayerSpriteFactory.Instance.LoadAllTextures(Content);
+            EnvironmentSpriteFactory.instance.LoadContent(Content);
+            environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
+
+            Player = new Player1(this, new Vector2(400, 250), spriteBatch);
+            // TEMP TEMP TEMP TEMP
         }
 
         protected override void UnloadContent()
@@ -58,10 +66,14 @@ namespace Game1
         {
             foreach(IController controller in controllerList)
             {
-                controller.Update();
+               controller.Update();
             }
 
-            item.Update(gameTime);
+            // TEMP TEMP TEMP TEMP
+            Player.Update(gameTime);
+            environmentSprite.Update();
+            // TEMP TEMP TEMP TEMP
+
             base.Update(gameTime);
         }
 
@@ -71,7 +83,10 @@ namespace Game1
 
             spriteBatch.Begin();
 
-            item.Draw(spriteBatch, new Vector2(250, 250));
+            // TEMP TEMP TEMP TEMP
+            Player.Draw(Color.White);
+            environmentSprite.Draw(spriteBatch, new Vector2(150.0f, 150.0f), Color.White);
+            // TEMP TEMP TEMP TEMP
 
             spriteBatch.End();
 
