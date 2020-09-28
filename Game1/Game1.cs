@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Game1.Controller;
 using System.Collections.Generic;
 using Game1.Player;
+using Game1.Sprite;
 
 namespace Game1
 {

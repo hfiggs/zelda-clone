@@ -31,10 +31,10 @@ namespace Game1.Environment
             this.animated = animated;
         }
 
-        public void Draw(SpriteBatch spritebatch, Vector2 position)
+        public void Draw(SpriteBatch spritebatch, Vector2 position, Color color)
         {
             Rectangle destRect = new Rectangle(position.ToPoint(), new Point(sourceRect.Width, sourceRect.Height));
-            spritebatch.Draw(spriteSheet.GetTexture(), destRect, sourceRect, Color.White);
+            spritebatch.Draw(spriteSheet.GetTexture(), destRect, sourceRect, color);
         }
 
         public void Update()

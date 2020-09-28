@@ -72,10 +72,6 @@
     <Compile Include="Command\PlayerUpCommand.cs" />
     <Compile Include="Command\PlayerRightCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
-    <Compile Include="Command\SpriteAnimatedMovingCommand.cs" />
-    <Compile Include="Command\SpriteNotAnimatedMovingCommand.cs" />
-    <Compile Include="Command\SpriteNotAnimatedNotMovingCommand.cs" />
-    <Compile Include="Command\SpriteAnimatedNotMovingCommand.cs" />
     <Compile Include="Environment\Doors\DoorSHole.cs" />
     <Compile Include="Environment\Doors\DoorSClosed.cs" />
     <Compile Include="Environment\Doors\DoorSLocked.cs" />
@@ -96,11 +92,9 @@
     <Compile Include="Environment\Doors\DoorNLocked.cs" />
     <Compile Include="Environment\Doors\DoorNOpen.cs" />
     <Compile Include="Environment\Doors\DoorNBlank.cs" />
-    <Compile Include="Environment\DoorTop.cs" />
     <Compile Include="Environment\EnvironmentSprite.cs" />
     <Compile Include="Environment\RoomBorder.cs" />
     <Compile Include="Environment\Tiles\Bricks.cs" />
-    <Compile Include="Environment\DoorTopBlank.cs" />
     <Compile Include="Environment\Tiles\Ladder.cs" />
     <Compile Include="Environment\Tiles\StatueFish.cs" />
     <Compile Include="Environment\Tiles\StatueDragon.cs" />
