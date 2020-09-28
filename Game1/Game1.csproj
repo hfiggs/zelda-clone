@@ -47,12 +47,17 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Item\Bomb.cs" />
+    <Compile Include="Item\Bow.cs" />
+    <Compile Include="Item\Clock.cs" />
     <Compile Include="Item\Compass.cs" />
+    <Compile Include="Item\Fairy.cs" />
     <Compile Include="Item\Heart.cs" />
     <Compile Include="Item\HeartContainer.cs" />
     <Compile Include="Item\IItem.cs" />
     <Compile Include="Item\Key.cs" />
     <Compile Include="Item\Map.cs" />
+    <Compile Include="Item\RupeeBlue.cs" />
+    <Compile Include="Item\RupeeYellow.cs" />
     <Compile Include="Item\Triforce.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />

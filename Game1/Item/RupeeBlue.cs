@@ -1,17 +1,19 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Game1.Item
 {
-    class Map : IItem
-    {
+	public class RupeeBlue : IItem
+	{
         ISprite mySprite;
 
-        public Map()
-        {
-            mySprite = ItemSpriteFactory.Instance.CreateMapSprite();
-        }
+		public RupeeBlue()
+		{
+            mySprite = ItemSpriteFactory.Instance.CreateBlueRupeeSprite();
+		}
+
         public void Update(GameTime gameTime)
         {
             //Do Nothing

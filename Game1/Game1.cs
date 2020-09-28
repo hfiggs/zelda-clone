@@ -44,8 +44,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            item = new Heart();
-
+            item = new Clock();
             var spriteTexture = Content.Load<Texture2D>("Images/guyRun");
             
         }
