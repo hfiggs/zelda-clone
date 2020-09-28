@@ -74,7 +74,7 @@
     <Compile Include="Projectile\Arrow.cs" />
     <Compile Include="Projectile\Boomerang.cs" />
     <Compile Include="Projectile\BombProjectile.cs" />
-    <Compile Include="Projectile\enemyBoomerang.cs" />
+    <Compile Include="Projectile\EnemyBoomerang.cs" />
     <Compile Include="Projectile\Fireballs.cs" />
     <Compile Include="Projectile\IProjectile.cs" />
     <Compile Include="Projectile\ProjectileSpriteFactory.cs" />

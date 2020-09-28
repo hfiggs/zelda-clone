@@ -10,7 +10,7 @@ namespace Game1.Projectile
 {
     interface IProjectile
     {
-        void Update();
+        void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
     }
 }

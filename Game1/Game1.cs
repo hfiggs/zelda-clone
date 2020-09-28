@@ -52,7 +52,7 @@ namespace Game1
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
 
             Player = new Player1(this, new Vector2(400, 250), spriteBatch);
-            projectile = new BombProjectile(new Point(400, 200));
+            projectile = new Boomerang('E', Player);
             // TEMP TEMP TEMP TEMP
         }
 
@@ -70,7 +70,7 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
-            projectile.Update();
+            projectile.Update(gameTime);
             // TEMP TEMP TEMP TEMP
 
             base.Update(gameTime);
@@ -78,7 +78,7 @@ namespace Game1
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
 

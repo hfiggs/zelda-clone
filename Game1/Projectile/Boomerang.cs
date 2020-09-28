@@ -1,67 +1,63 @@
 ﻿using Game1.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Projectile
 {
     class Boomerang : IProjectile
     {
-        private int xModifier, yModifier, counter, rowModifier;
+        private int rowModifier, counter;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
         private ProjectileSpriteSheet sprite;
         private bool returned;
         private IPlayer player;
-        private Point position;
+        private Vector2 position;
+        private float moveSpeed, totalElapsedGameTime;
 
         public Boomerang(char direction, IPlayer player) {
             this.direction = direction;
             this.player = player;
-            position = player.GetLocation().Location;
+            position.X = player.GetLocation().Location.X;
+            position.Y = player.GetLocation().Location.Y;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
-            xModifier = 0;
-            yModifier = 0;
             rowModifier = 0;
+            moveSpeed = 200;
+            totalElapsedGameTime = 0;
             counter = 0;
             returned = false;
         }
-        public void Update() {
-            if (counter < 100) {
+        public void Update(GameTime gameTime) {
+            totalElapsedGameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (totalElapsedGameTime < 1) {
                 if (direction == 'N') {
-                    yModifier -= 2;
+                    position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 } else if (direction == 'S') {
-                    yModifier += 2;
+                    position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 } else if (direction == 'W') {
-                    xModifier -= 2;
+                    position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 } else {
-                    xModifier += 2;
+                    position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
             } else if (!returned) {
                 Rectangle currentLocation = sprite.PickSprite(0, 0);
-                currentLocation.Location = new Point(position.X + xModifier, position.Y + yModifier);
+                currentLocation.Location = new Point((int)position.X, (int)position.Y);
                 Rectangle playerRectangle = player.GetLocation();
 
                 if (currentLocation.X < playerRectangle.X) {
-                    xModifier += 2;
+                    position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 } else if (currentLocation.X > playerRectangle.X) {
-                    xModifier -= 2;
+                    position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
 
                 if (currentLocation.Y < playerRectangle.Y) {
-                    yModifier += 2;
+                    position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 } else if (currentLocation.Y > playerRectangle.Y) {
-                    yModifier -= 2;
+                    position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
 
                 returned = currentLocation.Intersects(playerRectangle);
             }
-
-            counter++;
 
             // Used to change sprite sheet row to allow for flashing
             if (counter % 5 == 0) {
@@ -71,12 +67,14 @@ namespace Game1.Projectile
                     rowModifier++;
                 }
             }
+
+            counter++;
         }
         public void Draw(SpriteBatch spriteBatch) {
             if (!returned) {
                 int columnOfSprite = sprite.GetColumnOfSprite();
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
-                Rectangle destinationRectangle = new Rectangle(position.X + xModifier, position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);
+                Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
                 spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, Color.White);
             }
         }

@@ -1,45 +1,39 @@
-﻿using Game1.Sprite;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Projectile
 {
     class SwordBeam : IProjectile
     {
-        private int xModifier, yModifier, columnModifier, counter, rowModifier;
+        private int columnModifier, counter, rowModifier;
+        private float moveSpeed;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
         private ProjectileSpriteSheet sprite;
-        private Point position;
+        private Vector2 position;
 
-        public SwordBeam(char direction, Point position)
+        public SwordBeam(char direction, Vector2 position)
         {
             this.direction = direction;
             this.position = position;
             sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamSprite();
-            xModifier = 0;
-            yModifier = 0;
+            moveSpeed = 500;
             columnModifier = 0;
             rowModifier = 0;
             counter = 0;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             if (direction == 'N') {
-                yModifier -= 5;
+                position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 rowModifier = 0;
             } else if (direction == 'S') {
-                yModifier += 5;
+                position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 rowModifier = 1;
             } else if (direction == 'W') {
-                xModifier -= 5;
+                position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 rowModifier = 2;
             } else if (direction == 'E') {
-                xModifier += 5;
+                position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 rowModifier = 3;
             }
 
@@ -60,7 +54,7 @@ namespace Game1.Projectile
         {
             int columnOfSprite = sprite.GetColumnOfSprite();
             Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, rowModifier); ;
-            Rectangle destinationRectangle = new Rectangle(position.X + xModifier, position.Y + yModifier, sourceRectangle.Width, sourceRectangle.Height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
 
             spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, Color.White);
         }
