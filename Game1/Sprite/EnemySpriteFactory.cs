@@ -1,11 +1,6 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Enemy
 {
@@ -14,6 +9,8 @@ namespace Game1.Enemy
         private Texture2D enemySpritesheet;
 
         private Texture2D spikeTrapSpritesheet;
+
+        private Texture2D oldManSpritesheet;
 
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 
@@ -33,6 +30,7 @@ namespace Game1.Enemy
         {
             enemySpritesheet = content.Load<Texture2D>("images/enemies");
             spikeTrapSpritesheet = content.Load<Texture2D>("images/spiketrap");
+            oldManSpritesheet = content.Load<Texture2D>("images/oldman");
         }
 
         public ISprite CreateSkeletonSprite()
@@ -43,6 +41,11 @@ namespace Game1.Enemy
         public ISprite CreateSpikeTrapSprite()
         {
             return new EnemySprite(spikeTrapSpritesheet, 0, 0, 1, 1, 1);
+        }
+
+        public ISprite CreateOldManSprite()
+        {
+            return new EnemySprite(oldManSpritesheet, 0, 0, 1, 1, 1);
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using Game1.Player;
 using Game1.Enemy.SpikeTrap;
 using System.Runtime.CompilerServices;
+using Game1.Enemy.OldMan;
 
 namespace Game1
 {
@@ -21,7 +22,7 @@ namespace Game1
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
         private IEnemy enemy;
-        private IEnemy enemy2;
+        private IEnemy oldMan;
         private IEnemy spikeTrapEnemy;
         private List<IController> controllerList;
 
@@ -51,7 +52,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             enemy = new Skeleton(new Vector2(250,250), spriteBatch);
-            enemy2 = new Skeleton(new Vector2(100, 100), spriteBatch);
+            oldMan = new OldMan(spriteBatch, new Vector2(100, 100));
 
             spikeTrapEnemy = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
 
@@ -74,7 +75,7 @@ namespace Game1
                controller.Update();
             }
             enemy.Update(gameTime, new Rectangle(0, 0, 800, 400));
-            enemy2.Update(gameTime, new Rectangle(0, 0, 400, 400));
+            oldMan.Update(gameTime, new Rectangle(0, 0, 400, 400));
 
             spikeTrapEnemy.Update(gameTime, new Rectangle(0, 0, 800, 400));
 
@@ -91,7 +92,7 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
             enemy.Draw();
-            enemy2.Draw();
+            oldMan.Draw();
 
             spikeTrapEnemy.Draw();
 

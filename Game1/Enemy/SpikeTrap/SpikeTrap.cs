@@ -19,7 +19,7 @@ namespace Game1.Enemy.SpikeTrap
 
         public void Attack()
         {
-            stateMachine.Attack();
+            // Cannot attack
         }
 
         public void Draw()
@@ -29,7 +29,7 @@ namespace Game1.Enemy.SpikeTrap
 
         public void ReceiveDamage()
         {
-            stateMachine.ReceiveDamage();
+            // Cannot receive damage
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
