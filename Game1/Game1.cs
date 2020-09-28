@@ -51,30 +51,14 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
+            Player = new Player1(this, new Vector2(400, 250), spriteBatch);
+
             EnvironmentSpriteFactory.instance.LoadContent(Content);
             environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
 
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            var itemPosition = new Vector2(200, 200);
-            itemList = new LinkedList<IItem>();
-            itemList.AddLast(new Bomb(itemPosition));
-            itemList.AddLast(new Bow(itemPosition));
-            itemList.AddLast(new Clock(itemPosition));
-            itemList.AddLast(new Compass(itemPosition));
-            itemList.AddLast(new Fairy(itemPosition));
-            itemList.AddLast(new Heart(itemPosition));
-            itemList.AddLast(new HeartContainer(itemPosition));
-            itemList.AddLast(new ItemBoomerang(itemPosition));
-            itemList.AddLast(new Key(itemPosition));
-            itemList.AddLast(new Map(itemPosition));
-            itemList.AddLast(new RupeeBlue(itemPosition));
-            itemList.AddLast(new RupeeYellow(itemPosition));
-            itemList.AddLast(new Triforce(itemPosition));
-
-            Player = new Player1(this, new Vector2(400, 250), spriteBatch);
-            // TEMP TEMP TEMP TEMP
+            itemList = ItemListFactory.GetItemList();
         }
 
         protected override void UnloadContent()
@@ -89,13 +73,11 @@ namespace Game1
                controller.Update();
             }
 
-            // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
 
             environmentSprite.Update();
 
             itemList.First.Value.Update(gameTime);
-            // TEMP TEMP TEMP TEMP
 
             base.Update(gameTime);
         }
@@ -106,13 +88,11 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
-            // TEMP TEMP TEMP TEMP
             Player.Draw(Color.White);
 
             environmentSprite.Draw(spriteBatch, new Vector2(150.0f, 150.0f), Color.White);
 
             itemList.First.Value.Draw(spriteBatch);
-            // TEMP TEMP TEMP TEMP
 
             spriteBatch.End();
 

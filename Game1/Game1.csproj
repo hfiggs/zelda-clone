@@ -123,6 +123,7 @@
     <Compile Include="Item\HeartContainer.cs" />
     <Compile Include="Item\IItem.cs" />
     <Compile Include="Item\ItemBoomerang.cs" />
+    <Compile Include="Item\ItemListFactory.cs" />
     <Compile Include="Item\Key.cs" />
     <Compile Include="Item\Map.cs" />
     <Compile Include="Item\RupeeBlue.cs" />
