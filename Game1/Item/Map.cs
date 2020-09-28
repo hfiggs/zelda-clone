@@ -6,19 +6,23 @@ namespace Game1.Item
 {
     class Map : IItem
     {
-        ISprite mySprite;
+        private ISprite sprite;
 
-        public Map()
+        private Vector2 position;
+
+        public Map(Vector2 position)
         {
-            mySprite = ItemSpriteFactory.Instance.CreateMapSprite();
+            sprite = ItemSpriteFactory.Instance.CreateMapSprite();
+
+            this.position = position;
         }
         public void Update(GameTime gameTime)
         {
             //Do Nothing
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mySprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }

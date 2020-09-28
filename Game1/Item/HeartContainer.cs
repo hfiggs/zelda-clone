@@ -11,19 +11,23 @@ namespace Game1.Item
 {
     class HeartContainer : IItem
     {
-        ISprite mySprite;
+        private ISprite sprite;
 
-        public HeartContainer()
+        private Vector2 position;
+
+        public HeartContainer(Vector2 position)
         {
-            mySprite = ItemSpriteFactory.Instance.CreateHeartContainerSprite();
+            sprite = ItemSpriteFactory.Instance.CreateHeartContainerSprite();
+
+            this.position = position;
         }
         public void Update(GameTime gameTime)
         {
             //Do Nothing
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mySprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }

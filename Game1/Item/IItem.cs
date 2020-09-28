@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Game1.Item
 {
-    interface IItem
+    public interface IItem
     {
         void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch,  Vector2 position);
+        void Draw(SpriteBatch spriteBatch);
     }
 }

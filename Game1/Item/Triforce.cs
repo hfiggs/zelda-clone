@@ -10,17 +10,22 @@ public class Triforce : IItem
     Color color = Color.White;
     int timeTillSwap;
     const int flashTimer = 250; //ms
-    ISprite mySprite;
+    private ISprite sprite;
 
-	public Triforce()
+    private Vector2 position;
+
+    public Triforce(Vector2 position)
 	{
-        mySprite = ItemSpriteFactory.Instance.CreateTriforceSprite();
+        sprite = ItemSpriteFactory.Instance.CreateTriforceSprite();
+
+        this.position = position;
+
         timeTillSwap = flashTimer;
 	}
 
-    public void Draw(SpriteBatch spriteBatch, Vector2 position)
+    public void Draw(SpriteBatch spriteBatch)
     {
-        mySprite.Draw(spriteBatch, position, color);
+        sprite.Draw(spriteBatch, position, color);
     }
 
     public void Update(GameTime gameTime)

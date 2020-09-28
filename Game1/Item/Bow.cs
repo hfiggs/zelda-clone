@@ -6,15 +6,20 @@ using System;
 
 public class Bow : IItem
 {
-    ISprite MySprite;
-	public Bow()
-	{
-        MySprite = ItemSpriteFactory.Instance.CreateBowSprite();
-	}
+    private ISprite sprite;
 
-    public void Draw(SpriteBatch spriteBatch, Vector2 position)
+    private Vector2 position;
+
+	public Bow(Vector2 position)
+	{
+        sprite = ItemSpriteFactory.Instance.CreateBowSprite();
+
+        this.position = position;
+    }
+
+    public void Draw(SpriteBatch spriteBatch)
     {
-        MySprite.Draw(spriteBatch, position, Color.White);
+        sprite.Draw(spriteBatch, position, Color.White);
     }
 
     public void Update(GameTime gameTime)

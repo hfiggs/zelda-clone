@@ -7,20 +7,24 @@ namespace Game1.Item
 {
 	public class RupeeBlue : IItem
 	{
-        ISprite mySprite;
+        private ISprite sprite;
 
-		public RupeeBlue()
+        private Vector2 position;
+
+        public RupeeBlue(Vector2 position)
 		{
-            mySprite = ItemSpriteFactory.Instance.CreateBlueRupeeSprite();
-		}
+            sprite = ItemSpriteFactory.Instance.CreateBlueRupeeSprite();
+
+            this.position = position;
+        }
 
         public void Update(GameTime gameTime)
         {
             //Do Nothing
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mySprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }

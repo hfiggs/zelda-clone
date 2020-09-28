@@ -8,16 +8,22 @@ namespace Game1.Item
 
 	public class Clock : IItem
 	{
-		ISprite mySprite;
+        private ISprite sprite;
+
+        private Vector2 position;
+
+
         int timeTillSwap;
         const int swapTimer = 250; //ms
 
         bool frameChanged;
 
-		public Clock()
+		public Clock(Vector2 position)
 		{
-			mySprite = ItemSpriteFactory.Instance.CreateClockSprite();
-		}
+			sprite = ItemSpriteFactory.Instance.CreateClockSprite();
+
+            this.position = position;
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -25,16 +31,16 @@ namespace Game1.Item
             if (timeTillSwap <= 0)
             {
                 if (frameChanged)
-                    mySprite = ItemSpriteFactory.Instance.CreateClockSprite();
+                    sprite = ItemSpriteFactory.Instance.CreateClockSprite();
                 else
-                    mySprite = ItemSpriteFactory.Instance.CreateClockSprite();
+                    sprite = ItemSpriteFactory.Instance.CreateClockSprite();
                 timeTillSwap = swapTimer;
                 frameChanged = !frameChanged;
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mySprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }

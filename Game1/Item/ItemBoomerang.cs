@@ -9,21 +9,25 @@ using System.Threading.Tasks;
 
 namespace Game1.Item
 {
-    class Item_Boomerang : IItem
+    class ItemBoomerang : IItem
     {
-        ISprite mySprite;
+        private ISprite sprite;
 
-        public Item_Boomerang()
+        private Vector2 position;
+
+        public ItemBoomerang(Vector2 position)
         {
-            mySprite = ItemSpriteFactory.Instance.CreateBoomerangSprite();
+            sprite = ItemSpriteFactory.Instance.CreateBoomerangSprite();
+
+            this.position = position;
         }
         public void Update(GameTime gameTime)
         {
             //Do Nothing
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mySprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }

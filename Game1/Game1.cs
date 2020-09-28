@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Game1.Player;
 using Game1.Sprite;
 using Game1.Environment;
+using Game1.Item;
 
 namespace Game1
 {
@@ -24,6 +25,9 @@ namespace Game1
         public IPlayer Player { get; set; }
         
         public ISprite environmentSprite;
+
+        public LinkedList<IItem> itemList;
+        private Vector2 itemPosition;
 
         public Game1()
         {
@@ -53,6 +57,23 @@ namespace Game1
             EnvironmentSpriteFactory.instance.LoadContent(Content);
             environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
 
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            itemPosition = new Vector2(200, 200);
+            itemList = new LinkedList<IItem>();
+            itemList.AddLast(new Bomb(itemPosition));
+            itemList.AddLast(new Bow(itemPosition));
+            itemList.AddLast(new Clock(itemPosition));
+            itemList.AddLast(new Compass(itemPosition));
+            itemList.AddLast(new Fairy(itemPosition));
+            itemList.AddLast(new Heart(itemPosition));
+            itemList.AddLast(new HeartContainer(itemPosition));
+            itemList.AddLast(new ItemBoomerang(itemPosition));
+            itemList.AddLast(new Key(itemPosition));
+            itemList.AddLast(new Map(itemPosition));
+            itemList.AddLast(new RupeeBlue(itemPosition));
+            itemList.AddLast(new RupeeYellow(itemPosition));
+            itemList.AddLast(new Triforce(itemPosition));
+
             Player = new Player1(this, new Vector2(400, 250), spriteBatch);
             // TEMP TEMP TEMP TEMP
         }
@@ -71,7 +92,10 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
+
             environmentSprite.Update();
+
+            itemList.First.Value.Update(gameTime);
             // TEMP TEMP TEMP TEMP
 
             base.Update(gameTime);
@@ -85,7 +109,10 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             Player.Draw(Color.White);
+
             environmentSprite.Draw(spriteBatch, new Vector2(150.0f, 150.0f), Color.White);
+
+            itemList.First.Value.Draw(spriteBatch);
             // TEMP TEMP TEMP TEMP
 
             spriteBatch.End();

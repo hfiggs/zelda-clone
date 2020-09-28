@@ -7,14 +7,20 @@ namespace Game1.Item
 {
     class Fairy : IItem
     {
-        ISprite mySprite;
+        private ISprite sprite;
+
+        private Vector2 position;
+
         int timeTillSwap;
         bool frameChanged = true;
         const int timer = 250; //ms
 
-        public Fairy()
+        public Fairy(Vector2 position)
         {
-            mySprite = ItemSpriteFactory.Instance.CreateFairySpriteOne();
+            sprite = ItemSpriteFactory.Instance.CreateFairySpriteOne();
+
+            this.position = position;
+
             timeTillSwap = timer;
         }
         public void Update(GameTime gameTime)
@@ -23,16 +29,16 @@ namespace Game1.Item
             if (timeTillSwap <= 0)
             {
                 if (frameChanged)
-                    mySprite = ItemSpriteFactory.Instance.CreateFairySpriteTwo();
+                    sprite = ItemSpriteFactory.Instance.CreateFairySpriteTwo();
                 else
-                    mySprite = ItemSpriteFactory.Instance.CreateFairySpriteOne();
+                    sprite = ItemSpriteFactory.Instance.CreateFairySpriteOne();
                 timeTillSwap = timer;
                 frameChanged = !frameChanged;
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mySprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }

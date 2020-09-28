@@ -9,17 +9,22 @@ public class Heart : IItem
     Color color = Color.White;
     int timeTillSwap;
     const int flashTimer = 250; //ms
-    ISprite mySprite;
+    private ISprite sprite;
 
-    public Heart()
+    private Vector2 position;
+
+    public Heart(Vector2 position)
 	{
-        mySprite = ItemSpriteFactory.Instance.CreateHeartSprite();
+        sprite = ItemSpriteFactory.Instance.CreateHeartSprite();
+
+        this.position = position;
+
         timeTillSwap = flashTimer;
 	}
 
-    public void Draw(SpriteBatch spriteBatch, Vector2 position)
+    public void Draw(SpriteBatch spriteBatch)
     {
-        mySprite.Draw(spriteBatch, position, color);
+        sprite.Draw(spriteBatch, position, color);
     }
 
     public void Update(GameTime gameTime)

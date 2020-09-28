@@ -11,19 +11,23 @@ namespace Game1.Item
 {
     class Key : IItem
     {
-        ISprite mySprite;
+        private ISprite sprite;
 
-        public Key()
+        private Vector2 position;
+
+        public Key(Vector2 position)
         {
-            mySprite = ItemSpriteFactory.Instance.CreateKeySprite();
+            sprite = ItemSpriteFactory.Instance.CreateKeySprite();
+
+            this.position = position;
         }
         public void Update(GameTime gameTime)
         {
             //Do Nothing
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mySprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }

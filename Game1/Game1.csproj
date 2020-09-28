@@ -64,6 +64,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Command\NextEnvironmentCommand.cs" />
+    <Compile Include="Command\ItemPrevCommand.cs" />
+    <Compile Include="Command\ItemNextCommand.cs" />
     <Compile Include="Command\PlayerDamageCommand.cs" />
     <Compile Include="Command\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerAttackCommand.cs" />

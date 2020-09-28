@@ -7,15 +7,20 @@ namespace Game1.Item
 {
 	public class Bomb : IItem
 	{
-        ISprite mySprite;
-		public Bomb()
+        private ISprite sprite;
+
+        private Vector2 position;
+
+		public Bomb(Vector2 position)
 		{
-            mySprite = ItemSpriteFactory.Instance.CreateBombSprite();
+            sprite = ItemSpriteFactory.Instance.CreateBombSprite();
+
+            this.position = position;
 		}
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            mySprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, Color.White);
         }
 
         public void Update(GameTime gameTime)
