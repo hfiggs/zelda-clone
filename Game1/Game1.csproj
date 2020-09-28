@@ -58,9 +58,6 @@
     <Compile Include="Enemy\SkeletonStateMoving.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrap.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
-    <Compile Include="Game1.cs" />
-    <Compile Include="Command\ICommand.cs" />
-    <Compile Include="Controller\IController.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
     <Compile Include="Sprite\EnemySpriteFactory.cs" />
     <Compile Include="Game1.cs" />
