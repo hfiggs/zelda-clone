@@ -5,13 +5,15 @@ namespace Game1.Enemy
 {
     class EnemyStateMachine
     {
-        IEnemyState state;
+        private Game1 game;
 
-        SpriteBatch spriteBatch;
+        private IEnemyState state;
 
-        public EnemyStateMachine(SpriteBatch spriteBatch, IEnemyState state)
+        private SpriteBatch spriteBatch;
+
+        public EnemyStateMachine(Game1 game, SpriteBatch spriteBatch)
         {
-            this.state = state;
+            this.game = game;
 
             this.spriteBatch = spriteBatch;
         }
@@ -44,6 +46,16 @@ namespace Game1.Enemy
         public Vector2 GetPosition()
         {
             return state.GetPosition();
+        }
+
+        public Rectangle GetPlayerRectangle()
+        {
+            return game.GetPlayerRectangle();
+        }
+
+        public Vector2 GetWindowDimensions()
+        {
+            return game.GetWindowDimensions();
         }
     }
 }

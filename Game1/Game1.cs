@@ -11,6 +11,8 @@ using Game1.Sprite;
 using Game1.Enemy;
 using System.Collections.Generic;
 using Game1.Player;
+using Game1.Enemy.SpikeTrap;
+using System.Runtime.CompilerServices;
 
 namespace Game1
 {
@@ -20,6 +22,7 @@ namespace Game1
         private SpriteBatch spriteBatch;
         private IEnemy enemy;
         private IEnemy enemy2;
+        private IEnemy spikeTrapEnemy;
         private List<IController> controllerList;
 
         public IPlayer Player { get; set; }
@@ -50,10 +53,12 @@ namespace Game1
             enemy = new Skeleton(new Vector2(250,250), spriteBatch);
             enemy2 = new Skeleton(new Vector2(100, 100), spriteBatch);
 
+            spikeTrapEnemy = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
+
             // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
 
-            Player = new Player1(this, new Vector2(400, 250), spriteBatch);
+            Player = new Player1(this, new Vector2(0, 0), spriteBatch);
             // TEMP TEMP TEMP TEMP
         }
 
@@ -71,6 +76,8 @@ namespace Game1
             enemy.Update(gameTime, new Rectangle(0, 0, 800, 400));
             enemy2.Update(gameTime, new Rectangle(0, 0, 400, 400));
 
+            spikeTrapEnemy.Update(gameTime, new Rectangle(0, 0, 800, 400));
+
             // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
             // TEMP TEMP TEMP TEMP
@@ -82,17 +89,35 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
             enemy.Draw();
             enemy2.Draw();
+
+            spikeTrapEnemy.Draw();
 
             // TEMP TEMP TEMP TEMP
             Player.Draw(Color.White);
             // TEMP TEMP TEMP TEMP
 
+
+            Texture2D _texture;
+            _texture = new Texture2D(GraphicsDevice, 1, 1);
+            _texture.SetData(new Color[] { Color.White });
+            spriteBatch.Draw(_texture, GetPlayerRectangle(), Color.White);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public Rectangle GetPlayerRectangle()
+        {
+            return Player.GetLocation();
+        }
+
+        public Vector2 GetWindowDimensions()
+        {
+            return new Vector2(Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight);
         }
     }
 }

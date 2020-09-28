@@ -42,7 +42,7 @@ namespace Game1.Enemy
 
         public ISprite CreateSpikeTrapSprite()
         {
-            return new EnemySprite(spikeTrapSpritesheet, 1, 1, 1, 1, 1);
+            return new EnemySprite(spikeTrapSpritesheet, 0, 0, 1, 1, 1);
         }
     }
 }

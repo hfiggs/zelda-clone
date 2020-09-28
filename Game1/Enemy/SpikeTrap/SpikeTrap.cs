@@ -11,20 +11,10 @@ namespace Game1.Enemy.SpikeTrap
     {
         private EnemyStateMachine stateMachine;
 
-        // how far spike trap can travel in a particular direction (vertically and horizontally)
-        private int verticalRadius;
-        private int horizontalRadius;
-
-        Game1 game;
-
-        public SpikeTrap(Game1 game, Vector2 homePosition, SpriteBatch spriteBatch, int verticalRadius, int horizontalRadius)
+        public SpikeTrap(Game1 game, SpriteBatch spriteBatch, Vector2 homePosition, int verticalRange, int horizontalRange)
         {
-            this.game = game;
-
-            stateMachine = new EnemyStateMachine(spriteBatch, new SpikeTrapStateHome(stateMachine, homePosition));
-
-            this.verticalRadius = verticalRadius;
-            this.horizontalRadius = horizontalRadius;
+            stateMachine = new EnemyStateMachine(game, spriteBatch);
+            stateMachine.SetState(new SpikeTrapStateHome(stateMachine, homePosition, verticalRange, horizontalRange));
         }
 
         public void Attack()

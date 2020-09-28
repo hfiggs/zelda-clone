@@ -57,6 +57,10 @@
     <Compile Include="Enemy\SkeletonStateMachine.cs" />
     <Compile Include="Enemy\SkeletonStateMoving.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrap.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackWest.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackEast.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackSouth.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackNorth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
     <Compile Include="Sprite\EnemySpriteFactory.cs" />
