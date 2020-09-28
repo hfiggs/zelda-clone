@@ -63,6 +63,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\NextEnvironmentCommand.cs" />
     <Compile Include="Command\PlayerDamageCommand.cs" />
     <Compile Include="Command\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerAttackCommand.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Command\PlayerDownCommand.cs" />
     <Compile Include="Command\PlayerUpCommand.cs" />
     <Compile Include="Command\PlayerRightCommand.cs" />
+    <Compile Include="Command\PrevEnvironmentCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
     <Compile Include="Environment\Doors\DoorSHole.cs" />
     <Compile Include="Environment\Doors\DoorSClosed.cs" />

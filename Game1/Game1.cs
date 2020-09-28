@@ -23,7 +23,7 @@ namespace Game1
 
         public IPlayer Player { get; set; }
         
-        ISprite environmentSprite;
+        public ISprite environmentSprite;
 
         public Game1()
         {
@@ -50,6 +50,8 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
+            EnvironmentSpriteFactory.instance.LoadContent(Content);
+            environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
 
             Player = new Player1(this, new Vector2(400, 250), spriteBatch);
             // TEMP TEMP TEMP TEMP
@@ -69,6 +71,7 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
+            environmentSprite.Update();
             // TEMP TEMP TEMP TEMP
 
             base.Update(gameTime);
@@ -82,6 +85,7 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             Player.Draw(Color.White);
+            environmentSprite.Draw(spriteBatch, new Vector2(150.0f, 150.0f), Color.White);
             // TEMP TEMP TEMP TEMP
 
             spriteBatch.End();
