@@ -49,8 +49,6 @@ namespace Game1.Enemy
             int width = texture.Width / maxColumns;
             int height = texture.Height / maxRows;
 
-            Console.WriteLine(width + "+" + height);
-
             Rectangle sourceRectangle = new Rectangle(width * column, height * (row + +currentFrame), width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
