@@ -14,6 +14,8 @@ using Game1.Player;
 using Game1.Enemy.SpikeTrap;
 using System.Runtime.CompilerServices;
 using Game1.Enemy.OldMan;
+using Game1.Environment;
+using Game1.Item;
 
 namespace Game1
 {
@@ -28,6 +30,10 @@ namespace Game1
         private List<IController> controllerList;
 
         public IPlayer Player { get; set; }
+        
+        public ISprite environmentSprite;
+
+        public LinkedList<IItem> itemList;
 
         public Game1()
         {
@@ -58,11 +64,14 @@ namespace Game1
             merchant = new Merchant(new Vector2(250,250), spriteBatch);
             spikeTrap = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
 
-            // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
+            Player = new Player1(this, new Vector2(400, 250), spriteBatch);
 
-            Player = new Player1(this, new Vector2(0, 0), spriteBatch);
-            // TEMP TEMP TEMP TEMP
+            EnvironmentSpriteFactory.instance.LoadContent(Content);
+            environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
+
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            itemList = ItemListFactory.GetItemList();
         }
 
         protected override void UnloadContent()
@@ -84,7 +93,10 @@ namespace Game1
 
             // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
-            // TEMP TEMP TEMP TEMP
+
+            environmentSprite.Update();
+
+            itemList.First.Value.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -100,9 +112,11 @@ namespace Game1
             merchant.Draw();
             spikeTrap.Draw();
 
-            // TEMP TEMP TEMP TEMP
             Player.Draw(Color.White);
-            // TEMP TEMP TEMP TEMP
+
+            environmentSprite.Draw(spriteBatch, new Vector2(150.0f, 150.0f), Color.White);
+
+            itemList.First.Value.Draw(spriteBatch);
 
 
             Texture2D _texture;

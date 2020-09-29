@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Game1.Item
 {
-    class Key : IItem
+    class ItemBoomerang : IItem
     {
         private ISprite sprite;
 
         private Vector2 position;
 
-        public Key(Vector2 position)
+        public ItemBoomerang(Vector2 position)
         {
-            sprite = ItemSpriteFactory.Instance.CreateKeySprite();
+            sprite = ItemSpriteFactory.Instance.CreateBoomerangSprite();
 
             this.position = position;
         }
