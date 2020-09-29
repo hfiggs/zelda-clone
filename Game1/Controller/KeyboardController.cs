@@ -39,7 +39,13 @@ namespace Game1.Controller
                 { Keys.D3, new PlayerUseItemCommand(game, 3) },
                 { Keys.NumPad3, new PlayerUseItemCommand(game, 3) },
                 { Keys.D4, new PlayerUseItemCommand(game, 4) },
-                { Keys.NumPad4, new PlayerUseItemCommand(game, 4) }
+                { Keys.NumPad4, new PlayerUseItemCommand(game, 4) },
+
+                { Keys.Y, new NextEnvironmentCommand(game) },
+                { Keys.T, new PrevEnvironmentCommand(game) },
+
+                { Keys.U, new ItemPrevCommand(game) },
+                { Keys.I, new ItemNextCommand(game) }
             };
         }
 
