@@ -11,14 +11,10 @@ using Game1.Sprite;
 using Game1.Enemy;
 using System.Collections.Generic;
 using Game1.Player;
-<<<<<<< HEAD
 using Game1.Projectile;
-using Game1.Sprite;
-=======
 using Game1.Enemy.SpikeTrap;
 using System.Runtime.CompilerServices;
 using Game1.Enemy.OldMan;
->>>>>>> master
 using Game1.Environment;
 using Game1.Item;
 
@@ -116,7 +112,7 @@ namespace Game1
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
