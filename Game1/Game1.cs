@@ -53,7 +53,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
 
-            skeleton = new Skeleton(new Vector2(250,250), spriteBatch);
+            skeleton = new Goriya(this, spriteBatch, new Vector2(250, 250));
             oldMan = new OldMan(spriteBatch, new Vector2(100, 100));
             merchant = new Merchant(new Vector2(250,250), spriteBatch);
             spikeTrap = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
@@ -77,7 +77,7 @@ namespace Game1
                controller.Update();
             }
 
-            skeleton.Update(gameTime, new Rectangle(0, 0, 800, 400));
+            skeleton.Update(gameTime, new Rectangle(0, 0, 400, 400));
             oldMan.Update(gameTime, new Rectangle(0, 0, 400, 400));
             merchant.Update(gameTime, new Rectangle(0, 0, 400, 400));
             spikeTrap.Update(gameTime, new Rectangle(0, 0, 800, 400));
