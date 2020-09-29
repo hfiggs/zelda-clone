@@ -72,7 +72,7 @@ namespace Game1.Player
         public Rectangle GetLocation()
         {
             // TODO: this sucks
-            return new Rectangle((int)state.GetPosition().X, (int)state.GetPosition().Y, 15, 15);
+            return new Rectangle((int)state.GetPosition().X, (int)state.GetPosition().Y, 40, 40);
         }
 
         public char GetDirection()
