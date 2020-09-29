@@ -70,5 +70,30 @@ namespace Game1.Enemy
         {
             return new EnemySprite(batSpritesheet, 0, 0, 1, 2, 2);
         }
+
+        public ISprite CreateHandSprite()
+        {
+            return new EnemySprite(enemySpritesheet, 8, 0, 15, 8, 2);
+        }
+
+        public ISprite CreateGoriyaDownSprite()
+        {
+            return new EnemySprite(enemySpritesheet, 0, 2, 15, 8, 2);
+        }
+
+        public ISprite CreateGoriyaLeftSprite()
+        {
+            return new EnemySprite(enemySpritesheet, 1, 2, 15, 8, 2);
+        }
+
+        public ISprite CreateGoriyaRightSprite()
+        {
+            return new EnemySprite(enemySpritesheet, 3, 2, 15, 8, 2);
+        }
+
+        public ISprite CreateGoriyaUpSprite()
+        {
+            return new EnemySprite(enemySpritesheet, 2, 2, 15, 8, 2);
+        }
     }
 }
