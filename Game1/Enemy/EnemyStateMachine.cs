@@ -48,6 +48,11 @@ namespace Game1.Enemy
             return state.GetPosition();
         }
 
+        public Vector2 GetDirection()
+        {
+            return state.GetDirection();
+        }
+
         public Rectangle GetPlayerRectangle()
         {
             return game.GetPlayerRectangle();

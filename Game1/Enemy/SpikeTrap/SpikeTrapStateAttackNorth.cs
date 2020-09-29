@@ -46,6 +46,12 @@ namespace Game1.Enemy.SpikeTrap
             return currentPosition;
         }
 
+        public Vector2 GetDirection()
+        {
+            return new Vector2(0, 0);
+            //No direction field
+        }
+
         public void ReceiveDamage()
         {
             // Cannot receive damage

@@ -59,6 +59,10 @@ namespace Game1.Enemy
 
         }
 
+        public Vector2 GetDirection()
+        {
+            return direction;
+        }
         public Vector2 GetPosition()
         {
             return position;

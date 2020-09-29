@@ -64,6 +64,10 @@ namespace Game1.Enemy
             return position;
         }
 
+        public Vector2 GetDirection()
+        {
+            return direction;
+        }
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
             Random random = new Random();

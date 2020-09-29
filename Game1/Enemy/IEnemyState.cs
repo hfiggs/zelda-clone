@@ -18,6 +18,8 @@ namespace Game1.Enemy
 
         Vector2 GetPosition();
 
+        Vector2 GetDirection();
+
         ISprite Sprite { get; }
     }
 }

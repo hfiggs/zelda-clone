@@ -51,6 +51,12 @@ namespace Game1.Enemy.SpikeTrap
             // Cannot receive damage
         }
 
+        public Vector2 GetDirection()
+        {
+            return new Vector2(0,0);
+            //No direction field
+        }
+
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
             if(isAdvancing)
