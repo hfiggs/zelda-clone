@@ -52,7 +52,7 @@ namespace Game1.Enemy
             Console.WriteLine(width + "+" + height);
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * (row + +currentFrame), width, height);
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, 3*width, 3*height);
 
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, color);
         }

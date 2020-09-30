@@ -14,6 +14,7 @@ using Game1.Player;
 using Game1.Enemy.SpikeTrap;
 using System.Runtime.CompilerServices;
 using Game1.Enemy.OldMan;
+using Game1.Enemy.Aquamentus;
 
 namespace Game1
 {
@@ -25,6 +26,7 @@ namespace Game1
         private IEnemy oldMan;
         private IEnemy merchant;
         private IEnemy spikeTrap;
+        private IEnemy aquamentus;
         private List<IController> controllerList;
 
         public IPlayer Player { get; set; }
@@ -57,6 +59,7 @@ namespace Game1
             oldMan = new OldMan(spriteBatch, new Vector2(100, 100));
             merchant = new Merchant(new Vector2(250,250), spriteBatch);
             spikeTrap = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
+            aquamentus = new Aquamentus(this, spriteBatch, new Vector2(600, 200));
 
             // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
@@ -81,6 +84,7 @@ namespace Game1
             oldMan.Update(gameTime, new Rectangle(0, 0, 400, 400));
             merchant.Update(gameTime, new Rectangle(0, 0, 400, 400));
             spikeTrap.Update(gameTime, new Rectangle(0, 0, 800, 400));
+            aquamentus.Update(gameTime, new Rectangle(0, 0, 800, 400));
 
             // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
@@ -99,6 +103,7 @@ namespace Game1
             oldMan.Draw();
             merchant.Draw();
             spikeTrap.Draw();
+            aquamentus.Draw();
 
             // TEMP TEMP TEMP TEMP
             Player.Draw(Color.White);

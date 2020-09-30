@@ -50,6 +50,11 @@
     <Compile Include="Command\PlayerUpCommand.cs" />
     <Compile Include="Command\PlayerRightCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
+    <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
+    <Compile Include="Enemy\Aquamentus\AquamentusWalkLeft.cs" />
+    <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />
+    <Compile Include="Enemy\Aquamentus\AquamentusWalkRight.cs" />
+    <Compile Include="Enemy\Aquamentus\AquamentusWalkRightAttack.cs" />
     <Compile Include="Enemy\EnemyStateMachine.cs" />
     <Compile Include="Enemy\IEnemy.cs" />
     <Compile Include="Enemy\IEnemyState.cs" />
