@@ -24,7 +24,7 @@ namespace Game1.Command
 
         public void Execute()
         {
-            if(game.itemList.Count() > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
+            if(game.itemList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
                 IItem last = game.itemList.Last();
 

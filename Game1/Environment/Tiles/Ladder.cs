@@ -12,14 +12,21 @@ namespace Game1.Environment
     class Ladder : IEnvironment
     {
         private ISprite sprite;
-        public Ladder(SpriteSheet spriteSheet)
+        Vector2 position;
+        public Ladder(Vector2 position)
         {
             sprite = EnvironmentSpriteFactory.instance.createLadder();
+            this.position = position;
         }
 
         public void BehaviorUpdate()
         {
             throw new NotImplementedException("For later collision mechanics");
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            sprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }
