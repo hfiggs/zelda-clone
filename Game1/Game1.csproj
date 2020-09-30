@@ -76,6 +76,11 @@
     <Compile Include="Command\PlayerRightCommand.cs" />
     <Compile Include="Command\PrevEnvironmentCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
+    <Compile Include="Enemy\Dodongo\Dodongo.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateDown.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateUp.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateRight.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateLeft.cs" />
     <Compile Include="Enemy\EnemyStateMachine.cs" />
     <Compile Include="Enemy\Goriya\Goriya.cs" />
     <Compile Include="Enemy\Goriya\GoriyaStateMovingLeft.cs" />

@@ -48,8 +48,7 @@ namespace Game1.Enemy.SpikeTrap
 
         public Vector2 GetDirection()
         {
-            return new Vector2(0, 0);
-            //No direction field
+            return new Vector2(0, -1);
         }
 
         public void ReceiveDamage()

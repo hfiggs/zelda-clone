@@ -53,8 +53,7 @@ namespace Game1.Enemy.SpikeTrap
 
         public Vector2 GetDirection()
         {
-            return new Vector2(0,0);
-            //No direction field
+            return new Vector2(1,0);
         }
 
         public void Update(GameTime gametime, Rectangle drawingLimits)

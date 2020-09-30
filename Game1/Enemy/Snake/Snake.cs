@@ -56,7 +56,7 @@ namespace Game1.Enemy.Snake
             sprite.Draw(spriteBatch, position, Color.White);
         }
 
-        public void ReceiveDamage()  { /* Cannot receive damage */ }
+        public void ReceiveDamage()  { /* TODO: Receive damage */ }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
