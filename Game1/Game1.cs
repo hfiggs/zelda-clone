@@ -11,10 +11,9 @@ using Game1.Sprite;
 using Game1.Enemy;
 using System.Collections.Generic;
 using Game1.Player;
-using Game1.Projectile;
-using Game1.Enemy.SpikeTrap;
-using System.Runtime.CompilerServices;
 using Game1.Enemy.OldMan;
+using Game1.Enemy.SpikeTrap;
+using Game1.Projectile;
 using Game1.Environment;
 using Game1.Item;
 
@@ -29,7 +28,7 @@ namespace Game1
         private IEnemy merchant;
         private IEnemy spikeTrap;
         private List<IController> controllerList;
-
+        
         public IPlayer Player { get; set; }
         // TEMP TEMP TEMP TEMP 
         private IProjectile projectile;
@@ -38,7 +37,7 @@ namespace Game1
         public ISprite environmentSprite;
 
         public LinkedList<IItem> itemList;
-
+        public LinkedList<IEnvironment> environmentList;
         public Game1()
         {
             Graphics = new GraphicsDeviceManager(this);
@@ -74,11 +73,11 @@ namespace Game1
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             projectile = new Boomerang('E', Player);
 
-            EnvironmentSpriteFactory.instance.LoadContent(Content);
-            environmentSprite = EnvironmentSpriteFactory.instance.createFloor();
-
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             itemList = ItemListFactory.GetItemList();
+            EnvironmentSpriteFactory.instance.LoadContent(Content);
+
+            environmentList = EnvironmentListFactory.GetEnvironmentList();
         }
 
         protected override void UnloadContent()
@@ -103,8 +102,7 @@ namespace Game1
             projectile.Update(gameTime);
             // TEMP TEMP TEMP TEMP
 
-            environmentSprite.Update();
-
+       
             itemList.First.Value.Update(gameTime);
 
             base.Update(gameTime);
@@ -125,10 +123,9 @@ namespace Game1
             projectile.Draw(spriteBatch);
             // TEMP TEMP TEMP TEMP
 
-            environmentSprite.Draw(spriteBatch, new Vector2(150.0f, 150.0f), Color.White);
 
             itemList.First.Value.Draw(spriteBatch);
-
+            environmentList.First.Value.Draw(spriteBatch);
 
             Texture2D _texture;
             _texture = new Texture2D(GraphicsDevice, 1, 1);
