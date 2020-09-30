@@ -17,7 +17,6 @@ namespace Game1.Enemy
         private int maxColumns;
         private int maxRows;
 
-        private int delay;
         private int currentFrame;
         private int totalFrames;
         public EnemySprite(Texture2D texture, int column, int row, int maxColumns, int maxRows, int totalFrames)
@@ -32,13 +31,7 @@ namespace Game1.Enemy
 
         public void Update()
         {
-            delay++;
-
-            if (delay == 9)
-            {
-                currentFrame++;
-                delay = 0;
-            }
+            currentFrame++;
 
             if (currentFrame == totalFrames)
                 currentFrame = 0;

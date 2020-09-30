@@ -93,6 +93,7 @@
     <Compile Include="Enemy\Merchant.cs" />
     <Compile Include="Enemy\Skeleton\Skeleton.cs" />
     <Compile Include="Enemy\Skeleton\SkeletonStateMoving.cs" />
+    <Compile Include="Enemy\Snake\Snake.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrap.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackWest.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackEast.cs" />

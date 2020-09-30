@@ -16,6 +16,8 @@ namespace Game1.Enemy
 
         private Texture2D batSpritesheet;
 
+        private Texture2D snakeSpriteSheet;
+
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 
 
@@ -38,6 +40,7 @@ namespace Game1.Enemy
             oldManSpritesheet = content.Load<Texture2D>("images/oldman");
             merchantSpritesheet = content.Load<Texture2D>("Merchant");
             batSpritesheet = content.Load<Texture2D>("images/bat");
+            snakeSpriteSheet = content.Load<Texture2D>("images/snake");
         }
 
         public ISprite CreateSkeletonSprite()
@@ -94,6 +97,16 @@ namespace Game1.Enemy
         public ISprite CreateGoriyaUpSprite()
         {
             return new EnemySprite(enemySpritesheet, 2, 2, 15, 8, 2);
+        }
+
+        public ISprite CreateSnakeLeftSprite()
+        {
+            return new EnemySprite(snakeSpriteSheet, 1, 0, 2, 2, 2);
+        }
+
+        public ISprite CreateSnakeRightSprite()
+        {
+            return new EnemySprite(snakeSpriteSheet, 0, 0, 2, 2, 2);
         }
     }
 }

@@ -17,6 +17,7 @@ using System.Runtime.CompilerServices;
 using Game1.Enemy.OldMan;
 using Game1.Environment;
 using Game1.Item;
+using Game1.Enemy.Snake;
 
 namespace Game1
 {
@@ -28,6 +29,7 @@ namespace Game1
         private IEnemy oldMan;
         private IEnemy merchant;
         private IEnemy spikeTrap;
+        private IEnemy snake;
         private List<IController> controllerList;
 
         public IPlayer Player { get; set; }
@@ -67,6 +69,7 @@ namespace Game1
             oldMan = new OldMan(spriteBatch, new Vector2(100, 100));
             merchant = new Merchant(new Vector2(250,250), spriteBatch);
             spikeTrap = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
+            snake = new Snake(this, spriteBatch, new Vector2(300, 250));
 
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
             Player = new Player1(this, new Vector2(400, 250), spriteBatch);
@@ -97,6 +100,7 @@ namespace Game1
             oldMan.Update(gameTime, new Rectangle(0, 0, 400, 400));
             merchant.Update(gameTime, new Rectangle(0, 0, 400, 400));
             spikeTrap.Update(gameTime, new Rectangle(0, 0, 800, 400));
+            snake.Update(gameTime, new Rectangle(0, 0, 800, 400));
 
             // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
@@ -120,6 +124,7 @@ namespace Game1
             oldMan.Draw();
             merchant.Draw();
             spikeTrap.Draw();
+            snake.Draw();
 
             Player.Draw(Color.White);
             projectile.Draw(spriteBatch);
