@@ -2,10 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
+    "\\Game1\\Content",
     "\\Game1\\Controller",
+    "\\Game1\\Enemy",
+    "\\Game1\\Enemy\\Aquamentus",
+    "\\Game1\\Enemy\\SpikeTrap",
     "\\Game1\\Properties",
     "\\Game1\\Sprite"
   ],
-  "SelectedNode": "\\Game1\\Sprite\\NotAnimatedMovingSprite.cs",
+  "SelectedNode": "\\Game1\\Content\\Content.mgcb",
   "PreviewInSolutionExplorer": false
 }

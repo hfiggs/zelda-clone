@@ -7,13 +7,10 @@ namespace Game1.Enemy.Aquamentus
     class Aquamentus : IEnemy
     {
         private EnemyStateMachine stateMachine;
-        private Vector2 position;
         public ISprite Sprite { get; private set; }
 
         public Aquamentus(Game1 game, SpriteBatch spriteBatch, Vector2 position) {
             stateMachine = new EnemyStateMachine(game, spriteBatch);
-            this.position = position;
-
             stateMachine.SetState(new AquamentusWalkLeft(stateMachine, position));
         }
 

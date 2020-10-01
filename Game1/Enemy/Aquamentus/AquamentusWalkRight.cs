@@ -6,9 +6,8 @@ namespace Game1.Enemy.Aquamentus
 {
     class AquamentusWalkRight : IEnemyState
     {
-        
         private EnemyStateMachine stateMachine;
-        private Vector2 position, currentPosition;
+        private Vector2 position;
         private float totalTime;
         private int timeCap;
         Random random;
@@ -20,7 +19,6 @@ namespace Game1.Enemy.Aquamentus
             Sprite = EnemySpriteFactory.Instance.CreateAquamentusSprite();
             this.stateMachine = stateMachine;
             this.position = position;
-            currentPosition = position;
             random = new Random(Guid.NewGuid().GetHashCode());
             timeCap = random.Next(3);
             timeCap++;
@@ -34,7 +32,7 @@ namespace Game1.Enemy.Aquamentus
 
         public Vector2 GetPosition()
         {
-            return currentPosition;
+            return position;
         }
 
         public void ReceiveDamage()

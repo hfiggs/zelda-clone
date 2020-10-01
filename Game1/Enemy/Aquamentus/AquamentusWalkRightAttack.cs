@@ -5,9 +5,8 @@ namespace Game1.Enemy.Aquamentus
 {
     class AquamentusWalkRightAttack : IEnemyState
     {
-
         private EnemyStateMachine stateMachine;
-        private Vector2 position, currentPosition;
+        private Vector2 position;
         private int counter;
         private float totalTime;
         private const float timeOfAttack = 1;
@@ -19,7 +18,6 @@ namespace Game1.Enemy.Aquamentus
             Sprite = EnemySpriteFactory.Instance.CreateAttackAquamentusSprite();
             this.stateMachine = stateMachine;
             this.position = position;
-            currentPosition = position;
             counter = 0;
             totalTime = 0;
         }
@@ -31,7 +29,7 @@ namespace Game1.Enemy.Aquamentus
 
         public Vector2 GetPosition()
         {
-            return currentPosition;
+            return position;
         }
 
         public void ReceiveDamage()
@@ -42,7 +40,7 @@ namespace Game1.Enemy.Aquamentus
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
             totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
-            Rectangle playerRect = stateMachine.GetPlayerRectangle();
+            Rectangle playerRect = stateMachine.GetPlayerRectangle(); // Used for projectile
 
             if (totalTime < timeOfAttack || (counter == 1 && totalTime < 2)) {
                 position.X += moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
@@ -58,4 +56,3 @@ namespace Game1.Enemy.Aquamentus
         }
     }
 }
-
