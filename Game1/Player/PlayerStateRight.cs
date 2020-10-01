@@ -11,7 +11,7 @@ namespace Game1.Player
 {
     class PlayerStateRight : IPlayerState
     {
-        private PlayerStateFactory stateFactory;
+        private IPlayer player;
         public ISprite Sprite { get; private set; }
 
         private bool isMoving;
@@ -22,9 +22,9 @@ namespace Game1.Player
         private const int moveSpeed = 5;
         private const float animationTime = 150f; // ms per frame
 
-        public PlayerStateRight(PlayerStateFactory stateFactory, Vector2  position)
+        public PlayerStateRight(IPlayer player, Vector2  position)
         {
-            this.stateFactory = stateFactory;
+            this.player = player;
             Sprite = PlayerSpriteFactory.Instance.CreateWalkRightSprite();
 
             isMoving = false;
@@ -35,19 +35,19 @@ namespace Game1.Player
 
         public void Attack()
         {
-            stateFactory.SetState(new PlayerStateRightAttack(stateFactory, position));
+            player.SetState(new PlayerStateRightAttack(player, position));
         }
 
         public void MoveDown()
         {
             if (!isMoving)
-                stateFactory.SetState(new PlayerStateDown(stateFactory, position));
+                player.SetState(new PlayerStateDown(player, position));
         }
 
         public void MoveLeft()
         {
             if (!isMoving)
-                stateFactory.SetState(new PlayerStateLeft(stateFactory, position));
+                player.SetState(new PlayerStateLeft(player, position));
         }
 
         public void MoveRight()
@@ -58,12 +58,12 @@ namespace Game1.Player
         public void MoveUp()
         {
             if (!isMoving)
-                stateFactory.SetState(new PlayerStateUp(stateFactory, position));
+                player.SetState(new PlayerStateUp(player, position));
         }
 
         public void UseItem()
         {
-            stateFactory.SetState(new PlayerStateRightUse(stateFactory, position));
+            player.SetState(new PlayerStateRightUse(player, position));
         }
 
         public void Update(GameTime time)

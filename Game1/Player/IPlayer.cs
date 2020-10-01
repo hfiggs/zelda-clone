@@ -3,6 +3,7 @@
  * Hunter Figgs */
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
@@ -24,10 +25,12 @@ namespace Game1.Player
 
         void Update(GameTime time);
 
-        void Draw(Color color);
+        void Draw(SpriteBatch spriteBatch, Color color);
 
         Rectangle GetLocation();
 
         char GetDirection();
+
+        void SetState(IPlayerState state);
     }
 }

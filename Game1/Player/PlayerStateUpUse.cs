@@ -2,15 +2,15 @@
 
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace Game1.Player
 {
     class PlayerStateUpUse : IPlayerState
     {
-        private PlayerStateFactory stateFactory;
+        private IPlayer player;
         public ISprite Sprite { get; private set; }
-
         private Vector2 position;
 
         private float timeUntilNextFrame; // ms
@@ -19,13 +19,12 @@ namespace Game1.Player
         private const float animationTime = 150f; // ms per frame
         private const int animationFrames = 3;
 
-        public PlayerStateUpUse(PlayerStateFactory stateFactory, Vector2 position)
+        public PlayerStateUpUse(IPlayer player, Vector2 position)
         {
-            this.stateFactory = stateFactory;
+            this.player = player;
             Sprite = PlayerSpriteFactory.Instance.CreateUseItemUpSprite();
 
             this.position = position;
-
             frameCount = 0;
             timeUntilNextFrame = animationTime;
         }
@@ -70,7 +69,7 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
-                stateFactory.SetState(new PlayerStateUp(stateFactory, position));
+                player.SetState(new PlayerStateUp(player, position));
             }
         }
 

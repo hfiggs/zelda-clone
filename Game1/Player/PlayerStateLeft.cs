@@ -11,7 +11,7 @@ namespace Game1.Player
 {
     class PlayerStateLeft : IPlayerState
     {
-        private PlayerStateFactory stateFactory;
+        private IPlayer player;
         public ISprite Sprite { get; private set; }
 
         private bool isMoving;
@@ -22,9 +22,9 @@ namespace Game1.Player
         private const int moveSpeed = 5;
         private const float animationTime = 150f; // ms per frame
 
-        public PlayerStateLeft(PlayerStateFactory stateFactory, Vector2 position)
+        public PlayerStateLeft(IPlayer player, Vector2 position)
         {
-            this.stateFactory = stateFactory;
+            this.player = player;
             Sprite = PlayerSpriteFactory.Instance.CreateWalkLeftSprite();
 
             isMoving = false;
@@ -35,13 +35,13 @@ namespace Game1.Player
 
         public void Attack()
         {
-            stateFactory.SetState(new PlayerStateLeftAttack(stateFactory, position));
+            player.SetState(new PlayerStateLeftAttack(player, position));
         }
 
         public void MoveDown()
         {
             if (!isMoving)
-                stateFactory.SetState(new PlayerStateDown(stateFactory, position));
+                player.SetState(new PlayerStateDown(player, position));
         }
 
         public void MoveLeft()
@@ -52,18 +52,18 @@ namespace Game1.Player
         public void MoveRight()
         {
             if (!isMoving)
-                stateFactory.SetState(new PlayerStateRight(stateFactory, position));
+                player.SetState(new PlayerStateRight(player, position));
         }
 
         public void MoveUp()
         {
             if (!isMoving)
-                stateFactory.SetState(new PlayerStateUp(stateFactory, position));
+                player.SetState(new PlayerStateUp(player, position));
         }
 
         public void UseItem()
         {
-            stateFactory.SetState(new PlayerStateLeftUse(stateFactory, position));
+            player.SetState(new PlayerStateLeftUse(player, position));
         }
 
         public void Update(GameTime time)

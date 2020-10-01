@@ -30,6 +30,7 @@ namespace Game1
         public LinkedList<IItem> ItemList { get; set; }
         public LinkedList<IEnvironment> EnvironmentList { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
+        private LinkedList<IProjectile> ProjectileList { get; set; }
 
         public Game1()
         {
@@ -45,6 +46,8 @@ namespace Game1
                 new KeyboardController(this)
             };
 
+            ProjectileList = new LinkedList<IProjectile>();
+
             IsMouseVisible = true;
 
             base.Initialize();
@@ -55,7 +58,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
-            Player = new Player1(this, new Vector2(75, 325), spriteBatch);
+            Player = new Player1(this, new Vector2(75, 325));
 
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             projectile = new Boomerang('E', Player);
@@ -88,6 +91,11 @@ namespace Game1
             ItemList.First.Value.Update(gameTime);
             EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 800, 400));
 
+            foreach(IProjectile projectile in ProjectileList)
+            {
+                projectile.Update(gameTime);
+            }
+
             base.Update(gameTime);
         }
 
@@ -97,7 +105,7 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
-            Player.Draw(Color.White);
+            Player.Draw(spriteBatch,Color.White);
             projectile.Draw(spriteBatch);
 
             ItemList.First.Value.Draw(spriteBatch);
@@ -107,7 +115,12 @@ namespace Game1
             Texture2D _texture;
             _texture = new Texture2D(GraphicsDevice, 1, 1);
             _texture.SetData(new Color[] { Color.White });
-            spriteBatch.Draw(_texture, GetPlayerRectangle(), Color.White);
+            //spriteBatch.Draw(_texture, GetPlayerRectangle(), Color.White);
+
+            foreach(IProjectile projectile in ProjectileList)
+            {
+                projectile.Draw(spriteBatch);
+            }
 
             spriteBatch.End();
 
@@ -122,6 +135,11 @@ namespace Game1
         public Vector2 GetWindowDimensions()
         {
             return new Vector2(Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight);
+        }
+
+        public void SpawnProjectile(IProjectile projectile)
+        {
+            ProjectileList.AddLast(projectile);
         }
     }
 }

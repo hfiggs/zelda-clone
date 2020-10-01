@@ -165,7 +165,6 @@
     <Compile Include="Item\Triforce.cs" />
     <Compile Include="Player\DamagedPlayer.cs" />
     <Compile Include="Player\PlayerStateDownUse.cs" />
-    <Compile Include="Player\PlayerStateFactory.cs" />
     <Compile Include="Player\PlayerStateLeft.cs" />
     <Compile Include="Player\PlayerStateDown.cs" />
     <Compile Include="Player\PlayerStateLeftUse.cs" />

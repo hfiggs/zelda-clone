@@ -1,6 +1,7 @@
 ﻿/* Author: Hunter Figgs */
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Player
 {
@@ -31,7 +32,7 @@ namespace Game1.Player
             decoratedPlayer.Attack();
         }
 
-        public void Draw(Color color)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
             
             if (flickerTimer >= flickerDuration)
@@ -47,7 +48,7 @@ namespace Game1.Player
                
                 currentFlicker++;
             }
-            decoratedPlayer.Draw(damageColor);
+            decoratedPlayer.Draw(spriteBatch, damageColor);
         }
 
         public char GetDirection()
@@ -104,6 +105,11 @@ namespace Game1.Player
         private void RemoveDecorator()
         {
             game.Player = decoratedPlayer;
+        }
+
+        public void SetState(IPlayerState state)
+        {
+            decoratedPlayer.SetState(state);
         }
     }
 }

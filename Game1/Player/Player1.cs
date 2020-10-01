@@ -2,6 +2,7 @@
  * Jared Perkins
  * Hunter Figgs */
 
+using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,47 +11,50 @@ namespace Game1.Player
     class Player1 : IPlayer
     {
         Game1 game;
+        int currentItem;
+        IPlayerState state;
 
-        public Player1(Game1 game, Vector2 position, SpriteBatch spriteBatch)
+        public Player1(Game1 game, Vector2 position)
         {
             this.game = game;
 
-            PlayerStateFactory.Instance.Initialize(spriteBatch, position);
+            state = new PlayerStateRight(this, position);
         }
 
-        public void Draw(Color color)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            PlayerStateFactory.Instance.Draw(color);
+            state.Sprite.Draw(spriteBatch,state.GetPosition(),color);
         }
 
         public void MoveLeft()
         {
-            PlayerStateFactory.Instance.MoveLeft();
+            state.MoveLeft();
         }
 
         public void MoveRight()
         {
-            PlayerStateFactory.Instance.MoveRight();
+           state.MoveRight();
         }
 
         public void MoveUp()
         {
-            PlayerStateFactory.Instance.MoveUp();
+            state.MoveUp();
         }
 
         public void MoveDown()
         {
-            PlayerStateFactory.Instance.MoveDown();
+            state.MoveDown();
         }
 
         public void UseItem(int item)
         {
-            PlayerStateFactory.Instance.UseItem();
+            
+            state.UseItem();
         }
 
         public void Attack()
         {
-            PlayerStateFactory.Instance.Attack();
+            state.Attack();
         }
 
         public void ReceiveDamage()
@@ -61,17 +65,28 @@ namespace Game1.Player
 
         public void Update(GameTime time)
         {
-            PlayerStateFactory.Instance.Update(time);
+            state.Update(time);
         }
 
         public Rectangle GetLocation()
         {
-            return PlayerStateFactory.Instance.GetLocation();
+            Vector2 position = state.GetPosition();
+            return new Rectangle((int)position.X,(int)position.Y,50,50);
         }
 
         public char GetDirection()
         {
-            return PlayerStateFactory.Instance.GetDirection();
+            return state.GetDirection();
+        }
+
+        public int GetItem()
+        {
+            return currentItem;
+        }
+
+        public void SetState(IPlayerState state)
+        {
+            this.state = state;
         }
     }
 }
