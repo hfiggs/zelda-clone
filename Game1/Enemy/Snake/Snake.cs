@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace Game1.Enemy.Snake
+namespace Game1.Enemy
 {
     class Snake : IEnemy
     {

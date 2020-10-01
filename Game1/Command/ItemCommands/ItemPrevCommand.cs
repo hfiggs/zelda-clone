@@ -24,13 +24,13 @@ namespace Game1.Command
 
         public void Execute()
         {
-            if(game.itemList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
+            if(game.ItemList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                IItem last = game.itemList.Last();
+                IItem last = game.ItemList.Last();
 
-                game.itemList.RemoveLast();
+                game.ItemList.RemoveLast();
 
-                game.itemList.AddFirst(last);
+                game.ItemList.AddFirst(last);
 
                 stopWatch.Restart();
             }

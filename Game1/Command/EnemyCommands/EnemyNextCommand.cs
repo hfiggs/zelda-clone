@@ -1,32 +1,36 @@
-﻿using Game1.Environment;
+﻿/* Author: Hunter */
+
+using Game1.Enemy;
 using System.Diagnostics;
 using System.Linq;
 
 namespace Game1.Command
 {
-    class NextEnvironmentCommand : ICommand
+    class EnemyNextCommand : ICommand
     {
         private Game1 game;
 
         private Stopwatch stopWatch;
 
         private const int cooldown = 250; // ms
-        public NextEnvironmentCommand(Game1 game)
+
+        public EnemyNextCommand(Game1 game)
         {
             this.game = game;
 
             stopWatch = new Stopwatch();
             stopWatch.Start();
         }
+
         public void Execute()
         {
-            if(game.environmentList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
+            if(game.EnemyList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                IEnvironment first = game.environmentList.First();
+                IEnemy first = game.EnemyList.First();
 
-                game.environmentList.RemoveFirst();
+                game.EnemyList.RemoveFirst();
 
-                game.environmentList.AddLast(first);
+                game.EnemyList.AddLast(first);
 
                 stopWatch.Restart();
             }

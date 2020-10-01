@@ -1,12 +1,12 @@
 ﻿/* Author: Hunter */
 
-using Game1.Item;
+using Game1.Enemy;
 using System.Diagnostics;
 using System.Linq;
 
 namespace Game1.Command
 {
-    class ItemNextCommand : ICommand
+    class EnemyPrevCommand : ICommand
     {
         private Game1 game;
 
@@ -14,7 +14,7 @@ namespace Game1.Command
 
         private const int cooldown = 250; // ms
 
-        public ItemNextCommand(Game1 game)
+        public EnemyPrevCommand(Game1 game)
         {
             this.game = game;
 
@@ -24,13 +24,13 @@ namespace Game1.Command
 
         public void Execute()
         {
-            if(game.itemList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
+            if(game.EnemyList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                IItem first = game.itemList.First();
+                IEnemy last = game.EnemyList.Last();
 
-                game.itemList.RemoveFirst();
+                game.EnemyList.RemoveLast();
 
-                game.itemList.AddLast(first);
+                game.EnemyList.AddFirst(last);
 
                 stopWatch.Restart();
             }

@@ -10,11 +10,20 @@ namespace Game1.Environment
         public static LinkedList<IEnvironment> GetEnvironmentList()
         {
 
-            Vector2 position = new Vector2(100, 100);
+            Vector2 position = new Vector2(250, 300);
 
             LinkedList<IEnvironment> list = new LinkedList<IEnvironment>();
 
-            list.AddLast(new RoomBorder(position));
+            list.AddLast(new Block(position));
+            list.AddLast(new Black(position));
+            list.AddLast(new Bricks(position));
+            list.AddLast(new Floor(position));
+            list.AddLast(new Ladder(position));
+            list.AddLast(new Sand(position));
+            list.AddLast(new Stairs(position));
+            list.AddLast(new StatueDragon(position));
+            list.AddLast(new StatueFish(position));
+            list.AddLast(new Water(position));
 
             list.AddLast(new DoorEBlank(position));
             list.AddLast(new DoorEClosed(position));
@@ -40,16 +49,7 @@ namespace Game1.Environment
             list.AddLast(new DoorWOpen(position));
             list.AddLast(new DoorWLocked(position));
 
-            list.AddLast(new Black(position));
-            list.AddLast(new Block(position));
-            list.AddLast(new Bricks(position));
-            list.AddLast(new Floor(position));
-            list.AddLast(new Ladder(position));
-            list.AddLast(new Sand(position));
-            list.AddLast(new Stairs(position));
-            list.AddLast(new StatueDragon(position));
-            list.AddLast(new StatueFish(position));
-            list.AddLast(new Water(position));
+            list.AddLast(new RoomBorder(position));
 
             return list;
         }

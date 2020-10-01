@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Game1.Command
 {
-    class PrevEnvironmentCommand : ICommand
+    class EnvironmentPrevCommand : ICommand
     {
         private Game1 game;
 
@@ -16,7 +16,7 @@ namespace Game1.Command
 
         private const int cooldown = 250; // ms
 
-        public PrevEnvironmentCommand(Game1 game)
+        public EnvironmentPrevCommand(Game1 game)
         {
             this.game = game;
 
@@ -25,13 +25,13 @@ namespace Game1.Command
         }
         public void Execute()
         {
-            if (game.environmentList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
+            if (game.EnvironmentList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                IEnvironment last = game.environmentList.Last();
+                IEnvironment last = game.EnvironmentList.Last();
 
-                game.environmentList.RemoveLast();
+                game.EnvironmentList.RemoveLast();
 
-                game.environmentList.AddFirst(last);
+                game.EnvironmentList.AddFirst(last);
 
                 stopWatch.Restart();
             }

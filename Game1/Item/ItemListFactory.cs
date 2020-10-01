@@ -7,7 +7,7 @@ namespace Game1.Item
     {
         public static LinkedList<IItem> GetItemList()
         {
-            var itemPosition = new Vector2(200, 200);
+            var itemPosition = new Vector2(350, 300);
 
             var itemList = new LinkedList<IItem>();
             itemList.AddLast(new Bomb(itemPosition));

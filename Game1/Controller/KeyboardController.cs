@@ -41,18 +41,20 @@ namespace Game1.Controller
                 { Keys.D4, new PlayerUseItemCommand(game, 4) },
                 { Keys.NumPad4, new PlayerUseItemCommand(game, 4) },
 
-                { Keys.Y, new NextEnvironmentCommand(game) },
-                { Keys.T, new PrevEnvironmentCommand(game) },
+                { Keys.Y, new EnvironmentNextCommand(game) },
+                { Keys.T, new EnvironmentPrevCommand(game) },
 
                 { Keys.U, new ItemPrevCommand(game) },
-                { Keys.I, new ItemNextCommand(game) }
+                { Keys.I, new ItemNextCommand(game) },
+
+                { Keys.O, new EnemyPrevCommand(game) },
+                { Keys.P, new EnemyNextCommand(game) }
             };
         }
 
         public void Update()
         {
             var keys = Keyboard.GetState().GetPressedKeys();
-
 
             foreach (Keys k in keys)
             {
@@ -68,7 +70,6 @@ namespace Game1.Controller
                 }
 
             }
-
 
             if (movement.Count == 1)
             {

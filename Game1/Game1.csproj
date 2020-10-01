@@ -63,18 +63,19 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Command\NextEnvironmentCommand.cs" />
-    <Compile Include="Command\ItemPrevCommand.cs" />
-    <Compile Include="Command\ItemNextCommand.cs" />
-    <Compile Include="Command\PlayerDamageCommand.cs" />
-    <Compile Include="Command\PlayerUseItemCommand.cs" />
-    <Compile Include="Command\PlayerAttackCommand.cs" />
-    <Compile Include="Command\DoNothingCommand.cs" />
-    <Compile Include="Command\PlayerLeftCommand.cs" />
-    <Compile Include="Command\PlayerDownCommand.cs" />
-    <Compile Include="Command\PlayerUpCommand.cs" />
-    <Compile Include="Command\PlayerRightCommand.cs" />
-    <Compile Include="Command\PrevEnvironmentCommand.cs" />
+    <Compile Include="Command\EnemyCommands\EnemyNextCommand.cs" />
+    <Compile Include="Command\EnemyCommands\EnemyPrevCommand.cs" />
+    <Compile Include="Command\EnvironmentCommands\EnvironmentNextCommand.cs" />
+    <Compile Include="Command\ItemCommands\ItemPrevCommand.cs" />
+    <Compile Include="Command\ItemCommands\ItemNextCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerDamageCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerLeftCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerDownCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerUpCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerRightCommand.cs" />
+    <Compile Include="Command\EnvironmentCommands\EnvironmentPrevCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
     <Compile Include="Enemy\Dodongo\Dodongo.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateDown.cs" />
@@ -92,10 +93,11 @@
     <Compile Include="Enemy\IEnemyState.cs" />
     <Compile Include="Enemy\Bat\Bat.cs" />
     <Compile Include="Enemy\Bat\BatStateMoving.cs" />
+    <Compile Include="Enemy\EnemyListFactory.cs" />
     <Compile Include="Enemy\Jelly\Jelly.cs" />
     <Compile Include="Enemy\Jelly\JellyStateMoving.cs" />
     <Compile Include="Enemy\OldMan\OldMan.cs" />
-    <Compile Include="Enemy\Merchant.cs" />
+    <Compile Include="Enemy\Merchant\Merchant.cs" />
     <Compile Include="Enemy\Skeleton\Skeleton.cs" />
     <Compile Include="Enemy\Skeleton\SkeletonStateMoving.cs" />
     <Compile Include="Enemy\Snake\Snake.cs" />

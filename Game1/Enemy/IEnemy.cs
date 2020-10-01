@@ -3,7 +3,7 @@
 
 namespace Game1.Enemy
 {
-    interface IEnemy
+    public interface IEnemy
     {
         void Attack();
 

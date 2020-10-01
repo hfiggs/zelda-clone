@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace Game1.Enemy.SpikeTrap
+namespace Game1.Enemy
 {
     class SpikeTrap : IEnemy
     {

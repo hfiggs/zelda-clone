@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace Game1.Enemy.Dodongo
+namespace Game1.Enemy
 {
     class DodongoStateUp : IEnemyState
     {

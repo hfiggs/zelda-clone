@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace Game1.Enemy.SpikeTrap
+namespace Game1.Enemy
 {
     class SpikeTrapStateAttackNorth : IEnemyState
     {
