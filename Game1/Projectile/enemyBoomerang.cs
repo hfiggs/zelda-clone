@@ -66,13 +66,13 @@ namespace Game1.Projectile
 
             counter++;
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
             if (!returned) {
                 int columnOfSprite = sprite.GetColumnOfSprite();
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
-                spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, Color.White);
+                spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
             }
         }
     }

@@ -106,11 +106,11 @@ namespace Game1
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
             Player.Draw(spriteBatch,Color.White);
-            projectile.Draw(spriteBatch);
+            projectile.Draw(spriteBatch, Color.White);
 
-            ItemList.First.Value.Draw(spriteBatch);
-            EnvironmentList.First.Value.Draw(spriteBatch);
-            EnemyList.First.Value.Draw();
+            ItemList.First.Value.Draw(spriteBatch, Color.White);
+            EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
+            EnemyList.First.Value.Draw(spriteBatch, Color.White);
 
             Texture2D _texture;
             _texture = new Texture2D(GraphicsDevice, 1, 1);
@@ -119,7 +119,7 @@ namespace Game1
 
             foreach(IProjectile projectile in ProjectileList)
             {
-                projectile.Draw(spriteBatch);
+                projectile.Draw(spriteBatch, Color.White);
             }
 
             spriteBatch.End();

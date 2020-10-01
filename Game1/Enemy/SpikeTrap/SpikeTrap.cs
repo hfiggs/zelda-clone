@@ -11,9 +11,9 @@ namespace Game1.Enemy
     {
         private EnemyStateMachine stateMachine;
 
-        public SpikeTrap(Game1 game, SpriteBatch spriteBatch, Vector2 homePosition, int verticalRange, int horizontalRange)
+        public SpikeTrap(Game1 game, Vector2 homePosition, int verticalRange, int horizontalRange)
         {
-            stateMachine = new EnemyStateMachine(game, spriteBatch);
+            stateMachine = new EnemyStateMachine(game);
             stateMachine.SetState(new SpikeTrapStateHome(stateMachine, homePosition, verticalRange, horizontalRange));
         }
 
@@ -22,9 +22,9 @@ namespace Game1.Enemy
             // Cannot attack
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(Color.White);
+            stateMachine.Draw(spriteBatch,color);
         }
 
         public void ReceiveDamage()

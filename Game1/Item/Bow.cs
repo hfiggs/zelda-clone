@@ -17,9 +17,9 @@ public class Bow : IItem
         this.position = position;
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public void Draw(SpriteBatch spriteBatch, Color color)
     {
-        sprite.Draw(spriteBatch, position, Color.White);
+        sprite.Draw(spriteBatch, position, color);
     }
 
     public void Update(GameTime gameTime)

@@ -11,6 +11,6 @@ namespace Game1.Item
     public interface IItem
     {
         void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch, Color color);
     }
 }

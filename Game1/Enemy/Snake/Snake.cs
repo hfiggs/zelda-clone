@@ -10,7 +10,6 @@ namespace Game1.Enemy
         private Game1 game;
 
         ISprite sprite;
-        SpriteBatch spriteBatch;
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 150f; // ms per frame
@@ -29,11 +28,9 @@ namespace Game1.Enemy
         private const int normalSpeed = 1;
         private const int fastSpeed = 2;
 
-        public Snake(Game1 game, SpriteBatch spriteBatch, Vector2 position)
+        public Snake(Game1 game, Vector2 position)
         {
             this.game = game;
-
-            this.spriteBatch = spriteBatch;
 
             rand = new Random();
 
@@ -51,9 +48,9 @@ namespace Game1.Enemy
 
         public void Attack() { /* Cannot attack */ }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch,position,color);
         }
 
         public void ReceiveDamage()  { /* TODO: Receive damage */ }

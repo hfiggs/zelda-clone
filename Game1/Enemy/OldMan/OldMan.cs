@@ -9,14 +9,11 @@ namespace Game1.Enemy
     {
         ISprite sprite;
 
-        SpriteBatch spritebatch;
         Vector2 position;
 
-        public OldMan(SpriteBatch spritebatch, Vector2 position)
+        public OldMan(Vector2 position)
         {
             sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
-
-            this.spritebatch = spritebatch;
 
             this.position = position;
         }
@@ -26,9 +23,9 @@ namespace Game1.Enemy
             // Cannot attack
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spritebatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, color);
         }
 
         public void ReceiveDamage()

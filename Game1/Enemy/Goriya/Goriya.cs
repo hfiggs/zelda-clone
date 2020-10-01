@@ -8,9 +8,9 @@ namespace Game1.Enemy
     {
         private EnemyStateMachine stateMachine;
         private Vector2 oldDirection;
-        public Goriya(Game1 game, SpriteBatch spriteBatch, Vector2 spawnPosition)
+        public Goriya(Game1 game, Vector2 spawnPosition)
         {
-            stateMachine = new EnemyStateMachine(game, spriteBatch);
+            stateMachine = new EnemyStateMachine(game);
             stateMachine.SetState(new GoriyaStateMovingRight(stateMachine, spawnPosition));
             oldDirection = stateMachine.GetDirection();
         }
@@ -25,9 +25,9 @@ namespace Game1.Enemy
             stateMachine.ReceiveDamage();
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(Color.White);
+            stateMachine.Draw(spriteBatch,color);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)

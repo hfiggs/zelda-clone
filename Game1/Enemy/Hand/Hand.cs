@@ -11,9 +11,9 @@ namespace Game1.Enemy
     class Hand : IEnemy
     {
         private EnemyStateMachine stateMachine;
-        public Hand(Game1 game, SpriteBatch spriteBatch, Vector2 spawnPosition)
+        public Hand(Game1 game, Vector2 spawnPosition)
         {
-            stateMachine = new EnemyStateMachine(game, spriteBatch);
+            stateMachine = new EnemyStateMachine(game);
             stateMachine.SetState(new HandStateMoving(stateMachine, spawnPosition));
         }
 
@@ -27,9 +27,9 @@ namespace Game1.Enemy
             stateMachine.ReceiveDamage();
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(Color.White);
+            stateMachine.Draw(spriteBatch, color);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)

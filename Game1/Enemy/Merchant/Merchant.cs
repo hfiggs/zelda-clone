@@ -8,12 +8,10 @@ namespace Game1.Enemy
     {
         ISprite mySprite;
         Vector2 position;
-        SpriteBatch spriteBatch;
 
         public Merchant(SpriteBatch spriteBatch, Vector2 position)
         {
             mySprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
-            this.spriteBatch = spriteBatch;
             this.position = position;
         }
 
@@ -22,9 +20,9 @@ namespace Game1.Enemy
             // Do Nothing
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            mySprite.Draw(spriteBatch, position, Color.White);
+            mySprite.Draw(spriteBatch, position, color);
         }
 
         public void ReceiveDamage()

@@ -8,9 +8,9 @@ namespace Game1.Enemy
     {
         private EnemyStateMachine stateMachine;
 
-        public Dodongo(Game1 game, SpriteBatch spriteBatch, Vector2 position)
+        public Dodongo(Game1 game, Vector2 position)
         {
-            stateMachine = new EnemyStateMachine(game, spriteBatch);
+            stateMachine = new EnemyStateMachine(game);
 
             switch ((new Random()).Next(4))
             {
@@ -31,9 +31,9 @@ namespace Game1.Enemy
 
         public void Attack() {  /* Cannot attack */ }
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(Color.White);
+            stateMachine.Draw(spriteBatch, color);
         }
 
         public void ReceiveDamage() {  /* TODO: Receive damage */ }

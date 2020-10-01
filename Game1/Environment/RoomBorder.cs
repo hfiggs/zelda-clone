@@ -22,9 +22,9 @@ namespace Game1.Environment
         {
             throw new NotImplementedException("For collision mechanics later");
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, color);
         }
     }
 }

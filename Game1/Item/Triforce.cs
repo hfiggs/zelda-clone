@@ -23,7 +23,7 @@ public class Triforce : IItem
         timeTillSwap = flashTimer;
 	}
 
-    public void Draw(SpriteBatch spriteBatch)
+    public void Draw(SpriteBatch spriteBatch, Color UNUSED)
     {
         sprite.Draw(spriteBatch, position, color);
     }

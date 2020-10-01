@@ -51,16 +51,16 @@ namespace Game1.Projectile
             position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             topAndBottomModifier += slightChangeInY * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
             int columnOfSprite = sprite.GetColumnOfSprite();
             Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
             Rectangle middleFireball = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
             Rectangle upperFireball = new Rectangle((int)position.X, (int)(position.Y - topAndBottomModifier), sourceRectangle.Width, sourceRectangle.Height);
             Rectangle lowerFireball = new Rectangle((int)position.X, (int)(position.Y + topAndBottomModifier), sourceRectangle.Width, sourceRectangle.Height);
-            spriteBatch.Draw(sprite.GetTexture(), middleFireball, sourceRectangle, Color.White);
-            spriteBatch.Draw(sprite.GetTexture(), upperFireball, sourceRectangle, Color.White);
-            spriteBatch.Draw(sprite.GetTexture(), lowerFireball, sourceRectangle, Color.White);
+            spriteBatch.Draw(sprite.GetTexture(), middleFireball, sourceRectangle, color);
+            spriteBatch.Draw(sprite.GetTexture(), upperFireball, sourceRectangle, color);
+            spriteBatch.Draw(sprite.GetTexture(), lowerFireball, sourceRectangle, color);
         }
     }
 }
