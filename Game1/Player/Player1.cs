@@ -12,7 +12,7 @@ namespace Game1.Player
     {
         Game1 game;
         int currentItem;
-        IPlayerState state;
+        private IPlayerState state;
 
         public Player1(Game1 game, Vector2 position)
         {
