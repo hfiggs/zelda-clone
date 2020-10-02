@@ -1,14 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Game1.Projectile
 {
     class Fireballs : IProjectile
     {
-        private int rowModifier, yDistance, xDistance, counter;
+        private int rowModifier, counter;
         private ProjectileSpriteSheet sprite;
-        private Vector2 position;
-        private float moveSpeed, slightChangeInY, largeChangeInY, topAndBottomModifier;
+        private Vector2 position, directionOfPlayer;
+        private float moveSpeed, slightChangeInY, topAndBottomModifier;
 
         public Fireballs(Vector2 position, Rectangle rec)
         {
@@ -16,26 +17,16 @@ namespace Game1.Projectile
             rowModifier = 0;
             counter = 0;
             topAndBottomModifier = 0;
-            moveSpeed = 400;
+            moveSpeed = 200;
             slightChangeInY = 100;
-            largeChangeInY = 200;
             this.position = position;
-            Rectangle playerRec = rec;
-            xDistance = (int)position.X - playerRec.X;
-            yDistance = (int)position.Y - playerRec.Y;
+            directionOfPlayer = Vector2.Normalize(position - new Vector2(rec.X, rec.Y));
         }
         public void Update(GameTime gameTime)
         {
-            // Cases for each fireball direction
-            if (yDistance >= xDistance) {
-                position.Y -= largeChangeInY * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            } else if (yDistance >= xDistance/2) {
-                position.Y -= slightChangeInY * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            } else if (-yDistance >= xDistance) {
-                position.Y += largeChangeInY * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            } else if (-yDistance >= xDistance / 2) {
-                position.Y += slightChangeInY * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
+            // Rounding is to make it less accurate so it's more like the game
+            position.Y -= (float)Math.Round(directionOfPlayer.Y, 1) * moveSpeed * (float)Math.Round((float)gameTime.ElapsedGameTime.TotalSeconds, 2);
+            position.X -= directionOfPlayer.X * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Used to change sprite sheet row and allow for flashing
             if (counter % 5 == 0) {
@@ -47,8 +38,7 @@ namespace Game1.Projectile
             }
 
             counter++;
-
-            position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            
             topAndBottomModifier += slightChangeInY * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
