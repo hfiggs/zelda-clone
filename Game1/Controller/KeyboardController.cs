@@ -38,8 +38,6 @@ namespace Game1.Controller
                 { Keys.NumPad2, new PlayerUseItemCommand(game, 2) },
                 { Keys.D3, new PlayerUseItemCommand(game, 3) },
                 { Keys.NumPad3, new PlayerUseItemCommand(game, 3) },
-                { Keys.D4, new PlayerUseItemCommand(game, 4) },
-                { Keys.NumPad4, new PlayerUseItemCommand(game, 4) },
 
                 { Keys.Y, new EnvironmentNextCommand(game) },
                 { Keys.T, new EnvironmentPrevCommand(game) },

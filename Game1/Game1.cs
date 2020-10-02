@@ -25,8 +25,6 @@ namespace Game1
         private List<IController> controllerList;
         
         public IPlayer Player { get; set; }
-
-        private IProjectile projectile;
         public LinkedList<IItem> ItemList { get; set; }
         public LinkedList<IEnvironment> EnvironmentList { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
@@ -61,7 +59,6 @@ namespace Game1
             Player = new Player1(this, new Vector2(75, 325));
 
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
-            projectile = new Boomerang('E', Player);
 
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             ItemList = ItemListFactory.GetItemList();
@@ -86,7 +83,6 @@ namespace Game1
             }
 
             Player.Update(gameTime);
-            projectile.Update(gameTime);
        
             ItemList.First.Value.Update(gameTime);
             EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 800, 400));
@@ -106,7 +102,6 @@ namespace Game1
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
             Player.Draw(spriteBatch,Color.White);
-            projectile.Draw(spriteBatch, Color.White);
 
             ItemList.First.Value.Draw(spriteBatch, Color.White);
             EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
