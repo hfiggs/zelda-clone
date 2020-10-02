@@ -26,7 +26,7 @@ namespace Game1.Sprite
         {
         }
 
-       public void Draw(SpriteBatch spriteBatch, Vector2 position)
+       public void Draw(SpriteBatch spriteBatch, Vector2 position, Color color)
         {
             int width = texture.Width / columns;
             int height = texture.Height / rows;
@@ -36,7 +36,7 @@ namespace Game1.Sprite
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, color);
         }
     }
     

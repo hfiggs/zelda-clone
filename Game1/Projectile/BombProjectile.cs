@@ -25,13 +25,13 @@ namespace Game1.Projectile
                 detonated = true;
             }
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
             if (!detonated) {
                 int columnOfSprite = sprite.GetColumnOfSprite();
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, 0);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
-                spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, Color.White);
+                spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
             }
         }
     }

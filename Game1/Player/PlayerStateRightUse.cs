@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Projectile;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
@@ -8,8 +9,9 @@ namespace Game1.Player
 {
     class PlayerStateRightUse : IPlayerState
     {
-        private PlayerStateFactory stateFactory;
+        private IPlayer player;
         public ISprite Sprite { get; private set; }
+        private IProjectile projectile;
 
         private Vector2 position;
 
@@ -19,15 +21,30 @@ namespace Game1.Player
         private const float animationTime = 150f; // ms per frame
         private const int animationFrames = 3;
 
-        public PlayerStateRightUse(PlayerStateFactory stateFactory, Vector2 position)
+        public PlayerStateRightUse(IPlayer player, Vector2 position)
         {
-            this.stateFactory = stateFactory;
+            this.player = player;
             Sprite = PlayerSpriteFactory.Instance.CreateUseItemRightSprite();
 
             this.position = position;
 
             frameCount = 0;
             timeUntilNextFrame = animationTime;
+
+            switch (player.getItem())
+            {
+                case 1:
+                    projectile = new Arrow('E', new Vector2(position.X + 50, position.Y + 40));
+                    break;
+                case 2:
+                    projectile = new Boomerang('E', player);
+                    break;
+                case 3:
+                    projectile = new BombProjectile(new Vector2(position.X + 60 ,position.Y + 40));
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Attack()
@@ -70,7 +87,8 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
-                stateFactory.SetState(new PlayerStateRight(stateFactory, position));
+                player.spawnProjectile(projectile);
+                player.SetState(new PlayerStateRight(player, position));
             }
         }
 

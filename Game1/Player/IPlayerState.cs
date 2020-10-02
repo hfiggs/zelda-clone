@@ -8,7 +8,7 @@ using Game1.Sprite;
 
 namespace Game1.Player
 {
-    interface IPlayerState
+    public interface IPlayerState
     {
         void MoveLeft();
 

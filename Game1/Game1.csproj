@@ -40,22 +40,133 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Command\PlayerDamageCommand.cs" />
-    <Compile Include="Command\PlayerUseItemCommand.cs" />
-    <Compile Include="Command\PlayerAttackCommand.cs" />
-    <Compile Include="Command\DoNothingCommand.cs" />
-    <Compile Include="Command\PlayerLeftCommand.cs" />
-    <Compile Include="Command\PlayerDownCommand.cs" />
-    <Compile Include="Command\PlayerUpCommand.cs" />
-    <Compile Include="Command\PlayerRightCommand.cs" />
+    <Compile Include="Command\EnemyCommands\EnemyNextCommand.cs" />
+    <Compile Include="Command\EnemyCommands\EnemyPrevCommand.cs" />
+    <Compile Include="Command\EnvironmentCommands\EnvironmentNextCommand.cs" />
+    <Compile Include="Command\ItemCommands\ItemPrevCommand.cs" />
+    <Compile Include="Command\ItemCommands\ItemNextCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerDamageCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerLeftCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerDownCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerUpCommand.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerRightCommand.cs" />
+    <Compile Include="Command\EnvironmentCommands\EnvironmentPrevCommand.cs" />
+    <Compile Include="Command\ResetCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
+    <Compile Include="Enemy\Dodongo\Dodongo.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateDown.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateUp.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateRight.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateLeft.cs" />
+    <Compile Include="Enemy\EnemyStateMachine.cs" />
+    <Compile Include="Enemy\Goriya\Goriya.cs" />
+    <Compile Include="Enemy\Goriya\GoriyaStateMovingLeft.cs" />
+    <Compile Include="Enemy\Goriya\GoriyaStateMovingRight.cs" />
+    <Compile Include="Enemy\Goriya\GoriyaStateMovingUp.cs" />
+    <Compile Include="Enemy\Hand\Hand.cs" />
+    <Compile Include="Enemy\Hand\HandStateMoving.cs" />
+    <Compile Include="Enemy\IEnemy.cs" />
+    <Compile Include="Enemy\IEnemyState.cs" />
+    <Compile Include="Enemy\Bat\Bat.cs" />
+    <Compile Include="Enemy\Bat\BatStateMoving.cs" />
+    <Compile Include="Enemy\EnemyListFactory.cs" />
+    <Compile Include="Enemy\Jelly\Jelly.cs" />
+    <Compile Include="Enemy\Jelly\JellyStateMoving.cs" />
+    <Compile Include="Enemy\OldMan\OldMan.cs" />
+    <Compile Include="Enemy\Merchant\Merchant.cs" />
+    <Compile Include="Enemy\Skeleton\Skeleton.cs" />
+    <Compile Include="Enemy\Skeleton\SkeletonStateMoving.cs" />
+    <Compile Include="Enemy\Snake\Snake.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrap.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackWest.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackEast.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackSouth.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackNorth.cs" />
+    <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
+    <Compile Include="Environment\EnvironmentListFactory.cs" />
+    <Compile Include="Environment\Tiles\Fire.cs" />
+    <Compile Include="Sprite\EnemySprite.cs" />
+    <Compile Include="Sprite\EnemySpriteFactory.cs" />
+    <Compile Include="Environment\Doors\DoorSHole.cs" />
+    <Compile Include="Environment\Doors\DoorSClosed.cs" />
+    <Compile Include="Environment\Doors\DoorSLocked.cs" />
+    <Compile Include="Environment\Doors\DoorSOpen.cs" />
+    <Compile Include="Environment\Doors\DoorSBlank.cs" />
+    <Compile Include="Environment\Doors\DoorWHole.cs" />
+    <Compile Include="Environment\Doors\DoorWClosed.cs" />
+    <Compile Include="Environment\Doors\DoorWLocked.cs" />
+    <Compile Include="Environment\Doors\DoorWOpen.cs" />
+    <Compile Include="Environment\Doors\DoorWBlank.cs" />
+    <Compile Include="Environment\Doors\DoorEHole.cs" />
+    <Compile Include="Environment\Doors\DoorEClosed.cs" />
+    <Compile Include="Environment\Doors\DoorELocked.cs" />
+    <Compile Include="Environment\Doors\DoorEOpen.cs" />
+    <Compile Include="Environment\Doors\DoorEBlank.cs" />
+    <Compile Include="Environment\Doors\DoorNHole.cs" />
+    <Compile Include="Environment\Doors\DoorNClosed.cs" />
+    <Compile Include="Environment\Doors\DoorNLocked.cs" />
+    <Compile Include="Environment\Doors\DoorNOpen.cs" />
+    <Compile Include="Environment\Doors\DoorNBlank.cs" />
+    <Compile Include="Environment\EnvironmentSprite.cs" />
+    <Compile Include="Environment\RoomBorder.cs" />
+    <Compile Include="Environment\Tiles\Bricks.cs" />
+    <Compile Include="Environment\Tiles\Ladder.cs" />
+    <Compile Include="Environment\Tiles\StatueFish.cs" />
+    <Compile Include="Environment\Tiles\StatueDragon.cs" />
+    <Compile Include="Environment\Tiles\Black.cs" />
+    <Compile Include="Environment\Tiles\Sand.cs" />
+    <Compile Include="Environment\Tiles\Water.cs" />
+    <Compile Include="Environment\Tiles\Stairs.cs" />
+    <Compile Include="Environment\Tiles\Floor.cs" />
+    <Compile Include="Environment\Tiles\Block.cs" />
+    <Compile Include="Environment\EnvironmentSpriteFactory.cs" />
+    <Compile Include="Environment\IEnvironment.cs" />
+    <Compile Include="Environment\SpriteSheet.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Controller\IController.cs" />
+    <Compile Include="Item\Bomb.cs" />
+    <Compile Include="Item\Bow.cs" />
+    <Compile Include="Item\Clock.cs" />
+    <Compile Include="Item\Compass.cs" />
+    <Compile Include="Item\Fairy.cs" />
+    <Compile Include="Item\Heart.cs" />
+    <Compile Include="Item\HeartContainer.cs" />
+    <Compile Include="Item\IItem.cs" />
+    <Compile Include="Item\ItemBoomerang.cs" />
+    <Compile Include="Item\ItemListFactory.cs" />
+    <Compile Include="Item\Key.cs" />
+    <Compile Include="Item\Map.cs" />
+    <Compile Include="Item\RupeeBlue.cs" />
+    <Compile Include="Item\RupeeYellow.cs" />
+    <Compile Include="Item\Triforce.cs" />
     <Compile Include="Player\DamagedPlayer.cs" />
     <Compile Include="Player\PlayerStateDownUse.cs" />
-    <Compile Include="Player\PlayerStateFactory.cs" />
     <Compile Include="Player\PlayerStateLeft.cs" />
     <Compile Include="Player\PlayerStateDown.cs" />
     <Compile Include="Player\PlayerStateLeftUse.cs" />
@@ -76,15 +187,18 @@
     <Compile Include="Projectile\BombProjectile.cs" />
     <Compile Include="Projectile\EnemyBoomerang.cs" />
     <Compile Include="Projectile\Fireballs.cs" />
-    <Compile Include="Projectile\IProjectile.cs" />
     <Compile Include="Projectile\ProjectileSpriteFactory.cs" />
     <Compile Include="Projectile\ProjectileSpriteSheet.cs" />
     <Compile Include="Projectile\SwordBeam.cs" />
+    <Compile Include="Projectile\IProjectile.cs" />
+    <Compile Include="Sprite\ItemSprite.cs" />
+    <Compile Include="Sprite\ItemSpriteFactory.cs" />
     <Compile Include="Sprite\PlayerSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enemy\Goriya\GoriyaStateMovingDown.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -100,6 +214,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

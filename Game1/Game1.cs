@@ -7,9 +7,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Controller;
+using Game1.Sprite;
+using Game1.Enemy;
 using System.Collections.Generic;
 using Game1.Player;
 using Game1.Projectile;
+using Game1.Environment;
+using Game1.Item;
 
 namespace Game1
 {
@@ -19,11 +23,13 @@ namespace Game1
         private SpriteBatch spriteBatch;
 
         private List<IController> controllerList;
-
+        
         public IPlayer Player { get; set; }
-        // TEMP TEMP TEMP TEMP 
-        private IProjectile projectile;
-        // TEMP TEMP TEMP TEMP
+        public LinkedList<IItem> ItemList { get; set; }
+        public LinkedList<IEnvironment> EnvironmentList { get; set; }
+        public LinkedList<IEnemy> EnemyList { get; set; }
+        private LinkedList<IProjectile> ProjectileList { get; set; }
+
         public Game1()
         {
             Graphics = new GraphicsDeviceManager(this);
@@ -38,6 +44,8 @@ namespace Game1
                 new KeyboardController(this)
             };
 
+            ProjectileList = new LinkedList<IProjectile>();
+
             IsMouseVisible = true;
 
             base.Initialize();
@@ -47,13 +55,19 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
+            Player = new Player1(this, new Vector2(75, 325));
+
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
 
-            Player = new Player1(this, new Vector2(400, 250), spriteBatch);
-            projectile = new Boomerang('E', Player);
-            // TEMP TEMP TEMP TEMP
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            ItemList = ItemListFactory.GetItemList();
+
+            EnvironmentSpriteFactory.instance.LoadContent(Content);
+            EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
+
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            EnemyList = EnemyListFactory.GetEnemyList(this, spriteBatch);
         }
 
         protected override void UnloadContent()
@@ -68,28 +82,69 @@ namespace Game1
                controller.Update();
             }
 
-            // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
-            projectile.Update(gameTime);
-            // TEMP TEMP TEMP TEMP
+       
+            ItemList.First.Value.Update(gameTime);
+            EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 800, 400));
+            EnvironmentList.First.Value.BehaviorUpdate(gameTime);
+
+            foreach(IProjectile projectile in ProjectileList)
+            {
+                projectile.Update(gameTime);
+            }
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
-            // TEMP TEMP TEMP TEMP
-            Player.Draw(Color.White);
-            projectile.Draw(spriteBatch);
-            // TEMP TEMP TEMP TEMP
+            Player.Draw(spriteBatch,Color.White);
+
+            ItemList.First.Value.Draw(spriteBatch, Color.White);
+            EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
+            EnemyList.First.Value.Draw(spriteBatch, Color.White);
+
+            Texture2D _texture;
+            _texture = new Texture2D(GraphicsDevice, 1, 1);
+            _texture.SetData(new Color[] { Color.White });
+            //spriteBatch.Draw(_texture, GetPlayerRectangle(), Color.White);
+
+            foreach(IProjectile projectile in ProjectileList)
+            {
+                projectile.Draw(spriteBatch, Color.White);
+            }
 
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public Rectangle GetPlayerRectangle()
+        {
+            return Player.GetLocation();
+        }
+
+        public Vector2 GetWindowDimensions()
+        {
+            return new Vector2(Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight);
+        }
+
+        public void SpawnProjectile(IProjectile projectile)
+        {
+            ProjectileList.AddLast(projectile);
+        }
+
+        public void Reset()
+        {
+            Player = new Player1(this, new Vector2(75, 325));
+            ProjectileList = new LinkedList<IProjectile>();
+            ItemList = ItemListFactory.GetItemList();
+            EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
+            EnemyList = EnemyListFactory.GetEnemyList(this, spriteBatch);
         }
     }
 }
