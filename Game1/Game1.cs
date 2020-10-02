@@ -136,5 +136,14 @@ namespace Game1
         {
             ProjectileList.AddLast(projectile);
         }
+
+        public void Reset()
+        {
+            Player = new Player1(this, new Vector2(75, 325));
+            ProjectileList = new LinkedList<IProjectile>();
+            ItemList = ItemListFactory.GetItemList();
+            EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
+            EnemyList = EnemyListFactory.GetEnemyList(this, spriteBatch);
+        }
     }
 }

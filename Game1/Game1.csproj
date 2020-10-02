@@ -76,6 +76,7 @@
     <Compile Include="Command\PlayerCommands\PlayerUpCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerRightCommand.cs" />
     <Compile Include="Command\EnvironmentCommands\EnvironmentPrevCommand.cs" />
+    <Compile Include="Command\ResetCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
     <Compile Include="Enemy\Dodongo\Dodongo.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateDown.cs" />
