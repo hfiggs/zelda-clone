@@ -44,17 +44,10 @@ namespace Game1.Projectile
                 currentLocation.Location = new Point((int)position.X, (int)position.Y);
                 Rectangle playerRectangle = player.GetLocation();
 
-                if (currentLocation.X < playerRectangle.X) {
-                    position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (currentLocation.X > playerRectangle.X) {
-                    position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                }
-
-                if (currentLocation.Y < playerRectangle.Y) {
-                    position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (currentLocation.Y > playerRectangle.Y) {
-                    position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                }
+                Vector2 positionDiff = new Vector2(currentLocation.X, currentLocation.Y) - new Vector2(player.GetLocation().X, player.GetLocation().Y);
+                positionDiff = Vector2.Normalize(positionDiff);
+                position.X -= positionDiff.X * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                position.Y -= positionDiff.Y * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
                 returned = currentLocation.Intersects(playerRectangle);
             }
