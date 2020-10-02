@@ -18,9 +18,9 @@ namespace Game1.Environment
             sprite = EnvironmentSpriteFactory.instance.createRoom();
             this.position = position;
         }
-        public void BehaviorUpdate()
+        public void BehaviorUpdate(GameTime gameTime)
         {
-            throw new NotImplementedException("For collision mechanics later");
+            //throw new NotImplementedException("For collision mechanics later");
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {

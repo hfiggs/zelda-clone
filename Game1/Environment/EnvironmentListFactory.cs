@@ -51,6 +51,8 @@ namespace Game1.Environment
 
             list.AddLast(new RoomBorder(position));
 
+            list.AddLast(new Fire(position));
+
             return list;
         }
     }

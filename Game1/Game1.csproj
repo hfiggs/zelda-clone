@@ -109,6 +109,7 @@
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackNorth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
     <Compile Include="Environment\EnvironmentListFactory.cs" />
+    <Compile Include="Environment\Tiles\Fire.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
     <Compile Include="Sprite\EnemySpriteFactory.cs" />
     <Compile Include="Environment\Doors\DoorSHole.cs" />

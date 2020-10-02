@@ -20,9 +20,9 @@ namespace Game1.Environment
             this.position = position;
         }
 
-        public void BehaviorUpdate()
+        public void BehaviorUpdate(GameTime gameTime)
         {
-            throw new NotImplementedException("For later collision mechanics");
+            //throw new NotImplementedException("For later collision mechanics");
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
