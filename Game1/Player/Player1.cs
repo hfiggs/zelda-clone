@@ -48,7 +48,7 @@ namespace Game1.Player
 
         public void UseItem(int item)
         {
-            
+            currentItem = item;
             state.UseItem();
         }
 
@@ -87,6 +87,16 @@ namespace Game1.Player
         public void SetState(IPlayerState state)
         {
             this.state = state;
+        }
+
+        public int getItem()
+        {
+            return currentItem;
+        }
+
+        public void spawnProjectile(IProjectile projectile)
+        {
+            game.SpawnProjectile(projectile);
         }
     }
 }

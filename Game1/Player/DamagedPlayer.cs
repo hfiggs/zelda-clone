@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -110,6 +111,16 @@ namespace Game1.Player
         public void SetState(IPlayerState state)
         {
             decoratedPlayer.SetState(state);
+        }
+
+        public int getItem()
+        {
+            return decoratedPlayer.getItem();
+        }
+
+        public void spawnProjectile(IProjectile projectile)
+        {
+            game.SpawnProjectile(projectile);
         }
     }
 }

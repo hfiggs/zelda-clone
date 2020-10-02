@@ -3,9 +3,10 @@
     "",
     "\\Game1",
     "\\Game1\\Controller",
+    "\\Game1\\Player",
     "\\Game1\\Properties",
     "\\Game1\\Sprite"
   ],
-  "SelectedNode": "\\Game1\\Sprite\\NotAnimatedMovingSprite.cs",
+  "SelectedNode": "\\Game1\\Player\\PlayerStateLeft.cs",
   "PreviewInSolutionExplorer": false
 }

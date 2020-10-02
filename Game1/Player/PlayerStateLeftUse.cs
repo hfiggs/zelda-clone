@@ -11,6 +11,7 @@ namespace Game1.Player
     {
         private IPlayer player;
         public ISprite Sprite { get; private set; }
+        private IProjectile projectile;
 
         private Vector2 position;
 
@@ -29,6 +30,21 @@ namespace Game1.Player
 
             frameCount = 0;
             timeUntilNextFrame = animationTime;
+
+            switch (player.getItem())
+            {
+                case 1:
+                    projectile = new Arrow('W', new Vector2(position.X, position.Y + 40));
+                    break;
+                case 2:
+                    projectile = new Boomerang('W', player);
+                    break;
+                case 3:
+                    projectile = new BombProjectile(new Vector2(position.X, position.Y + 40));
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Attack()
@@ -71,6 +87,7 @@ namespace Game1.Player
             }
             else if (frameCount == animationFrames)
             {
+                player.spawnProjectile(projectile);
                 player.SetState(new PlayerStateLeft(player, position));
             }
         }

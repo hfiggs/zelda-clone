@@ -2,6 +2,7 @@
  * Jared Perkins
  * Hunter Figgs */
 
+using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -32,5 +33,9 @@ namespace Game1.Player
         char GetDirection();
 
         void SetState(IPlayerState state);
+
+        int getItem();
+
+        void spawnProjectile(IProjectile projectile);
     }
 }

@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Projectile;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,6 +12,7 @@ namespace Game1.Player
     {
         private IPlayer player;
         public ISprite Sprite { get; private set; }
+        private IProjectile projectile;
         private Vector2 position;
 
         private float timeUntilNextFrame; // ms
@@ -27,6 +29,22 @@ namespace Game1.Player
             this.position = position;
             frameCount = 0;
             timeUntilNextFrame = animationTime;
+
+            switch (player.getItem())
+            {
+                case 1:
+                    projectile = new Arrow('N', new Vector2(position.X + 20, position.Y));
+                    break;
+                case 2:
+                    projectile = new Boomerang('N', player);
+                    break;
+                case 3:
+                    projectile = new BombProjectile(new Vector2(position.X + 20, position.Y));
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         public void Attack()
@@ -69,6 +87,7 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
+                player.spawnProjectile(projectile);
                 player.SetState(new PlayerStateUp(player, position));
             }
         }
