@@ -46,8 +46,6 @@ namespace Game1.Enemy
             timeUntilNextFrame = animationTime;
         }
 
-        public void Attack() { /* Cannot attack */ }
-
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch,position,color);

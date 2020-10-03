@@ -29,8 +29,6 @@ namespace Game1.Enemy
             }
         }
 
-        public void Attack() {  /* Cannot attack */ }
-
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             stateMachine.Draw(spriteBatch, color);

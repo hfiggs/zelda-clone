@@ -17,11 +17,6 @@ namespace Game1.Enemy
             stateMachine.SetState(new SpikeTrapStateHome(stateMachine, homePosition, verticalRange, horizontalRange));
         }
 
-        public void Attack()
-        {
-            // Cannot attack
-        }
-
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             stateMachine.Draw(spriteBatch,color);

@@ -15,11 +15,6 @@ namespace Game1.Enemy
             oldDirection = stateMachine.GetDirection();
         }
 
-        public void Attack()
-        {
-            stateMachine.Attack();
-        }
-
         public void ReceiveDamage()
         {
             stateMachine.ReceiveDamage();

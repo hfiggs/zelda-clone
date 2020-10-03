@@ -17,11 +17,6 @@ namespace Game1.Enemy
             stateMachine.SetState(new HandStateMoving(stateMachine, spawnPosition));
         }
 
-        public void Attack()
-        {
-            stateMachine.Attack();
-        }
-
         public void ReceiveDamage()
         {
             stateMachine.ReceiveDamage();

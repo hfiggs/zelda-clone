@@ -18,11 +18,6 @@ namespace Game1.Enemy
             this.position = position;
         }
 
-        public void Attack()
-        {
-            // Cannot attack
-        }
-
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, position, color);

@@ -15,11 +15,6 @@ namespace Game1.Enemy
             this.position = position;
         }
 
-        public void Attack()
-        {
-            // Do Nothing
-        }
-
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             mySprite.Draw(spriteBatch, position, color);
