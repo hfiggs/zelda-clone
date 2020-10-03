@@ -85,7 +85,7 @@ namespace Game1
             Player.Update(gameTime);
        
             ItemList.First.Value.Update(gameTime);
-            EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 800, 400));
+            EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 700, 400));
             EnvironmentList.First.Value.BehaviorUpdate(gameTime);
 
             foreach(IProjectile projectile in ProjectileList)

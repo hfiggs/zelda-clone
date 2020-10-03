@@ -8,6 +8,8 @@ namespace Game1.Enemy
     {
         private EnemyStateMachine stateMachine;
         private Vector2 oldDirection;
+        private double totalElapsedSeconds;
+        private double attackCooldown = 5;
         public Goriya(Game1 game, Vector2 spawnPosition)
         {
             stateMachine = new EnemyStateMachine(game);
@@ -28,8 +30,15 @@ namespace Game1.Enemy
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
             Vector2 newDirection = stateMachine.GetDirection();
+            totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (totalElapsedSeconds >= attackCooldown)
+            {
+                stateMachine.Attack();
+                totalElapsedSeconds -= attackCooldown;
+            }
+
             if (newDirection.X != oldDirection.X || newDirection.Y != oldDirection.Y) {
-                Console.WriteLine("Here");
                 if (stateMachine.GetDirection().X < 0)
                 {
                     stateMachine.SetState(new GoriyaStateMovingLeft(stateMachine, stateMachine.GetPosition()));

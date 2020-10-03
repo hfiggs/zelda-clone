@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Projectile;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
@@ -59,6 +60,11 @@ namespace Game1.Enemy
         public Vector2 GetWindowDimensions()
         {
             return game.GetWindowDimensions();
+        }
+
+        public void spawnProjectile(IProjectile projectile)
+        {
+            game.SpawnProjectile(projectile);
         }
     }
 }

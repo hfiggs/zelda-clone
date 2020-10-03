@@ -1,10 +1,11 @@
-﻿using Game1.Sprite;
+﻿using Game1.Projectile;
+using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
 
 namespace Game1.Enemy
 {
-    class GoriyaStateMovingUp : IEnemyState
+    class GoriyaStateAttackingLeft : IEnemyState
     {
         private EnemyStateMachine stateMachine;
         public ISprite Sprite { get; private set; }
@@ -12,21 +13,24 @@ namespace Game1.Enemy
         private Vector2 direction;
         private Vector2 position;
         private const int moveSpeed = 2;
+        private IProjectile projectile;
         private double totalElapsedSeconds = 0;
         double MovementChangeTimeSeconds;
 
-        public GoriyaStateMovingUp(EnemyStateMachine stateMachine, Vector2 position)
+        public GoriyaStateAttackingLeft(EnemyStateMachine stateMachine, Vector2 position)
         {
             this.stateMachine = stateMachine;
             this.position = position;
-            this.direction = new Vector2(0, -1 * moveSpeed);
-            this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
-            Sprite = EnemySpriteFactory.Instance.CreateGoriyaUpSprite();
+            this.direction = new Vector2(-1 * moveSpeed, 0);
+            this.MovementChangeTimeSeconds = 2;
+            Sprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
+            projectile = new EnemyBoomerang('W', position);
+            stateMachine.spawnProjectile(projectile);
         }
 
         public void Attack()
         {
-            stateMachine.SetState(new GoriyaStateAttackingUp(stateMachine, position));
+
         }
 
         public void ReceiveDamage()
@@ -46,10 +50,9 @@ namespace Game1.Enemy
                 this.direction = GetRandomDirection();
                 this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             }
-            if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
-            {
-                position += direction;
-            }
+
+            stateMachine.spawnProjectile(projectile);
+
             Sprite.Update();
 
         }
@@ -63,7 +66,6 @@ namespace Game1.Enemy
         {
             return direction;
         }
-
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
             Random random = new Random();

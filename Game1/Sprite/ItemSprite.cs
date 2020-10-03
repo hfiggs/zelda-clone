@@ -31,8 +31,6 @@ namespace Game1.Sprite
             int width = texture.Width / columns;
             int height = texture.Height / rows;
 
-            Console.WriteLine(width + "+" + height);
-
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 

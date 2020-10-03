@@ -26,7 +26,7 @@ namespace Game1.Enemy
 
         public void Attack()
         {
-
+            stateMachine.SetState(new GoriyaStateAttackingRight(stateMachine, position));
         }
 
         public void ReceiveDamage()
