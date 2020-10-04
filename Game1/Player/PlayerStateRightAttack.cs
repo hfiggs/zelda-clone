@@ -8,7 +8,7 @@ namespace Game1.Player
 {
     class PlayerStateRightAttack : IPlayerState
     {
-        private PlayerStateFactory stateFactory;
+        private IPlayer player;
         public ISprite Sprite { get; private set; }
 
         private Vector2 position;
@@ -19,9 +19,9 @@ namespace Game1.Player
         private const float animationTime = 150f; // ms per frame
         private const int animationFrames = 4;
 
-        public PlayerStateRightAttack(PlayerStateFactory stateFactory, Vector2 position)
+        public PlayerStateRightAttack(IPlayer player, Vector2 position)
         {
-            this.stateFactory = stateFactory;
+            this.player = player;
             Sprite = PlayerSpriteFactory.Instance.CreateAttackRightSprite();
 
             this.position = position;
@@ -70,7 +70,7 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
-                stateFactory.SetState(new PlayerStateRight(stateFactory, position));
+                player.SetState(new PlayerStateRight(player, position));
             }
         }
 

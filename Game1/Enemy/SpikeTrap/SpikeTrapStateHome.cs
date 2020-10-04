@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace Game1.Enemy.SpikeTrap
+namespace Game1.Enemy
 {
     class SpikeTrapStateHome : IEnemyState
     {
@@ -38,6 +38,12 @@ namespace Game1.Enemy.SpikeTrap
         public Vector2 GetPosition()
         {
             return homePosition;
+        }
+
+        public Vector2 GetDirection()
+        {
+            //No direction
+            return new Vector2(0, 0);
         }
 
         public void ReceiveDamage()

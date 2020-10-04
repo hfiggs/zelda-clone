@@ -17,7 +17,6 @@ namespace Game1.Enemy
         private int maxColumns;
         private int maxRows;
 
-        private int delay;
         private int currentFrame;
         private int totalFrames;
         public EnemySprite(Texture2D texture, int column, int row, int maxColumns, int maxRows, int totalFrames)
@@ -32,13 +31,7 @@ namespace Game1.Enemy
 
         public void Update()
         {
-            delay++;
-
-            if (delay == 9)
-            {
-                currentFrame++;
-                delay = 0;
-            }
+            currentFrame++;
 
             if (currentFrame == totalFrames)
                 currentFrame = 0;
@@ -48,8 +41,6 @@ namespace Game1.Enemy
         {
             int width = texture.Width / maxColumns;
             int height = texture.Height / maxRows;
-
-            Console.WriteLine(width + "+" + height);
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * (row + +currentFrame), width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, 3*width, 3*height);

@@ -1,31 +1,32 @@
-﻿using Game1.Sprite;
+﻿using Game1.Projectile;
+using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Enemy
 {
-    class SkeletonStateMoving : IEnemyState
+    class GoriyaStateAttackingDown : IEnemyState
     {
-        private SkeletonStateMachine stateMachine;
+        private EnemyStateMachine stateMachine;
         public ISprite Sprite { get; private set; }
-        private Vector2 position;
+
         private Vector2 direction;
-        private const int moveSpeed = 1;
+        private Vector2 position;
+        private const int moveSpeed = 2;
+        private IProjectile projectile;
         private double totalElapsedSeconds = 0;
         double MovementChangeTimeSeconds;
 
-        public SkeletonStateMoving(SkeletonStateMachine stateMachine, Vector2 position)
+        public GoriyaStateAttackingDown(EnemyStateMachine stateMachine, Vector2 position)
         {
             this.stateMachine = stateMachine;
             this.position = position;
-            this.direction = GetRandomDirection();
-            this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
-            Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
+            this.direction = new Vector2(0, moveSpeed);
+            this.MovementChangeTimeSeconds = 2;
+            Sprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
+            projectile = new EnemyBoomerang('S', position);
+            stateMachine.spawnProjectile(projectile);
+
         }
 
         public void Attack()
@@ -41,7 +42,6 @@ namespace Game1.Enemy
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
-            Sprite.Update();
 
             totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -51,11 +51,9 @@ namespace Game1.Enemy
                 this.direction = GetRandomDirection();
                 this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             }
-            if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
-            {
-                position += direction;
-            }
-            
+
+
+            Sprite.Update();
 
         }
 
@@ -64,6 +62,10 @@ namespace Game1.Enemy
             return position;
         }
 
+        public Vector2 GetDirection()
+        {
+            return direction;
+        }
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
             Random random = new Random();

@@ -11,19 +11,23 @@ namespace Game1.Item
 {
     class Compass : IItem
     {
-        ISprite mySprite;
+        private ISprite sprite;
 
-        public Compass()
+        private Vector2 position;
+
+        public Compass(Vector2 position)
         {
-            mySprite = ItemSpriteFactory.Instance.CreateCompassSprite();
+            sprite = ItemSpriteFactory.Instance.CreateCompassSprite();
+
+            this.position = position;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            mySprite.Draw(spriteBatch, position);
+            sprite.Draw(spriteBatch, position, color);
         }
     }
 }

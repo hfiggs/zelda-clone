@@ -2,6 +2,8 @@
  * Hunter Figgs
  * Jared Perkins
  * Jeffrey Gaydos
+ * Sergei Fedulov
+ * Patrick Haughn
  */
 
 using Microsoft.Xna.Framework;
@@ -11,10 +13,9 @@ using Game1.Sprite;
 using Game1.Enemy;
 using System.Collections.Generic;
 using Game1.Player;
-using Game1.Enemy.SpikeTrap;
-using System.Runtime.CompilerServices;
-using Game1.Enemy.OldMan;
-using Game1.Enemy.Aquamentus;
+using Game1.Projectile;
+using Game1.Environment;
+using Game1.Item;
 
 namespace Game1
 {
@@ -22,14 +23,14 @@ namespace Game1
     {
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
-        private IEnemy skeleton;
-        private IEnemy oldMan;
-        private IEnemy merchant;
-        private IEnemy spikeTrap;
-        private IEnemy aquamentus;
-        private List<IController> controllerList;
 
+        private List<IController> controllerList;
+        
         public IPlayer Player { get; set; }
+        public LinkedList<IItem> ItemList { get; set; }
+        public LinkedList<IEnvironment> EnvironmentList { get; set; }
+        public LinkedList<IEnemy> EnemyList { get; set; }
+        private LinkedList<IProjectile> ProjectileList { get; set; }
 
         public Game1()
         {
@@ -45,6 +46,8 @@ namespace Game1
                 new KeyboardController(this)
             };
 
+            ProjectileList = new LinkedList<IProjectile>();
+
             IsMouseVisible = true;
 
             base.Initialize();
@@ -53,19 +56,20 @@ namespace Game1
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            EnemySpriteFactory.Instance.LoadAllTextures(Content);
 
-            skeleton = new Skeleton(new Vector2(250,250), spriteBatch);
-            oldMan = new OldMan(spriteBatch, new Vector2(100, 100));
-            merchant = new Merchant(new Vector2(250,250), spriteBatch);
-            spikeTrap = new SpikeTrap(this, spriteBatch, new Vector2(100, 250), 100, 100);
-            aquamentus = new Aquamentus(this, spriteBatch, new Vector2(600, 200));
-
-            // TEMP TEMP TEMP TEMP
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
+            Player = new Player1(this, new Vector2(75, 325));
 
-            Player = new Player1(this, new Vector2(0, 0), spriteBatch);
-            // TEMP TEMP TEMP TEMP
+            ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
+
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            ItemList = ItemListFactory.GetItemList();
+
+            EnvironmentSpriteFactory.instance.LoadContent(Content);
+            EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
+
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            EnemyList = EnemyListFactory.GetEnemyList(this, spriteBatch);
         }
 
         protected override void UnloadContent()
@@ -80,15 +84,16 @@ namespace Game1
                controller.Update();
             }
 
-            skeleton.Update(gameTime, new Rectangle(0, 0, 800, 400));
-            oldMan.Update(gameTime, new Rectangle(0, 0, 400, 400));
-            merchant.Update(gameTime, new Rectangle(0, 0, 400, 400));
-            spikeTrap.Update(gameTime, new Rectangle(0, 0, 800, 400));
-            aquamentus.Update(gameTime, new Rectangle(0, 0, 800, 400));
-
-            // TEMP TEMP TEMP TEMP
             Player.Update(gameTime);
-            // TEMP TEMP TEMP TEMP
+       
+            ItemList.First.Value.Update(gameTime);
+            EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 700, 400));
+            EnvironmentList.First.Value.BehaviorUpdate(gameTime);
+
+            foreach(IProjectile projectile in ProjectileList)
+            {
+                projectile.Update(gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -99,21 +104,21 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
 
-            skeleton.Draw();
-            oldMan.Draw();
-            merchant.Draw();
-            spikeTrap.Draw();
-            aquamentus.Draw();
+            Player.Draw(spriteBatch,Color.White);
 
-            // TEMP TEMP TEMP TEMP
-            Player.Draw(Color.White);
-            // TEMP TEMP TEMP TEMP
-
+            ItemList.First.Value.Draw(spriteBatch, Color.White);
+            EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
+            EnemyList.First.Value.Draw(spriteBatch, Color.White);
 
             Texture2D _texture;
             _texture = new Texture2D(GraphicsDevice, 1, 1);
             _texture.SetData(new Color[] { Color.White });
-            spriteBatch.Draw(_texture, GetPlayerRectangle(), Color.White);
+            //spriteBatch.Draw(_texture, GetPlayerRectangle(), Color.White);
+
+            foreach(IProjectile projectile in ProjectileList)
+            {
+                projectile.Draw(spriteBatch, Color.White);
+            }
 
             spriteBatch.End();
 
@@ -128,6 +133,20 @@ namespace Game1
         public Vector2 GetWindowDimensions()
         {
             return new Vector2(Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight);
+        }
+
+        public void SpawnProjectile(IProjectile projectile)
+        {
+            ProjectileList.AddLast(projectile);
+        }
+
+        public void Reset()
+        {
+            Player = new Player1(this, new Vector2(75, 325));
+            ProjectileList = new LinkedList<IProjectile>();
+            ItemList = ItemListFactory.GetItemList();
+            EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
+            EnemyList = EnemyListFactory.GetEnemyList(this, spriteBatch);
         }
     }
 }

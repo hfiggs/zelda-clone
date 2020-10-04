@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Projectile;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
@@ -9,13 +10,11 @@ namespace Game1.Enemy
 
         private IEnemyState state;
 
-        private SpriteBatch spriteBatch;
-
-        public EnemyStateMachine(Game1 game, SpriteBatch spriteBatch)
+        public EnemyStateMachine(Game1 game)
         {
             this.game = game;
 
-            this.spriteBatch = spriteBatch;
+
         }
 
         public void SetState(IEnemyState state)
@@ -23,7 +22,7 @@ namespace Game1.Enemy
             this.state = state;
         }
 
-        public void Draw(Color color)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
             state.Sprite.Draw(spriteBatch, state.GetPosition(), color);
         }
@@ -48,6 +47,11 @@ namespace Game1.Enemy
             return state.GetPosition();
         }
 
+        public Vector2 GetDirection()
+        {
+            return state.GetDirection();
+        }
+
         public Rectangle GetPlayerRectangle()
         {
             return game.GetPlayerRectangle();
@@ -56,6 +60,11 @@ namespace Game1.Enemy
         public Vector2 GetWindowDimensions()
         {
             return game.GetWindowDimensions();
+        }
+
+        public void spawnProjectile(IProjectile projectile)
+        {
+            game.SpawnProjectile(projectile);
         }
     }
 }

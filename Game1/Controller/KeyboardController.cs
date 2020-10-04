@@ -16,7 +16,8 @@ namespace Game1.Controller
         {
             commands = new Dictionary<Keys, ICommand>
             {
-                { Keys.D0, new QuitCommand(game) },
+                { Keys.Q, new QuitCommand(game) },
+                { Keys.R, new ResetCommand(game) },
 
                 { Keys.W, new PlayerUpCommand(game) },
                 { Keys.A, new PlayerLeftCommand(game) },
@@ -38,20 +39,26 @@ namespace Game1.Controller
                 { Keys.NumPad2, new PlayerUseItemCommand(game, 2) },
                 { Keys.D3, new PlayerUseItemCommand(game, 3) },
                 { Keys.NumPad3, new PlayerUseItemCommand(game, 3) },
-                { Keys.D4, new PlayerUseItemCommand(game, 4) },
-                { Keys.NumPad4, new PlayerUseItemCommand(game, 4) }
+
+                { Keys.Y, new EnvironmentNextCommand(game) },
+                { Keys.T, new EnvironmentPrevCommand(game) },
+
+                { Keys.U, new ItemPrevCommand(game) },
+                { Keys.I, new ItemNextCommand(game) },
+
+                { Keys.O, new EnemyPrevCommand(game) },
+                { Keys.P, new EnemyNextCommand(game) }
             };
         }
 
         public void Update()
         {
             var keys = Keyboard.GetState().GetPressedKeys();
-            
 
-            foreach(Keys k in keys)
+            foreach (Keys k in keys)
             {
 
-                if(k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D || k == Keys.Up || k == Keys.Down || k == Keys.Left || k == Keys.Right)
+                if (k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D || k == Keys.Up || k == Keys.Down || k == Keys.Left || k == Keys.Right)
                 {
                     movement.Push(k);
                 }
@@ -62,7 +69,6 @@ namespace Game1.Controller
                 }
 
             }
-
 
             if (movement.Count == 1)
             {
@@ -87,3 +93,4 @@ namespace Game1.Controller
         }
     }
 }
+

@@ -11,7 +11,7 @@ namespace Game1.Player
 {
     class PlayerStateUp : IPlayerState
     {
-        private PlayerStateFactory stateFactory;
+        private IPlayer player;
         public ISprite Sprite { get; private set; }
 
         private bool isMoving;
@@ -22,9 +22,9 @@ namespace Game1.Player
         private const int moveSpeed = 5;
         private const float animationTime = 150f; // ms per frame
 
-        public PlayerStateUp(PlayerStateFactory stateFactory, Vector2 position)
+        public PlayerStateUp(IPlayer player, Vector2 position)
         {
-            this.stateFactory = stateFactory;
+            this.player = player;
             Sprite = PlayerSpriteFactory.Instance.CreateWalkUpSprite();
 
             isMoving = false;
@@ -35,25 +35,25 @@ namespace Game1.Player
 
         public void Attack()
         {
-            stateFactory.SetState(new PlayerStateUpAttack(stateFactory, position));
+            player.SetState(new PlayerStateUpAttack(player, position));
         }
 
         public void MoveDown()
         {
             if (!isMoving)
-                stateFactory.SetState(new PlayerStateDown(stateFactory, position));
+                player.SetState(new PlayerStateDown(player, position));
         }
 
         public void MoveLeft()
         {
             if (!isMoving)
-                stateFactory.SetState(new PlayerStateLeft(stateFactory, position));
+                player.SetState(new PlayerStateLeft(player, position));
         }
 
         public void MoveRight()
         {
             if (!isMoving)
-                stateFactory.SetState(new PlayerStateRight(stateFactory, position));
+                player.SetState(new PlayerStateRight(player, position));
         }
 
         public void MoveUp()
@@ -63,7 +63,7 @@ namespace Game1.Player
 
         public void UseItem()
         {
-            stateFactory.SetState(new PlayerStateUpUse(stateFactory, position));
+            player.SetState(new PlayerStateUpUse(player, position));
         }
 
         public void Update(GameTime time)

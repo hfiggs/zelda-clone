@@ -3,32 +3,24 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace Game1.Enemy.OldMan
+namespace Game1.Enemy
 {
     class OldMan : IEnemy
     {
         ISprite sprite;
 
-        SpriteBatch spritebatch;
         Vector2 position;
 
-        public OldMan(SpriteBatch spritebatch, Vector2 position)
+        public OldMan(Vector2 position)
         {
             sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
-
-            this.spritebatch = spritebatch;
 
             this.position = position;
         }
 
-        public void Attack()
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            // Cannot attack
-        }
-
-        public void Draw()
-        {
-            sprite.Draw(spritebatch, position, Color.White);
+            sprite.Draw(spriteBatch, position, color);
         }
 
         public void ReceiveDamage()

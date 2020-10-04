@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Projectile;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
@@ -8,8 +9,9 @@ namespace Game1.Player
 {
     class PlayerStateLeftUse : IPlayerState
     {
-        private PlayerStateFactory stateFactory;
+        private IPlayer player;
         public ISprite Sprite { get; private set; }
+        private IProjectile projectile;
 
         private Vector2 position;
 
@@ -19,15 +21,30 @@ namespace Game1.Player
         private const float animationTime = 150f; // ms per frame
         private const int animationFrames = 3;
 
-        public PlayerStateLeftUse(PlayerStateFactory stateFactory, Vector2 position)
+        public PlayerStateLeftUse(IPlayer player, Vector2 position)
         {
-            this.stateFactory = stateFactory;
+            this.player = player;
             Sprite = PlayerSpriteFactory.Instance.CreateUseItemLeftSprite();
 
             this.position = position;
 
             frameCount = 0;
             timeUntilNextFrame = animationTime;
+
+            switch (player.getItem())
+            {
+                case 1:
+                    projectile = new Arrow('W', new Vector2(position.X, position.Y + 40));
+                    break;
+                case 2:
+                    projectile = new Boomerang('W', player);
+                    break;
+                case 3:
+                    projectile = new BombProjectile(new Vector2(position.X, position.Y + 40));
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Attack()
@@ -62,15 +79,16 @@ namespace Game1.Player
         {
             timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
 
-            if(timeUntilNextFrame <= 0 && frameCount < animationFrames)
+            if (timeUntilNextFrame <= 0 && frameCount < animationFrames)
             {
                 Sprite.Update();
                 timeUntilNextFrame += animationTime;
                 frameCount++;
             }
-            else if(frameCount == animationFrames)
+            else if (frameCount == animationFrames)
             {
-                stateFactory.SetState(new PlayerStateLeft(stateFactory, position));
+                player.spawnProjectile(projectile);
+                player.SetState(new PlayerStateLeft(player, position));
             }
         }
 

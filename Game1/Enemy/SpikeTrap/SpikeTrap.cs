@@ -5,26 +5,21 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace Game1.Enemy.SpikeTrap
+namespace Game1.Enemy
 {
     class SpikeTrap : IEnemy
     {
         private EnemyStateMachine stateMachine;
 
-        public SpikeTrap(Game1 game, SpriteBatch spriteBatch, Vector2 homePosition, int verticalRange, int horizontalRange)
+        public SpikeTrap(Game1 game, Vector2 homePosition, int verticalRange, int horizontalRange)
         {
-            stateMachine = new EnemyStateMachine(game, spriteBatch);
+            stateMachine = new EnemyStateMachine(game);
             stateMachine.SetState(new SpikeTrapStateHome(stateMachine, homePosition, verticalRange, horizontalRange));
         }
 
-        public void Attack()
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            // Cannot attack
-        }
-
-        public void Draw()
-        {
-            stateMachine.Draw(Color.White);
+            stateMachine.Draw(spriteBatch,color);
         }
 
         public void ReceiveDamage()

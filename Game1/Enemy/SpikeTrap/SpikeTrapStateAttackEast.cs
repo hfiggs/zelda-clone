@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace Game1.Enemy.SpikeTrap
+namespace Game1.Enemy
 {
     class SpikeTrapStateAttackEast : IEnemyState
     {
@@ -49,6 +49,11 @@ namespace Game1.Enemy.SpikeTrap
         public void ReceiveDamage()
         {
             // Cannot receive damage
+        }
+
+        public Vector2 GetDirection()
+        {
+            return new Vector2(1,0);
         }
 
         public void Update(GameTime gametime, Rectangle drawingLimits)
