@@ -1,0 +1,10 @@
+Author of the code review: Patrick Haughn
+Date: 10/4/20
+Sprint 2
+File name: Triforce
+Author: Jared Perkins
+Time: 10 minutes
+- All the variables have clear names specifying what they do
+- Constants have been made into variables to help provide clarity on what their purpose is
+- In the Draw function the Color parameter is named UNUSED to help show the class uses its own color system
+- Overall the readability is very good and its easy to get an understanding of what's going on
