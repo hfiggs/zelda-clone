@@ -40,13 +40,10 @@ namespace Game1.Sprite
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-
             Rectangle sourceRect = new Rectangle(columnLocation, height*currentRow, width, height);
-            Rectangle destinationRect = new Rectangle((int)location.X,(int)location.Y, width * 3,height * 3);
+            Rectangle destinationRect = new Rectangle((int)location.X,(int)location.Y, width, height);
 
-            
             spriteBatch.Draw(texture, destinationRect, sourceRect, color);
         }
-
     }
 }
