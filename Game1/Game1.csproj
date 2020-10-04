@@ -212,6 +212,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CodeReviews\CodeReviewGoryiaReadabilityJeffreyGaydos.txt" />
+    <Content Include="CodeReviews\CodeReviewPlayer1MaintainabilityJeffreyGaydos.txt" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

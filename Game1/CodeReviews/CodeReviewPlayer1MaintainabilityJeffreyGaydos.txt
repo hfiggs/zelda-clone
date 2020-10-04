@@ -1,0 +1,17 @@
+Review Author: Jeffrey Gaydos
+Date: 10/3/2020
+Sprint: 2
+File: Player1.cs
+Code Authors: Hunter Figgs, Jared Perkins
+Comments:
+• There are 2 item getters, "getItem" and "GetItem", could cause an issue when attempting to maintain
+• The GetLocation() function has magic numbers that could scale with the size of the sprite
+
+Hypotehtical Change: Link can sprint (i.e. hold a button and move to sprint)
+Effects:
+• Add states for sprinting in all directions (4 new files)
+• Add to the state machine interface to allow all states to transition to all sprinting states (4 new functions in 1 file)
+• Implement sprinting state transitions on all states (4 new functions in 16 files)
+• Add sprint functions to Player1 and IPlayer (4 new functions in 2 files)
+• Note that no extra sprites would be necessary, just copy the existing move states and change the animationTime variable
+• A new key would need to be added to the keyboard controller and this key would be checked before executing movement commands
