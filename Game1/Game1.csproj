@@ -219,6 +219,8 @@
   <ItemGroup>
     <Content Include="CodeReviews\CodeReviewGoryiaReadabilityJeffreyGaydos.txt" />
     <Content Include="CodeReviews\CodeReviewPlayer1MaintainabilityJeffreyGaydos.txt" />
+    <Content Include="CodeReviews\CodeReviewBoomerangReadabilityJaredPerkins.txt" />
+    <Content Include="CodeReviews\CodeReviewItemSpriteMaintainabilityJaredPerkins.txt" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

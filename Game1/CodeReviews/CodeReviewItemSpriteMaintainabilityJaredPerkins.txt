@@ -1,0 +1,11 @@
+﻿Author: Jared Perkins
+Date: 10/4/2020
+Sprint Number: 2
+Reviewing: ItemSprite.cs
+Author of file: Sergei Fedulov
+Comments on quality: 
+	- 41 lines is very good. 
+	- Update is a useless method in this file.
+Change:
+	- If update was given some code that allowed sprites to change but still allowed for still sprites (similar to Player Sprite), then the Item classes themselves could focus on state based logic, while animation
+	logic was kept in the sprite itself. This would be little annoying to implement, as many of the other item classes have already been written to carry all of their own logic, but it wouldn't take too long to fix.
