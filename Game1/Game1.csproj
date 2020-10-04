@@ -78,6 +78,11 @@
     <Compile Include="Command\EnvironmentCommands\EnvironmentPrevCommand.cs" />
     <Compile Include="Command\ResetCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
+    <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
+    <Compile Include="Enemy\Aquamentus\AquamentusWalkLeft.cs" />
+    <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />
+    <Compile Include="Enemy\Aquamentus\AquamentusWalkRight.cs" />
+    <Compile Include="Enemy\Aquamentus\AquamentusWalkRightAttack.cs" />
     <Compile Include="Enemy\Dodongo\Dodongo.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateDown.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateUp.cs" />

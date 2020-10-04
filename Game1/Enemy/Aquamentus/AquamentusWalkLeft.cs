@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace Game1.Enemy.Aquamentus
+namespace Game1.Enemy
 {
     class AquamentusWalkLeft : IEnemyState
     {
@@ -12,10 +12,11 @@ namespace Game1.Enemy.Aquamentus
         private int timeCap;
         Random random;
         private const float moveSpeed = 10;
+        Game1 game;
 
         public ISprite Sprite { get; private set; }
 
-        public AquamentusWalkLeft(EnemyStateMachine stateMachine, Vector2 position) {
+        public AquamentusWalkLeft(Game1 game, EnemyStateMachine stateMachine, Vector2 position) {
             Sprite = EnemySpriteFactory.Instance.CreateAquamentusSprite();
             this.stateMachine = stateMachine;
             this.position = position;
@@ -23,16 +24,12 @@ namespace Game1.Enemy.Aquamentus
             timeCap = random.Next(3);
             timeCap++;
             totalTime = 0;
+            this.game = game;
         }
 
         public void Attack()
         {
 
-        }
-
-        public Vector2 GetPosition()
-        {
-            return position;
         }
 
         public void ReceiveDamage()
@@ -48,13 +45,22 @@ namespace Game1.Enemy.Aquamentus
                 position.X -= moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
                 Sprite.Update();
                 if (random.Next(100) < 1) {
-                    stateMachine.SetState(new AquamentusWalkLeftAttack(stateMachine, position));
+                    stateMachine.SetState(new AquamentusWalkLeftAttack(game, stateMachine, position));
                 }
             } else {
                 Sprite.Update();
-                stateMachine.SetState(new AquamentusWalkRight(stateMachine, position));
+                stateMachine.SetState(new AquamentusWalkRight(game, stateMachine, position));
             }
         }
 
+        public Vector2 GetPosition()
+        {
+            return position;
+        }
+
+        public Vector2 GetDirection()
+        {
+            return new Vector2(-1 * moveSpeed, 0);
+        }
     }
 }
