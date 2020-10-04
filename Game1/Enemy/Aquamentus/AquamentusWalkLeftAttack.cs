@@ -16,6 +16,8 @@ namespace Game1.Enemy
 
         public ISprite Sprite { get; private set; }
 
+        private float timeUntilNextFrame;
+        private float animationTime = 150.0f;
         public AquamentusWalkLeftAttack(Game1 game, EnemyStateMachine stateMachine, Vector2 position) {
             Sprite = EnemySpriteFactory.Instance.CreateAttackAquamentusSprite();
             this.stateMachine = stateMachine;
@@ -23,6 +25,7 @@ namespace Game1.Enemy
             counter = 0;
             totalTime = 0;
             this.game = game;
+            timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
@@ -42,14 +45,19 @@ namespace Game1.Enemy
 
             if (totalTime < timeOfAttack || (counter == 1 && totalTime < 2)) {
                 position.X -= moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
-                Sprite.Update();
             } else if(totalTime > timeOfAttack && counter == 0) {
                 game.SpawnProjectile(new Fireballs(position, playerRect));
-                Sprite.Update();
                 counter++;
             } else {
-                Sprite.Update();
                 stateMachine.SetState(new AquamentusWalkRight(game, stateMachine, position));
+            }
+
+            timeUntilNextFrame -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
+
+            if (timeUntilNextFrame <= 0)
+            {
+                Sprite.Update();
+                timeUntilNextFrame += animationTime;
             }
         }
 
