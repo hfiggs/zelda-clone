@@ -2,6 +2,8 @@
  * Hunter Figgs
  * Jared Perkins
  * Jeffrey Gaydos
+ * Sergei Fedulov
+ * Patrick Haughn
  */
 
 using Microsoft.Xna.Framework;
