@@ -11,12 +11,6 @@ namespace Game1.Item
         private ISprite sprite;
         private Vector2 position;
 
-
-        int timeTillSwap;
-        const int swapTimer = 250; //ms
-
-        bool frameChanged;
-
 		public Clock(Vector2 position)
 		{
 			sprite = ItemSpriteFactory.Instance.CreateClockSprite();
