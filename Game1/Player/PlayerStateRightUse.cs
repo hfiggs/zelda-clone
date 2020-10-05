@@ -31,7 +31,7 @@ namespace Game1.Player
             frameCount = 0;
             timeUntilNextFrame = animationTime;
 
-            switch (player.getItem())
+            switch (player.GetItem())
             {
                 case 1:
                     projectile = new Arrow('E', new Vector2(position.X + 50, position.Y + 40));

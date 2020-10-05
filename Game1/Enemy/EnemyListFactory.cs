@@ -21,7 +21,7 @@ namespace Game1.Enemy
             enemyList.AddLast(new Snake(game, enemyPosition));
             enemyList.AddLast(new SpikeTrap(game, enemyPosition, 100, 100));
             enemyList.AddLast(new Merchant(spriteBatch, enemyPosition));
-            // TODO: missing Aquamentus
+            enemyList.AddLast(new Aquamentus(game, enemyPosition));
 
             return enemyList;
         }

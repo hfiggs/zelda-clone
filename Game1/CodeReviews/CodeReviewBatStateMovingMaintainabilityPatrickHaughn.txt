@@ -1,0 +1,13 @@
+Author of the code review: Patrick Haughn
+Date: 10/4/20
+Sprint 2
+File name: BatStateMoving
+Author: Sergei Fedulov
+Time: 15 minutes
+Comments:
+	- The class has high cohesion as it mainly relies on: Bat.cs, EnemyStateMachine.cs, and IEnemyState.cs
+	- The class is also resuable, in that you could easily create another enemy with random movement using the code
+Hypethetical change:
+	- You could make the bat stay in place randomly for a period of time to make the bat more like the bats in game
+	- This would be easy to add in. All you would need to do is add in another case to the switch statement in GetRandomDirection
+	  to where the bats direction doesn't change at all.

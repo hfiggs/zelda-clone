@@ -34,7 +34,7 @@ namespace Game1.Player
 
         void SetState(IPlayerState state);
 
-        int getItem();
+        int GetItem();
 
         void spawnProjectile(IProjectile projectile);
     }

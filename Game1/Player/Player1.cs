@@ -89,11 +89,6 @@ namespace Game1.Player
             this.state = state;
         }
 
-        public int getItem()
-        {
-            return currentItem;
-        }
-
         public void spawnProjectile(IProjectile projectile)
         {
             game.SpawnProjectile(projectile);

@@ -1,0 +1,9 @@
+﻿Author: Jared Perkins
+Date: 10/4/2020
+Sprint Number: 2
+Reviewing: Boomerang.cs
+Author: Patrick Haughn
+Time to complete: 15 minutes
+Comments:
+	- Update method is very long, and code is slightly jumbled. some spacing might clean this issue up.
+	- 75 lines is a little long. Could some of this logic be hidden away?

@@ -113,9 +113,9 @@ namespace Game1.Player
             decoratedPlayer.SetState(state);
         }
 
-        public int getItem()
+        public int GetItem()
         {
-            return decoratedPlayer.getItem();
+            return decoratedPlayer.GetItem();
         }
 
         public void spawnProjectile(IProjectile projectile)

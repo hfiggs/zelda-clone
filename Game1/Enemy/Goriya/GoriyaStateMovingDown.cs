@@ -13,7 +13,10 @@ namespace Game1.Enemy
         private Vector2 position;
         private const int moveSpeed = 2;
         private double totalElapsedSeconds = 0;
-        double MovementChangeTimeSeconds;
+        private double MovementChangeTimeSeconds;
+
+        private float timeUntilNextFrame; // ms
+        private const float animationTime = 200f; // ms per frame
 
         public GoriyaStateMovingDown(EnemyStateMachine stateMachine, Vector2 position)
         {
@@ -22,6 +25,8 @@ namespace Game1.Enemy
             this.direction = new Vector2(0, moveSpeed);
             this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             Sprite = EnemySpriteFactory.Instance.CreateGoriyaDownSprite();
+
+            timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
@@ -49,8 +54,14 @@ namespace Game1.Enemy
             {
                 position += direction;
             }
-            Sprite.Update();
 
+            timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (timeUntilNextFrame <= 0)
+            {
+                Sprite.Update();
+                timeUntilNextFrame += animationTime;
+            }
         }
 
         public Vector2 GetPosition()
