@@ -38,7 +38,7 @@ namespace Game1.Enemy
                 totalElapsedSeconds -= attackCooldown;
             }
 
-            if (newDirection.X != oldDirection.X || newDirection.Y != oldDirection.Y) {
+            else if (newDirection.X != oldDirection.X || newDirection.Y != oldDirection.Y) {
                 if (stateMachine.GetDirection().X < 0)
                 {
                     stateMachine.SetState(new GoriyaStateMovingLeft(stateMachine, stateMachine.GetPosition()));
