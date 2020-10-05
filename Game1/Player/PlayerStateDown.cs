@@ -18,7 +18,7 @@ namespace Game1.Player
         private Vector2 position;
 
         private float timeUntilNextFrame; // ms
-        private const int moveSpeed = 5;
+        private const int moveSpeed = 2;
         private const float animationTime = 150f; // ms per frame
 
         public PlayerStateDown(IPlayer player, Vector2 position)

@@ -222,6 +222,7 @@
     <Content Include="CodeReviews\CodeReviewBoomerangReadabilityJaredPerkins.txt" />
     <Content Include="CodeReviews\CodeReviewItemSpriteMaintainabilityJaredPerkins.txt" />
     <Content Include="Icon.ico" />
+    <Content Include="READ_ME.txt" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />

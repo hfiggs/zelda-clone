@@ -33,13 +33,13 @@ namespace Game1.Player
             switch (player.GetItem())
             {
                 case 1:
-                    projectile = new Arrow('N', new Vector2(position.X + 20, position.Y));
+                    projectile = new Arrow('N', new Vector2(position.X, position.Y));
                     break;
                 case 2:
                     projectile = new Boomerang('N', player);
                     break;
                 case 3:
-                    projectile = new BombProjectile(new Vector2(position.X + 20, position.Y));
+                    projectile = new BombProjectile(new Vector2(position.X, position.Y));
                     break;
                 default:
                     break;
