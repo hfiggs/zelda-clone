@@ -1,0 +1,11 @@
+Review Author: Sergei Fedulov
+Date: 10/4/2020
+Sprint: 2
+File: Goriya.cs
+Code Authors: Sergei Fedulov, Hunter Figgs, Jared Perkins
+Review Time: 15m:25s
+Comments:
+• In line 41, there may be a method to compare 2 Vector2's directly
+• The direction vectors appear to not use the value 0, may need a comment if this is true or false
+• In general, lines 42-57 may be able to be simplified
+• 65 lines is very reasonable

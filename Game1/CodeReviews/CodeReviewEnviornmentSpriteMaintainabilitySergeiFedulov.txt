@@ -1,0 +1,10 @@
+﻿Author: Sergei Fedulov
+Date: 10/4/2020
+Sprint Number: 2
+Reviewing: Player1.cs
+Author of file: Hunter Figgs, Jared Perkins
+Time: 15 minutes
+Comments: 
+	- Class overall is fairly long, around 100 lines. However, most methods only consist of one line. 
+	- Obvious use of state logic and decorators to handle player updates limits branching and boolean logic.
+	- Variable and method names are self explanatory and well defined.
