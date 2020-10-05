@@ -149,7 +149,7 @@ namespace Game1.Enemy
 
         public ISprite CreateAquamentusSprite()
         {
-            return new EnemySprite(aquamentusSpriteSheet, 1, 1, 2, 2, 2);
+            return new EnemySprite(aquamentusSpriteSheet, 1, 0, 2, 2, 2);
         }
 
         public ISprite CreateAttackAquamentusSprite()

@@ -13,7 +13,10 @@ namespace Game1.Enemy
         private Vector2 position;
         private const int moveSpeed = 2;
         private double totalElapsedSeconds = 0;
-        double MovementChangeTimeSeconds;
+        private double MovementChangeTimeSeconds;
+
+        private float timeUntilNextFrame; // ms
+        private const float animationTime = 200f; // ms per frame
 
         public GoriyaStateMovingLeft(EnemyStateMachine stateMachine, Vector2 position)
         {
@@ -22,6 +25,8 @@ namespace Game1.Enemy
             this.direction = new Vector2(-1 * moveSpeed, 0);
             this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             Sprite = EnemySpriteFactory.Instance.CreateGoriyaLeftSprite();
+
+            timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
@@ -36,20 +41,26 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-                totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+            totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (totalElapsedSeconds >= MovementChangeTimeSeconds)
-                {
-                    totalElapsedSeconds -= MovementChangeTimeSeconds;
-                    this.direction = GetRandomDirection();
-                    this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
-                }
-                if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
-                {
-                  position += direction;
-                }
+            if (totalElapsedSeconds >= MovementChangeTimeSeconds)
+            {
+                totalElapsedSeconds -= MovementChangeTimeSeconds;
+                this.direction = GetRandomDirection();
+                this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+            }
+            if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
+            {
+                position += direction;
+            }
 
-            Sprite.Update();
+            timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (timeUntilNextFrame <= 0)
+            {
+                Sprite.Update();
+                timeUntilNextFrame += animationTime;
+            }
         }
 
         public Vector2 GetPosition()

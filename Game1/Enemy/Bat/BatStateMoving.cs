@@ -12,15 +12,20 @@ namespace Game1.Enemy
         private Vector2 direction;
         private const int moveSpeed = 2;
         private double totalElapsedSeconds = 0;
-        double MovementChangeTimeSeconds;
+        private double MovementChangeTimeSeconds;
+
+        private float timeUntilNextFrame; // ms
+        private const float animationTime = 100f; // ms per frame
 
         public BatStateMoving(EnemyStateMachine stateMachine, Vector2 position)
         {
             this.stateMachine = stateMachine;
             this.position = position;
-            this.direction = GetRandomDirection();
-            this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+            direction = GetRandomDirection();
+            MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             Sprite = EnemySpriteFactory.Instance.CreateBatSprite();
+
+            timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
@@ -36,22 +41,27 @@ namespace Game1.Enemy
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
-            Sprite.Update();
 
             totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
 
             if (totalElapsedSeconds >= MovementChangeTimeSeconds)
             {
                 totalElapsedSeconds -= MovementChangeTimeSeconds;
-                this.direction = GetRandomDirection();
-                this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+                direction = GetRandomDirection();
+                MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             }
             if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
             {
                 position += direction;
             }
-            
 
+            timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (timeUntilNextFrame <= 0)
+            {
+                Sprite.Update();
+                timeUntilNextFrame += animationTime;
+            }
         }
 
         public Vector2 GetPosition()
@@ -72,18 +82,26 @@ namespace Game1.Enemy
         private Vector2 GetRandomDirection()
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
-            int randomDirection = random.Next(4);
+            int randomDirection = random.Next(8);
 
             switch (randomDirection)
             {
                 case 0:
                     return new Vector2(-1 * moveSpeed, 0);
                 case 1:
-                    return new Vector2(moveSpeed, 0);
+                    return new Vector2(-1 * moveSpeed, -1 * moveSpeed);
                 case 2:
                     return new Vector2(0, -1 * moveSpeed);
-                default:
+                case 3:
+                    return new Vector2(moveSpeed, -1 * moveSpeed);
+                case 4:
+                    return new Vector2(moveSpeed, 0);
+                case 5:
+                    return new Vector2(moveSpeed, moveSpeed);
+                case 6:
                     return new Vector2(0, moveSpeed);
+                default:
+                    return new Vector2(-1 * moveSpeed, moveSpeed);
             }
         }
     }

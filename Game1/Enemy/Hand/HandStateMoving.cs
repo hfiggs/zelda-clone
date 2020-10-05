@@ -19,6 +19,9 @@ namespace Game1.Enemy
         private double totalElapsedSeconds = 0;
         double MovementChangeTimeSeconds;
 
+        private float timeUntilNextFrame; // ms
+        private const float animationTime = 200f; // ms per frame
+
         public HandStateMoving(EnemyStateMachine stateMachine, Vector2 position)
         {
             this.stateMachine = stateMachine;
@@ -26,6 +29,8 @@ namespace Game1.Enemy
             this.direction = GetRandomDirection();
             this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             Sprite = EnemySpriteFactory.Instance.CreateHandSprite();
+
+            timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
@@ -41,7 +46,6 @@ namespace Game1.Enemy
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
-            Sprite.Update();
 
             totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -55,8 +59,14 @@ namespace Game1.Enemy
             {
                 position += direction;
             }
-            
 
+            timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (timeUntilNextFrame <= 0)
+            {
+                Sprite.Update();
+                timeUntilNextFrame += animationTime;
+            }
         }
 
         public Vector2 GetPosition()
