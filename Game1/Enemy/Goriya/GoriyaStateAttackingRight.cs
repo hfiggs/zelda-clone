@@ -52,8 +52,6 @@ namespace Game1.Enemy
                 this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             }
 
-            stateMachine.spawnProjectile(projectile);
-
             Sprite.Update();
 
         }
