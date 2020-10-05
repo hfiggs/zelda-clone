@@ -18,12 +18,15 @@ namespace Game1.Projectile
             timer = 0;
             sprite = ProjectileSpriteFactory.Instance.CreateBombProjectileSprite();
         }
-        public void Update(GameTime gameTime)
+        public bool Update(GameTime gameTime)
         {
             timer += detonationTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer > 70) {
                 detonated = true;
             }
+            
+
+            return detonated;
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
@@ -33,6 +36,16 @@ namespace Game1.Projectile
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
                 spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.GetType().Equals(obj.GetType());
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

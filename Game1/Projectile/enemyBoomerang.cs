@@ -24,7 +24,7 @@ namespace Game1.Projectile
             returned = false;
 
         }
-        public void Update(GameTime gameTime)
+        public bool Update(GameTime gameTime)
         {
             totalElapsedGameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -65,6 +65,9 @@ namespace Game1.Projectile
             }
 
             counter++;
+
+            //for now just return false, able to return true in the future when this needs to be removed from the projectiles list in game.
+            return returned;
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
@@ -74,6 +77,16 @@ namespace Game1.Projectile
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
                 spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.GetType().Equals(obj.GetType());
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

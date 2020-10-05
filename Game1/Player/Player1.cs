@@ -48,8 +48,8 @@ namespace Game1.Player
 
         public void UseItem(int item)
         {
-            currentItem = item;
-            state.UseItem();
+                currentItem = item;
+                state.UseItem();
         }
 
         public void Attack()
@@ -93,5 +93,11 @@ namespace Game1.Player
         {
             game.SpawnProjectile(projectile);
         }
+
+        public bool CantUseProjectile(IProjectile projectile)
+        {
+            return game.ProjectileContainedInList(projectile);
+        }
+
     }
 }

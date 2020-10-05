@@ -37,5 +37,7 @@ namespace Game1.Player
         int GetItem();
 
         void spawnProjectile(IProjectile projectile);
+
+        bool CantUseProjectile(IProjectile projectile);
     }
 }

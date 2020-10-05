@@ -3,6 +3,7 @@
  * Jared Perkins
  */
 
+using Game1.Projectile;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,6 +17,8 @@ namespace Game1.Player
 
         private bool isMoving;
         private Vector2 position;
+        private bool cantBoomerang;
+        private bool cantBomb;
 
         private float timeUntilNextFrame; // ms
 
@@ -30,7 +33,7 @@ namespace Game1.Player
             isMoving = false;
             timeUntilNextFrame = animationTime;
 
-            this.position = position;
+            this.position = position; 
         }
 
         public void Attack()
@@ -63,7 +66,14 @@ namespace Game1.Player
 
         public void UseItem()
         {
-            player.SetState(new PlayerStateUpUse(player, position));
+           Boomerang testBoomerang = new Boomerang('W', player);
+           BombProjectile testBomb = new BombProjectile(new Vector2(0, 0));
+
+            cantBomb = player.CantUseProjectile(testBomb);
+            cantBoomerang = player.CantUseProjectile(testBoomerang);
+
+            if ((!(player.GetItem() == 3 && cantBomb)) && (!(player.GetItem() == 2 && cantBoomerang)))
+                player.SetState(new PlayerStateUpUse(player, position));
         }
 
         public void Update(GameTime time)

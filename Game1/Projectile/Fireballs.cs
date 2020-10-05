@@ -22,7 +22,7 @@ namespace Game1.Projectile
             this.position = position;
             directionOfPlayer = Vector2.Normalize(position - new Vector2(rec.X, rec.Y));
         }
-        public void Update(GameTime gameTime)
+        public bool Update(GameTime gameTime)
         {
             // Rounding is to make it less accurate so it's more like the game
             position.Y -= (float)Math.Round(directionOfPlayer.Y, 1) * moveSpeed * (float)Math.Round((float)gameTime.ElapsedGameTime.TotalSeconds, 2);
@@ -40,6 +40,9 @@ namespace Game1.Projectile
             counter++;
             
             topAndBottomModifier += slightChangeInY * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            //for now just return false, able to return true in the future when this needs to be removed from the projectiles list in game.
+            return false;
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
@@ -51,6 +54,16 @@ namespace Game1.Projectile
             spriteBatch.Draw(sprite.GetTexture(), middleFireball, sourceRectangle, color);
             spriteBatch.Draw(sprite.GetTexture(), upperFireball, sourceRectangle, color);
             spriteBatch.Draw(sprite.GetTexture(), lowerFireball, sourceRectangle, color);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.GetType().Equals(obj.GetType());
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

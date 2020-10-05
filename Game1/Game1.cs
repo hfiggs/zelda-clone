@@ -30,7 +30,7 @@ namespace Game1
         public LinkedList<IItem> ItemList { get; set; }
         public LinkedList<IEnvironment> EnvironmentList { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
-        private LinkedList<IProjectile> ProjectileList { get; set; }
+        public LinkedList<IProjectile> ProjectileList { get; set; }
 
         public Game1()
         {
@@ -90,9 +90,18 @@ namespace Game1
             EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 700, 400));
             EnvironmentList.First.Value.BehaviorUpdate(gameTime);
 
+            LinkedList<IProjectile> projectilesToRemove = new LinkedList<IProjectile>();
             foreach(IProjectile projectile in ProjectileList)
             {
-                projectile.Update(gameTime);
+                if(projectile.Update(gameTime))
+                {
+                    projectilesToRemove.AddFirst(projectile);
+                }
+            }
+
+            foreach(IProjectile projectile in projectilesToRemove)
+            {
+                ProjectileList.Remove(projectile);
             }
 
             base.Update(gameTime);
@@ -138,6 +147,11 @@ namespace Game1
         public void SpawnProjectile(IProjectile projectile)
         {
             ProjectileList.AddLast(projectile);
+        }
+
+        public bool ProjectileContainedInList(IProjectile proj)
+        {
+            return ProjectileList.Contains(proj);
         }
 
         public void Reset()

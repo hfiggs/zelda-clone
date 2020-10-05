@@ -18,7 +18,7 @@ namespace Game1.Projectile
             sprite = ProjectileSpriteFactory.Instance.CreateArrowSprite();
             moveSpeed = 500;
         }
-        public void Update(GameTime gameTime)
+        public bool Update(GameTime gameTime)
         {
             if (direction == 'N') {
                 position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -33,6 +33,9 @@ namespace Game1.Projectile
                 position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 rowModifier = 3;
             }
+
+            //for now just return false, able to return true in the future when this needs to be removed from the projectiles list in game.
+            return false;
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
@@ -41,6 +44,16 @@ namespace Game1.Projectile
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
 
             spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.GetType().Equals(obj.GetType());
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

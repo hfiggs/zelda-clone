@@ -122,5 +122,9 @@ namespace Game1.Player
         {
             game.SpawnProjectile(projectile);
         }
+        public bool CantUseProjectile(IProjectile projectile)
+        {
+            return decoratedPlayer.CantUseProjectile(projectile);
+        }
     }
 }
