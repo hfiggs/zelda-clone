@@ -53,7 +53,7 @@ namespace Game1.Enemy
             {
                 totalElapsedSeconds -= MovementChangeTimeSeconds;
                 this.direction = GetRandomDirection();
-                this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+                this.MovementChangeTimeSeconds = 0;
             }
 
 
