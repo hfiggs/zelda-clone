@@ -14,11 +14,20 @@ namespace Game1.Player
         int currentItem;
         private IPlayerState state;
 
+        private double timeUntilNextSwordBeam;
+        private const int swordBeamCooldown = 800; // ms
+
+        private bool isFullHealth;
+
         public Player1(Game1 game, Vector2 position)
         {
             this.game = game;
 
             state = new PlayerStateRight(this, position);
+
+            timeUntilNextSwordBeam = -1; // to ensure time is <= 0
+
+            isFullHealth = true;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -55,17 +64,28 @@ namespace Game1.Player
         public void Attack()
         {
             state.Attack();
+
+            if(timeUntilNextSwordBeam <= 0 && isFullHealth)
+            {
+                game.SpawnProjectile(new SwordBeam(state.GetDirection(), state.GetPosition()));
+
+                timeUntilNextSwordBeam = swordBeamCooldown;
+            }
         }
 
         public void ReceiveDamage()
         {
             // wrap damage decorator around this
             game.Player = new DamagedPlayer(game, this);
+
+            isFullHealth = false;
         }
 
         public void Update(GameTime time)
         {
             state.Update(time);
+
+            timeUntilNextSwordBeam -= time.ElapsedGameTime.TotalMilliseconds;
         }
 
         public Rectangle GetLocation()
@@ -98,6 +118,5 @@ namespace Game1.Player
         {
             return game.ProjectileContainedInList(projectile);
         }
-
     }
 }
