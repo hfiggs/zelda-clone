@@ -1,0 +1,23 @@
+Author: Hunter Figgs
+
+Date: 10/5/2020
+
+Sprint #: 2
+
+Name of .cs file: '...\Game1\Environment\EnvironmentSpriteFactory.cs'
+
+Author of .cs file: Jeff Gaydos
+
+Number of minutes: 8 mins
+
+Comments:
+
+	- Length is nearly 200 lines, but I think that is reasonable for a factory file. It is pretty homogeneous.
+
+	- The above could be mitigated by using region tags (#) to separate groups of things like doors, "decorations", misc. etc.
+
+	- Naming convention for the methods is to start with upper case letters. Not a huge deal for readability, but it might help.
+
+	- It's not obvious where the spriteID going into the constructors is coming from.
+
+	- LoadContent method short and sweet. Though not exactly sure what "ss" refers to in the file names.

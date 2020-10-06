@@ -1,0 +1,22 @@
+Author: Hunter Figgs
+
+Date: 10/5/2020
+
+Sprint #: 2
+
+Name of .cs file: '...\Game1\Projectile\Fireballs.cs'
+
+Author of .cs file: Patrick Haughn
+
+Comments (on maintainability):
+
+	- Not responsible for only one thing as code dealing with sprites is present. So any changes to the way sprites should be 	handled would have to specifically be updated in this class.
+
+	- Code that actually should be in this class is pretty succint (mostly how to  update the position of the fireball), so it 	could be changed pretty easily.
+
+	- Depends on concrete class ProjectileSpriteSheet, which is relatively tight coupling. This could be alleviated by using an 	interface.
+
+
+Hypothetical change:
+
+	- Replace the dependency on the concrete class ProjectileSpriteSheet with a private ISprite object. This will reduce both 	the complexity of the class (as responsibility is handed off to the Sprite) as well as the couple (by using an interface 	instead of a concrete class).
