@@ -119,6 +119,8 @@
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
     <Compile Include="Environment\EnvironmentListFactory.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />
+    <Compile Include="Particle\Cloud.cs" />
+    <Compile Include="Particle\IParticle.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
     <Compile Include="Sprite\EnemySpriteFactory.cs" />
     <Compile Include="Environment\Doors\DoorSHole.cs" />
@@ -200,7 +202,10 @@
     <Compile Include="Projectile\ProjectileSpriteSheet.cs" />
     <Compile Include="Projectile\SwordBeam.cs" />
     <Compile Include="Projectile\IProjectile.cs" />
+    <Compile Include="Sprite\ProjectileSprite.cs" />
+    <Compile Include="Sprite\ParticleSprite.cs" />
     <Compile Include="Sprite\ItemSprite.cs" />
+    <Compile Include="Sprite\ParticleSpriteFactory.cs" />
     <Compile Include="Sprite\ItemSpriteFactory.cs" />
     <Compile Include="Sprite\PlayerSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />

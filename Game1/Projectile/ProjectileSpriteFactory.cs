@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Sprite;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -51,9 +52,9 @@ namespace Game1.Projectile
 		{
 			return new ProjectileSpriteSheet(projectileSpriteSheet, 6, 4, 4);
 		}
-		public ProjectileSpriteSheet CreateBombProjectileSprite()
+		public ISprite CreateBombProjectileSprite()
 		{
-			return new ProjectileSpriteSheet(projectileSpriteSheet, 6, 4, 5);
+			return new ProjectileSprite(projectileSpriteSheet, 5, 0, 6, 4, 1);
 		}
 	}
 }

@@ -16,6 +16,7 @@ using Game1.Player;
 using Game1.Projectile;
 using Game1.Environment;
 using Game1.Item;
+using Game1.Particle;
 
 namespace Game1
 {
@@ -70,6 +71,8 @@ namespace Game1
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemyList = EnemyListFactory.GetEnemyList(this, spriteBatch);
+
+            ParticleSpriteFactory.Instance.LoadAllTextures(Content);
         }
 
         protected override void UnloadContent()
