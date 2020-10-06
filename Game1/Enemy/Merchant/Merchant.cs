@@ -9,7 +9,7 @@ namespace Game1.Enemy
         ISprite mySprite;
         Vector2 position;
 
-        public Merchant(SpriteBatch spriteBatch, Vector2 position)
+        public Merchant(Vector2 position)
         {
             mySprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
             this.position = position;

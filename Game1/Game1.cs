@@ -74,7 +74,7 @@ namespace Game1
             EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
-            EnemyList = EnemyListFactory.GetEnemyList(this, spriteBatch);
+            EnemyList = EnemyListFactory.GetEnemyList(this);
 
             ParticleSpriteFactory.Instance.LoadAllTextures(Content);
         }
@@ -162,7 +162,7 @@ namespace Game1
             ProjectileList = new LinkedList<IProjectile>();
             ItemList = ItemListFactory.GetItemList();
             EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
-            EnemyList = EnemyListFactory.GetEnemyList(this, spriteBatch);
+            EnemyList = EnemyListFactory.GetEnemyList(this);
         }
     }
 }

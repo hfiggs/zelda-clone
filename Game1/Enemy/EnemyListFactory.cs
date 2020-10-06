@@ -6,7 +6,7 @@ namespace Game1.Enemy
 {
     static class EnemyListFactory
     {
-        public static LinkedList<IEnemy> GetEnemyList(Game1 game, SpriteBatch spriteBatch)
+        public static LinkedList<IEnemy> GetEnemyList(Game1 game)
         {
             var enemyPosition = new Vector2(175, 100);
 
@@ -21,7 +21,7 @@ namespace Game1.Enemy
             enemyList.AddLast(new Skeleton(game, enemyPosition));
             enemyList.AddLast(new Snake(game, enemyPosition));
             enemyList.AddLast(new SpikeTrap(game, enemyPosition, 100, 100));
-            enemyList.AddLast(new Merchant(spriteBatch, enemyPosition));
+            enemyList.AddLast(new Merchant(enemyPosition));
             
             return enemyList;
         }
