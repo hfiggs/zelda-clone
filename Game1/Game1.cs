@@ -16,8 +16,7 @@ using Game1.Player;
 using Game1.Projectile;
 using Game1.Environment;
 using Game1.Item;
-using Game1.Particle;
-using ResolutionBuddy;
+using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
 
 namespace Game1
 {
