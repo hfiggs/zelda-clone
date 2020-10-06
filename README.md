@@ -23,6 +23,16 @@ Current Bugs:
 
 	- Some "speeds" are not super accurate (some too fast, some too slow), such as the sword beam. Speeds of projectiles and enemy movement will be reconsidered when level design is coming together.
 
+	- The enemies can currently "wander" off the screen due to the lack of collision. Apologies for the inconvenience when grading.
+
+Code Metrics/Analysis:
+
+	- A visual studio "Code Metrics" was run on the project, which takes into account things like cyclomatics complexity, inheritance, coupling, and lines of code. Our project received a maintainability index (MI) score of 85 overall, which is relatively high. The Microsoft Docs website lists projects with MI between 20 and 100 as having high maintainability.
+
+	- The same VS tool revealed that nearly all of the files in the project contain less than 100 lines of code. The few that do are mostly factories, which are permissible.
+
+	- Our project contains 0 errors and 0 warnings.
+
 
 Other important information:
 
