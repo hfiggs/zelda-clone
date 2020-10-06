@@ -8,11 +8,12 @@ namespace Game1.Enemy
     {
         public static LinkedList<IEnemy> GetEnemyList(Game1 game, SpriteBatch spriteBatch)
         {
-            var enemyPosition = new Vector2(650, 300);
+            var enemyPosition = new Vector2(175, 100);
 
             var enemyList = new LinkedList<IEnemy>();
-            enemyList.AddLast(new Bat(game, enemyPosition));
+            enemyList.AddLast(new Aquamentus(game, enemyPosition));
             enemyList.AddLast(new Dodongo(game, enemyPosition));
+            enemyList.AddLast(new Bat(game, enemyPosition));
             enemyList.AddLast(new Goriya(game, enemyPosition));
             enemyList.AddLast(new Hand(game, enemyPosition));
             enemyList.AddLast(new Jelly(game, enemyPosition));
@@ -21,8 +22,7 @@ namespace Game1.Enemy
             enemyList.AddLast(new Snake(game, enemyPosition));
             enemyList.AddLast(new SpikeTrap(game, enemyPosition, 100, 100));
             enemyList.AddLast(new Merchant(spriteBatch, enemyPosition));
-            enemyList.AddLast(new Aquamentus(game, enemyPosition));
-
+            
             return enemyList;
         }
     }

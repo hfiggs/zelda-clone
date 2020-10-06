@@ -10,7 +10,7 @@ namespace Game1.Environment
         public static LinkedList<IEnvironment> GetEnvironmentList()
         {
 
-            Vector2 position = new Vector2(250, 300);
+            Vector2 position = new Vector2(0, 0);
 
             LinkedList<IEnvironment> list = new LinkedList<IEnvironment>();
 

@@ -17,6 +17,7 @@ using Game1.Projectile;
 using Game1.Environment;
 using Game1.Item;
 using Game1.Particle;
+using ResolutionBuddy;
 
 namespace Game1
 {
@@ -24,6 +25,8 @@ namespace Game1
     {
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
+
+        IResolution resolution;
 
         private List<IController> controllerList;
         
@@ -37,6 +40,8 @@ namespace Game1
         {
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            resolution = new ResolutionComponent(this, Graphics, new Point(256, 176), new Point(1024, 704), false, true, false);
         }
 
         // Initialization that does not require content
@@ -59,7 +64,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
-            Player = new Player1(this, new Vector2(75, 325));
+            Player = new Player1(this, new Vector2(40, 100));
 
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
 
@@ -90,7 +95,7 @@ namespace Game1
             Player.Update(gameTime);
        
             ItemList.First.Value.Update(gameTime);
-            EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 700, 400));
+            EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 256, 176));
             EnvironmentList.First.Value.BehaviorUpdate(gameTime);
 
             LinkedList<IProjectile> projectilesToRemove = new LinkedList<IProjectile>();
@@ -114,7 +119,7 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null);
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
             Player.Draw(spriteBatch,Color.White);
 
