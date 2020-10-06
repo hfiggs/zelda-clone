@@ -158,7 +158,7 @@ namespace Game1
 
         public void Reset()
         {
-            Player = new Player1(this, new Vector2(75, 325));
+            Player = new Player1(this, new Vector2(40, 100));
             ProjectileList = new LinkedList<IProjectile>();
             ItemList = ItemListFactory.GetItemList();
             EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
