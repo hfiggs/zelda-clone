@@ -122,11 +122,6 @@ namespace Game1
             EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
             EnemyList.First.Value.Draw(spriteBatch, Color.White);
 
-            Texture2D _texture;
-            _texture = new Texture2D(GraphicsDevice, 1, 1);
-            _texture.SetData(new Color[] { Color.White });
-            //spriteBatch.Draw(_texture, GetPlayerRectangle(), Color.White);
-
             foreach(IProjectile projectile in ProjectileList)
             {
                 projectile.Draw(spriteBatch, Color.White);
