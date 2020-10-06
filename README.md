@@ -43,3 +43,5 @@ Other important information:
 	- The resolution scaling currently isn't dynamic, but the target resolution can be set on line 43 of Game1.cs. On the same line a boolean flag can be set so that the resolution is automatically selected based on the monitor.
 
 	- This package allows us to develop to what's called a "virtual" resolution (which in this case is 256x176), and then ResolutionBuddy handles everything from there.
+
+	- The Sprint 2 reflection and Code Reviews can both be found in this top-level folder."
