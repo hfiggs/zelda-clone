@@ -38,9 +38,11 @@ namespace Game1.Player
                     break;
                 case 2:
                     projectile = new Boomerang('W', player);
+                    player.setItemNotUsable();
                     break;
                 case 3:
-                    projectile = new BombProjectile(new Vector2(position.X, position.Y));
+                    projectile = new BombProjectile(new Vector2(position.X, position.Y), player);
+                    player.setItemNotUsable();
                     break;
                 default:
                     break;

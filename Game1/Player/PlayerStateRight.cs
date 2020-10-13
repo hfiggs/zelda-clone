@@ -18,9 +18,6 @@ namespace Game1.Player
         private bool isMoving;
         private Vector2 position;
 
-        private bool cantBoomerang;
-        private bool cantBomb;
-
         private float timeUntilNextFrame; // ms
 
         private const int moveSpeed = 2;
@@ -68,13 +65,6 @@ namespace Game1.Player
 
         public void UseItem()
         {
-            Boomerang testBoomerang = new Boomerang('W', player);
-            BombProjectile testBomb = new BombProjectile(new Vector2(0, 0));
-
-            cantBomb = player.CantUseProjectile(testBomb);
-            cantBoomerang = player.CantUseProjectile(testBoomerang);
-
-            if ((!(player.GetItem() == 3 && cantBomb)) && (!(player.GetItem() == 2 && cantBoomerang)))
                 player.SetState(new PlayerStateRightUse(player, position));
         }
 

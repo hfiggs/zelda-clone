@@ -1,4 +1,5 @@
 ﻿using Game1.Particle;
+using Game1.Player;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,6 +10,7 @@ namespace Game1.Projectile
     class BombProjectile : IProjectile
     {
         private ISprite sprite;
+        private IPlayer player;
 
         private float detonationTime, timer;
         private bool detonated;
@@ -20,13 +22,14 @@ namespace Game1.Projectile
         private const int cloudOffset = 15; // pixels
         private const int spriteDiameter = 40; // pixels
 
-        public BombProjectile(Vector2 position)
+        public BombProjectile(Vector2 position, IPlayer player)
         {
             this.position = position;
             detonated = false;
             detonationTime = 70;
             timer = 0;
             sprite = ProjectileSpriteFactory.Instance.CreateBombProjectileSprite();
+            this.player = player;
 
             particles = new List<IParticle>();
             particlesSpawned = false;
@@ -37,7 +40,6 @@ namespace Game1.Projectile
             timer += detonationTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer > 70) {
                 detonated = true;
-
                 if(!particlesSpawned)
                 {
                     AddCloudParticles(particles);
@@ -83,6 +85,7 @@ namespace Game1.Projectile
 
         private void AddCloudParticles(List<IParticle> particles)
         {
+            player.setItemUsable(3);
             particles.Add(new Cloud(GetCenteredPosition()));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y - cloudOffset)));

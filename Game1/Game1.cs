@@ -151,11 +151,6 @@ namespace Game1
             ProjectileList.AddLast(projectile);
         }
 
-        public bool ProjectileContainedInList(IProjectile proj)
-        {
-            return ProjectileList.Contains(proj);
-        }
-
         public void Reset()
         {
             Player = new Player1(this, new Vector2(40, 100));

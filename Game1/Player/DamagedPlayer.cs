@@ -122,9 +122,15 @@ namespace Game1.Player
         {
             game.SpawnProjectile(projectile);
         }
-        public bool CantUseProjectile(IProjectile projectile)
+
+        public void setItemUsable(int item)
         {
-            return decoratedPlayer.CantUseProjectile(projectile);
+            decoratedPlayer.setItemUsable(item);
+        }
+
+        public void setItemNotUsable()
+        {
+            decoratedPlayer.setItemNotUsable();
         }
     }
 }

@@ -52,6 +52,11 @@ namespace Game1.Projectile
                 returned = currentLocation.Intersects(playerRectangle);
             }
 
+            if(returned)
+            {
+                player.setItemUsable(2);
+            }
+
             // Used to change sprite sheet row to allow for flashing
             if (counter % 5 == 0) {
                 if (rowModifier == 3) {
