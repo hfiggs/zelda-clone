@@ -5,37 +5,16 @@ namespace Game1.CollisionDetection
 {
     class Collision
     {
-        private char side;
-        private Rectangle intersectionRec;
-        private Object collider;
-        private Object collidee;
+        public char side { get; private set; } // Side consits of {N, S, E, W} (stands for North, South, East, West)
+        public Rectangle intersectionRec{ get; private set; }
+        public Object collider { get; private set; }
+        public Object collidee { get; private set; }
 
-        public Collision(char side, Rectangle intersectionRec, Object collider, Object collidee)
-        {
+        public Collision(char side, Rectangle intersectionRec, Object collider, Object collidee) {
             this.side = side;
             this.intersectionRec = intersectionRec;
             this.collider = collider;
             this.collidee = collidee;
-        }
-
-        public char GetSide()
-        {
-            return side;
-        }
-
-        public Rectangle GetRectangle()
-        {
-            return intersectionRec;
-        }
-
-        public Object GetCollider()
-        {
-            return collider;
-        }
-
-        public Object GetCollidee()
-        {
-            return collidee;
         }
     }
 }

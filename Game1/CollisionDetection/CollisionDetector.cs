@@ -21,7 +21,7 @@ namespace Game1.CollisionDetection
              *      find intersection rec
              *      determine side
              *      create and add collision to list
-             */ 
+             */
 
             return collisionList;
         }
