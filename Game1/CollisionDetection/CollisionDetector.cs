@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace Game1.CollisionDetection
 {
@@ -18,14 +19,21 @@ namespace Game1.CollisionDetection
             LinkedList<IEnvironment> EnvironmentList = room.EnvironmentList;
             LinkedList<IEnemy> EnemyList = room.EnemyList;
             LinkedList<IProjectile> ProjectileList = room.ProjectileList;
+            IPlayer Link = null; //TODO: make this a reference to link when room is created
             Rectangle playerRec = room.GetPlayerRectangle();
 
             foreach (IEnvironment environment in EnvironmentList) { // player colliding with environment
-                if (playerRec.intersectsWith()) { // Need to determine how we will recieve an environment rectangle
-                    Rectangle intersectionRec = Rectangle.intersect(playerRec, ); // Need environment rectangle
-                    char side = DetermineSide(playerRec, , intersectionRec); // Need environment rectangle
-                    collisionList.Add(new Collision(side, intersectionRec, playerRec, ));
-                } 
+
+                //some environment objects have multiple hitboxes
+                foreach(Rectangle envRect in environment.GetHitboxes())
+                {
+                    Rectangle intersection = Intersect(playerRec, envRect);
+                    if(!intersection.Equals(null))
+                    {
+                        char side = DetermineSide(playerRec, envRect, intersection);
+                        collisionList.Add(new Collision(side, intersectionRec, Link, environment));
+                    }
+                }
             }
 
             // Need enemy colliding with environment loop

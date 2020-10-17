@@ -13,10 +13,15 @@ namespace Game1.Environment
     {
         private ISprite sprite;
         private Vector2 position;
+
+        private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
+        private List<Rectangle> hitboxes = new List<Rectangle>();
+
         public Block(Vector2 position)
         {
             sprite = EnvironmentSpriteFactory.instance.createBlock();
             this.position = position;
+            hitboxes.Add(hitbox1);
         }
 
         public void BehaviorUpdate(GameTime gameTime)
@@ -27,6 +32,11 @@ namespace Game1.Environment
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, position, color);
+        }
+
+        public List<Rectangle> GetHitboxes()
+        {
+            return hitboxes;
         }
     }
 }

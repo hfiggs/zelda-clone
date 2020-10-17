@@ -13,6 +13,9 @@ namespace Game1.Environment
     {
         private ISprite sprite;
         Vector2 position;
+
+        private List<Rectangle> hitboxes = new List<Rectangle>();
+
         public Sand(Vector2 position)
         {
             sprite = EnvironmentSpriteFactory.instance.createSand();
@@ -27,6 +30,11 @@ namespace Game1.Environment
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, position, color);
+        }
+
+        public List<Rectangle> GetHitboxes()
+        {
+            return hitboxes;
         }
     }
 }

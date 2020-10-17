@@ -3,7 +3,6 @@
     "",
     "\\Game1",
     "\\Game1\\CollisionDetection",
-    "\\Game1\\Enemy",
     "\\Game1\\Enemy\\SpikeTrap"
   ],
   "SelectedNode": "\\Game1\\CollisionDetection\\CollisionDetector.cs",
