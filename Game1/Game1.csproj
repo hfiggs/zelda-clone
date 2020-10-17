@@ -120,6 +120,11 @@
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackSouth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackNorth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
+    <Compile Include="Environment\Doors\DoorWFloor.cs" />
+    <Compile Include="Environment\Doors\DoorSFloor.cs" />
+    <Compile Include="Environment\Doors\DoorNFloor.cs" />
+    <Compile Include="Environment\Doors\DoorEFloor.cs" />
+    <Compile Include="Environment\EnvironmentListTopFactory.cs" />
     <Compile Include="Environment\EnvironmentListFactory.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />
     <Compile Include="Particle\Cloud.cs" />

@@ -25,33 +25,12 @@ namespace Game1.Environment
             list.AddLast(new StatueFish(position));
             list.AddLast(new Water(position));
 
-            list.AddLast(new DoorEBlank(position));
-            list.AddLast(new DoorEClosed(position));
-            list.AddLast(new DoorEHole(position));
-            list.AddLast(new DoorEOpen(position));
-            list.AddLast(new DoorELocked(position));
-
-            list.AddLast(new DoorNBlank(position));
-            list.AddLast(new DoorNClosed(position));
-            list.AddLast(new DoorNHole(position));
-            list.AddLast(new DoorNOpen(position));
-            list.AddLast(new DoorNLocked(position));
-
-            list.AddLast(new DoorSBlank(position));
-            list.AddLast(new DoorSClosed(position));
-            list.AddLast(new DoorSHole(position));
-            list.AddLast(new DoorSOpen(position));
-            list.AddLast(new DoorSLocked(position));
-
-            list.AddLast(new DoorWBlank(position));
-            list.AddLast(new DoorWClosed(position));
-            list.AddLast(new DoorWHole(position));
-            list.AddLast(new DoorWOpen(position));
-            list.AddLast(new DoorWLocked(position));
-
-            list.AddLast(new RoomBorder(position));
-
             list.AddLast(new Fire(position));
+
+            list.AddLast(new DoorNFloor(position));
+            list.AddLast(new DoorEFloor(position));
+            list.AddLast(new DoorSFloor(position));
+            list.AddLast(new DoorWFloor(position));
 
             return list;
         }

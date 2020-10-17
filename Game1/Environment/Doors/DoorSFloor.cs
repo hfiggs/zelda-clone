@@ -8,15 +8,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Environment
 {
-    class DoorEOpen : IEnvironment
+    class DoorSFloor : IEnvironment
     {
         private ISprite sprite;
         private Vector2 position;
         
-        public DoorEOpen(Vector2 position)
+        public DoorSFloor(Vector2 position)
         {
-            this.sprite = EnvironmentSpriteFactory.instance.createDoorEOpen();
-            this.position = position;
+            sprite = EnvironmentSpriteFactory.instance.createDoorSFloor();
+            this.position = position + new Vector2(8.0f, 0.0f);
         }
 
         public void BehaviorUpdate(GameTime gameTime)

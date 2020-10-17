@@ -32,6 +32,7 @@ namespace Game1
         public IPlayer Player { get; set; }
         public LinkedList<IItem> ItemList { get; set; }
         public LinkedList<IEnvironment> EnvironmentList { get; set; }
+        public LinkedList<IEnvironment> EnvironmentListTop { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
         public LinkedList<IProjectile> ProjectileList { get; set; }
 
@@ -72,6 +73,7 @@ namespace Game1
 
             EnvironmentSpriteFactory.instance.LoadContent(Content);
             EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
+            EnvironmentListTop = EnvironmentListTopFactory.GetEnvironmentList();
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemyList = EnemyListFactory.GetEnemyList(this);
@@ -116,7 +118,7 @@ namespace Game1
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
@@ -125,6 +127,8 @@ namespace Game1
             EnemyList.First.Value.Draw(spriteBatch, Color.White);
 
             Player.Draw(spriteBatch, Color.White);
+
+            EnvironmentListTop.First.Value.Draw(spriteBatch, Color.White);
 
             foreach (IProjectile projectile in ProjectileList)
             {
