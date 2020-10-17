@@ -13,6 +13,7 @@ namespace Game1.Environment
 		private SpriteSheet doors;
 		private SpriteSheet tiles;
 		private SpriteSheet room;
+		private SpriteSheet doorfloors;
 
 		public static EnvironmentSpriteFactory instance = new EnvironmentSpriteFactory();
 
@@ -25,9 +26,11 @@ namespace Game1.Environment
 			Texture2D doors = content.Load<Texture2D>("images/ss_doors");
 			Texture2D tiles = content.Load<Texture2D>("images/ss_tiles");
 			Texture2D room = content.Load<Texture2D>("images/room_base");
+			Texture2D doorfloors = content.Load<Texture2D>("images/door_floors");
 			this.doors = new SpriteSheet(doors, 5, 4);
 			this.tiles = new SpriteSheet(tiles, 4, 3);
 			this.room = new SpriteSheet(room, 1, 1);
+			this.doorfloors = new SpriteSheet(doorfloors, 2, 2);
 		}
 
 		/*
@@ -193,5 +196,25 @@ namespace Game1.Environment
         {
 			return new EnvironmentSprite(tiles, 2, 2, 31, true);
         }
+
+		public ISprite createDoorNFloor()
+		{
+			return new EnvironmentSprite(doorfloors, 0, 0, 32, false);
+		}
+
+		public ISprite createDoorEFloor()
+		{
+			return new EnvironmentSprite(doorfloors, 0, 1, 33, false);
+		}
+
+		public ISprite createDoorSFloor()
+		{
+			return new EnvironmentSprite(doorfloors, 1, 1, 34, false);
+		}
+
+		public ISprite createDoorWFloor()
+		{
+			return new EnvironmentSprite(doorfloors, 1, 0, 35, false);
+		}
 	}
 }

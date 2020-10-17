@@ -38,6 +38,8 @@ namespace Game1.Player
 
         void spawnProjectile(IProjectile projectile);
 
-        bool CantUseProjectile(IProjectile projectile);
+        void setItemUsable(int item);
+
+        void setItemNotUsable();
     }
 }

@@ -18,6 +18,8 @@ namespace Game1.Player
         private const int swordBeamCooldown = 800; // ms
 
         private bool isFullHealth;
+        private bool[] itemsHeld = { true, true, true };
+
 
         public Player1(Game1 game, Vector2 position)
         {
@@ -57,8 +59,11 @@ namespace Game1.Player
 
         public void UseItem(int item)
         {
-                currentItem = item;
+            currentItem = item;
+            if (itemsHeld[item - 1])
+            {
                 state.UseItem();
+            }
         }
 
         public void Attack()
@@ -114,9 +119,14 @@ namespace Game1.Player
             game.SpawnProjectile(projectile);
         }
 
-        public bool CantUseProjectile(IProjectile projectile)
+        public void setItemUsable(int item)
         {
-            return game.ProjectileContainedInList(projectile);
+            itemsHeld[item - 1] = true;
+        }
+
+        public void setItemNotUsable()
+        {
+            itemsHeld[currentItem - 1] = false;
         }
     }
 }

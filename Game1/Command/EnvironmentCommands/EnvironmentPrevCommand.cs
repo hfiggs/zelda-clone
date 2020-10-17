@@ -28,10 +28,13 @@ namespace Game1.Command
             if (game.EnvironmentList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
                 IEnvironment last = game.EnvironmentList.Last();
+                IEnvironment topLast = game.EnvironmentListTop.Last();
 
                 game.EnvironmentList.RemoveLast();
+                game.EnvironmentListTop.RemoveLast();
 
                 game.EnvironmentList.AddFirst(last);
+                game.EnvironmentListTop.AddFirst(topLast);
 
                 stopWatch.Restart();
             }

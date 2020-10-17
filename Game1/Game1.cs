@@ -32,6 +32,7 @@ namespace Game1
         public IPlayer Player { get; set; }
         public LinkedList<IItem> ItemList { get; set; }
         public LinkedList<IEnvironment> EnvironmentList { get; set; }
+        public LinkedList<IEnvironment> EnvironmentListTop { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
         public LinkedList<IProjectile> ProjectileList { get; set; }
 
@@ -72,6 +73,7 @@ namespace Game1
 
             EnvironmentSpriteFactory.instance.LoadContent(Content);
             EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
+            EnvironmentListTop = EnvironmentListTopFactory.GetEnvironmentList();
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
             EnemyList = EnemyListFactory.GetEnemyList(this);
@@ -116,17 +118,19 @@ namespace Game1
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
-
-            Player.Draw(spriteBatch,Color.White);
 
             ItemList.First.Value.Draw(spriteBatch, Color.White);
             EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
             EnemyList.First.Value.Draw(spriteBatch, Color.White);
 
-            foreach(IProjectile projectile in ProjectileList)
+            Player.Draw(spriteBatch, Color.White);
+
+            EnvironmentListTop.First.Value.Draw(spriteBatch, Color.White);
+
+            foreach (IProjectile projectile in ProjectileList)
             {
                 projectile.Draw(spriteBatch, Color.White);
             }
@@ -149,11 +153,6 @@ namespace Game1
         public void SpawnProjectile(IProjectile projectile)
         {
             ProjectileList.AddLast(projectile);
-        }
-
-        public bool ProjectileContainedInList(IProjectile proj)
-        {
-            return ProjectileList.Contains(proj);
         }
 
         public void Reset()
