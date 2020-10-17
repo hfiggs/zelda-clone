@@ -9,6 +9,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 /*
  * PLEASE NOTE:
@@ -21,11 +22,25 @@ namespace Game1.CollisionDetection
 {
     class Room
     {
-        public List<IEnvironment> EnvironmentList { get; set; }
-        public List<IEnemy> EnemyList { get; set; }
-        public List<IItem> ItemList { get; set; }
-        public List<IProjectile> ProjectileList { get; set; }
+        public LinkedList<IEnvironment> EnvironmentList { get; set; }
+        public LinkedList<IEnemy> EnemyList { get; set; }
+        public LinkedList<IItem> ItemList { get; set; }
+        public LinkedList<IProjectile> ProjectileList { get; set; }
 
         public IPlayer Link { get; set; }
+
+        private CollisionDetector CollisionDetect;
+
+        public Room(Game1 game)
+        {
+            EnvironmentList = game.EnvironmentList;
+            Link = game.Player;
+            CollisionDetect = new CollisionDetector(this);
+        }
+
+        public void Update()
+        {
+            Console.WriteLine(CollisionDetect.GetCollisionList().ToString());
+        }
     }
 }

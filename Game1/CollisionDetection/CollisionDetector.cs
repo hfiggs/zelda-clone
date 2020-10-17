@@ -13,7 +13,7 @@ namespace Game1.CollisionDetection
     class CollisionDetector
     {
         private Room room;
-        private List<Collision> collisionList;
+        private LinkedList<Collision> collisionList;
         //private Object collider, collidee;
 
         public CollisionDetector(Room room)
@@ -21,13 +21,13 @@ namespace Game1.CollisionDetection
             this.room = room;
         }
 
-        public List<Collision> GetCollisionList()
+        public LinkedList<Collision> GetCollisionList()
         {
-            collisionList = new List<Collision>();
-            List<IItem> ItemList = room.ItemList;
-            List<IEnvironment> EnvironmentList = room.EnvironmentList;
-            List<IEnemy> EnemyList = room.EnemyList;
-            List<IProjectile> ProjectileList = room.ProjectileList;
+            collisionList = new LinkedList<Collision>();
+            LinkedList<IItem> ItemList = room.ItemList;
+            LinkedList<IEnvironment> EnvironmentList = room.EnvironmentList;
+            LinkedList<IEnemy> EnemyList = room.EnemyList;
+            LinkedList<IProjectile> ProjectileList = room.ProjectileList;
             IPlayer Link = room.Link;
             Rectangle playerRec = new Rectangle(0, 0, 64, 64); //dummy variable, will be somthing like this later: room.Link.GetPlayerRectangle();
 
@@ -42,11 +42,11 @@ namespace Game1.CollisionDetection
                     if (!intersectPlayer.IsEmpty)
                     {
                         char side = DetermineSide(playerRec, envRect, intersectPlayer);
-                        collisionList.Add(new Collision(side, intersectPlayer, Link, environment));
+                        collisionList.AddLast(new Collision(side, intersectPlayer, Link, environment));
                     }
 
                     //Environment collides with Enemy
-                    foreach (IEnemy enemy in EnemyList)
+                    /*foreach (IEnemy enemy in EnemyList)
                     {
                         foreach (Rectangle enemyRect in enemy.GetHitboxes())
                         {
@@ -57,7 +57,7 @@ namespace Game1.CollisionDetection
                                 collisionList.Add(new Collision(side, intersectEnemy, enemy, environment));
                             }
                         }
-                    }
+                    }*/
                 }
             }
             /*
