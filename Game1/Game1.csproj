@@ -66,6 +66,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CollisionDetection\Collision.cs" />
+    <Compile Include="CollisionDetection\CollisionDetector.cs" />
+    <Compile Include="CollisionDetection\Room.cs" />
     <Compile Include="Command\EnemyCommands\EnemyNextCommand.cs" />
     <Compile Include="Command\EnemyCommands\EnemyPrevCommand.cs" />
     <Compile Include="Command\EnvironmentCommands\EnvironmentNextCommand.cs" />
