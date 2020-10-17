@@ -120,13 +120,13 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
-            Player.Draw(spriteBatch,Color.White);
-
             ItemList.First.Value.Draw(spriteBatch, Color.White);
             EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
             EnemyList.First.Value.Draw(spriteBatch, Color.White);
 
-            foreach(IProjectile projectile in ProjectileList)
+            Player.Draw(spriteBatch, Color.White);
+
+            foreach (IProjectile projectile in ProjectileList)
             {
                 projectile.Draw(spriteBatch, Color.White);
             }
