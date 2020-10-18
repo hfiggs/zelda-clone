@@ -66,6 +66,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collision_Handling\CollisionHandler.cs" />
     <Compile Include="Command\CollisionHandlerCommands\LinkToBlockBottomSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\LinkToBlockLeftSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\LinkToBlockRightSideCommand.cs" />
