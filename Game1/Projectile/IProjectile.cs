@@ -9,5 +9,6 @@ namespace Game1.Projectile
         bool Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, Color color);
         bool Equals(Object obj);
+        Rectangle GetHitbox();
     }
 }
