@@ -68,7 +68,7 @@ namespace Game1.Projectile
 
         public Rectangle GetHitbox()
         {
-            return new Rectangle((int)position.X + 16, (int)position.Y + 5, 8, 10);
+            return new Rectangle((int)position.X + 16, (int)position.Y + 15, 8, 10);
         }
     }
 }

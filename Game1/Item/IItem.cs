@@ -12,5 +12,6 @@ namespace Game1.Item
     {
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, Color color);
+        Rectangle GetHitbox();
     }
 }
