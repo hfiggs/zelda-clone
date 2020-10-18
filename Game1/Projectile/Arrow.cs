@@ -55,5 +55,21 @@ namespace Game1.Projectile
         {
             return base.GetHashCode();
         }
+
+        public Rectangle GetHitbox()
+        {
+            Rectangle hitbox;
+
+            if (direction == 'N' || direction == 'S')
+            {
+                hitbox = new Rectangle((int)position.X + 18, (int)position.Y + 12, 5, 16);
+            }
+            else
+            {
+                hitbox = new Rectangle((int)position.X + 11, (int)position.Y + 17, 19, 5);
+            }
+
+            return hitbox;
+        }
     }
 }
