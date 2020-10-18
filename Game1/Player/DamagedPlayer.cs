@@ -20,6 +20,8 @@ namespace Game1.Player
 
         const int flickerDuration = 62; // ms
 
+        private Rectangle playerHitbox = new Rectangle(6, 18, 15, 10);
+
         public DamagedPlayer(Game1 game, IPlayer decoratedPlayer)
         {
             this.game = game;
@@ -131,6 +133,11 @@ namespace Game1.Player
         public void setItemNotUsable()
         {
             decoratedPlayer.setItemNotUsable();
+        }
+
+        public Rectangle GetPlayerHitbox()
+        {
+            return new Rectangle(playerHitbox.Location + decoratedPlayer.GetLocation().Location, playerHitbox.Size);
         }
     }
 }

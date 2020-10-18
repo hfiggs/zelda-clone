@@ -20,6 +20,7 @@ namespace Game1.Environment
         {
             sprite = EnvironmentSpriteFactory.instance.createDoorSFloor();
             this.position = position + new Vector2(8.0f, 0.0f);
+            hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
         }
 

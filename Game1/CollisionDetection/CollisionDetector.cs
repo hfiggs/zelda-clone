@@ -29,7 +29,7 @@ namespace Game1.CollisionDetection
             LinkedList<IEnemy> EnemyList = room.EnemyList;
             LinkedList<IProjectile> ProjectileList = room.ProjectileList;
             IPlayer Link = room.Link;
-            Rectangle playerRec = new Rectangle(0, 0, 64, 64); //dummy variable, will be somthing like this later: room.Link.GetPlayerRectangle();
+            Rectangle playerRec = room.Link.GetPlayerHitbox();
 
             foreach (IEnvironment environment in EnvironmentList)
             { // player colliding with environment

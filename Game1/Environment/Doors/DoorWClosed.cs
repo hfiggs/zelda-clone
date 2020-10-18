@@ -21,6 +21,7 @@ namespace Game1.Environment
         {
             sprite = EnvironmentSpriteFactory.instance.createDoorWClosed();
             this.position = position;
+            hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
         }
 

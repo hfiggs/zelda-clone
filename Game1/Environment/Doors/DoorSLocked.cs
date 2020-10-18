@@ -20,6 +20,7 @@ namespace Game1.Environment
         {
             sprite = EnvironmentSpriteFactory.instance.createDoorSLocked();
             this.position = position;
+            hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
         }
 

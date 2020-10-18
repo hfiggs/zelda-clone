@@ -17,6 +17,7 @@ namespace Game1.Environment
         {
             sprite = EnvironmentSpriteFactory.instance.createFire();
             this.position = position;
+            hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
         }
 

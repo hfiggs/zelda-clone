@@ -41,5 +41,7 @@ namespace Game1.Player
         void setItemUsable(int item);
 
         void setItemNotUsable();
+
+        Rectangle GetPlayerHitbox();
     }
 }

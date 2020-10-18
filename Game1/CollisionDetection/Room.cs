@@ -40,7 +40,12 @@ namespace Game1.CollisionDetection
 
         public void Update()
         {
-            Console.WriteLine(CollisionDetect.GetCollisionList().ToString());
+            string listString = "(";
+            foreach(Collision data in CollisionDetect.GetCollisionList())
+            {
+                listString += data.ToString() + "), (";
+            }
+            Console.WriteLine(listString + ")");
         }
     }
 }
