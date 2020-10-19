@@ -14,7 +14,6 @@ namespace Game1.CollisionDetection
     {
         private Room room;
         private LinkedList<Collision> collisionList;
-        //private Object collider, collidee;
 
         public CollisionDetector(Room room)
         {
@@ -29,36 +28,34 @@ namespace Game1.CollisionDetection
             LinkedList<IEnemy> EnemyList = room.EnemyList;
             LinkedList<IProjectile> ProjectileList = room.ProjectileList;
             IPlayer player = room.Link;
-            Rectangle playerRec = room.Link.GetPlayerHitbox();
+            Rectangle playerHitbox = room.Link.GetPlayerHitbox();
+            Rectangle swordHitbox = room.Link.GetSwordHitbox();
 
             foreach (IEnvironment environment in EnvironmentList)
             { // player colliding with environment
 
                 //some environment objects have multiple hitboxes
-                foreach (Rectangle envRect in environment.GetHitboxes())
+                foreach (Rectangle envHitbox in environment.GetHitboxes())
                 {
                     //Environment collides with player
-                    Rectangle intersectPlayer = Rectangle.Intersect(playerRec, envRect);
+                    Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, envHitbox);
                     if (!intersectPlayer.IsEmpty)
                     {
-                        char side = DetermineSide(playerRec, envRect, intersectPlayer);
+                        char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
                         collisionList.AddLast(new Collision(side, intersectPlayer, player, environment));
                     }
 
-                    //--Waiting for Enemy to have a hitbox
                     //Environment collides with Enemy
-                    /*foreach (IEnemy enemy in EnemyList)
+                    foreach (IEnemy enemy in EnemyList)
                     {
-                        foreach (Rectangle enemyRect in enemy.GetHitboxes())
+                        Rectangle enemyHitbox = enemy.GetHitbox();
+                        Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, envHitbox);
+                        if (!intersectEnemy.IsEmpty)
                         {
-                            Rectangle intersectEnemy = Rectangle.Intersect(enemyRect, envRect);
-                            if (!intersectEnemy.IsEmpty)
-                            {
-                                char side = DetermineSide(enemyRect, envRect, intersectPlayer);
-                                collisionList.Add(new Collision(side, intersectEnemy, enemy, environment));
-                            }
+                            char side = DetermineSide(enemyHitbox, envHitbox, intersectPlayer);
+                            collisionList.AddLast(new Collision(side, intersectEnemy, enemy, environment));
                         }
-                    }*/
+                    }
                 }
             }
 
@@ -66,41 +63,52 @@ namespace Game1.CollisionDetection
             foreach (IItem item in ItemList)
             {
                 Rectangle itemHitbox = item.GetHitbox();
-                Rectangle intersection = Rectangle.Intersect(itemHitbox, playerRec);
+                Rectangle intersection = Rectangle.Intersect(itemHitbox, playerHitbox);
                 if(!intersection.IsEmpty)
                 {
-                    char side = DetermineSide(playerRec, itemHitbox, intersection);
+                    char side = DetermineSide(playerHitbox, itemHitbox, intersection);
                     collisionList.AddLast(new Collision(side, intersection, player, item));
                 }
             }
 
-            /*
+            
             foreach (IEnemy enemy in EnemyList)
             { // enemy attacking player
-                if (playerRec.intersectsWith())
-                { // Need to determine how we will recieve an enemy rectangle
-                    Rectangle intersectionRec = Rectangle.intersect(playerRec, ); // Need enemy rectangle
-                    char side = DetermineSide( , playerRec, intersectionRec); // Need enemy rectangle
-                    collisionList.Add(new Collision(side, intersectionRec, , playerRec)); // Need enemy rectangle
+                Rectangle enemyHitbox = enemy.GetHitbox();
+                Rectangle intersectPlayer = Rectangle.Intersect(enemyHitbox, playerHitbox);
+                if (!intersectPlayer.IsEmpty) {
+                    char side = DetermineSide(enemyHitbox, playerHitbox, intersectPlayer);
+                    collisionList.AddLast(new Collision(side, intersectPlayer, enemy, player));
+                }
+
+                Rectangle intersectSword = Rectangle.Intersect(swordHitbox, enemyHitbox);
+                if(!intersectSword.IsEmpty)
+                {
+                    char side = DetermineSide(swordHitbox, enemyHitbox, intersectSword);
+                    collisionList.AddLast(new Collision(side, intersectSword, player, enemy));
                 }
             }
-
-            // Need Player attacking enemy loop
-            */
+            
             foreach (IProjectile proj in ProjectileList)
             { // projectile hits player
                 Rectangle projHitbox = proj.GetHitbox();
-                Rectangle intersectPlayer = Rectangle.Intersect(projHitbox, playerRec);
+                Rectangle intersectPlayer = Rectangle.Intersect(projHitbox, playerHitbox);
                 if (!intersectPlayer.IsEmpty)
                 {
-                    char side = DetermineSide(projHitbox , playerRec, intersectPlayer);
+                    char side = DetermineSide(projHitbox, playerHitbox, intersectPlayer);
                     collisionList.AddLast(new Collision(side, intersectPlayer, proj, player));
                 }
                 
                 //projectile hits enemy
                 foreach(IEnemy enemy in EnemyList)
                 {
-                    //--waiting on enemy hitboxes
+                    Rectangle enemyHitbox = enemy.GetHitbox();
+                    Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, projHitbox);
+                    if(!intersectEnemy.IsEmpty)
+                    {
+                        char side = DetermineSide(projHitbox, enemyHitbox, intersectEnemy);
+                        collisionList.AddLast(new Collision(side, intersectEnemy, proj, enemy));
+                    }
                 }
             }
 
