@@ -25,10 +25,10 @@ namespace Game1.Collision_Handling
             {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'S'), new LinkToEnemySouthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'W'), new LinkToEnemyWestSideCommand() },
             //Enemy damages player (Hunter) TODO
-            {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'E'), new EnemyToLinkEastSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'N'), new EnemyToLinkNorthSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'S'), new EnemyToLinkSouthSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'W'), new EnemyToLinkWestSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'E'), new EnemyToPlayerEastSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'N'), new EnemyToPlayerNorthSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'S'), new EnemyToPlayerSouthSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'W'), new EnemyToPlayerWestSideCommand() },
             //Projectile hits player (Hunter) TODO
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IPlayer),'E'), new ProjectileToPlayerEastSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IPlayer),'N'), new ProjectileToPlayerNorthSideCommand() },
