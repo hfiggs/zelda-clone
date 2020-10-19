@@ -66,15 +66,18 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collision_Handling\Collision.cs" />
     <Compile Include="Collision_Handling\CollisionHandler.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\LinkToBlockBottomSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\LinkToBlockLeftSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\LinkToBlockRightSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\LinkToBlockTopSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\LinkToEnemyTopSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\LinkToEnemyBottomSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\LinkToEnemyLeftSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\LinkToEnemyRightSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\LinkToItemCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\ICollisionCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\LinkToBlockSouthSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\LinkToBlockWestSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\LinkToBlockEastSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\LinkToBlockNorthSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\LinkToEnemyNorthSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\LinkToEnemySouthSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\LinkToEnemyWestSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\LinkToEnemyEastSideCommand.cs" />
     <Compile Include="Command\EnemyCommands\EnemyNextCommand.cs" />
     <Compile Include="Command\EnemyCommands\EnemyPrevCommand.cs" />
     <Compile Include="Command\EnvironmentCommands\EnvironmentNextCommand.cs" />

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace Game1.CollisionDetection
+namespace Game1.Collision_Handling
 {
     class Collision
     {

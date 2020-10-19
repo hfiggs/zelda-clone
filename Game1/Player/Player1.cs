@@ -18,7 +18,7 @@ namespace Game1.Player
         private const int swordBeamCooldown = 800; // ms
 
         private bool isFullHealth;
-        private bool[] itemsHeld = { true, true, true };
+        private bool[] itemsHeld = { true, true, true }; //Bow, Boomerang, Bomb
 
 
         public Player1(Game1 game, Vector2 position)

@@ -70,6 +70,7 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
+                if(player.fullHealth)
                 player.SetState(new PlayerStateDown(player, position));
             }
         }
