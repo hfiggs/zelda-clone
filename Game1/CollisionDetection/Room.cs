@@ -34,6 +34,9 @@ namespace Game1.CollisionDetection
         public Room(Game1 game)
         {
             EnvironmentList = game.EnvironmentList;
+            ItemList = game.ItemList;
+            EnemyList = game.EnemyList;
+            ProjectileList = game.ProjectileList;
             Link = game.Player;
             CollisionDetect = new CollisionDetector(this);
         }

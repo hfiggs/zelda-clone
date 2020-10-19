@@ -22,6 +22,7 @@ namespace Game1.Player
         private bool[] itemsHeld = { true, true, true };
 
         private Rectangle playerHitbox = new Rectangle(6, 18, 15, 10);
+        private Rectangle swordHitbox = new Rectangle(0, 0, 0, 0);
 
         public Player1(Game1 game, Vector2 position)
         {
@@ -131,6 +132,16 @@ namespace Game1.Player
         public Rectangle GetPlayerHitbox()
         {
             return new Rectangle(playerHitbox.Location + state.GetPosition().ToPoint(), playerHitbox.Size);
+        }
+
+        public Rectangle GetSwordHitbox()
+        {
+            return new Rectangle(swordHitbox.Location + state.GetPosition().ToPoint(), swordHitbox.Size);
+        }
+
+        public void SetSwordHitbox(Rectangle newHitbox)
+        {
+            swordHitbox = newHitbox;
         }
     }
 }

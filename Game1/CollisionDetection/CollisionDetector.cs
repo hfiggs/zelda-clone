@@ -45,6 +45,7 @@ namespace Game1.CollisionDetection
                         collisionList.AddLast(new Collision(side, intersectPlayer, Link, environment));
                     }
 
+                    //--Waiting for Enemy to have a hitbox
                     //Environment collides with Enemy
                     /*foreach (IEnemy enemy in EnemyList)
                     {
@@ -60,17 +61,19 @@ namespace Game1.CollisionDetection
                     }*/
                 }
             }
-            /*
+            
             foreach (IItem item in ItemList)
             { // player colliding with item
-                if (playerRec.intersectsWith())
-                { // Need to determine how we will recieve an item rectangle
-                    Rectangle intersectionRec = Rectangle.intersect(playerRec, ); // Need item rectangle
-                    char side = DetermineSide(playerRec, , intersectionRec); // Need item rectangle
-                    collisionList.Add(new Collision(side, intersectionRec, playerRec, )); // Need item rectangle
+                Rectangle itemHitbox = item.GetHitbox();
+                Rectangle intersection = Rectangle.Intersect(itemHitbox, playerRec);
+                if(!intersection.IsEmpty)
+                {
+                    char side = DetermineSide(playerRec, itemHitbox, intersection); // Need item rectangle
+                    collisionList.AddLast(new Collision(side, intersection, playerRec, itemHitbox)); // Need item rectangle
                 }
             }
 
+            /*
             foreach (IEnemy enemy in EnemyList)
             { // enemy attacking player
                 if (playerRec.intersectsWith())
