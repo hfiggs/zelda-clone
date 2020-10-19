@@ -43,7 +43,9 @@ namespace Game1.Enemy
             Rectangle playerRect = stateMachine.GetPlayerRectangle();
 
             if (totalTime < timeOfAttack || (counter == 1 && totalTime < 2)) {
-                position.X += moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                if (drawingLimits.Contains(position.X + moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds, position.Y)) {
+                    position.X += moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                }
             } else if (totalTime > timeOfAttack && counter == 0) {
                 game.SpawnProjectile(new Fireballs(position, playerRect));
                 counter++;
@@ -68,6 +70,11 @@ namespace Game1.Enemy
         public Vector2 GetDirection()
         {
             return new Vector2(moveSpeed, 0);
+        }
+
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X, (int)position.Y, 16, 13);
         }
     }
 }

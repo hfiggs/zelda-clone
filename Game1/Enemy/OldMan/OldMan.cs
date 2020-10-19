@@ -32,5 +32,10 @@ namespace Game1.Enemy
         {
             // TODO: Logic for determining text and when to fade out sprite
         }
+
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X, (int)position.Y, 16, 16);
+        }
     }
 }

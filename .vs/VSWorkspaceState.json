@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Game1",
-    "\\Game1\\CollisionDetection",
-    "\\Game1\\Enemy\\SpikeTrap"
+    "\\Game1"
   ],
-  "SelectedNode": "\\Game1\\CollisionDetection\\CollisionDetector.cs",
+  "SelectedNode": "\\Game1\\Projectile",
   "PreviewInSolutionExplorer": false
 }

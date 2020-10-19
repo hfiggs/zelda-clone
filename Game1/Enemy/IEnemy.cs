@@ -10,5 +10,7 @@ namespace Game1.Enemy
         void Update(GameTime gameTime, Rectangle drawingLimits5);
 
         void Draw(SpriteBatch spriteBatch, Color color);
+
+        Rectangle GetHitbox();
     }
 }

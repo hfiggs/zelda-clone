@@ -29,6 +29,11 @@ namespace Game1.Enemy
         {
             //Do Nothing
         }
+
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X, (int)position.Y, 14, 16);
+        }
     }
 
 }

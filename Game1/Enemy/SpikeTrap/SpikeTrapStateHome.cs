@@ -51,6 +51,11 @@ namespace Game1.Enemy
             // Cannot receive damage
         }
 
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)homePosition.X, (int)homePosition.Y, 16, 16);
+        }
+
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
             Rectangle playerRect = stateMachine.GetPlayerRectangle();

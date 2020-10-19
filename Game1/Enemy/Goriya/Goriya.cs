@@ -60,7 +60,11 @@ namespace Game1.Enemy
 
             stateMachine.Update(gameTime, drawingLimits);
         }
-            
+
+        public Rectangle GetHitbox()
+        {
+            return stateMachine.GetHitbox();
+        }    
     }
 }
 

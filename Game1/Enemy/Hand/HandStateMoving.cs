@@ -79,6 +79,11 @@ namespace Game1.Enemy
             return direction;
         }
 
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X + 7, (int)position.Y + 7, 16, 16);
+        }
+
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
             Random random = new Random();
