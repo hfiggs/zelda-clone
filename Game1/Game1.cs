@@ -18,7 +18,11 @@ using Game1.Environment;
 using Game1.Item;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
 using Game1.CollisionDetection;
+<<<<<<< HEAD
 using System;
+=======
+using Game1.RoomLoading;
+>>>>>>> 1cb9a61... created XML room loader and created first test room
 
 namespace Game1
 {
@@ -49,7 +53,7 @@ namespace Game1
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            resolution = new ResolutionComponent(this, Graphics, new Point(256, 176), new Point(1024, 704), false, true, false);
+            resolution = new ResolutionComponent(this, Graphics, new Point(256, 176), new Point(1024, 768), false, true, false);
         }
 
         // Initialization that does not require content
@@ -71,20 +75,23 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //temp
+            RoomParser room = new RoomParser(this);
+
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
             Player = new Player1(this, new Vector2(40, 100));
 
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
 
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            ItemList = ItemListFactory.GetItemList();
+            ItemList = room.GetItems();
 
             EnvironmentSpriteFactory.instance.LoadContent(Content);
-            EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
-            EnvironmentListTop = EnvironmentListTopFactory.GetEnvironmentList();
+            EnvironmentList = room.GetNonInteractableEnvinornment();
+            EnvironmentListTop = room.GetInteractableEnvinornment();
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
-            EnemyList = EnemyListFactory.GetEnemyList(this);
+            EnemyList = room.GetEnemies();
 
             ParticleSpriteFactory.Instance.LoadAllTextures(Content);
 
@@ -109,31 +116,47 @@ namespace Game1
             }
 
             Player.Update(gameTime);
-       
-            ItemList.First.Value.Update(gameTime);
-            EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 256, 176));
-            EnvironmentList.First.Value.BehaviorUpdate(gameTime);
+
+            //foreach (IEnemy enemy in EnemyList)
+            //{
+            //    enemy.Update(gameTime, new Rectangle(32, 32, 224, 144));
+            //}
 
             LinkedList<IProjectile> projectilesToRemove = new LinkedList<IProjectile>();
-            foreach(IProjectile projectile in ProjectileList)
+
+            foreach (IProjectile projectile in ProjectileList)
             {
-                if(projectile.Update(gameTime))
+                if (projectile.Update(gameTime))
                 {
                     projectilesToRemove.AddFirst(projectile);
                 }
             }
 
-            foreach(IProjectile projectile in projectilesToRemove)
+            foreach (IProjectile projectile in projectilesToRemove)
             {
                 ProjectileList.Remove(projectile);
             }
 
-            //DELETE ME
-            Room1.Update();
+            foreach (IEnvironment internactEnvironment in EnvironmentList)
+            {
+                internactEnvironment.BehaviorUpdate(gameTime);
+            }
 
+<<<<<<< HEAD
             //DELETE ME
             block.BehaviorUpdate(gameTime);
             Console.WriteLine(Player.GetPlayerHitbox().ToString());
+=======
+            foreach (IItem item in ItemList)
+            {
+                item.Update(gameTime);
+            }
+
+            foreach (IEnvironment nonInternactEnvironment in EnvironmentListTop)
+            {
+                nonInternactEnvironment.BehaviorUpdate(gameTime);
+            }
+>>>>>>> 1cb9a61... created XML room loader and created first test room
 
             base.Update(gameTime);
         }
@@ -144,13 +167,27 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
-            ItemList.First.Value.Draw(spriteBatch, Color.White);
-            EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
-            EnemyList.First.Value.Draw(spriteBatch, Color.White);
+            foreach (IEnvironment nonInternactEnvironment in EnvironmentList)
+            {
+                nonInternactEnvironment.Draw(spriteBatch, Color.White);
+            }
 
+            foreach (IEnvironment internactEnvironment in EnvironmentListTop)
+            {
+                internactEnvironment.Draw(spriteBatch, Color.White);
+            }
+
+            foreach (IItem item in ItemList)
+            {
+                item.Draw(spriteBatch, Color.White);
+            }
+
+            foreach (IEnemy enemy in EnemyList)
+            {
+                enemy.Draw(spriteBatch, Color.White);
+            }
+            
             Player.Draw(spriteBatch, Color.White);
-
-            EnvironmentListTop.First.Value.Draw(spriteBatch, Color.White);
 
             foreach (IProjectile projectile in ProjectileList)
             {

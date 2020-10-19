@@ -133,9 +133,12 @@
     <Compile Include="Environment\EnvironmentListTopFactory.cs" />
     <Compile Include="Environment\EnvironmentListFactory.cs" />
     <Compile Include="Environment\Tiles\MovableBlock.cs" />
+    <Compile Include="Environment\RoomBase.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
+    <Compile Include="RoomLoading\XMLLoader.cs" />
+    <Compile Include="RoomLoading\RoomParser.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
     <Compile Include="Sprite\EnemySpriteFactory.cs" />
     <Compile Include="Environment\Doors\DoorSHole.cs" />
@@ -277,6 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="RoomLoading\RoomXML\PartialLevelOne.xml" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
