@@ -110,6 +110,19 @@ namespace Game1.CollisionDetection
                         collisionList.AddLast(new Collision(side, intersectEnemy, proj, enemy));
                     }
                 }
+
+                //projectile hits item (only for boomerang)
+                foreach(IItem item in ItemList)
+                {
+                    Rectangle itemHitbox = item.GetHitbox();
+                    Rectangle interscetItem = Rectangle.Intersect(itemHitbox, projHitbox);
+                    if(!interscetItem.IsEmpty)
+                    {
+                        char side = DetermineSide(projHitbox, itemHitbox, interscetItem);
+                        collisionList.AddLast(new Collision(side, interscetItem, proj, item));
+                    }
+                }
+
             }
 
             return collisionList;
