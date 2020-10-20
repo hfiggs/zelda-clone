@@ -11,7 +11,7 @@ namespace Game1.Player
         private IPlayer player;
         public ISprite Sprite { get; private set; }
 
-        private Vector2 position;
+         public Vector2 position { get; set; }
 
         private float timeUntilNextFrame; // ms
         private int frameCount;
@@ -72,11 +72,6 @@ namespace Game1.Player
             {
                 player.SetState(new PlayerStateUp(player, position));
             }
-        }
-
-        public Vector2 GetPosition()
-        {
-            return position;
         }
 
         public char GetDirection()

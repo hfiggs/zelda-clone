@@ -22,7 +22,7 @@ namespace Game1.Player
 
         void Attack();
 
-        void ReceiveDamage();
+        void ReceiveDamage(Vector2 direction);
 
         void Update(GameTime time);
 
@@ -41,5 +41,7 @@ namespace Game1.Player
         void setItemUsable(int item);
 
         void setItemNotUsable();
+
+        void editPosition(Vector2 amount);
     }
 }

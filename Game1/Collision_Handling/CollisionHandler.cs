@@ -54,7 +54,7 @@ namespace Game1.Collision_Handling
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),'N'), new EnemyToBlockNorthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),'S'), new EnemyToBlockSouthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),'W'), new EnemyToBlockWestSideCommand() },
-            //Projectile to environment (Jared) TODO
+            //Projectile to environment (Jared)
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'E'), new ProjectileToEnvironmentEastSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'N'), new ProjectileToEnvironmentNorthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'S'), new ProjectileToEnvironmentSouthSideCommand() },

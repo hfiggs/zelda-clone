@@ -24,7 +24,7 @@ namespace Game1.Player
 
         void Update(GameTime time);
 
-        Vector2 GetPosition();
+        Vector2 position { get; set; }
 
         char GetDirection();
 

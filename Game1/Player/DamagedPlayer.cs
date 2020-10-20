@@ -14,23 +14,33 @@ namespace Game1.Player
         int currentFlicker = 0;
         Color damageColor = Color.White;
 
+        Vector2 damageMove = new Vector2(8,8); //magnitude of damage move per frame. If the player should slide 30 pixels, this value should be (6,6). 
+        //That way the player slides 30 pixels over the course of 5 frames.
+
         const int duration = 1000; // ms
         int timer;
         int flickerTimer;
 
-        const int flickerDuration = 62; // ms
+        const int flickerDuration = 45; // ms
 
-        public DamagedPlayer(Game1 game, IPlayer decoratedPlayer)
+        int frameCounter;
+        int slideFrames;
+        public DamagedPlayer(Game1 game, IPlayer decoratedPlayer, Vector2 direction)
         {
             this.game = game;
             this.decoratedPlayer = decoratedPlayer;
+            damageMove = Vector2.Multiply(damageMove, direction);
             timer = duration;
+
             flickerTimer = 0;
+            frameCounter = 0;
+            slideFrames = 4;
         }
 
         public void Attack()
         {
-            decoratedPlayer.Attack();
+            if (frameCounter > slideFrames)
+                decoratedPlayer.Attack();
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -63,26 +73,30 @@ namespace Game1.Player
         }
 
         public void MoveDown()
-        {
-            decoratedPlayer.MoveDown();
+        {   
+            if(frameCounter > slideFrames)
+                decoratedPlayer.MoveDown();
         }
 
         public void MoveLeft()
         {
-            decoratedPlayer.MoveLeft();
+            if(frameCounter > slideFrames)
+                decoratedPlayer.MoveLeft();
         }
 
         public void MoveRight()
         {
-            decoratedPlayer.MoveRight();
+           if(frameCounter > slideFrames)
+                decoratedPlayer.MoveRight();
         }
 
         public void MoveUp()
         {
-            decoratedPlayer.MoveUp();
+            if(frameCounter > slideFrames)
+                decoratedPlayer.MoveUp();
         }
 
-        public void ReceiveDamage()
+        public void ReceiveDamage(Vector2 direction)
         {
             // does not recieve damage
         }
@@ -95,12 +109,17 @@ namespace Game1.Player
             if (timer <= 0)
                 RemoveDecorator();
 
+            if (frameCounter <= slideFrames)
+                decoratedPlayer.editPosition(damageMove);
+
+            frameCounter++;
             decoratedPlayer.Update(time);
         }
 
         public void UseItem(int item)
         {
-            decoratedPlayer.UseItem(item);
+            if(frameCounter > slideFrames)
+                decoratedPlayer.UseItem(item);
         }
 
         private void RemoveDecorator()
@@ -131,6 +150,11 @@ namespace Game1.Player
         public void setItemNotUsable()
         {
             decoratedPlayer.setItemNotUsable();
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            decoratedPlayer.editPosition(amount);
         }
     }
 }

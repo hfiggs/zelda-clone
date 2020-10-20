@@ -34,7 +34,7 @@ namespace Game1.Player
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            state.Sprite.Draw(spriteBatch,state.GetPosition(),color);
+            state.Sprite.Draw(spriteBatch,state.position,color);
         }
 
         public void MoveLeft()
@@ -72,16 +72,16 @@ namespace Game1.Player
 
             if(timeUntilNextSwordBeam <= 0 && isFullHealth)
             {
-                game.SpawnProjectile(new SwordBeam(state.GetDirection(), state.GetPosition()));
+                game.SpawnProjectile(new SwordBeam(state.GetDirection(), state.position));
 
                 timeUntilNextSwordBeam = swordBeamCooldown;
             }
         }
 
-        public void ReceiveDamage()
+        public void ReceiveDamage(Vector2 direction)
         {
             // wrap damage decorator around this
-            game.Player = new DamagedPlayer(game, this);
+            game.Player = new DamagedPlayer(game, this, direction);
 
             isFullHealth = false;
         }
@@ -95,7 +95,7 @@ namespace Game1.Player
 
         public Rectangle GetLocation()
         {
-            Vector2 position = state.GetPosition();
+            Vector2 position = state.position;
             return new Rectangle((int)position.X,(int)position.Y,50,50);
         }
 
@@ -127,6 +127,11 @@ namespace Game1.Player
         public void setItemNotUsable()
         {
             itemsHeld[currentItem - 1] = false;
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            state.position = Vector2.Add(state.position, amount);
         }
     }
 }

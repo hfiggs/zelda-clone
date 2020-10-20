@@ -13,7 +13,7 @@ namespace Game1.Player
         public ISprite Sprite { get; private set; }
         private IProjectile projectile;
 
-        private Vector2 position;
+  public Vector2 position { get; set; }
 
         private float timeUntilNextFrame; // ms
         private int frameCount;
@@ -92,11 +92,6 @@ namespace Game1.Player
                 player.spawnProjectile(projectile);
                 player.SetState(new PlayerStateRight(player, position));
             }
-        }
-
-        public Vector2 GetPosition()
-        {
-            return position;
         }
 
         public char GetDirection()

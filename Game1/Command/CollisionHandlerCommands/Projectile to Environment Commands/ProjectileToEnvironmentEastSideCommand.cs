@@ -1,7 +1,11 @@
 ﻿
 
 using Game1.Collision_Handling;
+using Game1.Environment;
 using Game1.Player;
+using Game1.Projectile;
+using System.Security.Cryptography;
+using System.Security.Principal;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
@@ -14,7 +18,8 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            throw new System.NotImplementedException();
+/*             if(collision.intersectionRec.Right >= 256)
+                ((IProjectile)collision.collider).despawn();*/
         }
     }
 }

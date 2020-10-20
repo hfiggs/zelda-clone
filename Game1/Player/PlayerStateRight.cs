@@ -16,11 +16,11 @@ namespace Game1.Player
         public ISprite Sprite { get; private set; }
 
         private bool isMoving;
-        private Vector2 position;
+  public Vector2 position { get; set; }
 
         private float timeUntilNextFrame; // ms
 
-        private const int moveSpeed = 2;
+        private Vector2 moveSpeed = new Vector2(2,0);
         private const float animationTime = 150f; // ms per frame
 
         public PlayerStateRight(IPlayer player, Vector2  position)
@@ -80,15 +80,10 @@ namespace Game1.Player
                     timeUntilNextFrame += animationTime;
                 }
 
-                position.X += moveSpeed;
+                position += moveSpeed;
             }
 
             isMoving = false;
-        }
-
-        public Vector2 GetPosition()
-        {
-            return position;
         }
 
         public char GetDirection()

@@ -1,5 +1,7 @@
 ﻿/* Author: Hunter Figgs */
 
+using Microsoft.Xna.Framework;
+
 namespace Game1.Command
 {
     class PlayerDamageCommand : ICommand
@@ -13,7 +15,7 @@ namespace Game1.Command
 
         public void Execute()
         {
-            game.Player.ReceiveDamage();
+            game.Player.ReceiveDamage(new Vector2(0,1));
         }
     }
 }
