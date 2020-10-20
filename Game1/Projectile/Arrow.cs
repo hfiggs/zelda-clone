@@ -10,6 +10,7 @@ namespace Game1.Projectile
         private ProjectileSpriteSheet sprite;
         private Vector2 position;
         private float moveSpeed;
+        private bool removeMe = false;
 
         public Arrow(char direction, Vector2 position)
         {
@@ -18,7 +19,7 @@ namespace Game1.Projectile
             sprite = ProjectileSpriteFactory.Instance.CreateArrowSprite();
             moveSpeed = 500;
         }
-        public bool Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             if (direction == 'N') {
                 position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -33,9 +34,6 @@ namespace Game1.Projectile
                 position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 rowModifier = 3;
             }
-
-            //for now just return false, able to return true in the future when this needs to be removed from the projectiles list in game.
-            return false;
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
@@ -54,6 +52,16 @@ namespace Game1.Projectile
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public bool ShouldDelete()
+        {
+            return removeMe;
+        }
+
+        public void BeginDespawn()
+        {
+            removeMe = true;
         }
     }
 }

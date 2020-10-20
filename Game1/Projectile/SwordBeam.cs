@@ -10,6 +10,7 @@ namespace Game1.Projectile
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
         private ProjectileSpriteSheet sprite;
         private Vector2 position;
+        private bool removeMe = false;
 
         public SwordBeam(char direction, Vector2 position)
         {
@@ -21,7 +22,7 @@ namespace Game1.Projectile
             rowModifier = 0;
             counter = 0;
         }
-        public bool Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             if (direction == 'N') {
                 position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -49,10 +50,8 @@ namespace Game1.Projectile
             } else {
                 counter++;
             }
-
-            //for now just return false, able to return true in the future when this needs to be removed from the projectiles list in game.
-            return false;
         }
+
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             int columnOfSprite = sprite.GetColumnOfSprite();
@@ -70,6 +69,16 @@ namespace Game1.Projectile
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public bool ShouldDelete()
+        {
+            return removeMe;
+        }
+
+        public void BeginDespawn()
+        {
+           removeMe = true;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Game1
         public LinkedList<IEnvironment> EnvironmentList { get; set; }
         public LinkedList<IEnvironment> EnvironmentListTop { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
-        public LinkedList<IProjectile> ProjectileList { get; set; }
+        public List<IProjectile> ProjectileList { get; set; }
 
         public Game1()
         {
@@ -52,7 +52,7 @@ namespace Game1
                 new KeyboardController(this)
             };
 
-            ProjectileList = new LinkedList<IProjectile>();
+            ProjectileList = new List<IProjectile>();
 
             IsMouseVisible = true;
 
@@ -99,19 +99,12 @@ namespace Game1
             EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 256, 176));
             EnvironmentList.First.Value.BehaviorUpdate(gameTime);
 
-            LinkedList<IProjectile> projectilesToRemove = new LinkedList<IProjectile>();
             foreach(IProjectile projectile in ProjectileList)
             {
-                if(projectile.Update(gameTime))
-                {
-                    projectilesToRemove.AddFirst(projectile);
-                }
+                projectile.Update(gameTime);
             }
 
-            foreach(IProjectile projectile in projectilesToRemove)
-            {
-                ProjectileList.Remove(projectile);
-            }
+            ProjectileList.RemoveAll(p => p.ShouldDelete());
 
             base.Update(gameTime);
         }
@@ -152,13 +145,13 @@ namespace Game1
 
         public void SpawnProjectile(IProjectile projectile)
         {
-            ProjectileList.AddLast(projectile);
+            ProjectileList.Add(projectile);
         }
 
         public void Reset()
         {
             Player = new Player1(this, new Vector2(40, 100));
-            ProjectileList = new LinkedList<IProjectile>();
+            ProjectileList = new List<IProjectile>();
             ItemList = ItemListFactory.GetItemList();
             EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
             EnemyList = EnemyListFactory.GetEnemyList(this);

@@ -18,8 +18,8 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-/*             if(collision.intersectionRec.Right >= 256)
-                ((IProjectile)collision.collider).despawn();*/
+                if(collision.intersectionRec.Right >= 256)
+                ((IProjectile)collision.collider).BeginDespawn();
         }
     }
 }

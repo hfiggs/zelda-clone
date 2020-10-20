@@ -2,6 +2,7 @@
 
 using Game1.Collision_Handling;
 using Game1.Player;
+using Game1.Projectile;
 using Microsoft.Xna.Framework;
 
 namespace Game1.Command.CollisionHandlerCommands
@@ -15,7 +16,7 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            //((IProjectile)collision.collider).despawn();
+            ((IProjectile)collision.collider).BeginDespawn();
             ((IPlayer)collision.collidee).ReceiveDamage(new Vector2(0, 1));
         }
     }

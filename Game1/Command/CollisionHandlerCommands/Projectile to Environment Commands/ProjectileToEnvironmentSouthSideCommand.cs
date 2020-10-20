@@ -15,8 +15,8 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-/*            if (collision.intersectionRec.Bottom >= 176)
-                ((IProjectile)collision.collider).despawn();*/
+           if (collision.intersectionRec.Bottom >= 176)
+                ((IProjectile)collision.collider).BeginDespawn();
         }
     }
 }

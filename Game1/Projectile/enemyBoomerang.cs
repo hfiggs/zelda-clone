@@ -24,7 +24,7 @@ namespace Game1.Projectile
             returned = false;
 
         }
-        public bool Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             totalElapsedGameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -65,10 +65,8 @@ namespace Game1.Projectile
             }
 
             counter++;
-
-            //for now just return false, able to return true in the future when this needs to be removed from the projectiles list in game.
-            return returned;
         }
+
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             if (!returned) {
@@ -87,6 +85,16 @@ namespace Game1.Projectile
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public bool ShouldDelete()
+        {
+            return returned;
+        }
+
+        public void BeginDespawn()
+        {
+            totalElapsedGameTime = 1;
         }
     }
 }

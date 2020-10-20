@@ -26,7 +26,7 @@ namespace Game1.Projectile
             counter = 0;
             returned = false;
         }
-        public bool Update(GameTime gameTime) {
+        public void Update(GameTime gameTime) {
             totalElapsedGameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (totalElapsedGameTime < 1) {
@@ -67,8 +67,6 @@ namespace Game1.Projectile
             }
 
             counter++;
-
-            return returned;
         }
         public void Draw(SpriteBatch spriteBatch, Color color) {
             if (!returned) {
@@ -87,6 +85,16 @@ namespace Game1.Projectile
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public bool ShouldDelete()
+        {
+            return returned;
+        }
+
+        public void BeginDespawn()
+        {
+            totalElapsedGameTime = 2;
         }
     }
 }

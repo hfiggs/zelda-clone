@@ -35,7 +35,7 @@ namespace Game1.Projectile
             particlesSpawned = false;
         }
 
-        public bool Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             timer += detonationTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer > 70) {
@@ -53,8 +53,6 @@ namespace Game1.Projectile
             {
                 particle.Update(gameTime);
             }
-
-            return detonated && particles.Count == 0;
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
@@ -95,6 +93,16 @@ namespace Game1.Projectile
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X + cloudOffset, GetCenteredPosition().Y + cloudOffset)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X, GetCenteredPosition().Y + cloudOffset)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y + cloudOffset)));
+        }
+
+        public bool ShouldDelete()
+        {
+            return detonated && particles.Count == 0;
+        }
+
+        public void BeginDespawn()
+        {
+            //Do nothing, as bomb decides when it begins its despawn based off a counter.
         }
     }
 }
