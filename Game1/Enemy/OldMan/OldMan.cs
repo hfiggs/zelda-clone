@@ -23,7 +23,7 @@ namespace Game1.Enemy
             sprite.Draw(spriteBatch, position, color);
         }
 
-        public void ReceiveDamage()
+        public void ReceiveDamage(float amount, Vector2 direction)
         {
             // Cannot receive damage
         }
@@ -31,6 +31,16 @@ namespace Game1.Enemy
         public void Update(GameTime gameTime, Rectangle drawingLimits5)
         {
             // TODO: Logic for determining text and when to fade out sprite
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            //Does nothing!
+        }
+
+        public bool shouldRemove()
+        {
+            return false;
         }
     }
 }

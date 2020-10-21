@@ -2,6 +2,7 @@
 
 using Game1.Collision_Handling;
 using Game1.Player;
+using Game1.Projectile;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
@@ -14,7 +15,7 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            throw new System.NotImplementedException();
+            ((IProjectile)collision.collider).BeginDespawn();
         }
     }
 }

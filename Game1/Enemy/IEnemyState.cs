@@ -12,9 +12,9 @@ namespace Game1.Enemy
     {
         void Attack();
 
-        void ReceiveDamage();
-
         void Update(GameTime gametime, Rectangle drawingLimits);
+
+        void editPosition(Vector2 amount);
 
         Vector2 GetPosition();
 

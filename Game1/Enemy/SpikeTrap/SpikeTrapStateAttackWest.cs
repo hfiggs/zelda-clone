@@ -51,11 +51,6 @@ namespace Game1.Enemy
             return new Vector2(-1, 0);
         }
 
-        public void ReceiveDamage()
-        {
-            // Cannot receive damage
-        }
-
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
             if(isAdvancing)
@@ -76,6 +71,11 @@ namespace Game1.Enemy
                     stateMachine.SetState(new SpikeTrapStateHome(stateMachine, homePosition, verticalRange, horizontalRange));
                 }
             }
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            //These should never need their position edited.
         }
     }
 }

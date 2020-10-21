@@ -5,10 +5,15 @@ namespace Game1.Enemy
 {
     public interface IEnemy
     {
-        void ReceiveDamage();
+        void ReceiveDamage(float amount, Vector2 direction);
 
         void Update(GameTime gameTime, Rectangle drawingLimits5);
 
         void Draw(SpriteBatch spriteBatch, Color color);
+
+        void editPosition(Vector2 amount);
+
+        bool shouldRemove();
+        
     }
 }

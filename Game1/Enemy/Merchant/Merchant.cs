@@ -20,7 +20,7 @@ namespace Game1.Enemy
             mySprite.Draw(spriteBatch, position, color);
         }
 
-        public void ReceiveDamage()
+        public void ReceiveDamage(float amount, Vector2 direction)
         {
             // Do Nothing
         }
@@ -28,6 +28,16 @@ namespace Game1.Enemy
         public void Update(GameTime gameTime, Rectangle drawingLimits5)
         {
             //Do Nothing
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            //Do Nothing
+        }
+
+        public bool shouldRemove()
+        {
+            return false;
         }
     }
 

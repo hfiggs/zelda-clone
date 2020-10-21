@@ -33,11 +33,6 @@ namespace Game1.Enemy
 
         }
 
-        public void ReceiveDamage()
-        {
-
-        }
-
         public void Update(GameTime gametime, Rectangle drawingLimits) {
             totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
             Rectangle playerRect = stateMachine.GetPlayerRectangle();
@@ -68,6 +63,11 @@ namespace Game1.Enemy
         public Vector2 GetDirection()
         {
             return new Vector2(moveSpeed, 0);
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            position = Vector2.Add(position, amount);
         }
     }
 }

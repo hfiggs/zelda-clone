@@ -47,10 +47,6 @@ namespace Game1.Enemy
             return position;
         }
 
-        public void ReceiveDamage()
-        {
-            // Cannot receive damage
-        }
 
         public Vector2 GetDirection()
         {
@@ -100,6 +96,11 @@ namespace Game1.Enemy
             {
                 Sprite = EnemySpriteFactory.Instance.CreateDodongoDownDeadSprite();
             }
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            position = Vector2.Add(position, amount);
         }
     }
 }

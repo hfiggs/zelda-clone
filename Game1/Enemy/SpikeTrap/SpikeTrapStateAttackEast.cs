@@ -46,11 +46,6 @@ namespace Game1.Enemy
             return currentPosition;
         }
 
-        public void ReceiveDamage()
-        {
-            // Cannot receive damage
-        }
-
         public Vector2 GetDirection()
         {
             return new Vector2(1,0);
@@ -76,6 +71,11 @@ namespace Game1.Enemy
                     stateMachine.SetState(new SpikeTrapStateHome(stateMachine, homePosition, verticalRange, horizontalRange));
                 }
             }
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            //can't be edited, doesn't need to be move on
         }
     }
 }

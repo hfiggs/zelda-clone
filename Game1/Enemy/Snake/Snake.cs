@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
+
+//TODO: FIX THIS WHOLE THING
 namespace Game1.Enemy
 {
     class Snake : IEnemy
@@ -24,7 +26,7 @@ namespace Game1.Enemy
 
         private float timeUntilNewDirection;
         private const float moveTime = 1000f; // ms
-
+        private float health;
         private const int normalSpeed = 1;
         private const int fastSpeed = 2;
 
@@ -44,6 +46,8 @@ namespace Game1.Enemy
             moveDirection = rand.Next(4);
 
             timeUntilNextFrame = animationTime;
+
+            health = 0.5f;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -51,7 +55,11 @@ namespace Game1.Enemy
             sprite.Draw(spriteBatch,position,color);
         }
 
-        public void ReceiveDamage()  { /* TODO: Receive damage */ }
+        public void ReceiveDamage(int amount, Vector2 direction) 
+        {
+            health -= amount;
+            position 
+        }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {

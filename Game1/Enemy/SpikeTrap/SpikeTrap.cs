@@ -22,7 +22,7 @@ namespace Game1.Enemy
             stateMachine.Draw(spriteBatch,color);
         }
 
-        public void ReceiveDamage()
+        public void ReceiveDamage(float amount, Vector2 direction)
         {
             // Cannot receive damage
         }
@@ -30,6 +30,16 @@ namespace Game1.Enemy
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
             stateMachine.Update(gameTime, drawingLimits);
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+
+        }
+
+        public bool shouldRemove()
+        {
+            return false;
         }
     }
 }

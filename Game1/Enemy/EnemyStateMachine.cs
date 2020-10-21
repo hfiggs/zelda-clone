@@ -1,20 +1,19 @@
 ﻿using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Game1.Enemy
 {
     class EnemyStateMachine
     {
-        private Game1 game;
+        public Game1 game;
 
         private IEnemyState state;
 
         public EnemyStateMachine(Game1 game)
         {
             this.game = game;
-
-
         }
 
         public void SetState(IEnemyState state)
@@ -37,9 +36,15 @@ namespace Game1.Enemy
             state.Update(gametime, drawingLimits);
         }
 
-        public void ReceiveDamage()
+        public void swapInList(IEnemy enemy, IEnemy decorator)
         {
-            state.ReceiveDamage();
+            game.EnemyList.Remove(enemy);
+            game.EnemyList.AddFirst(decorator);
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            state.editPosition(amount);
         }
 
         public Vector2 GetPosition()

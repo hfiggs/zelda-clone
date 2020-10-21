@@ -34,11 +34,6 @@ namespace Game1.Enemy
             stateMachine.SetState(new GoriyaStateAttackingDown(stateMachine, position));
         }
 
-        public void ReceiveDamage()
-        {
-
-        }
-
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
 
@@ -95,6 +90,11 @@ namespace Game1.Enemy
                 default:
                     return new Vector2(0, moveSpeed);
             }
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            position = Vector2.Add(position, amount);
         }
     }
 }

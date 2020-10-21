@@ -46,11 +46,6 @@ namespace Game1.Enemy
             return new Vector2(0, 0);
         }
 
-        public void ReceiveDamage()
-        {
-            // Cannot receive damage
-        }
-
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
             Rectangle playerRect = stateMachine.GetPlayerRectangle();
@@ -74,6 +69,11 @@ namespace Game1.Enemy
             {
                 stateMachine.SetState(new SpikeTrapStateAttackSouth(stateMachine, homePosition, verticalRange, horizontalRange));
             }
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            //Do Nothing, These are on a set path and should always move the other sprites it touches.
         }
     }
 }

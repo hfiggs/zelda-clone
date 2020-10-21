@@ -38,11 +38,6 @@ namespace Game1.Enemy
 
         }
 
-        public void ReceiveDamage()
-        {
-
-        }
-
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
@@ -99,6 +94,11 @@ namespace Game1.Enemy
                 default:
                     return new Vector2(0, moveSpeed);
             }
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            position = Vector2.Add(position, amount);
         }
     }
 }
