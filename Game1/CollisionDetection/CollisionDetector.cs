@@ -56,6 +56,18 @@ namespace Game1.CollisionDetection
                             collisionList.AddLast(new Collision(side, intersectEnemy, enemy, environment));
                         }
                     }
+
+                    //Projectile collides with environment
+                    foreach (IProjectile proj in ProjectileList)
+                    {
+                        Rectangle projHitbox = proj.GetHitbox();
+                        Rectangle intersectEnv = Rectangle.Intersect(projHitbox, envHitbox);
+                        if (!intersectEnv.IsEmpty)
+                        {
+                            char side = DetermineSide(projHitbox, envHitbox, intersectPlayer);
+                            collisionList.AddLast(new Collision(side, intersectEnv, proj, environment));
+                        }
+                    }
                 }
             }
 
