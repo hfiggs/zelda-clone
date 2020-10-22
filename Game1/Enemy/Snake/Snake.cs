@@ -26,10 +26,13 @@ namespace Game1.Enemy
         private const float moveTime = 1000f; // ms
 
         private const int normalSpeed = 1;
-        private const int fastSpeed = 2;
+        private const int fastSpeed = 4;
+        private const int viewWidth = 10;
+        public bool playerSpotted { private get; set; }
+        Rectangle playerRect;
+        Vector2 windowDims;
 
-        public Snake(Game1 game, Vector2 position)
-        {
+        public Snake(Game1 game, Vector2 position) {
             this.game = game;
 
             rand = new Random();
@@ -44,6 +47,9 @@ namespace Game1.Enemy
             moveDirection = rand.Next(4);
 
             timeUntilNextFrame = animationTime;
+            playerSpotted = false;
+            playerRect = game.GetPlayerRectangle();
+            windowDims = game.GetWindowDimensions();
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -57,7 +63,7 @@ namespace Game1.Enemy
         {
             timeUntilNewDirection -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if (timeUntilNewDirection <= 0)
+            if (timeUntilNewDirection <= 0 && !playerSpotted)
             {
                 moveDirection = rand.Next(4);
 
@@ -75,8 +81,18 @@ namespace Game1.Enemy
                 sprite = EnemySpriteFactory.Instance.CreateSnakeLeftSprite();
             }
 
-            // TODO: determine if player is in front of snake and if so then speed = fastSpeed
+            if (isFacingLeft && playerRect.Intersects(new Rectangle((int)(position.X - windowDims.X), (int)position.Y, (int)windowDims.X, viewWidth))) {
+                playerSpotted = true;
+                moveDirection = 3;
+            } else if (!isFacingLeft && playerRect.Intersects(new Rectangle((int)position.X, (int)position.Y, (int)windowDims.X, viewWidth))) {
+                playerSpotted = true;
+                moveDirection = 2;
+            }
+
             int speed = normalSpeed;
+            if (playerSpotted) {
+                speed = fastSpeed;
+            }
 
             switch (moveDirection)
             {
@@ -101,6 +117,11 @@ namespace Game1.Enemy
                 sprite.Update();
                 timeUntilNextFrame += animationTime;
             }
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            // Do Nothing
         }
 
         public Rectangle GetHitbox()

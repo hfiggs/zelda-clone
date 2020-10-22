@@ -11,6 +11,8 @@ namespace Game1.Enemy
 
         void Draw(SpriteBatch spriteBatch, Color color);
 
+        void SetState(IEnemyState state);
+
         Rectangle GetHitbox();
     }
 }
