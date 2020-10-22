@@ -80,5 +80,20 @@ namespace Game1.Projectile
         {
            removeMe = true;
         }
+
+        public Rectangle GetHitbox()
+        {
+            Rectangle hitbox;
+
+            if (direction == 'N' || direction == 'S')
+            {
+                hitbox = new Rectangle((int)position.X + 17, (int)position.Y + 12, 7, 16);
+            } else
+            {
+                hitbox = new Rectangle((int)position.X + 11, (int)position.Y + 16, 18, 7);
+            }
+
+            return hitbox;
+        }
     }
 }

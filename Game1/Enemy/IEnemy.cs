@@ -15,5 +15,7 @@ namespace Game1.Enemy
 
         bool shouldRemove();
         
+
+        Rectangle GetHitbox();
     }
 }

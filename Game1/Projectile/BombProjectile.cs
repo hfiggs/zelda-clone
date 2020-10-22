@@ -4,6 +4,7 @@ using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace Game1.Projectile
 {
@@ -21,6 +22,7 @@ namespace Game1.Projectile
 
         private const int cloudOffset = 15; // pixels
         private const int spriteDiameter = 40; // pixels
+        private int count = 0;
 
         public BombProjectile(Vector2 position, IPlayer player)
         {
@@ -93,6 +95,22 @@ namespace Game1.Projectile
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X + cloudOffset, GetCenteredPosition().Y + cloudOffset)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X, GetCenteredPosition().Y + cloudOffset)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y + cloudOffset)));
+        }
+
+        public Rectangle GetHitbox()
+        {
+            Rectangle hitbox;
+
+            if (detonated && count == 0)
+            {
+                count++;
+                hitbox = new Rectangle((int)GetCenteredPosition().X - 24, (int)GetCenteredPosition().Y - 24, 48, 48);
+            } else
+            {
+                hitbox = new Rectangle(801, 481, 0, 0);
+            }
+
+            return hitbox;
         }
 
         public bool ShouldDelete()

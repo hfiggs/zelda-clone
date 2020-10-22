@@ -87,6 +87,11 @@ namespace Game1.Projectile
             return base.GetHashCode();
         }
 
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X + 16, (int)position.Y + 16, 8, 8);
+        }
+
         public bool ShouldDelete()
         {
             return returned;

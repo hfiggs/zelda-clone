@@ -110,5 +110,10 @@ namespace Game1.Enemy
                 timeUntilNextFrame += animationTime;
             }
         }
+
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X, (int)position.Y, 15, 15);
+        }
     }
 }

@@ -52,6 +52,11 @@ namespace Game1.Enemy
             return new Vector2(-1,0);
         }
 
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X + 2, (int)position.Y + 9, 28, 15);
+        }
+
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
             if (!isDead)

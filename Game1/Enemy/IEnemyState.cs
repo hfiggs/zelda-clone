@@ -20,6 +20,8 @@ namespace Game1.Enemy
 
         Vector2 GetDirection();
 
+        Rectangle GetHitbox();
+
         ISprite Sprite { get; }
     }
 }

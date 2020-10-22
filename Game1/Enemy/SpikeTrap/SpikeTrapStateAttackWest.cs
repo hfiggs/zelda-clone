@@ -51,6 +51,16 @@ namespace Game1.Enemy
             return new Vector2(-1, 0);
         }
 
+        public void ReceiveDamage()
+        {
+            // Cannot receive damage
+        }
+
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)currentPosition.X, (int)currentPosition.Y, 16, 16);
+        }
+
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
             if(isAdvancing)
