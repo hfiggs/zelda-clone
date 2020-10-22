@@ -51,11 +51,6 @@ namespace Game1.Enemy
             return new Vector2(0, 1);
         }
 
-        public void ReceiveDamage()
-        {
-            // Cannot receive damage
-        }
-
         public Rectangle GetHitbox()
         {
             return new Rectangle((int)currentPosition.X, (int)currentPosition.Y, 16, 16);
