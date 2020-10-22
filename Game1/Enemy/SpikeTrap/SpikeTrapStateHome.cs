@@ -1,12 +1,13 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
-using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
 {
     class SpikeTrapStateHome : IEnemyState
     {
-        private EnemyStateMachine stateMachine;
+        private IEnemy spiketrap;
+        private Game1 game;
 
         private Vector2 homePosition;
 
@@ -18,11 +19,12 @@ namespace Game1.Enemy
 
         public ISprite Sprite { get; private set; }
 
-        public SpikeTrapStateHome(EnemyStateMachine stateMachine, Vector2 homePosition, int verticalRange, int horizontalRange)
+        public SpikeTrapStateHome(Game1 game, IEnemy spiketrap, Vector2 homePosition, int verticalRange, int horizontalRange)
         {
             Sprite = EnemySpriteFactory.Instance.CreateSpikeTrapSprite();
 
-            this.stateMachine = stateMachine;
+            this.spiketrap = spiketrap;
+            this.game = game;
 
             this.homePosition = homePosition;
 
@@ -53,27 +55,32 @@ namespace Game1.Enemy
 
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
-            Rectangle playerRect = stateMachine.GetPlayerRectangle();
+            Rectangle playerRect = game.GetPlayerRectangle();
 
-            Vector2 windowDims = stateMachine.GetWindowDimensions();
+            Vector2 windowDims = game.GetWindowDimensions();
 
             
             if(playerRect.Intersects(new Rectangle((int)(homePosition.X - windowDims.X), (int)homePosition.Y, (int)windowDims.X, viewWidth))) // Spike sees player west
             {
-                stateMachine.SetState(new SpikeTrapStateAttackWest(stateMachine, homePosition, verticalRange, horizontalRange));
+                spiketrap.SetState(new SpikeTrapStateAttackWest(game, spiketrap, homePosition, verticalRange, horizontalRange));
             }
             else if(playerRect.Intersects(new Rectangle((int)homePosition.X, (int)homePosition.Y, (int)windowDims.X, viewWidth))) // Spike sees player east
             {
-                stateMachine.SetState(new SpikeTrapStateAttackEast(stateMachine, homePosition, verticalRange, horizontalRange));
+                spiketrap.SetState(new SpikeTrapStateAttackEast(game, spiketrap, homePosition, verticalRange, horizontalRange));
             }
             else if(playerRect.Intersects(new Rectangle((int)homePosition.X, (int)(homePosition.Y - windowDims.Y), viewWidth, (int)windowDims.Y))) // Spike sees player north
             {
-                stateMachine.SetState(new SpikeTrapStateAttackNorth(stateMachine, homePosition, verticalRange, horizontalRange));
+                spiketrap.SetState(new SpikeTrapStateAttackNorth(game, spiketrap, homePosition, verticalRange, horizontalRange));
             }
             else if (playerRect.Intersects(new Rectangle((int)homePosition.X, (int)homePosition.Y, viewWidth, (int)windowDims.Y))) // Spike sees player south
             {
-                stateMachine.SetState(new SpikeTrapStateAttackSouth(stateMachine, homePosition, verticalRange, horizontalRange));
+                spiketrap.SetState(new SpikeTrapStateAttackSouth(game, spiketrap, homePosition, verticalRange, horizontalRange));
             }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, homePosition, Color.White);
         }
     }
 }

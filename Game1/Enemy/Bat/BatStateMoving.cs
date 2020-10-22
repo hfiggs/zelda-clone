@@ -1,12 +1,12 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
 {
     class BatStateMoving : IEnemyState
     {
-        private EnemyStateMachine stateMachine;
         public ISprite Sprite { get; private set; }
         private Vector2 position;
         private Vector2 direction;
@@ -17,9 +17,8 @@ namespace Game1.Enemy
         private float timeUntilNextFrame; // ms
         private const float animationTime = 100f; // ms per frame
 
-        public BatStateMoving(EnemyStateMachine stateMachine, Vector2 position)
+        public BatStateMoving(Vector2 position)
         {
-            this.stateMachine = stateMachine;
             this.position = position;
             direction = GetRandomDirection();
             MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
@@ -62,6 +61,11 @@ namespace Game1.Enemy
                 Sprite.Update();
                 timeUntilNextFrame += animationTime;
             }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, position, Color.White);
         }
 
         public Vector2 GetPosition()

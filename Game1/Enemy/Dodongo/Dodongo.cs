@@ -6,39 +6,42 @@ namespace Game1.Enemy
 {
     class Dodongo : IEnemy
     {
-        private EnemyStateMachine stateMachine;
+        private IEnemyState state;
 
         public Dodongo(Game1 game, Vector2 position)
         {
-            stateMachine = new EnemyStateMachine(game);
-
             switch ((new Random()).Next(4))
             {
                 case 0:
-                    stateMachine.SetState(new DodongoStateUp(stateMachine, position));
+                    state = new DodongoStateUp(this, position);
                     break;
                 case 1:
-                    stateMachine.SetState(new DodongoStateDown(stateMachine, position));
+                    state = new DodongoStateDown(this, position);
                     break;
                 case 2:
-                    stateMachine.SetState(new DodongoStateLeft(stateMachine, position));
+                    state = new DodongoStateLeft(this, position);
                     break;
                 case 3:
-                    stateMachine.SetState(new DodongoStateRight(stateMachine, position));
+                    state = new DodongoStateRight(this, position);
                     break;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(spriteBatch, color);
+            state.Draw(spriteBatch, color);
         }
 
         public void ReceiveDamage() {  /* TODO: Receive damage */ }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            stateMachine.Update(gameTime, drawingLimits);
+            state.Update(gameTime, drawingLimits);
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            this.state = state;
         }
     }
 }

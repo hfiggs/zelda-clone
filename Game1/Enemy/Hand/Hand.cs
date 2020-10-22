@@ -1,35 +1,34 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Enemy
 {
     class Hand : IEnemy
     {
-        private EnemyStateMachine stateMachine;
+        private IEnemyState state;
         public Hand(Game1 game, Vector2 spawnPosition)
         {
-            stateMachine = new EnemyStateMachine(game);
-            stateMachine.SetState(new HandStateMoving(stateMachine, spawnPosition));
+            state = new HandStateMoving(spawnPosition);
         }
 
         public void ReceiveDamage()
         {
-            stateMachine.ReceiveDamage();
+            state.ReceiveDamage();
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(spriteBatch, color);
+            state.Draw(spriteBatch, color);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            stateMachine.Update(gameTime, drawingLimits);
+            state.Update(gameTime, drawingLimits);
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            this.state = state;
         }
     }
 }

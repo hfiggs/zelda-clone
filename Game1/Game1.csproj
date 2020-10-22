@@ -91,7 +91,6 @@
     <Compile Include="Enemy\Dodongo\DodongoStateUp.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateRight.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateLeft.cs" />
-    <Compile Include="Enemy\EnemyStateMachine.cs" />
     <Compile Include="Enemy\Goriya\Goriya.cs" />
     <Compile Include="Enemy\Goriya\GoriyaStateAttackingLeft.cs" />
     <Compile Include="Enemy\Goriya\GoriyaStateAttackingUp.cs" />

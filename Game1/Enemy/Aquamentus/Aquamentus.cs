@@ -6,12 +6,11 @@ namespace Game1.Enemy
 {
     class Aquamentus : IEnemy
     {
-        private EnemyStateMachine stateMachine;
         public ISprite Sprite { get; private set; }
+        private IEnemyState state;
 
         public Aquamentus(Game1 game, Vector2 position) {
-            stateMachine = new EnemyStateMachine(game);
-            stateMachine.SetState(new AquamentusWalkLeft(game, stateMachine, position));
+            state = new AquamentusWalkLeft(game, this, position);
         }
 
         public void ReceiveDamage()
@@ -21,12 +20,17 @@ namespace Game1.Enemy
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(spriteBatch, Color.White);
+            state.Draw(spriteBatch, Color.White);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            stateMachine.Update(gameTime, drawingLimits);
+            state.Update(gameTime, drawingLimits);
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            this.state = state;
         }
     }
 }

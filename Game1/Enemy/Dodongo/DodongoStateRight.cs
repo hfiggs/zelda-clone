@@ -1,12 +1,13 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
 {
     class DodongoStateRight : IEnemyState
     {
-        private EnemyStateMachine stateMachine;
+        private IEnemy dodongo;
 
         private Vector2 position;
 
@@ -22,11 +23,11 @@ namespace Game1.Enemy
 
         private const int moveSpeed = 1;
 
-        public DodongoStateRight(EnemyStateMachine stateMachine, Vector2 position)
+        public DodongoStateRight(IEnemy dodongo, Vector2 position)
         {
-            Sprite = EnemySpriteFactory.Instance.CreateDodongoRightSprite();
+            this.dodongo = dodongo;
 
-            this.stateMachine = stateMachine;
+            Sprite = EnemySpriteFactory.Instance.CreateDodongoRightSprite();
 
             this.position = position;
 
@@ -80,13 +81,13 @@ namespace Game1.Enemy
                     switch((new Random()).Next(4))
                     {
                         case 0:
-                            stateMachine.SetState(new DodongoStateUp(stateMachine, position));
+                            dodongo.SetState(new DodongoStateUp(dodongo, position));
                             break;
                         case 1:
-                            stateMachine.SetState(new DodongoStateDown(stateMachine, position));
+                            dodongo.SetState(new DodongoStateDown(dodongo, position));
                             break;
                         case 2:
-                            stateMachine.SetState(new DodongoStateLeft(stateMachine, position));
+                            dodongo.SetState(new DodongoStateLeft(dodongo, position));
                             break;
                         case 3:
                             timeUntilNewDirection += moveTime;
@@ -100,6 +101,11 @@ namespace Game1.Enemy
             {
                 Sprite = EnemySpriteFactory.Instance.CreateDodongoRightDeadSprite();
             }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, position, Color.White);
         }
     }
 }

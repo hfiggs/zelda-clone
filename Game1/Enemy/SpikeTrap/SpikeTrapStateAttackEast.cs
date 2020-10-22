@@ -1,12 +1,13 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
-using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
 {
     class SpikeTrapStateAttackEast : IEnemyState
     {
-        private EnemyStateMachine stateMachine;
+        private IEnemy spiketrap;
+        Game1 game;
 
         private Vector2 homePosition;
         private Vector2 currentPosition;
@@ -21,11 +22,12 @@ namespace Game1.Enemy
 
         public ISprite Sprite { get; private set; }
 
-        public SpikeTrapStateAttackEast(EnemyStateMachine stateMachine, Vector2 homePosition, int verticalRange, int horizontalRange)
+        public SpikeTrapStateAttackEast(Game1 game, IEnemy spiketrap, Vector2 homePosition, int verticalRange, int horizontalRange)
         {
             Sprite = EnemySpriteFactory.Instance.CreateSpikeTrapSprite();
 
-            this.stateMachine = stateMachine;
+            this.game = game;
+            this.spiketrap = spiketrap;
 
             this.homePosition = homePosition;
             currentPosition = homePosition;
@@ -73,9 +75,14 @@ namespace Game1.Enemy
 
                 if (currentPosition.X <= homePosition.X)
                 {
-                    stateMachine.SetState(new SpikeTrapStateHome(stateMachine, homePosition, verticalRange, horizontalRange));
+                    spiketrap.SetState(new SpikeTrapStateHome(game, spiketrap, homePosition, verticalRange, horizontalRange));
                 }
             }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, currentPosition, Color.White);
         }
     }
 }

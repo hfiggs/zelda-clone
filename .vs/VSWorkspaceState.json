@@ -2,15 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\CodeReviews",
-    "\\Game1\\Command",
-    "\\Game1\\Content",
-    "\\Game1\\Controller",
     "\\Game1\\Enemy",
-    "\\Game1\\Environment",
-    "\\Game1\\Item",
-    "\\Game1\\Projectile"
+    "\\Game1\\Enemy\\Skeleton",
+    "\\Game1\\Enemy\\Snake",
+    "\\Game1\\Enemy\\SpikeTrap"
   ],
-  "SelectedNode": "\\Game1\\CodeReviews\\CodeReviewGoryiaReadabilityJeffreyGaydos.txt",
+  "SelectedNode": "\\Game1\\Enemy\\Snake\\Snake.cs",
   "PreviewInSolutionExplorer": false
 }

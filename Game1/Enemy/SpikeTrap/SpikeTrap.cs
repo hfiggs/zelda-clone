@@ -1,25 +1,22 @@
 ﻿/* Author: Hunter Figgs */
 
-using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace Game1.Enemy
 {
     class SpikeTrap : IEnemy
     {
-        private EnemyStateMachine stateMachine;
+        private IEnemyState state;
 
         public SpikeTrap(Game1 game, Vector2 homePosition, int verticalRange, int horizontalRange)
         {
-            stateMachine = new EnemyStateMachine(game);
-            stateMachine.SetState(new SpikeTrapStateHome(stateMachine, homePosition, verticalRange, horizontalRange));
+            state = new SpikeTrapStateHome(game, this, homePosition, verticalRange, horizontalRange);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(spriteBatch,color);
+            state.Draw(spriteBatch,color);
         }
 
         public void ReceiveDamage()
@@ -29,7 +26,12 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            stateMachine.Update(gameTime, drawingLimits);
+            state.Update(gameTime, drawingLimits);
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            this.state = state;
         }
     }
 }
