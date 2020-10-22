@@ -21,7 +21,7 @@ namespace Game1.Player
         private bool isFullHealth;
         private bool[] itemsHeld = { true, true, true };
 
-        private Rectangle playerHitbox = new Rectangle(6, 18, 15, 10);
+        private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
         private Rectangle swordHitbox = new Rectangle(0, 0, 0, 0);
 
         public Player1(Game1 game, Vector2 position)
