@@ -17,7 +17,7 @@ namespace Game1.Command.CollisionHandlerCommands
         public void Execute(Collision collision)
         {
             ((IProjectile)collision.collider).BeginDespawn();
-            ((IPlayer)collision.collidee).ReceiveDamage(new Vector2(1,0));
+            ((IPlayer)collision.collidee).ReceiveDamage(new Vector2(-1,0));
         }
     }
 }
