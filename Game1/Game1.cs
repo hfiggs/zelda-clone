@@ -137,9 +137,9 @@ namespace Game1
                 ProjectileList.Remove(projectile);
             }
 
-            foreach (IEnvironment internactEnvironment in EnvironmentList)
+            foreach (IEnvironment interactEnvironment in EnvironmentListTop)
             {
-                internactEnvironment.BehaviorUpdate(gameTime);
+                interactEnvironment.BehaviorUpdate(gameTime);
             }
 
 <<<<<<< HEAD
@@ -152,7 +152,7 @@ namespace Game1
                 item.Update(gameTime);
             }
 
-            foreach (IEnvironment nonInternactEnvironment in EnvironmentListTop)
+            foreach (IEnvironment nonInternactEnvironment in EnvironmentList)
             {
                 nonInternactEnvironment.BehaviorUpdate(gameTime);
             }

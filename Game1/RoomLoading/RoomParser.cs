@@ -17,7 +17,7 @@ namespace Game1.RoomLoading
         Game1 game;
         public RoomParser(Game1 game)
         {
-            roomData = new XMLLoader("C:/Users/fedulser/Source/Repos/3902_LoZ/Game1/RoomLoading/RoomXML/PartialLevelOne.xml");
+            roomData = new XMLLoader("C:/Users/fedulser/Source/Repos/3902_LoZ/Game1/RoomLoading/RoomXML/RoomA0.xml");
             this.game = game;
         }
 
@@ -76,7 +76,7 @@ namespace Game1.RoomLoading
                         item = new Triforce(position);
                         break;
                     default:
-                        break;
+                        throw new System.ArgumentException("Parameter cannot be null", "original");
                 }
 
                 items.AddLast(item);
@@ -133,7 +133,7 @@ namespace Game1.RoomLoading
                         enemy = new SpikeTrap(game, position, 5, 5);
                         break;
                     default:
-                        break;
+                        throw new System.ArgumentException("Parameter cannot be null", "original");
                 }
 
                 enemies.AddLast(enemy);
@@ -156,9 +156,6 @@ namespace Game1.RoomLoading
 
                 switch (n["Type"].InnerText)
                 {
-                    case "Block":
-                        nonInteractEnviornment = new Block(position);
-                        break;
                     case "Black":
                         nonInteractEnviornment = new Black(position);
                         break;
@@ -177,18 +174,6 @@ namespace Game1.RoomLoading
                     case "Sand":
                         nonInteractEnviornment = new Sand(position);
                         break;
-                    case "Stairs":
-                        nonInteractEnviornment = new Stairs(position);
-                        break;
-                    case "StatueDragon":
-                        nonInteractEnviornment = new StatueDragon(position);
-                        break;
-                    case "StatueFish":
-                        nonInteractEnviornment = new StatueFish(position);
-                        break;
-                    case "Water":
-                        nonInteractEnviornment = new Water(position);
-                        break;
                     case "Fire":
                         nonInteractEnviornment = new Fire(position);
                         break;
@@ -205,7 +190,7 @@ namespace Game1.RoomLoading
                         nonInteractEnviornment = new DoorWFloor(position);
                         break;
                     default:
-                        break;
+                        throw new System.ArgumentException("Parameter cannot be null", "original");
                 }
 
                 nonInteractEnviornmentList.AddLast(nonInteractEnviornment);
@@ -229,6 +214,9 @@ namespace Game1.RoomLoading
 
                 switch (n["Type"].InnerText)
                 {
+                    case "Block":
+                        interactEnviornment = new Block(position);
+                        break;
                     case "DoorEBlank":
                         interactEnviornment = new DoorEBlank(position);
                         break;
@@ -289,11 +277,23 @@ namespace Game1.RoomLoading
                     case "DoorWLocked":
                         interactEnviornment = new DoorWLocked(position);
                         break;
+                    case "StatueDragon":
+                        interactEnviornment = new StatueDragon(position);
+                        break;
+                    case "StatueFish":
+                        interactEnviornment = new StatueFish(position);
+                        break;
+                    case "Water":
+                        interactEnviornment = new Water(position);
+                        break;
+                    case "Stairs":
+                        interactEnviornment = new Stairs(position);
+                        break;
                     case "RoomBorder":
                         interactEnviornment = new RoomBorder(position);
                         break;
                     default:
-                        break;
+                        throw new System.ArgumentException("Parameter cannot be null", "original");
                 }
 
                 interactEnviornmentList.AddLast(interactEnviornment);
