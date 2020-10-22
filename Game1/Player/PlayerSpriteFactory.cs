@@ -39,7 +39,7 @@ namespace Game1.Player
             linkLeftSheet = content.Load<Texture2D>("Images/LinkLeftNew");
             linkRightSheet = content.Load<Texture2D>("Images/LinkRightNew");
             linkUpSheet = content.Load<Texture2D>("Images/LinkUpNew");
-            linkItemSheet = content.Load<Texture2D>("LinkItem");
+            linkItemSheet = content.Load<Texture2D>("Images/LinkItemNew");
             linkDownSheet = content.Load<Texture2D>("Images/LinkDownNew");
         }
 
