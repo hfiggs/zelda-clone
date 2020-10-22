@@ -1,6 +1,7 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Game1.Enemy
 {
@@ -32,9 +33,9 @@ namespace Game1.Enemy
             // TODO: Logic for determining text and when to fade out sprite
         }
 
-        public void SetState(IEnemyState state)
+        public Rectangle GetHitbox()
         {
-            //Do Nothing
+            return new Rectangle((int)position.X, (int)position.Y, 16, 16);
         }
     }
 }

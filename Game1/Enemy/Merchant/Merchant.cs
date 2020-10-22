@@ -30,9 +30,9 @@ namespace Game1.Enemy
             //Do Nothing
         }
 
-        public void SetState(IEnemyState state)
+        public Rectangle GetHitbox()
         {
-            //Do Nothing
+            return new Rectangle((int)position.X, (int)position.Y, 14, 16);
         }
     }
 

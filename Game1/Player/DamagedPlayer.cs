@@ -3,6 +3,7 @@
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Security.Policy;
 
 namespace Game1.Player
 {
@@ -19,6 +20,9 @@ namespace Game1.Player
         int flickerTimer;
 
         const int flickerDuration = 62; // ms
+
+        private Rectangle playerHitbox = new Rectangle(6, 18, 15, 10);
+        private Rectangle swordHitbox = new Rectangle(0, 0, 0, 0);
 
         public DamagedPlayer(Game1 game, IPlayer decoratedPlayer)
         {
@@ -131,6 +135,21 @@ namespace Game1.Player
         public void setItemNotUsable()
         {
             decoratedPlayer.setItemNotUsable();
+        }
+
+        public Rectangle GetPlayerHitbox()
+        {
+            return new Rectangle(playerHitbox.Location + decoratedPlayer.GetLocation().Location, playerHitbox.Size);
+        }
+
+        public Rectangle GetSwordHitbox()
+        {
+            return new Rectangle(swordHitbox.Location + decoratedPlayer.GetLocation().Location, swordHitbox.Size);
+        }
+
+        public void SetSwordHitbox(Rectangle newHitbox)
+        {
+            swordHitbox = newHitbox;
         }
     }
 }

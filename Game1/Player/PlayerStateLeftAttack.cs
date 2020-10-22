@@ -68,10 +68,12 @@ namespace Game1.Player
                 Sprite.Update();
                 timeUntilNextFrame += animationTime;
                 frameCount++;
+                player.SetSwordHitbox(new Rectangle(0, 18, 12, 5));
             }
             else if(frameCount == animationFrames)
             {
                 player.SetState(new PlayerStateLeft(player, position));
+                player.SetSwordHitbox(new Rectangle(0, 0, 0, 0));
             }
         }
 

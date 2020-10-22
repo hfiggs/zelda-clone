@@ -5,6 +5,7 @@
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Player
 {
@@ -20,15 +21,14 @@ namespace Game1.Player
         private bool isFullHealth;
         private bool[] itemsHeld = { true, true, true };
 
+        private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
+        private Rectangle swordHitbox = new Rectangle(0, 0, 0, 0);
 
         public Player1(Game1 game, Vector2 position)
         {
             this.game = game;
-
             state = new PlayerStateRight(this, position);
-
             timeUntilNextSwordBeam = -1; // to ensure time is <= 0
-
             isFullHealth = true;
         }
 
@@ -127,6 +127,21 @@ namespace Game1.Player
         public void setItemNotUsable()
         {
             itemsHeld[currentItem - 1] = false;
+        }
+
+        public Rectangle GetPlayerHitbox()
+        {
+            return new Rectangle(playerHitbox.Location + state.GetPosition().ToPoint(), playerHitbox.Size);
+        }
+
+        public Rectangle GetSwordHitbox()
+        {
+            return new Rectangle(swordHitbox.Location + state.GetPosition().ToPoint(), swordHitbox.Size);
+        }
+
+        public void SetSwordHitbox(Rectangle newHitbox)
+        {
+            swordHitbox = newHitbox;
         }
     }
 }

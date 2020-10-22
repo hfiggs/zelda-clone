@@ -26,5 +26,10 @@ namespace Game1.Item
         {
             sprite.Draw(spriteBatch, position, color);
         }
+
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X + 10, (int)position.Y + 10, 20, 20);
+        }
     }
 }

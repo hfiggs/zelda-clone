@@ -6,67 +6,65 @@ namespace Game1.Enemy
 {
     class Goriya : IEnemy
     {
+        private EnemyStateMachine stateMachine;
         private Vector2 oldDirection;
         private double totalElapsedSeconds;
         private double attackCooldown = 5;
-        private IEnemyState state;
-        private Game1 game;
-
         public Goriya(Game1 game, Vector2 spawnPosition)
         {
-            this.game = game;
-            state = new GoriyaStateMovingRight(game, this, spawnPosition);
-            oldDirection = state.GetDirection();
+            stateMachine = new EnemyStateMachine(game);
+            stateMachine.SetState(new GoriyaStateMovingRight(stateMachine, spawnPosition));
+            oldDirection = stateMachine.GetDirection();
         }
 
         public void ReceiveDamage()
         {
-            state.ReceiveDamage();
+            stateMachine.ReceiveDamage();
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            state.Draw(spriteBatch,color);
+            stateMachine.Draw(spriteBatch,color);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            Vector2 newDirection = state.GetDirection();
+            Vector2 newDirection = stateMachine.GetDirection();
             totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
 
             if (totalElapsedSeconds >= attackCooldown)
             {
-                state.Attack();
+                stateMachine.Attack();
                 totalElapsedSeconds -= attackCooldown;
             }
 
             else if (newDirection.X != oldDirection.X || newDirection.Y != oldDirection.Y) {
-                if (state.GetDirection().X < 0)
+                if (stateMachine.GetDirection().X < 0)
                 {
-                    state = new GoriyaStateMovingLeft(game, this, state.GetPosition());
+                    stateMachine.SetState(new GoriyaStateMovingLeft(stateMachine, stateMachine.GetPosition()));
                 }
-                if (state.GetDirection().X > 0)
+                if (stateMachine.GetDirection().X > 0)
                 {
-                    state = new GoriyaStateMovingRight(game, this, state.GetPosition());
+                    stateMachine.SetState(new GoriyaStateMovingRight(stateMachine, stateMachine.GetPosition()));
                 }
-                if (state.GetDirection().Y < 0)
+                if (stateMachine.GetDirection().Y < 0)
                 {
-                    state = new GoriyaStateMovingUp(game, this, state.GetPosition());
+                    stateMachine.SetState(new GoriyaStateMovingUp(stateMachine, stateMachine.GetPosition()));
                 }
-                if (state.GetDirection().Y > 0)
+                if (stateMachine.GetDirection().Y > 0)
                 {
-                    state = new GoriyaStateMovingDown(game, this, state.GetPosition());
+                    stateMachine.SetState(new GoriyaStateMovingDown(stateMachine, stateMachine.GetPosition()));
                 }
-                oldDirection = state.GetDirection();
+                oldDirection = stateMachine.GetDirection();
             }
 
-            state.Update(gameTime, drawingLimits);
+            stateMachine.Update(gameTime, drawingLimits);
         }
 
-        public void SetState(IEnemyState state)
+        public Rectangle GetHitbox()
         {
-            this.state = state;
-        }
+            return stateMachine.GetHitbox();
+        }    
     }
 }
 
