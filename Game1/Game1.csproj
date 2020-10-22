@@ -81,8 +81,6 @@
     <Compile Include="Command\PlayerCommands\PlayerDownCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUpCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerRightCommand.cs" />
-    <Compile Include="Command\EnvironmentCommands\EnvironmentPrevCommand.cs" />
-    <Compile Include="Command\ResetCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
     <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeft.cs" />
@@ -137,8 +135,9 @@
     <Compile Include="Environment\Tiles\Fire.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
+    <Compile Include="RoomLoading\Screen.cs" />
     <Compile Include="RoomLoading\XMLLoader.cs" />
-    <Compile Include="RoomLoading\RoomParser.cs" />
+    <Compile Include="RoomLoading\Room.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
     <Compile Include="Sprite\EnemySpriteFactory.cs" />
     <Compile Include="Environment\Doors\DoorSHole.cs" />

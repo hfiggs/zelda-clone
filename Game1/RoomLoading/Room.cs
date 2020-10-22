@@ -11,13 +11,13 @@ using System.Xml;
 
 namespace Game1.RoomLoading
 {
-    class RoomParser
+    class Room
     {
         XMLLoader roomData;
         Game1 game;
-        public RoomParser(Game1 game)
+        public Room(Game1 game, char x, int y)
         {
-            roomData = new XMLLoader("C:/Users/fedulser/Source/Repos/3902_LoZ/Game1/RoomLoading/RoomXML/RoomA0.xml");
+            roomData = new XMLLoader("C:/Users/fedulser/Source/Repos/3902_LoZ/Game1/RoomLoading/RoomXML/Room" + x + y + ".xml");
             this.game = game;
         }
 

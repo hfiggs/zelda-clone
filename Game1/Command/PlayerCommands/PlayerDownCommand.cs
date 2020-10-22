@@ -12,7 +12,7 @@ namespace Game1.Command
         }
         public void Execute()
         {
-            game.Player.MoveDown();
+            game.Screen.Player.MoveDown();
         }
     }
 }

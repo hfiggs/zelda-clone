@@ -20,7 +20,7 @@ namespace Game1.Command
 
         public void Execute()
         {
-            game.Player.UseItem(item);
+            game.Screen.Player.UseItem(item);
         }
     }
 }
