@@ -40,6 +40,9 @@ namespace Game1
         //DELETE ME
         private Room Room1;
 
+        //DELETE ME
+        private MovableBlock block;
+
         public Game1()
         {
             Graphics = new GraphicsDeviceManager(this);
@@ -86,6 +89,10 @@ namespace Game1
 
             //DELETE ME
             Room1 = new Room(this);
+
+            //DELETE ME
+            block = new MovableBlock(new Vector2(50.0f, 50.0f));
+            block.Move(new Vector2(4.0f, 4.0f), 1.0f);
         }
 
         protected override void UnloadContent()
@@ -123,6 +130,9 @@ namespace Game1
             //DELETE ME
             Room1.Update();
 
+            //DELETE ME
+            block.BehaviorUpdate(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -144,6 +154,9 @@ namespace Game1
             {
                 projectile.Draw(spriteBatch, Color.White);
             }
+
+            //DELETE ME
+            block.Draw(spriteBatch, Color.White);
 
             spriteBatch.End();
 

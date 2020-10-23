@@ -128,6 +128,7 @@
     <Compile Include="Environment\Doors\DoorEFloor.cs" />
     <Compile Include="Environment\EnvironmentListTopFactory.cs" />
     <Compile Include="Environment\EnvironmentListFactory.cs" />
+    <Compile Include="Environment\Tiles\MovableBlock.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
