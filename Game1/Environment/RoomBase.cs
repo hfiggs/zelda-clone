@@ -26,5 +26,11 @@ namespace Game1.Environment
         {
             sprite.Draw(spriteBatch, position, color);
         }
+
+        public List<Rectangle> GetHitboxes()
+        {
+            //throw new NotImplementedException();
+            return null;
+        }
     }
 }

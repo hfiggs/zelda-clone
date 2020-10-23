@@ -33,11 +33,11 @@ namespace Game1.CollisionDetection
 
         public Room(Game1 game)
         {
-            EnvironmentList = game.EnvironmentList;
-            ItemList = game.ItemList;
-            EnemyList = game.EnemyList;
-            ProjectileList = game.ProjectileList;
-            Link = game.Player;
+            EnvironmentList = game.Screen.CurrentRoom.InteractEnviornment;
+            ItemList = game.Screen.CurrentRoom.ItemList;
+            EnemyList = game.Screen.CurrentRoom.EnemyList;
+            ProjectileList = game.Screen.ProjectileList;
+            Link = game.Screen.Player;
             CollisionDetect = new CollisionDetector(this);
         }
 

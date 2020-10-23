@@ -131,7 +131,7 @@ namespace Game1.RoomLoading
                         enemy = new Snake(game, position);
                         break;
                     case "SpikeTrap":
-                        enemy = new SpikeTrap(game, position, 5, 5);
+                        enemy = new SpikeTrap(game, position, 50, 50);
                         break;
                     default:
                         throw new System.ArgumentException("Parameter cannot be null", "original");

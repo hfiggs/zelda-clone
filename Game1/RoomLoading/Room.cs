@@ -15,10 +15,10 @@ namespace Game1.RoomLoading
 {
     public class Room
     {
-        private LinkedList<IItem> ItemList { get; set; }
-        private LinkedList<IEnvironment> NonInteractEnviornment { get; set; }
-        private LinkedList<IEnvironment> InteractEnviornment { get; set; }
-        private LinkedList<IEnemy> EnemyList { get; set; }
+        public LinkedList<IItem> ItemList { get; set; }
+        public LinkedList<IEnvironment> NonInteractEnviornment { get; set; }
+        public LinkedList<IEnvironment> InteractEnviornment { get; set; }
+        public LinkedList<IEnemy> EnemyList { get; set; }
         public Room(Game1 game, String file)
         {
             RoomParser parser = new RoomParser(game, file);
@@ -37,7 +37,7 @@ namespace Game1.RoomLoading
 
             foreach (IEnemy enemy in EnemyList)
             {
-                enemy.Update(gameTime, new Rectangle(32, 32, 224, 144));
+                enemy.Update(gameTime, new Rectangle(0, 0, 256, 176));
             }
 
             foreach (IEnvironment interactEnvironment in InteractEnviornment)

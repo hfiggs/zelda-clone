@@ -109,7 +109,6 @@
 /processorParam:TextureFormat=Color
 /build:Images/oldman.png
 
-<<<<<<< HEAD
 #begin Images/LinkDownNew.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -170,10 +169,7 @@
 /processorParam:TextureFormat=Color
 /build:Images/LinkUpNew.png
 
-#begin Images/oldman.png
-=======
 #begin Images/projectiles.png
->>>>>>> b0a6bd4... created XML room loader and created first test room
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255

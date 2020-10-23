@@ -19,7 +19,7 @@ namespace Game1.RoomLoading
     public class Screen
     {
         public IPlayer Player { get; set; }
-        private LinkedList<IProjectile> ProjectileList { get; set; }
+        public LinkedList<IProjectile> ProjectileList { get; set; }
         //private Dictionary<(char, int), Room> Rooms { get; set; }
         public LinkedList<Room> Rooms;
         public Room CurrentRoom { get; set; }

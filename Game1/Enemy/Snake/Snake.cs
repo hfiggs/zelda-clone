@@ -44,7 +44,7 @@ namespace Game1.Enemy
 
             timeUntilNextFrame = animationTime;
             playerSpotted = false;
-            playerRect = game.GetPlayerRectangle();
+            playerRect = game.Screen.GetPlayerRectangle();
             windowDims = game.GetWindowDimensions();
         }
 
