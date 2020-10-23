@@ -7,8 +7,6 @@ namespace Game1.Enemy
 {
     class Snake : IEnemy
     {
-        private Game1 game;
-
         ISprite sprite;
 
         private float timeUntilNextFrame; // ms
@@ -33,8 +31,6 @@ namespace Game1.Enemy
         Vector2 windowDims;
 
         public Snake(Game1 game, Vector2 position) {
-            this.game = game;
-
             rand = new Random();
 
             isFacingLeft = rand.Next(2) == 0;
@@ -69,6 +65,8 @@ namespace Game1.Enemy
 
                 timeUntilNewDirection += moveTime;
             }
+
+            playerSpotted = false;
 
             if (isFacingLeft && moveDirection == 2)
             {
@@ -122,11 +120,6 @@ namespace Game1.Enemy
         public void SetState(IEnemyState state)
         {
             // Do Nothing
-        }
-
-        public Rectangle GetHitbox()
-        {
-            return new Rectangle((int)position.X, (int)position.Y, 15, 15);
         }
     }
 }

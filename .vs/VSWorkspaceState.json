@@ -3,10 +3,8 @@
     "",
     "\\Game1",
     "\\Game1\\Enemy",
-    "\\Game1\\Enemy\\Skeleton",
-    "\\Game1\\Enemy\\Snake",
-    "\\Game1\\Enemy\\SpikeTrap"
+    "\\Game1\\Enemy\\Aquamentus"
   ],
-  "SelectedNode": "\\Game1\\Enemy\\Snake\\Snake.cs",
+  "SelectedNode": "\\Game1\\Enemy\\Aquamentus\\Aquamentus.cs",
   "PreviewInSolutionExplorer": false
 }
