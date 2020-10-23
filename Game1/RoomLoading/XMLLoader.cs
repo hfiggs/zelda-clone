@@ -9,42 +9,34 @@ namespace Game1.RoomLoading
 {
     class XMLLoader
     {
-        private XmlNodeList items;
-        private XmlNodeList projectiles;
-        private XmlNodeList enemies;
-        private XmlNodeList iteractEnviornment;
-        private XmlNodeList nonInteractEnviornment;
+        private XmlDocument xmlDoc { get; set; }
+
         public XMLLoader(String fileName)
         {
-            XmlDocument xmlDoc = new XmlDocument();
+            this.xmlDoc = new XmlDocument();
             xmlDoc.Load(fileName);
-            items = xmlDoc.GetElementsByTagName("Item");
-            projectiles = xmlDoc.GetElementsByTagName("Projectile");
-            enemies = xmlDoc.GetElementsByTagName("Enemy");
-            iteractEnviornment = xmlDoc.GetElementsByTagName("InteractEnviornment");
-            nonInteractEnviornment = xmlDoc.GetElementsByTagName("NonInteractEnviornment");
         }
 
         public XmlNodeList getItemNodes()
         {
-            return items;
+            return xmlDoc.GetElementsByTagName("Item"); 
         }
 
         public XmlNodeList getProjectileNodes()
         {
-            return projectiles;
+            return xmlDoc.GetElementsByTagName("Projectile"); ;
         }
         public XmlNodeList getEnemyNodes()
         {
-            return enemies;
+            return xmlDoc.GetElementsByTagName("Enemy"); ;
         }
         public XmlNodeList getInteractEnviornmentNodes()
         {
-            return iteractEnviornment;
+            return xmlDoc.GetElementsByTagName("InteractEnviornment"); ;
         }
         public XmlNodeList getNonInteractEnviornmentNodes()
         {
-            return nonInteractEnviornment;
+            return xmlDoc.GetElementsByTagName("NonInteractEnviornment"); ;
         }
 
     }

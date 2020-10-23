@@ -341,3 +341,57 @@
 /processorParam:TextureFormat=Color
 /build:Merchant.png
 
+#begin RoomXML/RoomA0.xml
+/copy:RoomXML/RoomA0.xml
+
+#begin RoomXML/RoomA1.xml
+/copy:RoomXML/RoomA1.xml
+
+#begin RoomXML/RoomA2.xml
+/copy:RoomXML/RoomA2.xml
+
+#begin RoomXML/RoomB2.xml
+/copy:RoomXML/RoomB2.xml
+
+#begin RoomXML/RoomB4.xml
+/copy:RoomXML/RoomB4.xml
+
+#begin RoomXML/RoomB5.xml
+/copy:RoomXML/RoomB5.xml
+
+#begin RoomXML/RoomC0.xml
+/copy:RoomXML/RoomC0.xml
+
+#begin RoomXML/RoomC1.xml
+/copy:RoomXML/RoomC1.xml
+
+#begin RoomXML/RoomC2.xml
+/copy:RoomXML/RoomC2.xml
+
+#begin RoomXML/RoomC3.xml
+/copy:RoomXML/RoomC3.xml
+
+#begin RoomXML/RoomC4.xml
+/copy:RoomXML/RoomC4.xml
+
+#begin RoomXML/RoomD1.xml
+/copy:RoomXML/RoomD1.xml
+
+#begin RoomXML/RoomD2.xml
+/copy:RoomXML/RoomD2.xml
+
+#begin RoomXML/RoomD3.xml
+/copy:RoomXML/RoomD3.xml
+
+#begin RoomXML/RoomE2.xml
+/copy:RoomXML/RoomE2.xml
+
+#begin RoomXML/RoomF1.xml
+/copy:RoomXML/RoomF1.xml
+
+#begin RoomXML/RoomF2.xml
+/copy:RoomXML/RoomF2.xml
+
+#begin RoomXML/RoomF3.xml
+/copy:RoomXML/RoomF3.xml
+

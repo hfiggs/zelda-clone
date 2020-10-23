@@ -5,10 +5,13 @@ using Game1.Player;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.Direct3D11;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Game1.RoomLoading
@@ -16,21 +19,24 @@ namespace Game1.RoomLoading
     public class Screen
     {
         public IPlayer Player { get; set; }
-        private LinkedList<IItem> ItemList { get; set; }
-        private LinkedList<IEnvironment> NonInteractEnviornment { get; set; }
-        private LinkedList<IEnvironment> InteractEnviornment { get; set; }
-        private LinkedList<IEnemy> EnemyList { get; set; }
         private LinkedList<IProjectile> ProjectileList { get; set; }
-        private Room Room { get; set; }
+        //private Dictionary<(char, int), Room> Rooms { get; set; }
+        public LinkedList<Room> Rooms;
+        public Room CurrentRoom { get; set; }
         public Screen(Game1 game, char x, int y)
         {
-            this.Room = new Room(game, x , y);
+            Rooms = new LinkedList<Room>();
+            foreach (string file in Directory.EnumerateFiles(game.Content.RootDirectory + "/RoomXML", "*.xml"))
+            {
+                //var identifer = Regex.Match(file, @"\w{2}(?=\.\w+$)");
+                //String identiferStr = identifer.Value;
+                //Rooms.Add((identiferStr[0], (int)char.GetNumericValue(identiferStr[1])), new Room(game, file));
+                Rooms.AddLast(new Room(game, file));
+            }
+            //this.currentRoom = Rooms[('F',2)];
+            this.CurrentRoom = Rooms.First();
             this.ProjectileList = new LinkedList<IProjectile>();
             this.Player = new Player1(game, new Vector2(80, 80));
-            ItemList = Room.GetItems();
-            NonInteractEnviornment = Room.GetNonInteractableEnvinornment();
-            InteractEnviornment = Room.GetInteractableEnvinornment();
-            EnemyList = Room.GetEnemies();
         }
 
         public void Update(GameTime gameTime)
@@ -51,50 +57,16 @@ namespace Game1.RoomLoading
                 ProjectileList.Remove(projectile);
             }
 
+            CurrentRoom.Update(gameTime);
+
             Player.Update(gameTime);
-
-            foreach (IItem item in ItemList)
-            {
-                item.Update(gameTime);
-            }
-
-            foreach (IEnemy enemy in EnemyList)
-            {
-                enemy.Update(gameTime, new Rectangle(32, 32, 224, 144));
-            }
-
-            foreach (IEnvironment interactEnvironment in InteractEnviornment)
-            {
-                interactEnvironment.BehaviorUpdate(gameTime);
-            }
-
-            foreach (IEnvironment nonInternactEnvironment in NonInteractEnviornment)
-            {
-                nonInternactEnvironment.BehaviorUpdate(gameTime);
-            }
+        
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (IEnvironment nonInternactEnvironment in NonInteractEnviornment)
-            {
-                nonInternactEnvironment.Draw(spriteBatch, Color.White);
-            }
 
-            foreach (IEnvironment internactEnvironment in InteractEnviornment)
-            {
-                internactEnvironment.Draw(spriteBatch, Color.White);
-            }
-
-            foreach (IEnemy enemy in EnemyList)
-            {
-                enemy.Draw(spriteBatch, Color.White);
-            }
-
-            foreach (IItem item in ItemList)
-            {
-                item.Draw(spriteBatch, Color.White);
-            }
+            CurrentRoom.Draw(spriteBatch);
 
             Player.Draw(spriteBatch, Color.White);
 
