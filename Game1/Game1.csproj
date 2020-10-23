@@ -122,6 +122,10 @@
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackSouth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackNorth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
+    <Compile Include="Environment\Doors\DoorEBombable.cs" />
+    <Compile Include="Environment\Doors\DoorNBombable.cs" />
+    <Compile Include="Environment\Doors\DoorSBombable.cs" />
+    <Compile Include="Environment\Doors\DoorWBombable.cs" />
     <Compile Include="Environment\Doors\DoorWFloor.cs" />
     <Compile Include="Environment\Doors\DoorSFloor.cs" />
     <Compile Include="Environment\Doors\DoorNFloor.cs" />
