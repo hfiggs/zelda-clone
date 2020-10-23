@@ -1,11 +1,6 @@
 ﻿using Game1.Collision_Handling;
 using Game1.Item;
-using Game1.Player;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Game1.Projectile;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
@@ -18,7 +13,7 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IPlayer player = (IPlayer)collision.collider;
+            IProjectile player = (IProjectile)collision.collider;
             IItem item = (IItem)collision.collidee;
         }
     }

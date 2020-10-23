@@ -17,7 +17,7 @@ namespace Game1.Command.CollisionHandlerCommands
         public void Execute(Collision collision)
         {
             IEnemy enemy = (IEnemy)collision.collider;
-            Vector2 movementAmount = new Vector2(collision.intersectionRec.X, 0);
+            Vector2 movementAmount = new Vector2(collision.intersectionRec.Width, 0);
             if (enemy.GetType() != typeof(Bat))
             {
                 enemy.editPosition(movementAmount);

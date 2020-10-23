@@ -99,7 +99,6 @@
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerWestSideCommand.cs" />
-    <Compile Include="CollisionDetection\Collision.cs" />
     <Compile Include="CollisionDetection\CollisionDetector.cs" />
     <Compile Include="CollisionDetection\Room.cs" />
     <Compile Include="Command\EnemyCommands\EnemyNextCommand.cs" />

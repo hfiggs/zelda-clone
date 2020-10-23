@@ -136,12 +136,12 @@ namespace Game1.Player
 
         public Rectangle GetPlayerHitbox()
         {
-            return new Rectangle(playerHitbox.Location + state.GetPosition().ToPoint(), playerHitbox.Size);
+            return new Rectangle(playerHitbox.Location + state.position.ToPoint(), playerHitbox.Size);
         }
 
         public Rectangle GetSwordHitbox()
         {
-            return new Rectangle(swordHitbox.Location + state.GetPosition().ToPoint(), swordHitbox.Size);
+            return new Rectangle(swordHitbox.Location + state.position.ToPoint(), swordHitbox.Size);
         }
 
         public void SetSwordHitbox(Rectangle newHitbox)

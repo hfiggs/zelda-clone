@@ -7,26 +7,27 @@ using Game1.Environment;
 using Game1.Enemy;
 using Game1.Projectile;
 using Game1.Player;
+using Game1.Collision_Handling;
 
 namespace Game1.CollisionDetection
 {
     class CollisionDetector
     {
         private Room room;
-        private LinkedList<Collision> collisionList;
+        private List<Collision> collisionList;
 
         public CollisionDetector(Room room)
         {
             this.room = room;
         }
 
-        public LinkedList<Collision> GetCollisionList()
+        public List<Collision> GetCollisionList()
         {
-            collisionList = new LinkedList<Collision>();
+            collisionList = new List<Collision>();
             LinkedList<IItem> ItemList = room.ItemList;
             LinkedList<IEnvironment> EnvironmentList = room.EnvironmentList;
             LinkedList<IEnemy> EnemyList = room.EnemyList;
-            LinkedList<IProjectile> ProjectileList = room.ProjectileList;
+            List<IProjectile> ProjectileList = room.ProjectileList;
             IPlayer player = room.Link;
             Rectangle playerHitbox = room.Link.GetPlayerHitbox();
             Rectangle swordHitbox = room.Link.GetSwordHitbox();
@@ -42,7 +43,7 @@ namespace Game1.CollisionDetection
                     if (!intersectPlayer.IsEmpty)
                     {
                         char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
-                        collisionList.AddLast(new Collision(side, intersectPlayer, player, environment));
+                        collisionList.Add(new Collision(side, intersectPlayer, player, environment));
                     }
 
                     //Environment collides with Enemy
@@ -53,7 +54,7 @@ namespace Game1.CollisionDetection
                         if (!intersectEnemy.IsEmpty)
                         {
                             char side = DetermineSide(enemyHitbox, envHitbox, intersectPlayer);
-                            collisionList.AddLast(new Collision(side, intersectEnemy, enemy, environment));
+                            collisionList.Add(new Collision(side, intersectEnemy, enemy, environment));
                         }
                     }
 
@@ -65,7 +66,7 @@ namespace Game1.CollisionDetection
                         if (!intersectEnv.IsEmpty)
                         {
                             char side = DetermineSide(projHitbox, envHitbox, intersectPlayer);
-                            collisionList.AddLast(new Collision(side, intersectEnv, proj, environment));
+                            collisionList.Add(new Collision(side, intersectEnv, proj, environment));
                         }
                     }
                 }
@@ -79,7 +80,7 @@ namespace Game1.CollisionDetection
                 if(!intersection.IsEmpty)
                 {
                     char side = DetermineSide(playerHitbox, itemHitbox, intersection);
-                    collisionList.AddLast(new Collision(side, intersection, player, item));
+                    collisionList.Add(new Collision(side, intersection, player, item));
                 }
             }
 
@@ -90,14 +91,14 @@ namespace Game1.CollisionDetection
                 Rectangle intersectPlayer = Rectangle.Intersect(enemyHitbox, playerHitbox);
                 if (!intersectPlayer.IsEmpty) {
                     char side = DetermineSide(enemyHitbox, playerHitbox, intersectPlayer);
-                    collisionList.AddLast(new Collision(side, intersectPlayer, enemy, player));
+                    collisionList.Add(new Collision(side, intersectPlayer, enemy, player));
                 }
 
                 Rectangle intersectSword = Rectangle.Intersect(swordHitbox, enemyHitbox);
                 if(!intersectSword.IsEmpty)
                 {
                     char side = DetermineSide(swordHitbox, enemyHitbox, intersectSword);
-                    collisionList.AddLast(new Collision(side, intersectSword, player, enemy));
+                    collisionList.Add(new Collision(side, intersectSword, player, enemy));
                 }
             }
             
@@ -108,7 +109,7 @@ namespace Game1.CollisionDetection
                 if (!intersectPlayer.IsEmpty)
                 {
                     char side = DetermineSide(projHitbox, playerHitbox, intersectPlayer);
-                    collisionList.AddLast(new Collision(side, intersectPlayer, proj, player));
+                    collisionList.Add(new Collision(side, intersectPlayer, proj, player));
                 }
                 
                 //projectile hits enemy
@@ -119,7 +120,7 @@ namespace Game1.CollisionDetection
                     if(!intersectEnemy.IsEmpty)
                     {
                         char side = DetermineSide(projHitbox, enemyHitbox, intersectEnemy);
-                        collisionList.AddLast(new Collision(side, intersectEnemy, proj, enemy));
+                        collisionList.Add(new Collision(side, intersectEnemy, proj, enemy));
                     }
                 }
 
@@ -131,7 +132,7 @@ namespace Game1.CollisionDetection
                     if(!interscetItem.IsEmpty)
                     {
                         char side = DetermineSide(projHitbox, itemHitbox, interscetItem);
-                        collisionList.AddLast(new Collision(side, interscetItem, proj, item));
+                        collisionList.Add(new Collision(side, interscetItem, proj, item));
                     }
                 }
 

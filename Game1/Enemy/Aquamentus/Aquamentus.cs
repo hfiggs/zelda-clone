@@ -25,7 +25,7 @@ namespace Game1.Enemy
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(spriteBatch, Color.White);
+            stateMachine.Draw(spriteBatch, color);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)

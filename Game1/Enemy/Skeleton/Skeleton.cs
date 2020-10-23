@@ -17,7 +17,7 @@ namespace Game1.Enemy
         {
             stateMachine = new EnemyStateMachine(game);
             stateMachine.SetState( new SkeletonStateMoving(stateMachine, spawnPosition));
-            health = 2f;
+            health = 2000f;
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)

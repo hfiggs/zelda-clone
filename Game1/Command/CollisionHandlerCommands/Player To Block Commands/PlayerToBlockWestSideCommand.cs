@@ -22,7 +22,7 @@ namespace Game1.Command.CollisionHandlerCommands
             else
             {
                 IPlayer player = (IPlayer)collision.collider;
-                Vector2 moveAmount = new Vector2(-collision.intersectionRec.X, 0);
+                Vector2 moveAmount = new Vector2(-collision.intersectionRec.Width, 0);
                 player.editPosition(moveAmount);
             }
         }

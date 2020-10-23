@@ -27,7 +27,6 @@ namespace Game1.Player
         private Rectangle playerHitbox = new Rectangle(6, 18, 15, 10);
         private Rectangle swordHitbox = new Rectangle(0, 0, 0, 0);
 
-        public DamagedPlayer(Game1 game, IPlayer decoratedPlayer)
         int frameCounter;
         int slideFrames;
         public DamagedPlayer(Game1 game, IPlayer decoratedPlayer, Vector2 direction)

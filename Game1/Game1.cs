@@ -99,20 +99,22 @@ namespace Game1
             {
                controller.Update();
             }
-
+            
             Player.Update(gameTime);
        
             ItemList.First.Value.Update(gameTime);
             EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 256, 176));
-            EnvironmentList.First.Value.BehaviorUpdate(gameTime);
-
-            foreach(IProjectile projectile in ProjectileList)
+            if(EnemyList.First.Value.shouldRemove())
+                EnemyList.RemoveFirst();
+            EnvironmentList.First.Value.BehaviorUpdate();
+            
+            foreach (IProjectile projectile in ProjectileList)
             {
                 projectile.Update(gameTime);
             }
 
             ProjectileList.RemoveAll(p => p.ShouldDelete());
-
+            
             //DELETE ME
             Room1.Update();
 

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Game1.Collision_Handling;
 
 /*
  * PLEASE NOTE:
@@ -25,7 +26,7 @@ namespace Game1.CollisionDetection
         public LinkedList<IEnvironment> EnvironmentList { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
         public LinkedList<IItem> ItemList { get; set; }
-        public LinkedList<IProjectile> ProjectileList { get; set; }
+        public List<IProjectile> ProjectileList { get; set; }
 
         public IPlayer Link { get; set; }
 
@@ -39,16 +40,15 @@ namespace Game1.CollisionDetection
             ProjectileList = game.ProjectileList;
             Link = game.Player;
             CollisionDetect = new CollisionDetector(this);
+
         }
 
         public void Update()
         {
-            string listString = "(";
-            foreach(Collision data in CollisionDetect.GetCollisionList())
-            {
-                listString += data.ToString() + "), (";
-            }
-            Console.WriteLine(listString + ")");
+
+            CollisionHandler.HandleCollisions(CollisionDetect.GetCollisionList());
+
+
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Game1.Enemy
         private const float animationTime = 150f; // ms per frame
 
         private Vector2 position;
-
+        private Vector2 knockbackMagnitude = new Vector2(32, 32);
         private Random rand;
 
         private bool isFacingLeft;
@@ -55,10 +55,15 @@ namespace Game1.Enemy
             sprite.Draw(spriteBatch,position,color);
         }
 
-        public void ReceiveDamage(int amount, Vector2 direction) 
+        public void ReceiveDamage(float amount, Vector2 direction) 
         {
             health -= amount;
-            position 
+            editPosition(Vector2.Multiply(direction,knockbackMagnitude));
+        }
+
+        public void editPosition( Vector2 amount)
+        {
+            position = Vector2.Add(position, amount);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
@@ -114,6 +119,11 @@ namespace Game1.Enemy
         public Rectangle GetHitbox()
         {
             return new Rectangle((int)position.X, (int)position.Y, 15, 15);
+        }
+
+        public bool shouldRemove()
+        {
+            return health <= 0;
         }
     }
 }
