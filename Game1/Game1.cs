@@ -18,6 +18,7 @@ using Game1.Environment;
 using Game1.Item;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
 using Game1.CollisionDetection;
+using System;
 
 namespace Game1
 {
@@ -132,6 +133,7 @@ namespace Game1
 
             //DELETE ME
             block.BehaviorUpdate(gameTime);
+            Console.WriteLine(Player.GetPlayerHitbox().ToString());
 
             base.Update(gameTime);
         }
