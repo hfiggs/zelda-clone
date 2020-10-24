@@ -2,6 +2,7 @@
  * Jared Perkins
  * Hunter Figgs */
 
+using Game1.Player.PlayerInventory;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,6 +11,8 @@ namespace Game1.Player
 {
     public interface IPlayer
     {
+        IPlayerInventory PlayerInventory { get; set; }
+
         void MoveLeft();
 
         void MoveRight();
