@@ -46,6 +46,11 @@ namespace Game1.Enemy
             return new Vector2(0, 0);
         }
 
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)homePosition.X, (int)homePosition.Y, 16, 16);
+        }
+
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
             Rectangle playerRect = stateMachine.GetPlayerRectangle();

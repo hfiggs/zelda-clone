@@ -1,7 +1,9 @@
 ﻿
 
 using Game1.Collision_Handling;
+using Game1.Enemy;
 using Game1.Player;
+using Microsoft.Xna.Framework;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
@@ -14,7 +16,12 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            throw new System.NotImplementedException();
+            IEnemy enemy = (IEnemy)collision.collider;
+            Vector2 movementAmount = new Vector2(0, -collision.intersectionRec.Height);
+            if (enemy.GetType() != typeof(Bat))
+            {
+                enemy.editPosition(movementAmount);
+            }
         }
     }
 }

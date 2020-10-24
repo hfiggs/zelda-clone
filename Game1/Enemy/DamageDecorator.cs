@@ -15,15 +15,16 @@ namespace Game1.Enemy
         private float damagedTimer;
         Color[] flickers = { Color.LightBlue, Color.Orange, Color.Red };
         int currentFlicker = 0;
+        float timeTillFlickerSwap;
         EnemyStateMachine machine;
 
-        Vector2 knockbackMagnitude = new Vector2(32, 32);
+        Vector2 knockbackMagnitude = new Vector2(1, 1);
         public EnemyDamageDecorator( IEnemy Original, EnemyStateMachine stateMachine, Vector2 direction)
         {
             this.original = Original;
             machine = stateMachine;
-            damagedTimer = 80f; //ms
-
+            damagedTimer = 250f; //ms
+            timeTillFlickerSwap = 50f;
             knockbackMagnitude = Vector2.Multiply(knockbackMagnitude, direction);
         }
 
@@ -41,11 +42,12 @@ namespace Game1.Enemy
         {
             Vector2 slideAmount = Vector2.Multiply(knockbackMagnitude, (float)gameTime.ElapsedGameTime.TotalMilliseconds);
             damagedTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if(damagedTimer > 60)
+            timeTillFlickerSwap -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            if(damagedTimer > 200)
             {
                 original.editPosition(slideAmount);
             }
-            if(damagedTimer % 20 == 0)
+            if(timeTillFlickerSwap <= 0)
             {
                 currentFlicker++;
                 if (currentFlicker > 2)
@@ -67,6 +69,11 @@ namespace Game1.Enemy
         public bool shouldRemove()
         {
             return original.shouldRemove();
+        }
+
+        public Rectangle GetHitbox()
+        {
+            return original.GetHitbox();
         }
     }
 }

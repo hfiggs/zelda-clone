@@ -43,5 +43,11 @@ namespace Game1.Player
         void setItemNotUsable();
 
         void editPosition(Vector2 amount);
+
+        Rectangle GetPlayerHitbox();
+
+        Rectangle GetSwordHitbox();
+
+        void SetSwordHitbox(Rectangle newHitbox);
     }
 }

@@ -41,7 +41,9 @@ namespace Game1.Enemy
             totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
 
             if (totalTime <= timeCap) {
-                position.X -= moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                if (drawingLimits.Contains(position.X - moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds, position.Y)) {
+                    position.X -= moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                }
                 if (random.Next(100) < 1) {
                     stateMachine.SetState(new AquamentusWalkLeftAttack(game, stateMachine, position));
                 }
@@ -66,6 +68,11 @@ namespace Game1.Enemy
         public Vector2 GetDirection()
         {
             return new Vector2(-1 * moveSpeed, 0);
+        }
+
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X, (int)position.Y, 16, 13);
         }
 
         public void editPosition(Vector2 amount)

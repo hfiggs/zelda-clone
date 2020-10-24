@@ -41,5 +41,10 @@ namespace Game1.Enemy
         {
             return false;
         }
+
+        public Rectangle GetHitbox()
+        {
+            return stateMachine.GetHitbox();
+        }
     }
 }

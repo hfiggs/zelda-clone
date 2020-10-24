@@ -62,6 +62,11 @@ namespace Game1.Enemy
             return game.GetPlayerRectangle();
         }
 
+        public Rectangle GetHitbox()
+        {
+            return state.GetHitbox();
+        }
+
         public Vector2 GetWindowDimensions()
         {
             return game.GetWindowDimensions();

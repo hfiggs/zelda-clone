@@ -17,7 +17,7 @@ namespace Game1.Enemy
         {
             stateMachine = new EnemyStateMachine(game);
             stateMachine.SetState( new SkeletonStateMoving(stateMachine, spawnPosition));
-            health = 2f;
+            health = 2000f;
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
@@ -35,6 +35,11 @@ namespace Game1.Enemy
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
             stateMachine.Update(gameTime, drawingLimits);
+        }
+
+        public Rectangle GetHitbox()
+        {
+            return stateMachine.GetHitbox();
         }
 
         public void editPosition(Vector2 amount)

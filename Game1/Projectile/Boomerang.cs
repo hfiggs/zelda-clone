@@ -96,5 +96,10 @@ namespace Game1.Projectile
         {
             totalElapsedGameTime = 2;
         }
+
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X + 16, (int)position.Y + 16, 8, 8);
+        }
     }
 }

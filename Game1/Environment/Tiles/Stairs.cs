@@ -14,13 +14,18 @@ namespace Game1.Environment
         private ISprite sprite;
         private Vector2 position;
 
+        private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
+        private List<Rectangle> hitboxes = new List<Rectangle>();
+
         public Stairs(Vector2 position)
         {
             sprite = EnvironmentSpriteFactory.instance.createStairs();
             this.position = position;
+            hitbox1.Location += position.ToPoint();
+            hitboxes.Add(hitbox1);
         }
 
-        public void BehaviorUpdate(GameTime gameTime)
+        public void BehaviorUpdate()
         {
             //throw new NotImplementedException("For later collision mechanics");
         }
@@ -28,6 +33,11 @@ namespace Game1.Environment
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, position, color);
+        }
+
+        public List<Rectangle> GetHitboxes()
+        {
+            return hitboxes;
         }
     }
 }

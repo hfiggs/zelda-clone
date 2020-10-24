@@ -66,6 +66,11 @@ namespace Game1.Enemy
             stateMachine.Update(gameTime, drawingLimits);
         }
 
+        public Rectangle GetHitbox()
+        {
+            return stateMachine.GetHitbox();
+        }    
+
         public void editPosition(Vector2 amount)
         {
             stateMachine.editPosition(amount);

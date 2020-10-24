@@ -36,11 +36,11 @@ namespace Game1.Player
 
         public void LoadAllTextures(ContentManager content)
         {
-            linkLeftSheet = content.Load<Texture2D>("Link Left");
-            linkRightSheet = content.Load<Texture2D>("Link Right");
-            linkUpSheet = content.Load<Texture2D>("Link Up");
+            linkLeftSheet = content.Load<Texture2D>("Images/LinkLeftNew");
+            linkRightSheet = content.Load<Texture2D>("Images/LinkRightNew");
+            linkUpSheet = content.Load<Texture2D>("Images/LinkUpNew");
             linkItemSheet = content.Load<Texture2D>("LinkItem");
-            linkDownSheet = content.Load<Texture2D>("Link Down");
+            linkDownSheet = content.Load<Texture2D>("Images/LinkDownNew");
         }
 
         public ISprite CreateWalkLeftSprite()

@@ -9,6 +9,7 @@ namespace Game1.Projectile
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, Color color);
         bool Equals(Object obj);
+        Rectangle GetHitbox();
         bool ShouldDelete();
         void BeginDespawn();
     }

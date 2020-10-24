@@ -16,8 +16,12 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            ((IProjectile)collision.collider).BeginDespawn();
-            ((IPlayer)collision.collidee).ReceiveDamage(new Vector2(0, 1));
+            IProjectile proj = ((IProjectile)collision.collider);
+            if (proj.GetType() == typeof(EnemyBoomerang) || proj.GetType() == typeof(Fireballs))
+            {
+                ((IPlayer)collision.collidee).ReceiveDamage(new Vector2(0, 1));
+                proj.BeginDespawn();
+            }
         }
     }
 }

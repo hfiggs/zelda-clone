@@ -14,16 +14,16 @@ namespace Game1.Collision_Handling
     {
         static Dictionary<Tuple<Type, Type, char>, ICollisionCommand> collisionDict = new Dictionary<Tuple<Type, Type, char>, ICollisionCommand>
         {
-            //player runs into wall (Jared) TODO
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'E'), new LinkToBlockEastSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'N'), new LinkToBlockNorthSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'S'), new LinkToBlockSouthSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'W'), new LinkToBlockWestSideCommand() },
-            //Player damages enemy (Jared) TODO
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'E'), new LinkToEnemyEastSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'N'), new LinkToEnemyNorthSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'S'), new LinkToEnemySouthSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'W'), new LinkToEnemyWestSideCommand() },
+            //player runs into wall (Jared) TEST
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'E'), new PlayerToBlockEastSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'N'), new PlayerToBlockNorthSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'S'), new PlayerToBlockSouthSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'W'), new PlayerToBlockWestSideCommand() },
+            //Player damages enemy (Jared) TEST
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'E'), new PlayerToEnemyEastSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'N'), new PlayerToEnemyNorthSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'S'), new PlayerToEnemySouthSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'W'), new PlayerToEnemyWestSideCommand() },
             //Enemy damages player (Hunter) TODO
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'E'), new EnemyToPlayerEastSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'N'), new EnemyToPlayerNorthSideCommand() },
@@ -34,7 +34,7 @@ namespace Game1.Collision_Handling
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IPlayer),'N'), new ProjectileToPlayerNorthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IPlayer),'S'), new ProjectileToPlayerSouthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IPlayer),'W'), new ProjectileToPlayerWestSideCommand() },
-            //Projectile hits enemy (Jared) TODO
+            //Projectile hits enemy (Jared) TEST
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnemy),'E'), new ProjectileToEnemyEastSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnemy),'N'), new ProjectileToEnemyNorthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnemy),'S'), new ProjectileToEnemySouthSideCommand() },
@@ -49,12 +49,12 @@ namespace Game1.Collision_Handling
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),'N'), new ProjectileToItemCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),'S'), new ProjectileToItemCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),'W'), new ProjectileToItemCommand() },
-            //Enemy runs into wall (Jared) TODO
+            //Enemy runs into wall (Jared) TEST
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),'E'), new EnemyToBlockEastSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),'N'), new EnemyToBlockNorthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),'S'), new EnemyToBlockSouthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),'W'), new EnemyToBlockWestSideCommand() },
-            //Projectile to environment (Jared)
+            //Projectile to environment (Jared) TEST
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'E'), new ProjectileToEnvironmentEastSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'N'), new ProjectileToEnvironmentNorthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'S'), new ProjectileToEnvironmentSouthSideCommand() },

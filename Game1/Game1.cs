@@ -17,6 +17,7 @@ using Game1.Projectile;
 using Game1.Environment;
 using Game1.Item;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
+using Game1.CollisionDetection;
 
 namespace Game1
 {
@@ -35,6 +36,9 @@ namespace Game1
         public LinkedList<IEnvironment> EnvironmentListTop { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
         public List<IProjectile> ProjectileList { get; set; }
+
+        //DELETE ME
+        private Room Room1;
 
         public Game1()
         {
@@ -79,6 +83,9 @@ namespace Game1
             EnemyList = EnemyListFactory.GetEnemyList(this);
 
             ParticleSpriteFactory.Instance.LoadAllTextures(Content);
+
+            //DELETE ME
+            Room1 = new Room(this);
         }
 
         protected override void UnloadContent()
@@ -92,19 +99,24 @@ namespace Game1
             {
                controller.Update();
             }
-
+            
             Player.Update(gameTime);
        
             ItemList.First.Value.Update(gameTime);
             EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 256, 176));
-            EnvironmentList.First.Value.BehaviorUpdate(gameTime);
-
-            foreach(IProjectile projectile in ProjectileList)
+            if(EnemyList.First.Value.shouldRemove())
+                EnemyList.RemoveFirst();
+            EnvironmentList.First.Value.BehaviorUpdate();
+            
+            foreach (IProjectile projectile in ProjectileList)
             {
                 projectile.Update(gameTime);
             }
 
             ProjectileList.RemoveAll(p => p.ShouldDelete());
+            
+            //DELETE ME
+            Room1.Update();
 
             base.Update(gameTime);
         }

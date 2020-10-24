@@ -73,5 +73,10 @@ namespace Game1.Projectile
         {
             removeMe = true;
         }
+
+        public Rectangle GetHitbox()
+        {
+            return new Rectangle((int)position.X + 16, (int)position.Y + 15, 8, 10);
+        }
     }
 }
