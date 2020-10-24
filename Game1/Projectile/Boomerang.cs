@@ -10,13 +10,13 @@ namespace Game1.Projectile
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
         private ProjectileSpriteSheet sprite;
         private bool returned;
-        private IPlayer player;
+        public IPlayer Player { get; private set; }
         private Vector2 position;
         private float moveSpeed, totalElapsedGameTime;
 
         public Boomerang(char direction, IPlayer player) {
             this.direction = direction;
-            this.player = player;
+            this.Player = player;
             position.X = player.GetLocation().Location.X;
             position.Y = player.GetLocation().Location.Y;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
@@ -42,9 +42,9 @@ namespace Game1.Projectile
             } else if (!returned) {
                 Rectangle currentLocation = sprite.PickSprite(0, 0);
                 currentLocation.Location = new Point((int)position.X, (int)position.Y);
-                Rectangle playerRectangle = player.GetLocation();
+                Rectangle playerRectangle = Player.GetLocation();
 
-                Vector2 positionDiff = new Vector2(currentLocation.X, currentLocation.Y) - new Vector2(player.GetLocation().X, player.GetLocation().Y);
+                Vector2 positionDiff = new Vector2(currentLocation.X, currentLocation.Y) - new Vector2(Player.GetLocation().X, Player.GetLocation().Y);
                 positionDiff = Vector2.Normalize(positionDiff);
                 position.X -= positionDiff.X * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 position.Y -= positionDiff.Y * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -54,7 +54,7 @@ namespace Game1.Projectile
 
             if(returned)
             {
-                player.setItemUsable(2);
+                Player.setItemUsable(2);
             }
 
             // Used to change sprite sheet row to allow for flashing

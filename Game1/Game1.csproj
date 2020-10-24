@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Collision_Handling\Collision.cs" />
     <Compile Include="Collision_Handling\CollisionHandler.cs" />
+    <Compile Include="Collision_Handling\CollisionHandlerUtil.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Block Commands\EnemyToBlockEastSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Block Commands\EnemyToBlockNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Block Commands\EnemyToBlockSouthSideCommand.cs" />
