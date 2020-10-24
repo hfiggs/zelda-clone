@@ -24,7 +24,7 @@ namespace Game1.Player
         private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
         private Rectangle swordHitbox = new Rectangle(0, 0, 0, 0);
 
-        public IPlayerInventory PlayerInventory { get; set; }
+        public IPlayerInventory PlayerInventory { get; private set; }
 
         public Player1(Game1 game, Vector2 position)
         {

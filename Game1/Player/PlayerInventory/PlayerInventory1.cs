@@ -43,7 +43,7 @@ namespace Game1.Player.PlayerInventory
             HalfHeartCount = Math.Max((HalfHeartCount - halfHeartsToSub), 0);
         }
 
-        public void AddMaxHearts()
+        public void AddMaxHeart()
         {
             if (MaxHalfHearts < maxMaxHalfHearts) MaxHalfHearts += fullHeart;
         }

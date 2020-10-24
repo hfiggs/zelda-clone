@@ -104,8 +104,6 @@
     <Compile Include="Command\EnemyCommands\EnemyNextCommand.cs" />
     <Compile Include="Command\EnemyCommands\EnemyPrevCommand.cs" />
     <Compile Include="Command\EnvironmentCommands\EnvironmentNextCommand.cs" />
-    <Compile Include="Command\ItemCommands\ItemPrevCommand.cs" />
-    <Compile Include="Command\ItemCommands\ItemNextCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerDamageCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />

@@ -31,4 +31,6 @@ public class Bow : IItem
     {
         return new Rectangle((int)position.X + 10, (int)position.Y + 10, 20, 20);
     }
+
+    public bool ShouldDelete { get; set; } = false;
 }

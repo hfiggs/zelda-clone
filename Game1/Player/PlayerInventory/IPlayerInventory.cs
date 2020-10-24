@@ -10,7 +10,7 @@
 
         int MaxHalfHearts { get; }
 
-        void AddMaxHearts();
+        void AddMaxHeart();
 
         int BombCount { get; }
 

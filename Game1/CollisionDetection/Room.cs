@@ -25,7 +25,7 @@ namespace Game1.CollisionDetection
     {
         public LinkedList<IEnvironment> EnvironmentList { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
-        public LinkedList<IItem> ItemList { get; set; }
+        public List<IItem> ItemList { get; set; }
         public List<IProjectile> ProjectileList { get; set; }
 
         public IPlayer Link { get; set; }
