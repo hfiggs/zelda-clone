@@ -144,7 +144,6 @@
     <Compile Include="Enemy\Jelly\JellyStateMoving.cs" />
     <Compile Include="Enemy\OldMan\OldMan.cs" />
     <Compile Include="Enemy\Merchant\Merchant.cs" />
-    <Compile Include="Enemy\DamageDecorator.cs" />
     <Compile Include="Enemy\Skeleton\Skeleton.cs" />
     <Compile Include="Enemy\Skeleton\SkeletonStateMoving.cs" />
     <Compile Include="Enemy\Snake\Snake.cs" />
@@ -163,6 +162,8 @@
     <Compile Include="Environment\Tiles\Fire.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
+    <Compile Include="Player\PlayerInventory\IPlayerInventory.cs" />
+    <Compile Include="Player\PlayerInventory\PlayerInventory1.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
     <Compile Include="Sprite\EnemySpriteFactory.cs" />
     <Compile Include="Environment\Doors\DoorSHole.cs" />
