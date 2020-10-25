@@ -1,6 +1,7 @@
 ﻿
 
 using Game1.Collision_Handling;
+using Game1.Environment;
 using Game1.Player;
 using Game1.Projectile;
 
@@ -15,8 +16,15 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-              if (collision.intersectionRec.Top <= 0)
-                ((IProjectile)collision.collider).BeginDespawn();
+            IProjectile proj = ((IProjectile)collision.collider);
+            IEnvironment envo = (IEnvironment)collision.collidee;
+            if (envo.GetType() == typeof(DoorSBombable))
+            {
+                ((DoorSBombable)envo).openDoor();
+            }
+
+            if (collision.intersectionRec.Top <= 0)
+                proj.BeginDespawn();
         }
     }
 }

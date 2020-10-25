@@ -126,7 +126,6 @@
     <Compile Include="Enemy\Dodongo\DodongoStateUp.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateRight.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateLeft.cs" />
-    <Compile Include="Enemy\EnemyStateMachine.cs" />
     <Compile Include="Enemy\Goriya\Goriya.cs" />
     <Compile Include="Enemy\Goriya\GoriyaStateAttackingLeft.cs" />
     <Compile Include="Enemy\Goriya\GoriyaStateAttackingUp.cs" />
@@ -155,12 +154,17 @@
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackSouth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackNorth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
+    <Compile Include="Environment\Doors\DoorEBombable.cs" />
+    <Compile Include="Environment\Doors\DoorNBombable.cs" />
+    <Compile Include="Environment\Doors\DoorSBombable.cs" />
+    <Compile Include="Environment\Doors\DoorWBombable.cs" />
     <Compile Include="Environment\Doors\DoorWFloor.cs" />
     <Compile Include="Environment\Doors\DoorSFloor.cs" />
     <Compile Include="Environment\Doors\DoorNFloor.cs" />
     <Compile Include="Environment\Doors\DoorEFloor.cs" />
     <Compile Include="Environment\EnvironmentListTopFactory.cs" />
     <Compile Include="Environment\EnvironmentListFactory.cs" />
+    <Compile Include="Environment\Tiles\MovableBlock.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />

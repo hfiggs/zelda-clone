@@ -1,13 +1,15 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
 {
     class GoriyaStateMovingRight : IEnemyState
     {
-        private EnemyStateMachine stateMachine;
         public ISprite Sprite { get; private set; }
+        private Game1 game;
+        private IEnemy goriya;
 
         private Vector2 direction;
         private Vector2 position;
@@ -18,9 +20,10 @@ namespace Game1.Enemy
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        public GoriyaStateMovingRight(EnemyStateMachine stateMachine, Vector2 position)
+        public GoriyaStateMovingRight(Game1 game, IEnemy goriya, Vector2 position)
         {
-            this.stateMachine = stateMachine;
+            this.game = game;
+            this.goriya = goriya;
             this.position = position;
             this.direction = new Vector2(moveSpeed, 0);
             this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
@@ -31,7 +34,7 @@ namespace Game1.Enemy
 
         public void Attack()
         {
-            stateMachine.SetState(new GoriyaStateAttackingRight(stateMachine, position));
+            goriya.SetState(new GoriyaStateAttackingRight(game, position));
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
@@ -57,6 +60,11 @@ namespace Game1.Enemy
                 Sprite.Update();
                 timeUntilNextFrame += animationTime;
             }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, position, Color.White);
         }
 
         public Vector2 GetPosition()

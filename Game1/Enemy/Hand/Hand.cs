@@ -1,45 +1,46 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Enemy
 {
     class Hand : IEnemy
     {
-        private EnemyStateMachine stateMachine;
         private float health;
+        private IEnemyState state;
+        private Game1 game;
         public Hand(Game1 game, Vector2 spawnPosition)
         {
-            stateMachine = new EnemyStateMachine(game);
-            stateMachine.SetState(new HandStateMoving(stateMachine, spawnPosition));
+            state = new HandStateMoving(spawnPosition);
             health = 3f;
+            this.game = game;
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
         {
             health -= amount;
-            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, stateMachine, direction);
-            stateMachine.swapInList(this, decorator);
+            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this,direction,game);
+            game.EnemyList.AddLast(decorator);
+            game.EnemyList.Remove(this);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(spriteBatch, color);
+            state.Draw(spriteBatch, color);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            stateMachine.Update(gameTime, drawingLimits);
+            state.Update(gameTime, drawingLimits);
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            this.state = state;
         }
 
         public void editPosition(Vector2 amount)
         {
-            stateMachine.editPosition(amount);
+            state.editPosition(amount);
         }
 
         public bool shouldRemove()
@@ -49,7 +50,7 @@ namespace Game1.Enemy
 
         public Rectangle GetHitbox() 
         {
-            return stateMachine.GetHitbox();
+            return state.GetHitbox();
         }
     }
 }

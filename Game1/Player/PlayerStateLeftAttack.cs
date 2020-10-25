@@ -16,7 +16,7 @@ namespace Game1.Player
         private float timeUntilNextFrame; // ms
         private int frameCount;
 
-        private const float animationTime = 150f; // ms per frame
+        private const float animationTime = 0f; // ms per frame
         private const int animationFrames = 4;
 
         public PlayerStateLeftAttack(IPlayer player, Vector2 position)
@@ -62,18 +62,35 @@ namespace Game1.Player
         public void Update(GameTime time)
         {
             timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
-
-            if(timeUntilNextFrame <= 0 && frameCount < animationFrames)
+            
+            if (timeUntilNextFrame <= 0)
             {
-                Sprite.Update();
-                timeUntilNextFrame += animationTime;
-                frameCount++;
-                player.SetSwordHitbox(new Rectangle(0, 18, 12, 5));
-            }
-            else if(frameCount == animationFrames)
-            {
-                player.SetState(new PlayerStateLeft(player, position));
-                player.SetSwordHitbox(new Rectangle(0, 0, 0, 0));
+                switch (frameCount)
+                {
+                    case 0:
+                        //frames before the attacking sprites are skipped
+                        Sprite.Update();
+                        frameCount++;
+                        break;
+                    case 1:
+                        //attcking sprite 1, sword is not out
+                        Sprite.Update();
+                        timeUntilNextFrame += 75.0f;
+                        frameCount++;
+                        break;
+                    case 2:
+                        //attacking sprite 2, sword is out
+                        Sprite.Update();
+                        timeUntilNextFrame += 175.0f;
+                        frameCount++;
+                        player.SetSwordHitbox(new Rectangle(0, 18, 12, 5));
+                        break;
+                    case 3:
+                        //player looped back to start
+                        player.SetState(new PlayerStateLeft(player, position));
+                        player.SetSwordHitbox(new Rectangle(0, 0, 0, 0));
+                        break;
+                }
             }
         }
 

@@ -9,15 +9,13 @@ namespace Game1.Enemy
 {
     class Snake : IEnemy
     {
-        private Game1 game;
-
         ISprite sprite;
+        private Game1 game;
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 150f; // ms per frame
 
         private Vector2 position;
-        private Vector2 knockbackMagnitude = new Vector2(32, 32);
         private Random rand;
 
         private bool isFacingLeft;
@@ -28,16 +26,18 @@ namespace Game1.Enemy
         private const float moveTime = 1000f; // ms
         private float health;
         private const int normalSpeed = 1;
-        private const int fastSpeed = 2;
+        private const int fastSpeed = 4;
+        private const int viewWidth = 10;
+        public bool playerSpotted { private get; set; }
+        Rectangle playerRect;
+        Vector2 windowDims;
 
-        public Snake(Game1 game, Vector2 position)
-        {
-            this.game = game;
-
+        public Snake(Game1 game, Vector2 position) {
             rand = new Random();
 
             isFacingLeft = rand.Next(2) == 0;
             sprite = isFacingLeft ? EnemySpriteFactory.Instance.CreateSnakeLeftSprite() : EnemySpriteFactory.Instance.CreateSnakeRightSprite();
+            this.game = game;
 
             this.position = position;
 
@@ -48,6 +48,9 @@ namespace Game1.Enemy
             timeUntilNextFrame = animationTime;
 
             health = 0.5f;
+            playerSpotted = false;
+            playerRect = game.GetPlayerRectangle();
+            windowDims = game.GetWindowDimensions();
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -58,7 +61,9 @@ namespace Game1.Enemy
         public void ReceiveDamage(float amount, Vector2 direction) 
         {
             health -= amount;
-            editPosition(Vector2.Multiply(direction,knockbackMagnitude));
+            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, direction, game);
+            game.EnemyList.AddLast(decorator);
+            game.EnemyList.Remove(this);
         }
 
         public void editPosition( Vector2 amount)
@@ -70,12 +75,14 @@ namespace Game1.Enemy
         {
             timeUntilNewDirection -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if (timeUntilNewDirection <= 0)
+            if (timeUntilNewDirection <= 0 && !playerSpotted)
             {
                 moveDirection = rand.Next(4);
 
                 timeUntilNewDirection += moveTime;
             }
+
+            playerSpotted = false;
 
             if (isFacingLeft && moveDirection == 2)
             {
@@ -88,8 +95,18 @@ namespace Game1.Enemy
                 sprite = EnemySpriteFactory.Instance.CreateSnakeLeftSprite();
             }
 
-            // TODO: determine if player is in front of snake and if so then speed = fastSpeed
+            if (isFacingLeft && playerRect.Intersects(new Rectangle((int)(position.X - windowDims.X), (int)position.Y, (int)windowDims.X, viewWidth))) {
+                playerSpotted = true;
+                moveDirection = 3;
+            } else if (!isFacingLeft && playerRect.Intersects(new Rectangle((int)position.X, (int)position.Y, (int)windowDims.X, viewWidth))) {
+                playerSpotted = true;
+                moveDirection = 2;
+            }
+
             int speed = normalSpeed;
+            if (playerSpotted) {
+                speed = fastSpeed;
+            }
 
             switch (moveDirection)
             {
@@ -114,6 +131,11 @@ namespace Game1.Enemy
                 sprite.Update();
                 timeUntilNextFrame += animationTime;
             }
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            // Do Nothing
         }
 
         public Rectangle GetHitbox()

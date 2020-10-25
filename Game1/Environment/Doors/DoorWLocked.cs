@@ -26,7 +26,7 @@ namespace Game1.Environment
             hitboxes.Add(hitbox1);
         }
 
-        public void BehaviorUpdate()
+        public void BehaviorUpdate(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }
@@ -39,6 +39,11 @@ namespace Game1.Environment
         public List<Rectangle> GetHitboxes()
         {
             return hitboxes;
+        }
+
+        public void Open()
+        {
+
         }
     }
 }

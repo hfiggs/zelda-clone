@@ -48,8 +48,6 @@ namespace Game1.Projectile
                 positionDiff = Vector2.Normalize(positionDiff);
                 position.X -= positionDiff.X * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 position.Y -= positionDiff.Y * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                returned = currentLocation.Intersects(playerRectangle);
             }
 
             if(returned)

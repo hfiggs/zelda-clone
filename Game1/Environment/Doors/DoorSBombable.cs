@@ -8,15 +8,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Environment
 {
-    class DoorSBlank : IEnvironment
+    class DoorSBombable : IEnvironment
     {
         private ISprite sprite;
         private Vector2 position;
+        private bool open = false;
 
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
-        public DoorSBlank(Vector2 position)
+        public DoorSBombable(Vector2 position)
         {
             sprite = EnvironmentSpriteFactory.instance.createDoorSBlank();
             this.position = position;
@@ -24,7 +25,7 @@ namespace Game1.Environment
             hitboxes.Add(hitbox1);
         }
 
-public void BehaviorUpdate(GameTime gameTime)
+        public void BehaviorUpdate(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }
@@ -36,6 +37,11 @@ public void BehaviorUpdate(GameTime gameTime)
         public List<Rectangle> GetHitboxes()
         {
             return hitboxes;
+        }
+        public void openDoor()
+        {
+            open = true;
+            sprite = EnvironmentSpriteFactory.instance.createDoorSHole();
         }
     }
 }

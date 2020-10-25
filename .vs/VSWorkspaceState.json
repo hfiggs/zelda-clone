@@ -2,11 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\CollisionDetection",
     "\\Game1\\Enemy",
     "\\Game1\\Enemy\\Aquamentus",
-    "\\Game1\\Enemy\\Bat"
+    "\\Game1\\Enemy\\Snake"
   ],
-  "SelectedNode": "\\Game1\\Enemy\\Bat\\BatStateMoving.cs",
+  "SelectedNode": "\\Game1\\Enemy\\Snake\\Snake.cs",
   "PreviewInSolutionExplorer": false
 }
