@@ -27,12 +27,12 @@
 	</InteractEnviornment>
 	<InteractEnviornment>
 		<Type>DoorEBlank</Type>
-		<X>0</X>
+		<X>224</X>
 		<Y>72</Y>
 	</InteractEnviornment>
 	<InteractEnviornment>
 		<Type>DoorWOpen</Type>
-		<X>224</X>
+		<X>0</X>
 		<Y>72</Y>
 	</InteractEnviornment>
 	<InteractEnviornment>

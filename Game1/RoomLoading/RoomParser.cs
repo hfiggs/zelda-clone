@@ -175,6 +175,9 @@ namespace Game1.RoomLoading
                     case "Sand":
                         nonInteractEnviornment = new Sand(position);
                         break;
+                    case "SecretRoom":
+                        nonInteractEnviornment = new SecretRoom(position);
+                        break;
                     case "Fire":
                         nonInteractEnviornment = new Fire(position);
                         break;

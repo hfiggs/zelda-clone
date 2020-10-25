@@ -20,16 +20,6 @@
 		<X>112</X>
 		<Y>144</Y>
 	</NonInteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>DoorWFloor</Type>
-		<X>0</X>
-		<Y>72</Y>
-	</NonInteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>DoorEFloor</Type>
-		<X>224</X>
-		<Y>72</Y>
-	</NonInteractEnviornment>
 	<InteractEnviornment>
 		<Type>DoorNOpen</Type>
 		<X>112</X>

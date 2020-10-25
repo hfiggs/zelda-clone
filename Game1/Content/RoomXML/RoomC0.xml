@@ -6,7 +6,7 @@
 		<Y>0</Y>
 	</InteractEnviornment>
 	<NonInteractEnviornment>
-		<Type>RoomBase</Type>
+		<Type>SecretRoom</Type>
 		<X>32</X>
 		<Y>32</Y>
 	</NonInteractEnviornment>
