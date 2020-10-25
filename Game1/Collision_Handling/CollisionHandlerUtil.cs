@@ -1,12 +1,16 @@
-﻿using Game1.Item;
+﻿using Game1.Enemy;
+using Game1.Item;
 using Game1.Player;
 using System;
+using System.Collections.Generic;
 
 namespace Game1.Collision_Handling
 {
 
     static class CollisionHandlerUtil
     {
+        #region PLAYER_ITEM_PICKUP
+
         private const int fairyHalfHearts = 6;
         private const int heartHalfHearts = 2;
 
@@ -59,5 +63,36 @@ namespace Game1.Collision_Handling
 
             item.ShouldDelete = true;
         }
+
+        #endregion
+
+        #region ENEMY_DAMAGE
+
+        private const int noDamage = 0;
+        private const int halfHeart = 1;
+        private const int fullHeart = 2;
+
+        static private Dictionary<Type, int> enemyDamageDictionary = new Dictionary<Type, int>()
+        {
+            { typeof(Aquamentus), halfHeart },
+            { typeof(Bat), halfHeart },
+            { typeof(Dodongo), fullHeart },
+            { typeof(Goriya), fullHeart },
+            { typeof(Hand), noDamage },
+            { typeof(Jelly), halfHeart },
+            { typeof(Merchant), noDamage },
+            { typeof(OldMan), noDamage },
+            { typeof(Skeleton), halfHeart },
+            { typeof(Snake), halfHeart },
+            { typeof(SpikeTrap), halfHeart }
+        };
+
+        // returns enemy damage in half hearts
+        public static int GetEnemyDamage(Type enemyType)
+        {
+            return enemyDamageDictionary.ContainsKey(enemyType) ? enemyDamageDictionary[enemyType] : 0;
+        }
+
+        #endregion
     }
 }
