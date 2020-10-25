@@ -13,7 +13,7 @@ namespace Game1.Enemy
 
         public Vector2 direction;
         private Vector2 position;
-        private const int moveSpeed = 2;
+        private const int moveSpeed = 1;
         private double totalElapsedSeconds = 0;
         private double MovementChangeTimeSeconds;
 
