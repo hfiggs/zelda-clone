@@ -22,7 +22,7 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 ((DoorEBombable)envo).openDoor();
             }
-            if (collision.intersectionRec.Left <= 0)
+            if (collision.intersectionRec.Left >= 256)
                 proj.BeginDespawn();
         }
     }

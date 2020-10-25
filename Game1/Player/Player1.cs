@@ -76,7 +76,7 @@ namespace Game1.Player
 
             if(timeUntilNextSwordBeam <= 0 && isFullHealth)
             {
-                game.Screen.SpawnProjectile(new SwordBeam(state.GetDirection(), state.GetPosition()));
+                game.Screen.SpawnProjectile(new SwordBeam(state.GetDirection(), state.position));
 
                 timeUntilNextSwordBeam = swordBeamCooldown;
             }
@@ -85,7 +85,7 @@ namespace Game1.Player
         public void ReceiveDamage(int halfHearts, Vector2 direction)
         {
             // wrap damage decorator around this
-            game.Screen.Player = new DamagedPlayer(game, this);
+            game.Screen.Player = new DamagedPlayer(game, this, direction);
 
             isFullHealth = false;
         }

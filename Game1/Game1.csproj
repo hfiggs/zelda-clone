@@ -101,10 +101,6 @@
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerWestSideCommand.cs" />
     <Compile Include="CollisionDetection\CollisionDetector.cs" />
-    <Compile Include="CollisionDetection\Room.cs" />
-    <Compile Include="Command\EnemyCommands\EnemyNextCommand.cs" />
-    <Compile Include="Command\EnemyCommands\EnemyPrevCommand.cs" />
-    <Compile Include="Command\EnvironmentCommands\EnvironmentNextCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerDamageCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />

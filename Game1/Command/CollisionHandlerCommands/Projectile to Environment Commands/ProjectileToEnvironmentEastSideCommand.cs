@@ -25,7 +25,7 @@ namespace Game1.Command.CollisionHandlerCommands
                 ((DoorWBombable)envo).openDoor();
             }
             
-            if(collision.intersectionRec.Right >= 256)
+            if(collision.intersectionRec.Right >= 144)
                 proj.BeginDespawn();
         }
     }

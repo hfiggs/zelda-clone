@@ -15,10 +15,10 @@ namespace Game1.RoomLoading
 {
     public class Room
     {
-        public LinkedList<IItem> ItemList { get; set; }
+        public List<IItem> ItemList { get; set; }
         public LinkedList<IEnvironment> NonInteractEnviornment { get; set; }
         public LinkedList<IEnvironment> InteractEnviornment { get; set; }
-        public LinkedList<IEnemy> EnemyList { get; set; }
+        public List<IEnemy> EnemyList { get; set; }
         public Room(Game1 game, String file)
         {
             RoomParser parser = new RoomParser(game, file);
@@ -34,12 +34,12 @@ namespace Game1.RoomLoading
             {
                 item.Update(gameTime);
             }
-
+            ItemList.RemoveAll(p => p.ShouldDelete);
             foreach (IEnemy enemy in EnemyList)
             {
                 enemy.Update(gameTime, new Rectangle(0, 0, 256, 176));
             }
-
+            EnemyList.RemoveAll(p => p.shouldRemove());
             foreach (IEnvironment interactEnvironment in InteractEnviornment)
             {
                 interactEnvironment.BehaviorUpdate(gameTime);

@@ -20,16 +20,16 @@ namespace Game1.Command
         }
         public void Execute()
         {
-            if(game.EnvironmentList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
+            if(game.Screen.CurrentRoom.InteractEnviornment.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                IEnvironment first = game.EnvironmentList.First();
-                IEnvironment topFirst = game.EnvironmentListTop.First();
+                IEnvironment first = game.Screen.CurrentRoom.InteractEnviornment.First();
+                IEnvironment topFirst = game.Screen.CurrentRoom.NonInteractEnviornment.First();
 
-                game.EnvironmentList.RemoveFirst();
-                game.EnvironmentListTop.RemoveFirst();
+                game.Screen.CurrentRoom.InteractEnviornment.RemoveFirst();
+                game.Screen.CurrentRoom.NonInteractEnviornment.RemoveFirst();
 
-                game.EnvironmentList.AddLast(first);
-                game.EnvironmentListTop.AddLast(topFirst);
+                game.Screen.CurrentRoom.InteractEnviornment.AddLast(first);
+                game.Screen.CurrentRoom.NonInteractEnviornment.AddLast(topFirst);
 
                 stopWatch.Restart();
             }

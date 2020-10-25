@@ -1,4 +1,6 @@
-﻿using Game1.Enemy;
+﻿using Game1.Collision_Handling;
+using Game1.CollisionDetection;
+using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
 using Game1.Player;
@@ -19,10 +21,11 @@ namespace Game1.RoomLoading
     public class Screen
     {
         public IPlayer Player { get; set; }
-        public LinkedList<IProjectile> ProjectileList { get; set; }
+        public List<IProjectile> ProjectileList { get; set; }
         //private Dictionary<(char, int), Room> Rooms { get; set; }
         public LinkedList<Room> Rooms;
         public Room CurrentRoom { get; set; }
+        private CollisionDetector detector;
         public Screen(Game1 game, char x, int y)
         {
             Rooms = new LinkedList<Room>();
@@ -35,31 +38,27 @@ namespace Game1.RoomLoading
             }
             //this.currentRoom = Rooms[('F',2)];
             this.CurrentRoom = Rooms.First();
-            this.ProjectileList = new LinkedList<IProjectile>();
+            this.ProjectileList = new List<IProjectile>();
             this.Player = new Player1(game, new Vector2(80, 80));
+            detector = new CollisionDetector(this);
         }
 
         public void Update(GameTime gameTime)
         {
 
-            LinkedList<IProjectile> projectilesToRemove = new LinkedList<IProjectile>();
-
             foreach (IProjectile projectile in ProjectileList)
             {
-                if (projectile.Update(gameTime))
-                {
-                    projectilesToRemove.AddFirst(projectile);
-                }
+               projectile.Update(gameTime);
             }
 
-            foreach (IProjectile projectile in projectilesToRemove)
-            {
-                ProjectileList.Remove(projectile);
-            }
+            ProjectileList.RemoveAll(p => p.ShouldDelete());
 
             CurrentRoom.Update(gameTime);
 
             Player.Update(gameTime);
+
+            CollisionHandler.HandleCollisions(detector.GetCollisionList());
+
         
         }
 
@@ -78,7 +77,7 @@ namespace Game1.RoomLoading
 
         public void SpawnProjectile(IProjectile projectile)
         {
-            ProjectileList.AddLast(projectile);
+            ProjectileList.Add(projectile);
         }
 
         public Rectangle GetPlayerRectangle()

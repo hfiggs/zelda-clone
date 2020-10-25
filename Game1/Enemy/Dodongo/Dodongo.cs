@@ -46,8 +46,8 @@ namespace Game1.Enemy
 
             health -= amount;
             EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, direction, game);
-            game.EnemyList.AddLast(decorator);
-            game.EnemyList.Remove(this);
+            game.Screen.CurrentRoom.EnemyList.Add(decorator);
+            game.Screen.CurrentRoom.EnemyList.Remove(this);
 
         }
 

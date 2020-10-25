@@ -8,29 +8,31 @@ using Game1.Enemy;
 using Game1.Projectile;
 using Game1.Player;
 using Game1.Collision_Handling;
+using Game1.RoomLoading;
+using System.Linq;
 
 namespace Game1.CollisionDetection
 {
     class CollisionDetector
     {
-        private Room room;
+        private Screen screen;
         private List<Collision> collisionList;
 
-        public CollisionDetector(Room room)
+        public CollisionDetector(Screen screen)
         {
-            this.room = room;
+            this.screen = screen;
         }
 
         public List<Collision> GetCollisionList()
         {
             collisionList = new List<Collision>();
-            List<IItem> ItemList = room.ItemList;
-            LinkedList<IEnvironment> EnvironmentList = room.EnvironmentList;
-            LinkedList<IEnemy> EnemyList = room.EnemyList;
-            List<IProjectile> ProjectileList = room.ProjectileList;
-            IPlayer player = room.Link;
-            Rectangle playerHitbox = room.Link.GetPlayerHitbox();
-            Rectangle swordHitbox = room.Link.GetSwordHitbox();
+            List<IItem> ItemList = screen.CurrentRoom.ItemList;
+            LinkedList<IEnvironment> EnvironmentList = screen.CurrentRoom.InteractEnviornment;
+            List<IEnemy> EnemyList = screen.CurrentRoom.EnemyList;
+            List<IProjectile> ProjectileList = screen.ProjectileList;
+            IPlayer player = screen.Player;
+            Rectangle playerHitbox = screen.Player.GetPlayerHitbox();
+            Rectangle swordHitbox = screen.Player.GetSwordHitbox();
 
             foreach (IEnvironment environment in EnvironmentList)
             { // player colliding with environment

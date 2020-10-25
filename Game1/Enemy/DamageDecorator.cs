@@ -56,8 +56,8 @@ namespace Game1.Enemy
 
             if(damagedTimer <= 0)
             {
-                game.EnemyList.AddLast(original);
-                game.EnemyList.Remove(this);
+                game.Screen.CurrentRoom.EnemyList.Add(original);
+                game.Screen.CurrentRoom.EnemyList.Remove(this);
             }
             original.Update(gameTime, drawingLimits);
         }

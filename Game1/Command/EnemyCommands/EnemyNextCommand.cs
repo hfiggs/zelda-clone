@@ -24,13 +24,13 @@ namespace Game1.Command
 
         public void Execute()
         {
-            if(game.EnemyList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
+            if(game.Screen.CurrentRoom.EnemyList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                IEnemy first = game.EnemyList.First();
+                IEnemy first = game.Screen.CurrentRoom.EnemyList.First();
 
-                game.EnemyList.RemoveFirst();
+                game.Screen.CurrentRoom.EnemyList.RemoveFi();
 
-                game.EnemyList.AddLast(first);
+                game.Screen.CurrentRoom.EnemyList.Add(first);
 
                 stopWatch.Restart();
             }

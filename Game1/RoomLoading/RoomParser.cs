@@ -22,9 +22,9 @@ namespace Game1.RoomLoading
             this.game = game;
         }
 
-        public LinkedList<IItem> GetItems()
+        public List<IItem> GetItems()
         {
-            LinkedList<IItem> items = new LinkedList<IItem>();
+            List<IItem> items = new List<IItem>();
             XmlNodeList itemsXMLNodes = roomData.getItemNodes();
 
             foreach(XmlNode n in itemsXMLNodes)
@@ -80,14 +80,14 @@ namespace Game1.RoomLoading
                         throw new System.ArgumentException("Parameter cannot be null", "original");
                 }
 
-                items.AddLast(item);
+                items.Add(item);
             }
 
             return items;
         }
-        public LinkedList<IEnemy> GetEnemies()
+        public List<IEnemy> GetEnemies()
         {
-            LinkedList<IEnemy> enemies = new LinkedList<IEnemy>();
+            List<IEnemy> enemies = new List<IEnemy>();
             XmlNodeList enemyXMLNodes = roomData.getEnemyNodes();
 
             foreach (XmlNode n in enemyXMLNodes)
@@ -137,7 +137,7 @@ namespace Game1.RoomLoading
                         throw new System.ArgumentException("Parameter cannot be null", "original");
                 }
 
-                enemies.AddLast(enemy);
+                enemies.Add(enemy);
             }
 
             return enemies;
