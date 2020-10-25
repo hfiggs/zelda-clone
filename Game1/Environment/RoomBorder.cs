@@ -17,11 +17,12 @@ namespace Game1.Environment
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 72);
         private Rectangle hitbox2 = new Rectangle(32, 0, 80, 32);
         private Rectangle hitbox3 = new Rectangle(144, 0, 80, 32);
-        private Rectangle hitbox4 = new Rectangle(256, 0, 32, 72);
+        private Rectangle hitbox4 = new Rectangle(224, 0, 32, 72);
         private Rectangle hitbox5 = new Rectangle(0, 104, 32, 72);
         private Rectangle hitbox6 = new Rectangle(32, 144, 80, 32);
         private Rectangle hitbox7 = new Rectangle(144, 144, 80, 32);
         private Rectangle hitbox8 = new Rectangle(224, 104, 32, 72);
+
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public RoomBorder(Vector2 position)
