@@ -18,8 +18,15 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-                if(collision.intersectionRec.Right >= 256)
-                ((IProjectile)collision.collider).BeginDespawn();
+            IProjectile proj = ((IProjectile)collision.collider);
+            IEnvironment envo = (IEnvironment)collision.collidee;
+            if(envo.GetType() == typeof(DoorWBombable))
+            {
+                ((DoorWBombable)envo).openDoor();
+            }
+            
+            if(collision.intersectionRec.Right >= 256)
+                proj.BeginDespawn();
         }
     }
 }

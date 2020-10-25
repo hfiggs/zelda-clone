@@ -17,11 +17,20 @@ namespace Game1.Command.CollisionHandlerCommands
         public void Execute(Collision collision)
         {
             IEnvironment envo = (IEnvironment)collision.collidee;
+            IPlayer player = (IPlayer)collision.collider;
             if (envo.GetType() == typeof(DoorWOpen) || envo.GetType() == typeof(DoorWHole))
-                envo.BehaviorUpdate();
+                throw new System.NotImplementedException();
+            else if (envo.GetType() == typeof(MovableBlock))
+            {
+                ((MovableBlock)envo).Move(new Vector2(1, 0), 1.0f, 'E');
+            }
+            else if (envo.GetType() == typeof(DoorSLocked))
+            {
+                if (player.)
+                    ((DoorELocked)envo).open();
+            }
             else
             {
-                IPlayer player = (IPlayer)collision.collider;
                 Vector2 moveAmount = new Vector2(-collision.intersectionRec.Width, 0);
                 player.editPosition(moveAmount);
             }

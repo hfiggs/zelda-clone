@@ -16,16 +16,17 @@ namespace Game1.Environment
         private Vector2 position;
         private float movementTime;
         private Vector2 movementSpeed;
-
+        private char movementDirection;
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
-        public MovableBlock(Vector2 position)
+        public MovableBlock(Vector2 position, char movementDirection)
         {
             sprite = EnvironmentSpriteFactory.instance.createBlock();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
+            this.movementDirection = movementDirection;
         }
 
         public void BehaviorUpdate(GameTime gameTime)
@@ -47,11 +48,14 @@ namespace Game1.Environment
             return hitboxes;
         }
 
-        public void Move(Vector2 movement, float seconds)
+        public void Move(Vector2 movement, float seconds, char direction)
         {
-            //movement is in units of tiles (16 pixels)
-            movementTime = seconds;
-            movementSpeed = (movement * 16.0f) / seconds;
+            if (direction == movementDirection)
+            {
+                //movement is in units of tiles (16 pixels)
+                movementTime = seconds;
+                movementSpeed = (movement * 16.0f) / seconds;
+            }
         }
     }
 }

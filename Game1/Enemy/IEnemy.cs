@@ -15,7 +15,6 @@ namespace Game1.Enemy
 
         bool shouldRemove();
         
-
         void SetState(IEnemyState state);
 
         Rectangle GetHitbox();

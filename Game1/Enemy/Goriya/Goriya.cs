@@ -16,9 +16,6 @@ namespace Game1.Enemy
 
         public Goriya(Game1 game, Vector2 spawnPosition)
         {
-            stateMachine = new EnemyStateMachine(game);
-            stateMachine.SetState(new GoriyaStateMovingRight(stateMachine, spawnPosition));
-            oldDirection = stateMachine.GetDirection();
             health = 3f;
             this.game = game;
             state = new GoriyaStateMovingRight(game, this, spawnPosition);
@@ -28,8 +25,9 @@ namespace Game1.Enemy
         public void ReceiveDamage(float amount, Vector2 direction)
         {
             health -= amount;
-            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, stateMachine, direction);
-            stateMachine.swapInList(this, decorator);
+            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, direction, game);
+            game.EnemyList.AddLast(decorator);
+            game.EnemyList.Remove(this);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -83,7 +81,7 @@ namespace Game1.Enemy
 
         public void editPosition(Vector2 amount)
         {
-            stateMachine.editPosition(amount);
+            state.editPosition(amount);
         }
 
         public bool shouldRemove()

@@ -10,12 +10,12 @@ namespace Game1.Enemy
     class Snake : IEnemy
     {
         ISprite sprite;
+        private Game1 game;
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 150f; // ms per frame
 
         private Vector2 position;
-        private Vector2 knockbackMagnitude = new Vector2(32, 32);
         private Random rand;
 
         private bool isFacingLeft;
@@ -37,6 +37,7 @@ namespace Game1.Enemy
 
             isFacingLeft = rand.Next(2) == 0;
             sprite = isFacingLeft ? EnemySpriteFactory.Instance.CreateSnakeLeftSprite() : EnemySpriteFactory.Instance.CreateSnakeRightSprite();
+            this.game = game;
 
             this.position = position;
 
@@ -60,7 +61,9 @@ namespace Game1.Enemy
         public void ReceiveDamage(float amount, Vector2 direction) 
         {
             health -= amount;
-            editPosition(Vector2.Multiply(direction,knockbackMagnitude));
+            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, direction, game);
+            game.EnemyList.AddLast(decorator);
+            game.EnemyList.Remove(this);
         }
 
         public void editPosition( Vector2 amount)

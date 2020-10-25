@@ -6,9 +6,9 @@ namespace Game1.Enemy
 {
     class Dodongo : IEnemy
     {
-        private EnemyStateMachine stateMachine;
         private float health;
         private IEnemyState state;
+        private Game1 game;
 
         public Dodongo(Game1 game, Vector2 position)
         {
@@ -27,6 +27,7 @@ namespace Game1.Enemy
                     state = new DodongoStateRight(this, position);
                     break;
             }
+            this.game = game;
             health = 8f;
         }
 
@@ -37,15 +38,16 @@ namespace Game1.Enemy
 
         public void editPosition(Vector2 amount)
         {
-            stateMachine.editPosition(amount);
+            state.editPosition(amount);
         }
 
         public void ReceiveDamage(float amount, Vector2 direction) 
         {
 
             health -= amount;
-            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, stateMachine, direction);
-            stateMachine.swapInList(this, decorator);
+            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, direction, game);
+            game.EnemyList.AddLast(decorator);
+            game.EnemyList.Remove(this);
 
         }
 

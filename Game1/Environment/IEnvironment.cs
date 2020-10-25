@@ -6,7 +6,7 @@ namespace Game1.Environment
 {
     public interface IEnvironment
     {
-        void BehaviorUpdate();
+        void BehaviorUpdate(GameTime gameTime);
 
         void Draw(SpriteBatch spriteBatch, Color color);
 

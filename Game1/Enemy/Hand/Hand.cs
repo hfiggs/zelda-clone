@@ -5,22 +5,22 @@ namespace Game1.Enemy
 {
     class Hand : IEnemy
     {
-        private EnemyStateMachine stateMachine;
         private float health;
         private IEnemyState state;
+        private Game1 game;
         public Hand(Game1 game, Vector2 spawnPosition)
         {
             state = new HandStateMoving(spawnPosition);
-            stateMachine = new EnemyStateMachine(game);
-            stateMachine.SetState(new HandStateMoving(stateMachine, spawnPosition));
             health = 3f;
+            this.game = game;
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
         {
             health -= amount;
-            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, stateMachine, direction);
-            stateMachine.swapInList(this, decorator);
+            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this,direction,game);
+            game.EnemyList.AddLast(decorator);
+            game.EnemyList.Remove(this);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -40,7 +40,7 @@ namespace Game1.Enemy
 
         public void editPosition(Vector2 amount)
         {
-            stateMachine.editPosition(amount);
+            state.editPosition(amount);
         }
 
         public bool shouldRemove()

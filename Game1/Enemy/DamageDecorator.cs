@@ -16,16 +16,16 @@ namespace Game1.Enemy
         Color[] flickers = { Color.LightBlue, Color.Orange, Color.Red };
         int currentFlicker = 0;
         float timeTillFlickerSwap;
-        EnemyStateMachine machine;
+        Game1 game;
 
         Vector2 knockbackMagnitude = new Vector2(1, 1);
-        public EnemyDamageDecorator( IEnemy Original, EnemyStateMachine stateMachine, Vector2 direction)
+        public EnemyDamageDecorator( IEnemy Original, Vector2 direction, Game1 game)
         {
             this.original = Original;
-            machine = stateMachine;
             damagedTimer = 250f; //ms
             timeTillFlickerSwap = 50f;
             knockbackMagnitude = Vector2.Multiply(knockbackMagnitude, direction);
+            this.game = game;
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
@@ -56,7 +56,8 @@ namespace Game1.Enemy
 
             if(damagedTimer <= 0)
             {
-                machine.swapInList(this, original);
+                game.EnemyList.AddLast(original);
+                game.EnemyList.Remove(this);
             }
             original.Update(gameTime, drawingLimits);
         }
@@ -74,6 +75,11 @@ namespace Game1.Enemy
         public Rectangle GetHitbox()
         {
             return original.GetHitbox();
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            original.SetState(state);
         }
     }
 }

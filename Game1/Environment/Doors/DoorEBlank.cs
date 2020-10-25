@@ -22,8 +22,8 @@ namespace Game1.Environment
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
         }
-
-        public void BehaviorUpdate()
+   
+public void BehaviorUpdate(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }
