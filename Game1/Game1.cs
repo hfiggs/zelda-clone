@@ -79,7 +79,7 @@ namespace Game1
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             //ItemList = ItemListFactory.GetItemList();
             ItemList = new List<IItem>();
-            ItemList.Add(new RupeeBlue(new Vector2(100, 80)));
+            ItemList.Add(new Key(new Vector2(100, 80)));
 
             EnvironmentSpriteFactory.instance.LoadContent(Content);
             EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
@@ -151,7 +151,7 @@ namespace Game1
 
             Player.Draw(spriteBatch, Color.White);
 
-            EnvironmentListTop.First.Value.Draw(spriteBatch, Color.White);
+            EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
 
             foreach (IProjectile projectile in ProjectileList)
             {

@@ -41,7 +41,7 @@ public void BehaviorUpdate(GameTime gameTime)
 
         public void Open()
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
+            sprite = EnvironmentSpriteFactory.instance.createDoorEOpen();
             open = true;
         }
     }
