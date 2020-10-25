@@ -17,12 +17,7 @@ using Game1.Projectile;
 using Game1.Environment;
 using Game1.Item;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
-using Game1.CollisionDetection;
-<<<<<<< HEAD
-using System;
-=======
 using Game1.RoomLoading;
->>>>>>> 1cb9a61... created XML room loader and created first test room
 
 namespace Game1
 {
@@ -88,52 +83,7 @@ namespace Game1
                controller.Update();
             }
 
-<<<<<<< HEAD
-            Player.Update(gameTime);
-
-            //foreach (IEnemy enemy in EnemyList)
-            //{
-            //    enemy.Update(gameTime, new Rectangle(32, 32, 224, 144));
-            //}
-
-            LinkedList<IProjectile> projectilesToRemove = new LinkedList<IProjectile>();
-
-            foreach (IProjectile projectile in ProjectileList)
-            {
-                if (projectile.Update(gameTime))
-                {
-                    projectilesToRemove.AddFirst(projectile);
-                }
-            }
-
-            foreach (IProjectile projectile in projectilesToRemove)
-            {
-                ProjectileList.Remove(projectile);
-            }
-
-            foreach (IEnvironment interactEnvironment in EnvironmentListTop)
-            {
-                interactEnvironment.BehaviorUpdate(gameTime);
-            }
-
-<<<<<<< HEAD
-            //DELETE ME
-            block.BehaviorUpdate(gameTime);
-            Console.WriteLine(Player.GetPlayerHitbox().ToString());
-=======
-            foreach (IItem item in ItemList)
-            {
-                item.Update(gameTime);
-            }
-
-            foreach (IEnvironment nonInternactEnvironment in EnvironmentList)
-            {
-                nonInternactEnvironment.BehaviorUpdate(gameTime);
-            }
->>>>>>> 1cb9a61... created XML room loader and created first test room
-=======
             Screen.Update(gameTime);
->>>>>>> 056f5cd... added screen/room class
 
             base.Update(gameTime);
         }
