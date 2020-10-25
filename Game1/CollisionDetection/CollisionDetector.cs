@@ -96,7 +96,7 @@ namespace Game1.CollisionDetection
                 Rectangle intersectSword = Rectangle.Intersect(swordHitbox, enemyHitbox);
                 if(!intersectSword.IsEmpty)
                 {
-                    char side = DetermineSide(swordHitbox, enemyHitbox, intersectSword);
+                    char side = RectangleCollision(swordHitbox, enemyHitbox, intersectSword);
                     collisionList.AddLast(new Collision(side, intersectSword, player, enemy));
                 }
             }
@@ -105,9 +105,14 @@ namespace Game1.CollisionDetection
             { // projectile hits player
                 Rectangle projHitbox = proj.GetHitbox();
                 Rectangle intersectPlayer = Rectangle.Intersect(projHitbox, playerHitbox);
+                char side;
                 if (!intersectPlayer.IsEmpty)
                 {
-                    char side = DetermineSide(projHitbox, playerHitbox, intersectPlayer);
+                    if (projHitbox.Height > projHitbox.Width * 2 || projHitbox.Width > projHitbox.Height * 2) {
+                        side = RectangleCollision(projHitbox, playerHitbox, intersectPlayer);
+                    } else {
+                        side = DetermineSide(projHitbox, playerHitbox, intersectPlayer);
+                    }
                     collisionList.AddLast(new Collision(side, intersectPlayer, proj, player));
                 }
                 
@@ -118,7 +123,11 @@ namespace Game1.CollisionDetection
                     Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, projHitbox);
                     if(!intersectEnemy.IsEmpty)
                     {
-                        char side = DetermineSide(projHitbox, enemyHitbox, intersectEnemy);
+                        if (projHitbox.Height > projHitbox.Width * 2 || projHitbox.Width > projHitbox.Height * 2) {
+                            side = RectangleCollision(projHitbox, enemyHitbox, intersectEnemy);
+                        } else {
+                            side = DetermineSide(projHitbox, enemyHitbox, intersectEnemy);
+                        }
                         collisionList.AddLast(new Collision(side, intersectEnemy, proj, enemy));
                     }
                 }
@@ -130,7 +139,11 @@ namespace Game1.CollisionDetection
                     Rectangle interscetItem = Rectangle.Intersect(itemHitbox, projHitbox);
                     if(!interscetItem.IsEmpty)
                     {
-                        char side = DetermineSide(projHitbox, itemHitbox, interscetItem);
+                        if (projHitbox.Height > projHitbox.Width * 2 || projHitbox.Width > projHitbox.Height * 2) {
+                            side = RectangleCollision(projHitbox, itemHitbox, interscetItem);
+                        } else {
+                            side = DetermineSide(projHitbox, itemHitbox, interscetItem);
+                        }
                         collisionList.AddLast(new Collision(side, interscetItem, proj, item));
                     }
                 }
@@ -146,28 +159,40 @@ namespace Game1.CollisionDetection
             int yOverlap = intersectionRec.Height;
             char side;
 
-            if (xOverlap > yOverlap)
-            {
-                if (colider.Y < colidee.Y)
-                {
+            if (xOverlap < yOverlap) {
+                if (colider.Y < colidee.Y) {
                     side = 'N';
-                }
-                else
-                {
+                } else {
                     side = 'S';
                 }
-            }
-            else
-            {
-                if (colider.X < colidee.X)
-                {
+            } else {
+                if (colider.X < colidee.X) {
                     side = 'W';
-                }
-                else
-                {
+                } else {
                     side = 'E';
                 }
             }
+           
+            return side;
+        }
+
+        private char RectangleCollision(Rectangle colider, Rectangle colidee, Rectangle intersectionRec) {
+            char side;
+
+            if (colider.Height > colider.Width) {
+                if (intersectionRec.Contains(colidee.X, colidee.Y) || intersectionRec.Contains(colidee.Right, colidee.Y)) {
+                    side = 'S';
+                } else {
+                    side = 'N';
+                }
+            } else {
+                if (intersectionRec.Contains(colidee.Right, colidee.Y) || intersectionRec.Contains(colidee.Right, colidee.Bottom)) {
+                    side = 'W';
+                } else {
+                    side = 'E';
+                }
+            }
+
             return side;
         }
     }
