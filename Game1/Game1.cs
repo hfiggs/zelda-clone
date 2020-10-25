@@ -69,6 +69,8 @@ namespace Game1
             ParticleSpriteFactory.Instance.LoadAllTextures(Content);
 
             Screen = new Screen(this, 'F', 2);
+
+            Screen.LoadAllRooms();
         }
 
         protected override void UnloadContent()

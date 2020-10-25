@@ -21,6 +21,7 @@ namespace Game1.RoomLoading
         public LinkedList<IEnemy> EnemyList { get; set; }
         public Room(Game1 game, String file)
         {
+            game.Screen.CurrentRoom = this;
             RoomParser parser = new RoomParser(game, file);
             ItemList = parser.GetItems();
             NonInteractEnviornment = parser.GetNonInteractableEnvinornment();

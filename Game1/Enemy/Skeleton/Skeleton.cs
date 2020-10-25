@@ -15,7 +15,7 @@ namespace Game1.Enemy
 
         public Skeleton(Game1 game, Vector2 spawnPosition, IItem item)
         {
-            state = new SkeletonStateMoving(spawnPosition, item);
+            state = new SkeletonStateMoving(game, spawnPosition, item);
         }
 
         public void ReceiveDamage()

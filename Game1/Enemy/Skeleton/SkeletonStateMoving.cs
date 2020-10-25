@@ -29,14 +29,14 @@ namespace Game1.Enemy
             timeUntilNextFrame = animationTime;
         }
 
-        public SkeletonStateMoving(Vector2 position, IItem item)
+        public SkeletonStateMoving(Game1 game, Vector2 position, IItem item)
         {
             this.position = position;
             this.item = item;
+            game.Screen.SpawnItem(item);
             direction = GetRandomDirection();
             MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
-
             timeUntilNextFrame = animationTime;
         }
 
@@ -67,7 +67,7 @@ namespace Game1.Enemy
                 position += direction;
                 if(item != null)
                 {
-                    item.Position = new Vector2(position.X-8, position.Y-4u);
+                    item.Position = new Vector2(position.X-8, position.Y-4);
                 }
                
             }
@@ -77,10 +77,6 @@ namespace Game1.Enemy
             if (timeUntilNextFrame <= 0)
             {
                 Sprite.Update();
-                if (item != null)
-                {
-                    item.Update(gameTime);
-                }
                 timeUntilNextFrame += animationTime;
             }
         }
@@ -88,10 +84,6 @@ namespace Game1.Enemy
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             Sprite.Draw(spriteBatch, position, Color.White);
-            if (item != null)
-            {
-                item.Draw(spriteBatch, color);
-            }
             
         }
 

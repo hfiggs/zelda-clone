@@ -20,12 +20,22 @@ namespace Game1.RoomLoading
     {
         public IPlayer Player { get; set; }
         public LinkedList<IProjectile> ProjectileList { get; set; }
+
+        private Game1 game;
+
         //private Dictionary<(char, int), Room> Rooms { get; set; }
         public LinkedList<Room> Rooms;
         public Room CurrentRoom { get; set; }
         public Screen(Game1 game, char x, int y)
         {
-            Rooms = new LinkedList<Room>();
+            this.game = game;
+            this.Rooms = new LinkedList<Room>();
+            this.ProjectileList = new LinkedList<IProjectile>();
+            this.Player = new Player1(game, new Vector2(80, 80));
+        }
+
+        public void LoadAllRooms()
+        {
             foreach (string file in Directory.EnumerateFiles(game.Content.RootDirectory + "/RoomXML", "*.xml"))
             {
                 //var identifer = Regex.Match(file, @"\w{2}(?=\.\w+$)");
@@ -35,10 +45,7 @@ namespace Game1.RoomLoading
             }
             //this.currentRoom = Rooms[('F',2)];
             this.CurrentRoom = Rooms.First();
-            this.ProjectileList = new LinkedList<IProjectile>();
-            this.Player = new Player1(game, new Vector2(80, 80));
         }
-
         public void Update(GameTime gameTime)
         {
 
@@ -79,6 +86,11 @@ namespace Game1.RoomLoading
         public void SpawnProjectile(IProjectile projectile)
         {
             ProjectileList.AddLast(projectile);
+        }
+
+        public void SpawnItem(IItem item)
+        {
+            CurrentRoom.ItemList.AddLast(item);
         }
 
         public Rectangle GetPlayerRectangle()
