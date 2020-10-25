@@ -42,14 +42,14 @@ namespace Game1.Enemy
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
             totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
-            Rectangle playerRect = game.GetPlayerRectangle();
+            Rectangle playerRect = game.Screen.GetPlayerRectangle();
 
             if (totalTime < timeOfAttack || (counter == 1 && totalTime < 2)) {
                 if (drawingLimits.Contains(position.X - moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds, position.Y)) {
                     position.X -= moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
                 }
             } else if(totalTime > timeOfAttack && counter == 0) {
-                game.SpawnProjectile(new Fireballs(position, playerRect));
+                game.Screen.SpawnProjectile(new Fireballs(position, playerRect));
                 counter++;
             } else {
                 aquamentus.SetState(new AquamentusWalkRight(game, aquamentus, position));

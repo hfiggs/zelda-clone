@@ -13,7 +13,7 @@ namespace Game1.Command
 
         public void Execute()
         {
-            game.Player.ReceiveDamage();
+            game.Screen.Player.ReceiveDamage();
         }
     }
 }
