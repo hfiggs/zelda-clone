@@ -5,6 +5,7 @@ using System;
 using Game1.Sprite;
 using Game1.Controller;
 using System.Collections.Generic;
+using SharpDX.MediaFoundation;
 
 namespace Game1.Environment
 {
@@ -14,6 +15,7 @@ namespace Game1.Environment
 		private SpriteSheet tiles;
 		private SpriteSheet room;
 		private SpriteSheet doorfloors;
+		private SpriteSheet roomBase;
 
 		public static EnvironmentSpriteFactory instance = new EnvironmentSpriteFactory();
 
@@ -27,6 +29,8 @@ namespace Game1.Environment
 			Texture2D tiles = content.Load<Texture2D>("images/ss_tiles");
 			Texture2D room = content.Load<Texture2D>("images/room_base");
 			Texture2D doorfloors = content.Load<Texture2D>("images/door_floors");
+			Texture2D roomBase = content.Load<Texture2D>("images/Rooms/RoomBase");
+			this.roomBase = new SpriteSheet(roomBase, 1, 1);
 			this.doors = new SpriteSheet(doors, 5, 4);
 			this.tiles = new SpriteSheet(tiles, 4, 3);
 			this.room = new SpriteSheet(room, 1, 1);
@@ -191,6 +195,11 @@ namespace Game1.Environment
         {
 			return new EnvironmentSprite(room, 0, 0, 30, false);
         }
+
+		public ISprite createBase()
+		{
+			return new EnvironmentSprite(roomBase, 0, 0, 36, false);
+		}
 
 		public ISprite createFire()
         {

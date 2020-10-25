@@ -27,7 +27,7 @@ namespace Game1.Enemy
             this.MovementChangeTimeSeconds = 2;
             Sprite = EnemySpriteFactory.Instance.CreateGoriyaLeftSprite();
             projectile = new EnemyBoomerang('W', position);
-            game.SpawnProjectile(projectile);
+            game.Screen.SpawnProjectile(projectile);
 
             timeUntilNextFrame = animationTime;
         }

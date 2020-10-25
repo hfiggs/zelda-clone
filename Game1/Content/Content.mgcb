@@ -13,13 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Credits.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Credits.spritefont
-
 #begin Images/Aquamentus.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -92,18 +85,6 @@
 /processorParam:TextureFormat=Color
 /build:Images/enemies.png
 
-#begin Images/guyRun.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Images/guyRun.png
-
 #begin Images/items.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -115,6 +96,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/items.png
+
+#begin Images/oldman.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/oldman.png
 
 #begin Images/LinkDownNew.png
 /importer:TextureImporter
@@ -176,18 +169,6 @@
 /processorParam:TextureFormat=Color
 /build:Images/LinkUpNew.png
 
-#begin Images/oldman.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Images/oldman.png
-
 #begin Images/projectiles.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -211,6 +192,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/room_base.png
+
+#begin Images/Rooms/Room1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Rooms/Room1.png
+
+#begin Images/Rooms/RoomBase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Rooms/RoomBase.png
 
 #begin Images/snake.png
 /importer:TextureImporter
@@ -331,4 +336,58 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Merchant.png
+
+#begin RoomXML/RoomA0.xml
+/copy:RoomXML/RoomA0.xml
+
+#begin RoomXML/RoomA1.xml
+/copy:RoomXML/RoomA1.xml
+
+#begin RoomXML/RoomA2.xml
+/copy:RoomXML/RoomA2.xml
+
+#begin RoomXML/RoomB2.xml
+/copy:RoomXML/RoomB2.xml
+
+#begin RoomXML/RoomB4.xml
+/copy:RoomXML/RoomB4.xml
+
+#begin RoomXML/RoomB5.xml
+/copy:RoomXML/RoomB5.xml
+
+#begin RoomXML/RoomC0.xml
+/copy:RoomXML/RoomC0.xml
+
+#begin RoomXML/RoomC1.xml
+/copy:RoomXML/RoomC1.xml
+
+#begin RoomXML/RoomC2.xml
+/copy:RoomXML/RoomC2.xml
+
+#begin RoomXML/RoomC3.xml
+/copy:RoomXML/RoomC3.xml
+
+#begin RoomXML/RoomC4.xml
+/copy:RoomXML/RoomC4.xml
+
+#begin RoomXML/RoomD1.xml
+/copy:RoomXML/RoomD1.xml
+
+#begin RoomXML/RoomD2.xml
+/copy:RoomXML/RoomD2.xml
+
+#begin RoomXML/RoomD3.xml
+/copy:RoomXML/RoomD3.xml
+
+#begin RoomXML/RoomE2.xml
+/copy:RoomXML/RoomE2.xml
+
+#begin RoomXML/RoomF1.xml
+/copy:RoomXML/RoomF1.xml
+
+#begin RoomXML/RoomF2.xml
+/copy:RoomXML/RoomF2.xml
+
+#begin RoomXML/RoomF3.xml
+/copy:RoomXML/RoomF3.xml
 

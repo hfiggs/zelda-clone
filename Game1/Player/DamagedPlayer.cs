@@ -132,7 +132,7 @@ namespace Game1.Player
 
         private void RemoveDecorator()
         {
-            game.Player = decoratedPlayer;
+            game.Screen.Player = decoratedPlayer;
         }
 
         public void SetState(IPlayerState state)
@@ -147,7 +147,7 @@ namespace Game1.Player
 
         public void spawnProjectile(IProjectile projectile)
         {
-            game.SpawnProjectile(projectile);
+            game.Screen.SpawnProjectile(projectile);
         }
 
         public void setItemUsable(int item)

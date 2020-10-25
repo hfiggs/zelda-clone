@@ -17,8 +17,7 @@ using Game1.Projectile;
 using Game1.Environment;
 using Game1.Item;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
-using Game1.CollisionDetection;
-using System;
+using Game1.RoomLoading;
 
 namespace Game1
 {
@@ -30,26 +29,14 @@ namespace Game1
         IResolution resolution;
 
         private List<IController> controllerList;
-        
-        public IPlayer Player { get; set; }
-        public List<IItem> ItemList { get; set; }
-        public LinkedList<IEnvironment> EnvironmentList { get; set; }
-        public LinkedList<IEnvironment> EnvironmentListTop { get; set; }
-        public LinkedList<IEnemy> EnemyList { get; set; }
-        public List<IProjectile> ProjectileList { get; set; }
-
-        //DELETE ME
-        private Room Room1;
-
-        //DELETE ME
-        private MovableBlock block;
+        public Screen Screen { get; set; }
 
         public Game1()
         {
             Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            resolution = new ResolutionComponent(this, Graphics, new Point(256, 176), new Point(1024, 704), false, true, false);
+            resolution = new ResolutionComponent(this, Graphics, new Point(256, 176), new Point(1024, 768), false, true, false);
         }
 
         // Initialization that does not require content
@@ -59,8 +46,6 @@ namespace Game1
             {
                 new KeyboardController(this)
             };
-
-            ProjectileList = new List<IProjectile>();
 
             IsMouseVisible = true;
 
@@ -72,27 +57,18 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             PlayerSpriteFactory.Instance.LoadAllTextures(Content);
-            Player = new Player1(this, new Vector2(40, 100));
 
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
 
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            //ItemList = ItemListFactory.GetItemList();
-            ItemList = new List<IItem>();
-            ItemList.Add(new Key(new Vector2(100, 80)));
 
             EnvironmentSpriteFactory.instance.LoadContent(Content);
-            EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
-            EnvironmentListTop = EnvironmentListTopFactory.GetEnvironmentList();
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
-            EnemyList = EnemyListFactory.GetEnemyList(this);
 
             ParticleSpriteFactory.Instance.LoadAllTextures(Content);
 
-            //DELETE ME
-            Room1 = new Room(this);
-
+            Screen = new Screen(this, 'F', 2);
         }
 
         protected override void UnloadContent()
@@ -106,32 +82,8 @@ namespace Game1
             {
                controller.Update();
             }
-            
-            Player.Update(gameTime);
 
-            foreach (IItem item in ItemList)
-            {
-                item.Update(gameTime);
-            }
-
-            ItemList.RemoveAll(i => i.ShouldDelete);
-
-            EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 256, 176));
-            if(EnemyList.First.Value.shouldRemove())
-                EnemyList.RemoveFirst();
-            EnvironmentList.First.Value.BehaviorUpdate(gameTime);
-            
-            foreach (IProjectile projectile in ProjectileList)
-            {
-                projectile.Update(gameTime);
-            }
-
-            ProjectileList.RemoveAll(p => p.ShouldDelete());
-            
-            //DELETE ME
-            Room1.Update();
-
-            Console.WriteLine(Player.GetPlayerHitbox().ToString());
+            Screen.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -142,31 +94,11 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
-            foreach (IItem item in ItemList)
-            {
-                item.Draw(spriteBatch, Color.White);
-            }
-
-            EnemyList.First.Value.Draw(spriteBatch, Color.White);
-
-            Player.Draw(spriteBatch, Color.White);
-
-            EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
-
-            foreach (IProjectile projectile in ProjectileList)
-            {
-                projectile.Draw(spriteBatch, Color.White);
-            }
-
+            Screen.Draw(spriteBatch);
 
             spriteBatch.End();
 
             base.Draw(gameTime);
-        }
-
-        public Rectangle GetPlayerRectangle()
-        {
-            return Player.GetLocation();
         }
 
         public Vector2 GetWindowDimensions()
@@ -174,18 +106,5 @@ namespace Game1
             return new Vector2(Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight);
         }
 
-        public void SpawnProjectile(IProjectile projectile)
-        {
-            ProjectileList.Add(projectile);
-        }
-
-        public void Reset()
-        {
-            Player = new Player1(this, new Vector2(40, 100));
-            ProjectileList = new List<IProjectile>();
-            ItemList.Clear();
-            EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
-            EnemyList = EnemyListFactory.GetEnemyList(this);
-        }
     }
 }

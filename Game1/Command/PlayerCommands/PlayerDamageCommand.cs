@@ -15,7 +15,7 @@ namespace Game1.Command
 
         public void Execute()
         {
-            game.Player.ReceiveDamage(1, new Vector2(0,1));
+            game.Screen.Player.ReceiveDamage();
         }
     }
 }

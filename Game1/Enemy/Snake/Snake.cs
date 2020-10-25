@@ -49,7 +49,7 @@ namespace Game1.Enemy
 
             health = 0.5f;
             playerSpotted = false;
-            playerRect = game.GetPlayerRectangle();
+            playerRect = game.Screen.GetPlayerRectangle();
             windowDims = game.GetWindowDimensions();
         }
 

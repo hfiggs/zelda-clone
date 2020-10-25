@@ -112,9 +112,8 @@
     <Compile Include="Command\PlayerCommands\PlayerDownCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUpCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerRightCommand.cs" />
-    <Compile Include="Command\EnvironmentCommands\EnvironmentPrevCommand.cs" />
-    <Compile Include="Command\ResetCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
+    <Compile Include="Command\RoomNextCommand.cs" />
     <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeft.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />
@@ -165,9 +164,14 @@
     <Compile Include="Environment\EnvironmentListTopFactory.cs" />
     <Compile Include="Environment\EnvironmentListFactory.cs" />
     <Compile Include="Environment\Tiles\MovableBlock.cs" />
+    <Compile Include="Environment\RoomBase.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
+    <Compile Include="RoomLoading\Room.cs" />
+    <Compile Include="RoomLoading\Screen.cs" />
+    <Compile Include="RoomLoading\XMLLoader.cs" />
+    <Compile Include="RoomLoading\RoomParser.cs" />
     <Compile Include="Player\PlayerInventory\IPlayerInventory.cs" />
     <Compile Include="Player\PlayerInventory\PlayerInventory1.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
@@ -311,6 +315,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="RoomLoading\RoomXML\RoomA2.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomB4.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomB2.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomA1.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomB5.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomA0.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomC4.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomD1.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomC2.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomC3.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomD3.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomC1.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomC0.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomF2.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomE2.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomD2.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomF3.xml" />
+    <Content Include="RoomLoading\RoomXML\RoomF1.xml" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />

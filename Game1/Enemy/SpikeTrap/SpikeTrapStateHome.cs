@@ -55,7 +55,7 @@ namespace Game1.Enemy
 
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
-            Rectangle playerRect = game.GetPlayerRectangle();
+            Rectangle playerRect = game.Screen.GetPlayerRectangle();
 
             Vector2 windowDims = game.GetWindowDimensions();
 

@@ -18,7 +18,7 @@ namespace Game1.Command
 
         public void Execute()
         {
-            game.Player.Attack();
+            game.Screen.Player.Attack();
         }
     }
 }
