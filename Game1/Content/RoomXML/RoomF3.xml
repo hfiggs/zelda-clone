@@ -116,7 +116,7 @@
 		<Y>108</Y>
 	</Enemy>
 	<Enemy>
-		<Type>Skeleton</Type>
+		<Type>SkeletonKey</Type>
 		<X>72</X>
 		<Y>120</Y>
 	</Enemy>

@@ -127,6 +127,9 @@ namespace Game1.RoomLoading
                     case "Skeleton":
                         enemy = new Skeleton(game, position);
                         break;
+                    case "SkeletonKey":
+                        enemy = new Skeleton(game, position, new Key(position));
+                        break;
                     case "Snake":
                         enemy = new Snake(game, position);
                         break;

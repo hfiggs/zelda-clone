@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using Game1.Item;
 
 namespace Game1.Enemy
 {
@@ -13,6 +14,7 @@ namespace Game1.Enemy
         private const int moveSpeed = 2;
         private double totalElapsedSeconds = 0;
         private double MovementChangeTimeSeconds;
+        private IItem item;
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
@@ -20,6 +22,17 @@ namespace Game1.Enemy
         public SkeletonStateMoving(Vector2 position)
         {
             this.position = position;
+            direction = GetRandomDirection();
+            MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+            Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
+
+            timeUntilNextFrame = animationTime;
+        }
+
+        public SkeletonStateMoving(Vector2 position, IItem item)
+        {
+            this.position = position;
+            this.item = item;
             direction = GetRandomDirection();
             MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
@@ -52,6 +65,11 @@ namespace Game1.Enemy
             if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
             {
                 position += direction;
+                if(item != null)
+                {
+                    item.Position = new Vector2(position.X-8, position.Y-4u);
+                }
+               
             }
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -59,6 +77,10 @@ namespace Game1.Enemy
             if (timeUntilNextFrame <= 0)
             {
                 Sprite.Update();
+                if (item != null)
+                {
+                    item.Update(gameTime);
+                }
                 timeUntilNextFrame += animationTime;
             }
         }
@@ -66,6 +88,11 @@ namespace Game1.Enemy
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             Sprite.Draw(spriteBatch, position, Color.White);
+            if (item != null)
+            {
+                item.Draw(spriteBatch, color);
+            }
+            
         }
 
         public Vector2 GetDirection()

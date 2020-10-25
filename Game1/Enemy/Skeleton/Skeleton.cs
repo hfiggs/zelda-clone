@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Item;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
@@ -10,6 +11,11 @@ namespace Game1.Enemy
         public Skeleton(Game1 game, Vector2 spawnPosition)
         {
             state = new SkeletonStateMoving(spawnPosition);
+        }
+
+        public Skeleton(Game1 game, Vector2 spawnPosition, IItem item)
+        {
+            state = new SkeletonStateMoving(spawnPosition, item);
         }
 
         public void ReceiveDamage()
