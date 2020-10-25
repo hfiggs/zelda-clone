@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Collision_Handling\Collision.cs" />
     <Compile Include="Collision_Handling\CollisionHandler.cs" />
+    <Compile Include="Collision_Handling\CollisionHandlerUtil.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Block Commands\EnemyToBlockEastSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Block Commands\EnemyToBlockNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Block Commands\EnemyToBlockSouthSideCommand.cs" />
@@ -104,8 +105,6 @@
     <Compile Include="Command\EnemyCommands\EnemyNextCommand.cs" />
     <Compile Include="Command\EnemyCommands\EnemyPrevCommand.cs" />
     <Compile Include="Command\EnvironmentCommands\EnvironmentNextCommand.cs" />
-    <Compile Include="Command\ItemCommands\ItemPrevCommand.cs" />
-    <Compile Include="Command\ItemCommands\ItemNextCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerDamageCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />
@@ -121,6 +120,7 @@
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkRight.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkRightAttack.cs" />
+    <Compile Include="Enemy\DamageDecorator.cs" />
     <Compile Include="Enemy\Dodongo\Dodongo.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateDown.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateUp.cs" />
@@ -145,7 +145,6 @@
     <Compile Include="Enemy\Jelly\JellyStateMoving.cs" />
     <Compile Include="Enemy\OldMan\OldMan.cs" />
     <Compile Include="Enemy\Merchant\Merchant.cs" />
-    <Compile Include="Enemy\DamageDecorator.cs" />
     <Compile Include="Enemy\Skeleton\Skeleton.cs" />
     <Compile Include="Enemy\Skeleton\SkeletonStateMoving.cs" />
     <Compile Include="Enemy\Snake\Snake.cs" />
@@ -169,6 +168,8 @@
     <Compile Include="Environment\Tiles\Fire.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
+    <Compile Include="Player\PlayerInventory\IPlayerInventory.cs" />
+    <Compile Include="Player\PlayerInventory\PlayerInventory1.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
     <Compile Include="Sprite\EnemySpriteFactory.cs" />
     <Compile Include="Environment\Doors\DoorSHole.cs" />

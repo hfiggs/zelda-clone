@@ -2,10 +2,10 @@
  * Jared Perkins
  * Hunter Figgs */
 
+using Game1.Player.PlayerInventory;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace Game1.Player
 {
@@ -24,12 +24,16 @@ namespace Game1.Player
         private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
         private Rectangle swordHitbox = new Rectangle(0, 0, 0, 0);
 
+        public IPlayerInventory PlayerInventory { get; private set; }
+
         public Player1(Game1 game, Vector2 position)
         {
             this.game = game;
             state = new PlayerStateRight(this, position);
             timeUntilNextSwordBeam = -1; // to ensure time is <= 0
             isFullHealth = true;
+
+            PlayerInventory = new PlayerInventory1();
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)

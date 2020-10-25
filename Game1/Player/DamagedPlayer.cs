@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Player.PlayerInventory;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -29,6 +30,9 @@ namespace Game1.Player
 
         int frameCounter;
         int slideFrames;
+
+        public IPlayerInventory PlayerInventory { get => decoratedPlayer.PlayerInventory;}
+
         public DamagedPlayer(Game1 game, IPlayer decoratedPlayer, Vector2 direction)
         {
             this.game = game;

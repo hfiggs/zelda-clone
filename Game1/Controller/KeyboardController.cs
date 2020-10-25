@@ -43,9 +43,6 @@ namespace Game1.Controller
                 { Keys.Y, new EnvironmentNextCommand(game) },
                 { Keys.T, new EnvironmentPrevCommand(game) },
 
-                { Keys.U, new ItemPrevCommand(game) },
-                { Keys.I, new ItemNextCommand(game) },
-
                 { Keys.O, new EnemyPrevCommand(game) },
                 { Keys.P, new EnemyNextCommand(game) }
             };

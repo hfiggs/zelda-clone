@@ -24,7 +24,7 @@ namespace Game1.CollisionDetection
         public List<Collision> GetCollisionList()
         {
             collisionList = new List<Collision>();
-            LinkedList<IItem> ItemList = room.ItemList;
+            List<IItem> ItemList = room.ItemList;
             LinkedList<IEnvironment> EnvironmentList = room.EnvironmentList;
             LinkedList<IEnemy> EnemyList = room.EnemyList;
             List<IProjectile> ProjectileList = room.ProjectileList;

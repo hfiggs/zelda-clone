@@ -1,11 +1,6 @@
 ﻿using Game1.Collision_Handling;
 using Game1.Item;
 using Game1.Player;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
@@ -20,6 +15,8 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             IPlayer player = (IPlayer)collision.collider;
             IItem item = (IItem)collision.collidee;
+
+            CollisionHandlerUtil.HandlePlayerPickupItem(player, item);
         }
     }
 }

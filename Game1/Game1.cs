@@ -32,7 +32,7 @@ namespace Game1
         private List<IController> controllerList;
         
         public IPlayer Player { get; set; }
-        public LinkedList<IItem> ItemList { get; set; }
+        public List<IItem> ItemList { get; set; }
         public LinkedList<IEnvironment> EnvironmentList { get; set; }
         public LinkedList<IEnvironment> EnvironmentListTop { get; set; }
         public LinkedList<IEnemy> EnemyList { get; set; }
@@ -77,7 +77,9 @@ namespace Game1
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
 
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            ItemList = ItemListFactory.GetItemList();
+            //ItemList = ItemListFactory.GetItemList();
+            ItemList = new List<IItem>();
+            ItemList.Add(new RupeeBlue(new Vector2(100, 80)));
 
             EnvironmentSpriteFactory.instance.LoadContent(Content);
             EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
@@ -109,8 +111,14 @@ namespace Game1
             }
             
             Player.Update(gameTime);
-       
-            ItemList.First.Value.Update(gameTime);
+
+            foreach (IItem item in ItemList)
+            {
+                item.Update(gameTime);
+            }
+
+            ItemList.RemoveAll(i => i.ShouldDelete);
+
             EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 256, 176));
             if(EnemyList.First.Value.shouldRemove())
                 EnemyList.RemoveFirst();
@@ -139,8 +147,11 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
-            ItemList.First.Value.Draw(spriteBatch, Color.White);
-            EnvironmentList.First.Value.Draw(spriteBatch, Color.White);
+            foreach (IItem item in ItemList)
+            {
+                item.Draw(spriteBatch, Color.White);
+            }
+
             EnemyList.First.Value.Draw(spriteBatch, Color.White);
 
             Player.Draw(spriteBatch, Color.White);
@@ -179,7 +190,7 @@ namespace Game1
         {
             Player = new Player1(this, new Vector2(40, 100));
             ProjectileList = new List<IProjectile>();
-            ItemList = ItemListFactory.GetItemList();
+            ItemList.Clear();
             EnvironmentList = EnvironmentListFactory.GetEnvironmentList();
             EnemyList = EnemyListFactory.GetEnemyList(this);
         }

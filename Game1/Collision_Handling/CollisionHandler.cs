@@ -39,12 +39,12 @@ namespace Game1.Collision_Handling
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnemy),'N'), new ProjectileToEnemyNorthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnemy),'S'), new ProjectileToEnemySouthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnemy),'W'), new ProjectileToEnemyWestSideCommand() },
-            //Player hits Item (Hunter) TODO
+            //Player hits Item (Hunter) TEST
             {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),'E'), new LinkToItemCommand() },
             {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),'N'), new LinkToItemCommand() },
             {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),'S'), new LinkToItemCommand() },
             {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),'W'), new LinkToItemCommand() },
-            //Projectile hits Item (Hunter) TODO
+            //Projectile hits Item (Hunter) TEST
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),'E'), new ProjectileToItemCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),'N'), new ProjectileToItemCommand() },
             {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),'S'), new ProjectileToItemCommand() },
