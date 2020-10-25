@@ -35,6 +35,11 @@ namespace Game1.Enemy
             //Do Nothing
         }
 
+        public void SetState(IEnemyState state)
+        {
+            //Do Nothing
+        }
+
         public bool shouldRemove()
         {
             return false;

@@ -1,20 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Enemy
 {
     class Skeleton : IEnemy
     {
+        private IEnemyState state;
+
         private EnemyStateMachine stateMachine;
         private float health;
 
         public Skeleton(Game1 game, Vector2 spawnPosition)
         {
+            state = new SkeletonStateMoving(spawnPosition);
             stateMachine = new EnemyStateMachine(game);
             stateMachine.SetState( new SkeletonStateMoving(stateMachine, spawnPosition));
             health = 2000f;
@@ -29,17 +27,22 @@ namespace Game1.Enemy
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            stateMachine.Draw(spriteBatch, color);
+            state.Draw(spriteBatch, color);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            stateMachine.Update(gameTime, drawingLimits);
+            state.Update(gameTime, drawingLimits);
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            this.state = state;
         }
 
         public Rectangle GetHitbox()
         {
-            return stateMachine.GetHitbox();
+            return state.GetHitbox();
         }
 
         public void editPosition(Vector2 amount)

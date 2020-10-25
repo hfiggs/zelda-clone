@@ -1,17 +1,12 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
 {
     class SkeletonStateMoving : IEnemyState
     {
-        private EnemyStateMachine stateMachine;
         public ISprite Sprite { get; private set; }
         private Vector2 position;
         private Vector2 direction;
@@ -22,12 +17,11 @@ namespace Game1.Enemy
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        public SkeletonStateMoving(EnemyStateMachine stateMachine, Vector2 position)
+        public SkeletonStateMoving(Vector2 position)
         {
-            this.stateMachine = stateMachine;
             this.position = position;
-            this.direction = GetRandomDirection();
-            this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+            direction = GetRandomDirection();
+            MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
 
             timeUntilNextFrame = animationTime;
@@ -45,8 +39,8 @@ namespace Game1.Enemy
             if (totalElapsedSeconds >= MovementChangeTimeSeconds)
             {
                 totalElapsedSeconds -= MovementChangeTimeSeconds;
-                this.direction = GetRandomDirection();
-                this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+                direction = GetRandomDirection();
+                MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             }
             if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
             {
@@ -60,6 +54,11 @@ namespace Game1.Enemy
                 Sprite.Update();
                 timeUntilNextFrame += animationTime;
             }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, position, Color.White);
         }
 
         public Vector2 GetDirection()

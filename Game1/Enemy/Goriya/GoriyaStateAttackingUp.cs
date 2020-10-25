@@ -2,12 +2,12 @@
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
 {
     class GoriyaStateAttackingUp : IEnemyState
     {
-        private EnemyStateMachine stateMachine;
         public ISprite Sprite { get; private set; }
 
         private Vector2 direction;
@@ -20,15 +20,14 @@ namespace Game1.Enemy
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        public GoriyaStateAttackingUp(EnemyStateMachine stateMachine, Vector2 position)
+        public GoriyaStateAttackingUp(Game1 game, Vector2 position)
         {
-            this.stateMachine = stateMachine;
             this.position = position;
             this.direction = new Vector2(0, -1 * moveSpeed);
             this.MovementChangeTimeSeconds = 2;
             Sprite = EnemySpriteFactory.Instance.CreateGoriyaUpSprite();
             projectile = new EnemyBoomerang('N', position);
-            stateMachine.spawnProjectile(projectile);
+            game.SpawnProjectile(projectile);
 
             timeUntilNextFrame = animationTime;
         }
@@ -59,6 +58,11 @@ namespace Game1.Enemy
                 Sprite.Update();
                 timeUntilNextFrame += animationTime;
             }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, position, Color.White);
         }
 
         public Vector2 GetPosition()

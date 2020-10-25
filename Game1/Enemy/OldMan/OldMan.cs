@@ -1,7 +1,6 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace Game1.Enemy
 {
@@ -41,6 +40,11 @@ namespace Game1.Enemy
         public bool shouldRemove()
         {
             return false;
+        }
+
+        public void SetState(IEnemyState state)
+        {
+            //Do Nothing
         }
 
         public Rectangle GetHitbox()

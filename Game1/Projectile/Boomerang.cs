@@ -1,6 +1,7 @@
 ﻿using Game1.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Game1.Projectile
 {
@@ -17,9 +18,10 @@ namespace Game1.Projectile
         public Boomerang(char direction, IPlayer player) {
             this.direction = direction;
             this.player = player;
-            position.X = player.GetLocation().Location.X;
-            position.Y = player.GetLocation().Location.Y;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
+            //centers the boomerang at the center of the player's hitbox, -5 in the y direction
+            position.X = player.GetPlayerHitbox().X + (player.GetPlayerHitbox().Width / 2) - (sprite.PickSprite(0, 0).Width / 2);
+            position.Y = player.GetPlayerHitbox().Y + (player.GetPlayerHitbox().Height / 2) - (sprite.PickSprite(0, 0).Height / 2) - 5.0f;
             rowModifier = 0;
             moveSpeed = 200;
             totalElapsedGameTime = 0;
@@ -42,14 +44,14 @@ namespace Game1.Projectile
             } else if (!returned) {
                 Rectangle currentLocation = sprite.PickSprite(0, 0);
                 currentLocation.Location = new Point((int)position.X, (int)position.Y);
-                Rectangle playerRectangle = player.GetLocation();
+                Vector2 recievePoisition = new Vector2(player.GetPlayerHitbox().X + (player.GetPlayerHitbox().Width / 2) - (sprite.PickSprite(0, 0).Width / 2), player.GetPlayerHitbox().Y + (player.GetPlayerHitbox().Height / 2) - (sprite.PickSprite(0, 0).Height / 2) - 5.0f);
 
-                Vector2 positionDiff = new Vector2(currentLocation.X, currentLocation.Y) - new Vector2(player.GetLocation().X, player.GetLocation().Y);
+                Vector2 positionDiff = new Vector2(currentLocation.X, currentLocation.Y) - recievePoisition;
+                //minimum range to "recieve" boomerang should be no less than 5 - see README
+                returned =  positionDiff.Length() < 5.0f;
                 positionDiff = Vector2.Normalize(positionDiff);
                 position.X -= positionDiff.X * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 position.Y -= positionDiff.Y * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                returned = currentLocation.Intersects(playerRectangle);
             }
 
             if(returned)

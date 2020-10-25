@@ -18,6 +18,7 @@ using Game1.Environment;
 using Game1.Item;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
 using Game1.CollisionDetection;
+using System;
 
 namespace Game1
 {
@@ -39,6 +40,9 @@ namespace Game1
 
         //DELETE ME
         private Room Room1;
+
+        //DELETE ME
+        private MovableBlock block;
 
         public Game1()
         {
@@ -86,6 +90,10 @@ namespace Game1
 
             //DELETE ME
             Room1 = new Room(this);
+
+            //DELETE ME
+            block = new MovableBlock(new Vector2(50.0f, 50.0f));
+            block.Move(new Vector2(4.0f, 4.0f), 1.0f);
         }
 
         protected override void UnloadContent()
@@ -118,6 +126,10 @@ namespace Game1
             //DELETE ME
             Room1.Update();
 
+            //DELETE ME
+            block.BehaviorUpdate(gameTime);
+            Console.WriteLine(Player.GetPlayerHitbox().ToString());
+
             base.Update(gameTime);
         }
 
@@ -139,6 +151,9 @@ namespace Game1
             {
                 projectile.Draw(spriteBatch, Color.White);
             }
+
+            //DELETE ME
+            block.Draw(spriteBatch, Color.White);
 
             spriteBatch.End();
 

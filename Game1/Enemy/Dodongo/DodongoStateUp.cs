@@ -1,12 +1,13 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
 {
     class DodongoStateUp : IEnemyState
     {
-        private EnemyStateMachine stateMachine;
+        private IEnemy dodongo;
 
         private Vector2 position;
 
@@ -22,11 +23,11 @@ namespace Game1.Enemy
 
         private const int moveSpeed = 1;
 
-        public DodongoStateUp(EnemyStateMachine stateMachine, Vector2 position)
+        public DodongoStateUp(IEnemy dodongo, Vector2 position)
         {
-            Sprite = EnemySpriteFactory.Instance.CreateDodongoUpSprite();
+            this.dodongo = dodongo;
 
-            this.stateMachine = stateMachine;
+            Sprite = EnemySpriteFactory.Instance.CreateDodongoUpSprite();
 
             this.position = position;
 
@@ -83,13 +84,13 @@ namespace Game1.Enemy
                             timeUntilNewDirection += moveTime;
                             break;
                         case 1:
-                            stateMachine.SetState(new DodongoStateDown(stateMachine, position));
+                            dodongo.SetState(new DodongoStateDown(dodongo, position));
                             break;
                         case 2:
-                            stateMachine.SetState(new DodongoStateLeft(stateMachine, position));
+                            dodongo.SetState(new DodongoStateLeft(dodongo, position));
                             break;
                         case 3:
-                            stateMachine.SetState(new DodongoStateRight(stateMachine, position));
+                            dodongo.SetState(new DodongoStateRight(dodongo, position));
                             break;
                     }
                 }
@@ -100,6 +101,11 @@ namespace Game1.Enemy
             {
                 Sprite = EnemySpriteFactory.Instance.CreateDodongoUpDeadSprite();
             }
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            Sprite.Draw(spriteBatch, position, Color.White);
         }
 
         public void editPosition(Vector2 amount)
