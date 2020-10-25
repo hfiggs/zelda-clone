@@ -25,7 +25,7 @@ namespace Game1.Player
 
         void Attack();
 
-        void ReceiveDamage(Vector2 direction);
+        void ReceiveDamage(int halfHearts, Vector2 direction);
 
         void Update(GameTime time);
 

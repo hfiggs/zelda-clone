@@ -104,9 +104,9 @@ namespace Game1.Player
                 decoratedPlayer.MoveUp();
         }
 
-        public void ReceiveDamage(Vector2 direction)
+        public void ReceiveDamage(int halfHearts, Vector2 direction)
         {
-            // does not recieve damage
+            // cannot not recieve damage while decorated
         }
 
         public void Update(GameTime time)
