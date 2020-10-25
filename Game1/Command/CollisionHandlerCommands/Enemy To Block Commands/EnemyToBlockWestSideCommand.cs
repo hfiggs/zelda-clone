@@ -24,7 +24,7 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 enemy.editPosition(movementAmount);
             }
-            else if(collision.intersectionRec.Right > 156)
+            else if(enviType == typeof(RoomBorder))
             {
                 enemy.editPosition(movementAmount);
             }
