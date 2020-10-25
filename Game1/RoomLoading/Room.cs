@@ -35,9 +35,15 @@ namespace Game1.RoomLoading
                 item.Update(gameTime);
             }
             ItemList.RemoveAll(p => p.ShouldDelete);
-            foreach (IEnemy enemy in EnemyList)
+            try
             {
-                enemy.Update(gameTime, new Rectangle(0, 0, 256, 176));
+                foreach (IEnemy enemy in EnemyList)
+                {
+                    enemy.Update(gameTime, new Rectangle(0, 0, 256, 176));
+                }
+            } catch (System.InvalidOperationException e)
+            {
+                Console.WriteLine("Enemy foreach error");
             }
             EnemyList.RemoveAll(p => p.shouldRemove());
             foreach (IEnvironment interactEnvironment in InteractEnviornment)
