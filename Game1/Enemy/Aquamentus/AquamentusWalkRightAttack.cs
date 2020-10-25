@@ -80,7 +80,7 @@ namespace Game1.Enemy
 
         public Rectangle GetHitbox()
         {
-            return new Rectangle((int)position.X, (int)position.Y, 16, 13);
+            return new Rectangle((int)position.X, (int)position.Y, 25, 32);
         }
     }
 }

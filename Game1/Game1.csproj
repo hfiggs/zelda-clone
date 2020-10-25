@@ -111,6 +111,7 @@
     <Compile Include="Command\ResetCommand.cs" />
     <Compile Include="Command\RoomNextCommand.cs" />
     <Compile Include="Command\RoomPrevCommand.cs" />
+    <Compile Include="DebugUtil.cs" />
     <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeft.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />
