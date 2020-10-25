@@ -39,6 +39,19 @@ namespace Game1.Player
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             state.Sprite.Draw(spriteBatch,state.position,color);
+
+            //Stack overflow DELETE:
+            if (swordHitbox.Width > 0)
+            {
+                Texture2D rect = new Texture2D(game.GraphicsDevice, GetSwordHitbox().Width, GetSwordHitbox().Height);
+
+                Color[] data = new Color[GetSwordHitbox().Width * GetSwordHitbox().Height];
+                for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
+                rect.SetData(data);
+
+                Vector2 coor = new Vector2(GetSwordHitbox().X, GetSwordHitbox().Y);
+                spriteBatch.Draw(rect, coor, Color.White);
+            }
         }
 
         public void MoveLeft()
