@@ -82,7 +82,7 @@ namespace Game1.Player
             }
         }
 
-        public void ReceiveDamage(Vector2 direction)
+        public void ReceiveDamage(int halfHearts, Vector2 direction)
         {
             // wrap damage decorator around this
             game.Player = new DamagedPlayer(game, this, direction);
