@@ -1,12 +1,10 @@
-﻿/* Author: Hunter */
-
-using Game1.Enemy;
+﻿using Game1.RoomLoading;
 using System.Diagnostics;
 using System.Linq;
 
 namespace Game1.Command
 {
-    class EnemyPrevCommand : ICommand
+    class RoomPrevCommand : ICommand
     {
         private Game1 game;
 
@@ -14,7 +12,7 @@ namespace Game1.Command
 
         private const int cooldown = 250; // ms
 
-        public EnemyPrevCommand(Game1 game)
+        public RoomPrevCommand(Game1 game)
         {
             this.game = game;
 
@@ -24,13 +22,15 @@ namespace Game1.Command
 
         public void Execute()
         {
-            if(game.EnemyList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
+            if (game.Screen.Rooms.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                IEnemy last = game.EnemyList.Last();
+                Room temp = game.Screen.Rooms.Last();
 
-                game.EnemyList.RemoveLast();
+                game.Screen.Rooms.RemoveLast();
 
-                game.EnemyList.AddFirst(last);
+                game.Screen.Rooms.AddFirst(temp);
+
+                game.Screen.CurrentRoom = game.Screen.Rooms.First();
 
                 stopWatch.Restart();
             }

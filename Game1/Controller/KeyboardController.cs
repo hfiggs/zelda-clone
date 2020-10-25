@@ -17,7 +17,7 @@ namespace Game1.Controller
             commands = new Dictionary<Keys, ICommand>
             {
                 { Keys.Q, new QuitCommand(game) },
-                //{ Keys.R, new ResetCommand(game) },
+                { Keys.R, new ResetCommand(game) },
 
                 { Keys.W, new PlayerUpCommand(game) },
                 { Keys.A, new PlayerLeftCommand(game) },
@@ -31,8 +31,6 @@ namespace Game1.Controller
                 { Keys.Z, new PlayerAttackCommand(game) },
                 { Keys.N, new PlayerAttackCommand(game) },
 
-                { Keys.E, new PlayerDamageCommand(game) },
-
                 { Keys.D1, new PlayerUseItemCommand(game, 1) },
                 { Keys.NumPad1, new PlayerUseItemCommand(game, 1) },
                 { Keys.D2, new PlayerUseItemCommand(game, 2) },
@@ -40,7 +38,8 @@ namespace Game1.Controller
                 { Keys.D3, new PlayerUseItemCommand(game, 3) },
                 { Keys.NumPad3, new PlayerUseItemCommand(game, 3) },
 
-                { Keys.U, new RoomNextCommand(game) }
+                { Keys.U, new RoomNextCommand(game) },
+                { Keys.I, new RoomPrevCommand(game) }
             };
         }
 

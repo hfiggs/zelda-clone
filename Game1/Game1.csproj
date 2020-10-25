@@ -101,7 +101,6 @@
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerWestSideCommand.cs" />
     <Compile Include="CollisionDetection\CollisionDetector.cs" />
-    <Compile Include="Command\PlayerCommands\PlayerDamageCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerLeftCommand.cs" />
@@ -109,7 +108,9 @@
     <Compile Include="Command\PlayerCommands\PlayerUpCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerRightCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
+    <Compile Include="Command\ResetCommand.cs" />
     <Compile Include="Command\RoomNextCommand.cs" />
+    <Compile Include="Command\RoomPrevCommand.cs" />
     <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeft.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />

@@ -12,7 +12,7 @@ namespace Game1.Command
         }
         public void Execute()
         {
-            game.Reset();
+            //game.Reset();
         }
     }
 }
