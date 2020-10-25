@@ -13,6 +13,7 @@ namespace Game1.Enemy
         private const float animationTime = 150f; // ms per frame
 
         private Vector2 position;
+        private Game1 game;
 
         private Random rand;
 
@@ -35,7 +36,7 @@ namespace Game1.Enemy
 
             isFacingLeft = rand.Next(2) == 0;
             sprite = isFacingLeft ? EnemySpriteFactory.Instance.CreateSnakeLeftSprite() : EnemySpriteFactory.Instance.CreateSnakeRightSprite();
-
+            this.game = game;
             this.position = position;
 
             timeUntilNewDirection = moveTime;
@@ -52,7 +53,12 @@ namespace Game1.Enemy
         {
             sprite.Draw(spriteBatch,position,color);
         }
-
+        public void SpawnAnimation()
+        {
+            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
+            game.Screen.CurrentRoom.EnemyList.Add(decorator);
+            game.Screen.CurrentRoom.EnemyList.Remove(this);
+        }
         public void ReceiveDamage()  { /* TODO: Receive damage */ }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)

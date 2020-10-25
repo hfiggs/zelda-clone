@@ -22,10 +22,10 @@ namespace Game1.CollisionDetection
 {
     class Room
     {
-        public LinkedList<IEnvironment> EnvironmentList { get; set; }
-        public LinkedList<IEnemy> EnemyList { get; set; }
-        public LinkedList<IItem> ItemList { get; set; }
-        public LinkedList<IProjectile> ProjectileList { get; set; }
+        public List<IEnvironment> EnvironmentList { get; set; }
+        public List<IEnemy> EnemyList { get; set; }
+        public List<IItem> ItemList { get; set; }
+        public List<IProjectile> ProjectileList { get; set; }
 
         public IPlayer Link { get; set; }
 

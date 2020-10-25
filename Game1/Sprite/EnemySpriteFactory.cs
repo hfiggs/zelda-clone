@@ -14,6 +14,7 @@ namespace Game1.Enemy
         private Texture2D snakeSpriteSheet;
         private Texture2D dodongoSpriteSheet;
         private Texture2D aquamentusSpriteSheet;
+        private Texture2D enemySpawnSpriteSheet;
 
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 
@@ -40,6 +41,7 @@ namespace Game1.Enemy
             snakeSpriteSheet = content.Load<Texture2D>("images/snake");
             dodongoSpriteSheet = content.Load<Texture2D>("images/dodongo");
             aquamentusSpriteSheet = content.Load<Texture2D>("images/Aquamentus");
+            enemySpawnSpriteSheet = content.Load<Texture2D>("images/enemyspawn");
         }
 
         public ISprite CreateSkeletonSprite()

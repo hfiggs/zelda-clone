@@ -21,23 +21,27 @@ namespace Game1.Enemy
 
         public SkeletonStateMoving(Vector2 position)
         {
-            this.position = position;
-            direction = GetRandomDirection();
-            MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
-            Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
+            this.Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
 
-            timeUntilNextFrame = animationTime;
+            this.position = position;
+            this.direction = GetRandomDirection();
+
+            this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+            this.timeUntilNextFrame = animationTime;
         }
 
         public SkeletonStateMoving(Game1 game, Vector2 position, IItem item)
         {
-            this.position = position;
-            this.item = item;
-            game.Screen.SpawnItem(item);
-            direction = GetRandomDirection();
-            MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
-            timeUntilNextFrame = animationTime;
+
+            game.Screen.SpawnItem(item);
+            this.item = item;
+
+            this.position = position;
+            this. direction = GetRandomDirection();
+
+            this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+            this.timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
@@ -52,8 +56,6 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            Random random = new Random(Guid.NewGuid().GetHashCode());
-
             totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
 
             if (totalElapsedSeconds >= MovementChangeTimeSeconds)
@@ -86,6 +88,11 @@ namespace Game1.Enemy
             Sprite.Draw(spriteBatch, position, Color.White);
             
         }
+
+        public ISprite GetSprite()
+        {
+            return this.Sprite;
+        } 
 
         public Vector2 GetDirection()
         {

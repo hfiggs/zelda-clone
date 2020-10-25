@@ -13,7 +13,6 @@ namespace Game1.Enemy
         public OldMan(Vector2 position)
         {
             sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
-
             this.position = position;
         }
 
@@ -26,7 +25,9 @@ namespace Game1.Enemy
         {
             // Cannot receive damage
         }
-
+        public void SpawnAnimation()
+        {
+        }
         public void Update(GameTime gameTime, Rectangle drawingLimits5)
         {
             // TODO: Logic for determining text and when to fade out sprite

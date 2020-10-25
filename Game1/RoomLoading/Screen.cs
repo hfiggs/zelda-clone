@@ -19,7 +19,7 @@ namespace Game1.RoomLoading
     public class Screen
     {
         public IPlayer Player { get; set; }
-        public LinkedList<IProjectile> ProjectileList { get; set; }
+        public List<IProjectile> ProjectileList { get; set; }
 
         private Game1 game;
 
@@ -30,7 +30,7 @@ namespace Game1.RoomLoading
         {
             this.game = game;
             this.Rooms = new LinkedList<Room>();
-            this.ProjectileList = new LinkedList<IProjectile>();
+            this.ProjectileList = new List<IProjectile>();
             this.Player = new Player1(game, new Vector2(80, 80));
         }
 
@@ -85,12 +85,12 @@ namespace Game1.RoomLoading
 
         public void SpawnProjectile(IProjectile projectile)
         {
-            ProjectileList.AddLast(projectile);
+            ProjectileList.Add(projectile);
         }
 
         public void SpawnItem(IItem item)
         {
-            CurrentRoom.ItemList.AddLast(item);
+            CurrentRoom.ItemList.Add(item);
         }
 
         public Rectangle GetPlayerRectangle()

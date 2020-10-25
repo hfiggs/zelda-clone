@@ -23,10 +23,10 @@ namespace Game1.CollisionDetection
         public LinkedList<Collision> GetCollisionList()
         {
             collisionList = new LinkedList<Collision>();
-            LinkedList<IItem> ItemList = room.ItemList;
-            LinkedList<IEnvironment> EnvironmentList = room.EnvironmentList;
-            LinkedList<IEnemy> EnemyList = room.EnemyList;
-            LinkedList<IProjectile> ProjectileList = room.ProjectileList;
+            List<IItem> ItemList = room.ItemList;
+            List<IEnvironment> EnvironmentList = room.EnvironmentList;
+            List<IEnemy> EnemyList = room.EnemyList;
+            List<IProjectile> ProjectileList = room.ProjectileList;
             IPlayer player = room.Link;
             Rectangle playerHitbox = room.Link.GetPlayerHitbox();
             Rectangle swordHitbox = room.Link.GetSwordHitbox();
