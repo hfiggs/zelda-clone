@@ -17,6 +17,7 @@ namespace Game1.Environment
 
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
+        public bool open = false;
 
         public DoorWLocked(Vector2 position)
         {
@@ -43,7 +44,8 @@ namespace Game1.Environment
 
         public void Open()
         {
-
+            sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
+            open = true;
         }
     }
 }

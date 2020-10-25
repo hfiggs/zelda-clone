@@ -105,7 +105,7 @@ namespace Game1.Enemy
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            Sprite.Draw(spriteBatch, position, Color.White);
+            Sprite.Draw(spriteBatch, position, color);
         }
 
         public void editPosition(Vector2 amount)

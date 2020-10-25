@@ -18,7 +18,7 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             IProjectile proj = ((IProjectile)collision.collider);
             IEnvironment envo = (IEnvironment)collision.collidee;
-            if (envo.GetType() == typeof(DoorSBombable))
+            if (envo.GetType() == typeof(DoorSBombable) && proj.GetType() == typeof(BombProjectile))
             {
                 ((DoorSBombable)envo).openDoor();
             }

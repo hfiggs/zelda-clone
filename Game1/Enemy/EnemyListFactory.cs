@@ -10,7 +10,7 @@ namespace Game1.Enemy
             var enemyPosition = new Vector2(175, 100);
 
             var enemyList = new LinkedList<IEnemy>();
-            enemyList.AddLast(new Skeleton(game, enemyPosition));
+            enemyList.AddLast(new Aquamentus(game, enemyPosition));
             
             return enemyList;
         }

@@ -19,16 +19,22 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             IEnvironment envo = (IEnvironment)collision.collidee;
             IPlayer player = (IPlayer)collision.collider;
-            if (envo.GetType() == typeof(DoorNOpen) || envo.GetType() == typeof(DoorNHole))
+            if (envo.GetType() == typeof(DoorSBombable) && ((DoorSBombable)envo).open)
                 throw new System.NotImplementedException();
             else if (envo.GetType() == typeof(MovableBlock))
             {
                 ((MovableBlock)envo).Move(new Vector2(0,1), 1.0f, 'S');
             }
-            else if(envo.GetType() == typeof(DoorSLocked))
+            else if (envo.GetType() == typeof(DoorSLocked))
             {
-                if(player.)
-                ((DoorSLocked)envo).open();
+                if (((DoorSLocked)envo).open)
+                    throw new System.NotImplementedException();
+                else if (player.PlayerInventory.SubKey())
+                    ((DoorSLocked)envo).Open();
+            }
+            else if (envo.GetType() == typeof(DoorSOpen))
+            {
+                throw new System.NotImplementedException();
             }
             else
             {

@@ -12,7 +12,7 @@ namespace Game1.Environment
     {
         private ISprite sprite;
         private Vector2 position;
-
+        public bool open;
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
@@ -22,6 +22,7 @@ namespace Game1.Environment
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
+            open = false; 
         }
 
 public void BehaviorUpdate(GameTime gameTime)
@@ -36,6 +37,12 @@ public void BehaviorUpdate(GameTime gameTime)
         public List<Rectangle> GetHitboxes()
         {
             return hitboxes;
+        }
+
+        public void Open()
+        {
+            sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
+            open = true;
         }
     }
 }

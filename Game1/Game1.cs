@@ -93,9 +93,6 @@ namespace Game1
             //DELETE ME
             Room1 = new Room(this);
 
-            //DELETE ME
-            block = new MovableBlock(new Vector2(50.0f, 50.0f));
-            block.Move(new Vector2(4.0f, 4.0f), 1.0f);
         }
 
         protected override void UnloadContent()
@@ -122,7 +119,7 @@ namespace Game1
             EnemyList.First.Value.Update(gameTime, new Rectangle(0, 0, 256, 176));
             if(EnemyList.First.Value.shouldRemove())
                 EnemyList.RemoveFirst();
-            EnvironmentList.First.Value.BehaviorUpdate();
+            EnvironmentList.First.Value.BehaviorUpdate(gameTime);
             
             foreach (IProjectile projectile in ProjectileList)
             {
@@ -134,8 +131,6 @@ namespace Game1
             //DELETE ME
             Room1.Update();
 
-            //DELETE ME
-            block.BehaviorUpdate(gameTime);
             Console.WriteLine(Player.GetPlayerHitbox().ToString());
 
             base.Update(gameTime);
@@ -163,8 +158,6 @@ namespace Game1
                 projectile.Draw(spriteBatch, Color.White);
             }
 
-            //DELETE ME
-            block.Draw(spriteBatch, Color.White);
 
             spriteBatch.End();
 

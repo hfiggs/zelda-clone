@@ -12,7 +12,7 @@ namespace Game1.Environment
     {
         private ISprite sprite;
         private Vector2 position;
-        private bool open = false;
+        public bool open = false;
 
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
