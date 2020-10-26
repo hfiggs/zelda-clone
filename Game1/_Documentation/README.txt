@@ -1,0 +1,11 @@
+﻿CONTROLS:
+			W - MOVE UP
+			A - MOVE LEFT
+			S - MOVE DOWN
+			D - MOVE RIGHT
+			1 - USE ARROW
+			2 - USE BOOMERANG
+			3 - USE BOMB
+			
+
+KNOWN BUGS:
