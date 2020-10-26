@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Player;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Projectile
@@ -12,12 +13,16 @@ namespace Game1.Projectile
         private float moveSpeed;
         private bool removeMe = false;
 
-        public Arrow(char direction, Vector2 position)
+        public IPlayer Player { get; private set; }
+
+        public Arrow(char direction, Vector2 position, IPlayer player)
         {
             this.direction = direction;
             this.position = position;
             sprite = ProjectileSpriteFactory.Instance.CreateArrowSprite();
             moveSpeed = 500;
+
+            Player = player;
         }
         public void Update(GameTime gameTime)
         {
