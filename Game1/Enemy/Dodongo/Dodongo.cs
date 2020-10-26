@@ -7,9 +7,12 @@ namespace Game1.Enemy
     class Dodongo : IEnemy
     {
         private IEnemyState state;
-
+        private Vector2 position;
+        private Game1 game;
         public Dodongo(Game1 game, Vector2 position)
         {
+            this.game = game;
+            this.position = position;
             switch ((new Random()).Next(4))
             {
                 case 0:
@@ -31,7 +34,12 @@ namespace Game1.Enemy
         {
             state.Draw(spriteBatch, color);
         }
-
+        public void SpawnAnimation()
+        {
+            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
+            game.Screen.CurrentRoom.EnemyList.Add(decorator);
+            game.Screen.CurrentRoom.EnemyList.Remove(this);
+        }
         public void ReceiveDamage() {  /* TODO: Receive damage */ }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)

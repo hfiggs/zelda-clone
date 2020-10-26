@@ -10,21 +10,19 @@ public class Heart : IItem
     int timeTillSwap;
     const int flashTimer = 250; //ms
     private ISprite sprite;
-
-    private Vector2 position;
-
-    public Heart(Vector2 position)
+    public Vector2 Position { get; set; }
+    public Heart(Vector2 Position)
 	{
         sprite = ItemSpriteFactory.Instance.CreateHeartSprite();
 
-        this.position = position;
+        this.Position = Position;
 
         timeTillSwap = flashTimer;
 	}
 
     public void Draw(SpriteBatch spriteBatch, Color UNUSED)
     {
-        sprite.Draw(spriteBatch, position, color);
+        sprite.Draw(spriteBatch, Position, color);
     }
 
     public void Update(GameTime gameTime)
@@ -43,6 +41,6 @@ public class Heart : IItem
 
     public Rectangle GetHitbox()
     {
-        return new Rectangle((int)position.X + 10, (int)position.Y + 10, 20, 20);
+        return new Rectangle((int)Position.X + 10, (int)Position.Y + 10, 20, 20);
     }
 }

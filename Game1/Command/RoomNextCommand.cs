@@ -31,9 +31,9 @@ namespace Game1.Command
 
                 game.Screen.Rooms.RemoveFirst();
 
-                game.Screen.CurrentRoom = game.Screen.Rooms.First();
-
                 game.Screen.Rooms.AddLast(temp);
+
+                game.Screen.CurrentRoom = game.Screen.Rooms.First();
 
                 stopWatch.Restart();
             }

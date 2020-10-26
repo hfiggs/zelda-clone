@@ -29,7 +29,10 @@ namespace Game1.Enemy
         {
             //Do Nothing
         }
+        public void SpawnAnimation()
+        {
 
+        }
         public void SetState(IEnemyState state)
         {
             //Do Nothing

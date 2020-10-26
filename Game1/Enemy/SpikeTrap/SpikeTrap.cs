@@ -29,6 +29,11 @@ namespace Game1.Enemy
             state.Update(gameTime, drawingLimits);
         }
 
+        public void SpawnAnimation()
+        {
+
+        }
+
         public void SetState(IEnemyState state)
         {
             this.state = state;

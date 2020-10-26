@@ -6,9 +6,14 @@ namespace Game1.Enemy
     class Bat : IEnemy
     {
         private IEnemyState state;
+        private Vector2 position;
+        private Game1 game;
+
 
         public Bat(Game1 game, Vector2 spawnPosition)
         {
+            this.game = game;
+            this.position = spawnPosition;
             state = new BatStateMoving(spawnPosition);
         }
 
@@ -16,7 +21,12 @@ namespace Game1.Enemy
         {
             state.ReceiveDamage();
         }
-
+        public void SpawnAnimation()
+        {
+            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
+            game.Screen.CurrentRoom.EnemyList.Add(decorator);
+            game.Screen.CurrentRoom.EnemyList.Remove(this);
+        }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             state.Draw(spriteBatch, color);
