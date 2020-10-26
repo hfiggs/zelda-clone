@@ -16,7 +16,7 @@ namespace Game1.Environment
         private Vector2 position;
         private float movementTime;
         private Vector2 movementSpeed;
-        private char movementDirection;
+        //private char movementDirection;
         private Rectangle hitbox1 = new Rectangle(0, 0, 16, 16);
         private List<Rectangle> hitboxes = new List<Rectangle>();
         public bool hasMoved;
@@ -27,7 +27,7 @@ namespace Game1.Environment
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
-            this.movementDirection = movementDirection;
+            //this.movementDirection = movementDirection;
             hasMoved = false;
         }
 
@@ -53,15 +53,19 @@ namespace Game1.Environment
             return hitboxes;
         }
 
-        public void Move(Vector2 movement, float seconds, char direction)
+        public void Move(Vector2 movement, float seconds)
         {
-            if (direction == movementDirection && !hasMoved)
-            {
-                //movement is in units of tiles (16 pixels)
-                movementTime = seconds;
-                movementSpeed = (movement * 15.5f) / seconds;
-                hasMoved = true;
-            }
+            //movement is in units of tiles (16 pixels)
+            movementTime = seconds;
+            //calculated differently likely due to a float rounding/truncating error
+            float moveX = movement.X * 15.5f;
+            float moveY = movement.Y * 15.5f;
+            if (movement.X > 0)
+                moveX = movement.X * 16.0f;
+            if(movement.Y > 0)
+                moveY = movement.Y * 16.0f;
+            movementSpeed = new Vector2(moveX, moveY) / seconds;
+            hasMoved = true;
         }
     }
 }
