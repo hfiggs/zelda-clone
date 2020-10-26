@@ -79,16 +79,18 @@ namespace Game1.Player
                         frameCount++;
                         break;
                     case 2:
-                        //attacking sprite 2, sword is out
-                        Sprite.Update();
-                        timeUntilNextFrame += 175.0f;
-                        frameCount++;
-                        player.SetSwordHitbox(new Rectangle(0, 18, 12, 5));
-                        break;
                     case 3:
                         //player looped back to start
+                        Sprite.Update();
+                        timeUntilNextFrame += 175.0f;
+                        player.SetSwordHitbox(new Rectangle(0, 20, 12, 5));
+                        frameCount++;
+                        break;
+                    case 4:
+                        Sprite.Update();
+                        timeUntilNextFrame += 175.0f;
+                        player.SetSwordHitbox(new Rectangle());
                         player.SetState(new PlayerStateLeft(player, position));
-                        player.SetSwordHitbox(new Rectangle(0, 0, 0, 0));
                         break;
                 }
             }

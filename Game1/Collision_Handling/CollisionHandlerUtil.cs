@@ -1,5 +1,6 @@
 ﻿using Game1.Enemy;
 using Game1.Item;
+using Game1.Item.Heart;
 using Game1.Player;
 using System;
 using System.Collections.Generic;

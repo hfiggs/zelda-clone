@@ -7,14 +7,12 @@ namespace Game1.Item
     class Compass : IItem
     {
         private ISprite sprite;
-
-        private Vector2 position;
-
-        public Compass(Vector2 position)
+        public Vector2 Position { get; set; }
+        public Compass(Vector2 Position)
         {
             sprite = ItemSpriteFactory.Instance.CreateCompassSprite();
 
-            this.position = position;
+            this.Position = Position;
         }
         public void Update(GameTime gameTime)
         {
@@ -22,12 +20,12 @@ namespace Game1.Item
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, position, color);
+            sprite.Draw(spriteBatch, Position, color);
         }
 
         public Rectangle GetHitbox()
         {
-            return new Rectangle((int)position.X + 10, (int)position.Y + 10, 20, 20);
+            return new Rectangle((int)Position.X + 10, (int)Position.Y + 10, 20, 20);
         }
 
         public bool ShouldDelete { get; set; } = false;

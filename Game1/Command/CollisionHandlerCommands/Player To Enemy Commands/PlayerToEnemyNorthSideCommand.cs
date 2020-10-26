@@ -16,9 +16,12 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IEnemy enemy = (IEnemy)collision.collidee;
+            if (collision.intersectionRec.Width != 0 || collision.intersectionRec.Height != 0)
+            {
+                IEnemy enemy = (IEnemy)collision.collidee;
 
-            enemy.ReceiveDamage(1f, new Vector2(1, 0));
+                enemy.ReceiveDamage(1f, new Vector2(1, 0));
+            }
         }
     }
 }

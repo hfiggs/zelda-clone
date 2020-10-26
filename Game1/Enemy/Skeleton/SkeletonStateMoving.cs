@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using Game1.Item;
 
 namespace Game1.Enemy
 {
@@ -13,18 +14,34 @@ namespace Game1.Enemy
         private const int moveSpeed = 1;
         private double totalElapsedSeconds = 0;
         private double MovementChangeTimeSeconds;
+        private IItem item;
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
         public SkeletonStateMoving(Vector2 position)
         {
+            this.Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
+
             this.position = position;
-            direction = GetRandomDirection();
-            MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+            this.direction = GetRandomDirection();
+
+            this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+            this.timeUntilNextFrame = animationTime;
+        }
+
+        public SkeletonStateMoving(Game1 game, Vector2 position, IItem item)
+        {
             Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
 
-            timeUntilNextFrame = animationTime;
+            game.Screen.SpawnItem(item);
+            this.item = item;
+
+            this.position = position;
+            this. direction = GetRandomDirection();
+
+            this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+            this.timeUntilNextFrame = animationTime;
         }
 
         public void Attack()
@@ -45,6 +62,11 @@ namespace Game1.Enemy
             if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
             {
                 position += direction;
+                if(item != null)
+                {
+                    item.Position = new Vector2(position.X-8, position.Y-4);
+                }
+               
             }
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -59,7 +81,13 @@ namespace Game1.Enemy
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             Sprite.Draw(spriteBatch, position, color);
+            
         }
+
+        public ISprite GetSprite()
+        {
+            return this.Sprite;
+        } 
 
         public Vector2 GetDirection()
         {
@@ -72,7 +100,7 @@ namespace Game1.Enemy
 
         public Rectangle GetHitbox()
         {
-            return new Rectangle((int)position.X + 8, (int)position.Y + 7, 15, 16);
+            return new Rectangle((int)position.X + 7, (int)position.Y + 7, 15, 16);
         }
 
         private float GetRandomDirectionMovementChangeTimeSeconds()

@@ -8,10 +8,12 @@ namespace Game1.Enemy
     {
         private float health;
         private IEnemyState state;
+        private Vector2 position;
         private Game1 game;
-
         public Dodongo(Game1 game, Vector2 position)
         {
+            this.game = game;
+            this.position = position;
             switch ((new Random()).Next(4))
             {
                 case 0:
@@ -27,7 +29,6 @@ namespace Game1.Enemy
                     state = new DodongoStateRight(this, position);
                     break;
             }
-            this.game = game;
             health = 8f;
         }
 
@@ -55,6 +56,13 @@ namespace Game1.Enemy
         {
             return health <= 0;
         }
+        public void SpawnAnimation()
+        {
+            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
+            game.Screen.CurrentRoom.EnemyList.Add(decorator);
+            game.Screen.CurrentRoom.EnemyList.Remove(this);
+        }
+        public void ReceiveDamage() {  /* TODO: Receive damage */ }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {

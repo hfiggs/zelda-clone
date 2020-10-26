@@ -23,7 +23,7 @@ namespace Game1.Command.CollisionHandlerCommands
                 ((DoorSBombable)envo).openDoor();
             }
 
-            if (collision.intersectionRec.Top >= 156)
+            if (collision.intersectionRec.X >= 224 || collision.intersectionRec.X <= 30 || collision.intersectionRec.Y >= 144 || collision.intersectionRec.Y <= 30)
                 proj.BeginDespawn();
         }
     }

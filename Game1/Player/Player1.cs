@@ -22,7 +22,7 @@ namespace Game1.Player
         private bool[] itemsHeld = { true, true, true }; //Bow, Boomerang, Bomb
 
         private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
-        private Rectangle swordHitbox = new Rectangle(0, 0, 0, 0);
+        private Rectangle swordHitbox = new Rectangle();
 
         public IPlayerInventory PlayerInventory { get; private set; }
 

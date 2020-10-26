@@ -29,7 +29,9 @@ namespace Game1.Enemy
         {
             //Do Nothing
         }
-
+        public void SpawnAnimation()
+        {
+        }
         public void editPosition(Vector2 amount)
         {
             //Do Nothing

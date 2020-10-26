@@ -14,7 +14,7 @@ namespace Game1.Environment
         private ISprite sprite;
         Vector2 position;
 
-        private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
+        private Rectangle hitbox1 = new Rectangle(0, 0, 16, 16);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public Bricks(Vector2 position)

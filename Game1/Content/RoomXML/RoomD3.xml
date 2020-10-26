@@ -11,27 +11,12 @@
 		<Y>32</Y>
 	</NonInteractEnviornment>
 	<NonInteractEnviornment>
-		<Type>DoorNFloor</Type>
-		<X>112</X>
-		<Y>0</Y>
-	</NonInteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>DoorSFloor</Type>
-		<X>112</X>
-		<Y>144</Y>
-	</NonInteractEnviornment>
-	<NonInteractEnviornment>
 		<Type>DoorWFloor</Type>
 		<X>0</X>
 		<Y>72</Y>
 	</NonInteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>DoorEFloor</Type>
-		<X>224</X>
-		<Y>72</Y>
-	</NonInteractEnviornment>
 	<InteractEnviornment>
-		<Type>DoorNBlank</Type>
+		<Type>DoorNBombable</Type>
 		<X>112</X>
 		<Y>0</Y>
 	</InteractEnviornment>
@@ -41,13 +26,13 @@
 		<Y>144</Y>
 	</InteractEnviornment>
 	<InteractEnviornment>
-		<Type>DoorWBlank</Type>
-		<X>0</X>
+		<Type>DoorEBlank</Type>
+		<X>224</X>
 		<Y>72</Y>
 	</InteractEnviornment>
 	<InteractEnviornment>
-		<Type>DoorEOpen</Type>
-		<X>224</X>
+		<Type>DoorWOpen</Type>
+		<X>0</X>
 		<Y>72</Y>
 	</InteractEnviornment>
 	<InteractEnviornment>

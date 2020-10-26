@@ -6,13 +6,14 @@ namespace Game1.Enemy
     class Jelly : IEnemy
     {
         private IEnemyState state;
-        private float health;
+        private Vector2 position;
         private Game1 game;
+        private float health;
         public Jelly(Game1 game, Vector2 spawnPosition)
         {
-            health = .5f;
-            state = new JellyStateMoving(spawnPosition);
             this.game = game;
+            this.position = spawnPosition;
+            state = new JellyStateMoving(spawnPosition);
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
@@ -22,7 +23,12 @@ namespace Game1.Enemy
             game.Screen.CurrentRoom.EnemyList.Add(decorator);
             game.Screen.CurrentRoom.EnemyList.Remove(this);
         }
-
+        public void SpawnAnimation()
+        {
+            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
+            game.Screen.CurrentRoom.EnemyList.Add(decorator);
+            game.Screen.CurrentRoom.EnemyList.Remove(this);
+        }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             state.Draw(spriteBatch,color);

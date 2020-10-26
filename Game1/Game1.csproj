@@ -111,11 +111,14 @@
     <Compile Include="Command\ResetCommand.cs" />
     <Compile Include="Command\RoomNextCommand.cs" />
     <Compile Include="Command\RoomPrevCommand.cs" />
+    <Compile Include="DebugUtil.cs" />
     <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeft.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkRight.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkRightAttack.cs" />
+    <Compile Include="Enemy\SpawnParticles.cs" />
+    <Compile Include="Enemy\SpawnDecorator.cs" />
     <Compile Include="Enemy\DamageDecorator.cs" />
     <Compile Include="Enemy\Dodongo\Dodongo.cs" />
     <Compile Include="Enemy\Dodongo\DodongoStateDown.cs" />
@@ -160,6 +163,7 @@
     <Compile Include="Environment\Doors\DoorEFloor.cs" />
     <Compile Include="Environment\EnvironmentListTopFactory.cs" />
     <Compile Include="Environment\EnvironmentListFactory.cs" />
+    <Compile Include="Environment\SecretRoom.cs" />
     <Compile Include="Environment\Tiles\MovableBlock.cs" />
     <Compile Include="Environment\RoomBase.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />

@@ -26,7 +26,7 @@ namespace Game1.Player
         const int flickerDuration = 45; // ms
 
         private Rectangle playerHitbox = new Rectangle(6, 18, 15, 10);
-        private Rectangle swordHitbox = new Rectangle(0, 0, 0, 0);
+        private Rectangle swordHitbox = new Rectangle();
 
         int frameCounter;
         int slideFrames;

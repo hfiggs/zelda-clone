@@ -11,16 +11,6 @@
 		<Y>32</Y>
 	</NonInteractEnviornment>
 	<NonInteractEnviornment>
-		<Type>DoorNFloor</Type>
-		<X>112</X>
-		<Y>0</Y>
-	</NonInteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>DoorSFloor</Type>
-		<X>112</X>
-		<Y>144</Y>
-	</NonInteractEnviornment>
-	<NonInteractEnviornment>
 		<Type>DoorWFloor</Type>
 		<X>0</X>
 		<Y>72</Y>
@@ -36,7 +26,7 @@
 		<Y>0</Y>
 	</InteractEnviornment>
 	<InteractEnviornment>
-		<Type>DoorSBlank</Type>
+		<Type>DoorSBombable</Type>
 		<X>112</X>
 		<Y>144</Y>
 	</InteractEnviornment>

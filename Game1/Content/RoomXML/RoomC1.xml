@@ -15,11 +15,6 @@
 		<X>112</X>
 		<Y>0</Y>
 	</InteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>DoorNFloor</Type>
-		<X>112</X>
-		<Y>0</Y>
-	</NonInteractEnviornment>
 	<InteractEnviornment>
 		<Type>DoorSLocked</Type>
 		<X>112</X>
@@ -66,7 +61,7 @@
 		<Y>104</Y>
 	</Enemy>
 	<InteractEnviornment>
-		<Type>Block</Type>
+		<Type>MovableBlock</Type>
 		<X>112</X>
 		<Y>80</Y>
 	</InteractEnviornment>
