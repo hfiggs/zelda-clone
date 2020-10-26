@@ -35,16 +35,16 @@
 		<X>224</X>
 		<Y>72</Y>
 	</NonInteractEnviornment>
-	<NonInteractEnviornment>
+	<InteractEnviornment>
 		<Type>Fire</Type>
 		<X>80</X>
 		<Y>64</Y>
-	</NonInteractEnviornment>
-	<NonInteractEnviornment>
+	</InteractEnviornment>
+	<InteractEnviornment>
 		<Type>Fire</Type>
 		<X>160</X>
 		<Y>64</Y>
-	</NonInteractEnviornment>
+	</InteractEnviornment>
 	<Enemy>
 		<Type>OldMan</Type>
 		<X>120</X>

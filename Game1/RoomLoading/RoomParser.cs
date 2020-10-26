@@ -181,9 +181,6 @@ namespace Game1.RoomLoading
                     case "SecretRoom":
                         nonInteractEnviornment = new SecretRoom(position);
                         break;
-                    case "Fire":
-                        nonInteractEnviornment = new Fire(position);
-                        break;
                     case "DoorNFloor":
                         nonInteractEnviornment = new DoorNFloor(position);
                         break;
@@ -283,6 +280,9 @@ namespace Game1.RoomLoading
                         break;
                     case "DoorWLocked":
                         interactEnviornment = new DoorWLocked(position);
+                        break;
+                    case "Fire":
+                        nonInteractEnviornment = new Fire(position);
                         break;
                     case "StatueDragon":
                         interactEnviornment = new StatueDragon(position);
