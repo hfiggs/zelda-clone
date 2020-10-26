@@ -772,4 +772,32 @@
 		<X>192</X>
 		<Y>96</Y>
 	</Enemy>
+	<InteractEnviornment>
+		<Type>InvisibleWall</Type>
+		<X>32</X>
+		<Y>32</Y>
+		<W>192</W>
+		<H>54</H>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>InvisibleWall</Type>
+		<X>32</X>
+		<Y>112</Y>
+		<W>16</W>
+		<H>22</H>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>InvisibleWall</Type>
+		<X>64</X>
+		<Y>112</Y>
+		<W>112</W>
+		<H>22</H>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>InvisibleWall</Type>
+		<X>192</X>
+		<Y>112</Y>
+		<W>32</W>
+		<H>22</H>
+	</InteractEnviornment>
 </Assets>

@@ -50,4 +50,11 @@
 		<X>120</X>
 		<Y>64</Y>
 	</Enemy>
+	<InteractEnviornment>
+		<Type>InvisibleWall</Type>
+		<X>32</X>
+		<Y>32</Y>
+		<W>192</W>
+		<H>48</H>
+	</InteractEnviornment>
 </Assets>

@@ -225,6 +225,11 @@ namespace Game1.RoomLoading
                     case "Brick":
                         interactEnviornment = new Bricks(position);
                         break;
+                    case "InvisibleWall":
+                        int w = int.Parse(n["W"].InnerText);
+                        int h = int.Parse(n["H"].InnerText);
+                        interactEnviornment = new InvisibleWall(position, new Vector2(w,h));
+                        break;
                     case "Block":
                         interactEnviornment = new Block(position);
                         break;
