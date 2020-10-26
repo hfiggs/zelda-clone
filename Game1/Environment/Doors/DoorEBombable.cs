@@ -14,6 +14,9 @@ namespace Game1.Environment
         private Vector2 position;
         public bool open = false;
 
+        private Rectangle openHitbox1 = new Rectangle(0, 0, 32, 8);
+        private Rectangle openHitbox2 = new Rectangle(0, 24, 32, 8);
+
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
         public DoorEBombable(Vector2 position)
@@ -42,6 +45,9 @@ namespace Game1.Environment
         {
             open = true;
             sprite = EnvironmentSpriteFactory.instance.createDoorEHole();
+            hitboxes = new List<Rectangle>();
+            hitboxes.Add(openHitbox1);
+            hitboxes.Add(openHitbox2);
         }
     }
 }

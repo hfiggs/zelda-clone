@@ -19,8 +19,6 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             IEnvironment envo = (IEnvironment)collision.collidee;
             IPlayer player = (IPlayer)collision.collider;
-            if (envo.GetType() == typeof(DoorSBombable) && ((DoorSBombable)envo).open)
-                System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
             else if (envo.GetType() == typeof(MovableBlock))
             {
                 ((MovableBlock)envo).Move(new Vector2(0,1), 1.0f, 'S');
