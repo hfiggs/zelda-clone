@@ -15,7 +15,7 @@ namespace Game1.Enemy
         public Aquamentus(Game1 game, Vector2 position) {
             this.game = game;
             this.position = position;
-            state = new AquamentusWalkLeft(game, this, position);
+            state = new EnemyStateSpawning(this.position, this, new AquamentusWalkLeft(game, this, position));
             health = 6f;
         }
 
@@ -26,12 +26,7 @@ namespace Game1.Enemy
             game.Screen.CurrentRoom.EnemyList.Add(decorator);
             game.Screen.CurrentRoom.EnemyList.Remove(this);
         }
-        public void SpawnAnimation()
-        {
-            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
-            game.Screen.CurrentRoom.EnemyList.Add(decorator);
-            game.Screen.CurrentRoom.EnemyList.Remove(this);
-        }
+
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             state.Draw(spriteBatch, color);

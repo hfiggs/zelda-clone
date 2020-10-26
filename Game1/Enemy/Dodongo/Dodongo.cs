@@ -14,21 +14,27 @@ namespace Game1.Enemy
         {
             this.game = game;
             this.position = position;
-            switch ((new Random()).Next(4))
+
+            IEnemyState nextState;
+            switch (new Random().Next(4))
             {
                 case 0:
-                    state = new DodongoStateUp(this, position);
+                    nextState = new DodongoStateUp(this, position);
                     break;
                 case 1:
-                    state = new DodongoStateDown(this, position);
+                    nextState = new DodongoStateDown(this, position);
                     break;
                 case 2:
-                    state = new DodongoStateLeft(this, position);
+                    nextState = new DodongoStateLeft(this, position);
                     break;
                 case 3:
-                    state = new DodongoStateRight(this, position);
+                default:
+                    nextState = new DodongoStateRight(this, position);
                     break;
             }
+
+            state = new EnemyStateSpawning(this.position, this, nextState);
+
             health = 8f;
         }
 
@@ -56,12 +62,7 @@ namespace Game1.Enemy
         {
             return health <= 0;
         }
-        public void SpawnAnimation()
-        {
-            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
-            game.Screen.CurrentRoom.EnemyList.Add(decorator);
-            game.Screen.CurrentRoom.EnemyList.Remove(this);
-        }
+
         public void ReceiveDamage() {  /* TODO: Receive damage */ }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
