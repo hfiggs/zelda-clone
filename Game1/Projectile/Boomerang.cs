@@ -17,7 +17,7 @@ namespace Game1.Projectile
 
         public Boomerang(char direction, IPlayer player) {
             this.direction = direction;
-            this.player = player;
+            this.Player = player;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
             //centers the boomerang at the center of the player's hitbox, -5 in the y direction
             position.X = player.GetPlayerHitbox().X + (player.GetPlayerHitbox().Width / 2) - (sprite.PickSprite(0, 0).Width / 2);
@@ -44,7 +44,7 @@ namespace Game1.Projectile
             } else if (!returned) {
                 Rectangle currentLocation = sprite.PickSprite(0, 0);
                 currentLocation.Location = new Point((int)position.X, (int)position.Y);
-                Vector2 recievePoisition = new Vector2(player.GetPlayerHitbox().X + (player.GetPlayerHitbox().Width / 2) - (sprite.PickSprite(0, 0).Width / 2), player.GetPlayerHitbox().Y + (player.GetPlayerHitbox().Height / 2) - (sprite.PickSprite(0, 0).Height / 2) - 5.0f);
+                Vector2 recievePoisition = new Vector2(Player.GetPlayerHitbox().X + (Player.GetPlayerHitbox().Width / 2) - (sprite.PickSprite(0, 0).Width / 2), Player.GetPlayerHitbox().Y + (Player.GetPlayerHitbox().Height / 2) - (sprite.PickSprite(0, 0).Height / 2) - 5.0f);
 
                 Vector2 positionDiff = new Vector2(currentLocation.X, currentLocation.Y) - recievePoisition;
                 //minimum range to "recieve" boomerang should be no less than 5 - see README
