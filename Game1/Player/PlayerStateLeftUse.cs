@@ -34,7 +34,7 @@ namespace Game1.Player
             switch (player.GetItem())
             {
                 case 1:
-                    projectile = new Arrow('W', new Vector2(position.X, position.Y));
+                    projectile = new Arrow('W', new Vector2(position.X, position.Y), player);
                     break;
                 case 2:
                     projectile = new Boomerang('W', player);

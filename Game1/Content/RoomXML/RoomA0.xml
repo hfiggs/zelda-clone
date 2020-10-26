@@ -45,4 +45,9 @@
 		<X>120</X>
 		<Y>64</Y>
 	</Enemy>
+	<Item>
+		<Type>Fairy</Type>
+		<X>150</X>
+		<Y>90</Y>
+	</Item>
 </Assets>

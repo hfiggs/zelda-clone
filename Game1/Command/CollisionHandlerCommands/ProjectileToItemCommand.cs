@@ -17,11 +17,22 @@ namespace Game1.Command.CollisionHandlerCommands
             IProjectile projectile = (IProjectile)collision.collider;
             IItem item = (IItem)collision.collidee;
 
-            if(projectile.GetType() == typeof(Boomerang))
-            {
-                IPlayer player = ((Boomerang)projectile).Player;
+            IPlayer player;
 
-                CollisionHandlerUtil.HandlePlayerPickupItem(player, item);
+            switch(projectile)
+            {
+                case Boomerang _:
+                    player = ((Boomerang)projectile).Player;
+                    CollisionHandlerUtil.HandlePlayerPickupItem(player, item);
+                    break;
+
+                case Arrow _:
+                    if(item.GetType() == typeof(Fairy))
+                    {
+                        player = ((Arrow)projectile).Player;
+                        CollisionHandlerUtil.HandlePlayerPickupItem(player, item);
+                    }
+                    break;
             }
         }
     }
