@@ -170,6 +170,7 @@
     <Compile Include="Environment\Tiles\MovableBlock.cs" />
     <Compile Include="Environment\RoomBase.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />
+    <Compile Include="Item\ArrowItem.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
     <Compile Include="RoomLoading\Room.cs" />
@@ -318,6 +319,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\RoomXML\RoomA0.xml" />
+    <Content Include="Content\RoomXML\RoomA1.xml" />
+    <Content Include="Content\RoomXML\RoomA2.xml" />
+    <Content Include="Content\RoomXML\RoomB2.xml" />
+    <Content Include="Content\RoomXML\RoomB4.xml" />
+    <Content Include="Content\RoomXML\RoomB5.xml" />
+    <Content Include="Content\RoomXML\RoomC0.xml" />
+    <Content Include="Content\RoomXML\RoomC1.xml" />
+    <Content Include="Content\RoomXML\RoomC2.xml" />
+    <Content Include="Content\RoomXML\RoomC3.xml" />
+    <Content Include="Content\RoomXML\RoomC4.xml" />
+    <Content Include="Content\RoomXML\RoomD1.xml" />
+    <Content Include="Content\RoomXML\RoomD2.xml" />
+    <Content Include="Content\RoomXML\RoomD3.xml" />
+    <Content Include="Content\RoomXML\RoomE2.xml" />
+    <Content Include="Content\RoomXML\RoomF1.xml" />
+    <Content Include="Content\RoomXML\RoomF2.xml" />
+    <Content Include="Content\RoomXML\RoomF3.xml" />
+    <Content Include="Content\RoomXML\RoomG0.xml" />
     <Content Include="Icon.ico" />
     <Content Include="RoomLoading\RoomXML\RoomA2.xml" />
     <Content Include="RoomLoading\RoomXML\RoomB4.xml" />

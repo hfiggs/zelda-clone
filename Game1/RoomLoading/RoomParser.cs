@@ -38,6 +38,9 @@ namespace Game1.RoomLoading
 
                 switch (n["Type"].InnerText)
                 {
+                    case "ArrowItem":
+                        item = new ArrowItem(position);
+                        break;
                     case "Bomb":
                         item = new Bomb(position);
                         break;

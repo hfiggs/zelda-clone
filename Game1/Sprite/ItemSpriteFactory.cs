@@ -101,5 +101,10 @@ namespace Game1.Sprite
         {
             return new ItemSprite(itemSpritesheet, 9, 0);
         }
+
+        public ISprite CreateArrowItemSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 1, 1);
+        }
     }
 }

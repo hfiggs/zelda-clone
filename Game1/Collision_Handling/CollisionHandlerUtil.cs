@@ -22,6 +22,9 @@ namespace Game1.Collision_Handling
         {
             switch (item)
             {
+                case ArrowItem _:
+                    player.PlayerInventory.HasArrow = true;
+                    break;
                 case Bomb _:
                     player.PlayerInventory.AddBomb();
                     break;

@@ -747,6 +747,11 @@
 		<X>120</X>
 		<Y>68</Y>
 	</Item>
+	<Item>
+		<Type>ArrowItem</Type>
+		<X>150</X>
+		<Y>68</Y>
+	</Item>
 	<Enemy>
 		<Type>Bat</Type>
 		<X>48</X>
