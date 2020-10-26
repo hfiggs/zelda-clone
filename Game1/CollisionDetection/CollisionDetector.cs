@@ -61,7 +61,7 @@ namespace Game1.CollisionDetection
                         Rectangle intersectEnv = Rectangle.Intersect(projHitbox, envHitbox);
                         if (!intersectEnv.IsEmpty)
                         {
-                            char side = DetermineSide(projHitbox, envHitbox, intersectPlayer);
+                            char side = DetermineSide(projHitbox, envHitbox, intersectEnv);
                             collisionList.Add(new Collision(side, intersectEnv, proj, environment));
                         }
                     }
