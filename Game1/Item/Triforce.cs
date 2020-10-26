@@ -42,7 +42,7 @@ public class Triforce : IItem
 
         public Rectangle GetHitbox()
         {
-            return new Rectangle((int)position.X + 10, (int)position.Y + 10, 20, 20);
+            return new Rectangle((int)Position.X + 10, (int)Position.Y + 10, 20, 20);
         }
 
         public bool ShouldDelete { get; set; } = false;

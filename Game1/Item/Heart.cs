@@ -1,47 +1,49 @@
-﻿using Game1.Sprite;
+﻿using Game1.Item;
+using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-public class Heart : IItem
+namespace Game1.Item.Heart
 {
-    Color color = Color.White;
-    int timeTillSwap;
-    const int flashTimer = 250; //ms
-    private ISprite sprite;
-    public Vector2 Position { get; set; }
-    public Heart(Vector2 Position)
-	{
-        sprite = ItemSpriteFactory.Instance.CreateHeartSprite();
-
-        this.Position = Position;
-
-            timeTillSwap = flashTimer;
-	    }
-
-    public void Draw(SpriteBatch spriteBatch, Color UNUSED)
+    public class Heart : IItem
     {
-        sprite.Draw(spriteBatch, Position, color);
-    }
+        Color color = Color.White;
+        int timeTillSwap;
+        const int flashTimer = 250; //ms
+        private ISprite sprite;
+        public Vector2 Position { get; set; }
+        public Heart(Vector2 Position)
+	    {
+            sprite = ItemSpriteFactory.Instance.CreateHeartSprite();
 
-        public void Update(GameTime gameTime)
-        {
-            timeTillSwap -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (timeTillSwap <= 0)
-            {
-                if (color.Equals(Color.White))
-                    color = Color.Red;
-                else
-                    color = Color.White;
+            this.Position = Position;
 
                 timeTillSwap = flashTimer;
-            }
-        }
+	    }
 
-        public Rectangle GetHitbox()
+        public void Draw(SpriteBatch spriteBatch, Color UNUSED)
         {
-            return new Rectangle((int)position.X + 10, (int)position.Y + 10, 20, 20);
+            sprite.Draw(spriteBatch, Position, color);
         }
 
-        public bool ShouldDelete { get; set; } = false;
+            public void Update(GameTime gameTime)
+            {
+                timeTillSwap -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timeTillSwap <= 0)
+                {
+                    if (color.Equals(Color.White))
+                        color = Color.Red;
+                    else
+                        color = Color.White;
+
+                    timeTillSwap = flashTimer;
+                }
+            }
+
+            public Rectangle GetHitbox()
+            {
+                return new Rectangle((int)Position.X + 10, (int)Position.Y + 10, 20, 20);
+            }
+
+            public bool ShouldDelete { get; set; } = false;
     }
 }

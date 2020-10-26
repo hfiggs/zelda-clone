@@ -62,5 +62,15 @@ namespace Game1.Enemy
         {
             //throw new NotImplementedException();
         }
+
+        public void editPosition(Vector2 amount)
+        {
+            original.editPosition(amount);
+        }
+
+        public bool shouldRemove()
+        {
+            return original.shouldRemove();
+        }
     }
 }

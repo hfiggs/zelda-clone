@@ -25,14 +25,14 @@ namespace Game1.CollisionDetection
 
         public List<Collision> GetCollisionList()
         {
-            collisionList = new LinkedList<Collision>();
-            List<IItem> ItemList = room.ItemList;
-            List<IEnvironment> EnvironmentList = room.EnvironmentList;
-            List<IEnemy> EnemyList = room.EnemyList;
-            List<IProjectile> ProjectileList = room.ProjectileList;
-            IPlayer player = room.Link;
-            Rectangle playerHitbox = room.Link.GetPlayerHitbox();
-            Rectangle swordHitbox = room.Link.GetSwordHitbox();
+            collisionList = new List<Collision>();
+            List<IItem> ItemList = screen.CurrentRoom.ItemList;
+            List<IEnvironment> EnvironmentList = screen.CurrentRoom.InteractEnviornment;
+            List<IEnemy> EnemyList = screen.CurrentRoom.EnemyList;
+            List<IProjectile> ProjectileList = screen.ProjectileList;
+            IPlayer player = screen.Player;
+            Rectangle playerHitbox = player.GetPlayerHitbox();
+            Rectangle swordHitbox = player.GetSwordHitbox();
 
             bool collision = false;
             foreach (IEnvironment environment in EnvironmentList)
@@ -121,7 +121,6 @@ namespace Game1.CollisionDetection
             { // projectile hits player
                 Rectangle projHitbox = proj.GetHitbox();
                 Rectangle intersectPlayer = Rectangle.Intersect(projHitbox, playerHitbox);
-                char side;
                 if (!intersectPlayer.IsEmpty)
                 {
                     char side = DetermineSide(projHitbox, playerHitbox, intersectPlayer);
@@ -168,40 +167,28 @@ namespace Game1.CollisionDetection
             Console.WriteLine("______________________________________");
             char side;
 
-            if (xOverlap < yOverlap) {
-                if (colider.Y < colidee.Y) {
+            if (xOverlap > yOverlap)
+            {
+                if (colider.Y < colidee.Y)
+                {
                     side = 'N';
-                } else {
+                }
+                else
+                {
                     side = 'S';
                 }
-            } else {
-                if (colider.X < colidee.X) {
+            }
+            else
+            {
+                if (colider.X < colidee.X)
+                {
                     side = 'W';
-                } else {
+                }
+                else
+                {
                     side = 'E';
                 }
             }
-           
-            return side;
-        }
-
-        private char RectangleCollision(Rectangle colider, Rectangle colidee, Rectangle intersectionRec) {
-            char side;
-
-            if (colider.Height > colider.Width) {
-                if (intersectionRec.Contains(colidee.X, colidee.Y) || intersectionRec.Contains(colidee.Right, colidee.Y)) {
-                    side = 'S';
-                } else {
-                    side = 'N';
-                }
-            } else {
-                if (intersectionRec.Contains(colidee.Right, colidee.Y) || intersectionRec.Contains(colidee.Right, colidee.Bottom)) {
-                    side = 'W';
-                } else {
-                    side = 'E';
-                }
-            }
-
             return side;
         }
     }
