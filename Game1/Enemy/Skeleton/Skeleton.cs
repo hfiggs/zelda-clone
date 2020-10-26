@@ -17,14 +17,15 @@ namespace Game1.Enemy
             this.positon = spawnPosition;
             state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(spawnPosition));
             health = 2f;
-            this.game = game;
         }
 
         public Skeleton(Game1 game, Vector2 spawnPosition, IItem item)
         {
             this.game = game;
             this.positon = spawnPosition;
-            state = new SkeletonStateMoving(game, spawnPosition, item);
+            health = 2f;
+            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(game, spawnPosition, item));
+
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
