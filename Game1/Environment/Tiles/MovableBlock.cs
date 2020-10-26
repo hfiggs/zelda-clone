@@ -59,7 +59,7 @@ namespace Game1.Environment
             {
                 //movement is in units of tiles (16 pixels)
                 movementTime = seconds;
-                movementSpeed = (movement * 16.0f) / seconds;
+                movementSpeed = (movement * 15.5f) / seconds;
                 hasMoved = true;
             }
         }

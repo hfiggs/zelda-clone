@@ -166,6 +166,7 @@
     <Compile Include="Environment\EnvironmentListTopFactory.cs" />
     <Compile Include="Environment\EnvironmentListFactory.cs" />
     <Compile Include="Environment\SecretRoom.cs" />
+    <Compile Include="Environment\Tiles\InvisibleWall.cs" />
     <Compile Include="Environment\Tiles\MovableBlock.cs" />
     <Compile Include="Environment\RoomBase.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />
