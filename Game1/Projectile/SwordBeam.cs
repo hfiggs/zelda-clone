@@ -54,6 +54,11 @@ namespace Game1.Projectile
                     counter++;
                 }
             }
+
+            if(position.Y < 10 || position.Y > 130 || position.X < 10 || position.X > 206)
+            {
+                BeginDespawn();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
