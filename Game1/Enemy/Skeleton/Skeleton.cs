@@ -15,7 +15,7 @@ namespace Game1.Enemy
         {
             this.game = game;
             this.positon = spawnPosition;
-            state = new SkeletonStateMoving(spawnPosition);
+            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(spawnPosition));
             health = 2f;
             this.game = game;
         }
@@ -25,13 +25,6 @@ namespace Game1.Enemy
             this.game = game;
             this.positon = spawnPosition;
             state = new SkeletonStateMoving(game, spawnPosition, item);
-        }
-
-        public void SpawnAnimation()
-        {
-            SpawnDecorator decorator = new SpawnDecorator(this, positon, game);
-            game.Screen.CurrentRoom.EnemyList.Add(decorator);
-            game.Screen.CurrentRoom.EnemyList.Remove(this);
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)

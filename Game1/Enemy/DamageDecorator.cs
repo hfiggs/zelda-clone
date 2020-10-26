@@ -1,11 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SharpDX.XInput;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Enemy
 {
@@ -80,11 +74,6 @@ namespace Game1.Enemy
         public void SetState(IEnemyState state)
         {
             original.SetState(state);
-        }
-
-        public void SpawnAnimation()
-        {
-            original.SpawnAnimation();
         }
     }
 }

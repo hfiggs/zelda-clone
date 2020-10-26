@@ -117,6 +117,8 @@
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkRight.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkRightAttack.cs" />
+    <Compile Include="Enemy\EnemyStateSpawning.cs" />
+    <Compile Include="Enemy\Snake\SnakeStateMoving.cs" />
     <Compile Include="Enemy\SpawnParticles.cs" />
     <Compile Include="Enemy\SpawnDecorator.cs" />
     <Compile Include="Enemy\DamageDecorator.cs" />

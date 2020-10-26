@@ -21,7 +21,6 @@ namespace Game1.RoomLoading
         public List<IEnvironment> InteractEnviornment { get; set; }
         public List<IEnemy> EnemyList { get; set; }
 
-        private Boolean opened = false;
         public Room(Game1 game, String file)
         {
             game.Screen.CurrentRoom = this;
@@ -38,27 +37,6 @@ namespace Game1.RoomLoading
 
         public void Update(GameTime gameTime)
         {
-            if (!opened)
-            {
-                //foreach (IEnemy enemy in EnemyList)
-                //{
-                //    enemy.SpawnAnimation();
-                //}
-                try
-                {
-                    foreach (IEnemy enemy in EnemyList)
-                    {
-                        enemy.SpawnAnimation();
-                    }
-                }
-                catch (System.InvalidOperationException e)
-                {
-                    Console.WriteLine("Enemy foreach error");
-                }
-                opened = true;
-            }
-            
-
             foreach (IItem item in ItemList)
             {
                 item.Update(gameTime);
