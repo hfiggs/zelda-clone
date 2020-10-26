@@ -15,8 +15,8 @@ namespace Game1.Enemy
         private int verticalRange;
         private int horizontalRange;
 
-        private const int advanceSpeed = 5;
-        private const int retreatSpeed = 2;
+        private const int advanceSpeed = 4;
+        private const int retreatSpeed = 1;
 
         private bool isAdvancing;
 

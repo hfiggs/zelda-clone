@@ -15,7 +15,7 @@ namespace Game1.Enemy
         private int horizontalRange;
 
         // The width of the imaginary cross where the spike trap can detect the player
-        private const int viewWidth = 20;
+        private const int viewWidth = 16;
 
         public ISprite Sprite { get; private set; }
 

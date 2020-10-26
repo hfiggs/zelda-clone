@@ -99,8 +99,7 @@ namespace Game1.Player
 
         public Rectangle GetLocation()
         {
-            Vector2 position = state.position;
-            return new Rectangle((int)position.X,(int)position.Y,50,50);
+            return new Rectangle(playerHitbox.Location + state.position.ToPoint(), playerHitbox.Size);
         }
 
         public char GetDirection()
