@@ -12,7 +12,7 @@ namespace Game1.Enemy
 
         private Vector2 direction;
         private Vector2 position;
-        private const int moveSpeed = 2;
+        private const int moveSpeed = 1;
         private IProjectile projectile;
         private double totalElapsedSeconds = 0;
         private double MovementChangeTimeSeconds;
@@ -46,6 +46,7 @@ namespace Game1.Enemy
 
             if (totalElapsedSeconds >= MovementChangeTimeSeconds)
             {
+
                 totalElapsedSeconds -= MovementChangeTimeSeconds;
                 this.direction = GetRandomDirection();
                 this.MovementChangeTimeSeconds = 0;
