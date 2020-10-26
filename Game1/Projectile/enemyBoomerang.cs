@@ -11,11 +11,13 @@ namespace Game1.Projectile
         private ProjectileSpriteSheet sprite;
         private bool returned;
         private Vector2 position;
+        private Vector2 originalPosition;
 
         public EnemyBoomerang(char direction, Vector2 position)
         {
             this.direction = direction;
             this.position = position;
+            this.originalPosition = position;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
             moveSpeed = 200;
             rowModifier = 0;
@@ -26,7 +28,15 @@ namespace Game1.Projectile
         }
         public void Update(GameTime gameTime)
         {
+
+            Rectangle origin = new Rectangle((int)originalPosition.X, (int)originalPosition.Y, 16, 16);
+            // Stop drawing and updating position of boomerang if it has returned to its owner
             totalElapsedGameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (origin.Contains((int)position.X, (int)position.Y) && totalElapsedGameTime > 1) {
+                returned = true;
+            }
+
 
             if (totalElapsedGameTime < 1) {
                 if (direction == 'N') {
@@ -50,10 +60,7 @@ namespace Game1.Projectile
                 }
             }
 
-            // Stop drawing and updating position of boomerang if it has returned to its owner
-            if (totalElapsedGameTime >= 2) {
-                returned = true;
-            }       
+ 
 
             // Used to change sprite sheet row to allow for flashing
             if (counter % 5 == 0) { 
