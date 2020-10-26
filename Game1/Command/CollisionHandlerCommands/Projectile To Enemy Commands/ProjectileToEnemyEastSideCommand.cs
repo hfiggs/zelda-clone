@@ -27,12 +27,12 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 if (enemy.GetType() == typeof(Jelly))
                 {
-                    enemy.ReceiveDamage(.05f, knockbackDirect);
+                    enemy.ReceiveDamage(.5f, knockbackDirect);
                     proj.BeginDespawn();
                 }
                 else if (enemy.GetType() == typeof(Bat))
                 {
-                    enemy.ReceiveDamage(.05f, knockbackDirect);
+                    enemy.ReceiveDamage(.5f, knockbackDirect);
                     proj.BeginDespawn();
                 }
                 else
