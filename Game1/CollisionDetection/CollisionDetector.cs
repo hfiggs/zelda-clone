@@ -27,12 +27,12 @@ namespace Game1.CollisionDetection
         {
             collisionList = new List<Collision>();
             List<IItem> ItemList = screen.CurrentRoom.ItemList;
-            LinkedList<IEnvironment> EnvironmentList = screen.CurrentRoom.InteractEnviornment;
+            List<IEnvironment> EnvironmentList = screen.CurrentRoom.InteractEnviornment;
             List<IEnemy> EnemyList = screen.CurrentRoom.EnemyList;
             List<IProjectile> ProjectileList = screen.ProjectileList;
             IPlayer player = screen.Player;
-            Rectangle playerHitbox = screen.Player.GetPlayerHitbox();
-            Rectangle swordHitbox = screen.Player.GetSwordHitbox();
+            Rectangle playerHitbox = player.GetPlayerHitbox();
+            Rectangle swordHitbox = player.GetSwordHitbox();
 
             bool collision = false;
             foreach (IEnvironment environment in EnvironmentList)

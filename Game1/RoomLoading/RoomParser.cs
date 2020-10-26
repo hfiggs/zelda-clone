@@ -1,6 +1,7 @@
 ﻿using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
+using Game1.Item.Heart;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -127,6 +128,9 @@ namespace Game1.RoomLoading
                     case "Skeleton":
                         enemy = new Skeleton(game, position);
                         break;
+                    case "SkeletonKey":
+                        enemy = new Skeleton(game, position, new Key(position));
+                        break;
                     case "Snake":
                         enemy = new Snake(game, position);
                         break;
@@ -175,8 +179,8 @@ namespace Game1.RoomLoading
                     case "Sand":
                         nonInteractEnviornment = new Sand(position);
                         break;
-                    case "Fire":
-                        nonInteractEnviornment = new Fire(position);
+                    case "SecretRoom":
+                        nonInteractEnviornment = new SecretRoom(position);
                         break;
                     case "DoorNFloor":
                         nonInteractEnviornment = new DoorNFloor(position);
@@ -277,6 +281,9 @@ namespace Game1.RoomLoading
                         break;
                     case "DoorWLocked":
                         interactEnviornment = new DoorWLocked(position);
+                        break;
+                    case "Fire":
+                        interactEnviornment = new Fire(position);
                         break;
                     case "StatueDragon":
                         interactEnviornment = new StatueDragon(position);

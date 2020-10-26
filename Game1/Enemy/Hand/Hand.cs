@@ -7,12 +7,14 @@ namespace Game1.Enemy
     {
         private float health;
         private IEnemyState state;
+        private Vector2 position;
         private Game1 game;
         public Hand(Game1 game, Vector2 spawnPosition)
         {
+            this.game = game;
+            this.position = spawnPosition;
             state = new HandStateMoving(spawnPosition);
             health = 3f;
-            this.game = game;
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
@@ -22,7 +24,12 @@ namespace Game1.Enemy
             game.Screen.CurrentRoom.EnemyList.Add(decorator);
             game.Screen.CurrentRoom.EnemyList.Remove(this);
         }
-
+        public void SpawnAnimation()
+        {
+            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
+            game.Screen.CurrentRoom.EnemyList.Add(decorator);
+            game.Screen.CurrentRoom.EnemyList.Remove(this);
+        }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             state.Draw(spriteBatch, color);

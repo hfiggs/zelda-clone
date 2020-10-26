@@ -16,6 +16,7 @@ namespace Game1.Enemy
         private const float animationTime = 150f; // ms per frame
 
         private Vector2 position;
+
         private Random rand;
 
         private bool isFacingLeft;
@@ -69,6 +70,12 @@ namespace Game1.Enemy
         public void editPosition( Vector2 amount)
         {
             position = Vector2.Add(position, amount);
+        }
+        public void SpawnAnimation()
+        {
+            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
+            game.Screen.CurrentRoom.EnemyList.Add(decorator);
+            game.Screen.CurrentRoom.EnemyList.Remove(this);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)

@@ -11,6 +11,7 @@ namespace Game1.Enemy
         private double attackCooldown = 5;
         private IEnemyState state;
         private Game1 game;
+        private Vector2 position;
 
         private float health;
 
@@ -18,6 +19,7 @@ namespace Game1.Enemy
         {
             health = 3f;
             this.game = game;
+            this.position = spawnPosition;
             state = new GoriyaStateMovingRight(game, this, spawnPosition);
             oldDirection = state.GetDirection();
         }
@@ -29,7 +31,12 @@ namespace Game1.Enemy
             game.Screen.CurrentRoom.EnemyList.Add(decorator);
             game.Screen.CurrentRoom.EnemyList.Remove(this);
         }
-
+        public void SpawnAnimation()
+        {
+            SpawnDecorator decorator = new SpawnDecorator(this, position, game);
+            game.Screen.CurrentRoom.EnemyList.Add(decorator);
+            game.Screen.CurrentRoom.EnemyList.Remove(this);
+        }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             state.Draw(spriteBatch,color);

@@ -81,5 +81,10 @@ namespace Game1.Enemy
         {
             original.SetState(state);
         }
+
+        public void SpawnAnimation()
+        {
+            original.SpawnAnimation();
+        }
     }
 }

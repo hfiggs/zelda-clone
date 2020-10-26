@@ -4,15 +4,19 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
 {
-    class OldMan : IEnemy
+    class SpawnParticles : IEnemy
     {
         ISprite sprite;
 
         Vector2 position;
 
-        public OldMan(Vector2 position)
+        private float timeUntilNextFrame; // ms
+        private const float animationTime = 150f; // ms per frame
+
+        public SpawnParticles(Vector2 position)
         {
-            sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
+            sprite = ParticleSpriteFactory.Instance.CreateCloudSprite();
+
             this.position = position;
         }
 
@@ -25,12 +29,16 @@ namespace Game1.Enemy
         {
             // Cannot receive damage
         }
-        public void SpawnAnimation()
-        {
-        }
+
         public void Update(GameTime gameTime, Rectangle drawingLimits5)
         {
-            // TODO: Logic for determining text and when to fade out sprite
+            timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (timeUntilNextFrame <= 0)
+            {
+                sprite.Update();
+                timeUntilNextFrame += animationTime;
+            }
         }
 
         public void editPosition(Vector2 amount)
@@ -51,6 +59,16 @@ namespace Game1.Enemy
         public Rectangle GetHitbox()
         {
             return new Rectangle((int)position.X, (int)position.Y, 16, 16);
+        }
+
+        public void ReceiveDamage()
+        {
+            //throw new System.NotImplementedException();
+        }
+
+        public void SpawnAnimation()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
