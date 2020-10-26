@@ -19,21 +19,38 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             IEnvironment envo = (IEnvironment)collision.collidee;
             IPlayer player = (IPlayer)collision.collider;
-            if (envo.GetType() == typeof(MovableBlock))
+            if (envo.GetType() == typeof(MovableBlock) && !((MovableBlock)envo).hasMoved)
             {
-                ((MovableBlock)envo).Move(new Vector2(1, 0), 1.0f, 'E');
+                ((MovableBlock)envo).Move(new Vector2(1, 0), .8f, 'E');
             }
             else if (envo.GetType() == typeof(DoorELocked))
             {
                 if (((DoorELocked)envo).open)
-                System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
+                    System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
 
                 else if (player.PlayerInventory.SubKey())
                     ((DoorELocked)envo).Open();
+                else
+                {
+                    Vector2 moveAmount = new Vector2(-collision.intersectionRec.Width, 0);
+                    player.editPosition(moveAmount);
+                }
             }
             else if(envo.GetType() == typeof(DoorEOpen))
             {
                 System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
+            }
+            else if(envo.GetType() == typeof(DoorEBombable))
+            {
+                if(((DoorEBombable)envo).open)
+                {
+                    System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
+                }
+                else
+                {
+                    Vector2 moveAmount = new Vector2(-collision.intersectionRec.Width, 0);
+                    player.editPosition(moveAmount);
+                }
             }
             else
             {
