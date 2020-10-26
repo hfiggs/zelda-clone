@@ -19,7 +19,7 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             IEnvironment envo = (IEnvironment)collision.collidee;
             IPlayer player = (IPlayer)collision.collider;
-            else if (envo.GetType() == typeof(MovableBlock))
+            if (envo.GetType() == typeof(MovableBlock))
             {
                 ((MovableBlock)envo).Move(new Vector2(1, 0), 1.0f, 'E');
             }
