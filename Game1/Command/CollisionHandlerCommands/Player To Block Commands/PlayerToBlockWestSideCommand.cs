@@ -51,9 +51,9 @@ namespace Game1.Command.CollisionHandlerCommands
                     Vector2 moveAmount = new Vector2(-collision.intersectionRec.Width, 0);
                     player.editPosition(moveAmount);
                 }
-            }
-            else
-            {
+            } else if(envo.GetType() == typeof(Stairs)) {
+                // Do nothing until player can walk down stairs
+            } else {
                 Vector2 moveAmount = new Vector2(-collision.intersectionRec.Width, 0);
                 player.editPosition(moveAmount);
             }

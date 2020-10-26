@@ -25,7 +25,7 @@ namespace Game1.Command.CollisionHandlerCommands
             else if (envo.GetType() == typeof(DoorNLocked))
             {
                 if (((DoorNLocked)envo).open)
-                System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
+                    System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
                 else if (player.PlayerInventory.SubKey())
                     ((DoorNLocked)envo).Open();
                 else
@@ -40,7 +40,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (envo.GetType() == typeof(DoorNBombable))
             {
-                if(((DoorNBombable)envo).open)
+                if (((DoorNBombable)envo).open)
                 {
 
                 }
@@ -49,9 +49,9 @@ namespace Game1.Command.CollisionHandlerCommands
                     Vector2 moveAmount = new Vector2(0, collision.intersectionRec.Height);
                     player.editPosition(moveAmount);
                 }
-            }
-            else
-            {
+            } else if (envo.GetType() == typeof(Stairs)) {
+                // Do nothing until player can walk down stairs
+            } else {
                 Vector2 moveAmount = new Vector2(0, collision.intersectionRec.Height);
                 player.editPosition(moveAmount);
             }
