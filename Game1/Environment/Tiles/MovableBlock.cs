@@ -36,7 +36,7 @@ namespace Game1.Environment
             if(movementTime > 0)
             {
                 position = position + movementSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                hitbox1.Location += position.ToPoint();
+                hitbox1.Location = position.ToPoint();
                 hitboxes.Clear();
                 hitboxes.Add(hitbox1);
                 movementTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
