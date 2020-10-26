@@ -21,7 +21,7 @@ namespace Game1.Command.CollisionHandlerCommands
             IPlayer player = (IPlayer)collision.collider;
             if (envo.GetType() == typeof(MovableBlock) && !((MovableBlock)envo).hasMoved)
             {
-                ((MovableBlock)envo).Move(new Vector2(0,1), .8f, 'S');
+                ((MovableBlock)envo).Move(new Vector2(0, 1), 1.0f);
             }
             else if (envo.GetType() == typeof(DoorSLocked))
             {
