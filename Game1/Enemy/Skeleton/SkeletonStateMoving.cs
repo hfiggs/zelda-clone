@@ -100,7 +100,7 @@ namespace Game1.Enemy
 
         public Rectangle GetHitbox()
         {
-            return new Rectangle((int)position.X + 8, (int)position.Y + 7, 15, 16);
+            return new Rectangle((int)position.X + 7, (int)position.Y + 7, 15, 16);
         }
 
         private float GetRandomDirectionMovementChangeTimeSeconds()
