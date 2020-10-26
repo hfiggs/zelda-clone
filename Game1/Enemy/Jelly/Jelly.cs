@@ -13,6 +13,7 @@ namespace Game1.Enemy
         {
             this.game = game;
             this.position = spawnPosition;
+            this.health = .5f;
             state = new EnemyStateSpawning(position, this, new JellyStateMoving(spawnPosition));
         }
 
