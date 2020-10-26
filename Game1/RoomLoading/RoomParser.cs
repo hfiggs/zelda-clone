@@ -282,7 +282,7 @@ namespace Game1.RoomLoading
                         interactEnviornment = new DoorWLocked(position);
                         break;
                     case "Fire":
-                        nonInteractEnviornment = new Fire(position);
+                        interactEnviornment = new Fire(position);
                         break;
                     case "StatueDragon":
                         interactEnviornment = new StatueDragon(position);
