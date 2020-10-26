@@ -16,7 +16,7 @@
 		<Y>72</Y>
 	</NonInteractEnviornment>
 	<InteractEnviornment>
-		<Type>DoorNBlank</Type>
+		<Type>DoorNBombable</Type>
 		<X>112</X>
 		<Y>0</Y>
 	</InteractEnviornment>

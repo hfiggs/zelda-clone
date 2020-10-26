@@ -36,7 +36,7 @@
 		<Y>72</Y>
 	</InteractEnviornment>
 	<InteractEnviornment>
-		<Type>Block</Type>
+		<Type>MovableBlock</Type>
 		<X>80</X>
 		<Y>80</Y>
 	</InteractEnviornment>

@@ -222,6 +222,9 @@ namespace Game1.RoomLoading
                     case "Block":
                         interactEnviornment = new Block(position);
                         break;
+                    case "MovableBlock":
+                        interactEnviornment = new MovableBlock(position, 'N');
+                        break;
                     case "DoorEBlank":
                         interactEnviornment = new DoorEBlank(position);
                         break;
@@ -281,6 +284,12 @@ namespace Game1.RoomLoading
                         break;
                     case "DoorWLocked":
                         interactEnviornment = new DoorWLocked(position);
+                        break;
+                    case "DoorSBombable":
+                        interactEnviornment = new DoorSBombable(position);
+                        break;
+                    case "DoorNBombable":
+                        interactEnviornment = new DoorNBombable(position);
                         break;
                     case "Fire":
                         interactEnviornment = new Fire(position);
