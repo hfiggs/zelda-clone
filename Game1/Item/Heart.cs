@@ -2,30 +2,26 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Game1.Item
+public class Heart : IItem
 {
-    public class Heart : IItem
-    {
-        Color color = Color.White;
-        int timeTillSwap;
-        const int flashTimer = 250; //ms
-        private ISprite sprite;
+    Color color = Color.White;
+    int timeTillSwap;
+    const int flashTimer = 250; //ms
+    private ISprite sprite;
+    public Vector2 Position { get; set; }
+    public Heart(Vector2 Position)
+	{
+        sprite = ItemSpriteFactory.Instance.CreateHeartSprite();
 
-        private Vector2 position;
-
-        public Heart(Vector2 position)
-	    {
-            sprite = ItemSpriteFactory.Instance.CreateHeartSprite();
-
-            this.position = position;
+        this.Position = Position;
 
             timeTillSwap = flashTimer;
 	    }
 
-        public void Draw(SpriteBatch spriteBatch, Color UNUSED)
-        {
-            sprite.Draw(spriteBatch, position, color);
-        }
+    public void Draw(SpriteBatch spriteBatch, Color UNUSED)
+    {
+        sprite.Draw(spriteBatch, Position, color);
+    }
 
         public void Update(GameTime gameTime)
         {

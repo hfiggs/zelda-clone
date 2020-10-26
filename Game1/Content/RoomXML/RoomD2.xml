@@ -11,11 +11,6 @@
 		<Y>32</Y>
 	</NonInteractEnviornment>
 	<NonInteractEnviornment>
-		<Type>DoorNFloor</Type>
-		<X>112</X>
-		<Y>0</Y>
-	</NonInteractEnviornment>
-	<NonInteractEnviornment>
 		<Type>DoorSFloor</Type>
 		<X>112</X>
 		<Y>144</Y>

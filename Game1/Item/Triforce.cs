@@ -5,28 +5,26 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Game1.Item
 {
 
-    public class Triforce : IItem
-    {
-        Color color = Color.White;
-        int timeTillSwap;
-        const int flashTimer = 250; //ms
-        private ISprite sprite;
+public class Triforce : IItem
+{
+    Color color = Color.White;
+    int timeTillSwap;
+    const int flashTimer = 250; //ms
+    private ISprite sprite;
+    public Vector2 Position { get; set; }
+    public Triforce(Vector2 Position)
+	{
+        sprite = ItemSpriteFactory.Instance.CreateTriforceSprite();
 
-        private Vector2 position;
-
-        public Triforce(Vector2 position)
-        {
-            sprite = ItemSpriteFactory.Instance.CreateTriforceSprite();
-
-            this.position = position;
+        this.Position = Position;
 
             timeTillSwap = flashTimer;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Color UNUSED)
-        {
-            sprite.Draw(spriteBatch, position, color);
-        }
+    public void Draw(SpriteBatch spriteBatch, Color UNUSED)
+    {
+        sprite.Draw(spriteBatch, Position, color);
+    }
 
         public void Update(GameTime gameTime)
         {

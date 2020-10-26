@@ -6,7 +6,7 @@
 		<Y>0</Y>
 	</InteractEnviornment>
 	<NonInteractEnviornment>
-		<Type>RoomBase</Type>
+		<Type>SecretRoom</Type>
 		<X>32</X>
 		<Y>32</Y>
 	</NonInteractEnviornment>
@@ -15,31 +15,16 @@
 		<X>112</X>
 		<Y>0</Y>
 	</InteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>DoorNFloor</Type>
-		<X>112</X>
-		<Y>0</Y>
-	</NonInteractEnviornment>
 	<InteractEnviornment>
 		<Type>DoorSBlank</Type>
 		<X>112</X>
 		<Y>144</Y>
 	</InteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>DoorSFloor</Type>
-		<X>112</X>
-		<Y>144</Y>
-	</NonInteractEnviornment>
 	<InteractEnviornment>
 		<Type>DoorWBlank</Type>
 		<X>0</X>
 		<Y>72</Y>
 	</InteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>DoorWFloor</Type>
-		<X>0</X>
-		<Y>72</Y>
-	</NonInteractEnviornment>
 	<InteractEnviornment>
 		<Type>DoorEOpen</Type>
 		<X>224</X>
