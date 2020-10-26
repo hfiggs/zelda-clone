@@ -34,10 +34,14 @@ namespace Game1.CollisionDetection
             Rectangle playerHitbox = screen.Player.GetPlayerHitbox();
             Rectangle swordHitbox = screen.Player.GetSwordHitbox();
 
+            bool collision = false;
             foreach (IEnvironment environment in EnvironmentList)
             { // player colliding with environment
 
+
                 //some environment objects have multiple hitboxes
+                if (collision)
+                    break;
                 foreach (Rectangle envHitbox in environment.GetHitboxes())
                 {
                     //Environment collides with player
@@ -46,18 +50,8 @@ namespace Game1.CollisionDetection
                     {
                         char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
                         collisionList.Add(new Collision(side, intersectPlayer, player, environment));
-                    }
-
-                    //Environment collides with Enemy
-                    foreach (IEnemy enemy in EnemyList)
-                    {
-                        Rectangle enemyHitbox = enemy.GetHitbox();
-                        Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, envHitbox);
-                        if (!intersectEnemy.IsEmpty)
-                        {
-                            char side = DetermineSide(enemyHitbox, envHitbox, intersectPlayer);
-                            collisionList.Add(new Collision(side, intersectEnemy, enemy, environment));
-                        }
+                        collision = true;
+                        break;
                     }
 
                     //Projectile collides with environment
@@ -102,6 +96,25 @@ namespace Game1.CollisionDetection
                     char side = DetermineSide(swordHitbox, enemyHitbox, intersectSword);
                     collisionList.Add(new Collision(side, intersectSword, player, enemy));
                 }
+
+                collision = false;
+                foreach(IEnvironment envi in EnvironmentList)
+                {
+                    List<Rectangle> envHitbox = envi.GetHitboxes();
+                    if (collision)
+                        break;
+                    foreach (Rectangle erect in envHitbox)
+                    {
+                        Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, erect);
+                        if (intersectEnemy.Width != 0 || intersectEnemy.Height != 0)
+                        {
+                            char side = DetermineSide(enemyHitbox, erect, intersectEnemy);
+                            collisionList.Add(new Collision(side, intersectEnemy, enemy, envi));
+                            collision = true;
+                            break;
+                        }
+                    }
+                }
             }
             
             foreach (IProjectile proj in ProjectileList)
@@ -138,8 +151,10 @@ namespace Game1.CollisionDetection
                     }
                 }
 
-            }
+                
 
+            }
+            System.Console.WriteLine(collisionList.Count);
             return collisionList;
         }
 
@@ -147,6 +162,9 @@ namespace Game1.CollisionDetection
         {
             int xOverlap = intersectionRec.Width;
             int yOverlap = intersectionRec.Height;
+            Console.WriteLine("xover: " + xOverlap);
+            Console.WriteLine("yover: " + yOverlap);
+            Console.WriteLine("______________________________________");
             char side;
 
             if (xOverlap > yOverlap)
