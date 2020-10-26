@@ -17,7 +17,7 @@ namespace Game1.Environment
         private float movementTime;
         private Vector2 movementSpeed;
         private char movementDirection;
-        private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
+        private Rectangle hitbox1 = new Rectangle(0, 0, 16, 16);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public MovableBlock(Vector2 position, char movementDirection)

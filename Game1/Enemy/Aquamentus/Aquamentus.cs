@@ -28,7 +28,6 @@ namespace Game1.Enemy
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             state.Draw(spriteBatch, color);
-            DebugUtil.showHitbox(GetHitbox(), spriteBatch, game);
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
