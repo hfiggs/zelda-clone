@@ -415,3 +415,6 @@
 #begin RoomXML/RoomF3.xml
 /copy:RoomXML/RoomF3.xml
 
+#begin RoomXML/RoomG0.xml
+/copy:RoomXML/RoomG0.xml
+

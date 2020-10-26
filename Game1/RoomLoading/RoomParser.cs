@@ -219,6 +219,9 @@ namespace Game1.RoomLoading
 
                 switch (n["Type"].InnerText)
                 {
+                    case "Brick":
+                        interactEnviornment = new Bricks(position);
+                        break;
                     case "Block":
                         interactEnviornment = new Block(position);
                         break;
