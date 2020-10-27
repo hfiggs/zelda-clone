@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Runtime.CompilerServices;
 
 namespace Game1.Projectile
 {
@@ -22,7 +23,11 @@ namespace Game1.Projectile
 
         private const int cloudOffset = 15; // pixels
         private const int spriteDiameter = 40; // pixels
-        private int count = 0;
+
+        private int timeUntilNoExplosionHitbox;
+        private const int explosionHitboxTime = 100; // ms
+
+        private const int explosionDiameter = 24; // pixels
 
         public BombProjectile(Vector2 position, IPlayer player)
         {
@@ -47,6 +52,13 @@ namespace Game1.Projectile
                     AddCloudParticles(particles);
                     particlesSpawned = true;
                 }
+
+                timeUntilNoExplosionHitbox = explosionHitboxTime;
+            }
+
+            if(detonated)
+            {
+                timeUntilNoExplosionHitbox -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
             }
 
             particles.RemoveAll(p => p.ShouldDelete());
@@ -101,13 +113,13 @@ namespace Game1.Projectile
         {
             Rectangle hitbox;
 
-            if (detonated && count == 0)
+            if(!detonated)
             {
-                count++;
-                hitbox = new Rectangle((int)GetCenteredPosition().X - 24, (int)GetCenteredPosition().Y - 24, 48, 48);
-            } else
+                hitbox = new Rectangle(int.MaxValue, int.MaxValue, 0, 0);
+            }
+            else
             {
-                hitbox = new Rectangle(801, 481, 0, 0);
+                hitbox = new Rectangle((int)GetCenteredPosition().X - explosionDiameter/2, (int)GetCenteredPosition().Y - explosionDiameter / 2, explosionDiameter, explosionDiameter);
             }
 
             return hitbox;
