@@ -21,7 +21,15 @@ namespace Game1.Command.CollisionHandlerCommands
             Vector2 movementAmount = new Vector2(-collision.intersectionRec.Width, 0);
             if(enemy.GetType() != typeof(Bat) && enemy.GetType() != typeof(Hand))
             {
-                enemy.EditPosition(movementAmount);
+
+                if (enemy.GetType() == typeof(EnemyDamageDecorator) && ((EnemyDamageDecorator)enemy).stillSlide)
+                {
+                    ((EnemyDamageDecorator)enemy).stopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
+                }
+                else
+                {
+                    enemy.EditPosition(movementAmount);
+                }
             }
             else
             {

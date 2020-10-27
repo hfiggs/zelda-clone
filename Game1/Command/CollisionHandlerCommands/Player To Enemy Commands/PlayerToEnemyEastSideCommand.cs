@@ -20,7 +20,7 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 IEnemy enemy = (IEnemy)collision.collidee;
 
-                enemy.ReceiveDamage(1f, new Vector2(0, -1));
+                enemy.ReceiveDamage(1f, new Vector2(1, 0));
             }
         }
     }

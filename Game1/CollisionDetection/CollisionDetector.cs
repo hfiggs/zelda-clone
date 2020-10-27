@@ -93,7 +93,7 @@ namespace Game1.CollisionDetection
                 Rectangle intersectSword = Rectangle.Intersect(swordHitbox, enemyHitbox);
                 if(!intersectSword.IsEmpty)
                 {
-                    char side = DetermineSide(swordHitbox, enemyHitbox, intersectSword);
+                    char side = player.GetDirection();
                     collisionList.Add(new Collision(side, intersectSword, player, enemy));
                 }
 

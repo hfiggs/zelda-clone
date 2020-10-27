@@ -13,15 +13,16 @@ namespace Game1.Enemy
         private int currentFlicker = 0;
         private float timeTillFlickerSwap;
         private Game1 game;
-
-        Vector2 knockbackMagnitude = new Vector2(1, 1);
+        public bool stillSlide;
+        Vector2 knockbackMagnitude = new Vector2(1f, 1f);
         public EnemyDamageDecorator( IEnemy Original, Vector2 direction, Game1 game)
         {
             this.original = Original;
-            damagedTimer = 250f; //ms
+            damagedTimer = 350f; //ms
             timeTillFlickerSwap = 50f;
             knockbackMagnitude = Vector2.Multiply(knockbackMagnitude, direction);
             this.game = game;
+            stillSlide = true;
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
@@ -36,13 +37,14 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            Vector2 slideAmount = Vector2.Multiply(knockbackMagnitude, (float)gameTime.ElapsedGameTime.TotalMilliseconds);
             damagedTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             timeTillFlickerSwap -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if(damagedTimer > 200)
+            if (damagedTimer > 300 && stillSlide)
             {
-                original.EditPosition(slideAmount);
+                original.EditPosition(Vector2.Multiply(knockbackMagnitude, (float)gameTime.ElapsedGameTime.TotalMilliseconds));
             }
+            else
+                stillSlide = false;
             if(timeTillFlickerSwap <= 0)
             {
                 currentFlicker++;
@@ -60,7 +62,7 @@ namespace Game1.Enemy
 
         public void EditPosition(Vector2 amount)
         {
-            original.EditPosition(amount);
+                original.EditPosition(amount);
         }
 
         public bool ShouldRemove()
@@ -76,6 +78,23 @@ namespace Game1.Enemy
         public void SetState(IEnemyState state)
         {
             original.SetState(state);
+        }
+
+        public void stopKnockback(Vector2 possibleCorrections)
+        {
+            stillSlide = false;
+            Vector2 correction = possibleCorrections;
+
+            if (knockbackMagnitude.X > 0)
+                correction = Vector2.Multiply(correction, new Vector2(-1, 0));
+            else if (knockbackMagnitude.X < 0)
+                correction = Vector2.Multiply(correction, new Vector2(1, 0));
+            else if (knockbackMagnitude.Y > 0)
+                correction = Vector2.Multiply(correction, new Vector2(0, -1));
+            else if (knockbackMagnitude.Y < 0)
+                correction = Vector2.Multiply(correction, new Vector2(0, 1));
+
+            original.EditPosition(correction);
         }
     }
 }
