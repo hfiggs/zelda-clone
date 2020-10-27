@@ -1,0 +1,26 @@
+﻿AUTHOR (OF REVIEW) - Jeffrey Gaydos
+
+
+DATE - 10/26/2020
+
+
+SPRINT # 3
+
+
+NAME OF FILE BEING REVIEWED - CollisionHandler.cs
+
+
+AUTHOR OF FILE BEING REVIEWED - Jared Perkins, Hunter Figgs
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 16:44 (MM:SS)
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - The Handle Collisions method uses collision.GetType().GetInterfaces()[0]. This is a compact piece of code, and it's not immeadiately clear as
+																	to why it is necessary to use the GetType method and then get the interface from that type. Obviously the code won't allow getting an interface
+																	directly from object, but a comment explaining this aids in readability. The dictionary is very long, though it is divided up into multiple
+																	sections and each one has a comment, which considerably helps to understand the dictionary. The main part of the dictionary that is hard to
+																	follow is the tuple, and a block comment explaining what the tuple is in this context would also aid in readability. A possible approach would
+																	be to make collision objects where the collider and collidee are Interfaces (one for each kind of collision), and override the equals and
+																	hashcode methods for the Collision object to allow them to be used in the dictionary. These interface objects could be private fields named
+																	meaningful names to increase readability of the dictionary.

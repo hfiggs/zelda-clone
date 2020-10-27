@@ -1,0 +1,33 @@
+﻿AUTHOR (OF THE REVIEW) - Jeffrey Gaydos
+
+
+DATE - 10/26/2020
+
+
+SPRINT # 3
+
+
+NAME OF FILE BEING REVIEWED - RoomParser.cs
+
+
+AUTHOR OF FILE BEING REVIEWED -  Sergei Fedulov
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) - Switch statements allow decent extensibility for future additions or modifications to current items. We could add an item by adding another 
+													case to the switch blocks. However, throwing an exception on default is cumbersome when adding new cases if you make a mistake. The error
+													message should be more meaningful since there are multiple reasons for why default was chosen other than a null parameter. Passing lists of
+													interfaces also allows considerable flexibility. Adding not just more, but new items to the rooms is easily accomplished with these
+													interfaces and keeps coupling low. The use of the Key class directly gives a higher level of coupling between RoomParser.cs and Key.cs, and
+													this prevents us from using other items. Additionally, we may want to put items on different enemies, and the current setup only allows for
+													items on skeletons. Both of these minor flexibility issues could be solved if an <Item> tag was introduced. Finally, it may be beneficial to
+													use a dictionary to map the strings to their classes, but that is more of a readability issue.
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - Suppose we want to implement the change described above, where different instances of
+																										  enemies can hold items other than keys. The first thing to do would be to introduce
+																										  the <Item> tag (or similar tag). The RoomParser would then need to check for the
+																										  presence of this tag within the Enemy tag (similar to how position is found for
+																										  enemies), and use a switch block (or dictionary) to determine which class to associate
+																										  with which string. This solution of course assumes that the underlying code of enemies
+																										  is robust enough to handle this modification in general.
+																										  
