@@ -52,8 +52,16 @@ namespace Game1.Command.CollisionHandlerCommands
             } else if (envo.GetType() == typeof(Stairs)) {
                 // Do nothing until player can walk down stairs
             } else {
-                Vector2 moveAmount = new Vector2(0, collision.intersectionRec.Height);
-                player.editPosition(moveAmount);
+
+                if (player.GetType() == typeof(DamagedPlayer) && ((DamagedPlayer)player).stillSlide)
+                {
+                    ((DamagedPlayer)player).stopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
+                }
+                else
+                {
+                    Vector2 moveAmount = new Vector2(0, collision.intersectionRec.Height);
+                    player.editPosition(moveAmount);
+                }
             }
         }
     }

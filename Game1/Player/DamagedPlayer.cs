@@ -16,8 +16,7 @@ namespace Game1.Player
         int currentFlicker = 0;
         Color damageColor = Color.White;
 
-        Vector2 damageMove = new Vector2(8,8); //magnitude of damage move per frame. If the player should slide 30 pixels, this value should be (6,6). 
-        //That way the player slides 30 pixels over the course of 5 frames.
+        Vector2 damageMove = new Vector2(1f,1f); 
 
         const int duration = 1000; // ms
         int timer;
@@ -28,8 +27,7 @@ namespace Game1.Player
         private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
         private Rectangle swordHitbox = new Rectangle();
 
-        int frameCounter;
-        int slideFrames;
+        public bool stillSlide;
 
         public IPlayerInventory PlayerInventory { get => decoratedPlayer.PlayerInventory;}
 
@@ -39,15 +37,13 @@ namespace Game1.Player
             this.decoratedPlayer = decoratedPlayer;
             damageMove = Vector2.Multiply(damageMove, direction);
             timer = duration;
-
+            stillSlide = true;
             flickerTimer = 0;
-            frameCounter = 0;
-            slideFrames = 4;
         }
 
         public void Attack()
         {
-            if (frameCounter > slideFrames)
+            if (timer <= 950 || !stillSlide)
                 decoratedPlayer.Attack();
         }
 
@@ -81,26 +77,26 @@ namespace Game1.Player
         }
 
         public void MoveDown()
-        {   
-            if(frameCounter > slideFrames)
+        {
+            if (timer <= 950 || !stillSlide)
                 decoratedPlayer.MoveDown();
         }
 
         public void MoveLeft()
         {
-            if(frameCounter > slideFrames)
+            if (timer <= 950 || !stillSlide)
                 decoratedPlayer.MoveLeft();
         }
 
         public void MoveRight()
         {
-           if(frameCounter > slideFrames)
+            if (timer <= 950 || !stillSlide)
                 decoratedPlayer.MoveRight();
         }
 
         public void MoveUp()
         {
-            if(frameCounter > slideFrames)
+            if (timer <= 950 || !stillSlide)
                 decoratedPlayer.MoveUp();
         }
 
@@ -113,20 +109,20 @@ namespace Game1.Player
         {
             timer -= (int)time.ElapsedGameTime.TotalMilliseconds;
             flickerTimer += (int)time.ElapsedGameTime.TotalMilliseconds;
-
             if (timer <= 0)
                 RemoveDecorator();
 
-            if (frameCounter <= slideFrames)
-                decoratedPlayer.editPosition(damageMove);
+            if (timer >= 950 && stillSlide)
+                decoratedPlayer.editPosition(Vector2.Multiply(damageMove, (float)(time.ElapsedGameTime.TotalMilliseconds)));
+            else
+                stillSlide = false;
 
-            frameCounter++;
             decoratedPlayer.Update(time);
         }
 
         public void UseItem(int item)
         {
-            if(frameCounter > slideFrames)
+            if(timer >= 0)
                 decoratedPlayer.UseItem(item);
         }
 
@@ -162,7 +158,7 @@ namespace Game1.Player
 
         public void editPosition(Vector2 amount)
         {
-            decoratedPlayer.editPosition(amount);
+                decoratedPlayer.editPosition(amount);
         }
 
         public Rectangle GetPlayerHitbox()
@@ -178,6 +174,23 @@ namespace Game1.Player
         public void SetSwordHitbox(Rectangle newHitbox)
         {
             swordHitbox = newHitbox;
+        }
+
+        public void stopKnockback(Vector2 possibleCorrections)
+        {
+            stillSlide = false;
+            Vector2 correction = possibleCorrections;
+
+            if (damageMove.X > 0)
+                correction = Vector2.Multiply(correction, new Vector2(-1,0));
+            else if(damageMove.X < 0)
+                correction = Vector2.Multiply(correction, new Vector2(1,0));
+            else if (damageMove.Y > 0)
+                correction = Vector2.Multiply(correction, new Vector2(0,-1));
+            else if (damageMove.Y < 0)
+                correction = Vector2.Multiply(correction, new Vector2(0,1));
+
+            decoratedPlayer.editPosition(correction);
         }
     }
 }
