@@ -6,8 +6,10 @@ namespace Game1.Enemy
 {
     public class Merchant : IEnemy
     {
-        ISprite mySprite;
-        Vector2 position;
+        public int StunnedTimer { get; set; } = 0;
+
+        private ISprite mySprite;
+        private Vector2 position;
 
         public Merchant(Vector2 position)
         {
@@ -29,7 +31,7 @@ namespace Game1.Enemy
         {
             //Do Nothing
         }
-        public void editPosition(Vector2 amount)
+        public void EditPosition(Vector2 amount)
         {
             //Do Nothing
         }
@@ -39,7 +41,7 @@ namespace Game1.Enemy
             //Do Nothing
         }
 
-        public bool shouldRemove()
+        public bool ShouldRemove()
         {
             return false;
         }

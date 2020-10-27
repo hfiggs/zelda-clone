@@ -23,11 +23,11 @@ namespace Game1.Command.CollisionHandlerCommands
             Vector2 movementAmount = new Vector2(collision.intersectionRec.Width, 0);
             if (enemy.GetType() != typeof(Bat))
             {
-                enemy.editPosition(movementAmount);
+                enemy.EditPosition(movementAmount);
             }
             else if (enviType == typeof(RoomBorder))
             {
-                enemy.editPosition(movementAmount);
+                enemy.EditPosition(movementAmount);
             }
         }
     }

@@ -1,14 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Game1.Enemy
 {
     class Hand : IEnemy
     {
+        public int StunnedTimer { get; set; } = 0;
+
         private float health;
         private IEnemyState state;
         private Vector2 position;
         private Game1 game;
+
         public Hand(Game1 game, Vector2 spawnPosition)
         {
             this.game = game;
@@ -32,7 +36,13 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            state.Update(gameTime, drawingLimits);
+            if (StunnedTimer == 0)
+            {
+                state.Update(gameTime, drawingLimits);
+            }
+
+            StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            StunnedTimer = Math.Max(0, StunnedTimer);
         }
 
         public void SetState(IEnemyState state)
@@ -40,12 +50,12 @@ namespace Game1.Enemy
             this.state = state;
         }
 
-        public void editPosition(Vector2 amount)
+        public void EditPosition(Vector2 amount)
         {
             state.editPosition(amount);
         }
 
-        public bool shouldRemove()
+        public bool ShouldRemove()
         {
             return health <= 0;
         }

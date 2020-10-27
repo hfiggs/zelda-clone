@@ -3,14 +3,8 @@ using Game1.Environment;
 using Game1.Item;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SharpDX.MediaFoundation;
-using SharpDX.XAudio2;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.RoomLoading
 {
@@ -41,7 +35,11 @@ namespace Game1.RoomLoading
             {
                 item.Update(gameTime);
             }
+
+            CheckClocksAndStunEnemies();
+
             ItemList.RemoveAll(p => p.ShouldDelete);
+
             try
             {
                 foreach (IEnemy enemy in EnemyList)
@@ -52,7 +50,9 @@ namespace Game1.RoomLoading
             {
                 Console.WriteLine("Enemy foreach error");
             }
-            EnemyList.RemoveAll(p => p.shouldRemove());
+
+            EnemyList.RemoveAll(p => p.ShouldRemove());
+
             foreach (IEnvironment interactEnvironment in InteractEnviornment)
             {
                 interactEnvironment.BehaviorUpdate(gameTime);
@@ -84,6 +84,21 @@ namespace Game1.RoomLoading
             foreach (IItem item in ItemList)
             {
                 item.Draw(spriteBatch, Color.White);
+            }
+        }
+
+        private void CheckClocksAndStunEnemies()
+        {
+            foreach(IItem item in ItemList)
+            {
+                if(item.GetType() == typeof(Clock) && item.ShouldDelete)
+                {
+                    foreach(IEnemy enemy in EnemyList)
+                    {
+                        enemy.StunnedTimer = int.MaxValue;
+                    }
+                    break;
+                }
             }
         }
     }

@@ -180,4 +180,9 @@
 		<X>116</X>
 		<Y>36</Y>
 	</Item>
+	<Item>
+		<Type>Clock</Type>
+		<X>16</X>
+		<Y>16</Y>
+	</Item>
 </Assets>

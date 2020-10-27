@@ -6,9 +6,11 @@ namespace Game1.Enemy
 {
     class OldMan : IEnemy
     {
-        ISprite sprite;
+        public int StunnedTimer { get; set; } = 0;
 
-        Vector2 position;
+        private ISprite sprite;
+
+        private Vector2 position;
 
         public OldMan(Vector2 position)
         {
@@ -31,12 +33,12 @@ namespace Game1.Enemy
             // TODO: Logic for determining text and when to fade out sprite
         }
 
-        public void editPosition(Vector2 amount)
+        public void EditPosition(Vector2 amount)
         {
             //Does nothing!
         }
 
-        public bool shouldRemove()
+        public bool ShouldRemove()
         {
             return false;
         }
