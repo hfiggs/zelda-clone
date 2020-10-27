@@ -19,17 +19,27 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IProjectile proj = ((IProjectile)collision.collider);
+            IProjectile proj = (IProjectile)collision.collider;
+            IPlayer player = (IPlayer)collision.collidee;
 
             switch (proj)
             {
                 case EnemyBoomerang _:
-                    ((IPlayer)collision.collidee).ReceiveDamage(boomerangDamage, northVector);
+
+                    if (player.GetDirection() != 'N')
+                    {
+                        player.ReceiveDamage(boomerangDamage, northVector);
+                    }
+
                     proj.BeginDespawn();
+
                     break;
+
                 case Fireballs _:
-                    ((IPlayer)collision.collidee).ReceiveDamage(fireballDamage, northVector);
+
+                    player.ReceiveDamage(fireballDamage, northVector);
                     proj.BeginDespawn();
+
                     break;
             }
         }
