@@ -1,0 +1,40 @@
+﻿AUTHOR (OF REVIEW) - Hunter Figgs.3
+
+
+DATE - 10/26/2020
+
+
+SPRINT # - 3
+
+
+NAME OF FILE BEING REVIEWED - ...\Game1\RoomLoading\RoomParser.cs
+
+
+AUTHOR OF FILE BEING REVIEWED - Sergei Fedulov.1
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 25 minutes
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - 
+
+
+1. Not immediately obvious what the "XMLLoader" type is. Sounds like it should be a utility class but it also stores data. It would be more readable if there was some static class XMLLoader which took an argument "path" and returned the data contained in some other storage class -- Perhaps a "RoomData" class.
+
+
+2. The four public method headers are very clean and readable. Naming convention is uniform and chosen names make the functionality obvious.
+
+
+3. In the outer for-each loop, the "XMLNode n" is slightly confusing at first due to the single letter name. A better description would be "XMLNode node" or maybe "XMLNode roomNode". Also (nitpicking here), "itemsXMLNodes" should probably just be "itemXMLNodes." No need for double pluralization.
+
+
+4. Spacing should be added after the position code. "IItem item" declaration doesn't belong in same block of code.
+
+
+5. The "IItem item" variable does not need to be initialized to null. It's confusing. Makes the reader think the null value will be used later, but it isn't since error is thrown on default switch case.
+
+
+6. This comment is both readability and maintainable, but the large switch cases are an eyesore. Some of the switch cases uniformly construct objects, namely the items and non-interactable environment objects. Perhaps this could be done dynamically based on the names of the class, rather than checking for each individual string. Just a thought.
+
+
+7. Last nitpick: add spaces after each of the public methods. To improve readability, methods should have a space between each one.

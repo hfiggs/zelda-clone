@@ -1,0 +1,39 @@
+﻿AUTHOR (OF THE REVIEW) - Hunter Figgs.3
+
+
+DATE - 10/26/2020
+
+
+SPRINT # - 3
+
+
+NAME OF FILE BEING REVIEWED - ...\Game1\RoomLoading\Room.cs
+
+
+AUTHOR OF FILE BEING REVIEWED -  Sergei Fedulov.1
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) -
+
+
+1. All four variables/refs in the "Room" class are public, but they are all Lists of Interfaces. Using interfaces over concrete classes definitely lowers the coupling and thus makes makes maintaining this class more easy.
+
+
+2. Having two lists for IEnvironment objects ("NonInteractEnviornment" and "InteractEnviornment") is a little awkward. If someone wanted to change how IEnvironment objects were handled in this class, they would have to change two sets of code, rather than one if they were both together. However, for classes that have references to the "Room" class that will need access to the lists, it might make it easier for them to use the data in this separated form.
+
+
+3. This comment borders the edge of readability, but readability is important for maintainability! In the public constructor, instead of initializing all the lists to empty first, then using the ".AddRange" method to fill them with the game objects, an overload of the "new List<T>()" constructor could be used which takes an IEnumerable object. This way you could just call "new List<[interface name])(parser.Get[object type])" in a single line. This is relatively unimportant, but this would just mean less code to look and less code to change in the future.
+
+
+4. In the for-each loops, again use of the Interfaces is really good here. Nothing is being casted to concrete types, meaning that the Interface was successful! Everything could be done via methods in the interface. This is good for maintainability because the implementer didn't need to know about the concrete types to handle the objects.
+
+
+5. It appears the constructor has to take a concrete reference type "Game1", which is never perfect for maintainability. But, "Game1" has no useful interface to be used instead here, so this is acceptable.
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - 
+
+
+1. This was already mentioned in comment #3, but in the constructor, the initialization of the lists could be simplified to one line each (instead of two), by using the overloaded list constructor that takes an IEnumerable. This would be a pretty simply fix, but would make the code cleaner, and would make the file easier to read.
+
+2. Other than #1, this class is pretty good. The only other thing is that the class knows about the concrete class "Clock", but that would be pretty hard to get around with how the code is currently setup. The collision handler could know about the "Room" class and call a public method on "Room" to stun all enemies, but that would just increase coupling elsewhere.
