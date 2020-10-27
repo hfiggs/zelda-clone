@@ -14,6 +14,8 @@ namespace Game1.RoomLoading
         public List<IEnvironment> NonInteractEnviornment { get; set; }
         public List<IEnvironment> InteractEnviornment { get; set; }
         public List<IEnemy> EnemyList { get; set; }
+        public List<IEnemy> DecoratedEnemyList { get; set; }
+        public List<IEnemy> UnDecoratedEnemyList { get; set; }
 
         public Room(Game1 game, String file)
         {
@@ -27,6 +29,9 @@ namespace Game1.RoomLoading
             NonInteractEnviornment.AddRange(parser.GetNonInteractableEnvinornment());
             InteractEnviornment.AddRange(parser.GetInteractableEnvinornment());
             EnemyList.AddRange(parser.GetEnemies());
+
+            DecoratedEnemyList = new List<IEnemy>();
+            UnDecoratedEnemyList = new List<IEnemy>();
         }
 
         public void Update(GameTime gameTime)
@@ -40,16 +45,24 @@ namespace Game1.RoomLoading
 
             ItemList.RemoveAll(p => p.ShouldDelete);
 
-            try
+            foreach (IEnemy enemy in EnemyList)
             {
-                foreach (IEnemy enemy in EnemyList)
-                {
-                    enemy.Update(gameTime, new Rectangle(0, 0, 256, 176));
-                }
-            } catch (System.InvalidOperationException e)
-            {
-                Console.WriteLine("Enemy foreach error");
+                enemy.Update(gameTime, new Rectangle(0, 0, 256, 176));
             }
+
+            foreach (IEnemy decoratedEnemy in DecoratedEnemyList)
+            {
+                EnemyList.Remove(((EnemyDamageDecorator)decoratedEnemy).original);
+                EnemyList.Add(decoratedEnemy);
+            }
+            DecoratedEnemyList.Clear();
+
+            foreach (IEnemy unDecoratedEnemy in UnDecoratedEnemyList)
+            {
+                EnemyList.Remove((EnemyDamageDecorator)unDecoratedEnemy);
+                EnemyList.Add(((EnemyDamageDecorator)unDecoratedEnemy).original);
+            }
+            UnDecoratedEnemyList.Clear();
 
             EnemyList.RemoveAll(p => p.ShouldRemove());
 

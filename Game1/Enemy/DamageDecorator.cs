@@ -7,7 +7,7 @@ namespace Game1.Enemy
     {
         public int StunnedTimer { get; set; } = 0;
 
-        private IEnemy original;
+        public IEnemy original;
         private float damagedTimer;
         private Color[] flickers = { Color.LightBlue, Color.Orange, Color.Red };
         private int currentFlicker = 0;
@@ -54,8 +54,7 @@ namespace Game1.Enemy
 
             if(damagedTimer <= 0)
             {
-                game.Screen.CurrentRoom.EnemyList.Add(original);
-                game.Screen.CurrentRoom.EnemyList.Remove(this);
+                game.Screen.CurrentRoom.UnDecoratedEnemyList.Add(this);
             }
             original.Update(gameTime, drawingLimits);
         }

@@ -31,8 +31,7 @@ namespace Game1.Enemy
         {
             health -= amount;
             EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, direction, game);
-            game.Screen.CurrentRoom.EnemyList.Add(decorator);
-            game.Screen.CurrentRoom.EnemyList.Remove(this);
+            game.Screen.CurrentRoom.DecoratedEnemyList.Add(decorator);
         }
 
         public void EditPosition( Vector2 amount)
