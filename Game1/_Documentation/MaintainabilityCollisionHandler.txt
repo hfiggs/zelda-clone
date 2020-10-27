@@ -1,0 +1,12 @@
+Author of the code review: Patrick Haughn
+Date: 10/26/20
+Sprint 3
+File name: CollisionHandler.cs
+Author: Jared Perkins, Hunter Figgs
+Time: 25 minutes
+Comments:
+	- The use of command classes helps give the CollisionHandler more cohesion by not including individual collision case handling.
+	- The class is fairly short and easy to read which makes it very easy to add new tuples later on if necessary.
+	- I believe this class is very maintainable, as it is easy and straight forward to make additions to.
+Hypethetical change:
+	- I don't feel there are any changes that need to be made to the class. If changes were made I feel like it would involve changing from the All Collision Handler design as a whole which wouldn't be worth the effort.

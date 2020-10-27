@@ -1,0 +1,10 @@
+Author of the code review: Patrick Haughn
+Date: 10/26/20
+Sprint 3
+File name: Room.cs
+Author: Sergei Fedulov
+Time: 12 minutes
+	- The file has a reasonable amount of lines of code.
+	- The file is contains only what is necessary.
+	- It is easy to read and interpret the file, lists for all objects are created, updated, and drawn.
+	- Overall I think this file has great readability and should be easier to maintain as a result.

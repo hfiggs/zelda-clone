@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\CodeReviews",
     "\\Game1",
-    "\\Game1\\CollisionDetection",
-    "\\Game1\\Collision_Handling"
+    "\\Game1\\Enemy\\SpikeTrap",
+    "\\Game1\\RoomLoading"
   ],
-  "SelectedNode": "\\Game1\\CollisionDetection\\CollisionDetector.cs",
+  "SelectedNode": "\\CodeReviews",
   "PreviewInSolutionExplorer": false
 }
