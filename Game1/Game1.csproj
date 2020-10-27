@@ -357,7 +357,9 @@
     <Content Include="RoomLoading\RoomXML\RoomD2.xml" />
     <Content Include="RoomLoading\RoomXML\RoomF3.xml" />
     <Content Include="RoomLoading\RoomXML\RoomF1.xml" />
+    <Content Include="_Documentation\MaintainabilityPlayerInventory.txt" />
     <Content Include="_Documentation\MaintainabilityCopy.txt" />
+    <Content Include="_Documentation\ReadabilityCollisionDetection.txt" />
     <Content Include="_Documentation\ReadabilityCopy.txt" />
     <Content Include="_Documentation\README.txt" />
   </ItemGroup>
