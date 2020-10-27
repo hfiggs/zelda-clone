@@ -25,9 +25,9 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (envo.GetType() == typeof(DoorSLocked))
             {
-                if (((DoorSLocked)envo).open)
+                if (((DoorSLocked)envo).open == 2)
                 System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
-                else if (player.PlayerInventory.SubKey())
+                else if (((DoorSLocked)envo).open == 0 && player.PlayerInventory.SubKey())
                     ((DoorSLocked)envo).Open();
                 else
                 {

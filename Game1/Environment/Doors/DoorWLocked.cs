@@ -16,22 +16,36 @@ namespace Game1.Environment
         private Vector2 position;
 
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
+        //private Rectangle hitbox2 = new Rectangle(0, 0, 10, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
-        public bool open = false;
+        private float timeTillOpen;
+        public int open; // 0 = locked, 1 = opening, 2 = open
 
         public DoorWLocked(Vector2 position)
         {
             sprite = EnvironmentSpriteFactory.instance.createDoorWLocked();
             this.position = position;
             hitbox1.Location += position.ToPoint();
+         //   hitbox2.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
+         //   hitboxes.Add(hitbox2);
+            timeTillOpen = -1;
+            open = 0;
         }
 
         public void BehaviorUpdate(GameTime gameTime)
         {
-            //throw new NotImplementedException("For later collision mechanics");
+            if (open == 1)
+            {
+                timeTillOpen -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timeTillOpen <= 0)
+                {
+                    sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
+                    hitboxes.Remove(hitbox1);
+                    open = 2;
+                }
+            }
         }
-
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, position, color);
@@ -44,8 +58,8 @@ namespace Game1.Environment
 
         public void Open()
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
-            open = true;
+            open = 1;
+            timeTillOpen = 250f;
         }
     }
 }

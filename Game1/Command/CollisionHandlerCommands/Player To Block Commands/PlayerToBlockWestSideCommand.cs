@@ -19,16 +19,17 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             IEnvironment envo = (IEnvironment)collision.collidee;
             IPlayer player = (IPlayer)collision.collider;
+            
             if (envo.GetType() == typeof(MovableBlock) && !((MovableBlock)envo).hasMoved)
             {
                 ((MovableBlock)envo).Move(new Vector2(1, 0), 1.0f);
             }
             else if (envo.GetType() == typeof(DoorELocked))
             {
-                if (((DoorELocked)envo).open)
+                if (((DoorELocked)envo).open == 2)
                     System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
 
-                else if (player.PlayerInventory.SubKey())
+                else if (((DoorELocked)envo).open == 0 && player.PlayerInventory.SubKey())
                     ((DoorELocked)envo).Open();
                 else
                 {
