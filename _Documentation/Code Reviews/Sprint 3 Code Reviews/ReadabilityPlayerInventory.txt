@@ -1,0 +1,31 @@
+﻿AUTHOR (OF REVIEW) - Sergei Fedulov
+
+
+DATE - 10/26/2020
+
+
+SPRINT # - 3
+
+
+NAME OF FILE BEING REVIEWED - PlayerInventory.cs
+
+
+AUTHOR OF FILE BEING REVIEWED - Hunter Figgs
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 30
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5):
+
+- Class is fairly short at only 100 lines long but most of that is method heathers, whitespace, and curly braces, so realistially it is much shorter.
+
+- Constant variables, good variable names and comments make it easy to understand what each varabile is used for.
+
+- Methods are nice and short and serve a very specific purpose making it easier to understand and explain what each method does.
+
+- Within the constructor, if it was not for the comment it may have been hard to determine what the initial values were. Potentially explicitley setting the defualt values may make it a little 
+  easier to udnerstand.
+
+- The comments for defaultHalfHearts, maxMaxHalfHearts, fullHeart make it much easier to understand where the numbers are oming from. However, if a full heart is equal to 2 half hearts shouldnt the
+  maxMaxHalfHearts value be 32?

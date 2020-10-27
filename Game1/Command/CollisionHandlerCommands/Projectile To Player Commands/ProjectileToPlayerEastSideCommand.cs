@@ -1,6 +1,4 @@
-﻿
-
-using Game1.Collision_Handling;
+﻿using Game1.Collision_Handling;
 using Game1.Player;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
@@ -21,17 +19,27 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IProjectile proj = ((IProjectile)collision.collider);
+            IProjectile proj = (IProjectile)collision.collider;
+            IPlayer player = (IPlayer)collision.collidee;
 
             switch (proj)
             {
                 case EnemyBoomerang _:
-                    ((IPlayer)collision.collidee).ReceiveDamage(boomerangDamage, eastVector);
+
+                    if (player.GetDirection() != 'E')
+                    {
+                        player.ReceiveDamage(boomerangDamage, eastVector);
+                    }
+
                     proj.BeginDespawn();
+
                     break;
+
                 case Fireballs _:
-                    ((IPlayer)collision.collidee).ReceiveDamage(fireballDamage, eastVector);
+
+                    player.ReceiveDamage(fireballDamage, eastVector);
                     proj.BeginDespawn();
+
                     break;
             }
         }

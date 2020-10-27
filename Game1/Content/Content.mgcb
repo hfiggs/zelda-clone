@@ -418,3 +418,6 @@
 #begin RoomXML/RoomG0.xml
 /copy:RoomXML/RoomG0.xml
 
+#begin RoomXML/RoomZ0.xml
+/copy:RoomXML/RoomZ0.xml
+

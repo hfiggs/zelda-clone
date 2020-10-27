@@ -336,6 +336,7 @@
     <Content Include="Content\RoomXML\RoomF2.xml" />
     <Content Include="Content\RoomXML\RoomF3.xml" />
     <Content Include="Content\RoomXML\RoomG0.xml" />
+    <Content Include="Content\RoomXML\RoomZ0.xml" />
     <Content Include="Icon.ico" />
     <Content Include="RoomLoading\RoomXML\RoomA2.xml" />
     <Content Include="RoomLoading\RoomXML\RoomB4.xml" />
@@ -355,10 +356,13 @@
     <Content Include="RoomLoading\RoomXML\RoomD2.xml" />
     <Content Include="RoomLoading\RoomXML\RoomF3.xml" />
     <Content Include="RoomLoading\RoomXML\RoomF1.xml" />
+    <Content Include="_Documentation\MaintainabilityCollisionHandler.txt" />
+    <Content Include="_Documentation\MaintainabilityXMLParser.txt" />
     <Content Include="_Documentation\MaintainabilityPlayerInventory.txt" />
     <Content Include="_Documentation\MaintainabilityCopy.txt" />
     <Content Include="_Documentation\ReadabilityCollisionDetection.txt" />
     <Content Include="_Documentation\ReadabilityCopy.txt" />
+    <Content Include="_Documentation\ReadabilityRoom.txt" />
     <Content Include="_Documentation\README.txt" />
   </ItemGroup>
   <ItemGroup>
