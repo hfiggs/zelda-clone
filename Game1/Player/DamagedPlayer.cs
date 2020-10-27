@@ -25,7 +25,7 @@ namespace Game1.Player
 
         const int flickerDuration = 45; // ms
 
-        private Rectangle playerHitbox = new Rectangle(6, 18, 15, 10);
+        private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
         private Rectangle swordHitbox = new Rectangle();
 
         int frameCounter;
@@ -167,12 +167,12 @@ namespace Game1.Player
 
         public Rectangle GetPlayerHitbox()
         {
-            return new Rectangle(playerHitbox.Location + decoratedPlayer.GetLocation().Location, playerHitbox.Size);
+            return decoratedPlayer.GetPlayerHitbox();
         }
 
         public Rectangle GetSwordHitbox()
         {
-            return new Rectangle(swordHitbox.Location + decoratedPlayer.GetLocation().Location, swordHitbox.Size);
+            return decoratedPlayer.GetSwordHitbox();
         }
 
         public void SetSwordHitbox(Rectangle newHitbox)
