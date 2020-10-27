@@ -17,7 +17,7 @@ Current Bugs:
 
 Code Metrics/Analysis:
 
-	- A visual studio "Code Metrics" was run on the project, which takes into account things like cyclomatics complexity, inheritance, coupling, and lines of code. Our project received a maintainability index (MI) score of [insert new score] overall, which is relatively high. The Microsoft Docs website lists projects with MI between 20 and 100 as having high maintainability.
+	- A visual studio "Code Metrics" was run on the project, which takes into account things like cyclomatics complexity, inheritance, coupling, and lines of code. Our project received a maintainability index (MI) score of 82 overall, which is relatively high. The Microsoft Docs website lists projects with MI between 20 and 100 as having high maintainability.
 
 	- The same VS tool revealed that nearly all of the files in the project contain less than 100 lines of code. The few that do are mostly factories, which are permissible.
 
