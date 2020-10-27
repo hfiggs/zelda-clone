@@ -1,0 +1,39 @@
+﻿AUTHOR (OF THE REVIEW) - Sergei Fedulov
+
+
+DATE - 10/26/2020
+
+
+SPRINT # - 3
+
+
+NAME OF FILE BEING REVIEWED - CollisionDetector.cs
+
+
+AUTHOR OF FILE BEING REVIEWED - Patrick Haughn, Jeff Gaydos
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 40
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5):
+
+- The cohesion for this class and its methods could be a bit better in my opinion. There are only two methods in this class GetCollisionList and  DetermineSide. Determine side has a very clear
+  and distinct purpose. However, GetCollisionList seems to do a lot of different jobs. It handles detecting every single collision in the game and has over 100 lines on its own. This may present some
+  problems when it comes to maintainability in the future as it may be difficult to determine errors in collision detection when they are all in one method.
+
+- The coupling for this class seems to be pretty low. It only relies on Screen to get the list of objects on the screen.
+
+- Lots of branching at times going 3 to 4 levels deep. This not only affects performance especially when there are three for each loops within each other but also can make it considerably harder
+  to debug if going through edgecases. Also may make it difficult to implement new collisions.
+
+- There does not seem to be a method as to why certain for loops are within other for loops. So, in the case of us needing to add more collisions it maybe be hard to know where the new collision
+  should fit in.
+
+- No magic numbers or string constants which always makes things easier to maintain.
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE:
+
+- Seperating out the different collisions into different methods or even classes could help out with maintainabilty a lot. This could create higher cohesion and a shorter/easier to maintain and
+  understand implementation.
