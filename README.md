@@ -22,6 +22,8 @@ Current Bugs:
 
 	- Puzzle Events don't trigger doors opening (pushed to next sprint)
 
+	- Sometimes player and/or enemies can get pushed outside the walls
+
 Code Metrics/Analysis:
 
 	- A visual studio "Code Metrics" was run on the project, which takes into account things like cyclomatics complexity, inheritance, coupling, and lines of code. Our project received a maintainability index (MI) score of 82 overall, which is relatively high. The Microsoft Docs website lists projects with MI between 20 and 100 as having high maintainability.
