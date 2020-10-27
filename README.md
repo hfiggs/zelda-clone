@@ -7,13 +7,20 @@
 				3 - Use Bomb
 				Z - Attack
 				N - Attack
-				R - Reset
 				U - Cycle current room forward
 				I - Cycle current room backwared
 
 
 Current Bugs:
+	- Particles are not present for certain events and projectiles (no enemy death, no sword beam explosion)
 
+	- Bats collision in "Bow Room" can be buggy (vibrating effect)
+
+	- Speeds and Cooldowns of enemies and players could be more accurate to the game
+
+	- Link does not flash when timer is picked up and enemies stop animating (pushed to next sprint)
+
+	- Puzzle Events don't trigger doors opening (pushed to next sprint)
 
 Code Metrics/Analysis:
 
@@ -25,6 +32,8 @@ Code Metrics/Analysis:
 
 
 Other important information:
+
+	- Switching to certain rooms can push the player outside of the screen, either restart the program or find a room with an open door near where you were pushed off and walk through it back into the room
 
 	- The NuGet package "ResolutionBuddy" is currently being used to help scaling up the game window. The package can be found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
 
