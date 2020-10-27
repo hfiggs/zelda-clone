@@ -6,6 +6,8 @@ namespace Game1.Enemy
 {
     class Goriya : IEnemy
     {
+        public int StunnedTimer { get; set; } = 0;
+
         private Vector2 oldDirection;
         private double totalElapsedSeconds;
         private double attackCooldown = 5;
@@ -39,36 +41,43 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            Vector2 newDirection = state.GetDirection();
-            totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (totalElapsedSeconds >= attackCooldown)
+            if (StunnedTimer == 0)
             {
-                state.Attack();
-                totalElapsedSeconds -= attackCooldown;
+                Vector2 newDirection = state.GetDirection();
+                totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (totalElapsedSeconds >= attackCooldown)
+                {
+                    state.Attack();
+                    totalElapsedSeconds -= attackCooldown;
+                }
+
+                else if (newDirection.X != oldDirection.X || newDirection.Y != oldDirection.Y)
+                {
+                    if (state.GetDirection().X < 0)
+                    {
+                        state = new GoriyaStateMovingLeft(game, this, state.GetPosition());
+                    }
+                    if (state.GetDirection().X > 0)
+                    {
+                        state = new GoriyaStateMovingRight(game, this, state.GetPosition());
+                    }
+                    if (state.GetDirection().Y < 0)
+                    {
+                        state = new GoriyaStateMovingUp(game, this, state.GetPosition());
+                    }
+                    if (state.GetDirection().Y > 0)
+                    {
+                        state = new GoriyaStateMovingDown(game, this, state.GetPosition());
+                    }
+                    oldDirection = state.GetDirection();
+                }
+
+                state.Update(gameTime, drawingLimits);
             }
 
-            else if (newDirection.X != oldDirection.X || newDirection.Y != oldDirection.Y) {
-                if (state.GetDirection().X < 0)
-                {
-                    state = new GoriyaStateMovingLeft(game, this, state.GetPosition());
-                }
-                if (state.GetDirection().X > 0)
-                {
-                    state = new GoriyaStateMovingRight(game, this, state.GetPosition());
-                }
-                if (state.GetDirection().Y < 0)
-                {
-                    state = new GoriyaStateMovingUp(game, this, state.GetPosition());
-                }
-                if (state.GetDirection().Y > 0)
-                {
-                    state = new GoriyaStateMovingDown(game, this, state.GetPosition());
-                }
-                oldDirection = state.GetDirection();
-            }
-
-            state.Update(gameTime, drawingLimits);
+            StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            StunnedTimer = Math.Max(0, StunnedTimer);
         }
 
         public void SetState(IEnemyState state)
@@ -81,12 +90,12 @@ namespace Game1.Enemy
             return state.GetHitbox();
         }    
 
-        public void editPosition(Vector2 amount)
+        public void EditPosition(Vector2 amount)
         {
             state.editPosition(amount);
         }
 
-        public bool shouldRemove()
+        public bool ShouldRemove()
         {
             return health <= 0;
         }

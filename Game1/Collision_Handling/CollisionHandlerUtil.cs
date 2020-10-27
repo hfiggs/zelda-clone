@@ -32,7 +32,8 @@ namespace Game1.Collision_Handling
                     player.PlayerInventory.HasBow = true;
                     break;
                 case Clock _:
-                    throw new NotImplementedException();
+                    // ShouldDelete gets set to true
+                    break;
                 case Compass _:
                     player.PlayerInventory.HasCompass = true;
                     break;

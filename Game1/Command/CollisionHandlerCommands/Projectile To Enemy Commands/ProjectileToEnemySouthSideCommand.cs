@@ -10,6 +10,8 @@ namespace Game1.Command.CollisionHandlerCommands
 {
     class ProjectileToEnemySouthSideCommand : ICollisionCommand
     {
+        private const int boomerangStunTime = 10000; // ms
+
         public ProjectileToEnemySouthSideCommand()
         {
 
@@ -24,20 +26,20 @@ namespace Game1.Command.CollisionHandlerCommands
                 knockbackDirect = new Vector2(0, -1);
             if (collision.collider.GetType() == typeof(Boomerang))
             {
-                if (enemy.GetType() == typeof(Jelly))
+                switch (enemy)
                 {
-                    enemy.ReceiveDamage(.5f, knockbackDirect);
-                    proj.BeginDespawn();
-                }
-                else if (enemy.GetType() == typeof(Bat))
-                {
-                    enemy.ReceiveDamage(.5f, knockbackDirect);
-                    proj.BeginDespawn();
-                }
-                else
-                {
-                    throw new System.NotImplementedException();
-                    proj.BeginDespawn();
+                    case Jelly _:
+                    case Bat _:
+                        enemy.ReceiveDamage(.5f, knockbackDirect);
+                        proj.BeginDespawn();
+                        break;
+                    case Aquamentus _:
+                    case Dodongo _:
+                        break;
+                    default:
+                        enemy.StunnedTimer = boomerangStunTime;
+                        proj.BeginDespawn();
+                        break;
                 }
             }
             else if (proj.GetType() == typeof(Arrow))

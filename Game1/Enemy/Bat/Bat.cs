@@ -1,16 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.XAudio2;
+using System;
 
 namespace Game1.Enemy
 {
     class Bat : IEnemy
     {
+        public int StunnedTimer { get; set; } = 0;
+
         private IEnemyState state;
         private Game1 game;
         private float health;
         private Vector2 position;
-
 
         public Bat(Game1 game, Vector2 spawnPosition)
         {
@@ -35,7 +37,13 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            state.Update(gameTime, drawingLimits);
+            if(StunnedTimer == 0)
+            {
+                state.Update(gameTime, drawingLimits);
+            }
+
+            StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            StunnedTimer = Math.Max(0, StunnedTimer);
         }
 
         public void SetState(IEnemyState state)
@@ -47,11 +55,11 @@ namespace Game1.Enemy
         {
             return state.GetHitbox();
         }
-        public void editPosition(Vector2 amount)
+        public void EditPosition(Vector2 amount)
         {
             state.editPosition(amount);
         }
-        public bool shouldRemove()
+        public bool ShouldRemove()
         {
             return health <= 0;
         }

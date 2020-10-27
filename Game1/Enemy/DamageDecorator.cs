@@ -5,12 +5,14 @@ namespace Game1.Enemy
 {
     class EnemyDamageDecorator : IEnemy
     {
-        IEnemy original;
+        public int StunnedTimer { get; set; } = 0;
+
+        private IEnemy original;
         private float damagedTimer;
-        Color[] flickers = { Color.LightBlue, Color.Orange, Color.Red };
-        int currentFlicker = 0;
-        float timeTillFlickerSwap;
-        Game1 game;
+        private Color[] flickers = { Color.LightBlue, Color.Orange, Color.Red };
+        private int currentFlicker = 0;
+        private float timeTillFlickerSwap;
+        private Game1 game;
 
         Vector2 knockbackMagnitude = new Vector2(1, 1);
         public EnemyDamageDecorator( IEnemy Original, Vector2 direction, Game1 game)
@@ -39,7 +41,7 @@ namespace Game1.Enemy
             timeTillFlickerSwap -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if(damagedTimer > 200)
             {
-                original.editPosition(slideAmount);
+                original.EditPosition(slideAmount);
             }
             if(timeTillFlickerSwap <= 0)
             {
@@ -56,14 +58,14 @@ namespace Game1.Enemy
             original.Update(gameTime, drawingLimits);
         }
 
-        public void editPosition(Vector2 amount)
+        public void EditPosition(Vector2 amount)
         {
-            original.editPosition(amount);
+            original.EditPosition(amount);
         }
 
-        public bool shouldRemove()
+        public bool ShouldRemove()
         {
-            return original.shouldRemove();
+            return original.ShouldRemove();
         }
 
         public Rectangle GetHitbox()

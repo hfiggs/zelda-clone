@@ -11,11 +11,13 @@ namespace Game1.Enemy
 
         void Draw(SpriteBatch spriteBatch, Color color);
 
-        void editPosition(Vector2 amount);
+        void EditPosition(Vector2 amount);
 
-        bool shouldRemove();
+        bool ShouldRemove();
         
         void SetState(IEnemyState state);
+
+        int StunnedTimer { get; set; } // ms (0 -> not stunned, Int.MaxValue -> perma stunned)
 
         Rectangle GetHitbox();
     }
