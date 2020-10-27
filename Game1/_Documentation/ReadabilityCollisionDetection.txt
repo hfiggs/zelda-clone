@@ -1,0 +1,25 @@
+﻿AUTHOR (OF REVIEW) - Jared Perkins
+
+
+DATE - 10/26/2020
+
+
+SPRINT # - 3
+
+
+NAME OF FILE BEING REVIEWED - CollisionDetection
+
+
+AUTHOR OF FILE BEING REVIEWED - Jeff Gaydos and Patrick Haughn
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 21 minutes
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - Collision helper/container object was very well written and readable. Only change I would have made is declaring whose side the 'side' variable was.
+																	For colliison detection, the lists at the top should be a bit more spaced out. That declaration looks stuffed and tight.
+																	I feel some of code in the for eachs in each collision check could also be spaced a little more.
+																	The for eachs might also be better off being seperated into methods that return their own lists, to prevent clutter of so much logic on screen at once
+																	Determine side is readable, and also has good debugging.
+																	Once again, it is hard to determine from a first glance who the side variable belongs to.
+																	lots of spelling errors.

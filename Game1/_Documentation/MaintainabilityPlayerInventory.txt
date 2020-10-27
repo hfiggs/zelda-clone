@@ -1,0 +1,25 @@
+﻿AUTHOR (OF THE REVIEW) - Jared Perkins
+
+
+DATE - 10/26/2020
+
+
+SPRINT # - 3
+
+
+NAME OF FILE BEING REVIEWED - PlayerInventory Folder
+
+
+AUTHOR OF FILE BEING REVIEWED -  Hunter Figgs
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) - Lots of methods, but seems are all needed.
+													All methods simple, easy to maintain and change if something needs to be changed.
+													Works much better for learning about player's inventory than keeping it in ENUMs.
+													Not sure if we need an interface for playerinventory, shouldn't it always be the same across players?
+													I feel the hlaf hearts in ints could be similarly implemented as floats.
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - Changing maps and compasses to be dungeon specfic. Should be a really simple fix, just change the interface and then change
+
+the variables to match. 
