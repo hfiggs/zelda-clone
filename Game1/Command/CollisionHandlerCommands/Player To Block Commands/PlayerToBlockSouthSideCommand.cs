@@ -25,7 +25,9 @@ namespace Game1.Command.CollisionHandlerCommands
             else if (envo.GetType() == typeof(DoorNLocked))
             {
                 if (((DoorNLocked)envo).open == 2)
-                    System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
+                {
+                    /* Collision with Open Door. Allowing walk through.*/
+                }
                 else if (((DoorNLocked)envo).open == 0 && player.PlayerInventory.SubKey())
                     ((DoorNLocked)envo).Open();
                 else
@@ -36,7 +38,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (envo.GetType() == typeof(DoorNOpen))
             {
-                System.Console.WriteLine("Collision with Open Door. Allowing walk through.");
+                /* Collision with Open Door. Allowing walk through. */;
             }
             else if (envo.GetType() == typeof(DoorNBombable))
             {

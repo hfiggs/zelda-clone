@@ -154,7 +154,7 @@ namespace Game1.CollisionDetection
                 
 
             }
-            System.Console.WriteLine(collisionList.Count);
+
             return collisionList;
         }
 
@@ -162,9 +162,6 @@ namespace Game1.CollisionDetection
         {
             int xOverlap = intersectionRec.Width;
             int yOverlap = intersectionRec.Height;
-            Console.WriteLine("xover: " + xOverlap);
-            Console.WriteLine("yover: " + yOverlap);
-            Console.WriteLine("______________________________________");
             char side;
 
             if (xOverlap > yOverlap)
