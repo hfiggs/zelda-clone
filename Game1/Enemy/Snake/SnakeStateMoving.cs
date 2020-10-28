@@ -15,19 +15,22 @@ namespace Game1.Enemy
 
         // N=0, S=1, E=2, W=3
         private int moveDirection;
+        private bool playerSpotted;
+        private Game1 game;
 
         private float timeUntilNewDirection;
         private const float moveTime = 1000f; // ms
 
         private const int normalSpeed = 1;
         private const int fastSpeed = 4;
+        private const int viewWidth = 16;
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 150f; // ms per frame
 
         public ISprite Sprite { get; private set; }
 
-        public SnakeStateMoving(Vector2 position)
+        public SnakeStateMoving(Game1 game, Vector2 position)
         {
             rand = new Random();
 
@@ -35,12 +38,15 @@ namespace Game1.Enemy
             Sprite = isFacingLeft ? EnemySpriteFactory.Instance.CreateSnakeLeftSprite() : EnemySpriteFactory.Instance.CreateSnakeRightSprite();
 
             this.position = position;
+            this.game = game;
 
             timeUntilNewDirection = moveTime;
 
             moveDirection = rand.Next(4);
 
             timeUntilNextFrame = animationTime;
+
+            playerSpotted = false;
         }
 
         public void Attack()
@@ -56,6 +62,7 @@ namespace Game1.Enemy
         public void editPosition(Vector2 amount)
         {
             position = Vector2.Add(position, amount);
+            playerSpotted = false;
         }
 
         public Vector2 GetDirection()
@@ -89,7 +96,7 @@ namespace Game1.Enemy
         {
             timeUntilNewDirection -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
 
-            if (timeUntilNewDirection <= 0)
+            if (timeUntilNewDirection <= 0 && !playerSpotted)
             {
                 moveDirection = rand.Next(4);
 
@@ -107,7 +114,21 @@ namespace Game1.Enemy
                 Sprite = EnemySpriteFactory.Instance.CreateSnakeLeftSprite();
             }
 
-            int speed = normalSpeed;
+            Vector2 windowDims = game.GetWindowDimensions();
+            if (isFacingLeft && game.Screen.GetPlayerRectangle().Intersects(new Rectangle((int)(position.X - windowDims.X), (int)position.Y, (int)windowDims.X, viewWidth))) {
+                playerSpotted = true;
+                moveDirection = 3;
+            } else if (!isFacingLeft && game.Screen.GetPlayerRectangle().Intersects(new Rectangle((int)position.X, (int)position.Y, (int)windowDims.X, viewWidth))) {
+                playerSpotted = true;
+                moveDirection = 2;
+            }
+
+            int speed;
+            if (playerSpotted) {
+                speed = fastSpeed;
+            } else {
+                speed = normalSpeed;
+            }
 
             switch (moveDirection)
             {

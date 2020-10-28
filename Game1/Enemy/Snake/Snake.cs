@@ -17,7 +17,7 @@ namespace Game1.Enemy
         {
             this.game = game;
 
-            state = new EnemyStateSpawning(position, this, new SnakeStateMoving(position));
+            state = new EnemyStateSpawning(position, this, new SnakeStateMoving(game, position));
 
             health = 0.5f;
         }

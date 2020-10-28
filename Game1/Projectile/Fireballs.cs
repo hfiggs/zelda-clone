@@ -11,6 +11,7 @@ namespace Game1.Projectile
         private Vector2 position, directionOfPlayer;
         private float moveSpeed, slightChangeInY, topAndBottomModifier;
         private bool removeMe = false;
+        private const int yDiff = 20;
 
         public Fireballs(Vector2 position, Rectangle rec)
         {
@@ -21,12 +22,11 @@ namespace Game1.Projectile
             moveSpeed = 200;
             slightChangeInY = 100;
             this.position = position;
-            directionOfPlayer = Vector2.Normalize(position - new Vector2(rec.X, rec.Y));
+            directionOfPlayer = Vector2.Normalize(position - (new Vector2 (rec.Center.X, rec.Center.Y - yDiff)));
         }
         public void Update(GameTime gameTime)
         {
-            // Rounding is to make it less accurate so it's more like the game
-            position.Y -= (float)Math.Round(directionOfPlayer.Y, 1) * moveSpeed * (float)Math.Round((float)gameTime.ElapsedGameTime.TotalSeconds, 2);
+            position.Y -= directionOfPlayer.Y * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             position.X -= directionOfPlayer.X * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Used to change sprite sheet row and allow for flashing
