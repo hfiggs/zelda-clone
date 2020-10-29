@@ -6,6 +6,8 @@ namespace Game1.Sprite
     public interface ISprite
     {
         void Update();
+
         void Draw(SpriteBatch spriteBatch, Vector2 positon, Color color);
+        void Draw(SpriteBatch spriteBatch, Vector2 position, Color color, float layerDepth);
     }
 }

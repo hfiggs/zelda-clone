@@ -1,11 +1,5 @@
-﻿using Game1.Sprite;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Sprite
 {
@@ -44,6 +38,14 @@ namespace Game1.Sprite
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, color);
+        }
+
+        public void Draw(SpriteBatch spritebatch, Vector2 position, Color color, float layerDepth)
+        {
+            Rectangle sourceRectangle = new Rectangle(width * column, height * (row + +currentFrame), width, height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
+
+            spritebatch.Draw(texture, destinationRectangle, sourceRectangle, color, 0f, new Vector2(0f, 0f), SpriteEffects.None, layerDepth);
         }
     }
 }
