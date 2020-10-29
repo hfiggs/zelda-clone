@@ -1,14 +1,30 @@
-﻿Current Program Controls: 	W - Move Link Up
-				A - Move Link Left
-				S - Move Link Down
-				D - Move Link Right
-				1 - Use Arrow
-				2 - Use Boomerang
-				3 - Use Bomb
-				Z - Attack
-				N - Attack
-				U - Cycle current room forward
-				I - Cycle current room backwared
+﻿Current Game Controls: 	
+
+	-Keyboard:
+		W ------- Move Link Up
+		A ------- Move Link Left
+		S ------- Move Link Down
+		D ------- Move Link Right
+		Z/N ----- Attack
+		1 ------- Use Arrow
+		2 ------- Use Boomerang
+		3 ------- Use Bomb
+		U ------- Cycle current room forward
+		I ------- Cycle current room backwared
+		Q ------- Quit Game
+
+	-GamePad:
+		DPadUp/LeftStickUp -------------- Move Link Up
+		DPadLeft/LeftStickLeft ---------- Move Link Left
+		DPadDown/LeftStickDown ---------- Move Link Down
+		DPadRight/LeftStickRight -------- Move Link Right
+		A ------------------------------- Attack
+		B ------------------------------- Use Arrow
+		X ------------------------------- Use Boomerang
+		Y ------------------------------- Use Bomb
+		RightShoulder ------------------- Cycle current room forward
+		LeftShoulder -------------------- Cycle current room backwared
+		Back ---------------------------- Quit Game
 
 
 Current Bugs:
@@ -23,6 +39,7 @@ Current Bugs:
 	- Puzzle Events don't trigger doors opening (pushed to next sprint)
 
 	- Sometimes player and/or enemies can get pushed outside the walls
+
 
 Code Metrics/Analysis:
 
