@@ -14,6 +14,8 @@ namespace Game1.Environment
         private Vector2 position;
         public bool open = false;
 
+        private const float topLayer = 1f;
+
         //private Rectangle openHitbox1 = new Rectangle(0, 0, 8, 32);
         //private Rectangle openHitbox2 = new Rectangle(24, 0, 8, 32);
 
@@ -34,7 +36,14 @@ namespace Game1.Environment
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, position, color);
+            if (open)
+            {
+                sprite.Draw(spriteBatch, position, color, topLayer);
+            }
+            else
+            {
+                sprite.Draw(spriteBatch, position, color);
+            }
         }
 
         public List<Rectangle> GetHitboxes()

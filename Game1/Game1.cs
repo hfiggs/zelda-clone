@@ -15,7 +15,6 @@ using System.Collections.Generic;
 using Game1.Player;
 using Game1.Projectile;
 using Game1.Environment;
-using Game1.Item;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
 using Game1.RoomLoading;
 
@@ -44,7 +43,8 @@ namespace Game1
         {
             controllerList = new List<IController>
             {
-                new KeyboardController(this)
+                new KeyboardController(this),
+                new GamepadController(this, PlayerIndex.One)
             };
 
             IsMouseVisible = true;
@@ -94,7 +94,7 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
             Screen.Draw(spriteBatch);
 
