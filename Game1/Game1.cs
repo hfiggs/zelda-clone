@@ -73,6 +73,7 @@ namespace Game1
             //DELETE
             AudioManager.LoadContent(Content);
             AudioManager.PlayMusic("dungeon");
+            //AudioManager.PlaySound("death");
 
             Screen.LoadAllRooms();
         }
