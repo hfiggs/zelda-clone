@@ -29,15 +29,20 @@ namespace Game1.Player
             frameCount = 0;
             timeUntilNextFrame = animationTime;
 
-            switch (player.PlayerInventory.EquippedItem)
+            ItemEnum item = player.PlayerInventory.EquippedItem;
+            player.PlayerInventory.SetItemInUse(item, true);
+
+            switch (item)
             {
                 case ItemEnum.Bow:
+                    player.PlayerInventory.SubRupees(1);
                     projectile = new Arrow('N', new Vector2(position.X, position.Y), player);
                     break;
                 case ItemEnum.Boomerang:
                     projectile = new Boomerang('N', player);
                     break;
                 case ItemEnum.Bomb:
+                    player.PlayerInventory.SubBomb();
                     projectile = new BombProjectile(new Vector2(position.X, position.Y), player);
                     break;
                 default:

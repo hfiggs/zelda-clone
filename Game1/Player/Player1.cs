@@ -63,10 +63,12 @@ namespace Game1.Player
 
         public void UseItem()
         {
-            if (!PlayerInventory.IsItemInUse(PlayerInventory.EquippedItem) && PlayerInventory.EquippedItem != ItemEnum.None && PlayerInventory.EquippedItem != ItemEnum.Arrow)
+            ItemEnum item = PlayerInventory.EquippedItem;
+
+            if (PlayerInventory.HasItem(item) && !PlayerInventory.IsItemInUse(item))
             {
-                PlayerInventory.SetItemInUse(PlayerInventory.EquippedItem, true);
-                state.UseItem();
+                if((item == ItemEnum.Bow && PlayerInventory.RupeeCount >= 1) || (item == ItemEnum.Boomerang) || (item == ItemEnum.Bomb && PlayerInventory.BombCount >= 1))
+                    state.UseItem();
             }
         }
 

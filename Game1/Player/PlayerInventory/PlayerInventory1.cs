@@ -13,16 +13,22 @@ namespace Game1.Player.PlayerInventory
         private const int maxKeyCount = 255;
         private const int maxTriforceCount = 8;
 
-        private bool[] hasItem; // based on ItemEnum
-        private bool[] isItemInUse; // based on ItemEnum
+        private const int numItems = 5;
+        private bool[] hasItem; // based on ItemEnum (None, Bow, Arrow, Boomerang, Bomb)
+        private bool[] isItemInUse;
 
         public PlayerInventory1()
         {
             HalfHeartCount = defaultHalfHearts;
             MaxHalfHearts = defaultHalfHearts;
 
-            hasItem = new bool[5]{ true, false, false, false, true };
-            isItemInUse = new bool[5] { false, false, false, false, false };
+            hasItem = new bool[numItems] { true, false, false, false, true };
+            isItemInUse = new bool[numItems] { false, false, false, false, false };
+
+            // TODO: Remove this when item drops are working and boomerang is acquirable
+            hasItem[(int)ItemEnum.Boomerang] = true;
+            BombCount = maxBombCount;
+            RupeeCount = maxRupeeCount;
 
             // everything else auto-initializes to 0 or false
         }
