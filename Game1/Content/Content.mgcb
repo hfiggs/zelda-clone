@@ -13,6 +13,452 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin audio/music/10 Game Over.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/music/10 Game Over.mp3
+
+#begin audio/music/11 Death.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/music/11 Death.mp3
+
+#begin audio/music/dungeon.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/music/dungeon.wav
+
+#begin audio/music/dungeonBass.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/music/dungeonBass.wav
+
+#begin audio/music/RipCredits.txt
+/importer:
+/processor:
+/build:audio/music/RipCredits.txt
+
+#begin audio/music/title.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/music/title.wav
+
+#begin audio/music/titleBass.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/music/titleBass.wav
+
+#begin audio/sounds00/04 Item Get.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/sounds00/04 Item Get.mp3
+
+#begin audio/sounds00/05 Level Cleared (Got A Triforce Piece).mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/sounds00/05 Level Cleared (Got A Triforce Piece).mp3
+
+#begin audio/sounds00/12 Whistle.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/sounds00/12 Whistle.mp3
+
+#begin audio/sounds00/13 Secret.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/sounds00/13 Secret.mp3
+
+#begin audio/sounds00/14 Monster Yell 1.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/sounds00/14 Monster Yell 1.mp3
+
+#begin audio/sounds00/15 Monster Yell 2.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/sounds00/15 Monster Yell 2.mp3
+
+#begin audio/sounds00/16 Monster Yell 3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/sounds00/16 Monster Yell 3.mp3
+
+#begin audio/sounds00/RipCredits.txt
+/importer:
+/processor:
+/build:audio/sounds00/RipCredits.txt
+
+#begin audio/sounds01/Bomb Apearance and Selfdrestruction.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Bomb Apearance and Selfdrestruction.wav
+
+#begin audio/sounds01/Boss Zapped.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Boss Zapped.wav
+
+#begin audio/sounds01/Door Opened.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Door Opened.wav
+
+#begin audio/sounds01/Enemy Zapped.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Enemy Zapped.wav
+
+#begin audio/sounds01/Flames Shot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Flames Shot.wav
+
+#begin audio/sounds01/Health Heart.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Health Heart.wav
+
+#begin audio/sounds01/Item Obtained.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Item Obtained.wav
+
+#begin audio/sounds01/Item Received.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Item Received.wav
+
+#begin audio/sounds01/Key Appearance.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Key Appearance.wav
+
+#begin audio/sounds01/Magic Whistle Tune.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Magic Whistle Tune.wav
+
+#begin audio/sounds01/Magical Boomerang Thrown.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Magical Boomerang Thrown.wav
+
+#begin audio/sounds01/Magical.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Magical.wav
+
+#begin audio/sounds01/Master Sword Sword Zap.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Master Sword Sword Zap.wav
+
+#begin audio/sounds01/Player Hurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Player Hurt.wav
+
+#begin audio/sounds01/Power Zap.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Power Zap.wav
+
+#begin audio/sounds01/RipCredits.txt
+/importer:
+/processor:
+/build:audio/sounds01/RipCredits.txt
+
+#begin audio/sounds01/Rupees Decreasing.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Rupees Decreasing.wav
+
+#begin audio/sounds01/Shield Deflecting.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Shield Deflecting.wav
+
+#begin audio/sounds01/Shiney.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Shiney.wav
+
+#begin audio/sounds01/Sword Zap SFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Sword Zap SFX.wav
+
+#begin audio/sounds01/The Triforce Reveals Ganon.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/The Triforce Reveals Ganon.wav
+
+#begin audio/sounds01/Two Zap Bolts.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Two Zap Bolts.wav
+
+#begin audio/sounds01/Upgraded Magical Boomerang Thrown.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Upgraded Magical Boomerang Thrown.wav
+
+#begin audio/sounds01/Walking on Stairs.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds01/Walking on Stairs.wav
+
+#begin audio/sounds02/_Aquamentus.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/_Aquamentus.wav
+
+#begin audio/sounds02/_AquamentusExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/_AquamentusExplode.wav
+
+#begin audio/sounds02/_Breath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/_Breath.wav
+
+#begin audio/sounds02/_Dizzy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/_Dizzy.wav
+
+#begin audio/sounds02/_GanonAppears.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/_GanonAppears.wav
+
+#begin audio/sounds02/_Stun.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/_Stun.wav
+
+#begin audio/sounds02/_UnusedScream.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/_UnusedScream.wav
+
+#begin audio/sounds02/_UnusedScream2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/_UnusedScream2.wav
+
+#begin audio/sounds02/_UnusedScream3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/_UnusedScream3.wav
+
+#begin audio/sounds02/AquamentusScream.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/AquamentusScream.wav
+
+#begin audio/sounds02/BombExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/BombExplode.wav
+
+#begin audio/sounds02/BombPlace.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/BombPlace.wav
+
+#begin audio/sounds02/BoomerangOnce.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/BoomerangOnce.wav
+
+#begin audio/sounds02/Chest.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/Chest.wav
+
+#begin audio/sounds02/EnemyDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/EnemyDeath.wav
+
+#begin audio/sounds02/FairyAppear.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/FairyAppear.wav
+
+#begin audio/sounds02/Flute.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/Flute.wav
+
+#begin audio/sounds02/HealthLow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/HealthLow.wav
+
+#begin audio/sounds02/Hole.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/Hole.wav
+
+#begin audio/sounds02/ItemPickup1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/ItemPickup1.wav
+
+#begin audio/sounds02/KeyAppear.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/KeyAppear.wav
+
+#begin audio/sounds02/LinkDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/LinkDeath.wav
+
+#begin audio/sounds02/LinkPop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/LinkPop.wav
+
+#begin audio/sounds02/RipCredits.txt
+/importer:
+/processor:
+/build:audio/sounds02/RipCredits.txt
+
+#begin audio/sounds02/Rupee.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/Rupee.wav
+
+#begin audio/sounds02/Shield.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/Shield.wav
+
+#begin audio/sounds02/Stairs.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/Stairs.wav
+
+#begin audio/sounds02/Sword.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/Sword.wav
+
+#begin audio/sounds02/SwordBeam.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/SwordBeam.wav
+
+#begin audio/unused_unedited/01 Opening.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/unused_unedited/01 Opening.mp3
+
+#begin audio/unused_unedited/02 Overworld.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/unused_unedited/02 Overworld.mp3
+
+#begin audio/unused_unedited/03 Labyrinth.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/unused_unedited/03 Labyrinth.mp3
+
+#begin audio/unused_unedited/06 Death Mountain.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/unused_unedited/06 Death Mountain.mp3
+
+#begin audio/unused_unedited/07 Ganon Appears.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/unused_unedited/07 Ganon Appears.mp3
+
+#begin audio/unused_unedited/08 Ganon Defeated.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/unused_unedited/08 Ganon Defeated.mp3
+
+#begin audio/unused_unedited/09 Ending _ Staff Roll.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/unused_unedited/09 Ending _ Staff Roll.mp3
+
 #begin Images/Aquamentus.png
 /importer:TextureImporter
 /processor:TextureProcessor
