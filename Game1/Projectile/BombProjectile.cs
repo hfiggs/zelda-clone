@@ -1,11 +1,10 @@
 ﻿using Game1.Particle;
 using Game1.Player;
+using Game1.Player.PlayerInventory;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Runtime.CompilerServices;
 
 namespace Game1.Projectile
 {
@@ -97,7 +96,7 @@ namespace Game1.Projectile
 
         private void AddCloudParticles(List<IParticle> particles)
         {
-            player.setItemUsable(3);
+            player.PlayerInventory.SetItemInUse(ItemEnum.Bomb, false);
             particles.Add(new Cloud(GetCenteredPosition()));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y - cloudOffset)));

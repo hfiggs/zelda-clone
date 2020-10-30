@@ -2,6 +2,7 @@
 using Game1.Item;
 using Game1.Item.Heart;
 using Game1.Player;
+using Game1.Player.PlayerInventory;
 using System;
 using System.Collections.Generic;
 
@@ -23,13 +24,13 @@ namespace Game1.Collision_Handling
             switch (item)
             {
                 case ArrowItem _:
-                    player.PlayerInventory.HasArrow = true;
+                    player.PlayerInventory.AddItem(ItemEnum.Arrow);
                     break;
                 case Bomb _:
                     player.PlayerInventory.AddBomb();
                     break;
                 case Bow _:
-                    player.PlayerInventory.HasBow = true;
+                    player.PlayerInventory.AddItem(ItemEnum.Bow);
                     break;
                 case Clock _:
                     // ShouldDelete gets set to true
@@ -47,7 +48,7 @@ namespace Game1.Collision_Handling
                     player.PlayerInventory.AddMaxHeart();
                     break;
                 case ItemBoomerang _:
-                    player.PlayerInventory.HasBoomerang = true;
+                    player.PlayerInventory.AddItem(ItemEnum.Boomerang);
                     break;
                 case Key _:
                     player.PlayerInventory.AddKey();

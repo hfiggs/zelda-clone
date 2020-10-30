@@ -1,5 +1,14 @@
 ﻿namespace Game1.Player.PlayerInventory
 {
+    public enum ItemEnum
+    {
+        None = 0,
+        Bow = 1,
+        Arrow = 2,
+        Boomerang = 3,
+        Bomb = 4
+    }
+
     public interface IPlayerInventory
     {
         int HalfHeartCount { get; }
@@ -34,11 +43,15 @@
 
         void AddTriforce();
 
-        bool HasBoomerang { get; set; }
+        bool HasItem(ItemEnum item);
 
-        bool HasBow { get; set; }
+        void AddItem(ItemEnum item);
 
-        bool HasArrow { get; set; }
+        ItemEnum EquippedItem { get; set; }
+
+        bool IsItemInUse(ItemEnum item);
+
+        void SetItemInUse(ItemEnum item, bool isInUse);
 
         bool HasCompass { get; set; }
 

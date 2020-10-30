@@ -34,7 +34,7 @@ namespace Game1.Command.CollisionHandlerCommands
                 else
                 {
                     Vector2 moveAmount = new Vector2(0, -collision.intersectionRec.Height);
-                    player.editPosition(moveAmount);
+                    player.EditPosition(moveAmount);
                 }
             }
             else if (envo.GetType() == typeof(DoorSOpen))
@@ -50,7 +50,7 @@ namespace Game1.Command.CollisionHandlerCommands
                 else
                 {
                     Vector2 moveAmount = new Vector2(0, -collision.intersectionRec.Height);
-                    player.editPosition(moveAmount);
+                    player.EditPosition(moveAmount);
                 }
             } else if (envo.GetType() == typeof(Stairs)) {
                 // Do nothing until player can walk down stairs
@@ -63,7 +63,7 @@ namespace Game1.Command.CollisionHandlerCommands
                 else
                 {
                     Vector2 moveAmount = new Vector2(0, -collision.intersectionRec.Height);
-                    player.editPosition(moveAmount);
+                    player.EditPosition(moveAmount);
                 }
             }
         }

@@ -1,9 +1,9 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Player.PlayerInventory;
 using Game1.Projectile;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
-using System;
 
 namespace Game1.Player
 {
@@ -31,18 +31,16 @@ namespace Game1.Player
             frameCount = 0;
             timeUntilNextFrame = animationTime;
 
-            switch (player.GetItem())
+            switch (player.PlayerInventory.EquippedItem)
             {
-                case 1:
+                case ItemEnum.Bow:
                     projectile = new Arrow('S', new Vector2(position.X,position.Y), player);
                     break;
-                case 2:
+                case ItemEnum.Boomerang:
                     projectile = new Boomerang('S', player);
-                    player.setItemNotUsable();
                     break;
-                case 3:
+                case ItemEnum.Bomb:
                     projectile = new BombProjectile(new Vector2(position.X, position.Y), player);
-                    player.setItemNotUsable();
                     break;
                 default:
                     break;
@@ -89,7 +87,7 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
-                player.spawnProjectile(projectile);
+                player.SpawnProjectile(projectile);
                 player.SetState(new PlayerStateDown(player, position));
             }
         }
