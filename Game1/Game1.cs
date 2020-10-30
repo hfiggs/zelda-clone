@@ -70,6 +70,10 @@ namespace Game1
 
             Screen = new Screen(this, 'F', 2);
 
+            //DELETE
+            AudioManager.LoadContent(Content);
+            AudioManager.PlayMusic("dungeon");
+
             Screen.LoadAllRooms();
         }
 
