@@ -82,7 +82,7 @@ namespace Game1.Player
                         //player looped back to start
                         Sprite.Update();
                         timeUntilNextFrame += 175.0f;
-                        player.SetSwordHitbox(new Rectangle(17, 1, 5, 12));
+                        player.SetSwordHitbox(new Rectangle(14, 1, 12, 12));
                         frameCount++;
                         break;
                     case 4:
