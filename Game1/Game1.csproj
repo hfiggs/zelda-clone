@@ -326,6 +326,7 @@
     <Content Include="Content\audio\music\title.wav" />
     <Content Include="Content\audio\music\titleBass.wav" />
     <Content Include="Content\audio\sounds02\AquamentusScream.wav" />
+    <Content Include="Content\audio\sounds02\AquamentusScreamConv.wav" />
     <Content Include="Content\audio\sounds02\BombExplode.wav" />
     <Content Include="Content\audio\sounds02\BombPlace.wav" />
     <Content Include="Content\audio\sounds02\BoomerangOnce.wav" />
@@ -351,7 +352,6 @@
     <Content Include="Content\audio\sounds02\_Dizzy.wav" />
     <Content Include="Content\audio\sounds02\_GanonAppears.wav" />
     <Content Include="Content\audio\sounds02\_Stun.wav" />
-    <Content Include="Content\audio\sounds02\_UnusedScream.wav" />
     <Content Include="Content\audio\sounds02\_UnusedScream2.wav" />
     <Content Include="Content\audio\sounds02\_UnusedScream3.wav" />
     <Content Include="Content\audio\sounds\death.wav" />

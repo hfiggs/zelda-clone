@@ -49,11 +49,23 @@
 /processorParam:Quality=Best
 /build:audio/music/titleBass.wav
 
+#begin audio/sounds/Boomerang.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/Boomerang.wav
+
 #begin audio/sounds/death.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:audio/sounds/death.wav
+
+#begin audio/sounds/MagicalBoomerangThrown.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/MagicalBoomerangThrown.wav
 
 #begin audio/sounds02/_Aquamentus.wav
 /importer:WavImporter
@@ -91,12 +103,6 @@
 /processorParam:Quality=Best
 /build:audio/sounds02/_Stun.wav
 
-#begin audio/sounds02/_UnusedScream.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/_UnusedScream.wav
-
 #begin audio/sounds02/_UnusedScream2.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -109,11 +115,23 @@
 /processorParam:Quality=Best
 /build:audio/sounds02/_UnusedScream3.wav
 
+#begin audio/sounds02/AquamentusHurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/AquamentusHurt.wav
+
 #begin audio/sounds02/AquamentusScream.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:audio/sounds02/AquamentusScream.wav
+
+#begin audio/sounds02/AquamentusScreamConv.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/AquamentusScreamConv.wav
 
 #begin audio/sounds02/BombExplode.wav
 /importer:WavImporter
