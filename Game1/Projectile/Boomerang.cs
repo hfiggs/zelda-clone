@@ -1,5 +1,6 @@
 ﻿using Game1.Player;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -15,6 +16,10 @@ namespace Game1.Projectile
         private Vector2 position;
         private float moveSpeed, totalElapsedGameTime;
 
+        private SoundEffectInstance sound;
+        private const float soundDelay = 0.5f; //seconds
+        private const float soundVol = 0.4f;
+
         public Boomerang(char direction, IPlayer player) {
             this.direction = direction;
             this.Player = player;
@@ -27,6 +32,8 @@ namespace Game1.Projectile
             totalElapsedGameTime = 0;
             counter = 0;
             returned = false;
+
+            sound = AudioManager.PlayLooped("boomerang", soundDelay, soundVol);
         }
         public void Update(GameTime gameTime) {
             totalElapsedGameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -56,6 +63,7 @@ namespace Game1.Projectile
 
             if(returned)
             {
+                AudioManager.stopSound(sound);
                 Player.setItemUsable(2);
             }
 

@@ -23,6 +23,7 @@ namespace Game1.Enemy
             knockbackMagnitude = Vector2.Multiply(knockbackMagnitude, direction);
             this.game = game;
             stillSlide = true;
+            AudioManager.PlayFireForget("enemyHurt");
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)

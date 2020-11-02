@@ -141,10 +141,9 @@ namespace Game1
 
         public static void stopMusic(SoundEffectInstance musicRef)
         {
-            if(activeMusicList.Contains(musicRef))
-            {
-                activeMusicList.Remove(musicRef);
-            }
+            musicRef.Stop();
+            //deliberately left unchecked
+            activeMusicList.Remove(musicRef);
         }
 
         public static void SetVolumeMusic(float vol)
@@ -162,10 +161,9 @@ namespace Game1
 
         public static void stopSound(SoundEffectInstance soundRef)
         {
-            if (activeSoundList.Contains(soundRef))
-            {
-                activeSoundList.Remove(soundRef);
-            }
+            soundRef.Stop();
+            //deliberately left unchecked
+            activeSoundList.Remove(soundRef);
         }
 
         public static void SetVolumeSound(float vol)
