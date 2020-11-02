@@ -72,7 +72,7 @@ namespace Game1
 
             //DELETE
             AudioManager.LoadContent(Content);
-            AudioManager.PlayLoopedDelay("dungeon", 2.0f);
+            AudioManager.PlayLooped("dungeon");
 
             Screen.LoadAllRooms();
         }

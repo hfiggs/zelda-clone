@@ -14,6 +14,8 @@ namespace Game1.Projectile
         private Vector2 position;
         private bool removeMe = false;
 
+        private const float soundDelay = 0.2f;
+
         public SwordBeam(char direction, Vector2 position)
         {
             this.direction = direction;
@@ -23,6 +25,8 @@ namespace Game1.Projectile
             rowModifier = 0;
             counter = 0;
             totalTime = 0;
+
+            AudioManager.PlayFireForget("swordBeam", soundDelay);
         }
         public void Update(GameTime gameTime)
         {

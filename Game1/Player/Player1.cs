@@ -89,7 +89,6 @@ namespace Game1.Player
             game.Screen.Player = new DamagedPlayer(game, this, direction);
 
             isFullHealth = false;
-
         }
 
         public void Update(GameTime time)

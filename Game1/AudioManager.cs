@@ -69,32 +69,26 @@ namespace Game1
             soundMap.Add("linkHurt", content.Load<SoundEffect>("audio/sounds02/PlayerHurt"));
         }
 
-        public static void PlayLooped(string sound)
+        //Note that the volume parameter here is only for internal balancing between the volumes of each sound file
+        public static SoundEffectInstance PlayFireForget(string sound, float timeDelay = 0.0f, float vol = 1.0f)
         {
-            PlayLoopedDelay(sound, 0.0f);
-        }
-
-        public static void PlayFireForget(string sound)
-        {
-            PlayFireForgetDelay(sound, 0.0f);
-        }
-
-        public static void PlayFireForgetDelay(string sound, float timeDelay)
-        {
+            SoundEffectInstance reference;
             SoundEffect toPlay;
             if (soundMap.TryGetValue(sound, out toPlay))
             {
                 SoundEffectInstance instanceToPlay = toPlay.CreateInstance();
-                instanceToPlay.Volume = volumeSound * volumeMaster;
+                instanceToPlay.Volume = volumeSound * volumeMaster * vol;
                 activeSoundList.Add(instanceToPlay);
+                reference = instanceToPlay;
                 soundQueue.Add(instanceToPlay);
                 delays.Add(timeDelay);
             }
             else if (musicMap.TryGetValue(sound, out toPlay))
             {
                 SoundEffectInstance instanceToPlay = toPlay.CreateInstance();
-                instanceToPlay.Volume = (volumeMusic * volumeMaster);
+                instanceToPlay.Volume = volumeMusic * volumeMaster * vol;
                 activeMusicList.Add(instanceToPlay);
+                reference = instanceToPlay;
                 soundQueue.Add(instanceToPlay);
                 delays.Add(timeDelay);
             }
@@ -102,41 +96,54 @@ namespace Game1
             {
                 throw new NotImplementedException(sound + " is not a supported name.");
             }
+            return reference;
         }
 
-        public static void PlayLoopedDelay(string sound, float timeDelay)
+        //Note that the volume parameter here is only for internal balancing between the volumes of each sound file
+        public static SoundEffectInstance PlayLooped(string sound, float timeDelay = 0.0f, float vol = 1.0f)
         {
+            SoundEffectInstance reference = null;
             SoundEffect toPlay;
             if (soundMap.TryGetValue(sound, out toPlay))
             {
                 SoundEffectInstance instanceToPlay = toPlay.CreateInstance();
-                instanceToPlay.Volume = volumeSound * volumeMaster;
+                instanceToPlay.Volume = volumeSound * volumeMaster * vol;
                 instanceToPlay.IsLooped = true;
                 activeSoundList.Add(instanceToPlay);
+                reference = instanceToPlay;
                 soundQueue.Add(instanceToPlay);
                 delays.Add(timeDelay);
             }
             else if (musicMap.TryGetValue(sound, out toPlay))
             {
                 SoundEffectInstance instanceToPlay = toPlay.CreateInstance();
-                instanceToPlay.Volume = (volumeMusic * volumeMaster);
+                instanceToPlay.Volume = volumeMusic * volumeMaster * vol;
                 instanceToPlay.IsLooped = true;
                 activeMusicList.Add(instanceToPlay);
+                reference = instanceToPlay;
                 soundQueue.Add(instanceToPlay);
                 delays.Add(timeDelay);
-                
             }
             else
             {
                 throw new NotImplementedException(sound + " is not a supported name.");
             }
+            return reference;
         }
 
-        public static void stopMusic()
+        public static void stopAllMusic()
         {
             foreach(SoundEffectInstance music in activeMusicList)
             {
                 music.Stop(true);
+            }
+        }
+
+        public static void stopMusic(SoundEffectInstance musicRef)
+        {
+            if(activeMusicList.Contains(musicRef))
+            {
+                activeMusicList.Remove(musicRef);
             }
         }
 
@@ -145,7 +152,7 @@ namespace Game1
             volumeMusic = vol;
         }
 
-        public static void stopSound()
+        public static void stopAllSound()
         {
             foreach(SoundEffectInstance sound in activeSoundList)
             {
@@ -153,9 +160,22 @@ namespace Game1
             }
         }
 
+        public static void stopSound(SoundEffectInstance soundRef)
+        {
+            if (activeSoundList.Contains(soundRef))
+            {
+                activeSoundList.Remove(soundRef);
+            }
+        }
+
         public static void SetVolumeSound(float vol)
         {
             volumeSound = vol;
+        }
+
+        public static void SetVolumeMaster(float vol)
+        {
+            volumeMaster = vol;
         }
 
         private static void garbageCollection()

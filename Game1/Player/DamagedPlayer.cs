@@ -31,6 +31,8 @@ namespace Game1.Player
 
         public IPlayerInventory PlayerInventory { get => decoratedPlayer.PlayerInventory;}
 
+        private const float volume = 0.25f;
+
         public DamagedPlayer(Game1 game, IPlayer decoratedPlayer, Vector2 direction)
         {
             this.game = game;
@@ -39,6 +41,7 @@ namespace Game1.Player
             timer = duration;
             stillSlide = true;
             flickerTimer = 0;
+            AudioManager.PlayFireForget("linkHurt", 0.0f, volume);
         }
 
         public void Attack()
