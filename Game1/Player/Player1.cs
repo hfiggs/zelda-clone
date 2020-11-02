@@ -6,6 +6,7 @@ using Game1.Player.PlayerInventory;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Game1.Player
 {
@@ -88,6 +89,7 @@ namespace Game1.Player
             game.Screen.Player = new DamagedPlayer(game, this, direction);
 
             isFullHealth = false;
+
         }
 
         public void Update(GameTime time)

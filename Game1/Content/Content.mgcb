@@ -211,6 +211,12 @@
 /processorParam:Quality=Best
 /build:audio/sounds02/LinkPop.wav
 
+#begin audio/sounds02/PlayerHurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/PlayerHurt.wav
+
 #begin audio/sounds02/Rupee.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

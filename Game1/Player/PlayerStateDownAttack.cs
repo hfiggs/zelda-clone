@@ -28,6 +28,8 @@ namespace Game1.Player
 
             frameCount = 0;
             timeUntilNextFrame = animationTime;
+
+            AudioManager.PlayFireForget("sword");
         }
 
         public void Attack()

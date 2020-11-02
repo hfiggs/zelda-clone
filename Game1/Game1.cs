@@ -72,9 +72,7 @@ namespace Game1
 
             //DELETE
             AudioManager.LoadContent(Content);
-            AudioManager.PlayMusic("dungeon");
-            AudioManager.PlaySound("boomerang");
-            //AudioManager.PlaySound("death");
+            AudioManager.PlayLoopedDelay("dungeon", 2.0f);
 
             Screen.LoadAllRooms();
         }
@@ -92,6 +90,8 @@ namespace Game1
             }
 
             Screen.Update(gameTime);
+
+            AudioManager.Update(gameTime);
 
             base.Update(gameTime);
         }
