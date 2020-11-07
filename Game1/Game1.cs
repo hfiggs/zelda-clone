@@ -31,9 +31,6 @@ namespace Game1
         private List<IController> controllerList;
         public Screen Screen { get; set; }
 
-        //DELETE
-        public SoundEffectInstance musicMain;
-
         public Game1()
         {
             Graphics = new GraphicsDeviceManager(this);
@@ -76,8 +73,7 @@ namespace Game1
 
             //DELETE
             AudioManager.LoadContent(Content);
-            musicMain = AudioManager.PlayLooped("dungeon");
-            AudioManager.musicMain = musicMain;
+            AudioManager.PlayLooped("dungeon");
 
             Screen.LoadAllRooms();
         }

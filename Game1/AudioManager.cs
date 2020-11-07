@@ -1,4 +1,5 @@
 ﻿using Game1.Item;
+using Game1.RoomLoading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -129,7 +130,6 @@ namespace Game1
             {
                 throw new NotImplementedException(sound + " is not a supported name.");
             }
-            Console.WriteLine("Loaded sound " + sound);
             return reference;
         }
 
@@ -141,7 +141,6 @@ namespace Game1
                 if (music.State.HasFlag(SoundState.Playing))
                 {
                     music.Stop();
-                    Console.WriteLine("Removed a sound");
                 }
             }
         }
@@ -169,7 +168,6 @@ namespace Game1
                 if (sound.State.HasFlag(SoundState.Playing))
                 {
                     sound.Stop();
-                    Console.WriteLine("Removed a sound");
                 }
             }
         }
