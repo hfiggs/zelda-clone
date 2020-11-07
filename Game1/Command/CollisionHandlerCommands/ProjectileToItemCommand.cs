@@ -35,7 +35,7 @@ namespace Game1.Command.CollisionHandlerCommands
                     break;
             }
 
-            if (!projectile.GetType().Equals(typeof(SwordBeam))) {
+            if (!projectile.GetType().Equals(typeof(SwordBeam)) && !projectile.GetType().Equals(typeof(EnemyBoomerang))) {
                 AudioManager.PlayItemSound(item);
             }
         }

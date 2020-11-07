@@ -1,10 +1,12 @@
-﻿using Game1.Enemy;
+﻿using Game1.AudioManagement;
+using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game1.RoomLoading
 {
@@ -16,6 +18,9 @@ namespace Game1.RoomLoading
         public List<IEnemy> EnemyList { get; set; }
         public List<IEnemy> DecoratedEnemyList { get; set; }
         public List<IEnemy> UnDecoratedEnemyList { get; set; }
+
+        //DELETE
+        private List<AmbientSound> soundList;
 
         public Room(Game1 game, String file)
         {
@@ -32,6 +37,8 @@ namespace Game1.RoomLoading
 
             DecoratedEnemyList = new List<IEnemy>();
             UnDecoratedEnemyList = new List<IEnemy>();
+
+            soundList = parser.GetAmbienceNode();
         }
 
         public void Update(GameTime gameTime)
@@ -74,6 +81,12 @@ namespace Game1.RoomLoading
             foreach (IEnvironment nonInternactEnvironment in NonInteractEnviornment)
             {
                 nonInternactEnvironment.BehaviorUpdate(gameTime);
+            }
+
+            if(soundList.Count > 0)
+            {
+                soundList.ElementAt(0).Play();
+                soundList.RemoveAt(0);
             }
         }
 

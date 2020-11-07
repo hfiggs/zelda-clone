@@ -1,4 +1,5 @@
-﻿using Game1.Enemy;
+﻿using Game1.AudioManagement;
+using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
 using Game1.Item.Heart;
@@ -328,6 +329,21 @@ namespace Game1.RoomLoading
             }
 
             return interactEnviornmentList;
+        }
+
+        public List<AmbientSound> GetAmbienceNode()
+        {
+            List<AmbientSound> soundList = new List<AmbientSound>();
+            XmlNodeList soundNodes = roomData.getAmbientSounds();
+
+            foreach (XmlNode n in soundNodes)
+            {
+                XmlElement sound = n["Name"];
+                AmbientSound newSound = new AmbientSound(sound.InnerText, int.Parse(sound.GetAttribute("delay")), int.Parse(sound.GetAttribute("volume")), bool.Parse(sound.GetAttribute("looped")));
+                soundList.Add(newSound);
+            }
+
+            return soundList;
         }
     }
 }

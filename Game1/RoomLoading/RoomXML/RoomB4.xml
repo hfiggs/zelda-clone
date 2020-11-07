@@ -150,4 +150,7 @@
 		<X>180</X>
 		<Y>68</Y>
 	</Item>
+  <Sounds>
+    <Name delay="0.0f" volume="1.0f" looped="true">aquamentusScream</Name>
+  </Sounds>
 </Assets>
