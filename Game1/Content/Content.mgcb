@@ -67,11 +67,11 @@
 /processorParam:Quality=Best
 /build:audio/sounds/MagicalBoomerangThrown.wav
 
-#begin audio/sounds02/_Aquamentus.wav
+#begin audio/sounds/triforceTheme.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:audio/sounds02/_Aquamentus.wav
+/build:audio/sounds/triforceTheme.wav
 
 #begin audio/sounds02/_AquamentusExplode.wav
 /importer:WavImporter
@@ -96,12 +96,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:audio/sounds02/_GanonAppears.wav
-
-#begin audio/sounds02/_Stun.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/_Stun.wav
 
 #begin audio/sounds02/_UnusedScream2.wav
 /importer:WavImporter
@@ -163,6 +157,12 @@
 /processorParam:Quality=Best
 /build:audio/sounds02/EnemyDeath.wav
 
+#begin audio/sounds02/EnemyHurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/EnemyHurt.wav
+
 #begin audio/sounds02/FairyAppear.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -210,6 +210,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:audio/sounds02/LinkPop.wav
+
+#begin audio/sounds02/LockedDoor.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds02/LockedDoor.wav
 
 #begin audio/sounds02/PlayerHurt.wav
 /importer:WavImporter

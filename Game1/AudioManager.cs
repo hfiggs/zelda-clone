@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Item;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using SharpDX.MediaFoundation;
@@ -11,31 +12,28 @@ namespace Game1
 {
     class AudioManager
     {
+        public static SoundEffectInstance musicMain;
+
         private static float volumeMaster = 1.0f;
         private static float volumeMusic = 1.0f;
         private static float volumeSound = 1.0f;
 
-        private static Game1 game;
+        //used for delays and queuing
         private static List<SoundEffectInstance> soundQueue = new List<SoundEffectInstance>();
         private static List<double> delays = new List<double>();
 
+        //used for looking up sounds
         private static Dictionary<string, SoundEffect> musicMap = new Dictionary<string, SoundEffect>();
         private static Dictionary<string, SoundEffect> soundMap = new Dictionary<string, SoundEffect>();
-        private static Dictionary<string, SoundEffect> testMap = new Dictionary<string, SoundEffect>();
 
+        //used for muting an entire subset of sounds instantaneously - Consider deleting
         private static List<SoundEffectInstance> activeMusicList = new List<SoundEffectInstance>();
         private static List<SoundEffectInstance> activeSoundList = new List<SoundEffectInstance>();
 
-        public AudioManager(Game1 gamep)
-        {
-            game = gamep;
-        }
+        private static List<SoundEffectInstance> activeList = new List<SoundEffectInstance>();
 
         public static void LoadContent(ContentManager content)
         {
-            //Test
-            testMap.Add("sword", content.Load<SoundEffect>("audio/sounds02/Sword"));
-
             //looped sounds
             musicMap.Add("dungeon", content.Load<SoundEffect>("audio/music/dungeon"));
             musicMap.Add("dungeon2", content.Load<SoundEffect>("audio/music/dungeonBass"));
@@ -58,15 +56,18 @@ namespace Game1
             soundMap.Add("bombExplode", content.Load<SoundEffect>("audio/sounds02/BombExplode"));
             soundMap.Add("bombPlace", content.Load<SoundEffect>("audio/sounds02/BombPlace"));
             soundMap.Add("chest", content.Load<SoundEffect>("audio/sounds02/Chest"));
-            soundMap.Add("deathEnemy", content.Load<SoundEffect>("audio/sounds02/EnemyDeath"));
+            soundMap.Add("enemyDeath", content.Load<SoundEffect>("audio/sounds02/EnemyDeath"));
             soundMap.Add("powerPickUp", content.Load<SoundEffect>("audio/sounds02/FairyAppear"));
             soundMap.Add("ocarina", content.Load<SoundEffect>("audio/sounds02/Flute"));
             soundMap.Add("reveal", content.Load<SoundEffect>("audio/sounds02/Hole"));
-            soundMap.Add("heartPickUp", content.Load<SoundEffect>("audio/sounds02/ItemPickup1"));
+            soundMap.Add("itemPickUp", content.Load<SoundEffect>("audio/sounds02/ItemPickup1"));
             soundMap.Add("key", content.Load<SoundEffect>("audio/sounds02/KeyAppear"));
             soundMap.Add("rupeePickUp", content.Load<SoundEffect>("audio/sounds02/Rupee"));
             soundMap.Add("stairs", content.Load<SoundEffect>("audio/sounds02/Stairs"));
             soundMap.Add("linkHurt", content.Load<SoundEffect>("audio/sounds02/PlayerHurt"));
+            soundMap.Add("enemyHurt", content.Load<SoundEffect>("audio/sounds02/EnemyHurt"));
+            soundMap.Add("triforce", content.Load<SoundEffect>("audio/sounds/triforceTheme"));
+            soundMap.Add("doorLock", content.Load<SoundEffect>("audio/sounds02/LockedDoor"));
         }
 
         //Note that the volume parameter here is only for internal balancing between the volumes of each sound file
@@ -78,19 +79,19 @@ namespace Game1
             {
                 SoundEffectInstance instanceToPlay = toPlay.CreateInstance();
                 instanceToPlay.Volume = volumeSound * volumeMaster * vol;
-                activeSoundList.Add(instanceToPlay);
                 reference = instanceToPlay;
                 soundQueue.Add(instanceToPlay);
                 delays.Add(timeDelay);
+                activeSoundList.Add(instanceToPlay);
             }
             else if (musicMap.TryGetValue(sound, out toPlay))
             {
                 SoundEffectInstance instanceToPlay = toPlay.CreateInstance();
                 instanceToPlay.Volume = volumeMusic * volumeMaster * vol;
-                activeMusicList.Add(instanceToPlay);
                 reference = instanceToPlay;
                 soundQueue.Add(instanceToPlay);
                 delays.Add(timeDelay);
+                activeMusicList.Add(instanceToPlay);
             }
             else
             {
@@ -109,37 +110,43 @@ namespace Game1
                 SoundEffectInstance instanceToPlay = toPlay.CreateInstance();
                 instanceToPlay.Volume = volumeSound * volumeMaster * vol;
                 instanceToPlay.IsLooped = true;
-                activeSoundList.Add(instanceToPlay);
                 reference = instanceToPlay;
                 soundQueue.Add(instanceToPlay);
                 delays.Add(timeDelay);
+                activeSoundList.Add(instanceToPlay);
             }
             else if (musicMap.TryGetValue(sound, out toPlay))
             {
                 SoundEffectInstance instanceToPlay = toPlay.CreateInstance();
                 instanceToPlay.Volume = volumeMusic * volumeMaster * vol;
                 instanceToPlay.IsLooped = true;
-                activeMusicList.Add(instanceToPlay);
                 reference = instanceToPlay;
                 soundQueue.Add(instanceToPlay);
                 delays.Add(timeDelay);
+                activeMusicList.Add(instanceToPlay);
             }
             else
             {
                 throw new NotImplementedException(sound + " is not a supported name.");
             }
+            Console.WriteLine("Loaded sound " + sound);
             return reference;
         }
 
-        public static void stopAllMusic()
+        //Works once only. Use with caution
+        public static void StopAllMusic()
         {
-            foreach(SoundEffectInstance music in activeMusicList)
+            foreach (SoundEffectInstance music in activeMusicList)
             {
-                music.Stop(true);
+                if (music.State.HasFlag(SoundState.Playing))
+                {
+                    music.Stop();
+                    Console.WriteLine("Removed a sound");
+                }
             }
         }
 
-        public static void stopMusic(SoundEffectInstance musicRef)
+        public static void StopMusic(SoundEffectInstance musicRef)
         {
             musicRef.Stop();
             //deliberately left unchecked
@@ -149,17 +156,25 @@ namespace Game1
         public static void SetVolumeMusic(float vol)
         {
             volumeMusic = vol;
-        }
-
-        public static void stopAllSound()
-        {
-            foreach(SoundEffectInstance sound in activeSoundList)
+            foreach (SoundEffectInstance music in activeMusicList)
             {
-                sound.Stop(true);
+                music.Volume = volumeMusic;
             }
         }
 
-        public static void stopSound(SoundEffectInstance soundRef)
+        public static void StopAllSound()
+        {
+            foreach (SoundEffectInstance sound in activeSoundList)
+            {
+                if (sound.State.HasFlag(SoundState.Playing))
+                {
+                    sound.Stop();
+                    Console.WriteLine("Removed a sound");
+                }
+            }
+        }
+
+        public static void StopSound(SoundEffectInstance soundRef)
         {
             soundRef.Stop();
             //deliberately left unchecked
@@ -176,8 +191,17 @@ namespace Game1
             volumeMaster = vol;
         }
 
+        public static void StopAudio()
+        {
+            StopAllMusic();
+            StopAllSound();
+            soundQueue = new List<SoundEffectInstance>();
+            delays = new List<double>();
+        }
         private static void garbageCollection()
         {
+            //disabled for testing purposes
+            return;
             List<SoundEffectInstance> replacement = new List<SoundEffectInstance>();
             foreach(SoundEffectInstance sound in activeMusicList)
             {
@@ -190,7 +214,7 @@ namespace Game1
             replacement.Clear();
             foreach(SoundEffectInstance music in activeMusicList)
             {
-                if(music.State.HasFlag(SoundState.Stopped))
+                if(!music.State.HasFlag(SoundState.Stopped))
                 {
                     replacement.Add(music);
                 }
@@ -198,24 +222,64 @@ namespace Game1
             activeMusicList = replacement;
         }
 
+        public static void PlayItemSound(IItem item)
+        {
+            switch (item.GetType().Name)
+            {
+                case "RupeeBlue":
+                case "RupeeYellow":
+                    AudioManager.PlayFireForget("rupeePickUp");
+                    break;
+                case "Bomb":
+                case "Compass":
+                case "HeartContainer":
+                case "Fairy":
+                case "Clock":
+                case "ArrowItem":
+                case "ItemBoomerang":
+                case "Map":
+                    AudioManager.PlayFireForget("powerPickUp");
+                    break;
+                case "Bow":
+                    AudioManager.StopAllMusic();
+                    //AudioManager.StopMusic(AudioManager.musicMain);
+                    AudioManager.PlayFireForget("powerPickUp");
+                    AudioManager.PlayFireForget("chest");
+                    AudioManager.musicMain = AudioManager.PlayLooped("dungeon", 2.0f);
+                    break;
+                case "Triforce":
+                    AudioManager.StopAllMusic();
+                    //AudioManager.StopMusic(AudioManager.musicMain);
+                    AudioManager.PlayFireForget("powerPickUp");
+                    AudioManager.PlayFireForget("triforce");
+                    AudioManager.musicMain = AudioManager.PlayLooped("dungeon", 8.0f);
+                    break;
+                default:
+                    AudioManager.PlayFireForget("itemPickUp");
+                    break;
+            }
+        }
+
         public static void Update(GameTime gameTime)
         {
-            //updates delay queue
+            //updates delay queue and sound queue
             List<double> newDelays = new List<double>();
-            for(int i = 0; i < delays.Count; i++)
+            List<SoundEffectInstance> newSounds = new List<SoundEffectInstance>();
+            int limit = soundQueue.Count;
+            for(int i = 0; i < limit; i++)
             {
-                double newDelay = delays.ElementAt<double>(i) - gameTime.ElapsedGameTime.TotalSeconds;
+                double newDelay = delays.ElementAt(i) - gameTime.ElapsedGameTime.TotalSeconds;
                 if (newDelay > 0.0) {
                     newDelays.Add(newDelay);
+                    newSounds.Add(soundQueue.ElementAt(i));
                 } else
                 {
-                    soundQueue.ElementAt<SoundEffectInstance>(i).Play();
-                    soundQueue.RemoveAt(i);
+                    soundQueue.ElementAt(i).Play();
+                    Console.WriteLine("Played a sound");
                 }
             }
             delays = newDelays;
-
-            garbageCollection();
+            soundQueue = newSounds;
         }
     }
 }

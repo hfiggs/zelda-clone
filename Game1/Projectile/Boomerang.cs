@@ -63,7 +63,7 @@ namespace Game1.Projectile
 
             if(returned)
             {
-                AudioManager.stopSound(sound);
+                AudioManager.StopSound(sound);
                 Player.setItemUsable(2);
             }
 

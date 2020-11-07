@@ -17,6 +17,7 @@ using Game1.Projectile;
 using Game1.Environment;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
 using Game1.RoomLoading;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Game1
 {
@@ -29,6 +30,9 @@ namespace Game1
 
         private List<IController> controllerList;
         public Screen Screen { get; set; }
+
+        //DELETE
+        public SoundEffectInstance musicMain;
 
         public Game1()
         {
@@ -72,7 +76,8 @@ namespace Game1
 
             //DELETE
             AudioManager.LoadContent(Content);
-            AudioManager.PlayLooped("dungeon");
+            musicMain = AudioManager.PlayLooped("dungeon");
+            AudioManager.musicMain = musicMain;
 
             Screen.LoadAllRooms();
         }

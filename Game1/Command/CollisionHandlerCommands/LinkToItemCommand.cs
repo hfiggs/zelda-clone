@@ -17,6 +17,8 @@ namespace Game1.Command.CollisionHandlerCommands
             IItem item = (IItem)collision.collidee;
 
             CollisionHandlerUtil.HandlePlayerPickupItem(player, item);
+
+            AudioManager.PlayItemSound(item);
         }
     }
 }

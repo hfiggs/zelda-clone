@@ -34,6 +34,8 @@ namespace Game1.Command.CollisionHandlerCommands
                     }
                     break;
             }
+
+            AudioManager.PlayItemSound(item);
         }
     }
 }
