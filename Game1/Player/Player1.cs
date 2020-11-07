@@ -86,7 +86,7 @@ namespace Game1.Player
         {
             // wrap damage decorator around this
             game.Screen.Player = new DamagedPlayer(game, this, direction);
-
+            PlayerInventory.SubHealth(1);
             isFullHealth = false;
         }
 
