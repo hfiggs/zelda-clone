@@ -25,14 +25,15 @@ namespace Game1.RoomLoading
 
         private Game1 game;
 
-        //private Dictionary<(char, int), Room> Rooms { get; set; }
-        public LinkedList<Room> Rooms;
+        public Dictionary<(char, int), Room> RoomsDict { get; set; }
+        public LinkedList<Room> RoomsList;
         public Room CurrentRoom { get; set; }
         private CollisionDetector detector;
         public Screen(Game1 game, char x, int y)
         {
             this.game = game;
-            this.Rooms = new LinkedList<Room>();
+            this.RoomsList = new LinkedList<Room>();
+            this.RoomsDict = new Dictionary<(char, int), Room>();
             this.ProjectileList = new List<IProjectile>();
             this.Player = new Player1(game, new Vector2(80, 80));
         }
@@ -41,13 +42,13 @@ namespace Game1.RoomLoading
         {
             foreach (string file in Directory.EnumerateFiles(game.Content.RootDirectory + "/RoomXML", "*.xml"))
             {
-                //var identifer = Regex.Match(file, @"\w{2}(?=\.\w+$)");
-                //String identiferStr = identifer.Value;
-                //Rooms.Add((identiferStr[0], (int)char.GetNumericValue(identiferStr[1])), new Room(game, file));
-                Rooms.AddLast(new Room(game, file));
+                var identifer = Regex.Match(file, @"\w{2}(?=\.\w+$)");
+                String identiferStr = identifer.Value;
+                Room room = new Room(game, file);
+                RoomsDict.Add((identiferStr[0], (int)char.GetNumericValue(identiferStr[1])), room);
+                RoomsList.AddLast(room);
             }
-            //this.currentRoom = Rooms[('F',2)];
-            this.CurrentRoom = Rooms.First();
+            this.CurrentRoom = RoomsDict[('F',2)];
             this.ProjectileList = new List<IProjectile>();
             this.Player = new Player1(game, new Vector2(80, 80));
             detector = new CollisionDetector(this);
