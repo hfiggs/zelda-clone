@@ -57,6 +57,7 @@ namespace Game1.Environment
             hitboxes = new List<Rectangle>();
             //hitboxes.Add(openHitbox1);
             //hitboxes.Add(openHitbox2);
+            AudioManager.PlayFireForget("reveal");
         }
     }
 }

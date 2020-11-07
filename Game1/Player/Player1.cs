@@ -20,6 +20,7 @@ namespace Game1.Player
         private const int swordBeamCooldown = 800; // ms
 
         private bool isFullHealth;
+        private bool isLowHealth = false;
         private bool[] itemsHeld = { true, true, true }; //Bow, Boomerang, Bomb
 
         private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
@@ -89,6 +90,20 @@ namespace Game1.Player
             game.Screen.Player = new DamagedPlayer(game, this, direction);
 
             isFullHealth = false;
+            //should be slightly modified once we have health mechanics - GameState?
+            if(isLowHealth)
+            {
+                AudioManager.StopAllMusic();
+                AudioManager.StopAllSound();
+                AudioManager.PlayFireForget("death");
+                AudioManager.PlayFireForget("linkPop", 2.5f);
+                AudioManager.PlayLooped("gameOver", 4.5f, 0.6f);
+            }
+            if(!isFullHealth && !isLowHealth)
+            {
+                AudioManager.PlayLooped("lowHealth");
+                isLowHealth = true;
+            }
         }
 
         public void Update(GameTime time)

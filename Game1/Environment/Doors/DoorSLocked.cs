@@ -59,6 +59,7 @@ namespace Game1.Environment
         {
             open = 1;
             timeTillOpen = 250f;
+            AudioManager.PlayFireForget("doorLock");
         }
     }
 }

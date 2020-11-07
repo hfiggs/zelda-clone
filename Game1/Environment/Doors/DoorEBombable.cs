@@ -55,8 +55,9 @@ namespace Game1.Environment
             open = true;
             sprite = EnvironmentSpriteFactory.instance.createDoorEHole();
             hitboxes = new List<Rectangle>();
-           // hitboxes.Add(openHitbox1);
-           // hitboxes.Add(openHitbox2);
+            // hitboxes.Add(openHitbox1);
+            // hitboxes.Add(openHitbox2);
+            AudioManager.PlayFireForget("reveal");
         }
     }
 }

@@ -8,12 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 
 namespace Game1
 {
     class AudioManager
     {
-        public static SoundEffectInstance musicMain;
+        //TODO: Refactor mutex setting and resetting to something more functional
+        private static bool mutex = false;
 
         private static float volumeMaster = 1.0f;
         private static float volumeMusic = 1.0f;
@@ -31,7 +33,6 @@ namespace Game1
         private static List<SoundEffectInstance> activeMusicList = new List<SoundEffectInstance>();
         private static List<SoundEffectInstance> activeSoundList = new List<SoundEffectInstance>();
 
-        private static List<SoundEffectInstance> activeList = new List<SoundEffectInstance>();
 
         public static void LoadContent(ContentManager content)
         {
@@ -52,7 +53,6 @@ namespace Game1
             soundMap.Add("shield", content.Load<SoundEffect>("audio/sounds02/Shield"));
             soundMap.Add("sword", content.Load<SoundEffect>("audio/sounds02/Sword"));
             soundMap.Add("swordBeam", content.Load<SoundEffect>("audio/sounds02/SwordBeam"));
-            soundMap.Add("aquamentusScreamFF", content.Load<SoundEffect>("audio/sounds02/AquamentusScream"));
             soundMap.Add("aquamentusHurt", content.Load<SoundEffect>("audio/sounds02/AquamentusHurt"));
             soundMap.Add("bombExplode", content.Load<SoundEffect>("audio/sounds02/BombExplode"));
             soundMap.Add("bombPlace", content.Load<SoundEffect>("audio/sounds02/BombPlace"));
@@ -74,6 +74,7 @@ namespace Game1
         //Note that the volume parameter here is only for internal balancing between the volumes of each sound file
         public static SoundEffectInstance PlayFireForget(string sound, float timeDelay = 0.0f, float vol = 1.0f)
         {
+            mutex = false;
             SoundEffectInstance reference;
             SoundEffect toPlay;
             if (soundMap.TryGetValue(sound, out toPlay))
@@ -104,6 +105,7 @@ namespace Game1
         //Note that the volume parameter here is only for internal balancing between the volumes of each sound file
         public static SoundEffectInstance PlayLooped(string sound, float timeDelay = 0.0f, float vol = 1.0f)
         {
+            mutex = false;
             SoundEffectInstance reference = null;
             SoundEffect toPlay;
             if (soundMap.TryGetValue(sound, out toPlay))
@@ -131,6 +133,15 @@ namespace Game1
                 throw new NotImplementedException(sound + " is not a supported name.");
             }
             return reference;
+        }
+
+        public static void PlayMutex(string sound, float timeDelay = 0.0f, float vol = 1.0f)
+        {
+            if(!mutex)
+            {
+                PlayFireForget(sound, timeDelay, vol);
+                mutex = true;
+            }
         }
 
         //Works once only. Use with caution
@@ -243,14 +254,14 @@ namespace Game1
                     //AudioManager.StopMusic(AudioManager.musicMain);
                     AudioManager.PlayFireForget("powerPickUp");
                     AudioManager.PlayFireForget("chest");
-                    AudioManager.musicMain = AudioManager.PlayLooped("dungeon", 2.0f);
+                    AudioManager.PlayLooped("dungeon", 2.0f);
                     break;
                 case "Triforce":
                     AudioManager.StopAllMusic();
                     //AudioManager.StopMusic(AudioManager.musicMain);
                     AudioManager.PlayFireForget("powerPickUp");
                     AudioManager.PlayFireForget("triforce");
-                    AudioManager.musicMain = AudioManager.PlayLooped("dungeon", 8.0f);
+                    AudioManager.PlayLooped("dungeon", 8.0f);
                     break;
                 default:
                     AudioManager.PlayFireForget("itemPickUp");
@@ -273,7 +284,6 @@ namespace Game1
                 } else
                 {
                     soundQueue.ElementAt(i).Play();
-                    Console.WriteLine("Played a sound");
                 }
             }
             delays = newDelays;
