@@ -3,6 +3,7 @@ using Game1.RoomLoading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
+using SharpDX.Direct2D1;
 using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,9 @@ namespace Game1
         //used for muting an entire subset of sounds instantaneously - Consider deleting
         private static List<SoundEffectInstance> activeMusicList = new List<SoundEffectInstance>();
         private static List<SoundEffectInstance> activeSoundList = new List<SoundEffectInstance>();
+
+        private static readonly float chestSoundLength = 2.0f;
+        private static readonly float triforceSoundLength = 8.0f;
 
 
         public static void LoadContent(ContentManager content)
@@ -274,13 +278,13 @@ namespace Game1
                     StopAllMusic();
                     PlayFireForget("powerPickUp");
                     PlayFireForget("chest");
-                    PlayLooped("dungeon", 2.0f);
+                    PlayLooped("dungeon", chestSoundLength);
                     break;
                 case "Triforce":
                     StopAllMusic();
                     PlayFireForget("powerPickUp");
                     PlayFireForget("triforce");
-                    PlayLooped("dungeon", 8.0f);
+                    PlayLooped("dungeon", triforceSoundLength);
                     break;
                 default:
                     PlayFireForget("itemPickUp");

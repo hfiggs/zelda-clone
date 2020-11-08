@@ -13,13 +13,14 @@ namespace Game1.Projectile
         private ProjectileSpriteSheet sprite;
         private Vector2 position;
         private bool removeMe = false;
+        private readonly Vector2 positionOffset = new Vector2(-2.0f, 3.0f);
 
         private const float soundDelay = 0.2f;
 
         public SwordBeam(char direction, Vector2 position)
         {
             this.direction = direction;
-            this.position = position + new Vector2(-2, 3);
+            this.position = position + positionOffset;
             sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamSprite();
             columnModifier = 0;
             rowModifier = 0;
