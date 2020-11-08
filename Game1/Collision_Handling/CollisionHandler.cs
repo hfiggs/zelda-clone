@@ -20,10 +20,10 @@ namespace Game1.Collision_Handling
             {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'S'), new PlayerToBlockSouthSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'W'), new PlayerToBlockWestSideCommand() },
             //Player damages enemy
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'E'), new PlayerToEnemyEastSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'N'), new PlayerToEnemyNorthSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'S'), new PlayerToEnemySouthSideCommand() },
-            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'W'), new PlayerToEnemyWestSideCommand() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'E'), new PlayerToEnemy() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'N'), new PlayerToEnemy() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'S'), new PlayerToEnemy() },
+            {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'W'), new PlayerToEnemy() },
             //Enemy damages player
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'E'), new EnemyToPlayerEastSideCommand() },
             {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),'N'), new EnemyToPlayerNorthSideCommand() },

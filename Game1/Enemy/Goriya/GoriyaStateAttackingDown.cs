@@ -13,7 +13,7 @@ namespace Game1.Enemy
 
         private Vector2 direction;
         private Vector2 position;
-        private const int moveSpeed = 1;
+        private const float moveSpeed = .5f;
         private const int zero = 0;
         private const int negative = -1;
         private IProjectile projectile;

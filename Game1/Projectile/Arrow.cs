@@ -21,7 +21,7 @@ namespace Game1.Projectile
             this.direction = direction;
             this.position = position;
             sprite = ProjectileSpriteFactory.Instance.CreateArrowSprite();
-            moveSpeed = 500;
+            moveSpeed = 400;
 
             Player = player;
         }

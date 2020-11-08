@@ -12,7 +12,7 @@ namespace Game1.Enemy
         public ISprite Sprite { get; private set; }
         private Vector2 position;
         private Vector2 direction;
-        private const int moveSpeed = 1;
+        private const float moveSpeed = .5f;
         private double totalElapsedSeconds = 0;
         private double MovementChangeTimeSeconds;
         private IItem item;

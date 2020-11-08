@@ -17,6 +17,7 @@ namespace Game1.Enemy
         public bool stillSlide;
         Vector2 knockbackMagnitude = new Vector2(1f, 1f);
         private const float deathSoundVol = 0.75f;
+        Vector2 knockbackMagnitude = new Vector2(.66f, .66f);
         public EnemyDamageDecorator(IEnemy Original, Vector2 direction, Game1 game)
         {
             this.original = Original;
@@ -62,7 +63,7 @@ namespace Game1.Enemy
         {
             damagedTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             timeTillFlickerSwap -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (damagedTimer > 300 && stillSlide)
+            if (damagedTimer > 275 && stillSlide)
             {
                 original.EditPosition(Vector2.Multiply(knockbackMagnitude, (float)gameTime.ElapsedGameTime.TotalMilliseconds));
             }

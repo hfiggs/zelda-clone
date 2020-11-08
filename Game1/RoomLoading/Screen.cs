@@ -72,11 +72,11 @@ namespace Game1.RoomLoading
             ProjectileList.RemoveAll(p => p.ShouldDelete());
             
             //DELETEME DELETE ME
-            HUD.Update(gameTime);
-            if(lockMouse)
-            {
-                Mouse.SetPosition(150, 150);
-            }
+           // HUD.Update(gameTime);
+           // if(lockMouse)
+          //  {
+           //     Mouse.SetPosition(150, 150);
+           // }
 
 
             CurrentRoom.Update(gameTime);
@@ -98,7 +98,7 @@ namespace Game1.RoomLoading
             {
                 projectile.Draw(spriteBatch, Color.White);
             }
-            HUD.Draw(spriteBatch,HudPosition, Color.White);
+          //  HUD.Draw(spriteBatch,HudPosition, Color.White);
         }
 
         public void SpawnProjectile(IProjectile projectile)

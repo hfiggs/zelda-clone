@@ -23,7 +23,7 @@ namespace Game1.Projectile
             position.X = player.GetPlayerHitbox().X + (player.GetPlayerHitbox().Width / 2) - (sprite.PickSprite(0, 0).Width / 2);
             position.Y = player.GetPlayerHitbox().Y + (player.GetPlayerHitbox().Height / 2) - (sprite.PickSprite(0, 0).Height / 2) - 5.0f;
             rowModifier = 0;
-            moveSpeed = 200;
+            moveSpeed = 100;
             totalElapsedGameTime = 0;
             counter = 0;
             returned = false;
