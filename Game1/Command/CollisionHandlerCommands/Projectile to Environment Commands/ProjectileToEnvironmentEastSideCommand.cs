@@ -25,7 +25,9 @@ namespace Game1.Command.CollisionHandlerCommands
                 ((DoorWBombable)envo).openDoor();
             }
             if (proj is SwordBeam)
+            {
                 return;
+            }
             if (collision.intersectionRec.X >= 224 || collision.intersectionRec.X <= 30 || collision.intersectionRec.Y >= 144 || collision.intersectionRec.Y <= 30)
                 proj.BeginDespawn();
         }

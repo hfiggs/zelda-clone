@@ -289,6 +289,18 @@
 /processorParam:TextureFormat=Color
 /build:Images/ss_tiles.png
 
+#begin Images/sword_beam_exp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/sword_beam_exp.png
+
 #begin Link Down.png
 /importer:TextureImporter
 /processor:TextureProcessor

@@ -1,5 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Particle;
+using Game1.Sprite;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Projectile
 {
@@ -14,6 +17,10 @@ namespace Game1.Projectile
         private Vector2 position;
         private bool removeMe = false;
 
+        private IParticle particles;
+        private bool particlesSpawned;
+        private Vector2 particleOffset = new Vector2(14.0f, 14.0f);
+
         public SwordBeam(char direction, Vector2 position)
         {
             this.direction = direction;
@@ -27,7 +34,7 @@ namespace Game1.Projectile
         public void Update(GameTime gameTime)
         {
             totalTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (totalTime >= delay) {
+            if (totalTime >= delay && !removeMe) {
                 if (direction == 'N') {
                     position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                     rowModifier = 0;
@@ -55,20 +62,32 @@ namespace Game1.Projectile
                 }
             }
 
+            if(particlesSpawned)
+            {
+                particles.Update(gameTime);
+            }
+
             if(position.Y < 10 || position.Y > 130 || position.X < 10 || position.X > 206)
             {
                 BeginDespawn();
+                if(!particlesSpawned)
+                    SpawnParticles();
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            if (totalTime >= delay) {
+            if (totalTime >= delay && !removeMe) {
                 int columnOfSprite = sprite.GetColumnOfSprite();
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, rowModifier); ;
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
 
                 spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
+            }
+
+            if (particlesSpawned)
+            {
+                particles.Draw(spriteBatch, color);
             }
         }
 
@@ -84,7 +103,7 @@ namespace Game1.Projectile
 
         public bool ShouldDelete()
         {
-            return removeMe;
+            return removeMe && particles.ShouldDelete();
         }
 
         public void BeginDespawn()
@@ -105,6 +124,12 @@ namespace Game1.Projectile
             }
 
             return hitbox;
+        }
+
+        public void SpawnParticles()
+        {
+            particles = new BeamExplosion(position + particleOffset);
+            particlesSpawned = true;
         }
     }
 }
