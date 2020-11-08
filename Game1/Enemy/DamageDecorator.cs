@@ -15,7 +15,6 @@ namespace Game1.Enemy
         private float timeTillFlickerSwap;
         private Game1 game;
         public bool stillSlide;
-        Vector2 knockbackMagnitude = new Vector2(1f, 1f);
         private const float deathSoundVol = 0.75f;
         Vector2 knockbackMagnitude = new Vector2(.66f, .66f);
         public EnemyDamageDecorator(IEnemy Original, Vector2 direction, Game1 game)
