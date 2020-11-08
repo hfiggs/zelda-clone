@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -15,7 +16,7 @@ namespace Game1.Enemy
         private Game1 game;
         public bool stillSlide;
         Vector2 knockbackMagnitude = new Vector2(1f, 1f);
-        public EnemyDamageDecorator( IEnemy Original, Vector2 direction, Game1 game)
+        public EnemyDamageDecorator(IEnemy Original, Vector2 direction, Game1 game)
         {
             this.original = Original;
             damagedTimer = 350f; //ms
@@ -69,9 +70,9 @@ namespace Game1.Enemy
             return original.ShouldRemove();
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return original.GetHitbox();
+            return original.GetHitboxes();
         }
 
         public void SetState(IEnemyState state)

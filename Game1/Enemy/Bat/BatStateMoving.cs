@@ -1,6 +1,7 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Enemy
@@ -73,9 +74,11 @@ namespace Game1.Enemy
             return direction;
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return new Rectangle((int)position.X, (int)position.Y, 16, 16);
+            List<Rectangle> hitboxList = new List<Rectangle>();
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, 16, 16));
+            return hitboxList;
         }
 
         private float GetRandomDirectionMovementChangeTimeSeconds()

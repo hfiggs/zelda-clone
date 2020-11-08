@@ -20,13 +20,15 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             IProjectile proj = ((IProjectile)collision.collider);
             IEnvironment envo = (IEnvironment)collision.collidee;
-            if(envo.GetType() == typeof(DoorWBombable) && proj.GetType() == typeof(BombProjectile))
+            const int bombWidth = 12; // bomb's width before explosion
+            const int bombHeight = 16; // bomb's height before explosion
+            if (envo.GetType() == typeof(DoorWBombable) && proj.GetType() == typeof(BombProjectile) && proj.GetHitbox().Width > bombWidth && proj.GetHitbox().Height > bombHeight)
             {
                 ((DoorWBombable)envo).openDoor();
             }
             if (proj is SwordBeam)
                 return;
-            if (collision.intersectionRec.X >= 224 || collision.intersectionRec.X <= 30 || collision.intersectionRec.Y >= 144 || collision.intersectionRec.Y <= 30)
+            if ((collision.intersectionRec.X >= 224 || collision.intersectionRec.X <= 30 || collision.intersectionRec.Y >= 144 || collision.intersectionRec.Y <= 30) && proj.GetType() != typeof(BombProjectile))
                 proj.BeginDespawn();
         }
     }

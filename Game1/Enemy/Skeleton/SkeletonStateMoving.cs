@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Item;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -98,9 +99,14 @@ namespace Game1.Enemy
             return position;
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return new Rectangle((int)position.X + 7, (int)position.Y + 7, 15, 16);
+            const int xAndYDiff = 7;
+            const int width = 15;
+            const int height = 16;
+            List<Rectangle> hitboxList = new List<Rectangle>();
+            hitboxList.Add(new Rectangle((int)position.X + xAndYDiff, (int)position.Y + xAndYDiff, width, height));
+            return hitboxList;
         }
 
         private float GetRandomDirectionMovementChangeTimeSeconds()
