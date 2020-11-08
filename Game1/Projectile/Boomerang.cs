@@ -1,7 +1,7 @@
 ﻿using Game1.Player;
+using Game1.Player.PlayerInventory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace Game1.Projectile
 {
@@ -56,7 +56,7 @@ namespace Game1.Projectile
 
             if(returned)
             {
-                Player.setItemUsable(2);
+                Player.PlayerInventory.SetItemInUse(ItemEnum.Boomerang, false);
             }
 
             // Used to change sprite sheet row to allow for flashing

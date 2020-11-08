@@ -61,12 +61,14 @@ namespace Game1.Player
             state.MoveDown();
         }
 
-        public void UseItem(int item)
+        public void UseItem()
         {
-            currentItem = item;
-            if (itemsHeld[item - 1])
+            ItemEnum item = PlayerInventory.EquippedItem;
+
+            if (PlayerInventory.HasItem(item) && !PlayerInventory.IsItemInUse(item))
             {
-                state.UseItem();
+                if((item == ItemEnum.Bow && PlayerInventory.RupeeCount >= 1) || (item == ItemEnum.Boomerang) || (item == ItemEnum.Bomb && PlayerInventory.BombCount >= 1))
+                    state.UseItem();
             }
         }
 
@@ -107,32 +109,17 @@ namespace Game1.Player
             return state.GetDirection();
         }
 
-        public int GetItem()
-        {
-            return currentItem;
-        }
-
         public void SetState(IPlayerState state)
         {
             this.state = state;
         }
 
-        public void spawnProjectile(IProjectile projectile)
+        public void SpawnProjectile(IProjectile projectile)
         {
             game.Screen.SpawnProjectile(projectile);
         }
 
-        public void setItemUsable(int item)
-        {
-            itemsHeld[item - 1] = true;
-        }
-
-        public void setItemNotUsable()
-        {
-            itemsHeld[currentItem - 1] = false;
-        }
-
-        public void editPosition(Vector2 amount)
+        public void EditPosition(Vector2 amount)
         {
             state.position = Vector2.Add(state.position, amount);
         }

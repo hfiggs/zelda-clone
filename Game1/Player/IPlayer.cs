@@ -21,7 +21,7 @@ namespace Game1.Player
 
         void MoveDown();
 
-        void UseItem(int item);
+        void UseItem();
 
         void Attack();
 
@@ -37,15 +37,9 @@ namespace Game1.Player
 
         void SetState(IPlayerState state);
 
-        int GetItem();
+        void SpawnProjectile(IProjectile projectile);
 
-        void spawnProjectile(IProjectile projectile);
-
-        void setItemUsable(int item);
-
-        void setItemNotUsable();
-
-        void editPosition(Vector2 amount);
+        void EditPosition(Vector2 amount);
 
         Rectangle GetPlayerHitbox();
 

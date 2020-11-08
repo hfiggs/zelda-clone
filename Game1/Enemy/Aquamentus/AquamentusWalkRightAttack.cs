@@ -2,6 +2,7 @@
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -78,9 +79,12 @@ namespace Game1.Enemy
             position = Vector2.Add(position, amount);
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return new Rectangle((int)position.X, (int)position.Y, 25, 32);
+            List<Rectangle> hitboxList = new List<Rectangle>();
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, 25, 32));
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, 15, 12));
+            return hitboxList;
         }
     }
 }

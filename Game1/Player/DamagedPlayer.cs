@@ -113,17 +113,17 @@ namespace Game1.Player
                 RemoveDecorator();
 
             if (timer >= 950 && stillSlide)
-                decoratedPlayer.editPosition(Vector2.Multiply(damageMove, (float)(time.ElapsedGameTime.TotalMilliseconds)));
+                decoratedPlayer.EditPosition(Vector2.Multiply(damageMove, (float)(time.ElapsedGameTime.TotalMilliseconds)));
             else
                 stillSlide = false;
 
             decoratedPlayer.Update(time);
         }
 
-        public void UseItem(int item)
+        public void UseItem()
         {
             if(timer >= 0)
-                decoratedPlayer.UseItem(item);
+                decoratedPlayer.UseItem();
         }
 
         private void RemoveDecorator()
@@ -136,29 +136,14 @@ namespace Game1.Player
             decoratedPlayer.SetState(state);
         }
 
-        public int GetItem()
-        {
-            return decoratedPlayer.GetItem();
-        }
-
-        public void spawnProjectile(IProjectile projectile)
+        public void SpawnProjectile(IProjectile projectile)
         {
             game.Screen.SpawnProjectile(projectile);
         }
 
-        public void setItemUsable(int item)
+        public void EditPosition(Vector2 amount)
         {
-            decoratedPlayer.setItemUsable(item);
-        }
-
-        public void setItemNotUsable()
-        {
-            decoratedPlayer.setItemNotUsable();
-        }
-
-        public void editPosition(Vector2 amount)
-        {
-                decoratedPlayer.editPosition(amount);
+             decoratedPlayer.EditPosition(amount);
         }
 
         public Rectangle GetPlayerHitbox()
@@ -190,7 +175,7 @@ namespace Game1.Player
             else if (damageMove.Y < 0)
                 correction = Vector2.Multiply(correction, new Vector2(0,1));
 
-            decoratedPlayer.editPosition(correction);
+            decoratedPlayer.EditPosition(correction);
         }
     }
 }

@@ -6,9 +6,10 @@
 		S ------- Move Link Down
 		D ------- Move Link Right
 		Z/N ----- Attack
-		1 ------- Use Arrow
-		2 ------- Use Boomerang
-		3 ------- Use Bomb
+		X/M ----- Use Equipped Item
+		1 ------- Equip Bow
+		2 ------- Equip Boomerang
+		3 ------- Equip Bomb
 		U ------- Cycle current room forward
 		I ------- Cycle current room backwared
 		Q ------- Quit Game
@@ -19,9 +20,10 @@
 		DPadDown/LeftStickDown ---------- Move Link Down
 		DPadRight/LeftStickRight -------- Move Link Right
 		A ------------------------------- Attack
-		B ------------------------------- Use Arrow
-		X ------------------------------- Use Boomerang
-		Y ------------------------------- Use Bomb
+		B ------------------------------- Use Equipped Item
+		RightStickLeft ------------------ Equip Bow
+		RightStickUp -------------------- Equip Boomerang
+		RightStickRight ----------------- Equip Bomb
 		RightShoulder ------------------- Cycle current room forward
 		LeftShoulder -------------------- Cycle current room backwared
 		Back ---------------------------- Quit Game

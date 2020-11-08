@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -8,8 +9,10 @@ namespace Game1.Enemy
     {
         public int StunnedTimer { get; set; } = 0;
 
+        private int deathTimer = 0;
         private float health;
         private IEnemyState state;
+        private IEnemyState nextState;
         private Vector2 position;
         private Game1 game;
 
@@ -18,7 +21,6 @@ namespace Game1.Enemy
             this.game = game;
             this.position = position;
 
-            IEnemyState nextState;
             switch (new Random().Next(4))
             {
                 case 0:
@@ -43,7 +45,8 @@ namespace Game1.Enemy
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            state.Draw(spriteBatch, color);
+            if (!this.ShouldRemove())
+                state.Draw(spriteBatch, color);
         }
 
         public void EditPosition(Vector2 amount)
@@ -53,26 +56,45 @@ namespace Game1.Enemy
 
         public void ReceiveDamage(float amount, Vector2 direction) 
         {
-
-            health -= amount;
-            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, direction, game);
-            game.Screen.CurrentRoom.DecoratedEnemyList.Add(decorator);
-
+            const float bombDamage = 4f;
+            if (StunnedTimer > 0) {
+                health -= amount;
+                
+            } else if (amount == 0) {
+                health -= bombDamage;
+                Vector2 currentPosition = state.GetPosition();
+                switch (state) {
+                case DodongoStateUp _:
+                    nextState = new DodongoStateUpSwallow(this, currentPosition);
+                    break;
+                case DodongoStateDown _:
+                    nextState = new DodongoStateDownSwallow(this, currentPosition);
+                    break;
+                case DodongoStateLeft _:
+                    nextState = new DodongoStateLeftSwallow(this, currentPosition);
+                    break;
+                case DodongoStateRight _:
+                default:
+                    nextState = new DodongoStateRightSwallow(this, currentPosition);
+                    break;
+                }
+                state = nextState;
+                const int timeTillDeath = 1000; // milliseconds
+                deathTimer = timeTillDeath;
+            }
         }
 
         public bool ShouldRemove()
         {
-            return health <= 0;
+            return health <= 0 && deathTimer <= 0;
         }
-
-        public void ReceiveDamage() {  /* TODO: Receive damage */ }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
+            deathTimer -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
             if (StunnedTimer == 0)
-            {
                 state.Update(gameTime, drawingLimits);
-            }
 
             StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
             StunnedTimer = Math.Max(0, StunnedTimer);
@@ -83,9 +105,9 @@ namespace Game1.Enemy
             this.state = state;
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return state.GetHitbox();
+            return state.GetHitboxes();
         }
     }
 }

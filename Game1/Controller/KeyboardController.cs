@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Game1.Command;
 using Game1.Command.PlayerCommands;
+using Game1.Player.PlayerInventory;
 
 namespace Game1.Controller
 {
@@ -31,12 +32,16 @@ namespace Game1.Controller
                 { Keys.Z, new PlayerAttackCommand(game) },
                 { Keys.N, new PlayerAttackCommand(game) },
 
-                { Keys.D1, new PlayerUseItemCommand(game, 1) },
-                { Keys.NumPad1, new PlayerUseItemCommand(game, 1) },
-                { Keys.D2, new PlayerUseItemCommand(game, 2) },
-                { Keys.NumPad2, new PlayerUseItemCommand(game, 2) },
-                { Keys.D3, new PlayerUseItemCommand(game, 3) },
-                { Keys.NumPad3, new PlayerUseItemCommand(game, 3) },
+                { Keys.X, new PlayerUseItemCommand(game) },
+                { Keys.M, new PlayerUseItemCommand(game) },
+
+                { Keys.D1, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
+                { Keys.D2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
+                { Keys.D3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
+
+                { Keys.NumPad1, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
+                { Keys.NumPad2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
+                { Keys.NumPad3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
 
                 { Keys.U, new RoomNextCommand(game) },
                 { Keys.I, new RoomPrevCommand(game) },
