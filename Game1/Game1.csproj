@@ -77,6 +77,7 @@
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerWestSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemy.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentEastSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentSouthSideCommand.cs" />

@@ -23,7 +23,7 @@ namespace Game1.Enemy
         private const float moveTime = 1000f; // ms
 
         private const int normalSpeed = 1;
-        private const int fastSpeed = 4;
+        private const int fastSpeed = 2;
         private const int viewWidth = 16;
 
         private float timeUntilNextFrame; // ms

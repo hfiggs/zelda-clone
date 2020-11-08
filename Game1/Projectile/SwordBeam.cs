@@ -8,7 +8,7 @@ namespace Game1.Projectile
         private int columnModifier, counter, rowModifier;
         private float totalTime;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
-        private const float moveSpeed = 250;
+        private const float moveSpeed = 200;
         private const float delay = 200; // miliseconds
         private ProjectileSpriteSheet sprite;
         private Vector2 position;

@@ -19,7 +19,7 @@ namespace Game1.Projectile
             this.position = position;
             this.originalPosition = position;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
-            moveSpeed = 200;
+            moveSpeed = 100;
             rowModifier = 0;
             totalElapsedGameTime = 0;
             counter = 0;
