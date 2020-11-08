@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Xml;
 
 namespace Game1
 {
@@ -16,6 +17,8 @@ namespace Game1
     {
         //TODO: Refactor mutex setting and resetting to something more functional after room transitioning
         private static bool mutex = false;
+
+        private static XmlDocument config;
 
         private static float volumeMaster = 1.0f;
         private static float volumeMusic = 1.0f;
@@ -69,6 +72,8 @@ namespace Game1
             soundMap.Add("enemyHurt", content.Load<SoundEffect>("audio/sounds/EnemyHurt"));
             soundMap.Add("triforce", content.Load<SoundEffect>("audio/sounds/triforceTheme"));
             soundMap.Add("doorLock", content.Load<SoundEffect>("audio/sounds/LockedDoor"));
+
+            ReadSoundSettings();
         }
 
         //Note that the volume parameter here is only for internal balancing between the volumes of each sound file
@@ -156,22 +161,6 @@ namespace Game1
             }
         }
 
-        public static void StopMusic(SoundEffectInstance musicRef)
-        {
-            musicRef.Stop();
-            //deliberately left unchecked
-            activeMusicList.Remove(musicRef);
-        }
-
-        public static void SetVolumeMusic(float vol)
-        {
-            volumeMusic = vol;
-            foreach (SoundEffectInstance music in activeMusicList)
-            {
-                music.Volume = volumeMusic;
-            }
-        }
-
         public static void StopAllSound()
         {
             foreach (SoundEffectInstance sound in activeSoundList)
@@ -183,6 +172,13 @@ namespace Game1
             }
         }
 
+        public static void StopMusic(SoundEffectInstance musicRef)
+        {
+            musicRef.Stop();
+            //deliberately left unchecked
+            activeMusicList.Remove(musicRef);
+        }
+
         public static void StopSound(SoundEffectInstance soundRef)
         {
             soundRef.Stop();
@@ -190,14 +186,70 @@ namespace Game1
             activeSoundList.Remove(soundRef);
         }
 
+        public static void SetVolumeMusic(float vol)
+        {
+            foreach (SoundEffectInstance music in activeMusicList)
+            {
+                if (volumeMusic != 0)
+                {
+                    music.Volume = music.Volume / volumeMusic * vol;
+                } else
+                {
+                    music.Volume = vol * volumeMaster;
+                }
+            }
+            volumeMusic = vol;
+            XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
+            settingsNode["Music"].InnerText = vol.ToString();
+            config.Save("../../../../app.config");
+        }
+
         public static void SetVolumeSound(float vol)
         {
+            foreach (SoundEffectInstance sound in activeSoundList)
+            {
+                if (volumeSound != 0)
+                {
+                    sound.Volume = sound.Volume / volumeSound * vol;
+                } else
+                {
+                    sound.Volume = vol * volumeMaster;
+                }
+            }
             volumeSound = vol;
+            XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
+            settingsNode["Sound"].InnerText = vol.ToString();
+            config.Save("../../../../app.config");
         }
 
         public static void SetVolumeMaster(float vol)
         {
+            foreach (SoundEffectInstance music in activeMusicList)
+            {
+                if (volumeMaster != 0)
+                {
+                    music.Volume = music.Volume / volumeMaster * vol;
+                }
+                else
+                {
+                    music.Volume = vol * volumeMusic;
+                }
+            }
+            foreach (SoundEffectInstance sound in activeSoundList)
+            {
+                if (volumeMaster != 0)
+                {
+                    sound.Volume = sound.Volume / volumeMaster * vol;
+                }
+                else
+                {
+                    sound.Volume = vol * volumeSound;
+                }
+            }
             volumeMaster = vol;
+            XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
+            settingsNode["Volume"].InnerText = vol.ToString();
+            config.Save("../../../../app.config");
         }
 
         public static void PlayItemSound(IItem item)
@@ -255,6 +307,16 @@ namespace Game1
             }
             delays = newDelays;
             soundQueue = newSounds;
+        }
+
+        private static void ReadSoundSettings()
+        {
+            config = new XmlDocument();
+            config.Load("../../../../App.config");
+            XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
+            volumeMaster = float.Parse(settingsNode["Volume"].InnerText);
+            volumeMusic = float.Parse(settingsNode["Music"].InnerText);
+            volumeSound = float.Parse(settingsNode["Sound"].InnerText);
         }
     }
 }
