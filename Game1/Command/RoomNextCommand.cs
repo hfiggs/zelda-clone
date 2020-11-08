@@ -22,22 +22,18 @@ namespace Game1.Command
 
         public void Execute()
         {
-            game.Screen.CurrentRoom.StopRoomAmbience();
-
-            if(game.Screen.Rooms.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
+            if(game.Screen.RoomsList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                Room temp = game.Screen.Rooms.First();
+                Room temp = game.Screen.RoomsList.First();
 
-                game.Screen.Rooms.RemoveFirst();
+                game.Screen.RoomsList.RemoveFirst();
 
-                game.Screen.Rooms.AddLast(temp);
+                game.Screen.RoomsList.AddLast(temp);
 
-                game.Screen.CurrentRoom = game.Screen.Rooms.First();
+                game.Screen.CurrentRoom = game.Screen.RoomsList.First();
 
                 stopWatch.Restart();
             }
-
-            game.Screen.CurrentRoom.PlayRoomAmbience();
         }
     }
 }

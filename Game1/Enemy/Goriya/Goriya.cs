@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -10,10 +11,11 @@ namespace Game1.Enemy
 
         private Vector2 oldDirection;
         private double totalElapsedSeconds;
-        private double attackCooldown = 5;
+        private const double attackCooldown = 5;
         private IEnemyState state;
         private Game1 game;
         private Vector2 position;
+        private const int zero = 0;
 
         private float health;
 
@@ -40,7 +42,7 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            if (StunnedTimer == 0)
+            if (StunnedTimer == zero)
             {
                 Vector2 newDirection = state.GetDirection();
                 totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
@@ -53,19 +55,19 @@ namespace Game1.Enemy
 
                 else if (newDirection.X != oldDirection.X || newDirection.Y != oldDirection.Y)
                 {
-                    if (state.GetDirection().X < 0)
+                    if (state.GetDirection().X < zero)
                     {
                         state = new GoriyaStateMovingLeft(game, this, state.GetPosition());
                     }
-                    if (state.GetDirection().X > 0)
+                    if (state.GetDirection().X > zero)
                     {
                         state = new GoriyaStateMovingRight(game, this, state.GetPosition());
                     }
-                    if (state.GetDirection().Y < 0)
+                    if (state.GetDirection().Y < zero)
                     {
                         state = new GoriyaStateMovingUp(game, this, state.GetPosition());
                     }
-                    if (state.GetDirection().Y > 0)
+                    if (state.GetDirection().Y > zero)
                     {
                         state = new GoriyaStateMovingDown(game, this, state.GetPosition());
                     }
@@ -75,8 +77,8 @@ namespace Game1.Enemy
                 state.Update(gameTime, drawingLimits);
             }
 
-            StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-            StunnedTimer = Math.Max(0, StunnedTimer);
+            StunnedTimer -= (StunnedTimer == int.MaxValue) ? zero : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            StunnedTimer = Math.Max(zero, StunnedTimer);
         }
 
         public void SetState(IEnemyState state)
@@ -84,9 +86,9 @@ namespace Game1.Enemy
             this.state = state;
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return state.GetHitbox();
+            return state.GetHitboxes();
         }    
 
         public void EditPosition(Vector2 amount)
@@ -96,7 +98,7 @@ namespace Game1.Enemy
 
         public bool ShouldRemove()
         {
-            return health <= 0;
+            return health <= zero;
         }
     }
 }

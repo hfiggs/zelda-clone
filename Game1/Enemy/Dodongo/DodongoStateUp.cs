@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -11,8 +12,6 @@ namespace Game1.Enemy
 
         private Vector2 position;
 
-        private bool isDead;
-
         public ISprite Sprite { get; private set; }
 
         private float timeUntilNextFrame; // ms
@@ -21,7 +20,7 @@ namespace Game1.Enemy
         private float timeUntilNewDirection;
         private const float moveTime = 1000f; // ms
 
-        private const int moveSpeed = 1;
+        private const float moveSpeed = 0.6f;
 
         public DodongoStateUp(IEnemy dodongo, Vector2 position)
         {
@@ -30,8 +29,6 @@ namespace Game1.Enemy
             Sprite = EnemySpriteFactory.Instance.CreateDodongoUpSprite();
 
             this.position = position;
-
-            isDead = false;
 
             timeUntilNextFrame = animationTime;
 
@@ -53,14 +50,23 @@ namespace Game1.Enemy
             return new Vector2(0,-1);
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return new Rectangle((int)position.X + 9, (int)position.Y + 8, 15, 16);
+            const int xDiff = 9;
+            const int yDiffHead = 8;
+            const int yDiffBody = 12;
+            const int width = 15;
+            const int headHeight = 4;
+            const int bodyHeight = 24;
+            List<Rectangle> hitboxList = new List<Rectangle>();
+            hitboxList.Add(new Rectangle((int)position.X + xDiff, (int)position.Y + yDiffBody, width, bodyHeight));
+            hitboxList.Add(new Rectangle((int)position.X + xDiff, (int)position.Y + yDiffHead, width, headHeight));
+            return hitboxList;
         }
 
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
-            if (!isDead)
+            if (!dodongo.ShouldRemove())
             {
                 position.Y -= moveSpeed;
 
@@ -94,12 +100,6 @@ namespace Game1.Enemy
                             break;
                     }
                 }
-
-                // TODO: Determine if dodongo will swallow a 2nd bomb, if so set isDead = true
-            }
-            else
-            {
-                Sprite = EnemySpriteFactory.Instance.CreateDodongoUpDeadSprite();
             }
         }
 

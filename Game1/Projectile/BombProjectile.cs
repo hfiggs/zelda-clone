@@ -1,11 +1,10 @@
 ﻿using Game1.Particle;
 using Game1.Player;
+using Game1.Player.PlayerInventory;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Runtime.CompilerServices;
 
 namespace Game1.Projectile
 {
@@ -15,7 +14,7 @@ namespace Game1.Projectile
         private IPlayer player;
 
         private float detonationTime, timer;
-        private bool detonated;
+        private bool detonated, swallowed;
         private Vector2 position;
 
         private List<IParticle> particles;
@@ -36,6 +35,7 @@ namespace Game1.Projectile
         {
             this.position = position;
             detonated = false;
+            swallowed = false;
             detonationTime = 70;
             timer = 0;
             sprite = ProjectileSpriteFactory.Instance.CreateBombProjectileSprite();
@@ -67,13 +67,14 @@ namespace Game1.Projectile
                 timeUntilNoExplosionHitbox -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
             }
 
-            particles.RemoveAll(p => p.ShouldDelete());
+            particles.RemoveAll(p => (detonated && particles.Count == 0));
 
             foreach (IParticle particle in particles)
             {
                 particle.Update(gameTime);
             }
         }
+
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             if (!detonated) {
@@ -103,7 +104,7 @@ namespace Game1.Projectile
 
         private void AddCloudParticles(List<IParticle> particles)
         {
-            player.setItemUsable(3);
+            player.PlayerInventory.SetItemInUse(ItemEnum.Bomb, false);
             particles.Add(new Cloud(GetCenteredPosition()));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y - cloudOffset)));
@@ -118,13 +119,12 @@ namespace Game1.Projectile
         public Rectangle GetHitbox()
         {
             Rectangle hitbox;
-
-            if(!detonated)
-            {
-                hitbox = new Rectangle(int.MaxValue, int.MaxValue, 0, 0);
-            }
-            else
-            {
+            const int xAndYDiff = 14;
+            const int width = 12;
+            const int height = 16;
+            if(!detonated) {
+                hitbox = new Rectangle((int)position.X + xAndYDiff, (int)position.Y + xAndYDiff, width, height);
+            } else {
                 hitbox = new Rectangle((int)GetCenteredPosition().X - explosionDiameter/2, (int)GetCenteredPosition().Y - explosionDiameter / 2, explosionDiameter, explosionDiameter);
             }
 
@@ -133,12 +133,13 @@ namespace Game1.Projectile
 
         public bool ShouldDelete()
         {
-            return detonated && particles.Count == 0;
+            return (detonated && particles.Count == 0) || swallowed;
         }
 
         public void BeginDespawn()
         {
-            //Do nothing, as bomb decides when it begins its despawn based off a counter.
+            swallowed = true;
+            player.PlayerInventory.SetItemInUse(ItemEnum.Bomb, false);
         }
     }
 }

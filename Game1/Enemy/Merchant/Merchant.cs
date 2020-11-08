@@ -1,6 +1,7 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -46,9 +47,13 @@ namespace Game1.Enemy
             return false;
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return new Rectangle((int)position.X, (int)position.Y, 14, 16);
+            List <Rectangle> hitboxList= new List<Rectangle>();
+            const int width = 14;
+            const int height = 16;
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, width, height));
+            return hitboxList;
         }
     }
 

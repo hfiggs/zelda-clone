@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -16,9 +16,7 @@ namespace Game1.Enemy
         private Game1 game;
         public bool stillSlide;
         Vector2 knockbackMagnitude = new Vector2(1f, 1f);
-
-        private const float deathSoundVol = 0.75f;
-        public EnemyDamageDecorator( IEnemy Original, Vector2 direction, Game1 game)
+        public EnemyDamageDecorator(IEnemy Original, Vector2 direction, Game1 game)
         {
             this.original = Original;
             damagedTimer = 350f; //ms
@@ -26,27 +24,6 @@ namespace Game1.Enemy
             knockbackMagnitude = Vector2.Multiply(knockbackMagnitude, direction);
             this.game = game;
             stillSlide = true;
-
-            SoundHandle(Original);
-        }
-
-        private void SoundHandle(IEnemy Original)
-        {
-            if (Original.GetType().Name.Equals("Aquamentus"))
-            {
-                AudioManager.PlayFireForget("aquamentusHurt");
-            }
-            else
-            {
-                if (Original.ShouldRemove())
-                {
-                    AudioManager.PlayFireForget("enemyDeath", 0.0f, deathSoundVol);
-                }
-                else
-                {
-                    AudioManager.PlayFireForget("enemyHurt");
-                }
-            }
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
@@ -93,9 +70,9 @@ namespace Game1.Enemy
             return original.ShouldRemove();
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return original.GetHitbox();
+            return original.GetHitboxes();
         }
 
         public void SetState(IEnemyState state)

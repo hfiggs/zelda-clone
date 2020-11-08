@@ -2,6 +2,7 @@
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -19,7 +20,7 @@ namespace Game1.Enemy
 
         Vector2 GetDirection();
 
-        Rectangle GetHitbox();
+        List<Rectangle> GetHitboxes();
 
         ISprite Sprite { get; }
     }

@@ -3,6 +3,7 @@
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Game1.Command;
+using Game1.Player.PlayerInventory;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -34,10 +35,11 @@ namespace Game1.Controller
                 { Buttons.LeftThumbstickRight, new PlayerRightCommand(game) },
 
                 { Buttons.A, new PlayerAttackCommand(game) },
+                { Buttons.B, new PlayerUseItemCommand(game) },
 
-                { Buttons.B, new PlayerUseItemCommand(game, 1) },
-                { Buttons.X, new PlayerUseItemCommand(game, 2) },
-                { Buttons.Y, new PlayerUseItemCommand(game, 3) },
+                { Buttons.RightThumbstickLeft, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
+                { Buttons.RightThumbstickUp, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
+                { Buttons.RightThumbstickRight, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
 
                 { Buttons.RightShoulder, new RoomNextCommand(game) },
                 { Buttons.LeftShoulder, new RoomPrevCommand(game) }
