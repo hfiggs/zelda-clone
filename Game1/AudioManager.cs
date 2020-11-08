@@ -14,7 +14,7 @@ namespace Game1
 {
     class AudioManager
     {
-        //TODO: Refactor mutex setting and resetting to something more functional
+        //TODO: Refactor mutex setting and resetting to something more functional after room transitioning
         private static bool mutex = false;
 
         private static float volumeMaster = 1.0f;
@@ -43,32 +43,32 @@ namespace Game1
             musicMap.Add("title2", content.Load<SoundEffect>("audio/music/titleBass"));
             musicMap.Add("gameOver", content.Load<SoundEffect>("audio/music/gameOver"));
             musicMap.Add("gameOver2", content.Load<SoundEffect>("audio/music/gameOverBlasted"));
-            soundMap.Add("aquamentusScream", content.Load<SoundEffect>("audio/sounds02/AquamentusScream"));
+            soundMap.Add("aquamentusScream", content.Load<SoundEffect>("audio/sounds/AquamentusScream"));
             soundMap.Add("boomerang", content.Load<SoundEffect>("audio/sounds/Boomerang"));
-            soundMap.Add("lowHealth", content.Load<SoundEffect>("audio/sounds02/HealthLow"));
+            soundMap.Add("lowHealth", content.Load<SoundEffect>("audio/sounds/HealthLow"));
 
             //fire-forget sounds
             soundMap.Add("death", content.Load<SoundEffect>("audio/sounds/death"));
-            soundMap.Add("linkPop", content.Load<SoundEffect>("audio/sounds02/LinkPop"));
-            soundMap.Add("shield", content.Load<SoundEffect>("audio/sounds02/Shield"));
-            soundMap.Add("sword", content.Load<SoundEffect>("audio/sounds02/Sword"));
-            soundMap.Add("swordBeam", content.Load<SoundEffect>("audio/sounds02/SwordBeam"));
-            soundMap.Add("aquamentusHurt", content.Load<SoundEffect>("audio/sounds02/AquamentusHurt"));
-            soundMap.Add("bombExplode", content.Load<SoundEffect>("audio/sounds02/BombExplode"));
-            soundMap.Add("bombPlace", content.Load<SoundEffect>("audio/sounds02/BombPlace"));
-            soundMap.Add("chest", content.Load<SoundEffect>("audio/sounds02/Chest"));
-            soundMap.Add("enemyDeath", content.Load<SoundEffect>("audio/sounds02/EnemyDeath"));
-            soundMap.Add("powerPickUp", content.Load<SoundEffect>("audio/sounds02/FairyAppear"));
-            soundMap.Add("ocarina", content.Load<SoundEffect>("audio/sounds02/Flute"));
-            soundMap.Add("reveal", content.Load<SoundEffect>("audio/sounds02/Hole"));
-            soundMap.Add("itemPickUp", content.Load<SoundEffect>("audio/sounds02/ItemPickup1"));
-            soundMap.Add("key", content.Load<SoundEffect>("audio/sounds02/KeyAppear"));
-            soundMap.Add("rupeePickUp", content.Load<SoundEffect>("audio/sounds02/Rupee"));
-            soundMap.Add("stairs", content.Load<SoundEffect>("audio/sounds02/Stairs"));
-            soundMap.Add("linkHurt", content.Load<SoundEffect>("audio/sounds02/PlayerHurt"));
-            soundMap.Add("enemyHurt", content.Load<SoundEffect>("audio/sounds02/EnemyHurt"));
+            soundMap.Add("linkPop", content.Load<SoundEffect>("audio/sounds/LinkPop"));
+            soundMap.Add("shield", content.Load<SoundEffect>("audio/sounds/Shield"));
+            soundMap.Add("sword", content.Load<SoundEffect>("audio/sounds/Sword"));
+            soundMap.Add("swordBeam", content.Load<SoundEffect>("audio/sounds/SwordBeam"));
+            soundMap.Add("aquamentusHurt", content.Load<SoundEffect>("audio/sounds/AquamentusHurt"));
+            soundMap.Add("bombExplode", content.Load<SoundEffect>("audio/sounds/BombExplode"));
+            soundMap.Add("bombPlace", content.Load<SoundEffect>("audio/sounds/BombPlace"));
+            soundMap.Add("chest", content.Load<SoundEffect>("audio/sounds/Chest"));
+            soundMap.Add("enemyDeath", content.Load<SoundEffect>("audio/sounds/EnemyDeath"));
+            soundMap.Add("powerPickUp", content.Load<SoundEffect>("audio/sounds/FairyAppear"));
+            soundMap.Add("ocarina", content.Load<SoundEffect>("audio/sounds/Flute"));
+            soundMap.Add("reveal", content.Load<SoundEffect>("audio/sounds/Hole"));
+            soundMap.Add("itemPickUp", content.Load<SoundEffect>("audio/sounds/ItemPickup1"));
+            soundMap.Add("key", content.Load<SoundEffect>("audio/sounds/KeyAppear"));
+            soundMap.Add("rupeePickUp", content.Load<SoundEffect>("audio/sounds/Rupee"));
+            soundMap.Add("stairs", content.Load<SoundEffect>("audio/sounds/Stairs"));
+            soundMap.Add("linkHurt", content.Load<SoundEffect>("audio/sounds/PlayerHurt"));
+            soundMap.Add("enemyHurt", content.Load<SoundEffect>("audio/sounds/EnemyHurt"));
             soundMap.Add("triforce", content.Load<SoundEffect>("audio/sounds/triforceTheme"));
-            soundMap.Add("doorLock", content.Load<SoundEffect>("audio/sounds02/LockedDoor"));
+            soundMap.Add("doorLock", content.Load<SoundEffect>("audio/sounds/LockedDoor"));
         }
 
         //Note that the volume parameter here is only for internal balancing between the volumes of each sound file
@@ -135,6 +135,7 @@ namespace Game1
             return reference;
         }
 
+        //Only used for stair sounds. Should be changed once room transitioning is complete. Minimum viable product
         public static void PlayMutex(string sound, float timeDelay = 0.0f, float vol = 1.0f)
         {
             if(!mutex)
@@ -144,7 +145,6 @@ namespace Game1
             }
         }
 
-        //Works once only. Use with caution
         public static void StopAllMusic()
         {
             foreach (SoundEffectInstance music in activeMusicList)
@@ -200,44 +200,13 @@ namespace Game1
             volumeMaster = vol;
         }
 
-        public static void StopAudio()
-        {
-            StopAllMusic();
-            StopAllSound();
-            soundQueue = new List<SoundEffectInstance>();
-            delays = new List<double>();
-        }
-        private static void garbageCollection()
-        {
-            //disabled for testing purposes
-            return;
-            List<SoundEffectInstance> replacement = new List<SoundEffectInstance>();
-            foreach(SoundEffectInstance sound in activeMusicList)
-            {
-                if(!sound.State.HasFlag(SoundState.Stopped))
-                {
-                    replacement.Add(sound);
-                }
-            }
-            activeSoundList = replacement;
-            replacement.Clear();
-            foreach(SoundEffectInstance music in activeMusicList)
-            {
-                if(!music.State.HasFlag(SoundState.Stopped))
-                {
-                    replacement.Add(music);
-                }
-            }
-            activeMusicList = replacement;
-        }
-
         public static void PlayItemSound(IItem item)
         {
             switch (item.GetType().Name)
             {
                 case "RupeeBlue":
                 case "RupeeYellow":
-                    AudioManager.PlayFireForget("rupeePickUp");
+                    PlayFireForget("rupeePickUp");
                     break;
                 case "Bomb":
                 case "Compass":
@@ -247,24 +216,22 @@ namespace Game1
                 case "ArrowItem":
                 case "ItemBoomerang":
                 case "Map":
-                    AudioManager.PlayFireForget("powerPickUp");
+                    PlayFireForget("powerPickUp");
                     break;
                 case "Bow":
-                    AudioManager.StopAllMusic();
-                    //AudioManager.StopMusic(AudioManager.musicMain);
-                    AudioManager.PlayFireForget("powerPickUp");
-                    AudioManager.PlayFireForget("chest");
-                    AudioManager.PlayLooped("dungeon", 2.0f);
+                    StopAllMusic();
+                    PlayFireForget("powerPickUp");
+                    PlayFireForget("chest");
+                    PlayLooped("dungeon", 2.0f);
                     break;
                 case "Triforce":
-                    AudioManager.StopAllMusic();
-                    //AudioManager.StopMusic(AudioManager.musicMain);
-                    AudioManager.PlayFireForget("powerPickUp");
-                    AudioManager.PlayFireForget("triforce");
-                    AudioManager.PlayLooped("dungeon", 8.0f);
+                    StopAllMusic();
+                    PlayFireForget("powerPickUp");
+                    PlayFireForget("triforce");
+                    PlayLooped("dungeon", 8.0f);
                     break;
                 default:
-                    AudioManager.PlayFireForget("itemPickUp");
+                    PlayFireForget("itemPickUp");
                     break;
             }
         }

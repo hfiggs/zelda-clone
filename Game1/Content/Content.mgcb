@@ -49,11 +49,41 @@
 /processorParam:Quality=Best
 /build:audio/music/titleBass.wav
 
+#begin audio/sounds/AquamentusHurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/AquamentusHurt.wav
+
+#begin audio/sounds/AquamentusScream.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/AquamentusScream.wav
+
+#begin audio/sounds/BombExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/BombExplode.wav
+
+#begin audio/sounds/BombPlace.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/BombPlace.wav
+
 #begin audio/sounds/Boomerang.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:audio/sounds/Boomerang.wav
+
+#begin audio/sounds/Chest.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/Chest.wav
 
 #begin audio/sounds/death.wav
 /importer:WavImporter
@@ -61,197 +91,113 @@
 /processorParam:Quality=Best
 /build:audio/sounds/death.wav
 
+#begin audio/sounds/EnemyDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/EnemyDeath.wav
+
+#begin audio/sounds/EnemyHurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/EnemyHurt.wav
+
+#begin audio/sounds/FairyAppear.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/FairyAppear.wav
+
+#begin audio/sounds/Flute.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/Flute.wav
+
+#begin audio/sounds/HealthLow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/HealthLow.wav
+
+#begin audio/sounds/Hole.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/Hole.wav
+
+#begin audio/sounds/ItemPickup1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/ItemPickup1.wav
+
+#begin audio/sounds/KeyAppear.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/KeyAppear.wav
+
+#begin audio/sounds/LinkPop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/LinkPop.wav
+
+#begin audio/sounds/LockedDoor.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/LockedDoor.wav
+
 #begin audio/sounds/MagicalBoomerangThrown.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:audio/sounds/MagicalBoomerangThrown.wav
 
+#begin audio/sounds/PlayerHurt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/PlayerHurt.wav
+
+#begin audio/sounds/Rupee.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/Rupee.wav
+
+#begin audio/sounds/Shield.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/Shield.wav
+
+#begin audio/sounds/Stairs.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/Stairs.wav
+
+#begin audio/sounds/Sword.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/Sword.wav
+
+#begin audio/sounds/SwordBeam.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/SwordBeam.wav
+
 #begin audio/sounds/triforceTheme.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:audio/sounds/triforceTheme.wav
-
-#begin audio/sounds02/_AquamentusExplode.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/_AquamentusExplode.wav
-
-#begin audio/sounds02/_Breath.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/_Breath.wav
-
-#begin audio/sounds02/_Dizzy.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/_Dizzy.wav
-
-#begin audio/sounds02/_GanonAppears.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/_GanonAppears.wav
-
-#begin audio/sounds02/_UnusedScream2.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/_UnusedScream2.wav
-
-#begin audio/sounds02/_UnusedScream3.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/_UnusedScream3.wav
-
-#begin audio/sounds02/AquamentusHurt.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/AquamentusHurt.wav
-
-#begin audio/sounds02/AquamentusScream.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/AquamentusScream.wav
-
-#begin audio/sounds02/AquamentusScreamConv.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/AquamentusScreamConv.wav
-
-#begin audio/sounds02/BombExplode.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/BombExplode.wav
-
-#begin audio/sounds02/BombPlace.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/BombPlace.wav
-
-#begin audio/sounds02/BoomerangOnce.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/BoomerangOnce.wav
-
-#begin audio/sounds02/Chest.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/Chest.wav
-
-#begin audio/sounds02/EnemyDeath.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/EnemyDeath.wav
-
-#begin audio/sounds02/EnemyHurt.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/EnemyHurt.wav
-
-#begin audio/sounds02/FairyAppear.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/FairyAppear.wav
-
-#begin audio/sounds02/Flute.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/Flute.wav
-
-#begin audio/sounds02/HealthLow.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/HealthLow.wav
-
-#begin audio/sounds02/Hole.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/Hole.wav
-
-#begin audio/sounds02/ItemPickup1.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/ItemPickup1.wav
-
-#begin audio/sounds02/KeyAppear.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/KeyAppear.wav
-
-#begin audio/sounds02/LinkDeath.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/LinkDeath.wav
-
-#begin audio/sounds02/LinkPop.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/LinkPop.wav
-
-#begin audio/sounds02/LockedDoor.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/LockedDoor.wav
-
-#begin audio/sounds02/PlayerHurt.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/PlayerHurt.wav
-
-#begin audio/sounds02/Rupee.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/Rupee.wav
-
-#begin audio/sounds02/Shield.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/Shield.wav
-
-#begin audio/sounds02/Stairs.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/Stairs.wav
-
-#begin audio/sounds02/Sword.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/Sword.wav
-
-#begin audio/sounds02/SwordBeam.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/sounds02/SwordBeam.wav
 
 #begin Images/Aquamentus.png
 /importer:TextureImporter

@@ -21,6 +21,8 @@ namespace Game1.Item
             this.Position = Position;
 
             timeTillSwap = timer;
+
+            AudioManager.PlayFireForget("powerPickUp");
         }
         public void Update(GameTime gameTime)
         {
