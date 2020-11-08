@@ -1,4 +1,5 @@
 ﻿using Game1.Player;
+using Game1.Player.PlayerInventory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -83,6 +84,7 @@ namespace Game1.Projectile
         public void BeginDespawn()
         {
             removeMe = true;
+            Player.PlayerInventory.SetItemInUse(ItemEnum.Bow, false);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -73,9 +74,15 @@ namespace Game1.Enemy
             return direction;
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return new Rectangle((int)position.X + 11, (int)position.Y + 10, 8, 9);
+            const int xDiff = 11;
+            const int yDiff = 10;
+            const int width = 8;
+            const int height = 9;
+            List<Rectangle> hitboxList = new List<Rectangle>();
+            hitboxList.Add(new Rectangle((int)position.X + xDiff, (int)position.Y + yDiff, width, height));
+            return hitboxList;
         }
 
         private float GetRandomDirectionMovementChangeTimeSeconds()

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
-    class DodongoStateLeft : IEnemyState
+    class DodongoStateLeftSwallow : IEnemyState
     {
         private IEnemy dodongo;
 
@@ -14,23 +14,16 @@ namespace Game1.Enemy
 
         public ISprite Sprite { get; private set; }
 
-        private float timeUntilNextFrame; // ms
-        private const float animationTime = 150f; // ms per frame
-
         private float timeUntilNewDirection;
         private const float moveTime = 1000f; // ms
 
-        private const float moveSpeed = 0.6f;
-
-        public DodongoStateLeft(IEnemy dodongo, Vector2 position)
+        public DodongoStateLeftSwallow(IEnemy dodongo, Vector2 position)
         {
-            Sprite = EnemySpriteFactory.Instance.CreateDodongoLeftSprite();
+            Sprite = EnemySpriteFactory.Instance.CreateDodongoLeftDeadSprite();
 
             this.dodongo = dodongo;
 
             this.position = position;
-
-            timeUntilNextFrame = animationTime;
 
             timeUntilNewDirection = moveTime;
         }
@@ -47,7 +40,7 @@ namespace Game1.Enemy
 
         public Vector2 GetDirection()
         {
-            return new Vector2(-1,0);
+            return new Vector2(-1, 0);
         }
 
         public List<Rectangle> GetHitboxes()
@@ -68,49 +61,24 @@ namespace Game1.Enemy
         {
             if (!dodongo.ShouldRemove())
             {
-                position.X -= moveSpeed;
-
-                // Sprite updating
-                timeUntilNextFrame -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
-
-                if (timeUntilNextFrame <= 0)
-                {
-                    Sprite.Update();
-                    timeUntilNextFrame += animationTime;
-                }
-
                 // State updating
                 timeUntilNewDirection -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
 
                 if (timeUntilNewDirection <= 0)
                 {
-                    switch((new Random()).Next(4))
-                    {
-                        case 0:
-                            dodongo.SetState(new DodongoStateUp(dodongo, position));
-                            break;
-                        case 1:
-                            dodongo.SetState(new DodongoStateDown(dodongo, position));
-                            break;
-                        case 2:
-                            timeUntilNewDirection += moveTime;
-                            break;
-                        case 3:
-                            dodongo.SetState(new DodongoStateRight(dodongo, position));
-                            break;
-                    }
+                    dodongo.SetState(new DodongoStateLeft(dodongo, position));
                 }
             }
+        }
+
+        public void editPosition(Vector2 amount)
+        {
+            position = Vector2.Add(position, amount);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             Sprite.Draw(spriteBatch, position, color);
-        }
-
-        public void editPosition(Vector2 amount)
-        {
-            position = Vector2.Add(amount, position);
         }
     }
 }

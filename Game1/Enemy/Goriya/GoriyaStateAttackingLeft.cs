@@ -3,6 +3,7 @@ using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -13,9 +14,11 @@ namespace Game1.Enemy
         private Vector2 direction;
         private Vector2 position;
         private const int moveSpeed = 1;
+        private const int zero = 0;
+        private const int negative = -1;
         private IProjectile projectile;
         private double totalElapsedSeconds = 0;
-        private double MovementChangeTimeSeconds;
+        private double MovementChangeTimeSeconds = 2;
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
@@ -23,10 +26,10 @@ namespace Game1.Enemy
         public GoriyaStateAttackingLeft(Game1 game, Vector2 position)
         {
             this.position = position;
-            this.direction = new Vector2(-1 * moveSpeed, 0);
-            this.MovementChangeTimeSeconds = 2;
+            this.direction = new Vector2(negative * moveSpeed, zero);
             Sprite = EnemySpriteFactory.Instance.CreateGoriyaLeftSprite();
-            projectile = new EnemyBoomerang('W', position);
+            const char boomerangDirection = 'W';
+            projectile = new EnemyBoomerang(boomerangDirection, position);
             game.Screen.SpawnProjectile(projectile);
 
             timeUntilNextFrame = animationTime;
@@ -45,13 +48,13 @@ namespace Game1.Enemy
             {
                 totalElapsedSeconds -= MovementChangeTimeSeconds;
                 this.direction = GetRandomDirection();
-                this.MovementChangeTimeSeconds = 0;
+                this.MovementChangeTimeSeconds = zero;
             }
 
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if (timeUntilNextFrame <= 0)
+            if (timeUntilNextFrame <= zero)
             {
                 Sprite.Update();
                 timeUntilNextFrame += animationTime;
@@ -73,33 +76,44 @@ namespace Game1.Enemy
             return direction;
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return new Rectangle((int)position.X + 8, (int)position.Y + 7, 13, 16);
+            const int spriteWidth = 13;
+            const int spriteHeight = 16;
+            const int xAdjustment = 8;
+            const int yAdjustment = 7;
+            List<Rectangle> hitboxList = new List<Rectangle>();
+            hitboxList.Add(new Rectangle((int)position.X + xAdjustment, (int)position.Y + yAdjustment, spriteWidth, spriteHeight));
+            return hitboxList;
         }
 
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
+            const double one = 1.0;
+            const double minimumTime = 0.3;
             Random random = new Random();
-            return (float) (random.NextDouble() * (0.7 + 0.3) + 0.3);
+            return (float) (random.NextDouble() * one + minimumTime);
         }
+
         private Vector2 GetRandomDirection()
         {
+            const int numberOfDirections = 4;
             Random random = new Random(Guid.NewGuid().GetHashCode());
-            int randomDirection = random.Next(4);
+            int randomDirection = random.Next(numberOfDirections);
 
             switch (randomDirection)
             {
                 case 0:
-                    return new Vector2(-1 * moveSpeed, 0);
+                    return new Vector2(negative * moveSpeed, zero);
                 case 1:
-                    return new Vector2(moveSpeed, 0);
+                    return new Vector2(moveSpeed, zero);
                 case 2:
-                    return new Vector2(0, -1 * moveSpeed);
+                    return new Vector2(zero, negative * moveSpeed);
                 default:
-                    return new Vector2(0, moveSpeed);
+                    return new Vector2(zero, moveSpeed);
             }
         }
+
         public void editPosition(Vector2 amount)
         {
             //Do Nothing, No knockback while Attacking

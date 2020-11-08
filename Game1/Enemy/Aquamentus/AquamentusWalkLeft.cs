@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -76,9 +77,12 @@ namespace Game1.Enemy
             return new Vector2(-1 * moveSpeed, 0);
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return new Rectangle((int)position.X, (int)position.Y, 25, 32);
+            List<Rectangle> hitboxList = new List<Rectangle>();
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, 25, 32));
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, 15, 12));
+            return hitboxList;
         }
 
         public void editPosition(Vector2 amount)

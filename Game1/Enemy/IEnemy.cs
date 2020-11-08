@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -19,6 +20,6 @@ namespace Game1.Enemy
 
         int StunnedTimer { get; set; } // ms (0 -> not stunned, Int.MaxValue -> perma stunned)
 
-        Rectangle GetHitbox();
+        List<Rectangle> GetHitboxes();
     }
 }

@@ -3,6 +3,7 @@
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -54,9 +55,12 @@ namespace Game1.Enemy
             return new Vector2(0, 0);
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return new Rectangle((int)position.X, (int)position.Y, 16, 16);
+            List<Rectangle> hitboxList = new List<Rectangle>();
+            const int heightAndWidth = 16;
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, heightAndWidth, heightAndWidth));
+            return hitboxList;
         }
 
         public Vector2 GetPosition()

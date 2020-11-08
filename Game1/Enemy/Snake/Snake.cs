@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
@@ -55,9 +56,9 @@ namespace Game1.Enemy
             this.state = state;
         }
 
-        public Rectangle GetHitbox()
+        public List<Rectangle> GetHitboxes()
         {
-            return state.GetHitbox();
+            return state.GetHitboxes();
         }
 
         public bool ShouldRemove()

@@ -101,6 +101,7 @@
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerWestSideCommand.cs" />
     <Compile Include="CollisionDetection\CollisionDetector.cs" />
+    <Compile Include="Command\PlayerCommands\PlayerEquipItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerLeftCommand.cs" />
@@ -117,6 +118,10 @@
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkRight.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkRightAttack.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateRightSwallow.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateLeftSwallow.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateUpSwallow.cs" />
+    <Compile Include="Enemy\Dodongo\DodongoStateDownSwallow.cs" />
     <Compile Include="Enemy\EnemyStateSpawning.cs" />
     <Compile Include="Enemy\Snake\SnakeStateMoving.cs" />
     <Compile Include="Enemy\DamageDecorator.cs" />
