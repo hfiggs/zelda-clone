@@ -20,7 +20,7 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-            if(inv.HasArrow)
+            if (inv.HasItem(ItemEnum.Arrow))
             {
                 sprite.Draw(spriteBatch, location + movement, color);
             }

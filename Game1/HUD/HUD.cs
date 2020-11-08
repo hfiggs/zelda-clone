@@ -19,15 +19,11 @@ namespace Game1.HUD
         IHudItem displayItemBottom;
         IHudItem selectionSquare;
 
-        IPlayerInventory playerInventory;
-        Screen screen;
         Vector2 BBottomBox = new Vector2(110, 140);
         Vector2 BUpperBox = new Vector2(50,-9);
 
         public HUDInterface(IPlayerInventory playerInventory, Screen screen)
         {
-            this.playerInventory = playerInventory;
-            this.screen = screen;
 
             selectionSquare = HUDItemFactory.Instance.BuildHUDSelectionSquare();
             Items.Add(HUDItemFactory.Instance.BuildHUDBase());

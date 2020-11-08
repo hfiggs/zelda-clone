@@ -21,7 +21,7 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-            if (inv.HasBoomerang)
+            if (inv.HasItem(ItemEnum.Boomerang))
             {
                 selectionRectangle = new Rectangle(143, 4, 20, 20);
                 sprite.Draw(spriteBatch, location + movement, color);

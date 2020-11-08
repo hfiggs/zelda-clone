@@ -22,7 +22,7 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-            if (inv.HasBow)
+            if (inv.HasItem(ItemEnum.Bow))
             {
                 selectionRectangle = new Rectangle(183, 4, 20, 20);
                 sprite.Draw(spriteBatch, location + movement, color);
