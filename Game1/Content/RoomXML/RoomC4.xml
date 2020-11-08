@@ -171,6 +171,6 @@
 		<Y>0</Y>
 	</Enemy>
 	<Sounds>
-		<Name delay="0.0f" volume="1.0f" looped="true">aquamentusScream</Name>
+		<Name delay="0.0" volume="1.0" looped="true">aquamentusScream</Name>
 	</Sounds>
 </Assets>

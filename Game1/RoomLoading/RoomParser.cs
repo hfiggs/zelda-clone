@@ -339,7 +339,10 @@ namespace Game1.RoomLoading
             foreach (XmlNode n in soundNodes)
             {
                 XmlElement sound = n["Name"];
-                AmbientSound newSound = new AmbientSound(sound.InnerText, int.Parse(sound.GetAttribute("delay")), int.Parse(sound.GetAttribute("volume")), bool.Parse(sound.GetAttribute("looped")));
+                float deltaTime = float.Parse(sound.GetAttribute("delay"));
+                float volume = float.Parse(sound.GetAttribute("volume"));
+                bool loop = bool.Parse(sound.GetAttribute("looped"));
+                AmbientSound newSound = new AmbientSound(sound.InnerText, deltaTime, volume, loop);
                 soundList.Add(newSound);
             }
 

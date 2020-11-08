@@ -19,7 +19,6 @@ namespace Game1.RoomLoading
         public List<IEnemy> DecoratedEnemyList { get; set; }
         public List<IEnemy> UnDecoratedEnemyList { get; set; }
 
-        //DELETE
         private List<AmbientSound> soundList;
 
         public Room(Game1 game, String file)
@@ -82,12 +81,6 @@ namespace Game1.RoomLoading
             {
                 nonInternactEnvironment.BehaviorUpdate(gameTime);
             }
-
-            if(soundList.Count > 0)
-            {
-                soundList.ElementAt(0).Play();
-                soundList.RemoveAt(0);
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -125,6 +118,22 @@ namespace Game1.RoomLoading
                     }
                     break;
                 }
+            }
+        }
+
+        public void StopRoomAmbience()
+        {
+            foreach(AmbientSound sound in soundList)
+            {
+                sound.Stop();
+            }
+        }
+
+        public void PlayRoomAmbience()
+        {
+            foreach (AmbientSound sound in soundList)
+            {
+                sound.Play();
             }
         }
     }
