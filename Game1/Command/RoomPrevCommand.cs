@@ -22,6 +22,8 @@ namespace Game1.Command
 
         public void Execute()
         {
+            game.Screen.CurrentRoom.StopRoomAmbience();
+
             if (game.Screen.RoomsList.Count > 1 && stopWatch.ElapsedMilliseconds >= cooldown)
             {
                 Room temp = game.Screen.RoomsList.Last();
@@ -34,6 +36,8 @@ namespace Game1.Command
 
                 stopWatch.Restart();
             }
+
+            game.Screen.CurrentRoom.PlayRoomAmbience();
         }
     }
 }

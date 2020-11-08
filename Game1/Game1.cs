@@ -72,6 +72,11 @@ namespace Game1
 
             HUDItemFactory.Instance.LoadAllTextures(Content);
 
+            AudioManager.LoadContent(Content);
+
+            //Move this to game state maybe?
+            AudioManager.PlayLooped("dungeon");
+
             Screen = new Screen(this, 'F', 2);
 
             Screen.LoadAllRooms();
@@ -90,6 +95,8 @@ namespace Game1
             }
 
             Screen.Update(gameTime);
+
+            AudioManager.Update(gameTime);
             
             base.Update(gameTime);
         }

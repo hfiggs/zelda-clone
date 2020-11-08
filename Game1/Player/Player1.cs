@@ -5,6 +5,7 @@
 using Game1.Player.PlayerInventory;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -25,6 +26,11 @@ namespace Game1.Player
 
         private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
         private Rectangle swordHitbox = new Rectangle();
+
+        private readonly float deathSoundLength = 2.5f;
+        private readonly float gameOverDealy = 4.5f;
+        private readonly float gameOverVolume = 0.6f;
+        SoundEffectInstance lowHealthSound;
 
         public IPlayerInventory PlayerInventory { get; private set; }
 
@@ -93,17 +99,17 @@ namespace Game1.Player
             PlayerInventory.SubHealth(1);
             isFullHealth = false;
             //should be slightly modified once we have health mechanics - GameState?
-            if(isLowHealth)
+            if(PlayerInventory.HalfHeartCount <= 0)
             {
                 AudioManager.StopAllMusic();
                 AudioManager.StopAllSound();
                 AudioManager.PlayFireForget("death");
-                AudioManager.PlayFireForget("linkPop", 2.5f);
-                AudioManager.PlayLooped("gameOver", 4.5f, 0.6f);
+                AudioManager.PlayFireForget("linkPop", deathSoundLength);
+                AudioManager.PlayLooped("gameOver", gameOverDealy, gameOverVolume);
             }
-            if(!isFullHealth && !isLowHealth)
+            if(PlayerInventory.HalfHeartCount <= 2 && !isLowHealth)
             {
-                AudioManager.PlayLooped("lowHealth");
+                lowHealthSound = AudioManager.PlayLooped("lowHealth");
                 isLowHealth = true;
             }
         }
@@ -113,6 +119,12 @@ namespace Game1.Player
             state.Update(time);
 
             timeUntilNextSwordBeam -= time.ElapsedGameTime.TotalMilliseconds;
+
+            if (PlayerInventory.HalfHeartCount > 2 && isLowHealth)
+            {
+                AudioManager.StopSound(lowHealthSound);
+                isLowHealth = false;
+            }
         }
 
         public Rectangle GetLocation()
