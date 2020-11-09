@@ -66,6 +66,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Particle\BombOverlay.cs" />
     <Compile Include="RoomLoading\AmbientSound.cs" />
     <Compile Include="AudioManager.cs" />
     <Compile Include="Collision_Handling\Collision.cs" />

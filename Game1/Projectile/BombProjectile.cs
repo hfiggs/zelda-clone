@@ -116,6 +116,7 @@ namespace Game1.Projectile
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X + cloudOffset, GetCenteredPosition().Y + cloudOffset - cloudHexOffset + 1)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X, GetCenteredPosition().Y + cloudOffset)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y + cloudOffset - cloudHexOffset + 1)));
+            particles.Add(new BombOverlay(new Color(new Vector4(0.75f, 0.535f, 0.535f, 0.4f))));
         }
 
         public Rectangle GetHitbox()

@@ -15,7 +15,6 @@ namespace Game1.Particle
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-
         private float timeCounter; // ms
         private const float existTime = 600f; // ms
 

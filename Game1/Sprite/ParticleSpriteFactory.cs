@@ -14,6 +14,8 @@ namespace Game1.Sprite
         private Texture2D cloudSpritesheet;
         private Texture2D beamExplosionSpritesheet;
 
+        private GraphicsDevice graphics;
+
         private static ParticleSpriteFactory instance = new ParticleSpriteFactory();
 
         public static ParticleSpriteFactory Instance
@@ -28,10 +30,11 @@ namespace Game1.Sprite
         {
         }
 
-        public void LoadAllTextures(ContentManager content)
+        public void LoadAllTextures(ContentManager content, GraphicsDevice graphicsDevice)
         {
             cloudSpritesheet = content.Load<Texture2D>("images/cloud");
             beamExplosionSpritesheet = content.Load<Texture2D>("images/sword_beam_exp");
+            graphics = graphicsDevice;
         }
 
         public ISprite CreateCloudSprite()
@@ -57,6 +60,17 @@ namespace Game1.Sprite
         public ISprite CreateBeamExplosionSWSprite()
         {
             return new ParticleSprite(beamExplosionSpritesheet, 3, 0, 4, 4, 4);
+        }
+
+        public ISprite CreateFlashOverlay(Color color)
+        {
+            Texture2D rect = new Texture2D(graphics, graphics.Viewport.Width, graphics.Viewport.Height);
+
+            Color[] data = new Color[graphics.Viewport.Width * graphics.Viewport.Height];
+            for (int i = 0; i < data.Length; ++i) data[i] = color;
+            rect.SetData(data);
+
+            return new ParticleSprite(rect, 1, 1, 1, 1, 1);
         }
     }
 }

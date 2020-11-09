@@ -31,6 +31,8 @@ namespace Game1
         private List<IController> controllerList;
         public Screen Screen { get; set; }
 
+        public Color drawColor { get; set; } = Color.White;
+
         public Game1()
         {
             Graphics = new GraphicsDeviceManager(this);
@@ -68,7 +70,7 @@ namespace Game1
 
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
 
-            ParticleSpriteFactory.Instance.LoadAllTextures(Content);
+            ParticleSpriteFactory.Instance.LoadAllTextures(Content, GraphicsDevice);
 
             HUDItemFactory.Instance.LoadAllTextures(Content);
 
@@ -107,7 +109,7 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
-            Screen.Draw(spriteBatch, Color.White);
+            Screen.Draw(spriteBatch, drawColor);
 
             spriteBatch.End();
 

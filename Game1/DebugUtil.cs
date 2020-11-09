@@ -18,7 +18,7 @@ namespace Game1
                 Texture2D rect = new Texture2D(game.GraphicsDevice, hitbox.Width, hitbox.Height);
 
                 Color[] data = new Color[hitbox.Width * hitbox.Height];
-                for (int i = 0; i < data.Length; ++i) data[i] = new Color(new Vector3(0.4f, 0.4f, 0.4f));
+                for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
                 rect.SetData(data);
 
                 Vector2 coor = new Vector2(hitbox.X, hitbox.Y);
