@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Particle;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Projectile
 {
@@ -12,6 +14,9 @@ namespace Game1.Projectile
         private bool returned;
         private Vector2 position;
         private Vector2 originalPosition;
+
+        private List<IParticle> particles = new List<IParticle>();
+        private readonly Vector2 particleOffset = new Vector2(16.0f, 12.0f);
 
         public EnemyBoomerang(char direction, Vector2 position)
         {
@@ -72,6 +77,13 @@ namespace Game1.Projectile
             }
 
             counter++;
+
+            particles.RemoveAll(p => (p.ShouldDelete()));
+
+            foreach (IParticle particle in particles)
+            {
+                particle.Update(gameTime);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -81,6 +93,11 @@ namespace Game1.Projectile
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
                 spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
+            }
+
+            foreach (IParticle particle in particles)
+            {
+                particle.Draw(spriteBatch, color);
             }
         }
 
@@ -107,6 +124,12 @@ namespace Game1.Projectile
         public void BeginDespawn()
         {
             totalElapsedGameTime = 1;
+            AddParticle(new ShieldDeflect(position + particleOffset));
+        }
+
+        public void AddParticle(IParticle particle)
+        {
+            particles.Add(particle);
         }
     }
 }

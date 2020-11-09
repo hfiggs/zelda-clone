@@ -4,6 +4,7 @@ using Game1.Enemy;
 using Game1.Environment;
 using Game1.HUD;
 using Game1.Item;
+using Game1.Particle;
 using Game1.Player;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
@@ -36,6 +37,7 @@ namespace Game1.RoomLoading
         public Room CurrentRoom { get; set; }
         private CollisionDetector detector;
         private HUDInterface HUD;
+
         public Screen(Game1 game, char x, int y)
         {
             this.game = game;
@@ -59,7 +61,6 @@ namespace Game1.RoomLoading
             this.CurrentRoom = RoomsDict[('F',2)];
             this.ProjectileList = new List<IProjectile>();
             detector = new CollisionDetector(this);
-
         }
         public void Update(GameTime gameTime)
         {
@@ -99,7 +100,7 @@ namespace Game1.RoomLoading
             {
                 projectile.Draw(spriteBatch, color);
             }
-          //  HUD.Draw(spriteBatch,HudPosition, Color.White);
+            //  HUD.Draw(spriteBatch,HudPosition, Color.White);
         }
 
         public void SpawnProjectile(IProjectile projectile)

@@ -1,7 +1,10 @@
-﻿using Game1.Player;
+﻿using Game1.Particle;
+using Game1.Player;
 using Game1.Player.PlayerInventory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 
 namespace Game1.Projectile
 {
@@ -14,6 +17,12 @@ namespace Game1.Projectile
         public IPlayer Player { get; private set; }
         private Vector2 position;
         private float moveSpeed, totalElapsedGameTime;
+
+        //minimum range to "recieve" boomerang should be no less than 5 - see README
+        private const float minimumRecieveDist = 5.0f;
+
+        private List<IParticle> particles = new List<IParticle>();
+        private readonly Vector2 particleOffset = new Vector2(16.0f, 12.0f);
 
         public Boomerang(char direction, IPlayer player) {
             this.direction = direction;
@@ -34,12 +43,16 @@ namespace Game1.Projectile
             if (totalElapsedGameTime < 1) {
                 if (direction == 'N') {
                     position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    Console.WriteLine("N");
                 } else if (direction == 'S') {
                     position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    Console.WriteLine("S");
                 } else if (direction == 'W') {
                     position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    Console.WriteLine("W");
                 } else {
                     position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    Console.WriteLine("E");
                 }
             } else if (!returned) {
                 Rectangle currentLocation = sprite.PickSprite(0, 0);
@@ -47,8 +60,7 @@ namespace Game1.Projectile
                 Vector2 recievePoisition = new Vector2(Player.GetPlayerHitbox().X + (Player.GetPlayerHitbox().Width / 2) - (sprite.PickSprite(0, 0).Width / 2), Player.GetPlayerHitbox().Y + (Player.GetPlayerHitbox().Height / 2) - (sprite.PickSprite(0, 0).Height / 2) - 5.0f);
 
                 Vector2 positionDiff = new Vector2(currentLocation.X, currentLocation.Y) - recievePoisition;
-                //minimum range to "recieve" boomerang should be no less than 5 - see README
-                returned =  positionDiff.Length() < 5.0f;
+                returned =  positionDiff.Length() < minimumRecieveDist;
                 positionDiff = Vector2.Normalize(positionDiff);
                 position.X -= positionDiff.X * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 position.Y -= positionDiff.Y * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -69,6 +81,13 @@ namespace Game1.Projectile
             }
 
             counter++;
+
+            particles.RemoveAll(p => (p.ShouldDelete()));
+
+            foreach (IParticle particle in particles)
+            {
+                particle.Update(gameTime);
+            }
         }
         public void Draw(SpriteBatch spriteBatch, Color color) {
             if (!returned) {
@@ -76,6 +95,11 @@ namespace Game1.Projectile
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
                 spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
+            }
+
+            foreach (IParticle particle in particles)
+            {
+                particle.Draw(spriteBatch, color);
             }
         }
 
@@ -97,11 +121,17 @@ namespace Game1.Projectile
         public void BeginDespawn()
         {
             totalElapsedGameTime = 2;
+            AddParticle(new ShieldDeflect(position + particleOffset));
         }
 
         public Rectangle GetHitbox()
         {
             return new Rectangle((int)position.X + 16, (int)position.Y + 16, 8, 8);
+        }
+
+        public void AddParticle(IParticle particle)
+        {
+            particles.Add(particle);
         }
     }
 }

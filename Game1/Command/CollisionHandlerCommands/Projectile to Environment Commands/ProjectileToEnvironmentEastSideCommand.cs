@@ -2,8 +2,10 @@
 
 using Game1.Collision_Handling;
 using Game1.Environment;
+using Game1.Particle;
 using Game1.Player;
 using Game1.Projectile;
+using Microsoft.Xna.Framework;
 using System.Security.Cryptography;
 using System.Security.Principal;
 

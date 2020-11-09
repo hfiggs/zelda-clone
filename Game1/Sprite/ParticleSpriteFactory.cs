@@ -13,6 +13,7 @@ namespace Game1.Sprite
     {
         private Texture2D cloudSpritesheet;
         private Texture2D beamExplosionSpritesheet;
+        private Texture2D shieldDeflectSprite;
 
         private GraphicsDevice graphics;
 
@@ -34,6 +35,7 @@ namespace Game1.Sprite
         {
             cloudSpritesheet = content.Load<Texture2D>("images/cloud");
             beamExplosionSpritesheet = content.Load<Texture2D>("images/sword_beam_exp");
+            shieldDeflectSprite = content.Load<Texture2D>("images/shield_deflect");
             graphics = graphicsDevice;
         }
 
@@ -71,6 +73,11 @@ namespace Game1.Sprite
             rect.SetData(data);
 
             return new ParticleSprite(rect, 1, 1, 1, 1, 1);
+        }
+
+        public ISprite CreateShieldDeflect()
+        {
+            return new ParticleSprite(shieldDeflectSprite, 0, 0, 1, 1, 1);
         }
     }
 }
