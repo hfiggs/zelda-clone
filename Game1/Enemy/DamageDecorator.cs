@@ -16,6 +16,8 @@ namespace Game1.Enemy
         private Game1 game;
         public bool stillSlide;
         Vector2 knockbackMagnitude = new Vector2(1f, 1f);
+        private const float deathSoundVol = 0.75f;
+        Vector2 knockbackMagnitude = new Vector2(.66f, .66f);
         public EnemyDamageDecorator(IEnemy Original, Vector2 direction, Game1 game)
         {
             this.original = Original;
@@ -24,6 +26,27 @@ namespace Game1.Enemy
             knockbackMagnitude = Vector2.Multiply(knockbackMagnitude, direction);
             this.game = game;
             stillSlide = true;
+
+            SoundHandle(Original);
+        }
+
+        private void SoundHandle(IEnemy Original)
+        {
+            if (Original.GetType().Name.Equals("Aquamentus"))
+            {
+                AudioManager.PlayFireForget("aquamentusHurt");
+            }
+            else
+            {
+                if (Original.ShouldRemove())
+                {
+                    AudioManager.PlayFireForget("enemyDeath", 0.0f, deathSoundVol);
+                }
+                else
+                {
+                    AudioManager.PlayFireForget("enemyHurt");
+                }
+            }
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
@@ -40,7 +63,7 @@ namespace Game1.Enemy
         {
             damagedTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             timeTillFlickerSwap -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (damagedTimer > 300 && stillSlide)
+            if (damagedTimer > 275 && stillSlide)
             {
                 original.EditPosition(Vector2.Multiply(knockbackMagnitude, (float)gameTime.ElapsedGameTime.TotalMilliseconds));
             }
