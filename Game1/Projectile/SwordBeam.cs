@@ -108,7 +108,11 @@ namespace Game1.Projectile
 
         public bool ShouldDelete()
         {
-            return removeMe && particles.ShouldDelete();
+            if (particlesSpawned)
+            {
+                return removeMe && particles.ShouldDelete();
+            }
+            return removeMe;
         }
 
         public void BeginDespawn()
