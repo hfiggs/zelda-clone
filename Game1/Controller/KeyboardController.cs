@@ -3,14 +3,13 @@
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Game1.Command;
-using Game1.Command.PlayerCommands;
 using Game1.Player.PlayerInventory;
 
 namespace Game1.Controller
 {
     class KeyboardController : IController
     {
-        private Dictionary<Keys, ICommand> commands;
+        private readonly Dictionary<Keys, ICommand> commands;
         private Stack<Keys> movement = new Stack<Keys>();
         private Keys currentMove = new Keys();
 

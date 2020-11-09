@@ -11,11 +11,11 @@ namespace Game1.Controller
 {
     class GamepadController : IController
     {
-        private Dictionary<Buttons, ICommand> commands;
-        private Stack<Buttons> currentMovementButtons = new Stack<Buttons>();
+        private readonly Dictionary<Buttons, ICommand> commands;
+        private readonly Stack<Buttons> currentMovementButtons = new Stack<Buttons>();
         private Buttons currentMove = new Buttons();
 
-        private PlayerIndex playerIndex;
+        private readonly PlayerIndex playerIndex;
 
         private readonly HashSet<Buttons> movementButtons;
 

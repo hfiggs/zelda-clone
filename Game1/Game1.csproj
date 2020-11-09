@@ -66,6 +66,19 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\UnpauseCommand.cs" />
+    <Compile Include="Controller\GamepadController.cs" />
+    <Compile Include="Controller\GamepadTransitionController.cs" />
+    <Compile Include="Controller\HUDKeyboardController.cs" />
+    <Compile Include="Controller\KeyboardTransitionController.cs" />
+    <Compile Include="GameState\GameStateHUD.cs" />
+    <Compile Include="GameState\GameStateHUDToRoom.cs" />
+    <Compile Include="GameState\GameStateRoomToHUD.cs" />
+    <Compile Include="GameState\GameStateRoom.cs" />
+    <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="ContentUtil.cs" />
+    <Compile Include="ResolutionManager\IResolutionManager.cs" />
+    <Compile Include="ResolutionManager\ResolutionManager1.cs" />
     <Compile Include="RoomLoading\AmbientSound.cs" />
     <Compile Include="AudioManager.cs" />
     <Compile Include="Collision_Handling\Collision.cs" />
@@ -104,7 +117,7 @@
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerWestSideCommand.cs" />
     <Compile Include="CollisionDetection\CollisionDetector.cs" />
-    <Compile Include="Command\PlayerCommands\PauseCommand.cs" />
+    <Compile Include="Command\PauseCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerEquipItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />
@@ -115,7 +128,7 @@
     <Compile Include="Command\QuitCommand.cs" />
     <Compile Include="Command\RoomNextCommand.cs" />
     <Compile Include="Command\RoomPrevCommand.cs" />
-    <Compile Include="Controller\GamepadController.cs" />
+    <Compile Include="Controller\HUDGamepadController.cs" />
     <Compile Include="DebugUtil.cs" />
     <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeft.cs" />

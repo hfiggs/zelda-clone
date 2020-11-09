@@ -1,18 +1,13 @@
-﻿using Game1.Item;
-using Game1.Player.PlayerInventory;
-using Game1.Projectile;
+﻿using Game1.Player.PlayerInventory;
 using Game1.RoomLoading;
-using Game1.Sprite;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SharpDX.MediaFoundation;
 using System.Collections.Generic;
 
 namespace Game1.HUD
 {
-    class HUDInterface
+    public class HUDInterface
     {
         List<IHudItem> Items = new List<IHudItem>();
         IHudItem displayItemTop;
