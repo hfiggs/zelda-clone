@@ -1,18 +1,19 @@
-﻿
-
-using Game1.Collision_Handling;
+﻿using Game1.Collision_Handling;
 using Game1.Environment;
+using Game1.GameState;
 using Game1.Player;
+using Game1.Util;
 using Microsoft.Xna.Framework;
-using System.Runtime.Remoting;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
     class PlayerToBlockWestSideCommand : ICollisionCommand
     {
-        public PlayerToBlockWestSideCommand()
-        {
+        private readonly Game1 game;
 
+        public PlayerToBlockWestSideCommand(Game1 game)
+        {
+            this.game = game;
         }
 
         public void Execute(Collision collision)
@@ -40,7 +41,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if(envo.GetType() == typeof(DoorEOpen))
             {
-                /* Collision with Open Door. Allowing walk through. */;
+                game.SetState(new GameStateRoomToRoom(game, CompassDirection.East));
             }
             else if(envo.GetType() == typeof(DoorEBombable))
             {

@@ -4,6 +4,7 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Item;
 using System.Collections.Generic;
+using Game1.RoomLoading;
 
 namespace Game1.Enemy
 {
@@ -31,11 +32,11 @@ namespace Game1.Enemy
             this.timeUntilNextFrame = animationTime;
         }
 
-        public SkeletonStateMoving(Game1 game, Vector2 position, IItem item)
+        public SkeletonStateMoving(Room room, Vector2 position, IItem item)
         {
             Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
 
-            game.Screen.SpawnItem(item);
+            room.SpawnItem(item);
             this.item = item;
 
             this.position = position;

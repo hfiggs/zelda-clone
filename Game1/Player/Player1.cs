@@ -86,7 +86,7 @@ namespace Game1.Player
 
             if(timeUntilNextSwordBeam <= 0 && isFullHealth)
             {
-                game.Screen.SpawnProjectile(new SwordBeam(state.GetDirection(), state.position));
+                game.Screen.CurrentRoom.SpawnProjectile(new SwordBeam(state.GetDirection(), state.position));
 
                 timeUntilNextSwordBeam = swordBeamCooldown;
             }
@@ -144,7 +144,7 @@ namespace Game1.Player
 
         public void SpawnProjectile(IProjectile projectile)
         {
-            game.Screen.SpawnProjectile(projectile);
+            game.Screen.CurrentRoom.SpawnProjectile(projectile);
         }
 
         public void EditPosition(Vector2 amount)

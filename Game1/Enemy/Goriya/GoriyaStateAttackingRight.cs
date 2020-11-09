@@ -30,7 +30,7 @@ namespace Game1.Enemy
             Sprite = EnemySpriteFactory.Instance.CreateGoriyaRightSprite();
             const char boomerangDirection = 'E';
             projectile = new EnemyBoomerang(boomerangDirection, position);
-            game.Screen.SpawnProjectile(projectile);
+            game.Screen.CurrentRoom.SpawnProjectile(projectile);
 
             timeUntilNextFrame = animationTime;
         }

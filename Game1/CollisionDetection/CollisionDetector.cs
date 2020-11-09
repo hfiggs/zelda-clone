@@ -29,7 +29,7 @@ namespace Game1.CollisionDetection
             List<IItem> ItemList = screen.CurrentRoom.ItemList;
             List<IEnvironment> EnvironmentList = screen.CurrentRoom.InteractEnviornment;
             List<IEnemy> EnemyList = screen.CurrentRoom.EnemyList;
-            List<IProjectile> ProjectileList = screen.ProjectileList;
+            List<IProjectile> ProjectileList = screen.CurrentRoom.ProjectileList;
             IPlayer player = screen.Player;
             Rectangle playerHitbox = player.GetPlayerHitbox();
             Rectangle swordHitbox = player.GetSwordHitbox();

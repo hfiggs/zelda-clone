@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1.Collision_Handling
 {
-    class Collision
+    public class Collision
     {
         public char side { get; private set; } // Side consits of {N, S, E, W} (stands for North, South, East, West)
         public Rectangle intersectionRec { get; private set; }

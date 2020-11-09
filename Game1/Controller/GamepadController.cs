@@ -40,9 +40,6 @@ namespace Game1.Controller
                 { Buttons.RightThumbstickLeft, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
                 { Buttons.RightThumbstickUp, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
                 { Buttons.RightThumbstickRight, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
-
-                { Buttons.RightShoulder, new RoomNextCommand(game) },
-                { Buttons.LeftShoulder, new RoomPrevCommand(game) }
             };
 
             this.playerIndex = playerIndex;

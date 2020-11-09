@@ -54,9 +54,9 @@ namespace Game1
             ContentUtil.LoadAllContent(Content);
 
             //Move this to game state maybe?
-            AudioManager.PlayLooped("dungeon");
+            //AudioManager.PlayLooped("dungeon");
 
-            Screen = new Screen(this, 'F', 2);
+            Screen = new Screen(this);
             Screen.LoadAllRooms();
 
             HUD = new HUDInterface(Screen.Player.PlayerInventory, Screen);

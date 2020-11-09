@@ -73,6 +73,7 @@
     <Compile Include="Controller\KeyboardTransitionController.cs" />
     <Compile Include="GameState\GameStateHUD.cs" />
     <Compile Include="GameState\GameStateHUDToRoom.cs" />
+    <Compile Include="GameState\GameStateRoomToRoom.cs" />
     <Compile Include="GameState\GameStateRoomToHUD.cs" />
     <Compile Include="GameState\GameStateRoom.cs" />
     <Compile Include="GameState\IGameState.cs" />
@@ -126,8 +127,6 @@
     <Compile Include="Command\PlayerCommands\PlayerUpCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerRightCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
-    <Compile Include="Command\RoomNextCommand.cs" />
-    <Compile Include="Command\RoomPrevCommand.cs" />
     <Compile Include="Controller\HUDGamepadController.cs" />
     <Compile Include="DebugUtil.cs" />
     <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
@@ -311,6 +310,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enemy\Goriya\GoriyaStateMovingDown.cs" />
+    <Compile Include="Util\CompassDirection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MatrixExtensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

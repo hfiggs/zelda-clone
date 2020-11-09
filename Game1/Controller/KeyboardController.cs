@@ -10,7 +10,7 @@ namespace Game1.Controller
     class KeyboardController : IController
     {
         private readonly Dictionary<Keys, ICommand> commands;
-        private Stack<Keys> movement = new Stack<Keys>();
+        private readonly Stack<Keys> movement = new Stack<Keys>();
         private Keys currentMove = new Keys();
 
         public KeyboardController(Game1 game)
@@ -41,9 +41,6 @@ namespace Game1.Controller
                 { Keys.NumPad1, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
                 { Keys.NumPad2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
                 { Keys.NumPad3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
-
-                { Keys.U, new RoomNextCommand(game) },
-                { Keys.I, new RoomPrevCommand(game) },
 
                 {Keys.Escape, new PauseCommand(game) }
             };

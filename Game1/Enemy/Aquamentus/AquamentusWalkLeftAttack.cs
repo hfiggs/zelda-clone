@@ -46,7 +46,7 @@ namespace Game1.Enemy
                     position.X -= moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
                 }
             } else if(totalTime > timeOfAttack && counter == 0) {
-                game.Screen.SpawnProjectile(new Fireballs(position, playerRect));
+                game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position, playerRect));
                 counter++;
             } else {
                 aquamentus.SetState(new AquamentusWalkRight(game, aquamentus, position));

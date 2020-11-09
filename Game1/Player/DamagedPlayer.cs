@@ -141,7 +141,7 @@ namespace Game1.Player
 
         public void SpawnProjectile(IProjectile projectile)
         {
-            game.Screen.SpawnProjectile(projectile);
+            game.Screen.CurrentRoom.SpawnProjectile(projectile);
         }
 
         public void EditPosition(Vector2 amount)

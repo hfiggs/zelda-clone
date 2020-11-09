@@ -1,4 +1,5 @@
 ﻿using Game1.Item;
+using Game1.RoomLoading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -23,12 +24,12 @@ namespace Game1.Enemy
             health = 2f;
         }
 
-        public Skeleton(Game1 game, Vector2 spawnPosition, IItem item)
+        public Skeleton(Game1 game, Room room, Vector2 spawnPosition, IItem item)
         {
             this.game = game;
             this.positon = spawnPosition;
             health = 2f;
-            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(game, spawnPosition, item));
+            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(room, spawnPosition, item));
 
         }
 

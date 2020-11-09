@@ -2,38 +2,33 @@
 using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
+using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Game1.RoomLoading
 {
     public class Room
     {
         public List<IItem> ItemList { get; set; }
+        public List<IProjectile> ProjectileList { get; set; }
         public List<IEnvironment> NonInteractEnviornment { get; set; }
         public List<IEnvironment> InteractEnviornment { get; set; }
         public List<IEnemy> EnemyList { get; set; }
         public List<IEnemy> DecoratedEnemyList { get; set; }
         public List<IEnemy> UnDecoratedEnemyList { get; set; }
 
-        private List<AmbientSound> soundList;
+        private readonly List<AmbientSound> soundList;
 
-        public Room(Game1 game, String file)
+        public Room(Game1 game, string file)
         {
-            game.Screen.CurrentRoom = this;
-            RoomParser parser = new RoomParser(game, file);
-            ItemList = new List<IItem>();
-            NonInteractEnviornment = new List<IEnvironment>();
-            InteractEnviornment = new List<IEnvironment>();
-            EnemyList = new List<IEnemy>();
-            ItemList.AddRange(parser.GetItems());
-            NonInteractEnviornment.AddRange(parser.GetNonInteractableEnvinornment());
-            InteractEnviornment.AddRange(parser.GetInteractableEnvinornment());
-            EnemyList.AddRange(parser.GetEnemies());
-
+            RoomParser parser = new RoomParser(game, this, file);
+            ItemList = new List<IItem>(parser.GetItems());
+            ProjectileList = new List<IProjectile>();
+            NonInteractEnviornment = new List<IEnvironment>(parser.GetNonInteractableEnvinornment());
+            InteractEnviornment = new List<IEnvironment>(parser.GetInteractableEnvinornment());
+            EnemyList = new List<IEnemy>(parser.GetEnemies());
             DecoratedEnemyList = new List<IEnemy>();
             UnDecoratedEnemyList = new List<IEnemy>();
 
@@ -42,19 +37,18 @@ namespace Game1.RoomLoading
 
         public void Update(GameTime gameTime)
         {
-            foreach (IItem item in ItemList)
-            {
-                item.Update(gameTime);
-            }
+
+            ItemList.ForEach(item => item.Update(gameTime));
 
             CheckClocksAndStunEnemies();
 
             ItemList.RemoveAll(p => p.ShouldDelete);
 
-            foreach (IEnemy enemy in EnemyList)
-            {
-                enemy.Update(gameTime, new Rectangle(0, 0, 256, 176));
-            }
+            ProjectileList.ForEach(proj => proj.Update(gameTime));
+
+            ProjectileList.RemoveAll(p => p.ShouldDelete());
+
+            EnemyList.ForEach(enemy => enemy.Update(gameTime, new Rectangle(0, 0, 256, 176)));
 
             foreach (IEnemy decoratedEnemy in DecoratedEnemyList)
             {
@@ -72,38 +66,32 @@ namespace Game1.RoomLoading
 
             EnemyList.RemoveAll(p => p.ShouldRemove());
 
-            foreach (IEnvironment interactEnvironment in InteractEnviornment)
-            {
-                interactEnvironment.BehaviorUpdate(gameTime);
-            }
+            InteractEnviornment.ForEach(env => env.BehaviorUpdate(gameTime));
 
-            foreach (IEnvironment nonInternactEnvironment in NonInteractEnviornment)
-            {
-                nonInternactEnvironment.BehaviorUpdate(gameTime);
-            }
+            NonInteractEnviornment.ForEach(env => env.BehaviorUpdate(gameTime));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (IEnvironment nonInternactEnvironment in NonInteractEnviornment)
-            {
-                nonInternactEnvironment.Draw(spriteBatch, Color.White);
-            }
+            NonInteractEnviornment.ForEach(env => env.Draw(spriteBatch, Color.White));
 
-            foreach (IEnvironment internactEnvironment in InteractEnviornment)
-            {
-                internactEnvironment.Draw(spriteBatch, Color.White);
-            }
+            InteractEnviornment.ForEach(env => env.Draw(spriteBatch, Color.White));
 
-            foreach (IEnemy enemy in EnemyList)
-            {
-                enemy.Draw(spriteBatch, Color.White);
-            }
+            EnemyList.ForEach(enemy => enemy.Draw(spriteBatch, Color.White));
 
-            foreach (IItem item in ItemList)
-            {
-                item.Draw(spriteBatch, Color.White);
-            }
+            ItemList.ForEach(item => item.Draw(spriteBatch, Color.White));
+
+            ProjectileList.ForEach(proj => proj.Draw(spriteBatch, Color.White));
+        }
+
+        public void SpawnProjectile(IProjectile projectile)
+        {
+            ProjectileList.Add(projectile);
+        }
+
+        public void SpawnItem(IItem item)
+        {
+            ItemList.Add(item);
         }
 
         private void CheckClocksAndStunEnemies()
@@ -123,18 +111,12 @@ namespace Game1.RoomLoading
 
         public void StopRoomAmbience()
         {
-            foreach(AmbientSound sound in soundList)
-            {
-                sound.Stop();
-            }
+            soundList.ForEach(sound => sound.Stop());
         }
 
         public void PlayRoomAmbience()
         {
-            foreach (AmbientSound sound in soundList)
-            {
-                sound.Play();
-            }
+            soundList.ForEach(sound => sound.Play());
         }
     }
 }

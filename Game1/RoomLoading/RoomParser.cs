@@ -16,12 +16,14 @@ namespace Game1.RoomLoading
 {
     class RoomParser
     {
-        readonly XMLLoader roomData;
-        readonly Game1 game;
-        public RoomParser(Game1 game, String path)
+        private readonly XMLLoader roomData;
+        private readonly Game1 game;
+        private readonly Room room;
+        public RoomParser(Game1 game, Room room, String path)
         {
-            this.roomData = new XMLLoader(path);
+            roomData = new XMLLoader(path);
             this.game = game;
+            this.room = room;
         }
 
         public List<IItem> GetItems()
@@ -133,7 +135,7 @@ namespace Game1.RoomLoading
                         enemy = new Skeleton(game, position);
                         break;
                     case "SkeletonKey":
-                        enemy = new Skeleton(game, position, new Key(position));
+                        enemy = new Skeleton(game, room, position, new Key(position));
                         break;
                     case "Snake":
                         enemy = new Snake(game, position);
