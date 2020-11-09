@@ -29,6 +29,9 @@ namespace Game1.Command.CollisionHandlerCommands
                     if (player.GetDirection() != 'W')
                     {
                         player.ReceiveDamage(boomerangDamage, westVector);
+                    } else
+                    {
+                        AudioManager.PlayFireForget("shield");
                     }
 
                     proj.BeginDespawn();

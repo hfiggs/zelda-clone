@@ -3,6 +3,7 @@
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Game1.Command;
+using Game1.Command.PlayerCommands;
 using Game1.Player.PlayerInventory;
 
 namespace Game1.Controller
@@ -43,7 +44,9 @@ namespace Game1.Controller
                 { Keys.NumPad3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
 
                 { Keys.U, new RoomNextCommand(game) },
-                { Keys.I, new RoomPrevCommand(game) }
+                { Keys.I, new RoomPrevCommand(game) },
+
+                {Keys.Escape, new PauseCommand(game) }
             };
         }
 

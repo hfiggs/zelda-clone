@@ -55,6 +55,7 @@ namespace Game1.Command.CollisionHandlerCommands
                 }
             } else if(envo.GetType() == typeof(Stairs)) {
                 // Do nothing until player can walk down stairs
+                AudioManager.PlayMutex("stairs");
             } else {
 
                 if (player.GetType() == typeof(DamagedPlayer) && ((DamagedPlayer)player).stillSlide)

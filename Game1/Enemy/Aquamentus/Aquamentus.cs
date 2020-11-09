@@ -26,7 +26,7 @@ namespace Game1.Enemy
         public void ReceiveDamage(float amount, Vector2 direction)
         {
             health -= amount;
-            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, direction, game);
+            EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, new Vector2(0,0), game);
             game.Screen.CurrentRoom.DecoratedEnemyList.Add(decorator);
         }
 

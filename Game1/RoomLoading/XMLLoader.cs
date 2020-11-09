@@ -39,5 +39,9 @@ namespace Game1.RoomLoading
             return xmlDoc.GetElementsByTagName("NonInteractEnviornment"); ;
         }
 
+        public XmlNodeList getAmbientSounds()
+        {
+            return xmlDoc.GetElementsByTagName("Sounds");
+        }
     }
 }

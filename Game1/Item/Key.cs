@@ -18,6 +18,8 @@ namespace Game1.Item
             sprite = ItemSpriteFactory.Instance.CreateKeySprite();
 
             this.Position = Position;
+
+            AudioManager.PlayFireForget("key");
         }
         public void Update(GameTime gameTime)
         {

@@ -66,6 +66,8 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="RoomLoading\AmbientSound.cs" />
+    <Compile Include="AudioManager.cs" />
     <Compile Include="Collision_Handling\Collision.cs" />
     <Compile Include="Collision_Handling\CollisionHandler.cs" />
     <Compile Include="Collision_Handling\CollisionHandlerUtil.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerWestSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemy.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentEastSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentSouthSideCommand.cs" />
@@ -101,6 +104,7 @@
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerWestSideCommand.cs" />
     <Compile Include="CollisionDetection\CollisionDetector.cs" />
+    <Compile Include="Command\PlayerCommands\PauseCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerEquipItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />
@@ -173,6 +177,26 @@
     <Compile Include="Environment\Tiles\MovableBlock.cs" />
     <Compile Include="Environment\RoomBase.cs" />
     <Compile Include="Environment\Tiles\Fire.cs" />
+    <Compile Include="HUD\HUDItems\HUDArrow.cs" />
+    <Compile Include="HUD\HUDItems\HUDBomb.cs" />
+    <Compile Include="HUD\HUDItems\HUDBoomerang.cs" />
+    <Compile Include="HUD\HUDItems\HUDBow.cs" />
+    <Compile Include="HUD\HUDItems\HUDCompass.cs" />
+    <Compile Include="HUD\HUDItems\HUDFlashingDot.cs" />
+    <Compile Include="HUD\HUDItems\HUDHeartBar.cs" />
+    <Compile Include="HUD\HUDItems\HUDItemFactory.cs" />
+    <Compile Include="HUD\HUDItems\HUDBase.cs" />
+    <Compile Include="HUD\HUDItems\DungeonOneMap.cs" />
+    <Compile Include="HUD\HUDItems\HUDMap.cs" />
+    <Compile Include="HUD\HUDItems\HUDRoom.cs" />
+    <Compile Include="HUD\HUDItems\HUDKeyTextBox.cs" />
+    <Compile Include="HUD\HUDItems\HUDBombTextBox.cs" />
+    <Compile Include="HUD\HUDItems\HUDRupeeTextBox.cs" />
+    <Compile Include="HUD\HUDItems\HUDSelectionSquare.cs" />
+    <Compile Include="HUD\HUDItems\HUDSword.cs" />
+    <Compile Include="HUD\HUDSprite.cs" />
+    <Compile Include="HUD\HUD.cs" />
+    <Compile Include="HUD\HUDItems\IHudItem.cs" />
     <Compile Include="Item\ArrowItem.cs" />
     <Compile Include="Particle\BeamExplosion.cs" />
     <Compile Include="Particle\Cloud.cs" />
@@ -323,6 +347,53 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\audio\music\dungeon.wav" />
+    <Content Include="Content\audio\music\dungeonBass.wav" />
+    <Content Include="Content\audio\music\gameOver.wav" />
+    <Content Include="Content\audio\music\gameOverBlasted.wav" />
+    <Content Include="Content\audio\music\RipCredits.txt" />
+    <Content Include="Content\audio\music\title.wav" />
+    <Content Include="Content\audio\music\titleBass.wav" />
+    <Content Include="Content\audio\sounds\death.wav" />
+    <Content Include="Content\audio\unused_unedited\01 Opening.mp3" />
+    <Content Include="Content\audio\unused_unedited\02 Overworld.mp3" />
+    <Content Include="Content\audio\unused_unedited\03 Labyrinth.mp3" />
+    <Content Include="Content\audio\unused_unedited\06 Death Mountain.mp3" />
+    <Content Include="Content\audio\unused_unedited\07 Ganon Appears.mp3" />
+    <Content Include="Content\audio\unused_unedited\08 Ganon Defeated.mp3" />
+    <Content Include="Content\audio\unused_unedited\09 Ending _ Staff Roll.mp3" />
+    <Content Include="Content\audio\unused_unedited\sounds00\aquamentus.mp3" />
+    <Content Include="Content\audio\unused_unedited\sounds00\itemGet.mp3" />
+    <Content Include="Content\audio\unused_unedited\sounds00\RipCredits.txt" />
+    <Content Include="Content\audio\unused_unedited\sounds00\secret.mp3" />
+    <Content Include="Content\audio\unused_unedited\sounds00\triforceTheme.mp3" />
+    <Content Include="Content\audio\unused_unedited\sounds00\whistle.mp3" />
+    <Content Include="Content\audio\unused_unedited\sounds00\_unusedScream1.mp3" />
+    <Content Include="Content\audio\unused_unedited\sounds00\_unusedScream2.mp3" />
+    <Content Include="Content\audio\unused_unedited\sounds01\BombApearanceAndSelfdrestruction.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\BossZapped.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\DoorOpened.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\EnemyZapped.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\FlamesShot.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\HealthHeart.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\Item Received.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\ItemObtained.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\KeyAppearance.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\Magical.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\MagicalBoomerangThrown.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\MagicWhistleTune.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\MasterSwordSwordZap.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\PlayerHurt.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\PowerZap.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\RipCredits.txt" />
+    <Content Include="Content\audio\unused_unedited\sounds01\RupeesDecreasing.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\ShieldDeflecting.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\Shiny.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\SwordZapSFX.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\TheTriforceRevealsGanon.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\TwoZapBolts.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\UpgradedMagical Boomerang Thrown.wav" />
+    <Content Include="Content\audio\unused_unedited\sounds01\WalkingOnStairs.wav" />
     <Content Include="Content\RoomXML\RoomA0.xml" />
     <Content Include="Content\RoomXML\RoomA1.xml" />
     <Content Include="Content\RoomXML\RoomA2.xml" />

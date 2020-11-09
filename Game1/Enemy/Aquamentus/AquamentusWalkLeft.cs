@@ -12,7 +12,7 @@ namespace Game1.Enemy
         private float totalTime;
         private int timeCap;
         private Random random;
-        private const float moveSpeed = 10;
+        private const float moveSpeed = 7;
         private Game1 game;
         private IEnemy aquamentus;
 

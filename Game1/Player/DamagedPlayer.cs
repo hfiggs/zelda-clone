@@ -16,7 +16,7 @@ namespace Game1.Player
         int currentFlicker = 0;
         Color damageColor = Color.White;
 
-        Vector2 damageMove = new Vector2(1f,1f); 
+        Vector2 damageMove = new Vector2(.66f,.66f); 
 
         const int duration = 1000; // ms
         int timer;
@@ -31,6 +31,8 @@ namespace Game1.Player
 
         public IPlayerInventory PlayerInventory { get => decoratedPlayer.PlayerInventory;}
 
+        private const float volume = 0.25f;
+
         public DamagedPlayer(Game1 game, IPlayer decoratedPlayer, Vector2 direction)
         {
             this.game = game;
@@ -39,11 +41,12 @@ namespace Game1.Player
             timer = duration;
             stillSlide = true;
             flickerTimer = 0;
+            AudioManager.PlayFireForget("linkHurt", 0.0f, volume);
         }
 
         public void Attack()
         {
-            if (timer <= 950 || !stillSlide)
+            if (timer <= 925 || !stillSlide)
                 decoratedPlayer.Attack();
         }
 
@@ -78,25 +81,25 @@ namespace Game1.Player
 
         public void MoveDown()
         {
-            if (timer <= 950 || !stillSlide)
+            if (timer <= 925 || !stillSlide)
                 decoratedPlayer.MoveDown();
         }
 
         public void MoveLeft()
         {
-            if (timer <= 950 || !stillSlide)
+            if (timer <= 925 || !stillSlide)
                 decoratedPlayer.MoveLeft();
         }
 
         public void MoveRight()
         {
-            if (timer <= 950 || !stillSlide)
+            if (timer <= 925 || !stillSlide)
                 decoratedPlayer.MoveRight();
         }
 
         public void MoveUp()
         {
-            if (timer <= 950 || !stillSlide)
+            if (timer <= 925 || !stillSlide)
                 decoratedPlayer.MoveUp();
         }
 
@@ -112,7 +115,7 @@ namespace Game1.Player
             if (timer <= 0)
                 RemoveDecorator();
 
-            if (timer >= 950 && stillSlide)
+            if (timer >= 925 && stillSlide)
                 decoratedPlayer.EditPosition(Vector2.Multiply(damageMove, (float)(time.ElapsedGameTime.TotalMilliseconds)));
             else
                 stillSlide = false;

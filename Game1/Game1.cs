@@ -17,7 +17,8 @@ using Game1.Projectile;
 using Game1.Environment;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
 using Game1.RoomLoading;
-using Game1.Particle;
+using Game1.HUD;
+using Microsoft.Xna.Framework.Input;
 
 namespace Game1
 {
@@ -25,7 +26,6 @@ namespace Game1
     {
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
-
         IResolution resolution;
 
         private List<IController> controllerList;
@@ -48,7 +48,8 @@ namespace Game1
                 new GamepadController(this, PlayerIndex.One)
             };
 
-            IsMouseVisible = true;
+            IsMouseVisible = false;
+            
 
             base.Initialize();
         }
@@ -69,6 +70,13 @@ namespace Game1
 
             ParticleSpriteFactory.Instance.LoadAllTextures(Content);
 
+            HUDItemFactory.Instance.LoadAllTextures(Content);
+
+            AudioManager.LoadContent(Content);
+
+            //Move this to game state maybe?
+            AudioManager.PlayLooped("dungeon");
+
             Screen = new Screen(this, 'F', 2);
 
             Screen.LoadAllRooms();
@@ -88,6 +96,8 @@ namespace Game1
 
             Screen.Update(gameTime);
 
+            AudioManager.Update(gameTime);
+            
             base.Update(gameTime);
         }
 
@@ -95,9 +105,9 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
-            Screen.Draw(spriteBatch, Color.Red);
+            Screen.Draw(spriteBatch);
 
             spriteBatch.End();
 

@@ -31,6 +31,9 @@ namespace Game1.Projectile
 
         private const int explosionDiameter = 24; // pixels
 
+        private const float bombPlaceDelay = 0.5f; //sec
+        private const float bombExplodeDelay = 1.5f; //sec
+
         public BombProjectile(Vector2 position, IPlayer player)
         {
             this.position = position;
@@ -43,6 +46,9 @@ namespace Game1.Projectile
 
             particles = new List<IParticle>();
             particlesSpawned = false;
+
+            AudioManager.PlayFireForget("bombPlace", bombPlaceDelay);
+            AudioManager.PlayFireForget("bombExplode", bombExplodeDelay);
         }
 
         public void Update(GameTime gameTime)

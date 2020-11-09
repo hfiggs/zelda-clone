@@ -19,7 +19,7 @@ namespace Game1.Projectile
             rowModifier = 0;
             counter = 0;
             topAndBottomModifier = 0;
-            moveSpeed = 200;
+            moveSpeed = 100;
             slightChangeInY = 100;
             this.position = position;
             directionOfPlayer = Vector2.Normalize(position - (new Vector2 (rec.Center.X, rec.Center.Y - yDiff)));

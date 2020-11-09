@@ -11,11 +11,14 @@ namespace Game1.Projectile
         private int columnModifier, counter, rowModifier;
         private float totalTime;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
-        private const float moveSpeed = 250;
+        private const float moveSpeed = 200;
         private const float delay = 200; // miliseconds
         private ProjectileSpriteSheet sprite;
         private Vector2 position;
         private bool removeMe = false;
+        private readonly Vector2 positionOffset = new Vector2(-2.0f, 3.0f);
+
+        private const float soundDelay = 0.2f;
 
         private IParticle particles;
         private bool particlesSpawned;
@@ -24,12 +27,14 @@ namespace Game1.Projectile
         public SwordBeam(char direction, Vector2 position)
         {
             this.direction = direction;
-            this.position = position + new Vector2(-2, 3);
+            this.position = position + positionOffset;
             sprite = ProjectileSpriteFactory.Instance.CreateSwordBeamSprite();
             columnModifier = 0;
             rowModifier = 0;
             counter = 0;
             totalTime = 0;
+
+            AudioManager.PlayFireForget("swordBeam", soundDelay);
         }
         public void Update(GameTime gameTime)
         {
