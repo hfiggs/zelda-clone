@@ -72,16 +72,16 @@ namespace Game1.RoomLoading
         
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
 
-            CurrentRoom.Draw(spriteBatch);
+            CurrentRoom.Draw(spriteBatch, color);
 
-            Player.Draw(spriteBatch, Color.White);
+            Player.Draw(spriteBatch, color);
 
             foreach (IProjectile projectile in ProjectileList)
             {
-                projectile.Draw(spriteBatch, Color.White);
+                projectile.Draw(spriteBatch, color);
             }
         }
 

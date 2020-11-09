@@ -21,7 +21,10 @@ namespace Game1.Projectile
         private bool particlesSpawned;
 
         private const int cloudOffset = 15; // pixels
+        private const int cloudHexOffset = 8; //pixels
         private const int spriteDiameter = 40; // pixels
+
+        private const float centralOffset = spriteDiameter / 3.0f;
 
         private int timeUntilNoExplosionHitbox;
         private const int explosionHitboxTime = 100; // ms
@@ -93,21 +96,20 @@ namespace Game1.Projectile
 
         private Vector2 GetCenteredPosition()
         {
-            return new Vector2(position.X + (spriteDiameter / 2f), position.Y + (spriteDiameter / 2f));
+            return new Vector2(position.X + centralOffset, position.Y + centralOffset);
         }
 
         private void AddCloudParticles(List<IParticle> particles)
         {
             player.PlayerInventory.SetItemInUse(ItemEnum.Bomb, false);
-            particles.Add(new Cloud(GetCenteredPosition()));
-            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y)));
-            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y - cloudOffset)));
+            particles.Add(new Cloud(GetCenteredPosition(), true));
+            particles.Add(new Cloud(GetCenteredPosition(), false));
+            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y - cloudHexOffset)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X, GetCenteredPosition().Y - cloudOffset)));
-            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X + cloudOffset, GetCenteredPosition().Y - cloudOffset)));
-            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X + cloudOffset, GetCenteredPosition().Y)));
-            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X + cloudOffset, GetCenteredPosition().Y + cloudOffset)));
+            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X + cloudOffset, GetCenteredPosition().Y - cloudHexOffset)));
+            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X + cloudOffset, GetCenteredPosition().Y + cloudOffset - cloudHexOffset + 1)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X, GetCenteredPosition().Y + cloudOffset)));
-            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y + cloudOffset)));
+            particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y + cloudOffset - cloudHexOffset + 1)));
         }
 
         public Rectangle GetHitbox()

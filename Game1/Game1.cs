@@ -23,9 +23,6 @@ namespace Game1
 {
     public class Game1 : Game
     {
-        //DELETE
-        BeamExplosion exp;
-
         public GraphicsDeviceManager Graphics { get; private set; }
         private SpriteBatch spriteBatch;
 
@@ -75,9 +72,6 @@ namespace Game1
             Screen = new Screen(this, 'F', 2);
 
             Screen.LoadAllRooms();
-
-            //DELETE
-            exp = new BeamExplosion(new Vector2(50.0f, 50.0f));
         }
 
         protected override void UnloadContent()
@@ -94,9 +88,6 @@ namespace Game1
 
             Screen.Update(gameTime);
 
-            //DELETE
-            exp.Update(gameTime);
-
             base.Update(gameTime);
         }
 
@@ -106,10 +97,7 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
-            Screen.Draw(spriteBatch);
-
-            //DELETE
-            exp.Draw(spriteBatch, Color.White);
+            Screen.Draw(spriteBatch, Color.Red);
 
             spriteBatch.End();
 

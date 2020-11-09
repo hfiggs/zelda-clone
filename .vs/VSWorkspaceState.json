@@ -2,12 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Command\\CollisionHandlerCommands\\Projectile To Player Commands",
-    "\\Game1\\Enemy",
-    "\\Game1\\Enemy\\Snake",
-    "\\Game1\\Enemy\\SpikeTrap",
+    "\\Game1\\Command",
+    "\\Game1\\Particle",
     "\\Game1\\Projectile"
   ],
-  "SelectedNode": "\\Game1\\Enemy\\Snake\\SnakeStateMoving.cs",
+  "SelectedNode": "\\Game1\\Game1.cs",
   "PreviewInSolutionExplorer": false
 }
