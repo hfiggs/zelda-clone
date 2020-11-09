@@ -16,7 +16,7 @@ namespace Game1.GameState
         private const float transitionSpeed = 0.1f; // pixels per ms
 
         private const float roomStartOffset = 216f;
-        private const float hudStartOffset = 20f;
+        private const float hudStartOffset = 40f;
 
         private const float roomEndOffset = 40f;
         private const float hudEndOffset = -136f;

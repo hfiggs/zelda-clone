@@ -19,7 +19,7 @@ namespace Game1.GameState
         private const float hudStartOffset = -136f;
 
         private const float roomEndOffset = 216f;
-        private const float hudEndOffset = 20f;
+        private const float hudEndOffset = 40f;
 
         private float roomOffset;
         private float hudOffset;

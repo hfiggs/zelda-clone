@@ -11,7 +11,7 @@ namespace Game1.GameState
         private readonly Game1 game;
         private readonly List<IController> controllerList;
 
-        private const float hudOffset = 20f;
+        private const float hudOffset = 40f;
 
         public GameStateHUD(Game1 game)
         {
