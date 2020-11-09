@@ -33,7 +33,7 @@ namespace Game1
         private static Dictionary<string, SoundEffect> musicMap = new Dictionary<string, SoundEffect>();
         private static Dictionary<string, SoundEffect> soundMap = new Dictionary<string, SoundEffect>();
 
-        //used for muting an entire subset of sounds instantaneously - Consider deleting
+        //used for muting an entire subset of sounds instantaneously
         private static List<SoundEffectInstance> activeMusicList = new List<SoundEffectInstance>();
         private static List<SoundEffectInstance> activeSoundList = new List<SoundEffectInstance>();
 
@@ -276,12 +276,14 @@ namespace Game1
                     break;
                 case "Bow":
                     StopAllMusic();
+                    StopAllSound();
                     PlayFireForget("powerPickUp");
                     PlayFireForget("chest");
                     PlayLooped("dungeon", chestSoundLength);
                     break;
                 case "Triforce":
                     StopAllMusic();
+                    StopAllSound();
                     PlayFireForget("powerPickUp");
                     PlayFireForget("triforce");
                     PlayLooped("dungeon", triforceSoundLength);
