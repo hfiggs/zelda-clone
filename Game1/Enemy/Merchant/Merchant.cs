@@ -46,7 +46,10 @@ namespace Game1.Enemy
         {
             return false;
         }
-
+        public Vector2 GetPosition()
+        {
+            return position;
+        }
         public List<Rectangle> GetHitboxes()
         {
             List <Rectangle> hitboxList= new List<Rectangle>();

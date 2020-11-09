@@ -2,7 +2,6 @@
 using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
-using Game1.Item.Heart;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

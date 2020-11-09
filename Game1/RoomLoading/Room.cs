@@ -2,6 +2,7 @@
 using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
+using Game1.Item.ItemDropper;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -21,6 +22,7 @@ namespace Game1.RoomLoading
 
         private List<AmbientSound> soundList;
 
+        private ItemDropper itemDrops;
         public Room(Game1 game, String file)
         {
             game.Screen.CurrentRoom = this;
@@ -29,10 +31,13 @@ namespace Game1.RoomLoading
             NonInteractEnviornment = new List<IEnvironment>();
             InteractEnviornment = new List<IEnvironment>();
             EnemyList = new List<IEnemy>();
+
             ItemList.AddRange(parser.GetItems());
             NonInteractEnviornment.AddRange(parser.GetNonInteractableEnvinornment());
             InteractEnviornment.AddRange(parser.GetInteractableEnvinornment());
             EnemyList.AddRange(parser.GetEnemies());
+
+            itemDrops = new ItemDropper(game);
 
             DecoratedEnemyList = new List<IEnemy>();
             UnDecoratedEnemyList = new List<IEnemy>();
@@ -69,6 +74,8 @@ namespace Game1.RoomLoading
                 EnemyList.Add(((EnemyDamageDecorator)unDecoratedEnemy).original);
             }
             UnDecoratedEnemyList.Clear();
+
+            itemDrops.SpawnDrops(EnemyList.Where(p => p.ShouldRemove()).ToList());
 
             EnemyList.RemoveAll(p => p.ShouldRemove());
 

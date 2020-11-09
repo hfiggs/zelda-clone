@@ -100,6 +100,10 @@ namespace Game1.Enemy
             StunnedTimer = Math.Max(0, StunnedTimer);
         }
 
+        public Vector2 GetPosition()
+        {
+            return state.GetPosition();
+        }
         public void SetState(IEnemyState state)
         {
             this.state = state;
