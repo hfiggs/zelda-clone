@@ -107,7 +107,7 @@ namespace Game1
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, resolution.TransformationMatrix());
 
-            Screen.Draw(spriteBatch);
+            Screen.Draw(spriteBatch, Color.White);
 
             spriteBatch.End();
 
