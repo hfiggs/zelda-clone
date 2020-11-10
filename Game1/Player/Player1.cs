@@ -24,7 +24,8 @@ namespace Game1.Player
         private bool isLowHealth = false;
         private bool[] itemsHeld = { true, true, true }; //Bow, Boomerang, Bomb
 
-        private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
+        private const int xDiff = 13, yDiff = 20, width = 15, height = 10;
+        private Rectangle playerHitbox = new Rectangle(xDiff, yDiff, width, height);
         private Rectangle swordHitbox = new Rectangle();
 
         private readonly float deathSoundLength = 2.5f;

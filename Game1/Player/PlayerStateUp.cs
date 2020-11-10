@@ -87,7 +87,8 @@ namespace Game1.Player
 
         public char GetDirection()
         {
-            return 'N';
+            const char north = 'N';
+            return north;
         }
     }
 }

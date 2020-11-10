@@ -16,10 +16,12 @@ namespace Game1.Environment
 
         private const float topLayer = 1f;
 
-        private Rectangle openHitbox1 = new Rectangle(0, 0, 8, 32);
-        private Rectangle openHitbox2 = new Rectangle(24, 0, 8, 32);
+        const int width = 8, height = 32, xDiff = 24;
+        private Rectangle openHitbox1 = new Rectangle(0, 0, width, height);
+        private Rectangle openHitbox2 = new Rectangle(xDiff, 0, width, height);
 
-        private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
+        const int widthAndHeight = 32;
+        private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public DoorNBombable(Vector2 position, bool isOpen)

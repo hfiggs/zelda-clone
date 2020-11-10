@@ -90,10 +90,9 @@ namespace Game1.Enemy
 
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
-            const double one = 1.0;
             const double minimumTime = 0.3;
             Random random = new Random();
-            return (float) (random.NextDouble() * one + minimumTime);
+            return (float)(random.NextDouble() * 1.0 + minimumTime);
         }
 
         private Vector2 GetRandomDirection()

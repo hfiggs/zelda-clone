@@ -33,15 +33,16 @@ namespace Game1.Player
 
             ItemEnum item = player.PlayerInventory.EquippedItem;
             player.PlayerInventory.SetItemInUse(item, true);
+            const char west = 'W';
 
             switch (item)
             {
                 case ItemEnum.Bow:
                     player.PlayerInventory.SubRupees(1);
-                    projectile = new Arrow('W', new Vector2(position.X, position.Y), player);
+                    projectile = new Arrow(west, new Vector2(position.X, position.Y), player);
                     break;
                 case ItemEnum.Boomerang:
-                    projectile = new Boomerang('W', player);
+                    projectile = new Boomerang(west, player);
                     break;
                 case ItemEnum.Bomb:
                     player.PlayerInventory.SubBomb();
@@ -99,7 +100,8 @@ namespace Game1.Player
 
         public char GetDirection()
         {
-            return 'W';
+            const char west = 'W';
+            return west;
         }
     }
 }

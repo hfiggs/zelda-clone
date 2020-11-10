@@ -19,7 +19,8 @@ namespace Game1.Enemy
         {
             this.game = game;
             this.position = spawnPosition;
-            health = .5f;
+            const float halfHeart = 0.5f;
+            health = halfHeart;
             state = new EnemyStateSpawning(position, this, new BatStateMoving(spawnPosition));
         }
 

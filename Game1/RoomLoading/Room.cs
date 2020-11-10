@@ -21,6 +21,9 @@ namespace Game1.RoomLoading
 
         private readonly List<AmbientSound> soundList;
 
+        private const int roomWidth = 256;
+        private const int roomHeight = 176;
+
         public Room(Game1 game, string file)
         {
             RoomParser parser = new RoomParser(game, this, file);
@@ -48,7 +51,7 @@ namespace Game1.RoomLoading
 
             ProjectileList.RemoveAll(p => p.ShouldDelete());
 
-            EnemyList.ForEach(enemy => enemy.Update(gameTime, new Rectangle(0, 0, 256, 176)));
+            EnemyList.ForEach(enemy => enemy.Update(gameTime, new Rectangle(0, 0, roomWidth, roomHeight)));
 
             foreach (IEnemy decoratedEnemy in DecoratedEnemyList)
             {

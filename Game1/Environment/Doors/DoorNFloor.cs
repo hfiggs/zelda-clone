@@ -13,13 +13,15 @@ namespace Game1.Environment
         private ISprite sprite;
         private Vector2 position;
 
-        private Rectangle hitbox1 = new Rectangle(0, 0, 16, 16);
+        const int widthAndHeight = 16;
+        private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public DoorNFloor(Vector2 position)
         {
             sprite = EnvironmentSpriteFactory.instance.createDoorNFloor();
-            this.position = position + new Vector2(8.0f, 17.0f);
+            const float x = 8f, y = 17f;
+            this.position = position + new Vector2(x, y);
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
         }

@@ -21,6 +21,9 @@ namespace Game1.RoomLoading
         private readonly Game1 game;
         private CollisionDetector detector;
         private CollisionHandler handler;
+
+        private const char startingLetter = 'F';
+        private const int startingNumber = 2;
         
         public Screen(Game1 game)
         {
@@ -39,7 +42,7 @@ namespace Game1.RoomLoading
                 RoomsDict.Add((identiferStr[0], (int)char.GetNumericValue(identiferStr[1])), room);
             }
 
-            CurrentRoomKey = ('F', 2);
+            CurrentRoomKey = (startingLetter, startingNumber);
             detector = new CollisionDetector(this);
             handler = new CollisionHandler(game);
         }

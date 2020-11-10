@@ -63,10 +63,11 @@ namespace Game1.Enemy
             }
             if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
             {
+                const int xDiff = 8, yDiff = 4;
                 position += direction;
                 if(item != null)
                 {
-                    item.Position = new Vector2(position.X-8, position.Y-4);
+                    item.Position = new Vector2(position.X-xDiff, position.Y-yDiff);
                 }
                
             }
@@ -112,13 +113,15 @@ namespace Game1.Enemy
 
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
+            const double minimumTime = 0.3;
             Random random = new Random();
-            return (float) (random.NextDouble() * (0.7 + 0.3) + 0.3);
+            return (float)(random.NextDouble() * 1.0 + minimumTime);
         }
         private Vector2 GetRandomDirection()
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
-            int randomDirection = random.Next(4);
+            const int randomNumberMax = 4;
+            int randomDirection = random.Next(randomNumberMax);
 
             switch (randomDirection)
             {

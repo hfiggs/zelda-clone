@@ -25,7 +25,8 @@ namespace Game1.Enemy
             Sprite = EnemySpriteFactory.Instance.CreateAquamentusSprite();
             this.position = position;
             random = new Random(Guid.NewGuid().GetHashCode());
-            timeCap = random.Next(3);
+            const int randomNumberMax = 3;
+            timeCap = random.Next(randomNumberMax);
             timeCap++;
             totalTime = 0;
             this.game = game;
@@ -40,13 +41,14 @@ namespace Game1.Enemy
 
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
+            const int randomNumberMax = 100;
             totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
             
             if (totalTime <= timeCap) {
                 if (drawingLimits.Contains(position.X + moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds, position.Y)) {
                     position.X += moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
                 }
-                if (random.Next(100) < 1) {
+                if (random.Next(randomNumberMax) < 1) {
                     aquamentus.SetState(new AquamentusWalkRightAttack(game, aquamentus, position));
                 }
             } else {
@@ -84,9 +86,12 @@ namespace Game1.Enemy
 
         public List<Rectangle> GetHitboxes()
         {
+            const int bodyWidth = 25, bodyHeight = 32;
+            const int headWidth = 15, headHeight = 12;
+
             List<Rectangle> hitboxList = new List<Rectangle>();
-            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, 25, 32));
-            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, 15, 12));
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, bodyWidth, bodyHeight));
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, headWidth, headHeight));
             return hitboxList;
         }
     }

@@ -19,7 +19,8 @@ namespace Game1.Environment
         //private Rectangle openHitbox1 = new Rectangle(0, 0, 32, 8);
         //private Rectangle openHitbox2 = new Rectangle(0, 24, 32, 8);
 
-        private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
+        const int widthAndHeight = 32;
+        private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public DoorWBombable(Vector2 position, bool isOpen)

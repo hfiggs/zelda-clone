@@ -9,13 +9,14 @@ namespace Game1.Environment
     {
         private ISprite sprite;
         private Vector2 position;
-
-        private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
+        private const int widthAndHeight = 32;
+        private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         //private Rectangle hitbox2 = new Rectangle(0, 0, 10, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
         private float timeTillOpen;
         public int open; // 0 = locked, 1 = opening, 2 = open
         private const int openDoor = 2;
+        private const float openTime = 250f;
 
         public DoorWLocked(Vector2 position)
         {
@@ -38,7 +39,8 @@ namespace Game1.Environment
                 {
                     sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
                     hitboxes.Remove(hitbox1);
-                    open = 2;
+                    const int opened = 2;
+                    open = opened;
                 }
             }
         }
@@ -58,7 +60,7 @@ namespace Game1.Environment
             if (!shouldInstantOpen)
             {
                 open = 1;
-                timeTillOpen = 250f;
+                timeTillOpen = openTime;
                 AudioManager.PlayFireForget("doorLock");
             }
             // Instant unlock

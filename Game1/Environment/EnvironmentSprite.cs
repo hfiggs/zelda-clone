@@ -39,14 +39,16 @@ namespace Game1.Environment
 
         public void Update()
         {
-            if (animated && delayTime > 2)
+            const int animationChangeTime = 2, firstSprite = 2, secondSprite = 3, row = 2;
+
+            if (animated && delayTime > animationChangeTime)
             {
-                if (column == 2)
+                if (column == firstSprite)
                 {
-                    sourceRect = spriteSheet.PickSprite(column = 3, 2);
-                } else if(column == 3)
+                    sourceRect = spriteSheet.PickSprite(column = secondSprite, row);
+                } else if(column == secondSprite)
                 {
-                    sourceRect = spriteSheet.PickSprite(column = 2, 2);
+                    sourceRect = spriteSheet.PickSprite(column = firstSprite, row);
                 }
                 delayTime = 0;
             } else

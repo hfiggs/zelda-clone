@@ -51,7 +51,8 @@ namespace Game1.Particle
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            if ((timeUntilNextFlash <= flashTime / 2) && !ShouldDelete())
+            const float halfFlashTime = flashTime / 2;
+            if ((timeUntilNextFlash <= halfFlashTime) && !ShouldDelete())
             {
                 sprite.Draw(spriteBatch, position, color);
             }

@@ -87,13 +87,15 @@ namespace Game1.Enemy
 
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
+            const double minimumTime = 0.3;
             Random random = new Random();
-            return (float) (random.NextDouble() * (0.7 + 0.3) + 0.3);
+            return (float)(random.NextDouble() * 1.0 + minimumTime);
         }
         private Vector2 GetRandomDirection()
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
-            int randomDirection = random.Next(4);
+            const int randomNumberMax = 4;
+            int randomDirection = random.Next(randomNumberMax);
 
             switch (randomDirection)
             {

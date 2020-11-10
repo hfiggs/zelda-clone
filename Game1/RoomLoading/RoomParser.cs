@@ -137,7 +137,8 @@ namespace Game1.RoomLoading
                         enemy = new Snake(game, position);
                         break;
                     case "SpikeTrap":
-                        enemy = new SpikeTrap(game, position, 40, 80);
+                        const int verticalrange = 40, horizontalRange = 80;
+                        enemy = new SpikeTrap(game, position, verticalrange, horizontalRange);
                         break;
                     default:
                         throw new System.ArgumentException("Parameter cannot be null", "original");
@@ -233,7 +234,8 @@ namespace Game1.RoomLoading
                         interactEnviornment = new Block(position);
                         break;
                     case "MovableBlock":
-                        interactEnviornment = new MovableBlock(position, 'N');
+                        const char north = 'N';
+                        interactEnviornment = new MovableBlock(position, north);
                         break;
                     case "DoorEBlank":
                         interactEnviornment = new DoorEBlank(position);

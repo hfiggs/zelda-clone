@@ -77,20 +77,24 @@ namespace Game1.Player
                     case 1:
                         //attcking sprite 1, sword is not out
                         Sprite.Update();
-                        timeUntilNextFrame += 75.0f;
+                        const float timeToNextFrame1 = 75f;
+                        timeUntilNextFrame += timeToNextFrame1;
                         frameCount++;
                         break;
                     case 2:
                     case 3:
                         //player looped back to start
                         Sprite.Update();
-                        timeUntilNextFrame += 175.0f;
-                        player.SetSwordHitbox(new Rectangle(0, 16, 12, 12));
+                        const float timeToNextFrame2 = 175f;
+                        timeUntilNextFrame += timeToNextFrame2;
+                        const int yDiff = 16, widthAndHeight = 12;
+                        player.SetSwordHitbox(new Rectangle(0, yDiff, widthAndHeight, widthAndHeight));
                         frameCount++;
                         break;
                     case 4:
                         Sprite.Update();
-                        timeUntilNextFrame += 175.0f;
+                        const float timeToNextFrame3 = 175f;
+                        timeUntilNextFrame += timeToNextFrame3;
                         player.SetSwordHitbox(new Rectangle());
                         player.SetState(new PlayerStateLeft(player, position));
                         break;
@@ -100,7 +104,8 @@ namespace Game1.Player
 
         public char GetDirection()
         {
-            return 'W';
+            const char west = 'W';
+            return west;
         }
     }
 }

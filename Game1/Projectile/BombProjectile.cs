@@ -14,6 +14,7 @@ namespace Game1.Projectile
         private IPlayer player;
 
         private float detonationTime, timer;
+        private const float detonationTotalTime = 70;
         private bool detonated, swallowed;
         private Vector2 position;
 
@@ -36,7 +37,7 @@ namespace Game1.Projectile
             this.position = position;
             detonated = false;
             swallowed = false;
-            detonationTime = 70;
+            detonationTime = detonationTotalTime;
             timer = 0;
             sprite = ProjectileSpriteFactory.Instance.CreateBombProjectileSprite();
             this.player = player;
@@ -51,7 +52,7 @@ namespace Game1.Projectile
         public void Update(GameTime gameTime)
         {
             timer += detonationTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timer > 70) {
+            if (timer > detonationTotalTime) {
                 detonated = true;
                 if(!particlesSpawned)
                 {
@@ -99,7 +100,8 @@ namespace Game1.Projectile
 
         private Vector2 GetCenteredPosition()
         {
-            return new Vector2(position.X + (spriteDiameter / 2f), position.Y + (spriteDiameter / 2f));
+            const float radius = spriteDiameter / 2f;
+            return new Vector2(position.X + radius, position.Y + radius);
         }
 
         private void AddCloudParticles(List<IParticle> particles)
@@ -125,7 +127,8 @@ namespace Game1.Projectile
             if(!detonated) {
                 hitbox = new Rectangle((int)position.X + xAndYDiff, (int)position.Y + xAndYDiff, width, height);
             } else {
-                hitbox = new Rectangle((int)GetCenteredPosition().X - explosionDiameter/2, (int)GetCenteredPosition().Y - explosionDiameter / 2, explosionDiameter, explosionDiameter);
+                const int explosionRadius = explosionDiameter / 2;
+                hitbox = new Rectangle((int)GetCenteredPosition().X - explosionRadius, (int)GetCenteredPosition().Y - explosionRadius, explosionDiameter, explosionDiameter);
             }
 
             return hitbox;
