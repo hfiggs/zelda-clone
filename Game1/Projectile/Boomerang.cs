@@ -2,6 +2,7 @@
 using Game1.Player;
 using Game1.Player.PlayerInventory;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace Game1.Projectile
 
         private List<IParticle> particles = new List<IParticle>();
         private readonly Vector2 particleOffset = new Vector2(16.0f, 12.0f);
+        SoundEffectInstance sound;
+        private float soundVol = 0.5f;
 
         public Boomerang(char direction, IPlayer player) {
             this.direction = direction;
@@ -36,6 +39,8 @@ namespace Game1.Projectile
             totalElapsedGameTime = 0;
             counter = 0;
             returned = false;
+
+            sound = AudioManager.PlayLooped("boomerang", 0.0f, soundVol);
         }
         public void Update(GameTime gameTime) {
             totalElapsedGameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -69,6 +74,7 @@ namespace Game1.Projectile
             if(returned)
             {
                 Player.PlayerInventory.SetItemInUse(ItemEnum.Boomerang, false);
+                AudioManager.StopSound(sound);
             }
 
             // Used to change sprite sheet row to allow for flashing
@@ -122,6 +128,8 @@ namespace Game1.Projectile
         {
             totalElapsedGameTime = 2;
             AddParticle(new ShieldDeflect(position + particleOffset));
+            AudioManager.StopSound(sound);
+            sound = AudioManager.PlayLooped("boomerang", 0.0f, soundVol);
         }
 
         public Rectangle GetHitbox()
