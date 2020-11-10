@@ -38,7 +38,10 @@ namespace Game1.RoomLoading
         {
             return xmlDoc.GetElementsByTagName("NonInteractEnviornment"); ;
         }
-
+        public XmlNodeList getPuzzleNodes()
+        {
+            return xmlDoc.GetElementsByTagName("Puzzle");
+        }
         public XmlNodeList getAmbientSounds()
         {
             return xmlDoc.GetElementsByTagName("Sounds");

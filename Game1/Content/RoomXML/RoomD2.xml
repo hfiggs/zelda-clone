@@ -90,4 +90,7 @@
 		<X>152</X>
 		<Y>90</Y>
 	</Enemy>
+	<Puzzle>
+		<Type>PuzzleSpawnKey</Type>
+	</Puzzle>
 </Assets>

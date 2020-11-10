@@ -108,7 +108,7 @@ namespace Game1.RoomLoading
 
         public void SpawnItem(IItem item)
         {
-            CurrentRoom.ItemList.Add(item);
+            CurrentRoom.SpawnItem(item);
         }
 
         public Rectangle GetPlayerRectangle()

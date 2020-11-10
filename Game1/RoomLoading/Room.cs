@@ -3,6 +3,7 @@ using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
 using Game1.Item.ItemDropper;
+using Game1.RoomLoading.Puzzle;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -22,6 +23,8 @@ namespace Game1.RoomLoading
 
         private List<AmbientSound> soundList;
 
+        private IPuzzle puzzle;
+
         private ItemDropper itemDrops;
         public Room(Game1 game, String file)
         {
@@ -38,6 +41,7 @@ namespace Game1.RoomLoading
             EnemyList.AddRange(parser.GetEnemies());
 
             itemDrops = new ItemDropper(game);
+            puzzle = parser.GetPuzzle();
 
             DecoratedEnemyList = new List<IEnemy>();
             UnDecoratedEnemyList = new List<IEnemy>();
@@ -88,6 +92,11 @@ namespace Game1.RoomLoading
             {
                 nonInternactEnvironment.BehaviorUpdate(gameTime);
             }
+
+            if (puzzle != null)
+            {
+                puzzle.Check(this);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -111,6 +120,11 @@ namespace Game1.RoomLoading
             {
                 item.Draw(spriteBatch, Color.White);
             }
+        }
+
+        public void SpawnItem(IItem item)
+        {
+            ItemList.Add(item);
         }
 
         private void CheckClocksAndStunEnemies()
