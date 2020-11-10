@@ -10,6 +10,8 @@ namespace Game1.Command.CollisionHandlerCommands
 {
     class PlayerToBlockEastSideCommand : ICollisionCommand
     {
+        private const int doorOpen = 2;
+
         public PlayerToBlockEastSideCommand()
         {
 
@@ -25,7 +27,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (envo.GetType() == typeof(DoorWLocked))
             {
-                if (((DoorWLocked)envo).open == 2)
+                if (((DoorWLocked)envo).open == doorOpen)
                 {
                     /* Collision with Open Door. Allowing walk through.*/
                 }

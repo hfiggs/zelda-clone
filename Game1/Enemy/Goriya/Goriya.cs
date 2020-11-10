@@ -21,7 +21,8 @@ namespace Game1.Enemy
 
         public Goriya(Game1 game, Vector2 spawnPosition)
         {
-            health = 3f;
+            const float threeHearts = 3.0f;
+            health = threeHearts;
             this.game = game;
             this.position = spawnPosition;
             state = new EnemyStateSpawning(position, this, new GoriyaStateMovingRight(game, this, spawnPosition));

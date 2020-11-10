@@ -9,9 +9,10 @@ namespace Game1.Projectile
     {
         private int rowModifier;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
+        private const char north = 'N', south = 'S', west = 'W', east = 'E';
         private ProjectileSpriteSheet sprite;
         private Vector2 position;
-        private float moveSpeed;
+        private const float moveSpeed = 400;
         private bool removeMe = false;
 
         public IPlayer Player { get; private set; }
@@ -21,24 +22,25 @@ namespace Game1.Projectile
             this.direction = direction;
             this.position = position;
             sprite = ProjectileSpriteFactory.Instance.CreateArrowSprite();
-            moveSpeed = 400;
 
             Player = player;
         }
         public void Update(GameTime gameTime)
         {
-            if (direction == 'N') {
+            const int northSprite = 0, southSprite = 1, westSprite = 2, eastSprite = 3;
+
+            if (direction == north) {
                 position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                rowModifier = 0;
-            } else if (direction == 'S') {
+                rowModifier = northSprite;
+            } else if (direction == south) {
                 position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                rowModifier = 1;
-            } else if (direction == 'W') {
+                rowModifier = southSprite;
+            } else if (direction == west) {
                 position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                rowModifier = 2;
-            } else if (direction == 'E') {
+                rowModifier = westSprite;
+            } else if (direction == east) {
                 position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                rowModifier = 3;
+                rowModifier = eastSprite;
             }
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -64,13 +66,15 @@ namespace Game1.Projectile
         {
             Rectangle hitbox;
 
-            if (direction == 'N' || direction == 'S')
+            if (direction == north || direction == south)
             {
-                hitbox = new Rectangle((int)position.X + 18, (int)position.Y + 12, 5, 16);
+                const int xdiff = 18, ydiff = 12, width = 5, height = 16;
+                hitbox = new Rectangle((int)position.X + xdiff, (int)position.Y + ydiff, width, height);
             }
             else
             {
-                hitbox = new Rectangle((int)position.X + 11, (int)position.Y + 17, 19, 5);
+                const int xdiff = 11, ydiff = 17, width = 19, height = 5;
+                hitbox = new Rectangle((int)position.X + xdiff, (int)position.Y + ydiff, width, height);
             }
 
             return hitbox;

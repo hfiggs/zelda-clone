@@ -10,6 +10,7 @@ namespace Game1.Command.CollisionHandlerCommands
     {
         private const int boomerangStunTime = 10000; // ms
         private const int bombStunTime = 5000; // ms
+        private const float halfHeart = 0.5f, oneHeart = 1.0f, twoHearts = 2.0f, fourHearts = 4.0f;
 
         public ProjectileToEnemySouthSideCommand()
         {
@@ -29,13 +30,13 @@ namespace Game1.Command.CollisionHandlerCommands
                 {
                     case Jelly _:
                     case Bat _:
-                        enemy.ReceiveDamage(.5f, knockbackDirect);
+                        enemy.ReceiveDamage(halfHeart, knockbackDirect);
                         proj.BeginDespawn();
                         break;
                     case Aquamentus _:
                         break;
                     case Dodongo _:
-                        enemy.ReceiveDamage(.5f, knockbackDirect);
+                        enemy.ReceiveDamage(halfHeart, knockbackDirect);
                         proj.BeginDespawn();
                         break;
                     default:
@@ -46,12 +47,12 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (proj.GetType() == typeof(Arrow))
             {
-                enemy.ReceiveDamage(2f, knockbackDirect);
+                enemy.ReceiveDamage(twoHearts, knockbackDirect);
                 proj.BeginDespawn();
             }
             else if (proj.GetType() == typeof(SwordBeam))
             {
-                enemy.ReceiveDamage(1f, knockbackDirect);
+                enemy.ReceiveDamage(oneHeart, knockbackDirect);
                 proj.BeginDespawn();
             }
             else if (proj.GetType() == typeof(BombProjectile))
@@ -70,7 +71,7 @@ namespace Game1.Command.CollisionHandlerCommands
                         proj.BeginDespawn();
                     }
                 } else if (proj.GetHitbox().Width != bombWidth && proj.GetHitbox().Height != bombHeight) {
-                    enemy.ReceiveDamage(4f, knockbackDirect);
+                    enemy.ReceiveDamage(fourHearts, knockbackDirect);
                 }
             }
         }

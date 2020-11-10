@@ -15,15 +15,22 @@ namespace Game1.Environment
         private Vector2 position;
 
         //Top West North West
-        private Rectangle hitbox1 = new Rectangle(0, 0, 32, 72);
-
-        private Rectangle hitbox2 = new Rectangle(32, 0, 80, 32);
-        private Rectangle hitbox3 = new Rectangle(144, 0, 80, 32);
-        private Rectangle hitbox4 = new Rectangle(224, 0, 32, 72);
-        private Rectangle hitbox5 = new Rectangle(0, 104, 32, 72);
-        private Rectangle hitbox6 = new Rectangle(32, 144, 80, 32);
-        private Rectangle hitbox7 = new Rectangle(144, 144, 80, 32);
-        private Rectangle hitbox8 = new Rectangle(224, 104, 32, 72);
+        const int h1Width = 32, h1Height = 72;
+        private Rectangle hitbox1 = new Rectangle(0, 0, h1Width, h1Height);
+        const int h2Width = 80, h2Height = 32, h2XDiff = 32;
+        private Rectangle hitbox2 = new Rectangle(h2XDiff, 0, h2Width, h2Height);
+        const int h3Width = 80, h3Height = 32, h3XDiff = 144;
+        private Rectangle hitbox3 = new Rectangle(h3XDiff, 0, h3Width, h3Height);
+        const int h4Width = 32, h4Height = 72, h4XDiff = 224;
+        private Rectangle hitbox4 = new Rectangle(h4XDiff, 0, h4Width, h4Height);
+        const int h5Width = 32, h5Height = 72, h5YDiff = 104;
+        private Rectangle hitbox5 = new Rectangle(0, h5YDiff, h5Width, h5Height);
+        const int h6Width = 80, h6Height = 32, h6XDiff = 32, h6YDiff = 144;
+        private Rectangle hitbox6 = new Rectangle(h6XDiff, h6YDiff, h6Width, h6Height);
+        const int h7Width = 80, h7Height = 32, h7XDiff = 144, h7YDiff = 144;
+        private Rectangle hitbox7 = new Rectangle(h7XDiff, h7YDiff, h7Width, h7Height);
+        const int h8Width = 32, h8Height = 72, h8XDiff = 224, h8YDiff = 104;
+        private Rectangle hitbox8 = new Rectangle(h8XDiff, h8YDiff, h8Width, h8Height);
 
         private List<Rectangle> hitboxes = new List<Rectangle>();
 

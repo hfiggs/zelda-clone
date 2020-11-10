@@ -1,13 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.CodeDom;
 
 namespace Game1.Projectile
 {
     class EnemyBoomerang : IProjectile
     {
         private int rowModifier, counter;
-        private float moveSpeed, totalElapsedGameTime;
+        private const float moveSpeed = 100;
+        private float totalElapsedGameTime;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
+        private const char north = 'N', south = 'S', west = 'W', east = 'E';
         private ProjectileSpriteSheet sprite;
         private bool returned;
         private Vector2 position;
@@ -19,7 +22,6 @@ namespace Game1.Projectile
             this.position = position;
             this.originalPosition = position;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
-            moveSpeed = 100;
             rowModifier = 0;
             totalElapsedGameTime = 0;
             counter = 0;
@@ -28,43 +30,49 @@ namespace Game1.Projectile
         }
         public void Update(GameTime gameTime)
         {
-
-            Rectangle origin = new Rectangle((int)originalPosition.X, (int)originalPosition.Y, 16, 16);
+            const int widthAndHeight = 16;
+            Rectangle origin = new Rectangle((int)originalPosition.X, (int)originalPosition.Y, widthAndHeight, widthAndHeight);
             // Stop drawing and updating position of boomerang if it has returned to its owner
             totalElapsedGameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (origin.Contains((int)position.X, (int)position.Y) && totalElapsedGameTime > 1) {
+            const int oneSecond = 1, twoSeconds = 2;
+
+            if (origin.Contains((int)position.X, (int)position.Y) && totalElapsedGameTime > oneSecond) {
                 returned = true;
             }
 
 
-            if (totalElapsedGameTime < 1) {
-                if (direction == 'N') {
+            if (totalElapsedGameTime < oneSecond) {
+                if (direction == north) {
                     position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == 'S') {
+                } else if (direction == south) {
                     position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == 'W') {
+                } else if (direction == west) {
                     position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else {
+                } else if (direction == east)
+                {
                     position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
-            } else if (totalElapsedGameTime < 2) {
-                if (direction == 'N') {
+            } else if (totalElapsedGameTime < twoSeconds) {
+                if (direction == north) {
                     position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == 'S') {
+                } else if (direction == south) {
                     position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == 'W') {
+                } else if (direction == west) {
                     position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else {
+                } else if (direction == east)
+                {
                     position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
             }
 
- 
+
 
             // Used to change sprite sheet row to allow for flashing
-            if (counter % 5 == 0) { 
-                if (rowModifier == 3) {
+            const int spriteChangeInterval = 5, rowMax = 3;
+
+            if (counter % spriteChangeInterval == 0) { 
+                if (rowModifier == rowMax) {
                     rowModifier = 0;
                 } else {
                     rowModifier++;
@@ -96,7 +104,8 @@ namespace Game1.Projectile
 
         public Rectangle GetHitbox()
         {
-            return new Rectangle((int)position.X + 16, (int)position.Y + 16, 8, 8);
+            const int xAndYDiff = 16, widthAndHeight = 8;
+            return new Rectangle((int)position.X + xAndYDiff, (int)position.Y + xAndYDiff, widthAndHeight, widthAndHeight);
         }
 
         public bool ShouldDelete()
@@ -106,7 +115,7 @@ namespace Game1.Projectile
 
         public void BeginDespawn()
         {
-            totalElapsedGameTime = 1;
+            totalElapsedGameTime = 1; // seconds
         }
     }
 }

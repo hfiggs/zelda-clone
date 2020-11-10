@@ -9,6 +9,8 @@ namespace Game1.Command.CollisionHandlerCommands
 {
     class ProjectileToEnvironmentNorthSideCommand : ICollisionCommand
     {
+        private const int rightXBorder = 224, leftXBorder = 30, topYBorder = 30, botYBorder = 144;
+
         public ProjectileToEnvironmentNorthSideCommand()
         {
 
@@ -26,7 +28,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             if (proj is SwordBeam)
                 return;
-            if ((collision.intersectionRec.X >= 224 || collision.intersectionRec.X <= 30 || collision.intersectionRec.Y >= 144 || collision.intersectionRec.Y <= 30) && proj.GetType() != typeof(BombProjectile))
+            if ((collision.intersectionRec.X >= rightXBorder || collision.intersectionRec.X <= leftXBorder || collision.intersectionRec.Y >= botYBorder || collision.intersectionRec.Y <= topYBorder) && proj.GetType() != typeof(BombProjectile))
                 proj.BeginDespawn();
         }
     }

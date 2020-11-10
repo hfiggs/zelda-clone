@@ -14,7 +14,8 @@ namespace Game1.Environment
         private ISprite sprite;
         private Vector2 position;
 
-        private Rectangle hitbox1 = new Rectangle(0, 0, 16, 16);
+        const int widthAndHeight = 16;
+        private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public StatueFish(Vector2 position)
@@ -25,7 +26,7 @@ namespace Game1.Environment
             hitboxes.Add(hitbox1);
         }
 
-public void BehaviorUpdate(GameTime gameTime)
+        public void BehaviorUpdate(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }

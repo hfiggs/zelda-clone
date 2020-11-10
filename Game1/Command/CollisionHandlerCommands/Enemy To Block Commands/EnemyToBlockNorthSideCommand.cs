@@ -11,6 +11,8 @@ namespace Game1.Command.CollisionHandlerCommands
 {
     class EnemyToBlockNorthSideCommand : ICollisionCommand
     {
+        private const int rightXBorder = 210, leftXBorder = 32, topYBorder = 32, botYBorder = 135;
+
         public EnemyToBlockNorthSideCommand()
         {
 
@@ -35,13 +37,13 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else
             {
-                if (collision.intersectionRec.X >= 210)
+                if (collision.intersectionRec.X >= rightXBorder)
                     enemy.EditPosition(new Vector2(-collision.intersectionRec.Width, 0));
-                else if (collision.intersectionRec.Y <= 32)
+                else if (collision.intersectionRec.Y <= topYBorder)
                     enemy.EditPosition(new Vector2(0, collision.intersectionRec.Height));
-                else if (collision.intersectionRec.Y >= 135)
+                else if (collision.intersectionRec.Y >= botYBorder)
                     enemy.EditPosition(new Vector2(0, -collision.intersectionRec.Height));
-                else if (collision.intersectionRec.X <= 32)
+                else if (collision.intersectionRec.X <= leftXBorder)
                     enemy.EditPosition(new Vector2(collision.intersectionRec.Width, 0));
             }
         }

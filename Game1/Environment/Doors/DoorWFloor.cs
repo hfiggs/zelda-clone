@@ -13,21 +13,24 @@ namespace Game1.Environment
         private ISprite sprite;
         private Vector2 position;
 
-        private Rectangle hitbox1 = new Rectangle(0, 0, 16, 16);
+        const int widthAndHeight = 16;
+        private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public DoorWFloor(Vector2 position)
         {
             sprite = EnvironmentSpriteFactory.instance.createDoorWFloor();
-            this.position = position + new Vector2(17.0f, 8.0f);
+            const float x = 17f, y = 8f;
+            this.position = position + new Vector2(x, y);
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
         }
 
-public void BehaviorUpdate(GameTime gameTime)
+        public void BehaviorUpdate(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }
+
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, position, color);
