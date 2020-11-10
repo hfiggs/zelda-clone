@@ -35,15 +35,16 @@ namespace Game1.Player
                 item = 0;
             }
             player.PlayerInventory.SetItemInUse(item, true);
+            const char south = 'S';
 
             switch (item)
             {
                 case ItemEnum.Bow:
                     player.PlayerInventory.SubRupees(1);
-                    projectile = new Arrow('S', new Vector2(position.X,position.Y), player);
+                    projectile = new Arrow(south, new Vector2(position.X,position.Y), player);
                     break;
                 case ItemEnum.Boomerang:
-                    projectile = new Boomerang('S', player);
+                    projectile = new Boomerang(south, player);
                     break;
                 case ItemEnum.Bomb:
                     player.PlayerInventory.SubBomb();
@@ -102,7 +103,8 @@ namespace Game1.Player
 
         public char GetDirection()
         {
-            return 'S';
+            const char south = 'S';
+            return south;
         }
     }
 }

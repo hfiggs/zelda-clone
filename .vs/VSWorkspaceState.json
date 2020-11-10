@@ -2,10 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
+    "\\Game1\\Collision_Handling",
     "\\Game1\\Command",
-    "\\Game1\\Particle",
-    "\\Game1\\Projectile"
+    "\\Game1\\Command\\PlayerCommands",
+    "\\Game1\\Controller",
+    "\\Game1\\Enemy",
+    "\\Game1\\Enemy\\Dodongo",
+    "\\Game1\\Player",
+    "\\Game1\\Player\\PlayerInventory"
   ],
-  "SelectedNode": "\\Game1\\Game1.cs",
+  "SelectedNode": "\\Game1\\Collision_Handling\\CollisionHandler.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -24,6 +24,8 @@ namespace Game1.Player
         private bool isLowHealth = false;
         private bool[] itemsHeld = { true, true, true }; //Bow, Boomerang, Bomb
 
+        private const int xDiff = 13, yDiff = 20, width = 15, height = 10;
+        private Rectangle playerHitbox = new Rectangle(xDiff, yDiff, width, height);
         //prevents the player from animating to "catch" the boomerang while it is in the air
         private bool boomerangOut;
 

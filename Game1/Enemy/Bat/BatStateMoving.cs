@@ -76,20 +76,23 @@ namespace Game1.Enemy
 
         public List<Rectangle> GetHitboxes()
         {
+            const int widthAndHeight = 16;
             List<Rectangle> hitboxList = new List<Rectangle>();
-            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, 16, 16));
+            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, widthAndHeight, widthAndHeight));
             return hitboxList;
         }
 
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
+            const double minimumTime = 0.3;
             Random random = new Random();
-            return (float) (random.NextDouble() * (0.7 + 0.3) + 0.3);
+            return (float)(random.NextDouble() * 1.0 + minimumTime);
         }
         private Vector2 GetRandomDirection()
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
-            int randomDirection = random.Next(8);
+            const int randomNumberMax = 8;
+            int randomDirection = random.Next(randomNumberMax);
 
             switch (randomDirection)
             {

@@ -7,7 +7,8 @@ namespace Game1.Item
     {
         public static LinkedList<IItem> GetItemList()
         {
-            var itemPosition = new Vector2(100, 80);
+            const int x = 100, y = 80;
+            var itemPosition = new Vector2(x, y);
 
             var itemList = new LinkedList<IItem>();
             itemList.AddLast(new Key(itemPosition));

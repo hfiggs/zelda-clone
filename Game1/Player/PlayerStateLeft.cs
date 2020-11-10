@@ -91,7 +91,8 @@ namespace Game1.Player
 
         public char GetDirection()
         {
-            return 'W';
+            const char west = 'W';
+            return west;
         }
     }
 }

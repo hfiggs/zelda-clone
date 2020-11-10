@@ -9,8 +9,8 @@ namespace Game1.Environment
 
         public static LinkedList<IEnvironment> GetEnvironmentList()
         {
-
-            Vector2 position = new Vector2(64.0f, 64.0f);
+            const float xAndY = 64f;
+            Vector2 position = new Vector2(xAndY, xAndY);
 
             LinkedList<IEnvironment> list = new LinkedList<IEnvironment>();
 

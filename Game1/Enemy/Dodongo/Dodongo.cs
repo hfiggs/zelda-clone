@@ -40,7 +40,8 @@ namespace Game1.Enemy
 
             state = new EnemyStateSpawning(this.position, this, nextState);
 
-            health = 8f;
+            const float eightHearts = 8.0f;
+            health = eightHearts;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -79,7 +80,7 @@ namespace Game1.Enemy
                     break;
                 }
                 state = nextState;
-                const int timeTillDeath = 1000; // milliseconds
+                const int timeTillDeath = 800; // milliseconds
                 deathTimer = timeTillDeath;
             }
         }

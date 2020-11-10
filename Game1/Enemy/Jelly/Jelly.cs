@@ -18,7 +18,8 @@ namespace Game1.Enemy
         {
             this.game = game;
             this.position = spawnPosition;
-            this.health = .5f;
+            const float halfHeart = 0.5f;
+            this.health = halfHeart;
             state = new EnemyStateSpawning(position, this, new JellyStateMoving(spawnPosition));
         }
 

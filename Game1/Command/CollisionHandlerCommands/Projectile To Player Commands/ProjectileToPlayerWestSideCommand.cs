@@ -9,7 +9,7 @@ namespace Game1.Command.CollisionHandlerCommands
     {
         private const int boomerangDamage = 2; // 1 full heart
         private const int fireballDamage = 1; // 1 half heart
-
+        private const char west = 'W';
         private readonly Vector2 westVector = new Vector2(1, 0);
 
         public ProjectileToPlayerWestSideCommand()
@@ -26,7 +26,7 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 case EnemyBoomerang _:
 
-                    if (player.GetDirection() != 'W')
+                    if (player.GetDirection() != west)
                     {
                         player.ReceiveDamage(boomerangDamage, westVector);
                     } else

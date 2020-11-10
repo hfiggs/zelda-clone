@@ -9,7 +9,8 @@ namespace Game1.Projectile
         private int rowModifier, counter;
         private ProjectileSpriteSheet sprite;
         private Vector2 position, directionOfPlayer;
-        private float moveSpeed, slightChangeInY, topAndBottomModifier;
+        private const float moveSpeed = 100, slightChangeInY = 100;
+        private float topAndBottomModifier;
         private bool removeMe = false;
         private const int yDiff = 20;
 
@@ -19,8 +20,6 @@ namespace Game1.Projectile
             rowModifier = 0;
             counter = 0;
             topAndBottomModifier = 0;
-            moveSpeed = 100;
-            slightChangeInY = 100;
             this.position = position;
             directionOfPlayer = Vector2.Normalize(position - (new Vector2 (rec.Center.X, rec.Center.Y - yDiff)));
         }
@@ -30,8 +29,10 @@ namespace Game1.Projectile
             position.X -= directionOfPlayer.X * moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Used to change sprite sheet row and allow for flashing
-            if (counter % 5 == 0) {
-                if (rowModifier == 3) {
+            const int spriteChangeInterval = 5, rowMax = 3;
+
+            if (counter % spriteChangeInterval == 0) {
+                if (rowModifier == rowMax) {
                     rowModifier = 0;
                 } else {
                     rowModifier++;
@@ -76,7 +77,8 @@ namespace Game1.Projectile
 
         public Rectangle GetHitbox()
         {
-            return new Rectangle((int)position.X + 16, (int)position.Y + 15, 8, 10);
+            const int xdiff = 16, ydiff = 15, width = 8, height = 10;
+            return new Rectangle((int)position.X + xdiff, (int)position.Y + ydiff, width, height);
         }
     }
 }

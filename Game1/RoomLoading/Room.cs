@@ -53,7 +53,8 @@ namespace Game1.RoomLoading
 
             foreach (IEnemy enemy in EnemyList)
             {
-                enemy.Update(gameTime, new Rectangle(0, 0, 256, 176));
+                const int width = 256, height = 176; 
+                enemy.Update(gameTime, new Rectangle(0, 0, width, height));
             }
 
             foreach (IEnemy decoratedEnemy in DecoratedEnemyList)

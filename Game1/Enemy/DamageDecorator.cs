@@ -16,12 +16,20 @@ namespace Game1.Enemy
         private Game1 game;
         public bool stillSlide;
         private const float deathSoundVol = 0.75f;
-        Vector2 knockbackMagnitude = new Vector2(.66f, .66f);
+
+        private const float xAndYKnockbackMagnitude = 0.66f;
+        Vector2 knockbackMagnitude = new Vector2(xAndYKnockbackMagnitude, xAndYKnockbackMagnitude);
+
         public EnemyDamageDecorator(IEnemy Original, Vector2 direction, Game1 game)
         {
             this.original = Original;
-            damagedTimer = 350f; //ms
-            timeTillFlickerSwap = 50f;
+
+            const float damagedTimerMax = 350f;
+            damagedTimer = damagedTimerMax; //ms
+
+            const float timeTillFlickerSwapMax = 50f;
+            timeTillFlickerSwap = timeTillFlickerSwapMax;
+
             knockbackMagnitude = Vector2.Multiply(knockbackMagnitude, direction);
             this.game = game;
             stillSlide = true;
@@ -62,7 +70,10 @@ namespace Game1.Enemy
         {
             damagedTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             timeTillFlickerSwap -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (damagedTimer > 275 && stillSlide)
+
+            const int minDamageTimer = 275;
+
+            if (damagedTimer > minDamageTimer && stillSlide)
             {
                 original.EditPosition(Vector2.Multiply(knockbackMagnitude, (float)gameTime.ElapsedGameTime.TotalMilliseconds));
             }
@@ -71,7 +82,10 @@ namespace Game1.Enemy
             if(timeTillFlickerSwap <= 0)
             {
                 currentFlicker++;
-                if (currentFlicker > 2)
+
+                const int currentFlickerMax = 2;
+
+                if (currentFlicker > currentFlickerMax)
                     currentFlicker = 0;
             }
 

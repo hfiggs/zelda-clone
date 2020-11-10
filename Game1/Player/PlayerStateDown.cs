@@ -3,6 +3,7 @@
  * Jared Perkins
  */
 
+using Game1.Command.CollisionHandlerCommands;
 using Game1.Projectile;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
@@ -89,7 +90,8 @@ namespace Game1.Player
 
         public char GetDirection()
         {
-            return 'S';
+            const char south = 'S';
+            return south;
         }
     }
 }

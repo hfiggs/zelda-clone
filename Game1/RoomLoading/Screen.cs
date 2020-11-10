@@ -27,7 +27,8 @@ namespace Game1.RoomLoading
         public List<IProjectile> ProjectileList { get; set; }
 
         //DELETEME DELETE ME TEMP HUD operations (lock mouse and hud position.)
-        public Vector2 HudPosition = new Vector2(0,-136);
+        private const int yPosition = -136;
+        public Vector2 HudPosition = new Vector2(0,yPosition);
         public bool lockMouse = true;
 
         private Game1 game;
@@ -44,7 +45,8 @@ namespace Game1.RoomLoading
             this.RoomsList = new LinkedList<Room>();
             this.RoomsDict = new Dictionary<(char, int), Room>();
             this.ProjectileList = new List<IProjectile>();
-            this.Player = new Player1(game, new Vector2(80, 80));
+            const int playerStartingXAndYPosition = 80;
+            this.Player = new Player1(game, new Vector2(playerStartingXAndYPosition, playerStartingXAndYPosition));
             this.HUD = new HUDInterface(Player.PlayerInventory, this);
         }
 
@@ -58,7 +60,9 @@ namespace Game1.RoomLoading
                 RoomsDict.Add((identiferStr[0], (int)char.GetNumericValue(identiferStr[1])), room);
                 RoomsList.AddLast(room);
             }
-            this.CurrentRoom = RoomsDict[('F',2)];
+            const char startingLetter = 'F';
+            const int startingNumber = 2;
+            this.CurrentRoom = RoomsDict[(startingLetter,startingNumber)];
             this.ProjectileList = new List<IProjectile>();
             detector = new CollisionDetector(this);
         }
