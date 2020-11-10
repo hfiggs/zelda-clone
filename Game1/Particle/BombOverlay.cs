@@ -12,7 +12,7 @@ namespace Game1.Particle
 
         private bool flash;
 
-        private float timeCounter; // ms
+        private float timeCounter = 0; // ms
         private const float existTime = 100f; // ms - max time flash will happen
 
         private const int flashNum = 2;
@@ -22,7 +22,6 @@ namespace Game1.Particle
         {
             sprite = ParticleSpriteFactory.Instance.CreateFlashOverlay(color);
 
-            timeCounter = 0;
             this.flash = flash;
         }
 

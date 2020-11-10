@@ -15,7 +15,7 @@ namespace Game1.Particle
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        private float timeCounter; // ms
+        private float timeCounter = 0; // ms
         private const float existTime = 600f; // ms
 
         public Cloud(Vector2 position, bool flash = true)
@@ -25,7 +25,6 @@ namespace Game1.Particle
             this.position = position;
 
             timeUntilNextFrame = animationTime;
-            timeCounter = 0;
             this.flash = flash;
         }
 

@@ -26,11 +26,10 @@ namespace Game1.Player
 
         private const int xDiff = 13, yDiff = 20, width = 15, height = 10;
         private Rectangle playerHitbox = new Rectangle(xDiff, yDiff, width, height);
+        private Rectangle swordHitbox = new Rectangle();
+
         //prevents the player from animating to "catch" the boomerang while it is in the air
         private bool boomerangOut;
-
-        private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
-        private Rectangle swordHitbox = new Rectangle();
 
         private readonly float deathSoundLength = 2.5f;
         private readonly float gameOverDealy = 4.5f;

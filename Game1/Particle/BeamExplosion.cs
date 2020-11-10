@@ -18,7 +18,7 @@ namespace Game1.Particle
         private float timeUntilNextFrame; // ms
         private const float animationTime = 30f; // ms per frame
 
-        private float timeCounter; // ms
+        private float timeCounter = 0; // ms
         private const float existTime = 300f; // ms
 
         public BeamExplosion(Vector2 position)
@@ -31,7 +31,6 @@ namespace Game1.Particle
             this.position = position;
 
             timeUntilNextFrame = animationTime;
-            timeCounter = 0;
         }
 
         public void Update(GameTime gameTime)
