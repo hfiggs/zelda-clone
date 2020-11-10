@@ -23,6 +23,8 @@ namespace Game1.GameState
         private const float roomEndOffset = 216f;
         private const float hudEndOffset = 40f;
 
+        private Color color = Color.White;
+
         private float roomOffset;
         private float hudOffset;
 
@@ -69,7 +71,7 @@ namespace Game1.GameState
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
-            game.Screen.Draw(spriteBatch);
+            game.Screen.Draw(spriteBatch, color);
 
             spriteBatch.End();
 
@@ -78,7 +80,7 @@ namespace Game1.GameState
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
-            game.HUD.Draw(spriteBatch, new Vector2(0, 0), Color.White);
+            game.HUD.Draw(spriteBatch, new Vector2(0, 0), color);
 
             spriteBatch.End();
 

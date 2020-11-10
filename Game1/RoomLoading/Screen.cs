@@ -43,6 +43,7 @@ namespace Game1.RoomLoading
             }
 
             CurrentRoomKey = (startingLetter, startingNumber);
+
             detector = new CollisionDetector(this);
             handler = new CollisionHandler(game);
         }
@@ -56,9 +57,10 @@ namespace Game1.RoomLoading
             handler.HandleCollisions(detector.GetCollisionList());
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            CurrentRoom.Draw(spriteBatch);
+            CurrentRoom.Draw(spriteBatch, Color.White);
+
             Player.Draw(spriteBatch, Color.White);
         }
 

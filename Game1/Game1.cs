@@ -29,6 +29,8 @@ namespace Game1
         public Screen Screen { get; private set; }
         public HUDInterface HUD { get; private set; }
 
+        public Color drawColor { get; set; } = Color.White;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -51,7 +53,7 @@ namespace Game1
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ContentUtil.LoadAllContent(Content);
+            ContentUtil.LoadAllContent(Content, GraphicsDevice);
 
             //Move this to game state maybe?
             //AudioManager.PlayLooped("dungeon");
@@ -79,7 +81,7 @@ namespace Game1
         protected override void Draw(GameTime gameTime)
         {
             state.Draw(gameTime, spriteBatch, resolutionManager);
-            
+
             base.Draw(gameTime);
         }
 

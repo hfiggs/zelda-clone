@@ -20,7 +20,7 @@ namespace Game1.Enemy
         public Skeleton(Game1 game, Vector2 spawnPosition)
         {
             this.game = game;
-            this.positon = spawnPosition;
+            positon = spawnPosition;
             state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(spawnPosition));
             health = twoHearts;
         }
@@ -28,9 +28,9 @@ namespace Game1.Enemy
         public Skeleton(Game1 game, Room room, Vector2 spawnPosition, IItem item)
         {
             this.game = game;
-            this.positon = spawnPosition;
+            positon = spawnPosition;
             health = twoHearts;
-            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(game, spawnPosition, item));
+            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(room, spawnPosition, item));
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)

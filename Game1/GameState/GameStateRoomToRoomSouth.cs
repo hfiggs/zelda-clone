@@ -24,6 +24,8 @@ namespace Game1.GameState
         private const int newPlayerX = 120;
         private const int newPlayerY = 32;
 
+        private Color color = Color.White;
+
         private readonly Vector2 oldRoomStartPos = new Vector2(0, vertRoomOffset);
         private readonly Vector2 oldRoomEndPos = new Vector2(0, vertRoomOffset - vertRoomDim);
         private Vector2 oldRoomPos;
@@ -82,7 +84,7 @@ namespace Game1.GameState
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
-            game.Screen.CurrentRoom.Draw(spriteBatch);
+            game.Screen.CurrentRoom.Draw(spriteBatch, color);
 
             spriteBatch.End();
 
@@ -93,7 +95,7 @@ namespace Game1.GameState
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
-            newRoom.Draw(spriteBatch);
+            newRoom.Draw(spriteBatch, color);
 
             game.Screen.Player.Draw(spriteBatch, Color.White);
 
@@ -104,7 +106,7 @@ namespace Game1.GameState
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
-            game.HUD.Draw(spriteBatch, new Vector2(0, 0), Color.White);
+            game.HUD.Draw(spriteBatch, new Vector2(0, 0), color);
 
             spriteBatch.End();
 

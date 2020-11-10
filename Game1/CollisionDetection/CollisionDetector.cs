@@ -74,6 +74,14 @@ namespace Game1.CollisionDetection
                 {
                     char side = DetermineSide(playerHitbox, itemHitbox, intersection);
                     collisionList.Add(new Collision(side, intersection, player, item));
+                }else
+                {
+                    intersection = Rectangle.Intersect(itemHitbox,swordHitbox);
+                    if(!intersection.IsEmpty)
+                    {
+                        char side = DetermineSide(swordHitbox, itemHitbox, intersection);
+                        collisionList.Add(new Collision(side, intersection, player, item));
+                    }
                 }
             }
 

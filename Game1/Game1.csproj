@@ -67,7 +67,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Command\CollisionHandlerCommands\PlayerToBlockCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\ProjectileToEnvironmentCommand.cs" />
     <Compile Include="Command\UnpauseCommand.cs" />
     <Compile Include="Controller\GamepadController.cs" />
     <Compile Include="Controller\GamepadTransitionController.cs" />
@@ -86,6 +86,8 @@
     <Compile Include="ContentUtil.cs" />
     <Compile Include="ResolutionManager\IResolutionManager.cs" />
     <Compile Include="ResolutionManager\ResolutionManager1.cs" />
+    <Compile Include="Particle\ShieldDeflect.cs" />
+    <Compile Include="Particle\BombOverlay.cs" />
     <Compile Include="RoomLoading\AmbientSound.cs" />
     <Compile Include="AudioManager.cs" />
     <Compile Include="Collision_Handling\Collision.cs" />
@@ -99,11 +101,7 @@
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerWestSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemy.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentEastSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentNorthSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentSouthSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Projectile to Environment Commands\ProjectileToEnvironmentWestSideCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\PlayerToEnemy.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToItemCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Enemy Commands\ProjectileToEnemyEastSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Enemy Commands\ProjectileToEnemyNorthSideCommand.cs" />
@@ -111,10 +109,6 @@
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Enemy Commands\ProjectileToEnemyWestSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\LinkToItemCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ICollisionCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemyNorthSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemySouthSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemyWestSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemyEastSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerEastSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerSouthSideCommand.cs" />
@@ -184,7 +178,6 @@
     <Compile Include="Environment\Doors\DoorSFloor.cs" />
     <Compile Include="Environment\Doors\DoorNFloor.cs" />
     <Compile Include="Environment\Doors\DoorEFloor.cs" />
-    <Compile Include="Environment\EnvironmentListTopFactory.cs" />
     <Compile Include="Environment\SecretRoom.cs" />
     <Compile Include="Environment\Tiles\InvisibleWall.cs" />
     <Compile Include="Environment\Tiles\MovableBlock.cs" />
@@ -211,6 +204,7 @@
     <Compile Include="HUD\HUD.cs" />
     <Compile Include="HUD\HUDItems\IHudItem.cs" />
     <Compile Include="Item\ArrowItem.cs" />
+    <Compile Include="Particle\BeamExplosion.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
     <Compile Include="RoomLoading\Room.cs" />

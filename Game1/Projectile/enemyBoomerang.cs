@@ -1,20 +1,22 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Particle;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.CodeDom;
+using System.Collections.Generic;
 
 namespace Game1.Projectile
 {
     class EnemyBoomerang : IProjectile
     {
         private int rowModifier, counter;
-        private const float moveSpeed = 100;
-        private float totalElapsedGameTime;
+        private float moveSpeed, totalElapsedGameTime;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
-        private const char north = 'N', south = 'S', west = 'W', east = 'E';
         private ProjectileSpriteSheet sprite;
         private bool returned;
         private Vector2 position;
         private Vector2 originalPosition;
+
+        private List<IParticle> particles = new List<IParticle>();
+        private readonly Vector2 particleOffset = new Vector2(16.0f, 12.0f);
 
         public EnemyBoomerang(char direction, Vector2 position)
         {
@@ -22,6 +24,7 @@ namespace Game1.Projectile
             this.position = position;
             this.originalPosition = position;
             sprite = ProjectileSpriteFactory.Instance.CreateBoomerangSprite();
+            moveSpeed = 100;
             rowModifier = 0;
             totalElapsedGameTime = 0;
             counter = 0;
@@ -30,49 +33,43 @@ namespace Game1.Projectile
         }
         public void Update(GameTime gameTime)
         {
-            const int widthAndHeight = 16;
-            Rectangle origin = new Rectangle((int)originalPosition.X, (int)originalPosition.Y, widthAndHeight, widthAndHeight);
+
+            Rectangle origin = new Rectangle((int)originalPosition.X, (int)originalPosition.Y, 16, 16);
             // Stop drawing and updating position of boomerang if it has returned to its owner
             totalElapsedGameTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            const int oneSecond = 1, twoSeconds = 2;
-
-            if (origin.Contains((int)position.X, (int)position.Y) && totalElapsedGameTime > oneSecond) {
+            if (origin.Contains((int)position.X, (int)position.Y) && totalElapsedGameTime > 1) {
                 returned = true;
             }
 
 
-            if (totalElapsedGameTime < oneSecond) {
-                if (direction == north) {
+            if (totalElapsedGameTime < 1) {
+                if (direction == 'N') {
                     position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == south) {
+                } else if (direction == 'S') {
                     position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == west) {
+                } else if (direction == 'W') {
                     position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == east)
-                {
+                } else {
                     position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
-            } else if (totalElapsedGameTime < twoSeconds) {
-                if (direction == north) {
+            } else if (totalElapsedGameTime < 2) {
+                if (direction == 'N') {
                     position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == south) {
+                } else if (direction == 'S') {
                     position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == west) {
+                } else if (direction == 'W') {
                     position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == east)
-                {
+                } else {
                     position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
             }
 
-
+ 
 
             // Used to change sprite sheet row to allow for flashing
-            const int spriteChangeInterval = 5, rowMax = 3;
-
-            if (counter % spriteChangeInterval == 0) { 
-                if (rowModifier == rowMax) {
+            if (counter % 5 == 0) { 
+                if (rowModifier == 3) {
                     rowModifier = 0;
                 } else {
                     rowModifier++;
@@ -80,6 +77,13 @@ namespace Game1.Projectile
             }
 
             counter++;
+
+            particles.RemoveAll(p => (p.ShouldDelete()));
+
+            foreach (IParticle particle in particles)
+            {
+                particle.Update(gameTime);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -89,6 +93,11 @@ namespace Game1.Projectile
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
                 spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
+            }
+
+            foreach (IParticle particle in particles)
+            {
+                particle.Draw(spriteBatch, color);
             }
         }
 
@@ -104,8 +113,7 @@ namespace Game1.Projectile
 
         public Rectangle GetHitbox()
         {
-            const int xAndYDiff = 16, widthAndHeight = 8;
-            return new Rectangle((int)position.X + xAndYDiff, (int)position.Y + xAndYDiff, widthAndHeight, widthAndHeight);
+            return new Rectangle((int)position.X + 16, (int)position.Y + 16, 8, 8);
         }
 
         public bool ShouldDelete()
@@ -115,7 +123,13 @@ namespace Game1.Projectile
 
         public void BeginDespawn()
         {
-            totalElapsedGameTime = 1; // seconds
+            totalElapsedGameTime = 1;
+            AddParticle(new ShieldDeflect(position + particleOffset));
+        }
+
+        public void AddParticle(IParticle particle)
+        {
+            particles.Add(particle);
         }
     }
 }

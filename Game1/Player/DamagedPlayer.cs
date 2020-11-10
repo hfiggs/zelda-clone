@@ -183,5 +183,15 @@ namespace Game1.Player
 
             decoratedPlayer.EditPosition(correction);
         }
+
+        public bool getBoomerangOut()
+        {
+            return decoratedPlayer.getBoomerangOut();
+        }
+
+        public void setBoomerangOut(bool val)
+        {
+            decoratedPlayer.setBoomerangOut(val);
+        }
     }
 }

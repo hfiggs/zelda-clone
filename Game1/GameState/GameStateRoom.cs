@@ -19,6 +19,8 @@ namespace Game1.GameState
         private const float roomOffset = 40f;
         private const float hudOffset = -136f;
 
+        private Color color = Color.White;
+
         public GameStateRoom(Game1 game)
         {
             this.game = game;
@@ -54,7 +56,7 @@ namespace Game1.GameState
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
-            game.Screen.Draw(spriteBatch);
+            game.Screen.Draw(spriteBatch, color);
 
             // TODO: Remove before submission
             foreach(IEnvironment env in game.Screen.CurrentRoom.InteractEnviornment)
@@ -72,7 +74,7 @@ namespace Game1.GameState
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
-            game.HUD.Draw(spriteBatch, new Vector2(0, 0), Color.White);
+            game.HUD.Draw(spriteBatch, new Vector2(0, 0), color);
 
             spriteBatch.End();
 

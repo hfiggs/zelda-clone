@@ -74,7 +74,7 @@ namespace Game1.RoomLoading
             NonInteractEnviornment.ForEach(env => env.BehaviorUpdate(gameTime));
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
             NonInteractEnviornment.ForEach(env => env.Draw(spriteBatch, Color.White));
 

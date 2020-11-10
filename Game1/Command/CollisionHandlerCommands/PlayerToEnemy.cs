@@ -1,6 +1,4 @@
-﻿
-
-using Game1.Collision_Handling;
+﻿using Game1.Collision_Handling;
 using Game1.Enemy;
 using Game1.Player;
 using Microsoft.Xna.Framework;
