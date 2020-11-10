@@ -1,9 +1,11 @@
 ﻿using Game1.Controller;
+using Game1.Environment;
 using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game1.GameState
 {
@@ -51,6 +53,14 @@ namespace Game1.GameState
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
             game.Screen.Draw(spriteBatch);
+
+            foreach(IEnvironment env in game.Screen.CurrentRoom.InteractEnviornment)
+            {
+                if(env.GetType() == typeof(LoadZone))
+                {
+                    DebugUtil.showHitbox(((LoadZone)env).GetHitboxes().First(), spriteBatch, game);
+                }
+            }
 
             spriteBatch.End();
 

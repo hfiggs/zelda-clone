@@ -55,4 +55,10 @@
 		<X>148</X>
 		<Y>116</Y>
 	</Item>
+
+	<InteractEnviornment>
+		<Type>LoadZoneE</Type>
+		<X>255</X>
+		<Y>72</Y>
+	</InteractEnviornment>
 </Assets>

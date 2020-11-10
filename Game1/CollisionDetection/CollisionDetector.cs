@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Game1;
 using Game1.Item;
 using Game1.Environment;
 using Game1.Enemy;
@@ -9,13 +7,12 @@ using Game1.Projectile;
 using Game1.Player;
 using Game1.Collision_Handling;
 using Game1.RoomLoading;
-using System.Linq;
 
 namespace Game1.CollisionDetection
 {
     class CollisionDetector
     {
-        private Screen screen;
+        private readonly Screen screen;
         private List<Collision> collisionList;
 
         public CollisionDetector(Screen screen)

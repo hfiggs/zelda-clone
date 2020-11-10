@@ -6,10 +6,6 @@ using Game1.Item.Heart;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Game1.RoomLoading
@@ -246,7 +242,7 @@ namespace Game1.RoomLoading
                         interactEnviornment = new DoorEClosed(position);
                         break;
                     case "DoorEHole":
-                        interactEnviornment = new DoorEHole(position);
+                        interactEnviornment = new DoorEBombable(position, true);
                         break;
                     case "DoorEOpen":
                         interactEnviornment = new DoorEOpen(position);
@@ -261,7 +257,7 @@ namespace Game1.RoomLoading
                         interactEnviornment = new DoorNClosed(position);
                         break;
                     case "DoorNHole":
-                        interactEnviornment = new DoorNHole(position);
+                        interactEnviornment = new DoorNBombable(position, true);
                         break;
                     case "DoorNOpen":
                         interactEnviornment = new DoorNOpen(position);
@@ -276,7 +272,7 @@ namespace Game1.RoomLoading
                         interactEnviornment = new DoorSClosed(position);
                         break;
                     case "DoorSHole":
-                        interactEnviornment = new DoorSHole(position);
+                        interactEnviornment = new DoorSBombable(position, true);
                         break;
                     case "DoorSOpen":
                         interactEnviornment = new DoorSOpen(position);
@@ -291,7 +287,7 @@ namespace Game1.RoomLoading
                         interactEnviornment = new DoorWClosed(position);
                         break;
                     case "DoorWHole":
-                        interactEnviornment = new DoorWHole(position);
+                        interactEnviornment = new DoorWBombable(position, true);
                         break;
                     case "DoorWOpen":
                         interactEnviornment = new DoorWOpen(position);
@@ -300,13 +296,31 @@ namespace Game1.RoomLoading
                         interactEnviornment = new DoorWLocked(position);
                         break;
                     case "DoorSBombable":
-                        interactEnviornment = new DoorSBombable(position);
+                        interactEnviornment = new DoorSBombable(position, false);
                         break;
                     case "DoorNBombable":
-                        interactEnviornment = new DoorNBombable(position);
+                        interactEnviornment = new DoorNBombable(position, false);
+                        break;
+                    case "DoorEBombable":
+                        interactEnviornment = new DoorEBombable(position, false);
+                        break;
+                    case "DoorWBombable":
+                        interactEnviornment = new DoorWBombable(position, false);
                         break;
                     case "Fire":
                         interactEnviornment = new Fire(position);
+                        break;
+                    case "LoadZoneN":
+                        interactEnviornment = new LoadZone(position, Util.CompassDirection.North);
+                        break;
+                    case "LoadZoneE":
+                        interactEnviornment = new LoadZone(position, Util.CompassDirection.East);
+                        break;
+                    case "LoadZoneS":
+                        interactEnviornment = new LoadZone(position, Util.CompassDirection.South);
+                        break;
+                    case "LoadZoneW":
+                        interactEnviornment = new LoadZone(position, Util.CompassDirection.West);
                         break;
                     case "StatueDragon":
                         interactEnviornment = new StatueDragon(position);

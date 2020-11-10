@@ -66,14 +66,18 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\CollisionHandlerCommands\PlayerToBlockCommand.cs" />
     <Compile Include="Command\UnpauseCommand.cs" />
     <Compile Include="Controller\GamepadController.cs" />
     <Compile Include="Controller\GamepadTransitionController.cs" />
     <Compile Include="Controller\HUDKeyboardController.cs" />
     <Compile Include="Controller\KeyboardTransitionController.cs" />
+    <Compile Include="Environment\LoadZone.cs" />
     <Compile Include="GameState\GameStateHUD.cs" />
     <Compile Include="GameState\GameStateHUDToRoom.cs" />
-    <Compile Include="GameState\GameStateRoomToRoom.cs" />
+    <Compile Include="GameState\GameStateRoomToRoomEast.cs" />
+    <Compile Include="GameState\GameStateRoomToRoomNorth.cs" />
+    <Compile Include="GameState\GameStateRoomToRoomWest.cs" />
     <Compile Include="GameState\GameStateRoomToHUD.cs" />
     <Compile Include="GameState\GameStateRoom.cs" />
     <Compile Include="GameState\IGameState.cs" />
@@ -105,10 +109,6 @@
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Enemy Commands\ProjectileToEnemyWestSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\LinkToItemCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ICollisionCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Player To Block Commands\PlayerToBlockSouthSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Player To Block Commands\PlayerToBlockWestSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Player To Block Commands\PlayerToBlockEastSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Player To Block Commands\PlayerToBlockNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemyNorthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemySouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Player To Enemy Commands\PlayerToEnemyWestSideCommand.cs" />
@@ -183,7 +183,6 @@
     <Compile Include="Environment\Doors\DoorNFloor.cs" />
     <Compile Include="Environment\Doors\DoorEFloor.cs" />
     <Compile Include="Environment\EnvironmentListTopFactory.cs" />
-    <Compile Include="Environment\EnvironmentListFactory.cs" />
     <Compile Include="Environment\SecretRoom.cs" />
     <Compile Include="Environment\Tiles\InvisibleWall.cs" />
     <Compile Include="Environment\Tiles\MovableBlock.cs" />
@@ -220,22 +219,18 @@
     <Compile Include="Player\PlayerInventory\PlayerInventory1.cs" />
     <Compile Include="Sprite\EnemySprite.cs" />
     <Compile Include="Sprite\EnemySpriteFactory.cs" />
-    <Compile Include="Environment\Doors\DoorSHole.cs" />
     <Compile Include="Environment\Doors\DoorSClosed.cs" />
     <Compile Include="Environment\Doors\DoorSLocked.cs" />
     <Compile Include="Environment\Doors\DoorSOpen.cs" />
     <Compile Include="Environment\Doors\DoorSBlank.cs" />
-    <Compile Include="Environment\Doors\DoorWHole.cs" />
     <Compile Include="Environment\Doors\DoorWClosed.cs" />
     <Compile Include="Environment\Doors\DoorWLocked.cs" />
     <Compile Include="Environment\Doors\DoorWOpen.cs" />
     <Compile Include="Environment\Doors\DoorWBlank.cs" />
-    <Compile Include="Environment\Doors\DoorEHole.cs" />
     <Compile Include="Environment\Doors\DoorEClosed.cs" />
     <Compile Include="Environment\Doors\DoorELocked.cs" />
     <Compile Include="Environment\Doors\DoorEOpen.cs" />
     <Compile Include="Environment\Doors\DoorEBlank.cs" />
-    <Compile Include="Environment\Doors\DoorNHole.cs" />
     <Compile Include="Environment\Doors\DoorNClosed.cs" />
     <Compile Include="Environment\Doors\DoorNLocked.cs" />
     <Compile Include="Environment\Doors\DoorNOpen.cs" />

@@ -21,12 +21,17 @@ namespace Game1.Environment
 
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
-        public DoorEBombable(Vector2 position)
+        public DoorEBombable(Vector2 position, bool isOpen)
         {
             sprite = EnvironmentSpriteFactory.instance.createDoorEBlank();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
+
+            if (isOpen)
+            {
+                OpenDoor(false);
+            }
         }
 
         public void BehaviorUpdate(GameTime gameTime)
@@ -50,14 +55,18 @@ namespace Game1.Environment
             return hitboxes;
         }
 
-        public void openDoor()
+        public void OpenDoor(bool shouldPlaySound)
         {
             open = true;
             sprite = EnvironmentSpriteFactory.instance.createDoorEHole();
             hitboxes = new List<Rectangle>();
             // hitboxes.Add(openHitbox1);
             // hitboxes.Add(openHitbox2);
-            AudioManager.PlayFireForget("reveal");
+
+            if (shouldPlaySound)
+            {
+                AudioManager.PlayFireForget("reveal");
+            }
         }
     }
 }

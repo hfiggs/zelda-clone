@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace Game1.Util
@@ -24,6 +25,48 @@ namespace Game1.Util
         public static Vector2 GetDirectionVector(CompassDirection direction)
         {
             return directionVectorMap[direction];
+        }
+
+        public static Vector2 GetDirectionVector(char direction)
+        {
+            switch(direction)
+            {
+                case 'n':
+                case 'N':
+                    return directionVectorMap[CompassDirection.North];
+                case 'e':
+                case 'E':
+                    return directionVectorMap[CompassDirection.East];
+                case 's':
+                case 'S':
+                    return directionVectorMap[CompassDirection.South];
+                case 'w':
+                case 'W':
+                    return directionVectorMap[CompassDirection.West];
+                default:
+                    throw new ArgumentException();
+            }
+        }
+
+        public static CompassDirection GetCompassDirection(char direction)
+        {
+            switch (direction)
+            {
+                case 'n':
+                case 'N':
+                    return CompassDirection.North;
+                case 'e':
+                case 'E':
+                    return CompassDirection.East;
+                case 's':
+                case 'S':
+                    return CompassDirection.South;
+                case 'w':
+                case 'W':
+                    return CompassDirection.West;
+                default:
+                    throw new ArgumentException();
+            }
         }
     }
 }

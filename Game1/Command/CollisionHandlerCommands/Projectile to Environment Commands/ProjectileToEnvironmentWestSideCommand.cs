@@ -22,7 +22,7 @@ namespace Game1.Command.CollisionHandlerCommands
             const int bombHeight = 16; // bomb's height before explosion
             if (envo.GetType() == typeof(DoorEBombable) && proj.GetType() == typeof(BombProjectile) && proj.GetHitbox().Width > bombWidth && proj.GetHitbox().Height > bombHeight)
             {
-                ((DoorEBombable)envo).openDoor();
+                ((DoorEBombable)envo).OpenDoor(true);
             }
             if (proj is SwordBeam)
                 return;

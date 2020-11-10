@@ -13,7 +13,6 @@ namespace Game1.Collision_Handling
     public class CollisionHandler
     {
         private readonly Dictionary<Tuple<Type, Type, char>, ICollisionCommand> collisionDict;
-        private readonly Game1 game;
 
         public void HandleCollisions(List<Collision> collisions)
         {
@@ -34,15 +33,13 @@ namespace Game1.Collision_Handling
 
         public CollisionHandler(Game1 game)
         {
-            this.game = game;
-
             collisionDict = new Dictionary<Tuple<Type, Type, char>, ICollisionCommand>
             {
                 //player runs into wall
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'E'), new PlayerToBlockEastSideCommand(game) },
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'N'), new PlayerToBlockNorthSideCommand(game) },
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'S'), new PlayerToBlockSouthSideCommand(game) },
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'W'), new PlayerToBlockWestSideCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'E'), new PlayerToBlockCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'N'), new PlayerToBlockCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'S'), new PlayerToBlockCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnvironment),'W'), new PlayerToBlockCommand(game) },
                 //Player damages enemy
                 {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'E'), new PlayerToEnemy() },
                 {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),'N'), new PlayerToEnemy() },
