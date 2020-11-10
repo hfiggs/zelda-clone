@@ -24,6 +24,9 @@ namespace Game1.Player
         private bool isLowHealth = false;
         private bool[] itemsHeld = { true, true, true }; //Bow, Boomerang, Bomb
 
+        //prevents the player from animating to "catch" the boomerang while it is in the air
+        private bool boomerangOut;
+
         private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
         private Rectangle swordHitbox = new Rectangle();
 
@@ -73,10 +76,20 @@ namespace Game1.Player
         {
             ItemEnum item = PlayerInventory.EquippedItem;
 
-            if (PlayerInventory.HasItem(item) && !PlayerInventory.IsItemInUse(item))
+            if (PlayerInventory.HasItem(item))
             {
-                if((item == ItemEnum.Bow && PlayerInventory.RupeeCount >= 1) || (item == ItemEnum.Boomerang) || (item == ItemEnum.Bomb && PlayerInventory.BombCount >= 1))
+                if (!PlayerInventory.IsItemInUse(item))
+                {
+                    if ((item == ItemEnum.Bow && PlayerInventory.RupeeCount >= 1) || (item == ItemEnum.Boomerang) || (item == ItemEnum.Bomb && PlayerInventory.BombCount >= 1))
+                    {
+                        state.UseItem();
+                        return;
+                    }
+                }
+                else if (item == ItemEnum.Boomerang)
+                {
                     state.UseItem();
+                }
             }
         }
 
@@ -165,6 +178,16 @@ namespace Game1.Player
         public void SetSwordHitbox(Rectangle newHitbox)
         {
             swordHitbox = newHitbox;
+        }
+
+        public bool getBoomerangOut()
+        {
+            return boomerangOut;
+        }
+
+        public void setBoomerangOut(bool val)
+        {
+            boomerangOut = val;
         }
     }
 }

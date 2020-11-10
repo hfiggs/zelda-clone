@@ -65,7 +65,10 @@ namespace Game1.Player
 
         public void UseItem()
         {
+            if (!player.getBoomerangOut())
+            {
                 player.SetState(new PlayerStateRightUse(player, position));
+            }
         }
 
         public void Update(GameTime time)
