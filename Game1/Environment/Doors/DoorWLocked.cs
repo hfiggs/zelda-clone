@@ -1,11 +1,6 @@
-﻿using System;
-using Game1.Sprite;
+﻿using Game1.Sprite;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Environment
@@ -20,6 +15,7 @@ namespace Game1.Environment
         private List<Rectangle> hitboxes = new List<Rectangle>();
         private float timeTillOpen;
         public int open; // 0 = locked, 1 = opening, 2 = open
+        private const int openDoor = 2;
 
         public DoorWLocked(Vector2 position)
         {
@@ -56,11 +52,24 @@ namespace Game1.Environment
             return hitboxes;
         }
 
-        public void Open()
+        public void Open(bool shouldInstantOpen)
         {
-            open = 1;
-            timeTillOpen = 250f;
-            AudioManager.PlayFireForget("doorLock");
+            // Normal unlock
+            if (!shouldInstantOpen)
+            {
+                open = 1;
+                timeTillOpen = 250f;
+                AudioManager.PlayFireForget("doorLock");
+            }
+            // Instant unlock
+            else
+            {
+                open = openDoor;
+                timeTillOpen = 0;
+
+                sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
+                hitboxes.Remove(hitbox1);
+            }
         }
     }
 }

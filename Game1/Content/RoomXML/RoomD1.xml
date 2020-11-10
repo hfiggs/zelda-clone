@@ -105,4 +105,15 @@
 		<X>48</X>
 		<Y>48</Y>
 	</Enemy>
+
+	<InteractEnviornment>
+		<Type>LoadZoneN</Type>
+		<X>112</X>
+		<Y>0</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LoadZoneE</Type>
+		<X>255</X>
+		<Y>72</Y>
+	</InteractEnviornment>
 </Assets>

@@ -153,4 +153,15 @@
 	<Sounds>
 		<Name delay="0.0" volume="1.0" looped="true">aquamentusScream</Name>
 	</Sounds>
+
+	<InteractEnviornment>
+		<Type>LoadZoneE</Type>
+		<X>255</X>
+		<Y>72</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LoadZoneS</Type>
+		<X>112</X>
+		<Y>175</Y>
+	</InteractEnviornment>
 </Assets>

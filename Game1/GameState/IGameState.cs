@@ -1,4 +1,6 @@
-﻿using Game1.ResolutionManager;
+﻿/* Author: Hunter Figgs.3 */
+
+using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace Game1.GameState
 {
-    class GameStateRoomToRoomNorth : IGameState
+    class GameStateRoomToRoomSouth : IGameState
     {
         private readonly Game1 game;
         private readonly List<IController> controllerList;
@@ -22,19 +22,19 @@ namespace Game1.GameState
         private const float vertRoomDim = 176f;
 
         private const int newPlayerX = 120;
-        private const int newPlayerY = 142;
+        private const int newPlayerY = 32;
 
         private readonly Vector2 oldRoomStartPos = new Vector2(0, vertRoomOffset);
-        private readonly Vector2 oldRoomEndPos = new Vector2(0, vertRoomOffset + vertRoomDim);
+        private readonly Vector2 oldRoomEndPos = new Vector2(0, vertRoomOffset - vertRoomDim);
         private Vector2 oldRoomPos;
 
-        private readonly Vector2 newRoomOffset = new Vector2(0, -vertRoomDim);
+        private readonly Vector2 newRoomOffset = new Vector2(0, vertRoomDim);
 
         private readonly Vector2 newPlayerPosition = new Vector2(newPlayerX, newPlayerY);
 
-        private readonly (char, int) northRoomKey;
+        private readonly (char, int) southRoomKey;
 
-        public GameStateRoomToRoomNorth(Game1 game)
+        public GameStateRoomToRoomSouth(Game1 game)
         {
             this.game = game;
 
@@ -48,7 +48,7 @@ namespace Game1.GameState
 
             game.Screen.Player.EditPosition(Vector2.Subtract(newPlayerPosition, game.Screen.Player.GetPlayerHitbox().Location.ToVector2()));
 
-            northRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.North);
+            southRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.South);
         }
 
         public void Update(GameTime gameTime)
@@ -62,11 +62,11 @@ namespace Game1.GameState
 
             var ms = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            oldRoomPos = Vector2.Add(oldRoomPos, new Vector2(0, ms * transitionSpeed));
+            oldRoomPos = Vector2.Subtract(oldRoomPos, new Vector2(0, ms * transitionSpeed));
 
-            if (oldRoomPos.Y >= oldRoomEndPos.Y)
+            if (oldRoomPos.Y <= oldRoomEndPos.Y)
             {
-                game.Screen.CurrentRoomKey = northRoomKey;
+                game.Screen.CurrentRoomKey = southRoomKey;
                 game.SetState(new GameStateRoom(game));
             }
         }
@@ -87,7 +87,7 @@ namespace Game1.GameState
             spriteBatch.End();
 
 
-            var newRoom = game.Screen.RoomsDict[northRoomKey];
+            var newRoom = game.Screen.RoomsDict[southRoomKey];
 
             drawMatrix.Translation = Vector3.Add(drawMatrix.Translation, new Vector3(newRoomOffset.X * resolutionManager.GetResolutionScale(), newRoomOffset.Y * resolutionManager.GetResolutionScale(), 0));
 

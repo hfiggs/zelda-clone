@@ -57,4 +57,10 @@
 		<W>192</W>
 		<H>48</H>
 	</InteractEnviornment>
+
+	<InteractEnviornment>
+		<Type>LoadZoneE</Type>
+		<X>255</X>
+		<Y>72</Y>
+	</InteractEnviornment>
 </Assets>

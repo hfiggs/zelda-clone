@@ -1,4 +1,9 @@
-﻿
+﻿/* Authors: 
+ * 
+ * Hunter Figgs 
+ * Jared Perkins
+ */
+
 using Game1.Command.CollisionHandlerCommands;
 using System;
 using System.Collections.Generic;
@@ -76,10 +81,10 @@ namespace Game1.Collision_Handling
                 {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),'S'), new EnemyToBlockSouthSideCommand() },
                 {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),'W'), new EnemyToBlockWestSideCommand() },
                 //Projectile to environment
-                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'E'), new ProjectileToEnvironmentEastSideCommand() },
-                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'N'), new ProjectileToEnvironmentNorthSideCommand() },
-                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'S'), new ProjectileToEnvironmentSouthSideCommand() },
-                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'W'), new ProjectileToEnvironmentWestSideCommand() }
+                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'E'), new ProjectileToEnvironmentCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'N'), new ProjectileToEnvironmentCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'S'), new ProjectileToEnvironmentCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),'W'), new ProjectileToEnvironmentCommand(game) }
 
             };
         }

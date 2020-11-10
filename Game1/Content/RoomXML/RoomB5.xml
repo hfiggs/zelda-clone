@@ -180,4 +180,10 @@
 		<X>107</X>
 		<Y>72</Y>
 	</Item>
+	
+	<InteractEnviornment>
+		<Type>LoadZoneW</Type>
+		<X>0</X>
+		<Y>72</Y>
+	</InteractEnviornment>
 </Assets>

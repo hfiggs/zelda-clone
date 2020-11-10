@@ -1,5 +1,8 @@
-﻿using Game1.Controller;
+﻿/* Author: Hunter Figgs.3 */
+
+using Game1.Controller;
 using Game1.ResolutionManager;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -29,6 +32,8 @@ namespace Game1.GameState
 
         private readonly Vector2 newPlayerPosition = new Vector2(newPlayerX, newPlayerY);
 
+        private readonly (char, int) eastRoomKey;
+
         public GameStateRoomToRoomEast(Game1 game)
         {
             this.game = game;
@@ -42,6 +47,8 @@ namespace Game1.GameState
             oldRoomPos = oldRoomStartPos;
 
             game.Screen.Player.EditPosition(Vector2.Subtract(newPlayerPosition, game.Screen.Player.GetPlayerHitbox().Location.ToVector2()));
+
+            eastRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.East);
         }
 
         public void Update(GameTime gameTime)
@@ -59,7 +66,7 @@ namespace Game1.GameState
 
             if (oldRoomPos.X <= oldRoomEndPos.X)
             {
-                game.Screen.CurrentRoomKey = GetEastRoomKey();
+                game.Screen.CurrentRoomKey = eastRoomKey;
                 game.SetState(new GameStateRoom(game));
             }
         }
@@ -80,7 +87,7 @@ namespace Game1.GameState
             spriteBatch.End();
 
 
-            var newRoom = game.Screen.RoomsDict[GetEastRoomKey()];
+            var newRoom = game.Screen.RoomsDict[eastRoomKey];
 
             drawMatrix.Translation = Vector3.Add(drawMatrix.Translation, new Vector3(newRoomOffset.X * resolutionManager.GetResolutionScale(), newRoomOffset.Y * resolutionManager.GetResolutionScale(), 0));
 
@@ -103,17 +110,6 @@ namespace Game1.GameState
 
 
             drawMatrix.Translation = new Vector3(0, 0, 0);
-        }
-
-        private (char, int) GetEastRoomKey()
-        {
-            var oldRoomKey = game.Screen.CurrentRoomKey;
-
-            var newRoomKey = (oldRoomKey.Item1, oldRoomKey.Item2);
-                    
-            newRoomKey.Item2++;
-
-            return newRoomKey;
         }
     }
 }

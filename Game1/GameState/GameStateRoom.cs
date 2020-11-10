@@ -1,4 +1,6 @@
-﻿using Game1.Controller;
+﻿/* Author: Hunter Figgs.3 */
+
+using Game1.Controller;
 using Game1.Environment;
 using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
@@ -54,6 +56,7 @@ namespace Game1.GameState
 
             game.Screen.Draw(spriteBatch);
 
+            // TODO: Remove before submission
             foreach(IEnvironment env in game.Screen.CurrentRoom.InteractEnviornment)
             {
                 if(env.GetType() == typeof(LoadZone))

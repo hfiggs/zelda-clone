@@ -1,4 +1,6 @@
-﻿using Game1.GameState;
+﻿/* Author: Hunter Figgs.3 */
+
+using Game1.GameState;
 using System.Diagnostics;
 
 namespace Game1.Command

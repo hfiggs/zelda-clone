@@ -120,4 +120,10 @@
 		<X>72</X>
 		<Y>120</Y>
 	</Enemy>
+
+	<InteractEnviornment>
+		<Type>LoadZoneW</Type>
+		<X>0</X>
+		<Y>72</Y>
+	</InteractEnviornment>
 </Assets>

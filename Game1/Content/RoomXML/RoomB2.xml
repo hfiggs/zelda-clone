@@ -285,4 +285,15 @@
 		<X>186</X>
 		<Y>42</Y>
 	</Enemy>
+
+	<InteractEnviornment>
+		<Type>LoadZoneN</Type>
+		<X>112</X>
+		<Y>0</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LoadZoneS</Type>
+		<X>112</X>
+		<Y>175</Y>
+	</InteractEnviornment>
 </Assets>
