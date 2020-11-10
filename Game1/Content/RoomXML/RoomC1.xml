@@ -65,4 +65,7 @@
 		<X>112</X>
 		<Y>80</Y>
 	</InteractEnviornment>
+	<Puzzle>
+		<Type>PuzzleMoveBlock</Type>
+	</Puzzle>
 </Assets>

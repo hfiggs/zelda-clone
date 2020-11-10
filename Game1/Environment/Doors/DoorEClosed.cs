@@ -15,6 +15,8 @@ namespace Game1.Environment
 
         private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
         private List<Rectangle> hitboxes = new List<Rectangle>();
+        public int open; // 0 = locked, 1 = opening, 2 = open
+        private float timeTillOpen;
 
         public DoorEClosed(Vector2 position)
         {
@@ -22,11 +24,22 @@ namespace Game1.Environment
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
+            open = 0;
+            timeTillOpen = -1;
         }
 
-public void BehaviorUpdate(GameTime gameTime)
+        public void BehaviorUpdate(GameTime gameTime)
         {
-            //throw new NotImplementedException("For later collision mechanics");
+            if (open == 1)
+            {
+                timeTillOpen -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timeTillOpen <= 0)
+                {
+                    sprite = EnvironmentSpriteFactory.instance.createDoorEOpen();
+                    hitboxes.Remove(hitbox1);
+                    open = 2;
+                }
+            }
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {

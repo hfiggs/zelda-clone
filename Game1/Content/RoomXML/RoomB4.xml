@@ -150,6 +150,9 @@
 		<X>180</X>
 		<Y>68</Y>
 	</Item>
+	<Puzzle>
+		<Type>PuzzleOpenDoor</Type>
+	</Puzzle>
 	<Sounds>
 		<Name delay="0.0" volume="1.0" looped="true">aquamentusScream</Name>
 	</Sounds>

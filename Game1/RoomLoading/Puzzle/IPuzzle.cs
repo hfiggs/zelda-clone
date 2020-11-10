@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Game1.RoomLoading.Puzzle
 {
     interface IPuzzle
     {
-        void Check(Room room);
+        void Check(GameTime gameTime, Room room);
     }
 }

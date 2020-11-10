@@ -361,6 +361,12 @@ namespace Game1.RoomLoading
                     case "PuzzleSpawnKey":
                         puzzle = new PuzzleSpawnKey();
                         break;
+                    case "PuzzleOpenDoor":
+                        puzzle = new PuzzleOpenDoor();
+                        break;
+                    case "PuzzleMoveBlock":
+                        puzzle = new PuzzleMoveBlock();
+                        break;
                 }
             }
             return puzzle;

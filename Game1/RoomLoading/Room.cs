@@ -95,7 +95,7 @@ namespace Game1.RoomLoading
 
             if (puzzle != null)
             {
-                puzzle.Check(this);
+                puzzle.Check(gameTime, this);
             }
         }
 

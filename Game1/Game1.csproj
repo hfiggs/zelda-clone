@@ -202,6 +202,8 @@
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
     <Compile Include="RoomLoading\Puzzle\IPuzzle.cs" />
+    <Compile Include="RoomLoading\Puzzle\PuzzleMoveBlock.cs" />
+    <Compile Include="RoomLoading\Puzzle\PuzzleOpenDoor.cs" />
     <Compile Include="RoomLoading\Puzzle\PuzzleSpawnKey.cs" />
     <Compile Include="RoomLoading\Room.cs" />
     <Compile Include="RoomLoading\Screen.cs" />
