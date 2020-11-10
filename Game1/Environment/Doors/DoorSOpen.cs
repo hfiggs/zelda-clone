@@ -13,8 +13,9 @@ namespace Game1.Environment
         private ISprite sprite;
         private Vector2 position;
 
-        private Rectangle hitbox1 = new Rectangle(0, 0, 8, 32);
-        private Rectangle hitbox2 = new Rectangle(24, 0, 8, 32);
+        const int width = 8, height = 32, xDiff = 24;
+        private Rectangle hitbox1 = new Rectangle(0, 0, width, height);
+        private Rectangle hitbox2 = new Rectangle(xDiff, 0, width, height);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public DoorSOpen(Vector2 position)

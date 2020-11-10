@@ -20,7 +20,8 @@ namespace Game1.Enemy
 
             state = new EnemyStateSpawning(position, this, new SnakeStateMoving(game, position));
 
-            health = 0.5f;
+            const float halfHeart = 0.5f;
+            health = halfHeart;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)

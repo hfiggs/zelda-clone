@@ -77,6 +77,14 @@ namespace Game1.CollisionDetection
                 {
                     char side = DetermineSide(playerHitbox, itemHitbox, intersection);
                     collisionList.Add(new Collision(side, intersection, player, item));
+                }else
+                {
+                    intersection = Rectangle.Intersect(itemHitbox,swordHitbox);
+                    if(!intersection.IsEmpty)
+                    {
+                        char side = DetermineSide(swordHitbox, itemHitbox, intersection);
+                        collisionList.Add(new Collision(side, intersection, player, item));
+                    }
                 }
             }
 
@@ -164,6 +172,7 @@ namespace Game1.CollisionDetection
 
         private char DetermineSide(Rectangle colider, Rectangle colidee, Rectangle intersectionRec)
         {
+            const char north = 'N', south = 'S', west = 'W', east = 'E';
             int xOverlap = intersectionRec.Width;
             int yOverlap = intersectionRec.Height;
             char side;
@@ -172,22 +181,22 @@ namespace Game1.CollisionDetection
             {
                 if (colider.Y < colidee.Y)
                 {
-                    side = 'N';
+                    side = north;
                 }
                 else
                 {
-                    side = 'S';
+                    side = south;
                 }
             }
             else
             {
                 if (colider.X < colidee.X)
                 {
-                    side = 'W';
+                    side = west;
                 }
                 else
                 {
-                    side = 'E';
+                    side = east;
                 }
             }
             return side;

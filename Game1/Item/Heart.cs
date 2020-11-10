@@ -41,7 +41,8 @@ namespace Game1.Item
 
             public Rectangle GetHitbox()
             {
-                return new Rectangle((int)Position.X + 10, (int)Position.Y + 10, 20, 20);
+            const int xAndYDiff = 10, widthAndHeight = 20;
+            return new Rectangle((int)Position.X + xAndYDiff, (int)Position.Y + xAndYDiff, widthAndHeight, widthAndHeight);
             }
 
             public bool ShouldDelete { get; set; } = false;

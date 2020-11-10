@@ -14,20 +14,21 @@ namespace Game1.Enemy
         private Game1 game;
         private Vector2 positon;
         private float health;
+        const float twoHearts = 2.0f;
 
         public Skeleton(Game1 game, Vector2 spawnPosition)
         {
             this.game = game;
             this.positon = spawnPosition;
             state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(spawnPosition));
-            health = 2f;
+            health = twoHearts;
         }
 
         public Skeleton(Game1 game, Vector2 spawnPosition, IItem item)
         {
             this.game = game;
             this.positon = spawnPosition;
-            health = 2f;
+            health = twoHearts;
             state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(game, spawnPosition, item));
 
         }

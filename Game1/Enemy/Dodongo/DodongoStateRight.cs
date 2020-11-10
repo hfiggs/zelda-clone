@@ -88,7 +88,8 @@ namespace Game1.Enemy
 
                 if (timeUntilNewDirection <= 0)
                 {
-                    switch((new Random()).Next(4))
+                    const int randomNumberMax = 4;
+                    switch ((new Random()).Next(randomNumberMax))
                     {
                         case 0:
                             dodongo.SetState(new DodongoStateUp(dodongo, position));

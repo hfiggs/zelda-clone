@@ -16,15 +16,18 @@ namespace Game1.Player
         int currentFlicker = 0;
         Color damageColor = Color.White;
 
-        Vector2 damageMove = new Vector2(.66f,.66f); 
+        private const float xAndYMovementMagnitude = 0.66f;
+        Vector2 damageMove = new Vector2(xAndYMovementMagnitude,xAndYMovementMagnitude); 
 
         const int duration = 1000; // ms
         int timer;
         int flickerTimer;
+        private const int timerMax = 925;
 
         const int flickerDuration = 45; // ms
 
-        private Rectangle playerHitbox = new Rectangle(13, 20, 15, 10);
+        private const int xDiff = 13, yDiff = 20, width = 20, height = 10;
+        private Rectangle playerHitbox = new Rectangle(xDiff, yDiff, width, height);
         private Rectangle swordHitbox = new Rectangle();
 
         public bool stillSlide;
@@ -46,7 +49,7 @@ namespace Game1.Player
 
         public void Attack()
         {
-            if (timer <= 925 || !stillSlide)
+            if (timer <= timerMax || !stillSlide)
                 decoratedPlayer.Attack();
         }
 
@@ -81,25 +84,25 @@ namespace Game1.Player
 
         public void MoveDown()
         {
-            if (timer <= 925 || !stillSlide)
+            if (timer <= timerMax || !stillSlide)
                 decoratedPlayer.MoveDown();
         }
 
         public void MoveLeft()
         {
-            if (timer <= 925 || !stillSlide)
+            if (timer <= timerMax || !stillSlide)
                 decoratedPlayer.MoveLeft();
         }
 
         public void MoveRight()
         {
-            if (timer <= 925 || !stillSlide)
+            if (timer <= timerMax || !stillSlide)
                 decoratedPlayer.MoveRight();
         }
 
         public void MoveUp()
         {
-            if (timer <= 925 || !stillSlide)
+            if (timer <= timerMax || !stillSlide)
                 decoratedPlayer.MoveUp();
         }
 
@@ -115,7 +118,7 @@ namespace Game1.Player
             if (timer <= 0)
                 RemoveDecorator();
 
-            if (timer >= 925 && stillSlide)
+            if (timer >= timerMax && stillSlide)
                 decoratedPlayer.EditPosition(Vector2.Multiply(damageMove, (float)(time.ElapsedGameTime.TotalMilliseconds)));
             else
                 stillSlide = false;
@@ -179,6 +182,16 @@ namespace Game1.Player
                 correction = Vector2.Multiply(correction, new Vector2(0,1));
 
             decoratedPlayer.EditPosition(correction);
+        }
+
+        public bool getBoomerangOut()
+        {
+            return decoratedPlayer.getBoomerangOut();
+        }
+
+        public void setBoomerangOut(bool val)
+        {
+            decoratedPlayer.setBoomerangOut(val);
         }
     }
 }

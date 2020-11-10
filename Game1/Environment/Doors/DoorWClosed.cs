@@ -14,7 +14,8 @@ namespace Game1.Environment
         private ISprite sprite;
         private Vector2 position;
 
-        private Rectangle hitbox1 = new Rectangle(0, 0, 32, 32);
+        const int widthAndHeight = 32;
+        private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private List<Rectangle> hitboxes = new List<Rectangle>();
         public int open; // 0 = locked, 1 = opening, 2 = open
         private float timeTillOpen;

@@ -19,7 +19,8 @@ namespace Game1.Enemy
             this.game = game;
             this.position = spawnPosition;
             state = new EnemyStateSpawning(position, this, new HandStateMoving(spawnPosition));
-            health = 3f;
+            const float threeHearts = 3.0f;
+            health = threeHearts;
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)

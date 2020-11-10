@@ -1,6 +1,7 @@
 ﻿using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Runtime.Serialization;
 
 namespace Game1.Particle
 {
@@ -9,24 +10,22 @@ namespace Game1.Particle
         private ISprite sprite;
         private Vector2 position;
 
+        private bool flash;
+
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        private float timeUntilNextFlash; // ms
-        private const float flashTime = 50f; // ms per frame
-
-        private float timeCounter; // ms
+        private float timeCounter = 0; // ms
         private const float existTime = 600f; // ms
 
-        public Cloud(Vector2 position)
+        public Cloud(Vector2 position, bool flash = true)
         {
             sprite = ParticleSpriteFactory.Instance.CreateCloudSprite();
 
             this.position = position;
 
             timeUntilNextFrame = animationTime;
-            timeUntilNextFlash = flashTime;
-            timeCounter = 0;
+            this.flash = flash;
         }
 
         public void Update(GameTime gameTime)
@@ -39,22 +38,16 @@ namespace Game1.Particle
                 timeUntilNextFrame += animationTime;
             }
 
-            timeUntilNextFlash -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
-            if (timeUntilNextFrame <= 0)
-            {
-                timeUntilNextFlash += flashTime;
-            }
-
             timeCounter += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            if ((timeUntilNextFlash <= flashTime / 2) && !ShouldDelete())
+            if (flash && !ShouldDelete())
             {
                 sprite.Draw(spriteBatch, position, color);
             }
+            flash = !flash;
         }
 
         public bool ShouldDelete()

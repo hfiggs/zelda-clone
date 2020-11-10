@@ -67,6 +67,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Item\ItemDropper\ItemDropper.cs" />
+    <Compile Include="Particle\ShieldDeflect.cs" />
+    <Compile Include="Particle\BombOverlay.cs" />
     <Compile Include="RoomLoading\AmbientSound.cs" />
     <Compile Include="AudioManager.cs" />
     <Compile Include="Collision_Handling\Collision.cs" />
@@ -199,6 +201,7 @@
     <Compile Include="HUD\HUD.cs" />
     <Compile Include="HUD\HUDItems\IHudItem.cs" />
     <Compile Include="Item\ArrowItem.cs" />
+    <Compile Include="Particle\BeamExplosion.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
     <Compile Include="RoomLoading\Puzzle\IPuzzle.cs" />

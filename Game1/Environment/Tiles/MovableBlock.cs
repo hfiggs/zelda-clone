@@ -17,7 +17,10 @@ namespace Game1.Environment
         private float movementTime;
         private Vector2 movementSpeed;
         //private char movementDirection;
-        private Rectangle hitbox1 = new Rectangle(0, 0, 16, 16);
+
+        const int widthAndHeight = 16;
+        private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
+
         private List<Rectangle> hitboxes = new List<Rectangle>();
         public bool hasMoved;
 

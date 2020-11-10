@@ -7,7 +7,8 @@ namespace Game1.Enemy
     {
         public static LinkedList<IEnemy> GetEnemyList(Game1 game)
         {
-            var enemyPosition = new Vector2(175, 100);
+            const int xValue = 175, yValue = 100;
+            var enemyPosition = new Vector2(xValue, yValue);
 
             var enemyList = new LinkedList<IEnemy>();
             enemyList.AddLast(new Aquamentus(game, enemyPosition));

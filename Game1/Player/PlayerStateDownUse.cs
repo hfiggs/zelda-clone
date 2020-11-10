@@ -12,13 +12,14 @@ namespace Game1.Player
         private IPlayer player;
         public ISprite Sprite { get; private set; }
         private IProjectile projectile;
+        private ItemEnum item;
 
-  public Vector2 position { get; set; }
+        public Vector2 position { get; set; }
 
-        private float timeUntilNextFrame; // ms
-        private int frameCount;
+        private float timeUntilNextFrame = 0f; // ms
+        private int frameCount = 0;
 
-        private const float animationTime = 150f; // ms per frame
+        private const float animationTime = 125f; // ms per frame
         private const int animationFrames = 3;
 
         public PlayerStateDownUse(IPlayer player, Vector2 position)
@@ -28,20 +29,22 @@ namespace Game1.Player
 
             this.position = position;
 
-            frameCount = 0;
-            timeUntilNextFrame = animationTime;
-
-            ItemEnum item = player.PlayerInventory.EquippedItem;
+            item = player.PlayerInventory.EquippedItem;
+            if(player.PlayerInventory.IsItemInUse(item) && item == ItemEnum.Boomerang)
+            {
+                item = 0;
+            }
             player.PlayerInventory.SetItemInUse(item, true);
+            const char south = 'S';
 
             switch (item)
             {
                 case ItemEnum.Bow:
                     player.PlayerInventory.SubRupees(1);
-                    projectile = new Arrow('S', new Vector2(position.X,position.Y), player);
+                    projectile = new Arrow(south, new Vector2(position.X,position.Y), player);
                     break;
                 case ItemEnum.Boomerang:
-                    projectile = new Boomerang('S', player);
+                    projectile = new Boomerang(south, player);
                     break;
                 case ItemEnum.Bomb:
                     player.PlayerInventory.SubBomb();
@@ -92,14 +95,16 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
-                player.SpawnProjectile(projectile);
+                if(item != 0)
+                    player.SpawnProjectile(projectile);
                 player.SetState(new PlayerStateDown(player, position));
             }
         }
 
         public char GetDirection()
         {
-            return 'S';
+            const char south = 'S';
+            return south;
         }
     }
 }

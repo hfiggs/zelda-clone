@@ -2,13 +2,17 @@
 
 using Game1.Collision_Handling;
 using Game1.Environment;
+using Game1.Particle;
 using Game1.Player;
 using Game1.Projectile;
+using Microsoft.Xna.Framework;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
     class ProjectileToEnvironmentWestSideCommand : ICollisionCommand
     {
+        private const int rightXBorder = 224, leftXBorder = 30, topYBorder = 30, botYBorder = 144;
+
         public ProjectileToEnvironmentWestSideCommand()
         {
 
@@ -26,7 +30,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             if (proj is SwordBeam)
                 return;
-            if ((collision.intersectionRec.X >= 224 || collision.intersectionRec.X <= 30 || collision.intersectionRec.Y >= 144 || collision.intersectionRec.Y <= 30) && proj.GetType() != typeof(BombProjectile))
+            if ((collision.intersectionRec.X >= rightXBorder || collision.intersectionRec.X <= leftXBorder || collision.intersectionRec.Y >= botYBorder || collision.intersectionRec.Y <= topYBorder) && proj.GetType() != typeof(BombProjectile))
                 proj.BeginDespawn();
         }
     }
