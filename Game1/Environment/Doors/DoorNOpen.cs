@@ -28,7 +28,7 @@ namespace Game1.Environment
             hitboxes.Add(hitbox2);
         }
 
-public void BehaviorUpdate(GameTime gameTime)
+public void Update(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }

@@ -18,7 +18,7 @@ namespace Game1.Environment
             sprite = EnvironmentSpriteFactory.instance.createSecretRoom();
             this.position = position;
         }
-        public void BehaviorUpdate(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             //throw new NotImplementedException("For collision mechanics later");
         }

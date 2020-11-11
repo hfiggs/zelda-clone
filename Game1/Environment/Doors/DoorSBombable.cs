@@ -37,7 +37,7 @@ namespace Game1.Environment
             }
         }
 
-        public void BehaviorUpdate(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }

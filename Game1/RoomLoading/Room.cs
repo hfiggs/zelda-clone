@@ -84,9 +84,9 @@ namespace Game1.RoomLoading
 
             EnemyList.RemoveAll(p => p.ShouldRemove());
 
-            InteractEnviornment.ForEach(env => env.BehaviorUpdate(gameTime));
+            InteractEnviornment.ForEach(env => env.Update(gameTime));
 
-            NonInteractEnviornment.ForEach(env => env.BehaviorUpdate(gameTime));
+            NonInteractEnviornment.ForEach(env => env.Update(gameTime));
 
             puzzle?.Check(gameTime, this);
         }

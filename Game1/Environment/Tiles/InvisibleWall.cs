@@ -20,7 +20,7 @@ namespace Game1.Environment
             hitboxes.Add(new Rectangle(position.ToPoint(), hitboxSize.ToPoint()));
         }
 
-        public void BehaviorUpdate(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }

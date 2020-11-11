@@ -32,7 +32,7 @@ namespace Game1.Environment
             open = 0;
         }
 
-        public void BehaviorUpdate(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             if (open == 1)
             {

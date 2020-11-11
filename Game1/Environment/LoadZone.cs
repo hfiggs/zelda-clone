@@ -33,7 +33,7 @@ namespace Game1.Environment
             this.transitionDirection = transitionDirection;
         }
 
-        public void BehaviorUpdate(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             // Do nothing
         }

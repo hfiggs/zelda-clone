@@ -34,7 +34,7 @@ namespace Game1.Environment
             hasMoved = false;
         }
 
-        public void BehaviorUpdate(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             if(movementTime > 0)
             {
