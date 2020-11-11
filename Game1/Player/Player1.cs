@@ -8,22 +8,18 @@ using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace Game1.Player
 {
     class Player1 : IPlayer
     {
-        Game1 game;
-        int currentItem;
+        private readonly Game1 game;
         private IPlayerState state;
 
         private double timeUntilNextSwordBeam;
         private const int swordBeamCooldown = 800; // ms
 
-        private bool isFullHealth;
         private bool isLowHealth = false;
-        private bool[] itemsHeld = { true, true, true }; //Bow, Boomerang, Bomb
 
         private const int xDiff = 13, yDiff = 20, width = 15, height = 10;
         private Rectangle playerHitbox = new Rectangle(xDiff, yDiff, width, height);
@@ -32,10 +28,11 @@ namespace Game1.Player
         //prevents the player from animating to "catch" the boomerang while it is in the air
         private bool boomerangOut;
 
-        private readonly float deathSoundLength = 2.5f;
-        private readonly float gameOverDealy = 4.5f;
-        private readonly float gameOverVolume = 0.6f;
-        SoundEffectInstance lowHealthSound;
+        private const float deathSoundLength = 2.5f;
+        private const float gameOverDealy = 4.5f;
+        private const float gameOverVolume = 0.6f;
+        private const int lowHealthHalfHearts = 2;
+        private SoundEffectInstance lowHealthSound;
 
         public IPlayerInventory PlayerInventory { get; private set; }
 
@@ -44,7 +41,6 @@ namespace Game1.Player
             this.game = game;
             state = new PlayerStateRight(this, position);
             timeUntilNextSwordBeam = -1; // to ensure time is <= 0
-            isFullHealth = true;
 
             PlayerInventory = new PlayerInventory1();
         }
@@ -99,7 +95,7 @@ namespace Game1.Player
         {
             state.Attack();
 
-            if(timeUntilNextSwordBeam <= 0 && isFullHealth)
+            if(timeUntilNextSwordBeam <= 0 && PlayerInventory.HalfHeartCount == PlayerInventory.MaxHalfHearts)
             {
                 game.Screen.CurrentRoom.SpawnProjectile(new SwordBeam(state.GetDirection(), state.position));
 
@@ -112,7 +108,6 @@ namespace Game1.Player
             // wrap damage decorator around this
             game.Screen.Player = new DamagedPlayer(game, this, direction);
             PlayerInventory.SubHealth(1);
-            isFullHealth = false;
             //should be slightly modified once we have health mechanics - GameState?
             if(PlayerInventory.HalfHeartCount <= 0)
             {
@@ -122,7 +117,7 @@ namespace Game1.Player
                 AudioManager.PlayFireForget("linkPop", deathSoundLength);
                 AudioManager.PlayLooped("gameOver", gameOverDealy, gameOverVolume);
             }
-            if(PlayerInventory.HalfHeartCount <= 2 && !isLowHealth)
+            if(PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
             {
                 lowHealthSound = AudioManager.PlayLooped("lowHealth");
                 isLowHealth = true;
@@ -135,7 +130,7 @@ namespace Game1.Player
 
             timeUntilNextSwordBeam -= time.ElapsedGameTime.TotalMilliseconds;
 
-            if (PlayerInventory.HalfHeartCount > 2 && isLowHealth)
+            if (PlayerInventory.HalfHeartCount > lowHealthHalfHearts && isLowHealth)
             {
                 AudioManager.StopSound(lowHealthSound);
                 isLowHealth = false;
