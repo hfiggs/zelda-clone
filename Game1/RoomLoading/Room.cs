@@ -93,15 +93,15 @@ namespace Game1.RoomLoading
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            NonInteractEnviornment.ForEach(env => env.Draw(spriteBatch, Color.White));
+            NonInteractEnviornment.ForEach(env => env.Draw(spriteBatch, color));
 
-            InteractEnviornment.ForEach(env => env.Draw(spriteBatch, Color.White));
+            InteractEnviornment.ForEach(env => env.Draw(spriteBatch, color));
 
-            EnemyList.ForEach(enemy => enemy.Draw(spriteBatch, Color.White));
+            EnemyList.ForEach(enemy => enemy.Draw(spriteBatch, color));
 
-            ItemList.ForEach(item => item.Draw(spriteBatch, Color.White));
+            ItemList.ForEach(item => item.Draw(spriteBatch, color));
 
-            ProjectileList.ForEach(proj => proj.Draw(spriteBatch, Color.White));
+            ProjectileList.ForEach(proj => proj.Draw(spriteBatch, color));
         }
 
         public void SpawnProjectile(IProjectile projectile)

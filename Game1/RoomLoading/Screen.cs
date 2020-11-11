@@ -59,9 +59,9 @@ namespace Game1.RoomLoading
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            CurrentRoom.Draw(spriteBatch, Color.White);
+            CurrentRoom.Draw(spriteBatch, color);
 
-            Player.Draw(spriteBatch, Color.White);
+            Player.Draw(spriteBatch, color);
         }
 
         public Rectangle GetPlayerRectangle()
