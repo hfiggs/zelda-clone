@@ -1,4 +1,5 @@
-﻿using Game1.Particle;
+﻿using Game1.Audio;
+using Game1.Particle;
 using Game1.Player;
 using Game1.Player.PlayerInventory;
 using Game1.Sprite;

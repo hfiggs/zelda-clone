@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs.3 */
 
+using Game1.Audio;
 using Game1.Enemy;
 using Game1.Environment;
 using Game1.HUD;

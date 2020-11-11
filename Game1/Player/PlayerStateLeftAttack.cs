@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Audio;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using System;

@@ -1,4 +1,5 @@
-﻿using Game1.Collision_Handling;
+﻿using Game1.Audio;
+using Game1.Collision_Handling;
 using Game1.Player;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;

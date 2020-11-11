@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Audio;
 using Game1.Collision_Handling;
 using Game1.Environment;
 using Game1.Player;

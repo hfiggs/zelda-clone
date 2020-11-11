@@ -13,6 +13,7 @@ using Game1.ResolutionManager;
 using Game1.GameState;
 using Game1.HUD;
 using Game1.Util;
+using Game1.Audio;
 
 namespace Game1
 {

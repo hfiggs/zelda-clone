@@ -90,7 +90,7 @@
     <Compile Include="Particle\ShieldDeflect.cs" />
     <Compile Include="Particle\BombOverlay.cs" />
     <Compile Include="RoomLoading\AmbientSound.cs" />
-    <Compile Include="AudioManager.cs" />
+    <Compile Include="Audio\AudioManager.cs" />
     <Compile Include="Collision_Handling\Collision.cs" />
     <Compile Include="Collision_Handling\CollisionHandler.cs" />
     <Compile Include="Collision_Handling\CollisionHandlerUtil.cs" />

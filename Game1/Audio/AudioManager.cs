@@ -1,18 +1,13 @@
 ﻿using Game1.Item;
-using Game1.RoomLoading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using SharpDX.Direct2D1;
-using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Xml;
 
-namespace Game1
+namespace Game1.Audio
 {
     class AudioManager
     {

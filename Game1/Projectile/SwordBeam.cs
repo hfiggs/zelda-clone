@@ -1,4 +1,5 @@
-﻿using Game1.Particle;
+﻿using Game1.Audio;
+using Game1.Particle;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
