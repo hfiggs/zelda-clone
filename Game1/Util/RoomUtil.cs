@@ -33,7 +33,7 @@ namespace Game1.Util
             return adjacentRoomKey;
         }
 
-        public static void EnterDoor(Game1 game, IEnvironment envo, IPlayer player)
+        public static void EnterDoor(Game1 game, IEnvironment envo)
         {
             if (envo.GetType() == typeof(LoadZone))
             {

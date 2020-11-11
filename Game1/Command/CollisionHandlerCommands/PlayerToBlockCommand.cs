@@ -42,7 +42,7 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 RoomUtil.OpenLockedDoor(game.Screen, enviro, player);
 
-                RoomUtil.EnterDoor(game, enviro, player);
+                RoomUtil.EnterDoor(game, enviro);
 
                 Vector2 moveAmount = Vector2.Multiply(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height), CompassDirectionUtil.GetDirectionVector(side));
                 player.EditPosition(moveAmount);
