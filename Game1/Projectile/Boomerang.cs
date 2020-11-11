@@ -129,7 +129,7 @@ namespace Game1.Projectile
             Vector2 positionDiff = new Vector2(currentLocation.X, currentLocation.Y) - recievePoisition;
             if(positionDiff.Length() < minimumCatchDist)
             {
-                catchBoomerang();
+                CatchBoomerang();
             }
             returned = positionDiff.Length() < minimumRecieveDist;
             positionDiff = Vector2.Normalize(positionDiff);
@@ -140,7 +140,7 @@ namespace Game1.Projectile
             currentVelocity += (float)(accelleration * (gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)) / 2.0f;
         }
 
-        private void catchBoomerang()
+        private void CatchBoomerang()
         {
             Player.setBoomerangOut(false);
             Player.UseItem();
