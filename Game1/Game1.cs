@@ -31,8 +31,6 @@ namespace Game1
         public Screen Screen { get; private set; }
         public HUDInterface HUD { get; private set; }
 
-        public Color drawColor { get; set; } = Color.White;
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
