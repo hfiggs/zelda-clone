@@ -18,7 +18,6 @@ namespace Game1.Player
         private int frameCount;
 
         private const float animationTime = 0f; // ms per frame
-        private const int animationFrames = 4;
 
         public PlayerStateUpAttack(IPlayer player, Vector2 position)
         {

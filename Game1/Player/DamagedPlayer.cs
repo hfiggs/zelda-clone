@@ -5,31 +5,26 @@ using Game1.Player.PlayerInventory;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Security.Policy;
 
 namespace Game1.Player
 {
     class DamagedPlayer : IPlayer
     {
-        Game1 game;
-        IPlayer decoratedPlayer;
-        Color[] flickers = { Color.LightBlue, Color.Orange, Color.Red };
-        int currentFlicker = 0;
-        Color damageColor = Color.White;
+        private Game1 game;
+        private IPlayer decoratedPlayer;
+        private Color[] flickers = { Color.LightBlue, Color.Orange, Color.Red };
+        private int currentFlicker = 0;
+        private Color damageColor = Color.White;
 
         private const float xAndYMovementMagnitude = 0.66f;
-        Vector2 damageMove = new Vector2(xAndYMovementMagnitude,xAndYMovementMagnitude); 
+        private Vector2 damageMove = new Vector2(xAndYMovementMagnitude,xAndYMovementMagnitude); 
 
-        const int duration = 1000; // ms
-        int timer;
-        int flickerTimer;
+        private const int duration = 1000; // ms
+        private int timer;
+        private int flickerTimer;
         private const int timerMax = 925;
 
-        const int flickerDuration = 45; // ms
-
-        private const int xDiff = 13, yDiff = 20, width = 20, height = 10;
-        private Rectangle playerHitbox = new Rectangle(xDiff, yDiff, width, height);
-        private Rectangle swordHitbox = new Rectangle();
+        private const int flickerDuration = 45; // ms
 
         public bool stillSlide;
 
@@ -165,10 +160,10 @@ namespace Game1.Player
 
         public void SetSwordHitbox(Rectangle newHitbox)
         {
-            swordHitbox = newHitbox;
+            decoratedPlayer.SetSwordHitbox(newHitbox);
         }
 
-        public void stopKnockback(Vector2 possibleCorrections)
+        public void StopKnockback(Vector2 possibleCorrections)
         {
             stillSlide = false;
             Vector2 correction = possibleCorrections;

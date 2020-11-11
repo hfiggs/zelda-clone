@@ -50,7 +50,7 @@ namespace Game1.Command.CollisionHandlerCommands
 
             if (player.GetType() == typeof(DamagedPlayer) && ((DamagedPlayer)player).stillSlide)
             {
-                ((DamagedPlayer)player).stopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
+                ((DamagedPlayer)player).StopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
             }
 
         }
