@@ -24,7 +24,7 @@ namespace Game1.Projectile
 
 		public void LoadAllTextures(ContentManager content)
 		{
-			projectileSpriteSheet = content.Load<Texture2D>("images/projectiles");
+			projectileSpriteSheet = content.Load<Texture2D>("Images/Projectile/Projectiles");
 		}
 
 		public ProjectileSpriteSheet CreateSwordBeamSprite()

@@ -24,7 +24,7 @@ namespace Game1.Sprite
 
         public void LoadAllTextures(ContentManager content)
         {
-            itemSpritesheet = content.Load<Texture2D>("images/items");
+            itemSpritesheet = content.Load<Texture2D>("Images/Item/items");
         }
 
         public ISprite CreateCompassSprite()

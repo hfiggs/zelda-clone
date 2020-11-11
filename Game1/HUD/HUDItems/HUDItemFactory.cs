@@ -31,10 +31,10 @@ namespace Game1.HUD
 
         public void LoadAllTextures(ContentManager content)
         {
-            HUDbase = content.Load<Texture2D>("Images/HUDSprites/HUD");
-            map = content.Load<Texture2D>("Images/HUDSprites/Dungeon1 Minimap");
-            selectionSquareTexture = content.Load<Texture2D>("Images/HUDSprites/selection rectangles");
-            HUDIconsTexture = content.Load<Texture2D>("Images/HUDSprites/HUD Icons");
+            HUDbase = content.Load<Texture2D>("Images/HUD/HUD");
+            map = content.Load<Texture2D>("Images/HUD/Dungeon1 Minimap");
+            selectionSquareTexture = content.Load<Texture2D>("Images/HUD/selection rectangles");
+            HUDIconsTexture = content.Load<Texture2D>("Images/HUD/HUD Icons");
         }
 
         public IHudItem BuildDungeonOneMap(IPlayerInventory inv)
