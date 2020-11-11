@@ -199,7 +199,7 @@
 /processorParam:Quality=Best
 /build:audio/sounds/triforceTheme.wav
 
-#begin Images/Aquamentus.png
+#begin Images/Enemy/Aquamentus.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -209,9 +209,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Aquamentus.png
+/build:Images/Enemy/Aquamentus.png
 
-#begin Images/bat.png
+#begin Images/Enemy/bat.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -221,9 +221,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/bat.png
+/build:Images/Enemy/bat.png
 
-#begin Images/cloud.png
+#begin Images/Enemy/dodongo.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -233,9 +233,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/cloud.png
+/build:Images/Enemy/dodongo.png
 
-#begin Images/dodongo.png
+#begin Images/Enemy/enemies.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -245,9 +245,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/dodongo.png
+/build:Images/Enemy/enemies.png
 
-#begin Images/door_floors.png
+#begin Images/Enemy/enemyspawn.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -257,9 +257,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/door_floors.png
+/build:Images/Enemy/enemyspawn.png
 
-#begin Images/enemies.png
+#begin Images/Enemy/Merchant.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -269,9 +269,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/enemies.png
+/build:Images/Enemy/Merchant.png
 
-#begin Images/enemyspawn.png
+#begin Images/Enemy/oldman.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -281,9 +281,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/enemyspawn.png
+/build:Images/Enemy/oldman.png
 
-#begin Images/HUDSprites/Dungeon1 Minimap.png
+#begin Images/Enemy/snake.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -293,9 +293,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/HUDSprites/Dungeon1 Minimap.png
+/build:Images/Enemy/snake.png
 
-#begin Images/HUDSprites/HUD Icons.png
+#begin Images/Enemy/spiketrap.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -305,9 +305,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/HUDSprites/HUD Icons.png
+/build:Images/Enemy/spiketrap.png
 
-#begin Images/HUDSprites/HUD.png
+#begin Images/Environment/door_floors.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -317,9 +317,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/HUDSprites/HUD.png
+/build:Images/Environment/door_floors.png
 
-#begin Images/HUDSprites/selection rectangles.png
+#begin Images/Environment/RoomBase.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -329,9 +329,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/HUDSprites/selection rectangles.png
+/build:Images/Environment/RoomBase.png
 
-#begin Images/items.png
+#begin Images/Environment/RoomF2Floor.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -341,9 +341,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/items.png
+/build:Images/Environment/RoomF2Floor.png
 
-#begin Images/LinkDownNew.png
+#begin Images/Environment/RoomFloor.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -353,9 +353,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/LinkDownNew.png
+/build:Images/Environment/RoomFloor.png
 
-#begin Images/LinkItemNew.png
+#begin Images/Environment/SecretRoom.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -365,9 +365,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/LinkItemNew.png
+/build:Images/Environment/SecretRoom.png
 
-#begin Images/LinkLeftNew.png
+#begin Images/Environment/ss_doors.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -377,9 +377,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/LinkLeftNew.png
+/build:Images/Environment/ss_doors.png
 
-#begin Images/LinkRightNew.png
+#begin Images/Environment/ss_tiles.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -389,9 +389,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/LinkRightNew.png
+/build:Images/Environment/ss_tiles.png
 
-#begin Images/LinkUpNew.png
+#begin Images/HUD/Dungeon1 Minimap.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -401,9 +401,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/LinkUpNew.png
+/build:Images/HUD/Dungeon1 Minimap.png
 
-#begin Images/oldman.png
+#begin Images/HUD/HUD Icons.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -413,9 +413,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/oldman.png
+/build:Images/HUD/HUD Icons.png
 
-#begin Images/overlay.png
+#begin Images/HUD/HUD.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -425,9 +425,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/overlay.png
+/build:Images/HUD/HUD.png
 
-#begin Images/projectiles.png
+#begin Images/HUD/selection rectangles.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -437,9 +437,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/projectiles.png
+/build:Images/HUD/selection rectangles.png
 
-#begin Images/room_base.png
+#begin Images/Item/items.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -449,9 +449,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/room_base.png
+/build:Images/Item/items.png
 
-#begin Images/Rooms/Room1.png
+#begin Images/Particle/cloud.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -461,9 +461,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Rooms/Room1.png
+/build:Images/Particle/cloud.png
 
-#begin Images/Rooms/RoomBase.png
+#begin Images/Particle/overlay.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -473,9 +473,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Rooms/RoomBase.png
+/build:Images/Particle/overlay.png
 
-#begin Images/Rooms/SecretRoom.png
+#begin Images/Particle/shield_deflect.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -485,9 +485,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Rooms/SecretRoom.png
+/build:Images/Particle/shield_deflect.png
 
-#begin Images/shield_deflect.png
+#begin Images/Particle/sword_beam_exp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -497,9 +497,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/shield_deflect.png
+/build:Images/Particle/sword_beam_exp.png
 
-#begin Images/snake.png
+#begin Images/Player/LinkDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -509,9 +509,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/snake.png
+/build:Images/Player/LinkDown.png
 
-#begin Images/spiketrap.png
+#begin Images/Player/LinkItem.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -521,9 +521,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/spiketrap.png
+/build:Images/Player/LinkItem.png
 
-#begin Images/ss_doors.png
+#begin Images/Player/LinkLeft.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -533,9 +533,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/ss_doors.png
+/build:Images/Player/LinkLeft.png
 
-#begin Images/ss_tiles.png
+#begin Images/Player/LinkRight.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -545,9 +545,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/ss_tiles.png
+/build:Images/Player/LinkRight.png
 
-#begin Images/sword_beam_exp.png
+#begin Images/Player/LinkUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -557,9 +557,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/sword_beam_exp.png
+/build:Images/Player/LinkUp.png
 
-#begin Link Down.png
+#begin Images/Projectile/projectiles.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -569,67 +569,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Link Down.png
-
-#begin Link Left.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Link Left.png
-
-#begin Link Right.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Link Right.png
-
-#begin Link Up.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Link Up.png
-
-#begin LinkItem.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:LinkItem.png
-
-#begin Merchant.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Merchant.png
+/build:Images/Projectile/projectiles.png
 
 #begin RoomXML/RoomA0.xml
 /copy:RoomXML/RoomA0.xml

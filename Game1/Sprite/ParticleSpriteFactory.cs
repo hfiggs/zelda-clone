@@ -33,9 +33,9 @@ namespace Game1.Sprite
 
         public void LoadAllTextures(ContentManager content, GraphicsDevice graphicsDevice)
         {
-            cloudSpritesheet = content.Load<Texture2D>("images/cloud");
-            beamExplosionSpritesheet = content.Load<Texture2D>("images/sword_beam_exp");
-            shieldDeflectSprite = content.Load<Texture2D>("images/shield_deflect");
+            cloudSpritesheet = content.Load<Texture2D>("images/Particle/cloud");
+            beamExplosionSpritesheet = content.Load<Texture2D>("images/Particle/sword_beam_exp");
+            shieldDeflectSprite = content.Load<Texture2D>("images/Particle/shield_deflect");
             graphics = graphicsDevice;
         }
 

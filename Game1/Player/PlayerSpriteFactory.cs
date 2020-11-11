@@ -1,14 +1,8 @@
 ﻿//Authors: Jared Perkins, Hunter Figgs
-using Microsoft.Xna.Framework;
+
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Game1.Sprite;
-using System.Reflection;
 
 namespace Game1.Player
 {
@@ -36,11 +30,11 @@ namespace Game1.Player
 
         public void LoadAllTextures(ContentManager content)
         {
-            linkLeftSheet = content.Load<Texture2D>("Images/LinkLeftNew");
-            linkRightSheet = content.Load<Texture2D>("Images/LinkRightNew");
-            linkUpSheet = content.Load<Texture2D>("Images/LinkUpNew");
-            linkItemSheet = content.Load<Texture2D>("Images/LinkItemNew");
-            linkDownSheet = content.Load<Texture2D>("Images/LinkDownNew");
+            linkLeftSheet = content.Load<Texture2D>("Images/Player/LinkLeft");
+            linkRightSheet = content.Load<Texture2D>("Images/Player/LinkRight");
+            linkUpSheet = content.Load<Texture2D>("Images/Player/LinkUp");
+            linkItemSheet = content.Load<Texture2D>("Images/Player/LinkItem");
+            linkDownSheet = content.Load<Texture2D>("Images/Player/LinkDown");
         }
 
         public ISprite CreateWalkLeftSprite()

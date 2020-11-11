@@ -26,12 +26,12 @@ namespace Game1.Environment
 
 		public void LoadContent(ContentManager content)
 		{
-			Texture2D doors = content.Load<Texture2D>("images/ss_doors");
-			Texture2D tiles = content.Load<Texture2D>("images/ss_tiles");
-			Texture2D room = content.Load<Texture2D>("images/room_base");
-			Texture2D doorfloors = content.Load<Texture2D>("images/door_floors");
-			Texture2D roomBase = content.Load<Texture2D>("images/Rooms/RoomBase");
-			Texture2D secretRoom = content.Load<Texture2D>("images/Rooms/SecretRoom");
+			Texture2D doors = content.Load<Texture2D>("images/Environment/ss_doors");
+			Texture2D tiles = content.Load<Texture2D>("images/Environment/ss_tiles");
+			Texture2D room = content.Load<Texture2D>("images/Environment/RoomBase");
+			Texture2D doorfloors = content.Load<Texture2D>("images/Environment/door_floors");
+			Texture2D roomBase = content.Load<Texture2D>("images/Environment/RoomFloor");
+			Texture2D secretRoom = content.Load<Texture2D>("images/Environment/SecretRoom");
 			this.roomBase = new SpriteSheet(roomBase, 1, 1);
 			this.secretRoom = new SpriteSheet(secretRoom, 1, 1);
 			this.doors = new SpriteSheet(doors, 5, 4);

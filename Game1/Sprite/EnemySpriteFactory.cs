@@ -33,15 +33,15 @@ namespace Game1.Enemy
 
         public void LoadAllTextures(ContentManager content)
         {
-            enemySpritesheet = content.Load<Texture2D>("images/enemies");
-            spikeTrapSpritesheet = content.Load<Texture2D>("images/spiketrap");
-            oldManSpritesheet = content.Load<Texture2D>("images/oldman");
-            merchantSpritesheet = content.Load<Texture2D>("Merchant");
-            batSpritesheet = content.Load<Texture2D>("images/bat");
-            snakeSpriteSheet = content.Load<Texture2D>("images/snake");
-            dodongoSpriteSheet = content.Load<Texture2D>("images/dodongo");
-            aquamentusSpriteSheet = content.Load<Texture2D>("images/Aquamentus");
-            enemySpawnSpriteSheet = content.Load<Texture2D>("images/enemyspawn");
+            enemySpritesheet = content.Load<Texture2D>("images/Enemy/enemies");
+            spikeTrapSpritesheet = content.Load<Texture2D>("images/Enemy/spiketrap");
+            oldManSpritesheet = content.Load<Texture2D>("images/Enemy/oldman");
+            merchantSpritesheet = content.Load<Texture2D>("images/Enemy/Merchant");
+            batSpritesheet = content.Load<Texture2D>("images/Enemy/bat");
+            snakeSpriteSheet = content.Load<Texture2D>("images/Enemy/snake");
+            dodongoSpriteSheet = content.Load<Texture2D>("images/Enemy/dodongo");
+            aquamentusSpriteSheet = content.Load<Texture2D>("images/Enemy/Aquamentus");
+            enemySpawnSpriteSheet = content.Load<Texture2D>("images/Enemy/enemyspawn");
         }
 
         public ISprite CreateSkeletonSprite()
