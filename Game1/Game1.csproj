@@ -83,7 +83,7 @@
     <Compile Include="GameState\GameStateRoomToHUD.cs" />
     <Compile Include="GameState\GameStateRoom.cs" />
     <Compile Include="GameState\IGameState.cs" />
-    <Compile Include="ContentUtil.cs" />
+    <Compile Include="Util\ContentUtil.cs" />
     <Compile Include="ResolutionManager\IResolutionManager.cs" />
     <Compile Include="ResolutionManager\ResolutionManager1.cs" />
     <Compile Include="Item\ItemDropper\ItemDropper.cs" />
@@ -125,7 +125,7 @@
     <Compile Include="Command\PlayerCommands\PlayerRightCommand.cs" />
     <Compile Include="Command\QuitCommand.cs" />
     <Compile Include="Controller\HUDGamepadController.cs" />
-    <Compile Include="DebugUtil.cs" />
+    <Compile Include="Util\DebugUtil.cs" />
     <Compile Include="Enemy\Aquamentus\Aquamentus.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeft.cs" />
     <Compile Include="Enemy\Aquamentus\AquamentusWalkLeftAttack.cs" />

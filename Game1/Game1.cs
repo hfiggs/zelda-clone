@@ -12,6 +12,7 @@ using Game1.RoomLoading;
 using Game1.ResolutionManager;
 using Game1.GameState;
 using Game1.HUD;
+using Game1.Util;
 
 namespace Game1
 {

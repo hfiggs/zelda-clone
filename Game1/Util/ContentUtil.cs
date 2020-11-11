@@ -1,4 +1,6 @@
-﻿using Game1.Enemy;
+﻿/* Author: Hunter Figgs.3 */
+
+using Game1.Enemy;
 using Game1.Environment;
 using Game1.HUD;
 using Game1.Player;
@@ -7,7 +9,7 @@ using Game1.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Game1
+namespace Game1.Util
 {
     public static class ContentUtil
     {

@@ -2,8 +2,8 @@
 
 using Game1.Controller;
 using Game1.Environment;
-using Game1.Projectile;
 using Game1.ResolutionManager;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
