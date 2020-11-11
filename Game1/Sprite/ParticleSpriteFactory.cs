@@ -1,11 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Sprite
 {
@@ -14,6 +9,8 @@ namespace Game1.Sprite
         private Texture2D cloudSpritesheet;
         private Texture2D beamExplosionSpritesheet;
         private Texture2D shieldDeflectSprite;
+        private Texture2D waterfallSpritesheet;
+        private Texture2D waterfallSpraySpritesheet;
 
         private GraphicsDevice graphics;
 
@@ -36,6 +33,8 @@ namespace Game1.Sprite
             cloudSpritesheet = content.Load<Texture2D>("images/Particle/cloud");
             beamExplosionSpritesheet = content.Load<Texture2D>("images/Particle/sword_beam_exp");
             shieldDeflectSprite = content.Load<Texture2D>("images/Particle/shield_deflect");
+            waterfallSpritesheet = content.Load<Texture2D>("images/Start/Waterfall");
+            waterfallSpraySpritesheet = content.Load<Texture2D>("images/Start/WaterfallSpray");
             graphics = graphicsDevice;
         }
 
@@ -78,6 +77,16 @@ namespace Game1.Sprite
         public ISprite CreateShieldDeflect()
         {
             return new ParticleSprite(shieldDeflectSprite, 0, 0, 1, 1, 1);
+        }
+
+        public ISprite CreateWaterfall()
+        {
+            return new ParticleSprite(waterfallSpritesheet, 0, 0, 1, 3, 3);
+        }
+
+        public ISprite CreateWaterfallSpray()
+        {
+            return new ParticleSprite(waterfallSpraySpritesheet, 0, 0, 1, 2, 2);
         }
     }
 }

@@ -36,8 +36,6 @@ namespace Game1
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            state = new GameStateStart(this);
-
             resolutionManager = new ResolutionManager1(this, graphics, baseResolution, scale);
         }
 
@@ -59,6 +57,8 @@ namespace Game1
             Screen.LoadAllRooms();
 
             HUD = new HUDInterface(Screen.Player.PlayerInventory, Screen);
+
+            state = new GameStateStart(this);
         }
 
         protected override void UnloadContent()

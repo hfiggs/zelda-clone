@@ -32,6 +32,8 @@ namespace Game1.Util
 
             HUDItemFactory.Instance.LoadAllTextures(content);
 
+            StartSpriteFactory.Instance.LoadAllTextures(content);
+
             AudioManager.LoadContent(content);
         }
     }

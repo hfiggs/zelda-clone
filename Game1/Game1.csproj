@@ -68,10 +68,13 @@
   <ItemGroup>
     <Compile Include="Command\CollisionHandlerCommands\PlayerToBlockCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToEnvironmentCommand.cs" />
+    <Compile Include="Command\StartGameCommand.cs" />
     <Compile Include="Command\UnpauseCommand.cs" />
     <Compile Include="Controller\GamepadController.cs" />
+    <Compile Include="Controller\GamepadStartController.cs" />
     <Compile Include="Controller\GamepadTransitionController.cs" />
     <Compile Include="Controller\HUDKeyboardController.cs" />
+    <Compile Include="Controller\KeyboardStartController.cs" />
     <Compile Include="Controller\KeyboardTransitionController.cs" />
     <Compile Include="Environment\ExitDungeonLoadZone.cs" />
     <Compile Include="Environment\EnterDungeonLoadZone.cs" />
@@ -102,6 +105,10 @@
     <Compile Include="GameState\GameStateStartToSpawn.cs" />
     <Compile Include="GameState\GameStateStart.cs" />
     <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="Particle\Waterfall.cs" />
+    <Compile Include="Particle\WaterfallSpray.cs" />
+    <Compile Include="Sprite\StartSprite.cs" />
+    <Compile Include="Sprite\StartSpriteFactory.cs" />
     <Compile Include="Util\ContentUtil.cs" />
     <Compile Include="ResolutionManager\IResolutionManager.cs" />
     <Compile Include="ResolutionManager\ResolutionManager1.cs" />
