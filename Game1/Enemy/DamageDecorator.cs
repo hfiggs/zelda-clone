@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace Game1.Enemy
@@ -116,6 +117,11 @@ namespace Game1.Enemy
             original.SetState(state);
         }
 
+        public Vector2 GetPosition()
+        {
+            return original.GetPosition();
+        }
+
         public void stopKnockback(Vector2 possibleCorrections)
         {
             stillSlide = false;
@@ -131,6 +137,11 @@ namespace Game1.Enemy
                 correction = Vector2.Multiply(correction, new Vector2(0, 1));
 
             original.EditPosition(correction);
+        }
+
+        public new Type GetType()
+        {
+            return original.GetType();
         }
     }
 }

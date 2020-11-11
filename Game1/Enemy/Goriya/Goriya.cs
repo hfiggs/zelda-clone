@@ -97,6 +97,10 @@ namespace Game1.Enemy
             state.editPosition(amount);
         }
 
+        public Vector2 GetPosition()
+        {
+            return state.GetPosition();
+        }
         public bool ShouldRemove()
         {
             return health <= zero;

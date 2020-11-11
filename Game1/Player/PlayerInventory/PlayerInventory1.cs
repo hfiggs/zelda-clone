@@ -29,6 +29,7 @@ namespace Game1.Player.PlayerInventory
             hasItem[(int)ItemEnum.Boomerang] = true;
             BombCount = maxBombCount;
             RupeeCount = maxRupeeCount;
+            KeyCount = maxKeyCount;
 
             // everything else auto-initializes to 0 or false
         }

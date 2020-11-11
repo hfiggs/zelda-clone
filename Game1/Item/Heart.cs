@@ -2,7 +2,7 @@
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-namespace Game1.Item.Heart
+namespace Game1.Item
 {
     public class Heart : IItem
     {

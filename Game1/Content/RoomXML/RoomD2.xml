@@ -90,7 +90,7 @@
 		<X>152</X>
 		<Y>90</Y>
 	</Enemy>
-
+	
 	<InteractEnviornment>
 		<Type>LoadZoneN</Type>
 		<X>112</X>
@@ -111,4 +111,9 @@
 		<X>0</X>
 		<Y>72</Y>
 	</InteractEnviornment>
+	
+	<Puzzle>
+		<Type>PuzzleSpawnKey</Type>
+	</Puzzle>
+	
 </Assets>

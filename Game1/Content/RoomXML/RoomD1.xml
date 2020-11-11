@@ -116,4 +116,8 @@
 		<X>255</X>
 		<Y>72</Y>
 	</InteractEnviornment>
+	
+	<Puzzle>
+		<Type>PuzzleOpenDoor</Type>
+	</Puzzle>
 </Assets>

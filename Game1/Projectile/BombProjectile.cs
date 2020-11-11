@@ -20,16 +20,20 @@ namespace Game1.Projectile
         private List<IParticle> particles;
         private bool particlesSpawned;
 
+        private const int undetonatedHitboxXOffset = 13; // pixels
+        private const int undetonatedHitboxYOffset = 17; // pixels
+        private const int undetonatedHitboxDim = 16; // pixels
+
+        private const int detonatedHitboxXOffset = 10; // pixels
+        private const int detonatedHitboxYOffset = 12; // pixels
+        private const int detonatedHitboxDim = 24; // pixels
+
         private const int cloudOffset = 15; // pixels
         private const int cloudHexOffset = 8; //pixels
-        private const int spriteDiameter = 40; // pixels
+        private const int spriteRadius = 20; // pixels
 
-        private const float centralOffset = spriteDiameter / 3.0f;
-
-        private int timeUntilNoExplosionHitbox;
-        private const int explosionHitboxTime = 100; // ms
-
-        private const int explosionDiameter = 24; // pixels
+        private const float particleTime = 600f; // ms
+        private float particleTimer;
 
         private const float bombPlaceDelay = 0.5f; //sec
         private const float bombExplodeDelay = 1.5f; //sec
@@ -46,6 +50,7 @@ namespace Game1.Projectile
 
             particles = new List<IParticle>();
             particlesSpawned = false;
+            particleTimer = particleTime;
 
             AudioManager.PlayFireForget("bombPlace", bombPlaceDelay);
             AudioManager.PlayFireForget("bombExplode", bombExplodeDelay);
@@ -61,16 +66,15 @@ namespace Game1.Projectile
                     AddCloudParticles(particles);
                     particlesSpawned = true;
                 }
-
-                timeUntilNoExplosionHitbox = explosionHitboxTime;
             }
 
             if(detonated)
             {
-                timeUntilNoExplosionHitbox -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+                particleTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             }
 
-            particles.RemoveAll(p => (detonated && particles.Count == 0));
+            particles.RemoveAll(p => (particlesSpawned && particleTimer <= 0));
 
             foreach (IParticle particle in particles)
             {
@@ -102,7 +106,7 @@ namespace Game1.Projectile
 
         private Vector2 GetCenteredPosition()
         {
-            return new Vector2(position.X + centralOffset, position.Y + centralOffset);
+            return new Vector2(position.X + spriteRadius, position.Y + spriteRadius);
         }
 
         private void AddCloudParticles(List<IParticle> particles)
@@ -122,13 +126,10 @@ namespace Game1.Projectile
         public Rectangle GetHitbox()
         {
             Rectangle hitbox;
-            const int xAndYDiff = 14;
-            const int width = 12;
-            const int height = 16;
             if(!detonated) {
-                hitbox = new Rectangle((int)position.X + xAndYDiff, (int)position.Y + xAndYDiff, width, height);
+                hitbox = new Rectangle((int)position.X + undetonatedHitboxXOffset, (int)position.Y + undetonatedHitboxYOffset, undetonatedHitboxDim, undetonatedHitboxDim);
             } else {
-                hitbox = new Rectangle((int)GetCenteredPosition().X - explosionDiameter/2, (int)GetCenteredPosition().Y - explosionDiameter / 2, explosionDiameter, explosionDiameter);
+                hitbox = new Rectangle((int)position.X + detonatedHitboxXOffset, (int)position.Y + detonatedHitboxYOffset, detonatedHitboxDim, detonatedHitboxDim);
             }
 
             return hitbox;

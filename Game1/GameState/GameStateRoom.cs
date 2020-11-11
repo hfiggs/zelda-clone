@@ -2,6 +2,7 @@
 
 using Game1.Controller;
 using Game1.Environment;
+using Game1.Projectile;
 using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -61,9 +62,9 @@ namespace Game1.GameState
             // TODO: Remove before submission
             foreach(IEnvironment env in game.Screen.CurrentRoom.InteractEnviornment)
             {
-                if(env.GetType() == typeof(LoadZone))
+                if(env is LoadZone lZ)
                 {
-                    DebugUtil.showHitbox(((LoadZone)env).GetHitboxes().First(), spriteBatch, game);
+                    DebugUtil.showHitbox(lZ.GetHitboxes().First(), spriteBatch, game);
                 }
             }
 

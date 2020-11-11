@@ -62,6 +62,10 @@ namespace Game1.Enemy
             return state.GetHitboxes();
         }
 
+        public Vector2 GetPosition()
+        {
+            return state.GetPosition();
+        }
         public bool ShouldRemove()
         {
             return health <= 0;

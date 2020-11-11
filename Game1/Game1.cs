@@ -56,7 +56,7 @@ namespace Game1
             ContentUtil.LoadAllContent(Content, GraphicsDevice);
 
             //Move this to game state maybe?
-            //AudioManager.PlayLooped("dungeon");
+            AudioManager.PlayLooped("dungeon");
 
             Screen = new Screen(this);
             Screen.LoadAllRooms();

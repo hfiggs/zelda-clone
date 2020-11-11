@@ -2,7 +2,7 @@
 using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
-using Game1.Item.Heart;
+using Game1.RoomLoading.Puzzle;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -365,6 +365,29 @@ namespace Game1.RoomLoading
             }
 
             return soundList;
+        }
+
+        public IPuzzle GetPuzzle()
+        {
+            IPuzzle puzzle = null;
+            XmlNodeList puzzleNodes = roomData.getPuzzleNodes();
+
+            foreach (XmlNode n in puzzleNodes)
+            {
+                switch (n["Type"].InnerText)
+                {
+                    case "PuzzleSpawnKey":
+                        puzzle = new PuzzleSpawnKey();
+                        break;
+                    case "PuzzleOpenDoor":
+                        puzzle = new PuzzleOpenDoor();
+                        break;
+                    case "PuzzleMoveBlock":
+                        puzzle = new PuzzleMoveBlock();
+                        break;
+                }
+            }
+            return puzzle;
         }
     }
 }

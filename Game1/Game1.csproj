@@ -86,6 +86,7 @@
     <Compile Include="ContentUtil.cs" />
     <Compile Include="ResolutionManager\IResolutionManager.cs" />
     <Compile Include="ResolutionManager\ResolutionManager1.cs" />
+    <Compile Include="Item\ItemDropper\ItemDropper.cs" />
     <Compile Include="Particle\ShieldDeflect.cs" />
     <Compile Include="Particle\BombOverlay.cs" />
     <Compile Include="RoomLoading\AmbientSound.cs" />
@@ -207,6 +208,10 @@
     <Compile Include="Particle\BeamExplosion.cs" />
     <Compile Include="Particle\Cloud.cs" />
     <Compile Include="Particle\IParticle.cs" />
+    <Compile Include="RoomLoading\Puzzle\IPuzzle.cs" />
+    <Compile Include="RoomLoading\Puzzle\PuzzleMoveBlock.cs" />
+    <Compile Include="RoomLoading\Puzzle\PuzzleOpenDoor.cs" />
+    <Compile Include="RoomLoading\Puzzle\PuzzleSpawnKey.cs" />
     <Compile Include="RoomLoading\Room.cs" />
     <Compile Include="RoomLoading\Screen.cs" />
     <Compile Include="RoomLoading\XMLLoader.cs" />
