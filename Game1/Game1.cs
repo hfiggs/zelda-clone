@@ -36,7 +36,7 @@ namespace Game1
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            state = new GameStateRoom(this);
+            state = new GameStateStart(this);
 
             resolutionManager = new ResolutionManager1(this, graphics, baseResolution, scale);
         }
@@ -54,9 +54,6 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             ContentUtil.LoadAllContent(Content, GraphicsDevice);
-
-            //Move this to game state maybe?
-            AudioManager.PlayLooped("dungeon");
 
             Screen = new Screen(this);
             Screen.LoadAllRooms();

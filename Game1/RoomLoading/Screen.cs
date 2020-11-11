@@ -13,6 +13,7 @@ namespace Game1.RoomLoading
     public class Screen
     {
         public IPlayer Player { get; set; }
+        private readonly Vector2 playerPosition = new Vector2(100, 88);
 
         public Dictionary<(char, int), Room> RoomsDict { get; set; }
         public Room CurrentRoom { get { return RoomsDict[CurrentRoomKey]; } private set { CurrentRoom = value; } }
@@ -22,14 +23,14 @@ namespace Game1.RoomLoading
         private CollisionDetector detector;
         private CollisionHandler handler;
 
-        private const char startingLetter = 'F';
+        private const char startingLetter = 'G';
         private const int startingNumber = 2;
         
         public Screen(Game1 game)
         {
             this.game = game;
             RoomsDict = new Dictionary<(char, int), Room>();
-            Player = new Player1(game, new Vector2(80, 80));
+            Player = new Player1(game, playerPosition);
         }
 
         public void LoadAllRooms()

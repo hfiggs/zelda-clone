@@ -37,6 +37,12 @@
 /processorParam:Quality=Best
 /build:audio/music/gameOverBlasted.wav
 
+#begin audio/music/overworld.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/music/overworld.wav
+
 #begin audio/music/title.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -318,6 +324,78 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/Environment/door_floors.png
+
+#begin Images/Environment/Overworld/OverworldFloor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Overworld/OverworldFloor.png
+
+#begin Images/Environment/Overworld/OverworldFloorTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Overworld/OverworldFloorTile.png
+
+#begin Images/Environment/Overworld/OverworldRock.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Overworld/OverworldRock.png
+
+#begin Images/Environment/Overworld/OverworldTree.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Overworld/OverworldTree.png
+
+#begin Images/Environment/Overworld/OverworldWater.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Overworld/OverworldWater.png
+
+#begin Images/Environment/Overworld/TreeDoor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Overworld/TreeDoor.png
 
 #begin Images/Environment/RoomBase.png
 /importer:TextureImporter
@@ -627,6 +705,9 @@
 
 #begin RoomXML/RoomG0.xml
 /copy:RoomXML/RoomG0.xml
+
+#begin RoomXML/RoomG2.xml
+/copy:RoomXML/RoomG2.xml
 
 #begin RoomXML/RoomZ0.xml
 /copy:RoomXML/RoomZ0.xml

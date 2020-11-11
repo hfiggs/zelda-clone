@@ -29,11 +29,11 @@ namespace Game1.Command.CollisionHandlerCommands
 
             // side is side of block (collidee)
 
-            if (enviro.GetType() == typeof(MovableBlock) && !((MovableBlock)enviro).hasMoved)
+            if (enviro is MovableBlock mB && !(mB.hasMoved))
             {
-                ((MovableBlock)enviro).Move(Vector2.Multiply(CompassDirectionUtil.GetDirectionVector(side), negativeVector), moveBlockTime);
+                mB.Move(Vector2.Multiply(CompassDirectionUtil.GetDirectionVector(side), negativeVector), moveBlockTime);
             }
-            else if (enviro.GetType() == typeof(Stairs))
+            else if (enviro is Stairs)
             {
                 AudioManager.PlayMutex("stairs");
                 // TODO: GameStateRoomToBasement
@@ -44,13 +44,15 @@ namespace Game1.Command.CollisionHandlerCommands
 
                 RoomUtil.EnterDoor(game, enviro);
 
+                RoomUtil.EnterExitDungeon(game, enviro);
+
                 Vector2 moveAmount = Vector2.Multiply(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height), CompassDirectionUtil.GetDirectionVector(side));
                 player.EditPosition(moveAmount);
             }
 
-            if (player.GetType() == typeof(DamagedPlayer) && ((DamagedPlayer)player).stillSlide)
+            if (player is DamagedPlayer dP && dP.stillSlide)
             {
-                ((DamagedPlayer)player).StopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
+                dP.StopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
             }
 
         }

@@ -24,6 +24,8 @@ namespace Game1.Util
 
             EnvironmentSpriteFactory.instance.LoadContent(content);
 
+            OverworldEnvironmentSpriteFactory.instance.LoadContent(content);
+
             EnemySpriteFactory.Instance.LoadAllTextures(content);
 
             ParticleSpriteFactory.Instance.LoadAllTextures(content, graphicsDevice);

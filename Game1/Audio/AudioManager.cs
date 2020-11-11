@@ -39,6 +39,7 @@ namespace Game1.Audio
         public static void LoadContent(ContentManager content)
         {
             //looped sounds
+            musicMap.Add("overworld", content.Load<SoundEffect>("audio/music/overworld"));
             musicMap.Add("dungeon", content.Load<SoundEffect>("audio/music/dungeon"));
             musicMap.Add("dungeon2", content.Load<SoundEffect>("audio/music/dungeonBass"));
             musicMap.Add("title", content.Load<SoundEffect>("audio/music/title"));

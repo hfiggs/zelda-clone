@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/* Author: Hunter Figgs.3 */
+
+using System.Collections.Generic;
 using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

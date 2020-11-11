@@ -212,7 +212,7 @@
 		<Y>72</Y>
 	</InteractEnviornment>
 	<InteractEnviornment>
-		<Type>LoadZoneS</Type>
+		<Type>ExitDungeonLoadZone</Type>
 		<X>112</X>
 		<Y>175</Y>
 	</InteractEnviornment>

@@ -35,9 +35,9 @@ namespace Game1.Util
 
         public static void EnterDoor(Game1 game, IEnvironment envo)
         {
-            if (envo.GetType() == typeof(LoadZone))
+            if (envo is LoadZone lZ)
             {
-                switch (((LoadZone)envo).GetTransitionDirection())
+                switch (lZ.GetTransitionDirection())
                 {
                     case CompassDirection.North:
                         game.SetState(new GameStateRoomToRoomNorth(game));
@@ -52,6 +52,18 @@ namespace Game1.Util
                         game.SetState(new GameStateRoomToRoomWest(game));
                         break;
                 }
+            }
+        }
+
+        public static void EnterExitDungeon(Game1 game, IEnvironment envo)
+        {
+            if (envo is EnterDungeonLoadZone)
+            {
+                game.SetState(new GameStateSpawnToDungeon(game));
+            }
+            else if (envo is ExitDungeonLoadZone)
+            {
+                game.SetState(new GameStateDungeonToSpawn(game));
             }
         }
 

@@ -197,6 +197,17 @@ namespace Game1.RoomLoading
                     case "DoorWFloor":
                         nonInteractEnviornment = new DoorWFloor(position);
                         break;
+
+                    case "OverworldFloor":
+                        nonInteractEnviornment = new OverworldFloor(position);
+                        break;
+                    case "OverworldFloorTile":
+                        nonInteractEnviornment = new OverworldFloorTile(position);
+                        break;
+                    case "OverworldPlank":
+                        nonInteractEnviornment = new OverworldPlank(position);
+                        break;
+
                     default:
                         throw new System.ArgumentException("Parameter cannot be null", "original");
                 }
@@ -309,6 +320,12 @@ namespace Game1.RoomLoading
                     case "DoorWBombable":
                         interactEnviornment = new DoorWBombable(position, false);
                         break;
+                    case "EnterDungeonLoadZone":
+                        interactEnviornment = new EnterDungeonLoadZone(position);
+                        break;
+                    case "ExitDungeonLoadZone":
+                        interactEnviornment = new ExitDungeonLoadZone(position);
+                        break;
                     case "Fire":
                         interactEnviornment = new Fire(position);
                         break;
@@ -339,6 +356,32 @@ namespace Game1.RoomLoading
                     case "RoomBorder":
                         interactEnviornment = new RoomBorder(position);
                         break;
+
+                    case "OverworldWater":
+                        interactEnviornment = new OverworldWater(position);
+                        break;
+                    case "OverworldRockTM":
+                        interactEnviornment = new OverworldRockTM(position);
+                        break;
+                    case "OverworldRockBM":
+                        interactEnviornment = new OverworldRockBM(position);
+                        break;
+                    case "OverworldTreeTL":
+                        interactEnviornment = new OverworldTreeTL(position);
+                        break;
+                    case "OverworldTreeTM":
+                        interactEnviornment = new OverworldTreeTM(position);
+                        break;
+                    case "OverworldTreeTR":
+                        interactEnviornment = new OverworldTreeTR(position);
+                        break;
+                    case "OverworldTreeBL":
+                        interactEnviornment = new OverworldTreeBL(position);
+                        break;
+                    case "OverworldTreeBR":
+                        interactEnviornment = new OverworldTreeBR(position);
+                        break;
+
                     default:
                         throw new System.ArgumentException("Parameter cannot be null", "original");
                 }

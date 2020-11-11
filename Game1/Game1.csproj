@@ -73,15 +73,34 @@
     <Compile Include="Controller\GamepadTransitionController.cs" />
     <Compile Include="Controller\HUDKeyboardController.cs" />
     <Compile Include="Controller\KeyboardTransitionController.cs" />
+    <Compile Include="Environment\ExitDungeonLoadZone.cs" />
+    <Compile Include="Environment\EnterDungeonLoadZone.cs" />
+    <Compile Include="Environment\OverworldEnvironmentSpriteFactory.cs" />
     <Compile Include="Environment\LoadZone.cs" />
+    <Compile Include="Environment\Overworld\OverworldTree\OverworldTreeTR.cs" />
+    <Compile Include="Environment\Overworld\OverworldTree\OverworldTreeTM.cs" />
+    <Compile Include="Environment\Overworld\OverworldTree\OverworldTreeBR.cs" />
+    <Compile Include="Environment\Overworld\OverworldTree\OverworldTreeBL.cs" />
+    <Compile Include="Environment\Overworld\OverworldTree\OverworldTreeTL.cs" />
+    <Compile Include="Environment\Overworld\OverworldPlank.cs" />
+    <Compile Include="Environment\Overworld\OverworldWater.cs" />
+    <Compile Include="Environment\Overworld\OverworldRock\OverworldRockTM.cs" />
+    <Compile Include="Environment\Overworld\OverworldRock\OverworldRockBM.cs" />
+    <Compile Include="Environment\Overworld\OverworldFloorTile.cs" />
+    <Compile Include="Environment\Overworld\OverworldFloor.cs" />
     <Compile Include="GameState\GameStateHUD.cs" />
     <Compile Include="GameState\GameStateHUDToRoom.cs" />
+    <Compile Include="GameState\GameStateDungeonToSpawn.cs" />
+    <Compile Include="GameState\GameStateSpawnToDungeon.cs" />
+    <Compile Include="GameState\GameStateSpawn.cs" />
     <Compile Include="GameState\GameStateRoomToRoomEast.cs" />
     <Compile Include="GameState\GameStateRoomToRoomSouth.cs" />
     <Compile Include="GameState\GameStateRoomToRoomNorth.cs" />
     <Compile Include="GameState\GameStateRoomToRoomWest.cs" />
     <Compile Include="GameState\GameStateRoomToHUD.cs" />
     <Compile Include="GameState\GameStateRoom.cs" />
+    <Compile Include="GameState\GameStateStartToSpawn.cs" />
+    <Compile Include="GameState\GameStateStart.cs" />
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="Util\ContentUtil.cs" />
     <Compile Include="ResolutionManager\IResolutionManager.cs" />
@@ -157,7 +176,6 @@
     <Compile Include="Enemy\IEnemyState.cs" />
     <Compile Include="Enemy\Bat\Bat.cs" />
     <Compile Include="Enemy\Bat\BatStateMoving.cs" />
-    <Compile Include="Enemy\EnemyListFactory.cs" />
     <Compile Include="Enemy\Jelly\Jelly.cs" />
     <Compile Include="Enemy\Jelly\JellyStateMoving.cs" />
     <Compile Include="Enemy\OldMan\OldMan.cs" />
@@ -263,7 +281,6 @@
     <Compile Include="Item\HeartContainer.cs" />
     <Compile Include="Item\IItem.cs" />
     <Compile Include="Item\ItemBoomerang.cs" />
-    <Compile Include="Item\ItemListFactory.cs" />
     <Compile Include="Item\Key.cs" />
     <Compile Include="Item\Map.cs" />
     <Compile Include="Item\RupeeBlue.cs" />
@@ -357,14 +374,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
-    <Content Include="_Documentation\MaintainabilityCollisionHandler.txt" />
-    <Content Include="_Documentation\MaintainabilityXMLParser.txt" />
-    <Content Include="_Documentation\MaintainabilityPlayerInventory.txt" />
-    <Content Include="_Documentation\MaintainabilityCopy.txt" />
-    <Content Include="_Documentation\ReadabilityCollisionDetection.txt" />
-    <Content Include="_Documentation\ReadabilityCopy.txt" />
-    <Content Include="_Documentation\ReadabilityRoom.txt" />
-    <Content Include="_Documentation\README.txt" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />

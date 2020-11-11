@@ -39,7 +39,7 @@ namespace Game1.Player
         public Player1(Game1 game, Vector2 position)
         {
             this.game = game;
-            state = new PlayerStateRight(this, position);
+            state = new PlayerStateDown(this, position);
             timeUntilNextSwordBeam = -1; // to ensure time is <= 0
 
             PlayerInventory = new PlayerInventory1();

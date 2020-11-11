@@ -1,14 +1,11 @@
 ﻿/* Author: Hunter Figgs.3 */
 
 using Game1.Controller;
-using Game1.Environment;
 using Game1.ResolutionManager;
-using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Game1.GameState
 {
@@ -58,15 +55,6 @@ namespace Game1.GameState
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
             game.Screen.Draw(spriteBatch, color);
-
-            // TODO: Remove before submission
-            foreach(IEnvironment env in game.Screen.CurrentRoom.InteractEnviornment)
-            {
-                if(env is LoadZone lZ)
-                {
-                    DebugUtil.ShowHitbox(lZ.GetHitboxes().First(), spriteBatch, game);
-                }
-            }
 
             spriteBatch.End();
 
