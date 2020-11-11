@@ -7,7 +7,7 @@ namespace Game1.Util
 {
     class DebugUtil
     {
-        public static void showHitbox(Rectangle hitbox, SpriteBatch spriteBatch, Game1 game)
+        public static void ShowHitbox(Rectangle hitbox, SpriteBatch spriteBatch, Game1 game)
         {
             //Stack overflow: https://stackoverflow.com/questions/5751732/draw-rectangle-in-xna-using-spritebatch
             if (hitbox.Width > 0)

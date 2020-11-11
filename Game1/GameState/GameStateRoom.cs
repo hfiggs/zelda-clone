@@ -64,7 +64,7 @@ namespace Game1.GameState
             {
                 if(env is LoadZone lZ)
                 {
-                    DebugUtil.showHitbox(lZ.GetHitboxes().First(), spriteBatch, game);
+                    DebugUtil.ShowHitbox(lZ.GetHitboxes().First(), spriteBatch, game);
                 }
             }
 
