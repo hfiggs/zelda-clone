@@ -15,6 +15,9 @@ namespace Game1.Controller
             commands = new Dictionary<Keys, ICommand>
             {
                 { Keys.Q, new QuitCommand(game) },
+                {Keys.F1, new MuteUnmuteCommand(game) },
+                {Keys.F2, new VolumeDownCommand(game) },
+                {Keys.F3, new VolumeUpCommand(game) }
             };
         }
 

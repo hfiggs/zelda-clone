@@ -16,7 +16,10 @@ namespace Game1.Controller
             {
                 { Keys.Q, new QuitCommand(game) },
                 { Keys.LeftShift, new PauseGameCommand(game) },
-                { Keys.RightShift, new PauseGameCommand(game) }
+                { Keys.RightShift, new PauseGameCommand(game) },
+                {Keys.F1, new MuteUnmuteCommand(game) },
+                {Keys.F2, new VolumeDownCommand(game) },
+                {Keys.F3, new VolumeUpCommand(game) }
             };
         }
 

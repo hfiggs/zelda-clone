@@ -44,7 +44,10 @@ namespace Game1.Controller
                 { Keys.NumPad2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
                 { Keys.NumPad3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
 
-                {Keys.Escape, new EnterHUDStateCommand(game) }
+                {Keys.Escape, new EnterHUDStateCommand(game) },
+                {Keys.F1, new MuteUnmuteCommand(game) },
+                {Keys.F2, new VolumeDownCommand(game) },
+                {Keys.F3, new VolumeUpCommand(game) }
             };
         }
 

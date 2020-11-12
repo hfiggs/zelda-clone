@@ -372,5 +372,10 @@ namespace Game1.Audio
             volumeMusic = float.Parse(settingsNode["Music"].InnerText);
             volumeSound = float.Parse(settingsNode["Sound"].InnerText);
         }
+
+        public static float GetVolumeMaster()
+        {
+            return volumeMaster;
+        }
     }
 }

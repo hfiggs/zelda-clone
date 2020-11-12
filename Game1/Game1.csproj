@@ -66,9 +66,12 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\AudioCommands\VolumeUpCommand.cs" />
+    <Compile Include="Command\AudioCommands\VolumeDownCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\PlayerToBlockCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToEnvironmentCommand.cs" />
     <Compile Include="Command\PauseGameCommand.cs" />
+    <Compile Include="Command\AudioCommands\MuteUnmuteCommand.cs" />
     <Compile Include="Command\StartGameCommand.cs" />
     <Compile Include="Command\ExitHUDStateCommand.cs" />
     <Compile Include="Command\SelectItemLeftCommand.cs" />
