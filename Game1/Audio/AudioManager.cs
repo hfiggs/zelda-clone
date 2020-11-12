@@ -35,6 +35,8 @@ namespace Game1.Audio
         private static readonly float chestSoundLength = 2.0f;
         private static readonly float triforceSoundLength = 8.0f;
 
+        private static bool stopSoundInit = false;
+        private static bool paused = false;
 
         public static void LoadContent(ContentManager content)
         {
@@ -172,6 +174,45 @@ namespace Game1.Audio
             }
         }
 
+        public static void PauseAllAudio()
+        {
+            foreach (SoundEffectInstance music in activeMusicList)
+            {
+                if (music.State.HasFlag(SoundState.Playing))
+                {
+                    music.Pause();
+                }
+            }
+            foreach (SoundEffectInstance sound in activeSoundList)
+            {
+                if (sound.State.HasFlag(SoundState.Playing))
+                {
+                    sound.Pause();
+                }
+            }
+            paused = true;
+        }
+
+        public static void UnpauseAllAudio()
+        {
+            stopSoundInit = false;
+            foreach (SoundEffectInstance music in activeMusicList)
+            {
+                if (music.State.HasFlag(SoundState.Playing))
+                {
+                    music.Resume();
+                }
+            }
+            foreach (SoundEffectInstance sound in activeSoundList)
+            {
+                if (sound.State.HasFlag(SoundState.Playing))
+                {
+                    sound.Resume();
+                }
+            }
+            paused = false;
+        }
+
         public static void StopMusic(SoundEffectInstance musicRef)
         {
             musicRef.Stop();
@@ -292,23 +333,34 @@ namespace Game1.Audio
 
         public static void Update(GameTime gameTime)
         {
-            //updates delay queue and sound queue
-            List<double> newDelays = new List<double>();
-            List<SoundEffectInstance> newSounds = new List<SoundEffectInstance>();
-            int limit = soundQueue.Count;
-            for(int i = 0; i < limit; i++)
+            if (!paused)
             {
-                double newDelay = delays.ElementAt(i) - gameTime.ElapsedGameTime.TotalSeconds;
-                if (newDelay > 0.0) {
-                    newDelays.Add(newDelay);
-                    newSounds.Add(soundQueue.ElementAt(i));
-                } else
+                //updates delay queue and sound queue
+                List<double> newDelays = new List<double>();
+                List<SoundEffectInstance> newSounds = new List<SoundEffectInstance>();
+                int limit = soundQueue.Count;
+                for (int i = 0; i < limit; i++)
                 {
-                    soundQueue.ElementAt(i).Play();
+                    double newDelay = delays.ElementAt(i) - gameTime.ElapsedGameTime.TotalSeconds;
+                    if (newDelay > 0.0)
+                    {
+                        newDelays.Add(newDelay);
+                        newSounds.Add(soundQueue.ElementAt(i));
+                    }
+                    else
+                    {
+                        soundQueue.ElementAt(i).Play();
+                    }
+                }
+                delays = newDelays;
+                soundQueue = newSounds;
+
+                if (!stopSoundInit)
+                {
+                    StopAllSound();
+                    stopSoundInit = true;
                 }
             }
-            delays = newDelays;
-            soundQueue = newSounds;
         }
 
         private static void ReadSoundSettings()

@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs.3 */
 
+using Game1.Audio;
 using Game1.GameState;
 using System.Diagnostics;
 
@@ -25,10 +26,12 @@ namespace Game1.Command
             {
                 if (game.State is GameStatePaused)
                 {
+                    AudioManager.UnpauseAllAudio();
                     game.SetState(new GameStateRoom(game));
                 }
                 else if (game.State is GameStateRoom)
                 {
+                    AudioManager.PauseAllAudio();
                     game.SetState(new GameStatePaused(game));
                 }
 
