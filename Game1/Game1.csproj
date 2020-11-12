@@ -105,7 +105,6 @@
     <Compile Include="GameState\TransitionStates\GameStateHUDToRoom.cs" />
     <Compile Include="GameState\TransitionStates\GameStateDungeonToSpawn.cs" />
     <Compile Include="GameState\TransitionStates\GameStateSpawnToDungeon.cs" />
-    <Compile Include="GameState\GameStateSpawn.cs" />
     <Compile Include="GameState\TransitionStates\GameStateRoomToRoomEast.cs" />
     <Compile Include="GameState\TransitionStates\GameStateRoomToRoomSouth.cs" />
     <Compile Include="GameState\TransitionStates\GameStateRoomToRoomNorth.cs" />

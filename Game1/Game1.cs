@@ -70,7 +70,7 @@ namespace Game1
         {
             state.Update(gameTime);
 
-            //AudioManager.Update(gameTime);
+            AudioManager.Update(gameTime);
             
             base.Update(gameTime);
         }

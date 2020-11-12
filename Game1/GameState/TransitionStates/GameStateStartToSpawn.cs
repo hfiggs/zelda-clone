@@ -25,7 +25,7 @@ namespace Game1.GameState
 
             AudioManager.PlayLooped("overworld");
 
-            game.SetState(new GameStateSpawn(game));
+            game.SetState(new GameStateRoom(game));
         }
     }
 }
