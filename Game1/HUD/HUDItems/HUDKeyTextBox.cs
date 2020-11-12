@@ -11,6 +11,7 @@ namespace Game1.HUD
         private int row;
         public Vector2 location { get ; set; }
         public Rectangle selectionRectangle { get; set; }
+        public ItemEnum myItem { get; private set; } = ItemEnum.None;
         private IPlayerInventory inv;
         public HUDKeyTextBox(Texture2D HUDIconsTexture, int row, IPlayerInventory inv)
         {

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.HUD
 {
-    interface IHudItem
+    public interface IHudItem
     {
         Vector2 location { get; set; }
 
@@ -14,6 +14,8 @@ namespace Game1.HUD
         void Draw(SpriteBatch spriteBatch, Vector2 movement, Color color);
 
         IHudItem copyOf();
+
+        ItemEnum myItem { get; }
 
         Rectangle selectionRectangle { get; }
     }

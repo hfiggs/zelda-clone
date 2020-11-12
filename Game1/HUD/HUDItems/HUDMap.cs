@@ -9,6 +9,7 @@ namespace Game1.HUD
     {
         public Vector2 location { get; set; } = new Vector2(28, 50);
         public Rectangle selectionRectangle { get; set; }
+        public ItemEnum myItem { get; private set; } = ItemEnum.None;
         private IPlayerInventory inv;
         private HUDSprite sprite;
 

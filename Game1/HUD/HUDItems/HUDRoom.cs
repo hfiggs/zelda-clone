@@ -9,6 +9,7 @@ namespace Game1.HUD
 
         public Vector2 location { get; set; }
         public Rectangle selectionRectangle { get; set; }
+        public ItemEnum myItem { get; private set; } = ItemEnum.None;
         private HUDSprite sprite;
 
         public HUDRoom(HUDSprite sprite, Vector2 Position)

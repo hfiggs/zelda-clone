@@ -6,6 +6,7 @@ using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 
 //SCREEN SIZE: (256,176)
@@ -29,6 +30,27 @@ namespace Game1.HUD
             }
         }
 
+        public List<IHudItem> buildHUDList(IPlayerInventory playerInventory)
+        {
+            List<IHudItem> Items = new List<IHudItem>();
+
+            Items.Add(HUDItemFactory.Instance.BuildHUDBase());
+            Items.Add(HUDItemFactory.Instance.BuildDungeonOneMap(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDRupeeTextBox(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDArrow(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDKeyTextBox(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDBombTextBox(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDBow(playerInventory, new Vector2(177, -9)));
+            Items.Add(HUDItemFactory.Instance.BuildHUDCompass(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDMap(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDBomb(playerInventory, new Vector2(150, -9)));
+            Items.Add(HUDItemFactory.Instance.BuildHUDBoomerang(playerInventory, new Vector2(130, -9)));
+            Items.Add(HUDItemFactory.Instance.BuildHUDHeartBar(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDFlashingDot(playerInventory, new Vector2(65, 149)));
+            Items.Add(HUDItemFactory.Instance.BuildHUDSword());
+
+            return Items;
+        }
         public void LoadAllTextures(ContentManager content)
         {
             HUDbase = content.Load<Texture2D>("Images/HUD/HUD");
@@ -92,10 +114,10 @@ namespace Game1.HUD
             {
                 if (env.GetType() == typeof(DoorWFloor))
                 {
-                    roomColumn += 1;
+                    roomColumn += 2;
                 }else if (env.GetType() == typeof(DoorEFloor))
                 {
-                    roomColumn += 2;
+                    roomColumn += 1;
                 }
                 else if (env.GetType() == typeof(DoorSFloor))
                 {

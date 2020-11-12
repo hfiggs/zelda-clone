@@ -7,6 +7,7 @@ namespace Game1.HUD
     internal class HUDFlashingDot : IHudItem
     {
         public Vector2 location { get; set; }
+        public ItemEnum myItem { get; private set; } = ItemEnum.None;
         public Rectangle selectionRectangle { get; set; }
         private IPlayerInventory inv;
         private HUDSprite displaySprite;

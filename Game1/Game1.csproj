@@ -76,6 +76,8 @@
     <Compile Include="Controller\HUDKeyboardController.cs" />
     <Compile Include="Controller\KeyboardStartController.cs" />
     <Compile Include="Controller\KeyboardTransitionController.cs" />
+    <Compile Include="Command\selectItemLeftCommand.cs" />
+    <Compile Include="Command\selectItemRightCommand.cs" />
     <Compile Include="Environment\ExitDungeonLoadZone.cs" />
     <Compile Include="Environment\EnterDungeonLoadZone.cs" />
     <Compile Include="Environment\OverworldEnvironmentSpriteFactory.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Environment\Overworld\OverworldRock\OverworldRockBM.cs" />
     <Compile Include="Environment\Overworld\OverworldFloorTile.cs" />
     <Compile Include="Environment\Overworld\OverworldFloor.cs" />
+    <Compile Include="GameState\SkyrimState.cs" />
     <Compile Include="GameState\GameStateHUD.cs" />
     <Compile Include="GameState\GameStateHUDToRoom.cs" />
     <Compile Include="GameState\GameStateDungeonToSpawn.cs" />

@@ -27,6 +27,7 @@ namespace Game1.Player.PlayerInventory
 
             // TODO: Remove this when item drops are working and boomerang is acquirable
             hasItem[(int)ItemEnum.Boomerang] = true;
+
             BombCount = maxBombCount;
 
             // everything else auto-initializes to 0 or false

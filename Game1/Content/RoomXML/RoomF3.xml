@@ -11,8 +11,8 @@
 		<Y>32</Y>
 	</NonInteractEnviornment>
 	<NonInteractEnviornment>
-		<Type>DoorEFloor</Type>
-		<X>224</X>
+		<Type>DoorWFloor</Type>
+		<X>0</X>
 		<Y>72</Y>
 	</NonInteractEnviornment>
 	<InteractEnviornment>

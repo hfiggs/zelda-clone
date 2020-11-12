@@ -7,6 +7,7 @@ namespace Game1.HUD
     internal class HUDBoomerang : IHudItem
     {
         public Vector2 location { get; set; }
+        public ItemEnum myItem { get; private set; } = ItemEnum.Boomerang;
         public Rectangle selectionRectangle { get; set; }
         private IPlayerInventory inv;
         private HUDSprite sprite;

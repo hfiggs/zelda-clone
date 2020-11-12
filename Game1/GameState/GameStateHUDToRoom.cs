@@ -37,7 +37,7 @@ namespace Game1.GameState
                 new KeyboardTransitionController(game),
                 new GamepadTransitionController(game, PlayerIndex.One)
             };
-
+            game.IsMouseVisible = false;
             roomOffset = roomStartOffset;
             hudOffset = hudStartOffset;
         }
@@ -50,7 +50,7 @@ namespace Game1.GameState
             }
 
             Mouse.SetPosition(150, 150);
-
+            
             roomOffset = Math.Max(roomEndOffset, roomOffset - transitionSpeed * (float)gameTime.ElapsedGameTime.TotalMilliseconds);
             hudOffset = Math.Max(hudEndOffset, hudOffset - transitionSpeed * (float)gameTime.ElapsedGameTime.TotalMilliseconds);
 

@@ -10,6 +10,7 @@ namespace Game1.HUD.HUDItems
     class HUDBase : IHudItem
     {
         public Vector2 location { get; set; } = new Vector2(0, 0);
+        public ItemEnum myItem { get; private set; } = ItemEnum.None;
         public Rectangle selectionRectangle { get; set; }
         private HUDSprite sprite;
 

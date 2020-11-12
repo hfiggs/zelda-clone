@@ -748,3 +748,8 @@
 #begin RoomXML/RoomZ0.xml
 /copy:RoomXML/RoomZ0.xml
 
+#begin videoplayback.wmv
+/importer:WmvImporter
+/processor:VideoProcessor
+/build:videoplayback.wmv;Skyrim.wmv
+

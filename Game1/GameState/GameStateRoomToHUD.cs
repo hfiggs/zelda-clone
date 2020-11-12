@@ -37,7 +37,7 @@ namespace Game1.GameState
                 new KeyboardTransitionController(game),
                 new GamepadTransitionController(game, PlayerIndex.One)
             };
-
+            game.IsMouseVisible = true;
             roomOffset = roomStartOffset;
             hudOffset = hudStartOffset;
         }

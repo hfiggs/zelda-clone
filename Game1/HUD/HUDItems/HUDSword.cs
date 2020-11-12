@@ -1,4 +1,5 @@
-﻿using Game1.Sprite;
+﻿using Game1.Player.PlayerInventory;
+using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -7,7 +8,7 @@ namespace Game1.HUD
     internal class HUDSword : IHudItem
     {
         public Vector2 location { get; set; } = new Vector2(135, 140);
-
+        public ItemEnum myItem { get; private set; } = ItemEnum.None;
         public Rectangle selectionRectangle { get; set; }
         public HUDSprite sprite;
         public HUDSword(HUDSprite sprite)

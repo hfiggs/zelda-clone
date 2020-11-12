@@ -7,6 +7,7 @@ namespace Game1.HUD
     internal class HUDSelectionSquare : IHudItem
     {
         public Vector2 location { get; set; } = new Vector2(-100,-100);
+        public ItemEnum myItem { get; private set; } = ItemEnum.None;
         public Rectangle selectionRectangle { get; set; }
         private HUDSprite displaySprite;
         private HUDSprite spriteOne;

@@ -7,6 +7,7 @@ namespace Game1.HUD
     internal class HUDArrow : IHudItem
     {
         public Vector2 location { get; set; } = new Vector2(170, -9);
+        public ItemEnum myItem { get; private set; } = ItemEnum.Arrow;
         public Rectangle selectionRectangle { get; set; }
         private IPlayerInventory inv;
         private HUDSprite sprite;

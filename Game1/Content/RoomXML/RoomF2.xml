@@ -15,6 +15,11 @@
 		<X>112</X>
 		<Y>0</Y>
 	</InteractEnviornment>
+  <NonInteractEnviornment>
+    <Type>DoorNFloor</Type>
+    <X>112</X>
+    <Y>0</Y>
+  </NonInteractEnviornment>
 	<InteractEnviornment>
 		<Type>DoorSOpen</Type>
 		<X>112</X>

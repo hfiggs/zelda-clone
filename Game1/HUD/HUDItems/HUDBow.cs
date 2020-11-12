@@ -8,6 +8,7 @@ namespace Game1.HUD
     internal class HUDBow : IHudItem
     {
         public Vector2 location { get; set; }
+        public ItemEnum myItem { get; private set; } = ItemEnum.Bow;
         public Rectangle selectionRectangle { get; set; }
         private IPlayerInventory inv;
         private HUDSprite sprite;
@@ -24,7 +25,9 @@ namespace Game1.HUD
         {
             if (inv.HasItem(ItemEnum.Bow))
             {
-                selectionRectangle = new Rectangle(183, 4, 20, 20);
+                if(inv.HasItem(ItemEnum.Arrow))
+                    selectionRectangle = new Rectangle(183, 4, 20, 20);
+
                 sprite.Draw(spriteBatch, location + movement, color);
             }
         }

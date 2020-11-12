@@ -10,6 +10,7 @@ namespace Game1.HUD.HUDItems
     class DungeonOneMap : IHudItem
     {
         public Vector2 location { get; set; } = new Vector2(23,140);
+        public ItemEnum myItem { get; private set; } = ItemEnum.None;
         public Rectangle selectionRectangle { get; set; }
         private IPlayerInventory inv;
         private HUDSprite sprite;
