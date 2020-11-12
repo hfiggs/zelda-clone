@@ -19,7 +19,8 @@ namespace Game1.Command.CollisionHandlerCommands
             IItem item = (IItem)collision.collidee;
 
             IPlayer player;
-
+            if (projectile is Boomerang)
+                return;
             switch(projectile)
             {
                 case Boomerang _:

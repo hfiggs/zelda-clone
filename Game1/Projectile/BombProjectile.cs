@@ -31,7 +31,7 @@ namespace Game1.Projectile
 
         private const int cloudOffset = 15; // pixels
         private const int cloudHexOffset = 8; //pixels
-        private const int spriteRadius = 20; // pixels
+        private const int spriteRadius = 12; // pixels
 
         private const float particleTime = 600f; // ms
         private float particleTimer;

@@ -76,8 +76,8 @@ namespace Game1.Projectile
             if(position.Y < 10 || position.Y > 130 || position.X < 10 || position.X > 206)
             {
                 BeginDespawn();
-                if(!particlesSpawned)
-                    SpawnParticles();
+                /*if(!particlesSpawned)
+                    SpawnParticles();*/
             }
         }
 
@@ -118,25 +118,31 @@ namespace Game1.Projectile
 
         public void BeginDespawn()
         {
-           removeMe = true;
+            removeMe = true;
+            if(!particlesSpawned)
+                SpawnParticles();
         }
 
         public Rectangle GetHitbox()
         {
-            Rectangle hitbox;
+            Rectangle hitbox = new Rectangle(0, 0, 0, 0);
 
-            if (direction == 'N' || direction == 'S')
+            if (!removeMe)
             {
-                hitbox = new Rectangle((int)position.X + 17, (int)position.Y + 12, 7, 16);
-            } else
-            {
-                hitbox = new Rectangle((int)position.X + 11, (int)position.Y + 16, 18, 7);
+                if (direction == 'N' || direction == 'S')
+                {
+                    hitbox = new Rectangle((int)position.X + 17, (int)position.Y + 12, 7, 16);
+                }
+                else
+                {
+                    hitbox = new Rectangle((int)position.X + 11, (int)position.Y + 16, 18, 7);
+                }
             }
 
             return hitbox;
         }
 
-        public void SpawnParticles()
+        private void SpawnParticles()
         {
             particles = new BeamExplosion(position + particleOffset);
             particlesSpawned = true;

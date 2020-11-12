@@ -1,4 +1,5 @@
 ﻿using Game1.Audio;
+using Game1.Environment;
 using Game1.Particle;
 using Game1.Player;
 using Game1.Player.PlayerInventory;
@@ -28,14 +29,19 @@ namespace Game1.Projectile
         private float distTravelled = 0;
         private bool collided = false;
 
-
         //minimum range to "recieve" boomerang should be no less than 5 - see README
         private const float minimumRecieveDist = 5.0f;
         private const float minimumCatchDist = 30.0f;
         private const float recieveYOffest = -2.0f;
 
+        private readonly Rectangle hitboxOrig = new Rectangle(16, 16, 8, 8);
+        private Rectangle hitbox = new Rectangle(16, 16, 8, 8);
+        private bool rayTraced = false;
+        private const int rayLength = 5;
+
         private List<IParticle> particles = new List<IParticle>();
         private readonly Vector2 particleOffset = new Vector2(16.0f, 12.0f);
+        
         SoundEffectInstance sound;
         private float soundVol = 0.5f;
         //delay should be no more than 0.5f (creates sound bugs)
@@ -52,14 +58,18 @@ namespace Game1.Projectile
 
             sound = AudioManager.PlayLooped("boomerang", soundDelay, soundVol);
             player.setBoomerangOut(true);
+
+            InitRayTraceHitbox();
         }
         public void Update(GameTime gameTime) {
-
             if (distTravelled < maxDist && !collided) {
                 BoomerangOut(gameTime);
             } else if (!returned) {
                 BoomerangIn(gameTime);
             }
+
+            if(rayTraced)
+                hitbox = hitboxOrig;
 
             if(returned)
             {
@@ -140,6 +150,35 @@ namespace Game1.Projectile
             currentVelocity += (float)(accelleration * (gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)) / 2.0f;
         }
 
+        private void InitRayTraceHitbox()
+        {
+            switch(direction)
+            {
+                case 'N':
+                    hitbox.Y -= rayLength;
+                    hitbox.Height += rayLength;
+                    rayTraced = true;
+                    break;
+                case 'S':
+                    hitbox.Height += rayLength;
+                    rayTraced = true;
+                    break;
+                case 'E':
+                    hitbox.Width += rayLength;
+                    rayTraced = true;
+                    break;
+                case 'W':
+                    hitbox.X -= rayLength;
+                    hitbox.Width += rayLength;
+                    rayTraced = true;
+                    break;
+                default:
+                    Console.WriteLine("Direction not initialized");
+                    break;
+            }
+            rayTraced = true;
+        }
+
         private void CatchBoomerang()
         {
             Player.setBoomerangOut(false);
@@ -188,7 +227,7 @@ namespace Game1.Projectile
 
         public Rectangle GetHitbox()
         {
-            return new Rectangle((int)position.X + 16, (int)position.Y + 16, 8, 8);
+            return new Rectangle((int)position.X + hitbox.X, (int)position.Y + hitbox.Y, hitbox.Width, hitbox.Height);
         }
 
         public void AddParticle(IParticle particle)
