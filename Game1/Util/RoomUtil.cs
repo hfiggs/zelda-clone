@@ -67,6 +67,18 @@ namespace Game1.Util
             }
         }
 
+        public static void EnterExitBasement(Game1 game, IEnvironment envo)
+        {
+            if (envo is EnterBasementLoadZone)
+            {
+                game.SetState(new GameStateRoomToBasement(game));
+            }
+            else if (envo is ExitBasementLoadZone)
+            {
+                game.SetState(new GameStateBasementToRoom(game));
+            }
+        }
+
         #region Locked Door Utils
 
         public static void OpenLockedDoor(Screen screen, IEnvironment envo, IPlayer player)

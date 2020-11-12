@@ -754,23 +754,23 @@
 	</Item>
 	<Enemy>
 		<Type>Bat</Type>
-		<X>48</X>
-		<Y>96</Y>
+		<X>32</X>
+		<Y>112</Y>
 	</Enemy>
 	<Enemy>
 		<Type>Bat</Type>
 		<X>112</X>
-		<Y>96</Y>
+		<Y>112</Y>
 	</Enemy>
 	<Enemy>
 		<Type>Bat</Type>
 		<X>144</X>
-		<Y>96</Y>
+		<Y>112</Y>
 	</Enemy>
 	<Enemy>
 		<Type>Bat</Type>
-		<X>192</X>
-		<Y>96</Y>
+		<X>192</X>1
+		<Y>112</Y>
 	</Enemy>
 	<InteractEnviornment>
 		<Type>InvisibleWall</Type>
@@ -799,5 +799,11 @@
 		<Y>112</Y>
 		<W>32</W>
 		<H>22</H>
+	</InteractEnviornment>
+
+	<InteractEnviornment>
+		<Type>ExitBasementLoadZone</Type>
+		<X>48</X>
+		<Y>86</Y>
 	</InteractEnviornment>
 </Assets>

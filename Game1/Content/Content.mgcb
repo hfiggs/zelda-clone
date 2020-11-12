@@ -694,6 +694,9 @@
 #begin RoomXML/RoomA2.xml
 /copy:RoomXML/RoomA2.xml
 
+#begin RoomXML/RoomB1.xml
+/copy:RoomXML/RoomB1.xml
+
 #begin RoomXML/RoomB2.xml
 /copy:RoomXML/RoomB2.xml
 
@@ -738,9 +741,6 @@
 
 #begin RoomXML/RoomF3.xml
 /copy:RoomXML/RoomF3.xml
-
-#begin RoomXML/RoomG0.xml
-/copy:RoomXML/RoomG0.xml
 
 #begin RoomXML/RoomG2.xml
 /copy:RoomXML/RoomG2.xml

@@ -35,8 +35,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (enviro is Stairs)
             {
-                AudioManager.PlayMutex("stairs");
-                // TODO: GameStateRoomToBasement
+                // Do nothing
             }
             else
             {
@@ -45,6 +44,8 @@ namespace Game1.Command.CollisionHandlerCommands
                 RoomUtil.EnterDoor(game, enviro);
 
                 RoomUtil.EnterExitDungeon(game, enviro);
+
+                RoomUtil.EnterExitBasement(game, enviro);
 
                 Vector2 moveAmount = Vector2.Multiply(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height), CompassDirectionUtil.GetDirectionVector(side));
                 player.EditPosition(moveAmount);

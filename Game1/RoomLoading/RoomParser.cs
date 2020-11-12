@@ -208,6 +208,10 @@ namespace Game1.RoomLoading
                         nonInteractEnviornment = new OverworldPlank(position);
                         break;
 
+                    case "Stairs":
+                        nonInteractEnviornment = new Stairs(position);
+                        break;
+
                     default:
                         throw new System.ArgumentException("Parameter cannot be null", "original");
                 }
@@ -320,6 +324,12 @@ namespace Game1.RoomLoading
                     case "DoorWBombable":
                         interactEnviornment = new DoorWBombable(position, false);
                         break;
+                    case "EnterBasementLoadZone":
+                        interactEnviornment = new EnterBasementLoadZone(position);
+                        break;
+                    case "ExitBasementLoadZone":
+                        interactEnviornment = new ExitBasementLoadZone(position);
+                        break;
                     case "EnterDungeonLoadZone":
                         interactEnviornment = new EnterDungeonLoadZone(position);
                         break;
@@ -349,9 +359,6 @@ namespace Game1.RoomLoading
                         break;
                     case "Water":
                         interactEnviornment = new Water(position);
-                        break;
-                    case "Stairs":
-                        interactEnviornment = new Stairs(position);
                         break;
                     case "RoomBorder":
                         interactEnviornment = new RoomBorder(position);

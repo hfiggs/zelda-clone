@@ -80,9 +80,14 @@
 		<X>128</X>
 		<Y>64</Y>
 	</InteractEnviornment>
-	<InteractEnviornment>
+	<NonInteractEnviornment>
 		<Type>Stairs</Type>
 		<X>112</X>
+		<Y>80</Y>
+	</NonInteractEnviornment>
+	<InteractEnviornment>
+		<Type>EnterBasementLoadZone</Type>
+		<X>126</X>
 		<Y>80</Y>
 	</InteractEnviornment>
 	<Enemy>
