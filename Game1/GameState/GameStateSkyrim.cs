@@ -1,22 +1,16 @@
-﻿using Game1.Controller;
-using Game1.ResolutionManager;
+﻿using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.GameState
 {
-    class SkyrimState : IGameState
+    class GameStateSkyrim : IGameState
     {
         Video skyrim;
         VideoPlayer player;
         Game1 game;
-        public SkyrimState(Game1 game)
+        public GameStateSkyrim(Game1 game)
         {
             this.game = game;
             skyrim = game.Content.Load<Video>("Skyrim");
@@ -41,6 +35,10 @@ namespace Game1.GameState
 
         public void Update(GameTime gameTime)
         {
+            if (player.State == MediaState.Stopped)
+            {
+                game.SetState(new GameStateStart(game));
+            }
         }
     }
 }

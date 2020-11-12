@@ -8,13 +8,13 @@ using System;
 
 namespace Game1.Controller
 {
-    class GamepadTransitionController : IController
+    class GamepadQuitController : IController
     {
         private Dictionary<Buttons, ICommand> commands;
 
         private PlayerIndex playerIndex;
 
-        public GamepadTransitionController(Game1 game, PlayerIndex playerIndex)
+        public GamepadQuitController(Game1 game, PlayerIndex playerIndex)
         {
             commands = new Dictionary<Buttons, ICommand>
             {

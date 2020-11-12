@@ -1,8 +1,10 @@
 ﻿using Game1.Audio;
 using Game1.Controller;
 using Game1.Enemy;
+using Game1.HUD;
 using Game1.Particle;
 using Game1.ResolutionManager;
+using Game1.RoomLoading;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -52,6 +54,11 @@ namespace Game1.GameState
             }
 
             isMusicStarted = false;
+
+            game.Screen = new Screen(game);
+            game.Screen.LoadAllRooms();
+
+            game.HUD = new HUDInterface(game.Screen.Player.PlayerInventory, game.Screen);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)

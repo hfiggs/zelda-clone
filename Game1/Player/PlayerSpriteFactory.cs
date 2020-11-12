@@ -13,6 +13,7 @@ namespace Game1.Player
         private Texture2D linkDownSheet;
         private Texture2D linkRightSheet;
         private Texture2D linkLeftSheet;
+        private Texture2D linkDeadSheet;
 
         private static PlayerSpriteFactory instance = new PlayerSpriteFactory();
 
@@ -35,6 +36,7 @@ namespace Game1.Player
             linkUpSheet = content.Load<Texture2D>("Images/Player/LinkUp");
             linkItemSheet = content.Load<Texture2D>("Images/Player/LinkItem");
             linkDownSheet = content.Load<Texture2D>("Images/Player/LinkDown");
+            linkDeadSheet = content.Load<Texture2D>("Images/Player/DeadLink");
         }
 
         public ISprite CreateWalkLeftSprite()
@@ -125,6 +127,11 @@ namespace Game1.Player
         public ISprite CreateTwoHandItemSprite()
         {
             return new PlayerSprite(linkItemSheet, 1, 2, 1, 1);
+        }
+
+        public ISprite CreateDeadSprite()
+        {
+            return new PlayerSprite(linkDeadSheet, 4, 1, 0, 4);
         }
     }
 }

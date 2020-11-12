@@ -577,6 +577,18 @@
 /processorParam:TextureFormat=Color
 /build:Images/Particle/sword_beam_exp.png
 
+#begin Images/Player/DeadLink.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Player/DeadLink.png
+
 #begin Images/Player/LinkDown.png
 /importer:TextureImporter
 /processor:TextureProcessor

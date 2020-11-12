@@ -3,6 +3,7 @@
  * Hunter Figgs */
 
 using Game1.Audio;
+using Game1.GameState;
 using Game1.Player.PlayerInventory;
 using Game1.Projectile;
 using Microsoft.Xna.Framework;
@@ -28,9 +29,6 @@ namespace Game1.Player
         //prevents the player from animating to "catch" the boomerang while it is in the air
         private bool boomerangOut;
 
-        private const float deathSoundLength = 2.5f;
-        private const float gameOverDealy = 4.5f;
-        private const float gameOverVolume = 0.6f;
         private const int lowHealthHalfHearts = 2;
         private SoundEffectInstance lowHealthSound;
 
@@ -111,11 +109,7 @@ namespace Game1.Player
             //should be slightly modified once we have health mechanics - GameState?
             if(PlayerInventory.HalfHeartCount <= 0)
             {
-                AudioManager.StopAllMusic();
-                AudioManager.StopAllSound();
-                AudioManager.PlayFireForget("death");
-                AudioManager.PlayFireForget("linkPop", deathSoundLength);
-                AudioManager.PlayLooped("gameOver", gameOverDealy, gameOverVolume);
+                game.SetState(new GameStateLose(game));
             }
             if(PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
             {

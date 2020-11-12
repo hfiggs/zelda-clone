@@ -28,8 +28,8 @@ namespace Game1
         private Point baseResolution = new Point(256, 216);
         private const int scale = 4;
 
-        public Screen Screen { get; private set; }
-        public HUDInterface HUD { get; private set; }
+        public Screen Screen { get; set; }
+        public HUDInterface HUD { get; set; }
 
         public Game1()
         {

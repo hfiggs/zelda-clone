@@ -72,10 +72,10 @@
     <Compile Include="Command\UnpauseCommand.cs" />
     <Compile Include="Controller\GamepadController.cs" />
     <Compile Include="Controller\GamepadStartController.cs" />
-    <Compile Include="Controller\GamepadTransitionController.cs" />
+    <Compile Include="Controller\GamepadQuitController.cs" />
     <Compile Include="Controller\HUDKeyboardController.cs" />
     <Compile Include="Controller\KeyboardStartController.cs" />
-    <Compile Include="Controller\KeyboardTransitionController.cs" />
+    <Compile Include="Controller\KeyboardQuitController.cs" />
     <Compile Include="Command\selectItemLeftCommand.cs" />
     <Compile Include="Command\selectItemRightCommand.cs" />
     <Compile Include="Environment\EnterBasementLoadZone.cs" />
@@ -95,9 +95,10 @@
     <Compile Include="Environment\Overworld\OverworldRock\OverworldRockBM.cs" />
     <Compile Include="Environment\Overworld\OverworldFloorTile.cs" />
     <Compile Include="Environment\Overworld\OverworldFloor.cs" />
+    <Compile Include="GameState\GameStateLose.cs" />
     <Compile Include="GameState\TransitionStates\GameStateRoomToBasement.cs" />
     <Compile Include="GameState\TransitionStates\GameStateBasementToRoom.cs" />
-    <Compile Include="GameState\SkyrimState.cs" />
+    <Compile Include="GameState\GameStateSkyrim.cs" />
     <Compile Include="GameState\GameStateHUD.cs" />
     <Compile Include="GameState\TransitionStates\GameStateHUDToRoom.cs" />
     <Compile Include="GameState\TransitionStates\GameStateDungeonToSpawn.cs" />

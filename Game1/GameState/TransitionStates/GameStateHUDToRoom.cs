@@ -34,8 +34,8 @@ namespace Game1.GameState
 
             controllerList = new List<IController>
             {
-                new KeyboardTransitionController(game),
-                new GamepadTransitionController(game, PlayerIndex.One)
+                new KeyboardQuitController(game),
+                new GamepadQuitController(game, PlayerIndex.One)
             };
             game.IsMouseVisible = false;
             roomOffset = roomStartOffset;

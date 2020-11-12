@@ -6,11 +6,11 @@ using Game1.Command;
 
 namespace Game1.Controller
 {
-    class KeyboardTransitionController : IController
+    class KeyboardQuitController : IController
     {
         private readonly Dictionary<Keys, ICommand> commands;
 
-        public KeyboardTransitionController(Game1 game)
+        public KeyboardQuitController(Game1 game)
         {
             commands = new Dictionary<Keys, ICommand>
             {
