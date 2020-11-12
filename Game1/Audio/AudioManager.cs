@@ -242,7 +242,7 @@ namespace Game1.Audio
             volumeMusic = vol;
             XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
             settingsNode["Music"].InnerText = vol.ToString();
-            config.Save("../../../../app.config");
+            config.Save("Game1.exe.config");
         }
 
         public static void SetVolumeSound(float vol)
@@ -260,7 +260,7 @@ namespace Game1.Audio
             volumeSound = vol;
             XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
             settingsNode["Sound"].InnerText = vol.ToString();
-            config.Save("../../../../app.config");
+            config.Save("Game1.exe.config");
         }
 
         public static void SetVolumeMaster(float vol)
@@ -290,7 +290,8 @@ namespace Game1.Audio
             volumeMaster = vol;
             XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
             settingsNode["Volume"].InnerText = vol.ToString();
-            config.Save("../../../../app.config");
+            
+            config.Save("Game1.exe.config");
         }
 
         public static void PlayItemSound(IItem item)
@@ -366,7 +367,7 @@ namespace Game1.Audio
         private static void ReadSoundSettings()
         {
             config = new XmlDocument();
-            config.Load("../../../../App.config");
+            config.Load("Game1.exe.config");
             XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
             volumeMaster = float.Parse(settingsNode["Volume"].InnerText);
             volumeMusic = float.Parse(settingsNode["Music"].InnerText);
