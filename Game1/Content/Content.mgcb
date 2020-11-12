@@ -175,6 +175,18 @@
 /processorParam:Quality=Best
 /build:audio/sounds/Rupee.wav
 
+#begin audio/sounds/RupeeAddLong.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/RupeeAddLong.wav
+
+#begin audio/sounds/RupeeAddShort.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/RupeeAddShort.wav
+
 #begin audio/sounds/Shield.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

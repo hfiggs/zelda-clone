@@ -69,6 +69,8 @@ namespace Game1.Audio
             soundMap.Add("itemPickUp", content.Load<SoundEffect>("audio/sounds/ItemPickup1"));
             soundMap.Add("key", content.Load<SoundEffect>("audio/sounds/KeyAppear"));
             soundMap.Add("rupeePickUp", content.Load<SoundEffect>("audio/sounds/Rupee"));
+            soundMap.Add("rupeeAddShort", content.Load<SoundEffect>("audio/sounds/RupeeAddShort"));
+            soundMap.Add("rupeeAddLong", content.Load<SoundEffect>("audio/sounds/RupeeAddLong"));
             soundMap.Add("stairs", content.Load<SoundEffect>("audio/sounds/Stairs"));
             soundMap.Add("linkHurt", content.Load<SoundEffect>("audio/sounds/PlayerHurt"));
             soundMap.Add("enemyHurt", content.Load<SoundEffect>("audio/sounds/EnemyHurt"));
@@ -299,7 +301,11 @@ namespace Game1.Audio
             switch (item.GetType().Name)
             {
                 case "RupeeBlue":
+                    PlayFireForget("rupeeAddLong");
+                    PlayFireForget("rupeePickUp");
+                    break;
                 case "RupeeYellow":
+                    PlayFireForget("rupeeAddShort");
                     PlayFireForget("rupeePickUp");
                     break;
                 case "Bomb":
@@ -377,6 +383,11 @@ namespace Game1.Audio
         public static float GetVolumeMaster()
         {
             return volumeMaster;
+        }
+
+        public static void ResetAudioManager()
+        {
+            stopSoundInit = false;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Game1.ResolutionManager;
+﻿using Game1.Audio;
+using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
@@ -16,6 +17,7 @@ namespace Game1.GameState
             skyrim = game.Content.Load<Video>("Skyrim");
             player = new VideoPlayer();
             player.Play(skyrim);
+            AudioManager.ResetAudioManager();
         }
 
 
