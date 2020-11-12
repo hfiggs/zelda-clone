@@ -8,18 +8,17 @@ namespace Game1.Command
 {
     class MuteUnmuteCommand : ICommand
     {
-        private static bool muted = false;
-        private static float lastVolume = 0.0f;
+        private static bool muted;
+        private static float lastVolume;
         private readonly Stopwatch stopWatch;
         private Game1 game;
         private const float cooldown = 250.0f;
 
         public MuteUnmuteCommand(Game1 game)
         {
-            if(!muted)
-            {
-                lastVolume = AudioManager.GetVolumeMaster();
-            }
+            muted = false;
+            lastVolume = AudioManager.GetVolumeMaster();
+
             this.game = game;
             stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -31,11 +30,12 @@ namespace Game1.Command
             {
                 if (muted)
                 {
-                    AudioManager.SetVolumeMaster(1.0f);
+                    AudioManager.SetVolumeMaster(lastVolume);
                     muted = false;
                 }
                 else
                 {
+                    lastVolume = AudioManager.GetVolumeMaster();
                     AudioManager.SetVolumeMaster(0.0f);
                     muted = true;
                 }

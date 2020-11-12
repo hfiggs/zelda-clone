@@ -158,5 +158,10 @@ namespace Game1.Enemy
         {
             return new EnemySprite(aquamentusSpriteSheet, 0, 0, 2, 2, 2);
         }
+
+        public ISprite CreateEnemySpawningSprite()
+        {
+            return new EnemySprite(enemySpawnSpriteSheet, 0, 0, 1, 4, 4);
+        }
     }
 }
