@@ -1,4 +1,5 @@
-﻿using Game1.Environment;
+﻿using Game1.Audio;
+using Game1.Environment;
 using Game1.Item;
 using Microsoft.Xna.Framework;
 using System;
@@ -48,6 +49,7 @@ namespace Game1.RoomLoading.Puzzle
                         }
                     }
                     complete = true;
+                    AudioManager.PlayFireForget("reveal");
                 }
 
             }
