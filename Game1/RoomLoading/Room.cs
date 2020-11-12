@@ -14,13 +14,13 @@ namespace Game1.RoomLoading
 {
     public class Room
     {
-        public List<IItem> ItemList { get; set; }
-        public List<IProjectile> ProjectileList { get; set; }
-        public List<IEnvironment> NonInteractEnviornment { get; set; }
-        public List<IEnvironment> InteractEnviornment { get; set; }
-        public List<IEnemy> EnemyList { get; set; }
-        public List<IEnemy> DecoratedEnemyList { get; set; }
-        public List<IEnemy> UnDecoratedEnemyList { get; set; }
+        public List<IItem> ItemList { get; private set; }
+        public List<IProjectile> ProjectileList { get; private set; }
+        public List<IEnvironment> NonInteractEnviornment { get; private set; }
+        public List<IEnvironment> InteractEnviornment { get; private set; }
+        public List<IEnemy> EnemyList { get; private set; }
+        public List<IEnemy> DecoratedEnemyList { get; private set; }
+        public List<IEnemy> UnDecoratedEnemyList { get; private set; }
 
         private readonly IPuzzle puzzle;
         private readonly ItemDropper itemDrops;
