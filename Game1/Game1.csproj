@@ -69,7 +69,7 @@
     <Compile Include="Command\CollisionHandlerCommands\PlayerToBlockCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToEnvironmentCommand.cs" />
     <Compile Include="Command\StartGameCommand.cs" />
-    <Compile Include="Command\UnpauseCommand.cs" />
+    <Compile Include="Command\ExitHUDStateCommand.cs" />
     <Compile Include="Command\selectItemLeftCommand.cs" />
     <Compile Include="Command\selectItemRightCommand.cs" />
     <Compile Include="Controller\Gamepad\GamepadController.cs" />
@@ -151,7 +151,7 @@
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerSouthSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerWestSideCommand.cs" />
     <Compile Include="CollisionDetection\CollisionDetector.cs" />
-    <Compile Include="Command\PauseCommand.cs" />
+    <Compile Include="Command\EnterHUDStateCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerEquipItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerUseItemCommand.cs" />
     <Compile Include="Command\PlayerCommands\PlayerAttackCommand.cs" />

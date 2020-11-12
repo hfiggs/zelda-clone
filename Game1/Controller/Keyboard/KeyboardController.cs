@@ -42,7 +42,7 @@ namespace Game1.Controller
                 { Keys.NumPad2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
                 { Keys.NumPad3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
 
-                {Keys.Escape, new PauseCommand(game) }
+                {Keys.Escape, new EnterHUDStateCommand(game) }
             };
         }
 

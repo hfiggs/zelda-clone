@@ -5,13 +5,13 @@ using System.Diagnostics;
 
 namespace Game1.Command
 {
-    class UnpauseCommand : ICommand
+    class EnterHUDStateCommand : ICommand
     {
-        Game1 game;
+        private Game1 game;
         private Stopwatch stopWatch;
         private const int cooldown = 250; // ms
 
-        public UnpauseCommand(Game1 game)
+        public EnterHUDStateCommand(Game1 game)
         {
             this.game = game;
             stopWatch = new Stopwatch();
@@ -23,7 +23,7 @@ namespace Game1.Command
         {
             if (stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                game.SetState(new GameStateHUDToRoom(game));
+                game.SetState(new GameStateRoomToHUD(game));
 
                 stopWatch.Restart();
             }
