@@ -19,6 +19,13 @@ namespace Game1.Controller
             commands = new Dictionary<Buttons, ICommand>
             {
                 { Buttons.Back, new QuitCommand(game) },
+                { Buttons.Start, new UnpauseCommand(game) },
+
+                { Buttons.DPadLeft, new selectItemLeftCommand(game) },
+                { Buttons.DPadRight, new selectItemRightCommand(game) },
+                { Buttons.LeftThumbstickLeft, new selectItemLeftCommand(game) },
+                { Buttons.LeftThumbstickRight, new selectItemRightCommand(game) }
+
             };
 
             this.playerIndex = playerIndex;

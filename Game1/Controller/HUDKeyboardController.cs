@@ -15,9 +15,13 @@ namespace Game1.Controller
             commands = new Dictionary<Keys, ICommand>
             {
                 { Keys.Q, new QuitCommand(game) },
-                { Keys.A, new selectItemLeftCommand(game)},
+                {Keys.Escape, new UnpauseCommand(game) },
+
+                { Keys.A, new selectItemLeftCommand(game) },
                 { Keys.D, new selectItemRightCommand(game) },
-                {Keys.Escape, new UnpauseCommand(game) }
+
+                { Keys.Left, new selectItemLeftCommand(game) },
+                { Keys.Right, new selectItemRightCommand(game) }
             };
         }
 

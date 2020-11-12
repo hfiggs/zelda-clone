@@ -21,7 +21,8 @@ namespace Game1.GameState
 
             controllerList = new List<IController>
             {
-                new HUDKeyboardController(game)
+                new HUDKeyboardController(game),
+                new HUDGamepadController(game, PlayerIndex.One)
             };
         }
 

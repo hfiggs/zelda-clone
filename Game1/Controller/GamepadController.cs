@@ -24,6 +24,7 @@ namespace Game1.Controller
             commands = new Dictionary<Buttons, ICommand>
             {
                 { Buttons.Back, new QuitCommand(game) },
+                { Buttons.Start, new PauseCommand(game) },
 
                 { Buttons.DPadUp, new PlayerUpCommand(game) },
                 { Buttons.DPadLeft, new PlayerLeftCommand(game) },
