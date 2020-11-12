@@ -17,7 +17,7 @@ namespace Game1.Enemy
         private const float animationTime = 150f; // ms per frame
 
         private float timeUntilNextState;
-        private const float spawnTime = 450f; // ms
+        private const float spawnTime = 600f; // ms
 
         public ISprite Sprite { get; private set; }
 
@@ -28,7 +28,7 @@ namespace Game1.Enemy
             this.nextState = nextState;
             this.enemy = enemy;
 
-            Sprite = ParticleSpriteFactory.Instance.CreateCloudSprite();
+            Sprite = EnemySpriteFactory.Instance.CreateEnemySpawningSprite();
 
             timeUntilNextFrame = animationTime;
             timeUntilNextState = spawnTime;
