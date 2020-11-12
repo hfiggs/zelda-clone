@@ -14,8 +14,6 @@ namespace Game1.Audio
         //TODO: Refactor mutex setting and resetting to something more functional after room transitioning
         private static bool mutex = false;
 
-        private static XmlDocument config;
-
         private static float volumeMaster = 1.0f;
         private static float volumeMusic = 1.0f;
         private static float volumeSound = 1.0f;
@@ -242,9 +240,9 @@ namespace Game1.Audio
                 }
             }
             volumeMusic = vol;
-            XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
-            settingsNode["Music"].InnerText = vol.ToString();
-            config.Save("Game1.exe.config");
+
+            Properties.Settings.Default.VolumeMusic = vol;
+            Properties.Settings.Default.Save();
         }
 
         public static void SetVolumeSound(float vol)
@@ -260,9 +258,9 @@ namespace Game1.Audio
                 }
             }
             volumeSound = vol;
-            XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
-            settingsNode["Sound"].InnerText = vol.ToString();
-            config.Save("Game1.exe.config");
+
+            Properties.Settings.Default.VolumeSound = vol;
+            Properties.Settings.Default.Save();
         }
 
         public static void SetVolumeMaster(float vol)
@@ -290,10 +288,9 @@ namespace Game1.Audio
                 }
             }
             volumeMaster = vol;
-            XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
-            settingsNode["Volume"].InnerText = vol.ToString();
-            
-            config.Save("Game1.exe.config");
+
+            Properties.Settings.Default.VolumeMaster = vol;
+            Properties.Settings.Default.Save();
         }
 
         public static void PlayItemSound(IItem item)
@@ -372,12 +369,9 @@ namespace Game1.Audio
 
         private static void ReadSoundSettings()
         {
-            config = new XmlDocument();
-            config.Load("Game1.exe.config");
-            XmlNode settingsNode = config.GetElementsByTagName("Settings")[0]["SoundSettings"];
-            volumeMaster = float.Parse(settingsNode["Volume"].InnerText);
-            volumeMusic = float.Parse(settingsNode["Music"].InnerText);
-            volumeSound = float.Parse(settingsNode["Sound"].InnerText);
+            volumeMaster = Properties.Settings.Default.VolumeMaster;
+            volumeMusic = Properties.Settings.Default.VolumeMusic;
+            volumeSound = Properties.Settings.Default.VolumeSound;
         }
 
         public static float GetVolumeMaster()
