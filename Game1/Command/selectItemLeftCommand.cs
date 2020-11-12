@@ -9,13 +9,13 @@ using System.Diagnostics;
 
 namespace Game1.Controller
 {
-    internal class selectItemLeftCommand : ICommand
+    internal class SelectItemLeftCommand : ICommand
     {
         private Game1 game;
         private Stopwatch stopWatch;
         private const int cooldown = 250; // ms
         Point SettingPoint = new Point(193, 14);
-        public selectItemLeftCommand(Game1 game)
+        public SelectItemLeftCommand(Game1 game)
         {
             this.game = game;
             stopWatch = new Stopwatch();

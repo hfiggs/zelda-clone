@@ -26,6 +26,8 @@ namespace Game1.Controller
                 { Buttons.Back, new QuitCommand(game) },
                 { Buttons.Start, new EnterHUDStateCommand(game) },
 
+                { Buttons.BigButton, new PauseGameCommand(game) },
+
                 { Buttons.DPadUp, new PlayerUpCommand(game) },
                 { Buttons.DPadLeft, new PlayerLeftCommand(game) },
                 { Buttons.DPadDown, new PlayerDownCommand(game) },

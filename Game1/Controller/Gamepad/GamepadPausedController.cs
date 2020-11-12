@@ -8,24 +8,18 @@ using System;
 
 namespace Game1.Controller
 {
-    class HUDGamepadController : IController
+    class GamepadPausedController : IController
     {
-        private readonly Dictionary<Buttons, ICommand> commands;
+        private Dictionary<Buttons, ICommand> commands;
 
-        private readonly PlayerIndex playerIndex;
+        private PlayerIndex playerIndex;
 
-        public HUDGamepadController(Game1 game, PlayerIndex playerIndex)
+        public GamepadPausedController(Game1 game, PlayerIndex playerIndex)
         {
             commands = new Dictionary<Buttons, ICommand>
             {
                 { Buttons.Back, new QuitCommand(game) },
-                { Buttons.Start, new ExitHUDStateCommand(game) },
-
-                { Buttons.DPadLeft, new SelectItemLeftCommand(game) },
-                { Buttons.DPadRight, new SelectItemRightCommand(game) },
-                { Buttons.LeftThumbstickLeft, new SelectItemLeftCommand(game) },
-                { Buttons.LeftThumbstickRight, new SelectItemRightCommand(game) }
-
+                { Buttons.BigButton, new PauseGameCommand(game) }
             };
 
             this.playerIndex = playerIndex;

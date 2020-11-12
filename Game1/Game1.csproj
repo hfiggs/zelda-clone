@@ -68,16 +68,19 @@
   <ItemGroup>
     <Compile Include="Command\CollisionHandlerCommands\PlayerToBlockCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToEnvironmentCommand.cs" />
+    <Compile Include="Command\PauseGameCommand.cs" />
     <Compile Include="Command\StartGameCommand.cs" />
     <Compile Include="Command\ExitHUDStateCommand.cs" />
-    <Compile Include="Command\selectItemLeftCommand.cs" />
-    <Compile Include="Command\selectItemRightCommand.cs" />
+    <Compile Include="Command\SelectItemLeftCommand.cs" />
+    <Compile Include="Command\SelectItemRightCommand.cs" />
     <Compile Include="Controller\Gamepad\GamepadController.cs" />
+    <Compile Include="Controller\Gamepad\GamepadPausedController.cs" />
     <Compile Include="Controller\Gamepad\GamepadQuitController.cs" />
     <Compile Include="Controller\Gamepad\GamepadStartController.cs" />
     <Compile Include="Controller\Gamepad\HUDGamepadController.cs" />
     <Compile Include="Controller\Keyboard\HUDKeyboardController.cs" />
     <Compile Include="Controller\Keyboard\KeyboardController.cs" />
+    <Compile Include="Controller\Keyboard\KeyboardPausedController.cs" />
     <Compile Include="Controller\Keyboard\KeyboardQuitController.cs" />
     <Compile Include="Controller\Keyboard\KeyboardStartController.cs" />
     <Compile Include="Environment\EnterBasementLoadZone.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="Environment\Overworld\OverworldFloorTile.cs" />
     <Compile Include="Environment\Overworld\OverworldFloor.cs" />
     <Compile Include="GameState\GameStateLose.cs" />
+    <Compile Include="GameState\GameStatePaused.cs" />
     <Compile Include="GameState\TransitionStates\GameStateRoomToBasement.cs" />
     <Compile Include="GameState\TransitionStates\GameStateBasementToRoom.cs" />
     <Compile Include="GameState\GameStateSkyrim.cs" />

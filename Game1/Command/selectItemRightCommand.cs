@@ -8,13 +8,13 @@ using System.Diagnostics;
 
 namespace Game1.Controller
 {
-    internal class selectItemRightCommand : ICommand
+    internal class SelectItemRightCommand : ICommand
     {
         private Game1 game;
         private Stopwatch stopWatch;
         Point SettingPoint = new Point(193, 14);
         private const int cooldown = 250; // ms
-        public selectItemRightCommand(Game1 game)
+        public SelectItemRightCommand(Game1 game)
         {
             this.game = game;
             stopWatch = new Stopwatch();

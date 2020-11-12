@@ -22,7 +22,7 @@ namespace Game1
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private IGameState state;
+        public IGameState State { get; private set; }
 
         private readonly IResolutionManager resolutionManager;
         private Point baseResolution = new Point(256, 216);
@@ -58,7 +58,7 @@ namespace Game1
 
             HUD = new HUDInterface(Screen.Player.PlayerInventory, Screen);
 
-            state = new GameStateStart(this);
+            State = new GameStateStart(this);
         }
 
         protected override void UnloadContent()
@@ -68,23 +68,23 @@ namespace Game1
 
         protected override void Update(GameTime gameTime)
         {
-            state.Update(gameTime);
+            State.Update(gameTime);
 
             AudioManager.Update(gameTime);
-            
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            state.Draw(gameTime, spriteBatch, resolutionManager);
+            State.Draw(gameTime, spriteBatch, resolutionManager);
 
             base.Draw(gameTime);
         }
 
         public void SetState(IGameState state)
         {
-            this.state = state;
+            this.State = state;
         }
 
         public Vector2 GetWindowDimensions()
