@@ -5,17 +5,19 @@ using Game1.Enemy;
 using Game1.Player;
 using Game1.Collision_Handling;
 using Game1.RoomLoading;
+using Game1.Environment;
 
 namespace Game1.CollisionDetection
 {
     class PlayerCollisions
     {
-        private List<Collision> collisionList;
-        private List<IEnemy> EnemyList;
-        private IPlayer player;
+        private readonly IPlayer player;
         private Rectangle playerHitbox;
         private Rectangle swordHitbox;
-        private List<IItem> ItemList;
+        private readonly List<IItem> ItemList;
+        private readonly List<IEnvironment> EnvironmentList;
+        private readonly List<IEnemy> EnemyList;
+        private readonly List<Collision> collisionList;
 
         public PlayerCollisions(Screen screen)
         {
@@ -24,6 +26,8 @@ namespace Game1.CollisionDetection
             EnemyList = screen.CurrentRoom.EnemyList;
 
             ItemList = screen.CurrentRoom.ItemList;
+
+            EnvironmentList = screen.CurrentRoom.InteractEnviornment;
 
             player = screen.Player;
             playerHitbox = player.GetPlayerHitbox();
@@ -68,7 +72,26 @@ namespace Game1.CollisionDetection
                 }
             }
 
-                    return collisionList;
+            bool collision = false;
+            foreach (IEnvironment environment in EnvironmentList)
+            {
+                foreach (Rectangle envHitbox in environment.GetHitboxes())
+                {
+                    // Player collides with Environment
+                    Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, envHitbox);
+                    if (!intersectPlayer.IsEmpty)
+                    {
+                        char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
+                        collisionList.Add(new Collision(side, intersectPlayer, player, environment));
+                        collision = true;
+                        break;
+                    }
+                }
+                if (collision)
+                    break;
+            }
+
+            return collisionList;
         }
 
         private char DetermineSide(Rectangle colider, Rectangle colidee, Rectangle intersectionRec)
