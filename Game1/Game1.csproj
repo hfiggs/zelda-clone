@@ -66,6 +66,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CollisionDetection\ProjectileCollisions.cs" />
+    <Compile Include="CollisionDetection\EnemyCollisions.cs" />
+    <Compile Include="CollisionDetection\PlayerCollisions.cs" />
+    <Compile Include="CollisionDetection\EnvironmentCollisions.cs" />
     <Compile Include="Command\AudioCommands\VolumeUpCommand.cs" />
     <Compile Include="Command\AudioCommands\VolumeDownCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\PlayerToBlockCommand.cs" />
