@@ -25,15 +25,15 @@ namespace Game1.AudioManagement
             this.looped = looped;
         }
 
-        public void Play()
+        public void Play(float runtimeVolume = 1.0f)
         {
             if (looped)
             {
-                soundRef = AudioManager.PlayLooped(sound, timeDelay, vol);
+                soundRef = AudioManager.PlayLooped(sound, timeDelay, vol * runtimeVolume);
             }
             else
             {
-                soundRef = AudioManager.PlayFireForget(sound, timeDelay, vol);
+                soundRef = AudioManager.PlayFireForget(sound, timeDelay, vol * runtimeVolume);
             }
         }
 
