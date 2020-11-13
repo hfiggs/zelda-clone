@@ -16,13 +16,13 @@ namespace Game1.Player
         private int currentFlicker = 0;
         private Color damageColor = Color.White;
 
-        private const float xAndYMovementMagnitude = 0.66f;
+        private const float xAndYMovementMagnitude = 0.33f;
         private Vector2 damageMove = new Vector2(xAndYMovementMagnitude,xAndYMovementMagnitude); 
 
         private const int duration = 1000; // ms
         private int timer;
         private int flickerTimer;
-        private const int timerMax = 925;
+        private const int timerMax = 875;
 
         private const int flickerDuration = 45; // ms
 

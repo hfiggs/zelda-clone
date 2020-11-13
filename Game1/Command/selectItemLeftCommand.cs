@@ -14,7 +14,7 @@ namespace Game1.Controller
         private Game1 game;
         private Stopwatch stopWatch;
         private const int cooldown = 250; // ms
-        Point SettingPoint = new Point(193, 14);
+        Point SettingPoint = new Point(173, 14);
         public SelectItemLeftCommand(Game1 game)
         {
             this.game = game;
