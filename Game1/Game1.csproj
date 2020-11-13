@@ -105,6 +105,7 @@
     <Compile Include="Environment\Overworld\OverworldFloor.cs" />
     <Compile Include="GameState\GameStateLose.cs" />
     <Compile Include="GameState\GameStatePaused.cs" />
+    <Compile Include="GameState\GameStatePickupItem.cs" />
     <Compile Include="GameState\TransitionStates\GameStateRoomToBasement.cs" />
     <Compile Include="GameState\TransitionStates\GameStateBasementToRoom.cs" />
     <Compile Include="GameState\GameStateSkyrim.cs" />
@@ -131,6 +132,7 @@
     </Compile>
     <Compile Include="Sprite\StartSprite.cs" />
     <Compile Include="Sprite\StartSpriteFactory.cs" />
+    <Compile Include="Util\GameStateUtil.cs" />
     <Compile Include="Util\ContentUtil.cs" />
     <Compile Include="ResolutionManager\IResolutionManager.cs" />
     <Compile Include="ResolutionManager\ResolutionManager1.cs" />

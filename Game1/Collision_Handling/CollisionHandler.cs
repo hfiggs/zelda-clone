@@ -68,15 +68,15 @@ namespace Game1.Collision_Handling
                 {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnemy),south), new ProjectileToEnemySouthSideCommand() },
                 {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnemy),west), new ProjectileToEnemyWestSideCommand() },
                 //Player hits Item
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),east), new LinkToItemCommand() },
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),north), new LinkToItemCommand() },
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),south), new LinkToItemCommand() },
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),west), new LinkToItemCommand() },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),east), new LinkToItemCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),north), new LinkToItemCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),south), new LinkToItemCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IItem),west), new LinkToItemCommand(game) },
                 //Projectile hits Item
-                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),east), new ProjectileToItemCommand() },
-                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),north), new ProjectileToItemCommand() },
-                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),south), new ProjectileToItemCommand() },
-                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),west), new ProjectileToItemCommand() },
+                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),east), new ProjectileToItemCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),north), new ProjectileToItemCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),south), new ProjectileToItemCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IItem),west), new ProjectileToItemCommand(game) },
                 //Enemy runs into wall
                 {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),east), new EnemyToBlockEastSideCommand() },
                 {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IEnvironment),north), new EnemyToBlockNorthSideCommand() },
