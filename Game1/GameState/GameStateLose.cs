@@ -16,6 +16,9 @@ namespace Game1.GameState
         private readonly Game1 game;
         private readonly List<IController> controllerList;
 
+        private const float playerXOffset = -14f;
+        private const float playerYOffset = -20f;
+
         private const float roomOffset = 40f;
         private const float hudOffset = -136f;
 
@@ -54,7 +57,7 @@ namespace Game1.GameState
             game.Screen.CurrentRoom.ProjectileList.Clear();
 
             deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
-            deadLinkPosition = game.Screen.Player.GetLocation().Location.ToVector2();
+            deadLinkPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
             spinTimer = spinTime;
             stareTimer = stareTime;
