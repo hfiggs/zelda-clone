@@ -7,9 +7,11 @@ namespace Game1.Command.CollisionHandlerCommands
 {
     class LinkToItemCommand : ICollisionCommand
     {
-        public LinkToItemCommand()
-        {
+        private Game1 game;
 
+        public LinkToItemCommand(Game1 game)
+        {
+            this.game = game;
         }
 
         public void Execute(Collision collision)
@@ -17,7 +19,7 @@ namespace Game1.Command.CollisionHandlerCommands
             IPlayer player = (IPlayer)collision.collider;
             IItem item = (IItem)collision.collidee;
 
-            CollisionHandlerUtil.HandlePlayerPickupItem(player, item);
+            CollisionHandlerUtil.HandlePlayerPickupItem(game, player, item);
 
             AudioManager.PlayItemSound(item);
         }
