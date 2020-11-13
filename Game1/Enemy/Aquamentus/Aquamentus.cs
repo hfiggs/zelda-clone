@@ -62,7 +62,15 @@ namespace Game1.Enemy
         }
         public bool ShouldRemove()
         {
-            return health <= 0;
+            if (health <= 0)
+            {
+                game.Screen.CurrentRoom.StopRoomAmbience();
+                game.Screen.CurrentRoom.SetAmbienceVolume(0.0f);
+                RoomLoading.Room roomBelow;
+                game.Screen.RoomsDict.TryGetValue(('C', 4), out roomBelow);
+                roomBelow.SetAmbienceVolume(0.0f);
+            }
+            return health <= 0;            
         }
 
         public List<Rectangle> GetHitboxes()

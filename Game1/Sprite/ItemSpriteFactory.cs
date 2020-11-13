@@ -7,6 +7,7 @@ namespace Game1.Sprite
     class ItemSpriteFactory
     {
         private Texture2D itemSpritesheet;
+        private Texture2D nothingItemSpritesheet;
 
         private static ItemSpriteFactory instance = new ItemSpriteFactory();
 
@@ -25,6 +26,7 @@ namespace Game1.Sprite
         public void LoadAllTextures(ContentManager content)
         {
             itemSpritesheet = content.Load<Texture2D>("Images/Item/items");
+            nothingItemSpritesheet = content.Load<Texture2D>("Images/Item/nothingItem");
         }
 
         public ISprite CreateCompassSprite()
@@ -105,6 +107,11 @@ namespace Game1.Sprite
         public ISprite CreateSwordSprite()
         {
             return new ItemSprite(itemSpritesheet, 7, 3);
+        }
+
+        public ISprite CreateNothingItemSprite()
+        {
+            return new ItemSprite(nothingItemSpritesheet, 1, 1);
         }
     }
 }

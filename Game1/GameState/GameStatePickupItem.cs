@@ -1,7 +1,10 @@
 ﻿/* Author: Hunter Figgs.3 */
 
 using Game1.Controller;
+using Game1.Item;
 using Game1.ResolutionManager;
+using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -9,27 +12,48 @@ using System.Collections.Generic;
 
 namespace Game1.GameState
 {
-    class GameStateRoom : IGameState
+    class GameStatePickupItem : IGameState
     {
         private readonly Game1 game;
         private readonly List<IController> controllerList;
 
+        private readonly ISprite playerSprite;
+        private readonly ISprite itemSprite;
+
+        private const float playerXOffset = -14f;
+        private const float playerYOffset = -20f;
+        private const float itemXOffset = -8f;
+        private const float itemYOffset = -12f;
+
+        private readonly Vector2 playerPosition;
+        private readonly Vector2 itemPositionOffset = new Vector2(itemXOffset, itemYOffset);
+
         private const float roomOffset = 40f;
         private const float hudOffset = -136f;
 
-        private Color color = Color.White;
+        private float stateTimer;
+        private const float stateTime = 1000f; // ms
 
-        public GameStateRoom(Game1 game)
+        private readonly Color color = Color.White;
+
+        public GameStatePickupItem(Game1 game, PickupItem pickupItem, IItem itemToRemove)
         {
             this.game = game;
 
             controllerList = new List<IController>
             {
-                new KeyboardController(game),
-                new GamepadController(game, PlayerIndex.One)
+                new KeyboardQuitController(game),
+                new GamepadQuitController(game, PlayerIndex.One)
             };
 
-            game.Screen.CurrentRoom.PlayRoomAmbience();
+            game.Screen.CurrentRoom.ItemList.Remove(itemToRemove);
+
+            playerSprite = GameStateUtil.GetPlayerPickupSprite(pickupItem);
+            itemSprite = GameStateUtil.GetPickupItemSprite(pickupItem);
+
+            playerPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+
+            stateTimer = stateTime;
         }
 
         public void Update(GameTime gameTime)
@@ -39,10 +63,14 @@ namespace Game1.GameState
                 controller.Update();
             }
 
-            game.HUD.Update(gameTime);
             Mouse.SetPosition(150, 150);
 
-            game.Screen.Update(gameTime);
+            stateTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (stateTimer <= 0)
+            {
+                game.SetState(new GameStateRoom(game));
+            }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
@@ -56,7 +84,10 @@ namespace Game1.GameState
 
             spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
-            game.Screen.Draw(spriteBatch, color);
+            game.Screen.CurrentRoom.Draw(spriteBatch, color);
+
+            playerSprite.Draw(spriteBatch, playerPosition, color);
+            itemSprite.Draw(spriteBatch, Vector2.Add(playerPosition, itemPositionOffset), color);
 
             spriteBatch.End();
 

@@ -14,6 +14,7 @@ using Game1.GameState;
 using Game1.HUD;
 using Game1.Util;
 using Game1.Audio;
+using Game1.Particle;
 
 namespace Game1
 {
@@ -90,6 +91,11 @@ namespace Game1
         public Vector2 GetWindowDimensions()
         {
             return new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+        }
+
+        public Vector2 GetWindowDimensionsScaled()
+        {
+            return new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight) / scale;
         }
     }
 }

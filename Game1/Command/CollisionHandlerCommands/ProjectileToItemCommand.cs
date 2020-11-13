@@ -8,9 +8,11 @@ namespace Game1.Command.CollisionHandlerCommands
 {
     class ProjectileToItemCommand : ICollisionCommand
     {
-        public ProjectileToItemCommand()
-        {
+        private Game1 game;
 
+        public ProjectileToItemCommand(Game1 game)
+        {
+            this.game = game;
         }
 
         public void Execute(Collision collision)
@@ -19,20 +21,18 @@ namespace Game1.Command.CollisionHandlerCommands
             IItem item = (IItem)collision.collidee;
 
             IPlayer player;
-            if (projectile is Boomerang)
-                return;
             switch(projectile)
             {
                 case Boomerang _:
                     player = ((Boomerang)projectile).Player;
-                    CollisionHandlerUtil.HandlePlayerPickupItem(player, item);
+                    CollisionHandlerUtil.HandlePlayerPickupItem(game, player, item);
                     break;
 
                 case Arrow _:
                     if(item.GetType() == typeof(Fairy))
                     {
                         player = ((Arrow)projectile).Player;
-                        CollisionHandlerUtil.HandlePlayerPickupItem(player, item);
+                        CollisionHandlerUtil.HandlePlayerPickupItem(game, player, item);
                     }
                     break;
             }

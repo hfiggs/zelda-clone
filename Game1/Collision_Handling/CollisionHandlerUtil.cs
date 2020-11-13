@@ -1,7 +1,9 @@
 ﻿using Game1.Enemy;
+using Game1.GameState;
 using Game1.Item;
 using Game1.Player;
 using Game1.Player.PlayerInventory;
+using Game1.Util;
 using System;
 using System.Collections.Generic;
 
@@ -18,18 +20,20 @@ namespace Game1.Collision_Handling
         private const int yellowRupee = 1;
         private const int blueRupee = 5;
 
-        public static void HandlePlayerPickupItem(IPlayer player, IItem item)
+        public static void HandlePlayerPickupItem(Game1 game, IPlayer player, IItem item)
         {
             switch (item)
             {
                 case ArrowItem _:
                     player.PlayerInventory.AddItem(ItemEnum.Arrow);
+                    game.SetState(new GameStatePickupItem(game, PickupItem.Arrow, item));
                     break;
                 case Bomb _:
                     player.PlayerInventory.AddBomb();
                     break;
                 case Bow _:
                     player.PlayerInventory.AddItem(ItemEnum.Bow);
+                    game.SetState(new GameStatePickupItem(game, PickupItem.Bow, item));
                     break;
                 case Clock _:
                     // ShouldDelete gets set to true
@@ -48,6 +52,7 @@ namespace Game1.Collision_Handling
                     break;
                 case ItemBoomerang _:
                     player.PlayerInventory.AddItem(ItemEnum.Boomerang);
+                    game.SetState(new GameStatePickupItem(game, PickupItem.Boomerang, item));
                     break;
                 case Key _:
                     player.PlayerInventory.AddKey();
@@ -63,6 +68,7 @@ namespace Game1.Collision_Handling
                     break;
                 case Triforce _:
                     player.PlayerInventory.AddTriforce();
+                    game.SetState(new GameStatePickupItem(game, PickupItem.Triforce, item));
                     break;
             }
 
