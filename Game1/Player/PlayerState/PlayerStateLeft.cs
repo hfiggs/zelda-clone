@@ -20,7 +20,7 @@ namespace Game1.Player
 
         private float timeUntilNextFrame; // ms
 
-        private Vector2 moveSpeed = new Vector2(-1,0);
+        private Vector2 moveSpeed = new Vector2(-1.33f,0);
         private const float animationTime = 150f; // ms per frame
 
         public PlayerStateLeft(IPlayer player, Vector2 position)

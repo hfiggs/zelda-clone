@@ -157,5 +157,10 @@ namespace Game1.HUD
             return new HUDSelectionSquare(new HUDSprite(selectionSquareTexture,0,0,2,1),new HUDSprite(selectionSquareTexture,0,1,2,1));
         }
 
+        public IHudItem BuildHUDLinkDot(Screen screen)
+        {
+            return new HUDLinkDot(new HUDSprite(HUDIconsTexture, 2, 0, 16, 3), screen);
+        }
+
     }
 }

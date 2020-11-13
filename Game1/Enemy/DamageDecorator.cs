@@ -19,14 +19,14 @@ namespace Game1.Enemy
         public bool stillSlide;
         private const float deathSoundVol = 0.75f;
 
-        private const float xAndYKnockbackMagnitude = 0.66f;
+        private const float xAndYKnockbackMagnitude = 0.33f;
         Vector2 knockbackMagnitude = new Vector2(xAndYKnockbackMagnitude, xAndYKnockbackMagnitude);
 
         public EnemyDamageDecorator(IEnemy Original, Vector2 direction, Game1 game)
         {
             this.original = Original;
 
-            const float damagedTimerMax = 350f;
+            const float damagedTimerMax = 425f;
             damagedTimer = damagedTimerMax; //ms
 
             const float timeTillFlickerSwapMax = 50f;

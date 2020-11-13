@@ -15,6 +15,7 @@ namespace Game1.HUD
         public IHudItem displayItemTop;
         IHudItem displayItemBottom;
         IHudItem selectionSquare;
+        IHudItem linkDot;
         IPlayerInventory inv;
         Screen screen;
         Vector2 BBottomBox = new Vector2(110, 140);
@@ -28,6 +29,7 @@ namespace Game1.HUD
             selectionSquare = HUDItemFactory.Instance.BuildHUDSelectionSquare();
             this.screen = screen;
             Items = HUDItemFactory.Instance.buildHUDList(playerInventory);
+            linkDot = HUDItemFactory.Instance.BuildHUDLinkDot(screen);
         }
 
         public void Update(GameTime gameTime)
@@ -54,7 +56,11 @@ namespace Game1.HUD
 
             selectionSquare.Update(gameTime);
 
-            
+
+             Vector2 DotPosition = new Vector2(currentRoom.Item2 * 8 + 25, (currentRoom.Item1 - 65) * 4 + 145f);
+
+            linkDot.location = DotPosition;
+
             
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
@@ -76,7 +82,7 @@ namespace Game1.HUD
                 selectionSquare.location = new Vector2(displayItemTop.selectionRectangle.X, displayItemTop.selectionRectangle.Y);
             }
 
-
+            linkDot.Draw(spriteBatch, movement, color);
             selectionSquare.Draw(spriteBatch, movement ,color);
         }
     }

@@ -121,6 +121,7 @@
     <Compile Include="GameState\TransitionStates\GameStateStartToSpawn.cs" />
     <Compile Include="GameState\GameStateStart.cs" />
     <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="HUD\HUDItems\HUDLinkDot.cs" />
     <Compile Include="Particle\Waterfall.cs" />
     <Compile Include="Particle\WaterfallSpray.cs" />
     <Compile Include="Sprite\StartSprite.cs" />
