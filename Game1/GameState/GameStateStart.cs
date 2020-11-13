@@ -31,6 +31,8 @@ namespace Game1.GameState
 
         private bool isMusicStarted;
 
+        private IParticle curtain;
+
         public GameStateStart(Game1 game)
         {
             this.game = game;
@@ -59,6 +61,8 @@ namespace Game1.GameState
             game.Screen.LoadAllRooms();
 
             game.HUD = new HUDInterface(game.Screen.Player.PlayerInventory, game.Screen);
+
+            curtain = new Curtain(true, game);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
@@ -70,6 +74,8 @@ namespace Game1.GameState
             background.Draw(spriteBatch, backgroundPosition, color);
 
             waterfallParticles.ForEach(p => p.Draw(spriteBatch, color));
+
+            curtain.Draw(spriteBatch, color);
 
             spriteBatch.End();
         }
@@ -88,6 +94,8 @@ namespace Game1.GameState
             {
                 controller.Update();
             }
+
+            curtain.Update(gameTime);
         }
     }
 }

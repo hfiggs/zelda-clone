@@ -88,5 +88,16 @@ namespace Game1.Sprite
         {
             return new ParticleSprite(waterfallSpraySpritesheet, 0, 0, 1, 2, 2);
         }
+
+        public ISprite CreateCurtain(Color color, Rectangle area)
+        {
+            Texture2D rect = new Texture2D(graphics, area.Width, area.Height);
+
+            Color[] data = new Color[area.Width * area.Height];
+            for (int i = 0; i < data.Length; ++i) data[i] = color;
+            rect.SetData(data);
+
+            return new ParticleSprite(rect, 1, 1, 1, 1, 1);
+        }
     }
 }
