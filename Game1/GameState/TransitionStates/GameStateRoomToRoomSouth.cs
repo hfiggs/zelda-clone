@@ -51,6 +51,8 @@ namespace Game1.GameState
             game.Screen.Player.EditPosition(Vector2.Subtract(newPlayerPosition, game.Screen.Player.GetPlayerHitbox().Location.ToVector2()));
 
             southRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.South);
+
+            game.Screen.CurrentRoom.StopRoomAmbience();
         }
 
         public void Update(GameTime gameTime)

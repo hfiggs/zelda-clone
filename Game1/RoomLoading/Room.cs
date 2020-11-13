@@ -25,7 +25,8 @@ namespace Game1.RoomLoading
         private readonly IPuzzle puzzle;
         private readonly ItemDropper itemDrops;
 
-        private readonly List<AmbientSound> soundList;
+        private readonly List<AmbientSound> ambienceList;
+        private float ambienceVolume = 1.0f;
 
         private const int roomWidth = 256;
         private const int roomHeight = 176;
@@ -45,7 +46,7 @@ namespace Game1.RoomLoading
             DecoratedEnemyList = new List<IEnemy>();
             UnDecoratedEnemyList = new List<IEnemy>();
 
-            soundList = parser.GetAmbienceNode();
+            ambienceList = parser.GetAmbienceNode();
 
             itemDrops = new ItemDropper(game.Screen);
             puzzle = parser.GetPuzzle();
@@ -131,12 +132,17 @@ namespace Game1.RoomLoading
 
         public void StopRoomAmbience()
         {
-            soundList.ForEach(sound => sound.Stop());
+            ambienceList.ForEach(sound => sound.Stop());
         }
 
         public void PlayRoomAmbience()
         {
-            soundList.ForEach(sound => sound.Play());
+            ambienceList.ForEach(sound => sound.Play(ambienceVolume));
+        }
+
+        public void SetAmbienceVolume(float vol)
+        {
+            ambienceVolume = vol;
         }
     }
 }

@@ -28,6 +28,8 @@ namespace Game1.GameState
                 new KeyboardController(game),
                 new GamepadController(game, PlayerIndex.One)
             };
+
+            game.Screen.CurrentRoom.PlayRoomAmbience();
         }
 
         public void Update(GameTime gameTime)
