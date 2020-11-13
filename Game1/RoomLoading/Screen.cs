@@ -23,8 +23,8 @@ namespace Game1.RoomLoading
         private CollisionDetector detector;
         private CollisionHandler handler;
 
-        private const char startingLetter = 'D'; //G
-        private const int startingNumber = 2; //2
+        private const char startingLetter = 'G';
+        private const int startingNumber = 2;
         
         public Screen(Game1 game)
         {

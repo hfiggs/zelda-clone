@@ -310,10 +310,10 @@ namespace Game1.Audio
                 case "HeartContainer":
                 case "Fairy":
                 case "Clock":
+                case "ArrowItem":
                 case "Map":
                     PlayFireForget("powerPickUp");
                     break;
-                case "ArrowItem":
                 case "ItemBoomerang":
                 case "Bow":
                     StopAllMusic();
