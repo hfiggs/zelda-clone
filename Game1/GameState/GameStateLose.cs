@@ -2,6 +2,7 @@
 
 using Game1.Audio;
 using Game1.Controller;
+using Game1.Particle;
 using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.Sprite;
@@ -28,7 +29,7 @@ namespace Game1.GameState
         private const float stareTime = 1000f; // ms
         private float stareTimer;
 
-        private const float poppedTime = 1000f; // ms
+        private const float poppedTime = 2000f; // ms
         private float poppedTimer;
 
         private const float spinAnimationTime = 100f; // ms
@@ -38,6 +39,8 @@ namespace Game1.GameState
         private Color colorRoom = Color.White;
         private readonly Color colorRoomRed = Color.Red;
         private readonly Color colorPlayer = Color.White;
+
+        private readonly IParticle curtain;
 
         private ISprite deadLink;
         private Vector2 deadLinkPosition;
@@ -58,6 +61,8 @@ namespace Game1.GameState
 
             deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
             deadLinkPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+
+            curtain = new Curtain(false, game);
 
             spinTimer = spinTime;
             stareTimer = stareTime;
@@ -110,6 +115,8 @@ namespace Game1.GameState
                 {
                     game.SetState(new GameStateSkyrim(game));
                 }
+
+                curtain.Update(gameTime);
             }
         }
 
@@ -128,6 +135,8 @@ namespace Game1.GameState
 
             if (stareTimer > 0)
                 deadLink.Draw(spriteBatch, deadLinkPosition, colorPlayer);
+
+            curtain.Draw(spriteBatch, colorRoom);
 
             spriteBatch.End();
 
