@@ -12,9 +12,10 @@ namespace Game1.Player.PlayerInventory
         private const int maxRupeeCount = 255;
         private const int maxKeyCount = 255;
         private const int maxTriforceCount = 8;
+        private const int maxBluePotionCount = 1;
 
-        private const int numItems = 5;
-        private bool[] hasItem; // based on ItemEnum (None, Bow, Arrow, Boomerang, Bomb)
+        private const int numItems = 7;
+        private bool[] hasItem; // based on ItemEnum (None, Bow, Arrow, Boomerang, Bomb, BluePotion, BlueCandle)
         private bool[] isItemInUse;
 
         public PlayerInventory1()
@@ -22,13 +23,15 @@ namespace Game1.Player.PlayerInventory
             HalfHeartCount = defaultHalfHearts;
             MaxHalfHearts = defaultHalfHearts;
 
-            hasItem = new bool[numItems] { true, false, false, false, true };
-            isItemInUse = new bool[numItems] { false, false, false, false, false };
+            hasItem = new bool[numItems] { true, false, false, false, true, true, true };
+            isItemInUse = new bool[numItems] { false, false, false, false, false, false, false };
 
             // TODO: Remove this when item drops are working and boomerang is acquirable
             hasItem[(int)ItemEnum.Boomerang] = true;
 
             BombCount = maxBombCount;
+
+            BluePotionCount = maxBluePotionCount;
 
             // everything else auto-initializes to 0 or false
         }
@@ -39,6 +42,7 @@ namespace Game1.Player.PlayerInventory
         public int RupeeCount { get; private set; }
         public int KeyCount { get; private set; }
         public int TriforceCount { get; private set; }
+        public int BluePotionCount { get; private set; }
         public ItemEnum EquippedItem { get; set; }
         public bool ItemInUse { get; set; }
         public bool HasCompass { get; set; }
@@ -113,6 +117,24 @@ namespace Game1.Player.PlayerInventory
             }
         }
 
+        public void AddBluePotion()
+        {
+            if (BluePotionCount < maxBluePotionCount) BluePotionCount++;
+        }
+
+        public bool SubBluePotion()
+        {
+            if (BluePotionCount == 0)
+            {
+                return false;
+            }
+            else
+            {
+                BluePotionCount--;
+                return true;
+            }
+        }
+
         public void AddTriforce()
         {
             if (TriforceCount < maxTriforceCount) TriforceCount++;
@@ -136,6 +158,11 @@ namespace Game1.Player.PlayerInventory
         public void SetItemInUse(ItemEnum item, bool isInUse)
         {
             isItemInUse[(int)item] = isInUse;
+        }
+
+        public void RefreshCandle()
+        {
+            this.SetItemInUse(ItemEnum.BlueCandle, false);
         }
     }
 }

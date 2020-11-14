@@ -13,6 +13,7 @@ namespace Game1.Command.CollisionHandlerCommands
 
         private const int bombWidth = 12; // bomb's width before explosion
         private const int bombHeight = 16; // bomb's height before explosion
+        private const int rightBorder = 244, leftBorder = 30, bottomBorder = 144, topBorder = 30;
 
         public ProjectileToEnvironmentCommand(Game1 game)
         {
@@ -30,7 +31,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (!(proj is SwordBeam) && !(proj is BombProjectile))
             {
-                if ((collision.intersectionRec.X >= 224 || collision.intersectionRec.X <= 30 || collision.intersectionRec.Y >= 144 || collision.intersectionRec.Y <= 30))
+                if (collision.intersectionRec.X >= rightBorder || collision.intersectionRec.X <= leftBorder || collision.intersectionRec.Y >= bottomBorder || collision.intersectionRec.Y <= topBorder)
                     proj.BeginDespawn();
             }
         }

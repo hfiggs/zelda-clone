@@ -22,10 +22,11 @@ namespace Game1.Player
         private const float animationTime = 125f; // ms per frame
         private const int animationFrames = 3;
 
+        private const int bluePotionHalfHearts = 26; // 16 full hearts (max from all heart pieces)
+
         public PlayerStateDownUse(IPlayer player, Vector2 position)
         {
             this.player = player;
-            Sprite = PlayerSpriteFactory.Instance.CreateUseItemDownSprite();
 
             this.position = position;
 
@@ -42,15 +43,29 @@ namespace Game1.Player
                 case ItemEnum.Bow:
                     player.PlayerInventory.SubRupees(1);
                     projectile = new Arrow(south, new Vector2(position.X,position.Y), player);
+                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemDownSprite();
                     break;
                 case ItemEnum.Boomerang:
                     projectile = new Boomerang(south, player);
+                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemDownSprite();
                     break;
                 case ItemEnum.Bomb:
                     player.PlayerInventory.SubBomb();
                     projectile = new BombProjectile(new Vector2(position.X, position.Y), player);
+                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemDownSprite();
+                    break;
+                case ItemEnum.BluePotion:
+                    player.PlayerInventory.SubBluePotion();
+                    player.PlayerInventory.AddHealth(bluePotionHalfHearts);
+                    Sprite = PlayerSpriteFactory.Instance.CreateIdleDownSprite();
+                    break;
+                case ItemEnum.BlueCandle:
+                    const int xModifier = 12, yModifier = 30;
+                    projectile = new CandleFire(south, position + new Vector2(xModifier, yModifier), player);
+                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemDownSprite();
                     break;
                 default:
+                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemDownSprite();
                     break;
             }
         }
@@ -86,6 +101,7 @@ namespace Game1.Player
         public void Update(GameTime time)
         {
             timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
+            ItemEnum bluePotion = (ItemEnum)5;
 
             if(timeUntilNextFrame <= 0 && frameCount < animationFrames)
             {
@@ -95,7 +111,7 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
-                if(item != 0)
+                if(item != 0 && item != bluePotion)
                     player.SpawnProjectile(projectile);
                 player.SetState(new PlayerStateDown(player, position));
             }

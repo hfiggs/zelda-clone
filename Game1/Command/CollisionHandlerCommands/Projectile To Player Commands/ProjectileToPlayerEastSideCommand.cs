@@ -45,6 +45,9 @@ namespace Game1.Command.CollisionHandlerCommands
                     proj.BeginDespawn();
 
                     break;
+                case CandleFire _:
+                    player.ReceiveDamage(fireballDamage, eastVector);
+                    break;
             }
         }
     }

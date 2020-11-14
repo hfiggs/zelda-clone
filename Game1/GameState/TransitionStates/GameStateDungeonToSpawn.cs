@@ -50,6 +50,7 @@ namespace Game1.GameState
             oldRoomPos = oldRoomStartPos;
 
             game.Screen.Player.EditPosition(Vector2.Subtract(newPlayerPosition, game.Screen.Player.GetPlayerHitbox().Location.ToVector2()));
+            game.Screen.Player.PlayerInventory.RefreshCandle();
 
             southRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.South);
 

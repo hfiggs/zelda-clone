@@ -39,10 +39,14 @@ namespace Game1.Controller
                 { Keys.D1, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
                 { Keys.D2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
                 { Keys.D3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
+                { Keys.D4, new PlayerEquipItemCommand(game, ItemEnum.BluePotion) },
+                { Keys.D5, new PlayerEquipItemCommand(game, ItemEnum.BlueCandle) },
 
                 { Keys.NumPad1, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
                 { Keys.NumPad2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
                 { Keys.NumPad3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
+                { Keys.NumPad4, new PlayerEquipItemCommand(game, ItemEnum.BluePotion) },
+                { Keys.NumPad5, new PlayerEquipItemCommand(game, ItemEnum.BlueCandle) },
 
                 {Keys.Escape, new EnterHUDStateCommand(game) },
                 {Keys.F1, new MuteUnmuteCommand(game) },
