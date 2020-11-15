@@ -37,7 +37,7 @@ namespace Game1.HUD
             foreach (IHudItem Item in Items)
             {
                 Point position = Mouse.GetState().Position;
-                // System.Console.WriteLine(position);
+                System.Console.WriteLine(position);
                 Item.Update(gameTime);
 
                 Rectangle selectionRectangle; // Y multiplier for bottom row items messes with the selection rectangle and mouse
@@ -73,7 +73,6 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-
             foreach (IHudItem Item in Items)
             {
                 Item.Draw(spriteBatch, movement, color);

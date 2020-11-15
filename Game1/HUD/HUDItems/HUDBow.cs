@@ -29,7 +29,10 @@ namespace Game1.HUD
                 {
                     const int xDiff = 183, yDiff = 4, widthAndHeight = 20;
                     selectionRectangle = new Rectangle(xDiff, yDiff, widthAndHeight, widthAndHeight);
+                } else {
+                    selectionRectangle = new Rectangle(-1, -1, -1, -1);
                 }
+
                 sprite.Draw(spriteBatch, location + movement, color);
             }
         }

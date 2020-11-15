@@ -26,6 +26,8 @@ namespace Game1.HUD
             {
                 selectionRectangle = new Rectangle(163, 4, 20, 20);
                 sprite.Draw(spriteBatch, location + movement, color);
+            } else {
+                selectionRectangle = new Rectangle(-1, -1, -1, -1);
             }
         }
 

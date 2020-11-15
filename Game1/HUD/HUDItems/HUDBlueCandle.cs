@@ -27,6 +27,8 @@ namespace Game1.HUD
                 const int xDiff = 203, yDiff = 4, widthAndHeight = 20;
                 selectionRectangle = new Rectangle(xDiff, yDiff, widthAndHeight, widthAndHeight);
                 sprite.Draw(spriteBatch, location + movement, color);
+            } else {
+                selectionRectangle = new Rectangle(-1, -1, -1, -1);
             }
         }
 

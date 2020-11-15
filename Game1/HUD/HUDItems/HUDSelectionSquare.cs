@@ -24,6 +24,10 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
+            Rectangle boundry = new Rectangle(125, 1, 128, 120);
+            Rectangle testRec = new Rectangle(selectionRectangle.X + (int)location.X, selectionRectangle.Y + (int)location.Y, selectionRectangle.Width, selectionRectangle.Height);
+
+            if (testRec.Intersects(boundry)) // This prevents the selection box from showing up at -1, -1 or 0, 0
                 displaySprite.Draw(spriteBatch, location + movement, color);
         }
 

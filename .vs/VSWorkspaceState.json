@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Command",
     "\\Game1\\Content\\Images",
-    "\\Game1\\Content\\Images\\HUD",
+    "\\Game1\\Content\\Images\\Item",
     "\\Game1\\Controller",
     "\\Game1\\Controller\\Keyboard",
-    "\\Game1\\Player",
-    "\\Game1\\Player\\PlayerState",
-    "\\Game1\\Util"
+    "\\Game1\\HUD",
+    "\\Game1\\HUD\\HUDItems",
+    "\\Game1\\Player\\PlayerInventory",
+    "\\Game1\\Player\\PlayerState"
   ],
-  "SelectedNode": "\\Game1\\Command\\selectItemRightCommand.cs",
+  "SelectedNode": "\\Game1\\HUD\\HUDItems",
   "PreviewInSolutionExplorer": false
 }
