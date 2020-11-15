@@ -55,7 +55,6 @@ namespace Game1.Controller
                         if (!swappedSuccess) {
                             centerPoint = DetermineNextCenterPoint(centerPoint);
                         }
-                        
                     }
 
                 } else {
@@ -74,15 +73,17 @@ namespace Game1.Controller
         private Point DetermineNextCenterPoint(Point centerPoint)
         {
             Point newCenterPoint = centerPoint;
+            Rectangle boundry = new Rectangle(150, 4, 200, 200);
 
             if (topRightLimit.Contains(centerPoint))
             {
                 newCenterPoint = bottomLeftLimit.Center;
             } else if (bottomRightLimit.Contains(centerPoint)) {
                 newCenterPoint = topLeftLimit.Center;
-            } else
-            {
+            } else if (boundry.Contains(centerPoint)) {
                 newCenterPoint.X = centerPoint.X + centerPointModifier;
+            } else {
+                newCenterPoint = topLeftLimit.Center;
             }
 
             return newCenterPoint;
