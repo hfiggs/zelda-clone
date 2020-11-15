@@ -83,11 +83,25 @@ namespace Game1.Enemy
                 const int timeTillDeath = 800; // milliseconds
                 deathTimer = timeTillDeath;
             }
+
+            if (health <= 0)
+            {
+                state = new EnemyStateDying(state.GetPosition());
+            }
         }
 
         public bool ShouldRemove()
         {
-            return health <= 0 && deathTimer <= 0;
+            if (state.GetType() == typeof(EnemyStateDying))
+            {
+                EnemyStateDying temp = (EnemyStateDying)state;
+                return temp.dead;
+            }
+            else
+            {
+                return false;
+            }
+            //return health <= 0 && deathTimer <= 0;
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)

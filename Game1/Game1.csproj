@@ -90,6 +90,7 @@
     <Compile Include="Controller\Keyboard\KeyboardPausedController.cs" />
     <Compile Include="Controller\Keyboard\KeyboardQuitController.cs" />
     <Compile Include="Controller\Keyboard\KeyboardStartController.cs" />
+    <Compile Include="Enemy\EnemyStateDying.cs" />
     <Compile Include="Environment\EnterBasementLoadZone.cs" />
     <Compile Include="Environment\ExitBasementLoadZone.cs" />
     <Compile Include="Environment\ExitDungeonLoadZone.cs" />

@@ -28,6 +28,11 @@ namespace Game1.Enemy
             health -= amount;
             EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, new Vector2(0,0), game);
             game.Screen.CurrentRoom.DecoratedEnemyList.Add(decorator);
+
+            if (health <= 0)
+            {
+                state = new EnemyStateDying(state.GetPosition());
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -70,7 +75,15 @@ namespace Game1.Enemy
                 game.Screen.RoomsDict.TryGetValue(('C', 4), out roomBelow);
                 roomBelow.SetAmbienceVolume(0.0f);
             }
-            return health <= 0;            
+            if(state.GetType() == typeof(EnemyStateDying))
+            {
+                EnemyStateDying temp = (EnemyStateDying)state;
+                return temp.dead;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<Rectangle> GetHitboxes()
