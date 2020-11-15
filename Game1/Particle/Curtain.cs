@@ -28,7 +28,7 @@ namespace Game1.Particle
         {
             screenDimensions = game.GetWindowDimensionsScaled();
             curtainLeftArea = opening ? new Rectangle(0, 0, (int)screenDimensions.X / 2, (int)screenDimensions.Y) : new Rectangle(-(int)screenDimensions.X, 0, (int)screenDimensions.X, (int)screenDimensions.Y);
-            curtainRightArea = opening ? new Rectangle((int)screenDimensions.X / 2, 0, (int)screenDimensions.X / 2, (int)screenDimensions.Y) : new Rectangle((int)screenDimensions.X - stepSize, 0, (int)screenDimensions.X, (int)screenDimensions.Y);
+            curtainRightArea = opening ? new Rectangle((int)screenDimensions.X / 2, 0, (int)screenDimensions.X / 2, (int)screenDimensions.Y) : new Rectangle((int)screenDimensions.X, 0, (int)screenDimensions.X, (int)screenDimensions.Y);
             curtainLeftSprite = ParticleSpriteFactory.Instance.CreateCurtain(Color.Black, curtainLeftArea);
             curtainRightSprite = ParticleSpriteFactory.Instance.CreateCurtain(Color.Black, curtainRightArea);
             this.opening = opening;

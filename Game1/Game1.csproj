@@ -109,6 +109,7 @@
     <Compile Include="Environment\Overworld\OverworldFloor.cs" />
     <Compile Include="GameState\GameStateLose.cs" />
     <Compile Include="GameState\GameStatePaused.cs" />
+    <Compile Include="GameState\GameStateWin.cs" />
     <Compile Include="GameState\GameStatePickupItem.cs" />
     <Compile Include="GameState\TransitionStates\GameStateRoomToBasement.cs" />
     <Compile Include="GameState\TransitionStates\GameStateBasementToRoom.cs" />
