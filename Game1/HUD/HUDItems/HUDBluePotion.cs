@@ -24,7 +24,7 @@ namespace Game1.HUD
         {
             if (inv.BluePotionCount > 0)
             {
-                const int xDiff = 183, yDiff = 24, widthAndHeight = 20;
+                const int xDiff = 183, yDiff = 23, widthAndHeight = 20;
                 selectionRectangle = new Rectangle(xDiff, yDiff, widthAndHeight, widthAndHeight);
                 sprite.Draw(spriteBatch, location + movement, color);
             }

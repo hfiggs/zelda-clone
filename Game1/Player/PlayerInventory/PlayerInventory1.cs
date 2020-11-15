@@ -23,11 +23,13 @@ namespace Game1.Player.PlayerInventory
             HalfHeartCount = defaultHalfHearts;
             MaxHalfHearts = defaultHalfHearts;
 
-            hasItem = new bool[numItems] { true, false, false, false, true, true, true };
+            hasItem = new bool[numItems] { true, false, false, false, true, false, false };
             isItemInUse = new bool[numItems] { false, false, false, false, false, false, false };
 
             // TODO: Remove this when item drops are working and boomerang is acquirable
             hasItem[(int)ItemEnum.Boomerang] = true;
+            hasItem[(int)ItemEnum.BlueCandle] = true;
+            hasItem[(int)ItemEnum.BluePotion] = true;
 
             BombCount = maxBombCount;
 
@@ -131,6 +133,7 @@ namespace Game1.Player.PlayerInventory
             else
             {
                 BluePotionCount--;
+                hasItem[(int)ItemEnum.BluePotion] = false;
                 return true;
             }
         }

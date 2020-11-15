@@ -60,7 +60,8 @@ namespace Game1.Projectile
         public void Update(GameTime gameTime)
         {
             timer += detonationTime * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timer > 70) {
+            const int timeOfDetonation = 70;
+            if (timer > timeOfDetonation) {
                 detonated = true;
                 if(!particlesSpawned)
                 {
@@ -71,7 +72,6 @@ namespace Game1.Projectile
 
             if(detonated)
             {
-
                 particleTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             }
 

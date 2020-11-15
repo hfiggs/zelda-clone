@@ -82,7 +82,7 @@ namespace Game1.HUD
 
         public IHudItem BuildHUDBlueCandle(IPlayerInventory inv, Vector2 position)
         {
-            return new HUDBomb(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBlueCandleSprite()), position);
+            return new HUDBlueCandle(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBlueCandleSprite()), position);
         }
 
         public IHudItem BuildHUDCompass(IPlayerInventory inv)
@@ -110,7 +110,7 @@ namespace Game1.HUD
 
         public IHudItem BuildHUDBluePotion(IPlayerInventory inv, Vector2 position)
         {
-            return new HUDBomb(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBluePotionSprite()), position);
+            return new HUDBluePotion(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBluePotionSprite()), position);
         }
 
         public IHudItem BuildHUDArrow(IPlayerInventory inv)

@@ -37,9 +37,16 @@ namespace Game1.HUD
             foreach (IHudItem Item in Items)
             {
                 Point position = Mouse.GetState().Position;
-                System.Console.WriteLine(position);
+                // System.Console.WriteLine(position);
                 Item.Update(gameTime);
-                Rectangle selectionRectangle = new Rectangle(Item.selectionRectangle.X * 4, Item.selectionRectangle.Y * 48, Item.selectionRectangle.Width * 3, Item.selectionRectangle.Height * 3);
+
+                Rectangle selectionRectangle; // Y multiplier for bottom row items messes with the selection rectangle and mouse
+                if (Item.GetType() == typeof(HUDBoomerang) || Item.GetType() == typeof(HUDBomb) || Item.GetType() == typeof(HUDBlueCandle) || Item.GetType() == typeof(HUDBow)) {
+                    selectionRectangle = new Rectangle(Item.selectionRectangle.X * 4, Item.selectionRectangle.Y * 44, Item.selectionRectangle.Width * 3, Item.selectionRectangle.Height * 3);
+                } else {
+                    selectionRectangle = new Rectangle(Item.selectionRectangle.X * 4, Item.selectionRectangle.Y * 11, Item.selectionRectangle.Width * 3, Item.selectionRectangle.Height * 3);
+                }
+
                 if (selectionRectangle.Contains(position))
                 {
                     displayItemTop = Item.copyOf();
@@ -49,7 +56,7 @@ namespace Game1.HUD
             Tuple<char, int> currentRoom = screen.CurrentRoomKey.ToTuple();
             if(!roomsEntered.Contains(currentRoom))
             {
-                Vector2 position = new Vector2((currentRoom.Item2 * 8) + 130,8*(currentRoom.Item1 - 65) + 50);
+                Vector2 position = new Vector2((currentRoom.Item2 * 8) + 130, 8 * (currentRoom.Item1 - 65) + 50);
                 Items.Add(HUDItemFactory.Instance.BuildRoom(screen.CurrentRoom, position));
                 roomsEntered.Add(currentRoom);
             }
@@ -57,18 +64,19 @@ namespace Game1.HUD
             selectionSquare.Update(gameTime);
 
 
-             Vector2 DotPosition = new Vector2(currentRoom.Item2 * 8 + 25, (currentRoom.Item1 - 65) * 4 + 145f);
+            Vector2 DotPosition = new Vector2(currentRoom.Item2 * 8 + 25, (currentRoom.Item1 - 65) * 4 + 145f);
 
             linkDot.location = DotPosition;
 
             
         }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
 
             foreach (IHudItem Item in Items)
             {
-                Item.Draw(spriteBatch, movement ,color);
+                Item.Draw(spriteBatch, movement, color);
             }
             if (displayItemTop != null)
             {
