@@ -23,6 +23,7 @@ namespace Game1.GameState
 
         private const int newPlayerX = 120;
         private const int newPlayerY = 32;
+        private const int newPlayerYLockedOffset = 16;
 
         private Color color = Color.White;
 
@@ -32,7 +33,7 @@ namespace Game1.GameState
 
         private readonly Vector2 newRoomOffset = new Vector2(0, vertRoomDim);
 
-        private readonly Vector2 newPlayerPosition = new Vector2(newPlayerX, newPlayerY);
+        private readonly Vector2 newPlayerPosition;
 
         private readonly (char, int) southRoomKey;
 
@@ -47,6 +48,12 @@ namespace Game1.GameState
             };
 
             oldRoomPos = oldRoomStartPos;
+
+            newPlayerPosition = new Vector2(newPlayerX, newPlayerY);
+            if (RoomUtil.IsAdjacentDoorClosed(game.Screen, CompassDirection.South))
+            {
+                newPlayerPosition.Y += newPlayerYLockedOffset;
+            }
 
             game.Screen.Player.EditPosition(Vector2.Subtract(newPlayerPosition, game.Screen.Player.GetPlayerHitbox().Location.ToVector2()));
             game.Screen.Player.PlayerInventory.RefreshCandle();

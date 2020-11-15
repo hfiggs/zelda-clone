@@ -137,6 +137,31 @@ namespace Game1.Util
             }
         }
 
+        public static bool IsAdjacentDoorClosed(Screen screen, CompassDirection adjacentDirection)
+        {
+            var enviroList = screen.RoomsDict[GetAdjacentRoomKey(screen.CurrentRoomKey, adjacentDirection)].InteractEnviornment;
+
+            var isLocked = false;
+
+            switch (adjacentDirection)
+            {
+                case CompassDirection.North:
+                    isLocked = ((DoorSClosed)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorSClosed)))?.open == 0;
+                    break;
+                case CompassDirection.East:
+                    isLocked = ((DoorWClosed)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorWClosed)))?.open == 0;
+                    break;
+                case CompassDirection.South:
+                    isLocked = ((DoorNClosed)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorNClosed)))?.open == 0;
+                    break;
+                case CompassDirection.West:
+                    isLocked = ((DoorEClosed)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorEClosed)))?.open == 0;
+                    break;
+            }
+
+            return isLocked;
+        }
+
         #endregion
 
         #region Bombable Door Utils
