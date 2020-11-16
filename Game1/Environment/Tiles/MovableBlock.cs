@@ -16,7 +16,7 @@ namespace Game1.Environment
         private Vector2 position;
         private float movementTime;
         private Vector2 movementSpeed;
-        //private char movementDirection;
+        public char movementDirection;
 
         const int widthAndHeight = 16;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
@@ -30,7 +30,14 @@ namespace Game1.Environment
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
-            //this.movementDirection = movementDirection;
+            if (movementDirection == 'E')
+                this.movementDirection = 'W';
+            else if (movementDirection == 'S')
+                this.movementDirection = 'N';
+            else if (movementDirection == 'N')
+                this.movementDirection = 'S';
+            else
+                this.movementDirection = 'E';
             hasMoved = false;
         }
 

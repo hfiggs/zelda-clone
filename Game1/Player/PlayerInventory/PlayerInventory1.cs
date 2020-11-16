@@ -42,7 +42,7 @@ namespace Game1.Player.PlayerInventory
         public int MaxHalfHearts { get; private set; }
         public int BombCount { get; private set; }
         public int RupeeCount { get; private set; }
-        public int KeyCount { get; private set; }
+        public int KeyCount { get; private set; } = 12;
         public int TriforceCount { get; private set; }
         public int BluePotionCount { get; private set; }
         public ItemEnum EquippedItem { get; set; }
