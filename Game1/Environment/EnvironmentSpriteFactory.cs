@@ -65,72 +65,72 @@ namespace Game1.Environment
 
         #region Tiles
 
-        public ISprite createFloor()
+        public ISprite CreateFloor()
 		{
 			return new EnvironmentSprite(tiles, floorColumn, floorRow, floorID, false);
 		}
 
-		public ISprite createBlock()
+		public ISprite CreateBlock()
 		{
 			return new EnvironmentSprite(tiles, blockColumn, blockRow, blockID, false);
 		}
 
-		public ISprite createStatueFish()
+		public ISprite CreateStatueFish()
 		{
 			return new EnvironmentSprite(tiles, statueFishColumn, statueFishRow, statueFishID, false);
 		}
 
-		public ISprite createStatueDragon()
+		public ISprite CreateStatueDragon()
 		{
 			return new EnvironmentSprite(tiles, statueDragonColumn, statueDragonRow, statueDragonID, false);
 		}
 
-		public ISprite createBlack()
+		public ISprite CreateBlack()
 		{
 			return new EnvironmentSprite(tiles, blackColumn, blackRow, blackID, false);
 		}
 
-		public ISprite createSand()
+		public ISprite CreateSand()
         {
 			return new EnvironmentSprite(tiles, sandColumn, sandRow, sandID, false);
 		}
 
-		public ISprite createWater()
+		public ISprite CreateWater()
         {
 			return new EnvironmentSprite(tiles, waterColumn, waterRow, waterID, false);
 		}
 
-		public ISprite createStairs()
+		public ISprite CreateStairs()
         {
 			return new EnvironmentSprite(tiles, stairColumn, stairRow, stairID, false);
 		}
 		
-		public ISprite createBricks()
+		public ISprite CreateBricks()
         {
 			return new EnvironmentSprite(tiles, brickColumn, brickRow, brickID, false);
 		}
 
-		public ISprite createLadder()
+		public ISprite CreateLadder()
         {
 			return new EnvironmentSprite(tiles, ladderColumn, ladderRow, ladderID, false);
 		}
 
-		public ISprite createRoom()
+		public ISprite CreateRoom()
 		{
 			return new EnvironmentSprite(room, roomColumn, roomRow, roomID, false);
 		}
 
-		public ISprite createBase()
+		public ISprite CreateBase()
 		{
 			return new EnvironmentSprite(roomBase, roomBaseColumn, roomBaseRow, roomBaseID, false);
 		}
 
-		public ISprite createSecretRoom()
+		public ISprite CreateSecretRoom()
 		{
 			return new EnvironmentSprite(secretRoom, secretRoomColumn, secretRoomRow, secretRoomID, false);
 		}
 
-		public ISprite createFire()
+		public ISprite CreateFire()
 		{
 			return new EnvironmentSprite(tiles, fireColumn, fireRow, fireID, true);
 		}
@@ -139,122 +139,122 @@ namespace Game1.Environment
 
         #region Doors
 
-        public ISprite createDoorNBlank()
+        public ISprite CreateDoorNBlank()
         {
 			return new EnvironmentSprite(doors, DoorNBlankColumn, DoorNBlankRow, DoorNBlankID, false);
 		}
 
-		public ISprite createDoorNOpen()
+		public ISprite CreateDoorNOpen()
 		{
 			return new EnvironmentSprite(doors, DoorNOpenColumn, DoorNOpenRow, DoorNOpenID, false);
 		}
 
-		public ISprite createDoorNLocked()
+		public ISprite CreateDoorNLocked()
 		{
 			return new EnvironmentSprite(doors, DoorNLockedColumn, DoorNLockedRow, DoorNLockedID, false);
 		}
 
-		public ISprite createDoorNClosed()
+		public ISprite CreateDoorNClosed()
 		{
 			return new EnvironmentSprite(doors, DoorNClosedColumn, DoorNClosedRow, DoorNClosedID, false);
 		}
 
-		public ISprite createDoorNHole()
+		public ISprite CreateDoorNHole()
 		{
 			return new EnvironmentSprite(doors, DoorNHoleColumn, DoorNHoleRow, DoorNHoleID, false);
 		}
 
-		public ISprite createDoorNFloor()
+		public ISprite CreateDoorNFloor()
 		{
 			return new EnvironmentSprite(doorfloors, DoorNFloorColumn, DoorNFloorRow, DoorNFloorID, false);
 		}
 
-		public ISprite createDoorWBlank()
+		public ISprite CreateDoorWBlank()
 		{
 			return new EnvironmentSprite(doors, DoorWBlankColumn, DoorWBlankRow, DoorWBlankID, false);
 		}
 
-		public ISprite createDoorWOpen()
+		public ISprite CreateDoorWOpen()
 		{
 			return new EnvironmentSprite(doors, DoorWOpenColumn, DoorWOpenRow, DoorWOpenID, false);
 		}
 
-		public ISprite createDoorWLocked()
+		public ISprite CreateDoorWLocked()
 		{
 			return new EnvironmentSprite(doors, DoorWLockedColumn, DoorWLockedRow, DoorWLockedID, false);
 		}
 
-		public ISprite createDoorWClosed()
+		public ISprite CreateDoorWClosed()
 		{
 			return new EnvironmentSprite(doors, DoorWClosedColumn, DoorWClosedRow, DoorWClosedID, false);
 		}
 
-		public ISprite createDoorWHole()
+		public ISprite CreateDoorWHole()
 		{
 			return new EnvironmentSprite(doors, DoorWHoleColumn, DoorWHoleRow, DoorWHoleID, false);
 		}
 		
-		public ISprite createDoorEBlank()
+		public ISprite CreateDoorEBlank()
 		{
 			return new EnvironmentSprite(doors, DoorEBlankColumn, DoorEBlankRow, DoorEBlankID, false);
 		}
 
-		public ISprite createDoorWFloor()
+		public ISprite CreateDoorWFloor()
 		{
 			return new EnvironmentSprite(doorfloors, DoorWFloorColumn, DoorWFloorRow, DoorWFloorID, false);
 		}
 
-		public ISprite createDoorEOpen()
+		public ISprite CreateDoorEOpen()
 		{
 			return new EnvironmentSprite(doors, DoorEOpenColumn, DoorEOpenRow, DoorEOpenID, false);
 		}
 
-		public ISprite createDoorELocked()
+		public ISprite CreateDoorELocked()
 		{
 			return new EnvironmentSprite(doors, DoorELockedColumn, DoorELockedRow, DoorELockedID, false);
 		}
 
-		public ISprite createDoorEClosed()
+		public ISprite CreateDoorEClosed()
 		{
 			return new EnvironmentSprite(doors, DoorEClosedColumn, DoorEClosedRow, DoorEClosedID, false);
 		}
 
-		public ISprite createDoorEHole()
+		public ISprite CreateDoorEHole()
 		{
 			return new EnvironmentSprite(doors, DoorEHoleColumn, DoorEHoleRow, DoorEHoleID, false);
 		}
 
-		public ISprite createDoorEFloor()
+		public ISprite CreateDoorEFloor()
 		{
 			return new EnvironmentSprite(doorfloors, DoorEFloorColumn, DoorEFloorRow, DoorEFloorID, false);
 		}
 
-		public ISprite createDoorSBlank()
+		public ISprite CreateDoorSBlank()
 		{
 			return new EnvironmentSprite(doors, DoorSBlankColumn, DoorSBlankRow, DoorSBlankID, false);
 		}
 		
-		public ISprite createDoorSOpen()
+		public ISprite CreateDoorSOpen()
 		{
 			return new EnvironmentSprite(doors, DoorSOpenColumn, DoorSOpenRow, DoorSOpenID, false);
 		}
 
-		public ISprite createDoorSLocked()
+		public ISprite CreateDoorSLocked()
 		{
 			return new EnvironmentSprite(doors, DoorSLockedColumn, DoorSLockedRow, DoorSLockedID, false);
 		}
 
-		public ISprite createDoorSClosed()
+		public ISprite CreateDoorSClosed()
 		{
 			return new EnvironmentSprite(doors, DoorSClosedColumn, DoorSClosedRow, DoorSClosedID, false);
 		}
 
-		public ISprite createDoorSHole()
+		public ISprite CreateDoorSHole()
 		{
 			return new EnvironmentSprite(doors, DoorSHoleColumn, DoorSHoleRow, DoorSHoleID, false);
 		}
 
-		public ISprite createDoorSFloor()
+		public ISprite CreateDoorSFloor()
 		{
 			return new EnvironmentSprite(doorfloors, DoorSFloorColumn, DoorSFloorRow, DoorSFloorID, false);
 		}
