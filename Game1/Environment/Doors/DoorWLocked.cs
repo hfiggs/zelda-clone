@@ -12,7 +12,9 @@ namespace Game1.Environment
         private Vector2 position;
         private const int widthAndHeight = 32;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
-        //private Rectangle hitbox2 = new Rectangle(0, 0, 10, 32);
+        private const int width = 32, height = 8, yDiff = 24;
+        private Rectangle hitboxOpen1 = new Rectangle(0, 0, width, height);
+        private Rectangle hitboxOpen2 = new Rectangle(0, yDiff, width, height);
         private List<Rectangle> hitboxes = new List<Rectangle>();
         private float timeTillOpen;
         public int open; // 0 = locked, 1 = opening, 2 = open
@@ -24,11 +26,12 @@ namespace Game1.Environment
             sprite = EnvironmentSpriteFactory.instance.createDoorWLocked();
             this.position = position;
             hitbox1.Location += position.ToPoint();
-         //   hitbox2.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
-         //   hitboxes.Add(hitbox2);
             timeTillOpen = -1;
             open = 0;
+
+            hitboxOpen1.Location += position.ToPoint();
+            hitboxOpen2.Location += position.ToPoint();
         }
 
         public void Update(GameTime gameTime)
@@ -39,9 +42,14 @@ namespace Game1.Environment
                 if (timeTillOpen <= 0)
                 {
                     sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
-                    hitboxes.Remove(hitbox1);
                     const int opened = 2;
                     open = opened;
+
+                    hitboxes = new List<Rectangle>()
+                    {
+                        hitboxOpen1,
+                        hitboxOpen2
+                    };
                 }
             }
         }
@@ -71,7 +79,12 @@ namespace Game1.Environment
                 timeTillOpen = 0;
 
                 sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
-                hitboxes.Remove(hitbox1);
+
+                hitboxes = new List<Rectangle>()
+                {
+                    hitboxOpen1,
+                    hitboxOpen2
+                };
             }
         }
     }

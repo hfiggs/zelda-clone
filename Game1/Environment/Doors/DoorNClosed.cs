@@ -15,6 +15,9 @@ namespace Game1.Environment
 
         const int widthAndHeight = 32;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
+        const int width = 8, height = 32, xDiff = 24;
+        private Rectangle hitboxOpen1 = new Rectangle(0, 0, width, height);
+        private Rectangle hitboxOpen2 = new Rectangle(xDiff, 0, width, height);
         private List<Rectangle> hitboxes = new List<Rectangle>();
         public int open; // 0 = locked, 1 = opening, 2 = open
         private float timeTillOpen;
@@ -26,6 +29,9 @@ namespace Game1.Environment
             hitboxes.Add(hitbox1);
             open = 0;
             timeTillOpen = -1;
+
+            hitboxOpen1.Location += position.ToPoint();
+            hitboxOpen2.Location += position.ToPoint();
         }
 
         public void Update(GameTime gameTime)
@@ -37,8 +43,13 @@ namespace Game1.Environment
                     if (timeTillOpen <= 0)
                     {
                         sprite = EnvironmentSpriteFactory.instance.createDoorNOpen();
-                        hitboxes.Remove(hitbox1);
                         open = 2;
+
+                        hitboxes = new List<Rectangle>()
+                        {
+                            hitboxOpen1,
+                            hitboxOpen2
+                        };
                     }
                 }
             }

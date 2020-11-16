@@ -17,8 +17,9 @@ namespace Game1.Environment
 
         private const float topLayer = 1f;
 
-        // private Rectangle openHitbox1 = new Rectangle(0, 0, 32, 8);
-        // private Rectangle openHitbox2 = new Rectangle(0, 24, 32, 8);
+        private const int width = 32, height = 8, yDiff = 24;
+        private Rectangle hitboxOpen1 = new Rectangle(0, 0, width, height);
+        private Rectangle hitboxOpen2 = new Rectangle(0, yDiff, width, height);
 
         const int widthAndHeight = 32;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
@@ -34,6 +35,9 @@ namespace Game1.Environment
             {
                 OpenDoor(false);
             }
+
+            hitboxOpen1.Location += position.ToPoint();
+            hitboxOpen2.Location += position.ToPoint();
         }
 
         public void Update(GameTime gameTime)
@@ -61,9 +65,11 @@ namespace Game1.Environment
         {
             open = true;
             sprite = EnvironmentSpriteFactory.instance.createDoorEHole();
-            hitboxes = new List<Rectangle>();
-            // hitboxes.Add(openHitbox1);
-            // hitboxes.Add(openHitbox2);
+            hitboxes = new List<Rectangle>()
+            {
+                hitboxOpen1,
+                hitboxOpen2
+            };
 
             if (shouldPlaySound)
             {

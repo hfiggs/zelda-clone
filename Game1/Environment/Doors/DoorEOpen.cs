@@ -13,7 +13,7 @@ namespace Game1.Environment
         private ISprite sprite;
         private Vector2 position;
 
-        const int width = 32, height = 8, yDiff = 24;
+        private const int width = 32, height = 8, yDiff = 24;
         private Rectangle hitbox1 = new Rectangle(0, 0, width, height);
         private Rectangle hitbox2 = new Rectangle(0, yDiff, width, height);
         private List<Rectangle> hitboxes = new List<Rectangle>();
@@ -28,7 +28,7 @@ namespace Game1.Environment
             hitboxes.Add(hitbox2);
         }
 
-public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }
