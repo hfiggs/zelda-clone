@@ -23,7 +23,8 @@ namespace Game1.Item
 
             timeTillSwap = timer;
 
-            AudioManager.PlayFireForget("powerPickUp");
+            const string pickUpAudio = "powerPickUp";
+            AudioManager.PlayFireForget(pickUpAudio);
         }
         public void Update(GameTime gameTime)
         {

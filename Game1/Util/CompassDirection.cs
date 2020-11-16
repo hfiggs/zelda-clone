@@ -16,6 +16,9 @@ namespace Game1.Util
 
     public static class CompassDirectionUtil
     {
+        private const char North = 'N', South = 'S', West = 'W', East = 'E';
+        private const char north = 'n', south = 's', west = 'w', east = 'e';
+
         private static Dictionary<CompassDirection, Vector2> directionVectorMap = new Dictionary<CompassDirection, Vector2>()
         {
             { CompassDirection.North, new Vector2(0, -1) },
@@ -33,17 +36,17 @@ namespace Game1.Util
         {
             switch(direction)
             {
-                case 'n':
-                case 'N':
+                case north:
+                case North:
                     return directionVectorMap[CompassDirection.North];
-                case 'e':
-                case 'E':
+                case east:
+                case East:
                     return directionVectorMap[CompassDirection.East];
-                case 's':
-                case 'S':
+                case south:
+                case South:
                     return directionVectorMap[CompassDirection.South];
-                case 'w':
-                case 'W':
+                case west:
+                case West:
                     return directionVectorMap[CompassDirection.West];
                 default:
                     throw new ArgumentException();
@@ -54,17 +57,17 @@ namespace Game1.Util
         {
             switch (direction)
             {
-                case 'n':
-                case 'N':
+                case north:
+                case North:
                     return CompassDirection.North;
-                case 'e':
-                case 'E':
+                case east:
+                case East:
                     return CompassDirection.East;
-                case 's':
-                case 'S':
+                case south:
+                case South:
                     return CompassDirection.South;
-                case 'w':
-                case 'W':
+                case west:
+                case West:
                     return CompassDirection.West;
                 default:
                     throw new ArgumentException();

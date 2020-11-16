@@ -113,7 +113,8 @@ namespace Game1.Player
             }
             if(PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
             {
-                lowHealthSound = AudioManager.PlayLooped("lowHealth");
+                const string lowHealthAudio = "lowHealth";
+                lowHealthSound = AudioManager.PlayLooped(lowHealthAudio);
                 isLowHealth = true;
             }
         }

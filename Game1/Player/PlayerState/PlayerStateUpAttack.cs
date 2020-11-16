@@ -29,7 +29,8 @@ namespace Game1.Player
             frameCount = 0;
             timeUntilNextFrame = animationTime;
 
-            AudioManager.PlayFireForget("sword");
+            const string swordAudio = "sword";
+            AudioManager.PlayFireForget(swordAudio);
         }
 
         public void Attack()
@@ -63,25 +64,26 @@ namespace Game1.Player
         public void Update(GameTime time)
         {
             timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
+            const int skipFramesBeforeAttackCase = 0, attackSpriteOneCase = 1, playerLoopedBackCase1 = 2, playerLoopedBackCase2 = 3, playerSwordOutCase = 4;
 
             if (timeUntilNextFrame <= 0)
             {
                 switch (frameCount)
                 {
-                    case 0:
+                    case skipFramesBeforeAttackCase:
                         //frames before the attacking sprites are skipped
                         Sprite.Update();
                         frameCount++;
                         break;
-                    case 1:
+                    case attackSpriteOneCase:
                         //attcking sprite 1, sword is not out
                         Sprite.Update();
                         const float timeToNextFrame1 = 75f;
                         timeUntilNextFrame += timeToNextFrame1;
                         frameCount++;
                         break;
-                    case 2:
-                    case 3:
+                    case playerLoopedBackCase1:
+                    case playerLoopedBackCase2:
                         //player looped back to start
                         Sprite.Update();
                         const float timeToNextFrame2 = 175f;
@@ -90,7 +92,7 @@ namespace Game1.Player
                         player.SetSwordHitbox(new Rectangle(xDiff, yDiff, widthAndHeight, widthAndHeight));
                         frameCount++;
                         break;
-                    case 4:
+                    case playerSwordOutCase:
                         Sprite.Update();
                         const float timeToNextFrame3 = 175f;
                         timeUntilNextFrame += timeToNextFrame3;

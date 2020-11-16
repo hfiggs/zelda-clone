@@ -55,7 +55,8 @@ namespace Game1.GameState
 
             northRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.North);
 
-            AudioManager.PlayFireForget("stairs");
+            const string stairsAudio = "stairs";
+            AudioManager.PlayFireForget(stairsAudio);
         }
 
         public void Update(GameTime gameTime)

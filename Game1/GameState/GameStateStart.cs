@@ -50,9 +50,10 @@ namespace Game1.GameState
                 new WaterfallSpray(waterfallSprayPosition)
             };
 
+            const int offset = 2;
             for(int i = 0; i < numWaterfallParticles; i++)
             {
-                waterfallParticles.Add(new Waterfall(Vector2.Add(waterfallSprayPosition, new Vector2(0, (i + 1) * waterfallParticleSpacing + waterfallParticleOffset)), i == 0 ? 0 : 2));
+                waterfallParticles.Add(new Waterfall(Vector2.Add(waterfallSprayPosition, new Vector2(0, (i + 1) * waterfallParticleSpacing + waterfallParticleOffset)), i == 0 ? 0 : offset));
             }
 
             isMusicStarted = false;
@@ -82,9 +83,11 @@ namespace Game1.GameState
 
         public void Update(GameTime gameTime)
         {
+            const string titleAudio = "title";
+
             if (!isMusicStarted)
             {
-                AudioManager.PlayLooped("title");
+                AudioManager.PlayLooped(titleAudio);
                 isMusicStarted = true;
             }
 

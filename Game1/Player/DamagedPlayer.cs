@@ -40,7 +40,8 @@ namespace Game1.Player
             timer = duration;
             stillSlide = true;
             flickerTimer = 0;
-            AudioManager.PlayFireForget("linkHurt", 0.0f, volume);
+            const string linkHurtAudio = "linkHurt";
+            AudioManager.PlayFireForget(linkHurtAudio, 0.0f, volume);
         }
 
         public void Attack()

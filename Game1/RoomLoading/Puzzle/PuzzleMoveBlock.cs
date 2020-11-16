@@ -49,7 +49,8 @@ namespace Game1.RoomLoading.Puzzle
                         }
                     }
                     complete = true;
-                    AudioManager.PlayFireForget("reveal");
+                    const string revealAudio = "reveal";
+                    AudioManager.PlayFireForget(revealAudio);
                 }
 
             }

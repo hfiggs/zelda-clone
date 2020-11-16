@@ -18,7 +18,7 @@ namespace Game1.Collision_Handling
             this.collidee = collidee;
         }
 
-        //strictly for debugging
+        // Strictly for debugging
         public override string ToString()
         {
             return "[" + collider.GetType().ToString() + " -> " + collidee.GetType().ToString() + ", " + intersectionRec.ToString() + ", " + side + "]";

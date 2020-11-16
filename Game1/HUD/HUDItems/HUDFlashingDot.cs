@@ -13,7 +13,8 @@ namespace Game1.HUD
         private HUDSprite displaySprite;
         private HUDSprite spriteOne;
         private HUDSprite spriteTwo;
-        private float flashTimer = 150f;
+        private const float flashTimerMax = 150f;
+        private float flashTimer = flashTimerMax;
 
         public HUDFlashingDot(IPlayerInventory inv, Vector2 bossPosition, HUDSprite spriteOne, HUDSprite spriteTwo)
         {
@@ -39,7 +40,7 @@ namespace Game1.HUD
 
             if(flashTimer <= 0)
             {
-                flashTimer = 150f;
+                flashTimer = flashTimerMax;
                 if (displaySprite == spriteOne)
                 {
                     displaySprite = spriteTwo;

@@ -58,6 +58,7 @@ namespace Game1.Enemy
             const int width = 15;
             const int headHeight = 4;
             const int bodyHeight = 24;
+
             List<Rectangle> hitboxList = new List<Rectangle>();
             hitboxList.Add(new Rectangle((int)position.X + xDiff, (int)position.Y + yDiffBody, width, bodyHeight));
             hitboxList.Add(new Rectangle((int)position.X + xDiff, (int)position.Y + yDiffHead, width, headHeight));
@@ -84,19 +85,19 @@ namespace Game1.Enemy
 
                 if (timeUntilNewDirection <= 0)
                 {
-                    const int randomNumberMax = 4;
+                    const int randomNumberMax = 4, goUp = 0, goDown = 1, goLeft = 2, goRight = 3; ;
                     switch((new Random()).Next(randomNumberMax))
                     {
-                        case 0:
+                        case goUp:
                             timeUntilNewDirection += moveTime;
                             break;
-                        case 1:
+                        case goDown:
                             dodongo.SetState(new DodongoStateDown(dodongo, position));
                             break;
-                        case 2:
+                        case goLeft:
                             dodongo.SetState(new DodongoStateLeft(dodongo, position));
                             break;
-                        case 3:
+                        case goRight:
                             dodongo.SetState(new DodongoStateRight(dodongo, position));
                             break;
                     }

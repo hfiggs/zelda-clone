@@ -61,12 +61,13 @@ namespace Game1.Environment
             //movement is in units of tiles (16 pixels)
             movementTime = seconds;
             //calculated differently likely due to a float rounding/truncating error
-            float moveX = movement.X * 15.5f;
-            float moveY = movement.Y * 15.5f;
+            const float modifier1 = 15.5f, modifier2 = 16.0f;
+            float moveX = movement.X * modifier1;
+            float moveY = movement.Y * modifier1;
             if (movement.X > 0)
-                moveX = movement.X * 16.0f;
+                moveX = movement.X * modifier2;
             if(movement.Y > 0)
-                moveY = movement.Y * 16.0f;
+                moveY = movement.Y * modifier2;
             movementSpeed = new Vector2(moveX, moveY) / seconds;
             hasMoved = true;
         }

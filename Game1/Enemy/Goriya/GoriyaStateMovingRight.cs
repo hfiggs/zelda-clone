@@ -86,6 +86,7 @@ namespace Game1.Enemy
             const int spriteHeight = 16;
             const int xAdjustment = 8;
             const int yAdjustment = 7;
+
             List<Rectangle> hitboxList = new List<Rectangle>();
             hitboxList.Add(new Rectangle((int)position.X + xAdjustment, (int)position.Y + yAdjustment, spriteWidth, spriteHeight));
             return hitboxList;
@@ -105,13 +106,14 @@ namespace Game1.Enemy
             Random random = new Random(Guid.NewGuid().GetHashCode());
             int randomDirection = random.Next(numberOfDirections);
 
+            const int goLeft = 0, goRight = 1, goUp = 2;
             switch (randomDirection)
             {
-                case 0:
+                case goLeft:
                     return new Vector2(negative * moveSpeed, zero);
-                case 1:
+                case goRight:
                     return new Vector2(moveSpeed, zero);
-                case 2:
+                case goUp:
                     return new Vector2(zero, negative * moveSpeed);
                 default:
                     return new Vector2(zero, moveSpeed);

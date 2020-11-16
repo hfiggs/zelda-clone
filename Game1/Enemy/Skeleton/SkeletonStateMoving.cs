@@ -123,13 +123,14 @@ namespace Game1.Enemy
             const int randomNumberMax = 4;
             int randomDirection = random.Next(randomNumberMax);
 
+            const int goLeft = 0, goRight = 1, goUp = 2;
             switch (randomDirection)
             {
-                case 0:
+                case goLeft:
                     return new Vector2(-1 * moveSpeed, 0);
-                case 1:
+                case goRight:
                     return new Vector2(moveSpeed, 0);
-                case 2:
+                case goUp:
                     return new Vector2(0, -1 * moveSpeed);
                 default:
                     return new Vector2(0, moveSpeed);

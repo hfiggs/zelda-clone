@@ -16,6 +16,7 @@ namespace Game1.Projectile
         private int rowModifier = 0;
         private int counter = 0;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
+        private const char north = 'N', south = 'S', west = 'W', east = 'E';
         private ProjectileSpriteSheet sprite;
         private bool returned = false;
         public IPlayer Player { get; private set; }
@@ -47,6 +48,7 @@ namespace Game1.Projectile
         //delay should be no more than 0.5f (creates sound bugs)
         private float soundDelay = 0.25f;
         private bool despawning = false;
+        const string boomerangAudio = "boomerang";
 
         public Boomerang(char direction, IPlayer player) {
             this.direction = direction;
@@ -56,7 +58,7 @@ namespace Game1.Projectile
             position.X = player.GetPlayerHitbox().X + (player.GetPlayerHitbox().Width / 2) - (sprite.PickSprite(0, 0).Width / 2);
             position.Y = player.GetPlayerHitbox().Y + (player.GetPlayerHitbox().Height / 2) - (sprite.PickSprite(0, 0).Height / 2) + recieveYOffest;
 
-            sound = AudioManager.PlayLooped("boomerang", soundDelay, soundVol);
+            sound = AudioManager.PlayLooped(boomerangAudio, soundDelay, soundVol);
             player.setBoomerangOut(true);
 
             InitRayTraceHitbox();
@@ -78,8 +80,9 @@ namespace Game1.Projectile
             }
 
             // Used to change sprite sheet row to allow for flashing
-            if (counter % 5 == 0) {
-                if (rowModifier == 3) {
+            const int counterInterval = 5, rowMax = 3;
+            if (counter % counterInterval == 0) {
+                if (rowModifier == rowMax) {
                     rowModifier = 0;
                 } else {
                     rowModifier++;
@@ -98,19 +101,19 @@ namespace Game1.Projectile
 
         private void BoomerangOut(GameTime gameTime)
         {
-            if (direction == 'N')
+            if (direction == north)
             {
                 position.Y -= currentVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            else if (direction == 'S')
+            else if (direction == south)
             {
                 position.Y += currentVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            else if (direction == 'W')
+            else if (direction == west)
             {
                 position.X -= currentVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            else
+            else if (direction == east)
             {
                 position.X += currentVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
@@ -126,6 +129,8 @@ namespace Game1.Projectile
 
         private void BoomerangIn(GameTime gameTime)
         {
+            const int dividebyTwo = 2;
+
             //return velocity clamp - strict ordering with below accelleration
             if (currentVelocity > returnVelocity)
             {
@@ -134,7 +139,7 @@ namespace Game1.Projectile
 
             Rectangle currentLocation = sprite.PickSprite(0, 0);
             currentLocation.Location = new Point((int)position.X, (int)position.Y);
-            Vector2 recievePoisition = new Vector2(Player.GetPlayerHitbox().X + (Player.GetPlayerHitbox().Width / 2) - (sprite.PickSprite(0, 0).Width / 2), Player.GetPlayerHitbox().Y + (Player.GetPlayerHitbox().Height / 2) - (sprite.PickSprite(0, 0).Height / 2) + recieveYOffest);
+            Vector2 recievePoisition = new Vector2(Player.GetPlayerHitbox().X + (Player.GetPlayerHitbox().Width / dividebyTwo) - (sprite.PickSprite(0, 0).Width / dividebyTwo), Player.GetPlayerHitbox().Y + (Player.GetPlayerHitbox().Height / dividebyTwo) - (sprite.PickSprite(0, 0).Height / dividebyTwo) + recieveYOffest);
 
             Vector2 positionDiff = new Vector2(currentLocation.X, currentLocation.Y) - recievePoisition;
             if(positionDiff.Length() < minimumCatchDist)
@@ -147,33 +152,34 @@ namespace Game1.Projectile
             position.Y -= positionDiff.Y * currentVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             //accellerating - strict ordering with above clamp
-            currentVelocity += (float)(accelleration * (gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)) / 2.0f;
+            currentVelocity += (float)(accelleration * (gameTime.ElapsedGameTime.TotalSeconds * gameTime.ElapsedGameTime.TotalSeconds)) / (float)dividebyTwo;
         }
 
         private void InitRayTraceHitbox()
         {
             switch(direction)
             {
-                case 'N':
+                case north:
                     hitbox.Y -= rayLength;
                     hitbox.Height += rayLength;
                     rayTraced = true;
                     break;
-                case 'S':
+                case south:
                     hitbox.Height += rayLength;
                     rayTraced = true;
                     break;
-                case 'E':
+                case east:
                     hitbox.Width += rayLength;
                     rayTraced = true;
                     break;
-                case 'W':
+                case west:
                     hitbox.X -= rayLength;
                     hitbox.Width += rayLength;
                     rayTraced = true;
                     break;
                 default:
-                    Console.WriteLine("Direction not initialized");
+                    const string errorMessage = "Direction not initialized";
+                    Console.WriteLine(errorMessage);
                     break;
             }
             rayTraced = true;
@@ -219,7 +225,7 @@ namespace Game1.Projectile
             {
                 AddParticle(new ShieldDeflect(position + particleOffset));
                 AudioManager.StopSound(sound);
-                sound = AudioManager.PlayLooped("boomerang", 0.0f, soundVol);
+                sound = AudioManager.PlayLooped(boomerangAudio, 0.0f, soundVol);
                 despawning = true;
                 collided = true;
             }

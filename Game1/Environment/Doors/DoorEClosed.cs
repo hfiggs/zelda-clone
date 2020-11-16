@@ -21,6 +21,7 @@ namespace Game1.Environment
         private List<Rectangle> hitboxes = new List<Rectangle>();
         public int open; // 0 = locked, 1 = opening, 2 = open
         private float timeTillOpen;
+        private const int openDoor = 2;
 
         public DoorEClosed(Vector2 position)
         {
@@ -43,7 +44,7 @@ namespace Game1.Environment
                 if (timeTillOpen <= 0)
                 {
                     sprite = EnvironmentSpriteFactory.instance.createDoorEOpen();
-                    open = 2;
+                    open = openDoor;
 
                     hitboxes = new List<Rectangle>()
                     {

@@ -35,7 +35,8 @@ namespace Game1.RoomLoading
 
         public void LoadAllRooms()
         {
-            foreach (string file in Directory.EnumerateFiles(game.Content.RootDirectory + "/RoomXML", "*.xml"))
+            const string roomXMLDirectory = "/RoomXML", xmlFileTag = "*.xml";
+            foreach (string file in Directory.EnumerateFiles(game.Content.RootDirectory + roomXMLDirectory, xmlFileTag))
             {
                 var identifer = Regex.Match(file, @"\w{2}(?=\.\w+$)");
                 String identiferStr = identifer.Value;

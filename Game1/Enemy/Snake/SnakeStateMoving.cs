@@ -70,16 +70,16 @@ namespace Game1.Enemy
 
         public Vector2 GetDirection()
         {
-            // N=0, S=1, E=2, W=3
+            const int north = 0, south = 1, east = 2, west = 3;
             switch (moveDirection)
             {
-                case 0:
+                case north:
                     return new Vector2(0, -1);
-                case 1:
+                case south:
                     return new Vector2(0, 1);
-                case 2:
+                case east:
                     return new Vector2(1, 0);
-                case 3:
+                case west:
                 default:
                     return new Vector2(-1, 0);
             }
@@ -139,18 +139,19 @@ namespace Game1.Enemy
                 speed = normalSpeed;
             }
 
+            const int north = 0, south = 1, east = 2, west = 3;
             switch (moveDirection)
             {
-                case 0:
+                case north:
                     position.Y -= speed;
                     break;
-                case 1:
+                case south:
                     position.Y += speed;
                     break;
-                case 2:
+                case east:
                     position.X += speed;
                     break;
-                case 3:
+                case west:
                     position.X -= speed;
                     break;
             }

@@ -43,8 +43,7 @@ namespace Game1.Environment
                 if (timeTillOpen <= 0)
                 {
                     sprite = EnvironmentSpriteFactory.instance.createDoorSOpen();
-                    const int opened = 2;
-                    open = opened;
+                    open = openDoor;
 
                     hitboxes = new List<Rectangle>()
                     {
@@ -66,12 +65,14 @@ namespace Game1.Environment
 
         public void Open(bool shouldInstantOpen)
         {
+            const string doorLockAudio = "doorLock";
+
             // Normal unlock
             if (!shouldInstantOpen)
             {
                 open = 1;
                 timeTillOpen = openTime;
-                AudioManager.PlayFireForget("doorLock");
+                AudioManager.PlayFireForget(doorLockAudio);
             }
             // Instant unlock
             else

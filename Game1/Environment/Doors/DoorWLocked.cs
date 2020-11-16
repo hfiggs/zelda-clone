@@ -10,6 +10,7 @@ namespace Game1.Environment
     {
         private ISprite sprite;
         private Vector2 position;
+
         private const int widthAndHeight = 32;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private const int width = 32, height = 8, yDiff = 24;
@@ -42,8 +43,7 @@ namespace Game1.Environment
                 if (timeTillOpen <= 0)
                 {
                     sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
-                    const int opened = 2;
-                    open = opened;
+                    open = openDoor;
 
                     hitboxes = new List<Rectangle>()
                     {
@@ -65,12 +65,14 @@ namespace Game1.Environment
 
         public void Open(bool shouldInstantOpen)
         {
+            const string doorLockAudio = "doorLock";
+
             // Normal unlock
             if (!shouldInstantOpen)
             {
                 open = 1;
                 timeTillOpen = openTime;
-                AudioManager.PlayFireForget("doorLock");
+                AudioManager.PlayFireForget(doorLockAudio);
             }
             // Instant unlock
             else

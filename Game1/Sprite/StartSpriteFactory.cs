@@ -24,7 +24,8 @@ namespace Game1.Enemy
 
         public void LoadAllTextures(ContentManager content)
         {
-            startBgSpriteSheet = content.Load<Texture2D>("images/Start/StartBackground");
+            const string startBackgroundFilePath = "images/Start/StartBackground";
+            startBgSpriteSheet = content.Load<Texture2D>(startBackgroundFilePath);
         }
 
         public ISprite CreateStartBackgroundSprite()

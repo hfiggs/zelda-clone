@@ -217,6 +217,11 @@
 /processorParam:Quality=Best
 /build:audio/sounds/triforceTheme.wav
 
+#begin bin/Windows/Content/videoplayback.wmv
+/importer:WmvImporter
+/processor:VideoProcessor
+/build:bin/Windows/Content/videoplayback.wmv;bin/Windows/Content/Skyrim.wmv
+
 #begin Images/Enemy/Aquamentus.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -795,9 +800,4 @@
 
 #begin RoomXML/RoomZ0.xml
 /copy:RoomXML/RoomZ0.xml
-
-#begin videoplayback.wmv
-/importer:WmvImporter
-/processor:VideoProcessor
-/build:videoplayback.wmv;Skyrim.wmv
 

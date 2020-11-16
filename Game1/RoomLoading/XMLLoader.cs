@@ -11,6 +11,9 @@ namespace Game1.RoomLoading
     {
         private XmlDocument xmlDoc { get; set; }
 
+        // xml Tag Names
+        private const string itemTag = "Item", projectileTag = "Projectile", enemyTag = "Enemy", interactEnviornmentTag = "InteractEnviornment", nonInteractEnviornment = "NonInteractEnviornment", puzzleTag = "Puzzle", soundsTag = "Sounds";
+
         public XMLLoader(String fileName)
         {
             this.xmlDoc = new XmlDocument();
@@ -19,32 +22,32 @@ namespace Game1.RoomLoading
 
         public XmlNodeList getItemNodes()
         {
-            return xmlDoc.GetElementsByTagName("Item"); 
+            return xmlDoc.GetElementsByTagName(itemTag); 
         }
 
         public XmlNodeList getProjectileNodes()
         {
-            return xmlDoc.GetElementsByTagName("Projectile"); ;
+            return xmlDoc.GetElementsByTagName(projectileTag); ;
         }
         public XmlNodeList getEnemyNodes()
         {
-            return xmlDoc.GetElementsByTagName("Enemy"); ;
+            return xmlDoc.GetElementsByTagName(enemyTag); ;
         }
         public XmlNodeList getInteractEnviornmentNodes()
         {
-            return xmlDoc.GetElementsByTagName("InteractEnviornment"); ;
+            return xmlDoc.GetElementsByTagName(interactEnviornmentTag); ;
         }
         public XmlNodeList getNonInteractEnviornmentNodes()
         {
-            return xmlDoc.GetElementsByTagName("NonInteractEnviornment"); ;
+            return xmlDoc.GetElementsByTagName(nonInteractEnviornment); ;
         }
         public XmlNodeList getPuzzleNodes()
         {
-            return xmlDoc.GetElementsByTagName("Puzzle");
+            return xmlDoc.GetElementsByTagName(puzzleTag);
         }
         public XmlNodeList getAmbientSounds()
         {
-            return xmlDoc.GetElementsByTagName("Sounds");
+            return xmlDoc.GetElementsByTagName(soundsTag);
         }
     }
 }

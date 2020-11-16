@@ -6,7 +6,8 @@ namespace Game1.Item
 {
     public class Heart : IItem
     {
-        Color color = Color.White;
+        const float colorRed = 0.973f, colorGreen = 0.22f, colorBlue = 0.0f, colorRed2 = 0.0f, colorGreen2 = 0.0f, colorBlue2 = 0.737f;
+        Color color = new Color(new Vector3(colorRed, colorGreen, colorBlue));
         int timeTillSwap;
         const int flashTimer = 250; //ms
         private ISprite sprite;
@@ -30,12 +31,12 @@ namespace Game1.Item
                 timeTillSwap -= (int)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (timeTillSwap <= 0)
                 {
-                    if (color.Equals(Color.White))
-                        color = Color.Red;
+                    if (color.Equals(new Color(new Vector3(colorRed, colorGreen, colorBlue))))
+                        color = new Color(new Vector3(colorRed2, colorGreen2, colorBlue2));
                     else
-                        color = Color.White;
+                        color = new Color(new Vector3(colorRed, colorGreen, colorBlue));
 
-                    timeTillSwap = flashTimer;
+                timeTillSwap = flashTimer;
                 }
             }
 
