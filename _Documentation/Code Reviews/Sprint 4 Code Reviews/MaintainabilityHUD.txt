@@ -1,0 +1,32 @@
+﻿AUTHOR (OF THE REVIEW) - Jeffrey Gaydos
+
+
+DATE - 11/14/2020
+
+
+SPRINT # 4
+
+
+NAME OF FILE BEING REVIEWED - HUD.cs
+
+
+AUTHOR OF FILE BEING REVIEWED -  Jared Perkins
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) - The fields of this class are mostly interfaces, meaning this class has low coupling in general. The only improvement that could be made is to
+													make screen an interface, although there is only 1 screen object, so this is not immediately necessary. Use of factories and the IHUDItem
+													interface aids in adding on new items and extending the class in general. The direct reference to mouse could be abstracted away into a seperate
+													controller, and produces an incerase in coupling as well as a decrease in cohesion. Using a list to store and display visited rooms allows
+													extensibility should we decide to add more rooms to our project. Though other modifications would be necessary outside of this class, within the
+													HUD.cs class, nothing would need to change. Additionally, if there were 2 synchronous players in seperate rooms (consider an "online" style of
+													multiplayer), and if both players could see eachother on the map, the HUD would need minimal changes and could easily reuse lots of code. In
+													general, the code would have to loop through all "Screen" objects for each player, get each player's current room, and then draw another instance
+													of a "linkDot". If there could be any number of players, a list of Screens and linkDots would become necessary.
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - Suppose we add a new item. The first thing to do would be to create the item sprites and
+																										  other features of the sprite, but this is unrelated to the HUD.cs class. For the HUD class,
+																										  a HUDSprite object would need to be created for a corresponding HUDItemFactory method to 
+																										  construct the new item within the hud system. An update to the "buildHudList" method would
+																										  also be necessary to initialize the hud with the player's inventory. Other than these
+																										  mostly external modifications, no other changes to the HUD.cs would be necessary.

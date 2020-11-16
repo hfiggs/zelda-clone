@@ -1,0 +1,29 @@
+﻿AUTHOR (OF REVIEW) - Jeffrey Gaydos
+
+
+DATE - 11/16/2020
+
+
+SPRINT # 4
+
+
+NAME OF FILE BEING REVIEWED - 
+
+
+AUTHOR OF FILE BEING REVIEWED - Sergei Fedulov
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 18 Minutes
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - As far as the specific drops for each kind of enemy, switch statements may not be the best way to handle routing the random
+																	number to a specific drop, especially since there are different probabilities for each drop. Additionally, there are differing
+																	"randomMax" values that should probably be a constant variable within the scope of the class rather than just 1 function. If the
+																	switch statements were removed, then there would be no need for a "max" value, as a certain random function returns a random
+																	number from 1-0, and then decimal probabilities could be tested for in a set of if/else blocks. Obviously, these probabilities
+																	would need to be predefined as constants, which might clutter the fields of the class, but would help the readability of the
+																	"GetDrops" function. Also within the GetDrops function, it may be better to have a dictionary of all the enemies and a list of
+																	necessary probabilities. That way you could generalize the function to one set of if/else blocks that would differ only in
+																	probabilities pulled out from the dictionary of probabilities. Finally, the hasDrops list works well to help the readability as
+																	it avoids branching of any kind when checking to see if an enemy even has drops. However, this list never changes during runtime,
+																	and should likely be initialized as a constant outside of the constructor.
