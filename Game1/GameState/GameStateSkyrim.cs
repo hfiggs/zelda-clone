@@ -14,7 +14,7 @@ namespace Game1.GameState
         public GameStateSkyrim(Game1 game)
         {
             this.game = game;
-            const string SkyrimVideo = "bin/Windows/Content/Skyrim";
+            const string SkyrimVideo = "Skyrim";
             skyrim = game.Content.Load<Video>(SkyrimVideo);
             player = new VideoPlayer();
             player.Play(skyrim);
