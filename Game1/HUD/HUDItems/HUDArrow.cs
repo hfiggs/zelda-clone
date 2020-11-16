@@ -6,7 +6,8 @@ namespace Game1.HUD
 {
     internal class HUDArrow : IHudItem
     {
-        public Vector2 location { get; set; } = new Vector2(170, -9);
+        private const int x = 170, y = -9;
+        public Vector2 location { get; set; } = new Vector2(x, y);
         public ItemEnum myItem { get; private set; } = ItemEnum.Arrow;
         public Rectangle selectionRectangle { get; set; }
         private IPlayerInventory inv;

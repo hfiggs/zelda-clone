@@ -40,7 +40,9 @@ namespace Game1.GameState
             }
 
             game.HUD.Update(gameTime);
-            Mouse.SetPosition(150, 150);
+
+            const int mousePosition = 150;
+            Mouse.SetPosition(mousePosition, mousePosition);
 
             game.Screen.Update(gameTime);
         }

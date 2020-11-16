@@ -14,7 +14,7 @@ namespace Game1.Projectile
         private ISprite sprite;
         private IPlayer player;
 
-        private float detonationTime, timer;
+        private float timer;
         private bool detonated, swallowed;
         private Vector2 position;
 
@@ -33,6 +33,7 @@ namespace Game1.Projectile
         private const int cloudHexOffset = 8; //pixels
         private const int spriteRadius = 12; // pixels
 
+        private const float detonationTime = 70;
         private const float particleTime = 600f; // ms
         private float particleTimer;
 
@@ -44,7 +45,6 @@ namespace Game1.Projectile
             this.position = position;
             detonated = false;
             swallowed = false;
-            detonationTime = 70;
             timer = 0;
             sprite = ProjectileSpriteFactory.Instance.CreateBombProjectileSprite();
             this.player = player;
@@ -121,7 +121,8 @@ namespace Game1.Projectile
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X + cloudOffset, GetCenteredPosition().Y + cloudOffset - cloudHexOffset + 1)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X, GetCenteredPosition().Y + cloudOffset)));
             particles.Add(new Cloud(new Vector2(GetCenteredPosition().X - cloudOffset, GetCenteredPosition().Y + cloudOffset - cloudHexOffset + 1)));
-            particles.Add(new BombOverlay(new Color(new Vector4(0.75f, 0.535f, 0.535f, 0.4f))));
+            const float x = 0.75f, y = 0.535f, z = 0.535f, w = 0.4f;
+            particles.Add(new BombOverlay(new Color(new Vector4(x, y, z, w))));
         }
 
         public Rectangle GetHitbox()

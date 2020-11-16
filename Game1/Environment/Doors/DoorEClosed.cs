@@ -38,7 +38,8 @@ namespace Game1.Environment
                 {
                     sprite = EnvironmentSpriteFactory.instance.createDoorEOpen();
                     hitboxes.Remove(hitbox1);
-                    open = 2;
+                    const int setToOpen = 2;
+                    open = setToOpen;
                 }
             }
         }

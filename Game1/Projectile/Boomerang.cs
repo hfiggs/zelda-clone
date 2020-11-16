@@ -16,6 +16,7 @@ namespace Game1.Projectile
         private int rowModifier = 0;
         private int counter = 0;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
+        private const char north = 'N', south = 'S', west = 'W', east = 'E';
         private ProjectileSpriteSheet sprite;
         private bool returned = false;
         public IPlayer Player { get; private set; }
@@ -78,8 +79,9 @@ namespace Game1.Projectile
             }
 
             // Used to change sprite sheet row to allow for flashing
-            if (counter % 5 == 0) {
-                if (rowModifier == 3) {
+            const int counterInterval = 5, rowMax = 3;
+            if (counter % counterInterval == 0) {
+                if (rowModifier == rowMax) {
                     rowModifier = 0;
                 } else {
                     rowModifier++;
@@ -98,19 +100,19 @@ namespace Game1.Projectile
 
         private void BoomerangOut(GameTime gameTime)
         {
-            if (direction == 'N')
+            if (direction == north)
             {
                 position.Y -= currentVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            else if (direction == 'S')
+            else if (direction == south)
             {
                 position.Y += currentVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            else if (direction == 'W')
+            else if (direction == west)
             {
                 position.X -= currentVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            else
+            else if (direction == east)
             {
                 position.X += currentVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }

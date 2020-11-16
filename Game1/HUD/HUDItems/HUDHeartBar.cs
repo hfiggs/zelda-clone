@@ -25,30 +25,32 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-            this.location = new Vector2(180, 155);
+            const int x = 180, y = 155, xModifier = 9, heart = 2 ;
+
+            this.location = new Vector2(x, y);
             int heartDrawCount = inv.HalfHeartCount;
             int emptyHeartCount = inv.MaxHalfHearts - inv.HalfHeartCount;
             while (heartDrawCount != 0)
             {
-                if (heartDrawCount - 2 >= 0)
+                if (heartDrawCount - heart >= 0)
                 {
-                    heartDrawCount -= 2;
+                    heartDrawCount -= heart;
                     fullHeart.Draw(spriteBatch, location + movement, color);
-                    location = new Vector2(location.X + 9,location.Y);
+                    location = new Vector2(location.X + xModifier,location.Y);
                 }
                 else
                 {
                     heartDrawCount -= 1;
                     halfHeart.Draw(spriteBatch, location + movement, color);
-                    location = new Vector2(location.X + 9, location.Y);
+                    location = new Vector2(location.X + xModifier, location.Y);
                     emptyHeartCount--;
                 }
             }
             while(emptyHeartCount != 0)
             {
-                emptyHeartCount -= 2;
+                emptyHeartCount -= heart;
                 emptyHeart.Draw(spriteBatch, location + movement, color);
-                location = new Vector2(location.X + 9, location.Y);
+                location = new Vector2(location.X + xModifier, location.Y);
             }
         }
 

@@ -24,7 +24,8 @@ namespace Game1.HUD
         {
             if (inv.BombCount > 0)
             {
-                selectionRectangle = new Rectangle(163, 4, 20, 20);
+                const int x = 163, y = 4, widthAndHeight = 20;
+                selectionRectangle = new Rectangle(x, y, widthAndHeight, widthAndHeight);
                 sprite.Draw(spriteBatch, location + movement, color);
             } else {
                 selectionRectangle = new Rectangle(-1, -1, -1, -1);

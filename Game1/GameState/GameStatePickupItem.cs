@@ -63,7 +63,8 @@ namespace Game1.GameState
                 controller.Update();
             }
 
-            Mouse.SetPosition(150, 150);
+            const int mousePosition = 150;
+            Mouse.SetPosition(mousePosition, mousePosition);
 
             stateTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 

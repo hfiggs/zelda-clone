@@ -6,7 +6,8 @@ namespace Game1.HUD
 {
     internal class HUDCompass : IHudItem
     {
-        public Vector2 location { get; set; } = new Vector2(28,90);
+        private const int x = 28, y = 90;
+        public Vector2 location { get; set; } = new Vector2(x, y);
         public ItemEnum myItem { get; private set; } = ItemEnum.None;
         public Rectangle selectionRectangle { get; set; }
         private IPlayerInventory inv;

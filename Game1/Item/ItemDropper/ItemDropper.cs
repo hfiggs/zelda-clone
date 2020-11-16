@@ -28,7 +28,8 @@ namespace Game1.Item.ItemDropper
         public void SpawnDrops(List<IEnemy> enemies)
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
-            int randomDrop = random.Next(4);
+            const int randomMax = 4;
+            int randomDrop = random.Next(randomMax);
             
             foreach (IEnemy e in enemies)
             {
@@ -63,7 +64,8 @@ namespace Game1.Item.ItemDropper
 
             if (type == typeof(Goriya))
             {
-                int randomDrop = random.Next(10);
+                const int randomMax = 10;
+                int randomDrop = random.Next(randomMax);
                 switch (randomDrop)
                 {
                     case 0:
@@ -79,7 +81,8 @@ namespace Game1.Item.ItemDropper
             }
             else if (type == typeof(Skeleton) || type == typeof(Hand) || type == typeof(Snake))
             {
-                int randomDrop = random.Next(10);
+                const int randomMax = 10;
+                int randomDrop = random.Next(randomMax);
                 switch (randomDrop)
                 {
                     case 0:
@@ -98,7 +101,8 @@ namespace Game1.Item.ItemDropper
             }
             else if (type == typeof(Aquamentus) || type == typeof(Dodongo))
             {
-                int randomDrop = random.Next(5);
+                const int randomMax = 5;
+                int randomDrop = random.Next(randomMax);
                 switch (randomDrop)
                 {
                     case 0:

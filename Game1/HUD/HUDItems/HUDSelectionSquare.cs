@@ -6,13 +6,15 @@ namespace Game1.HUD
 {
     internal class HUDSelectionSquare : IHudItem
     {
-        public Vector2 location { get; set; } = new Vector2(-100,-100);
+        private const int xAndY = -100;
+        public Vector2 location { get; set; } = new Vector2(xAndY, xAndY);
         public ItemEnum myItem { get; private set; } = ItemEnum.None;
         public Rectangle selectionRectangle { get; set; }
         private HUDSprite displaySprite;
         private HUDSprite spriteOne;
         private HUDSprite spriteTwo;
-        private float flashTimer = 150f;
+        private const float flashTimerMax = 150f;
+        private float flashTimer = flashTimerMax;
 
         public HUDSelectionSquare(HUDSprite spriteOne, HUDSprite spriteTwo)
         {
@@ -24,7 +26,8 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-            Rectangle boundry = new Rectangle(125, 1, 128, 120);
+            const int x = 125, y = 1, width = 128, height = 120;
+            Rectangle boundry = new Rectangle(x, y, width, height);
             Rectangle testRec = new Rectangle(selectionRectangle.X + (int)location.X, selectionRectangle.Y + (int)location.Y, selectionRectangle.Width, selectionRectangle.Height);
 
             if (testRec.Intersects(boundry)) // This prevents the selection box from showing up at -1, -1 or 0, 0
@@ -37,7 +40,7 @@ namespace Game1.HUD
 
             if (flashTimer <= 0)
             {
-                flashTimer = 150f;
+                flashTimer = flashTimerMax;
                 if (displaySprite == spriteOne)
                 {
                     displaySprite = spriteTwo;

@@ -18,8 +18,8 @@ namespace Game1.HUD
         IHudItem linkDot;
         IPlayerInventory inv;
         Screen screen;
-        Vector2 BBottomBox = new Vector2(110, 140);
-        Vector2 BUpperBox = new Vector2(50,-9);
+        readonly Vector2 BBottomBox = new Vector2(110, 140);
+        readonly Vector2 BUpperBox = new Vector2(50,-9);
         List<Tuple<char, int>> roomsEntered;
 
         public HUDInterface(IPlayerInventory playerInventory, Screen screen)
@@ -42,9 +42,11 @@ namespace Game1.HUD
 
                 Rectangle selectionRectangle; // Y multiplier for bottom row items messes with the selection rectangle and mouse
                 if (Item.GetType() == typeof(HUDBoomerang) || Item.GetType() == typeof(HUDBomb) || Item.GetType() == typeof(HUDBlueCandle) || Item.GetType() == typeof(HUDBow)) {
-                    selectionRectangle = new Rectangle(Item.selectionRectangle.X * 4, Item.selectionRectangle.Y * 44, Item.selectionRectangle.Width * 3, Item.selectionRectangle.Height * 3);
+                    const int xRectangleModifier = 4, yRectangleModifier = 44, widthAndHeightModifier = 3;
+                    selectionRectangle = new Rectangle(Item.selectionRectangle.X * xRectangleModifier, Item.selectionRectangle.Y * yRectangleModifier, Item.selectionRectangle.Width * widthAndHeightModifier, Item.selectionRectangle.Height * widthAndHeightModifier);
                 } else {
-                    selectionRectangle = new Rectangle(Item.selectionRectangle.X * 4, Item.selectionRectangle.Y * 11, Item.selectionRectangle.Width * 3, Item.selectionRectangle.Height * 3);
+                    const int xRectangleModifier = 4, yRectangleModifier = 11, widthAndHeightModifier = 3;
+                    selectionRectangle = new Rectangle(Item.selectionRectangle.X * xRectangleModifier, Item.selectionRectangle.Y * yRectangleModifier, Item.selectionRectangle.Width * widthAndHeightModifier, Item.selectionRectangle.Height * widthAndHeightModifier);
                 }
 
                 if (selectionRectangle.Contains(position))
@@ -56,15 +58,17 @@ namespace Game1.HUD
             Tuple<char, int> currentRoom = screen.CurrentRoomKey.ToTuple();
             if(!roomsEntered.Contains(currentRoom))
             {
-                Vector2 position = new Vector2((currentRoom.Item2 * 8) + 130, 8 * (currentRoom.Item1 - 65) + 50);
+                const int multiplier = 8, positionXModifier = 130, positionYModifier1 = 65, positionYModifier2 = 50;
+                Vector2 position = new Vector2((currentRoom.Item2 * multiplier) + positionXModifier, multiplier * (currentRoom.Item1 - positionYModifier1) + positionYModifier2);
                 Items.Add(HUDItemFactory.Instance.BuildRoom(screen.CurrentRoom, position));
                 roomsEntered.Add(currentRoom);
             }
 
             selectionSquare.Update(gameTime);
 
-
-            Vector2 DotPosition = new Vector2(currentRoom.Item2 * 8 + 25, (currentRoom.Item1 - 65) * 4 + 145f);
+            const int xMultiplier = 8, yMultiplier = 4, xModifier = 25, yModifier1 = 65;
+            const float yModifier2 = 145f;
+            Vector2 DotPosition = new Vector2(currentRoom.Item2 * xMultiplier + xModifier, (currentRoom.Item1 - yModifier1) * yMultiplier + yModifier2);
 
             linkDot.location = DotPosition;
 

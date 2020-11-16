@@ -24,17 +24,19 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-            location = new Vector2(85,168);
-            HUDSprite textSprite = new HUDSprite(HUDIconsTexture, row, 0, 16, 3);
+            const int columnModifier = 1, columns = 16, rows = 3, xModifier = 9, x = 85, y = 168, placeInterval = 10;
+
+            location = new Vector2(x,y);
+            HUDSprite textSprite = new HUDSprite(HUDIconsTexture, row, 0, columns, rows);
             textSprite.Draw(spriteBatch, location + movement, color);
-            location = new Vector2(location.X + 9, location.Y);
+            location = new Vector2(location.X + xModifier, location.Y);
 
             int currentBombs = inv.BombCount;
             int totalPlaces = 1;
-            currentBombs = currentBombs / 10;
+            currentBombs = currentBombs / placeInterval;
             while (currentBombs > 0)
             {
-                currentBombs = currentBombs / 10;
+                currentBombs = currentBombs / placeInterval;
                 totalPlaces++;
             }
             currentBombs = inv.BombCount;
@@ -42,16 +44,16 @@ namespace Game1.HUD
             int[] numbers = new int[totalPlaces];
             for (int i = 0; i < totalPlaces; i++)
             {
-                numbers[i] = currentBombs % 10;
-                currentBombs = currentBombs / 10;
+                numbers[i] = currentBombs % placeInterval;
+                currentBombs = currentBombs / placeInterval;
             }
 
 
             for(int i = totalPlaces - 1; i >= 0; i--)
             {
-                textSprite = new HUDSprite(HUDIconsTexture, row, numbers[i] + 1, 16, 3);
+                textSprite = new HUDSprite(HUDIconsTexture, row, numbers[i] + columnModifier, columns, rows);
                 textSprite.Draw(spriteBatch, location + movement, color);
-                location = new Vector2(location.X + 9, location.Y);
+                location = new Vector2(location.X + xModifier, location.Y);
             }
         }
 
