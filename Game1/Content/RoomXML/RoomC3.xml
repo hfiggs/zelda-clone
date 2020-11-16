@@ -75,6 +75,9 @@
 		<X>120</X>
 		<Y>88</Y>
 	</Enemy>
+	<Puzzle>
+		<Type>PuzzleSpawnBoomerang</Type>
+	</Puzzle>
 
 	<InteractEnviornment>
 		<Type>LoadZoneE</Type>
