@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Content\\Images",
-    "\\Game1\\Content\\Images\\Item",
     "\\Game1\\Controller",
+    "\\Game1\\Controller\\Gamepad",
     "\\Game1\\Controller\\Keyboard",
     "\\Game1\\HUD",
     "\\Game1\\HUD\\HUDItems",
-    "\\Game1\\Player\\PlayerInventory",
-    "\\Game1\\Player\\PlayerState"
+    "\\_Documentation",
+    "\\_Documentation\\Code Reviews",
+    "\\_Documentation\\Code Reviews\\Sprint 4 Code Reviews"
   ],
-  "SelectedNode": "\\Game1\\HUD\\HUDItems",
+  "SelectedNode": "\\Game1\\HUD\\HUD.cs",
   "PreviewInSolutionExplorer": false
 }
