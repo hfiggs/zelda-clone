@@ -15,7 +15,7 @@ namespace Game1.Environment
 
         public InvisibleWall(Vector2 position, Vector2 hitboxSize)
         {
-            sprite = EnvironmentSpriteFactory.instance.createBlack();
+            sprite = EnvironmentSpriteFactory.instance.CreateBlack();
             this.position = position;
             hitboxes.Add(new Rectangle(position.ToPoint(), hitboxSize.ToPoint()));
         }

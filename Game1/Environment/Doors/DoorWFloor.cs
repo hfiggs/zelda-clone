@@ -19,7 +19,7 @@ namespace Game1.Environment
 
         public DoorWFloor(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorWFloor();
+            sprite = EnvironmentSpriteFactory.instance.CreateDoorWFloor();
             const float x = 17f, y = 8f;
             this.position = position + new Vector2(x, y);
             hitbox1.Location += position.ToPoint();

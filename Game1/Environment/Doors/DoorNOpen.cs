@@ -20,7 +20,7 @@ namespace Game1.Environment
 
         public DoorNOpen(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorNOpen();
+            sprite = EnvironmentSpriteFactory.instance.CreateDoorNOpen();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitbox2.Location += position.ToPoint();

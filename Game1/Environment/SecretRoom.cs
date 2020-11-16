@@ -15,7 +15,7 @@ namespace Game1.Environment
         private Vector2 position;
         public SecretRoom(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createSecretRoom();
+            sprite = EnvironmentSpriteFactory.instance.CreateSecretRoom();
             this.position = position;
         }
         public void Update(GameTime gameTime)

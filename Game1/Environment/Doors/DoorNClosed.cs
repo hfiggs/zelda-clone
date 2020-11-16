@@ -20,7 +20,7 @@ namespace Game1.Environment
         private float timeTillOpen;
         public DoorNClosed(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorNClosed();
+            sprite = EnvironmentSpriteFactory.instance.CreateDoorNClosed();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
@@ -36,10 +36,9 @@ namespace Game1.Environment
                     timeTillOpen -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                     if (timeTillOpen <= 0)
                     {
-                        sprite = EnvironmentSpriteFactory.instance.createDoorNOpen();
+                        sprite = EnvironmentSpriteFactory.instance.CreateDoorNOpen();
                         hitboxes.Remove(hitbox1);
-                        const int setToOpen = 2;
-                        open = setToOpen;
+                        open = 2;
                     }
                 }
             }

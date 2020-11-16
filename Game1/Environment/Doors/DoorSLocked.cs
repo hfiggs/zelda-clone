@@ -22,7 +22,7 @@ namespace Game1.Environment
 
         public DoorSLocked(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorSLocked();
+            sprite = EnvironmentSpriteFactory.instance.CreateDoorSLocked();
             this.position = position;
             hitbox1.Location += position.ToPoint();
          //   hitbox2.Location += position.ToPoint();
@@ -39,10 +39,10 @@ namespace Game1.Environment
                 timeTillOpen -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (timeTillOpen <= 0)
                 {
-                    sprite = EnvironmentSpriteFactory.instance.createDoorSOpen();
+                    sprite = EnvironmentSpriteFactory.instance.CreateDoorSOpen();
                     hitboxes.Remove(hitbox1);
-                    const int setToOpen = 2;
-                    open = setToOpen;
+                    const int opened = 2;
+                    open = opened;
                 }
             }
         }
@@ -58,14 +58,12 @@ namespace Game1.Environment
 
         public void Open(bool shouldInstantOpen)
         {
-            const string doorLockAudio = "doorLock";
-
             // Normal unlock
             if (!shouldInstantOpen)
             {
                 open = 1;
                 timeTillOpen = openTime;
-                AudioManager.PlayFireForget(doorLockAudio);
+                AudioManager.PlayFireForget("doorLock");
             }
             // Instant unlock
             else
@@ -73,7 +71,7 @@ namespace Game1.Environment
                 open = openDoor;
                 timeTillOpen = 0;
 
-                sprite = EnvironmentSpriteFactory.instance.createDoorSOpen();
+                sprite = EnvironmentSpriteFactory.instance.CreateDoorSOpen();
                 hitboxes.Remove(hitbox1);
             }
         }

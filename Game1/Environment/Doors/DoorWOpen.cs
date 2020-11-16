@@ -21,7 +21,7 @@ namespace Game1.Environment
 
         public DoorWOpen(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorWOpen();
+            sprite = EnvironmentSpriteFactory.instance.CreateDoorWOpen();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitbox2.Location += position.ToPoint();

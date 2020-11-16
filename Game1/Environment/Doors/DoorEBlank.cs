@@ -18,7 +18,7 @@ namespace Game1.Environment
         private List<Rectangle> hitboxes = new List<Rectangle>();
         public DoorEBlank(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorEBlank();
+            sprite = EnvironmentSpriteFactory.instance.CreateDoorEBlank();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
