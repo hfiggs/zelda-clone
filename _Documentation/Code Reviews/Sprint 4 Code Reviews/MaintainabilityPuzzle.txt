@@ -1,0 +1,25 @@
+﻿AUTHOR (OF THE REVIEW) - Jared Perkins
+
+
+DATE - 11/15/2020
+
+
+SPRINT # - 4
+
+
+NAME OF FILE BEING REVIEWED - 
+
+
+AUTHOR OF FILE BEING REVIEWED -  Sergei
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) - Good use of interfaces
+													Good seperation of tasks, each puzzle is in its own class.
+													Could use better named variables, and could clean up include statements
+													Good use of an if statement to prevent unnecessary runs through logic.
+													overall short code, smells of easy maintainability.
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - IF we wanted to add a room with multiple puzzles or implement our own puzzles it should be quite simple. We could loop through
+
+		all possible puzzles for the room, or for making a new puzzle you just need to implement the interface and apply the puzzle to an XML room.

@@ -1,0 +1,23 @@
+﻿AUTHOR (OF REVIEW) - Jared Perkins
+
+
+DATE -  11/15/2020
+
+
+SPRINT # - 4
+
+
+NAME OF FILE BEING REVIEWED - GameState
+
+
+AUTHOR OF FILE BEING REVIEWED - Hunter
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 32 minutes
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - Clean interface, follows the layout of the rest of our interfaces.
+																	Mouse lock position is magic numbers. Make a point called mouse position lock.
+																	Could use some comments around the resolution matrix code. Others might not know what the methods do.
+																	Try to figure out what the variable is instead of using var.
+																	Short code that doesn't take too long to understand in almost all the files. mostly removed magic numbers. Good work.
