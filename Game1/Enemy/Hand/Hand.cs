@@ -58,7 +58,10 @@ namespace Game1.Enemy
 
         public void EditPosition(Vector2 amount)
         {
-            state.editPosition(amount);
+            if (StunnedTimer <= 0)
+            {
+                state.editPosition(amount);
+            }
         }
 
         public bool ShouldRemove()
