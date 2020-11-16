@@ -54,8 +54,7 @@ namespace Game1.Enemy
         public List<Rectangle> GetHitboxes()
         {
             List<Rectangle> hitboxList = new List<Rectangle>();
-            const int heightAndWidth = 16;
-            hitboxList.Add(new Rectangle((int)position.X, (int)position.Y, heightAndWidth, heightAndWidth));
+            hitboxList.Add(new Rectangle(0, 0, 0, 0));
             return hitboxList;
         }
 
