@@ -327,7 +327,6 @@ namespace Game1.Audio
                     StopAllSound();
                     PlayFireForget("powerPickUp");
                     PlayFireForget("triforce");
-                    PlayLooped("dungeon", triforceSoundLength);
                     break;
                 default:
                     PlayFireForget("itemPickUp");

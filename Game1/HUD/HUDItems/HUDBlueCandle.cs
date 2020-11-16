@@ -4,27 +4,28 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.HUD
 {
-    internal class HUDBoomerang : IHudItem
+    internal class HUDBlueCandle : IHudItem
     {
         public Vector2 location { get; set; }
-        public ItemEnum myItem { get; private set; } = ItemEnum.Boomerang;
+        public ItemEnum myItem { get; private set; } = ItemEnum.BlueCandle;
         public Rectangle selectionRectangle { get; set; }
         private IPlayerInventory inv;
         private HUDSprite sprite;
 
-        public HUDBoomerang(IPlayerInventory inv, HUDSprite sprite, Vector2 position)
+        public HUDBlueCandle(IPlayerInventory inv, HUDSprite sprite, Vector2 position)
         {
             this.inv = inv;
             this.sprite = sprite;
-            this.location = position;
 
+            location = position;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
+        public void Draw(SpriteBatch spriteBatch, Vector2 movement, Color color)
         {
-            if (inv.HasItem(ItemEnum.Boomerang))
+            if (inv.HasItem(ItemEnum.BlueCandle))
             {
-                selectionRectangle = new Rectangle(143, 4, 20, 20);
+                const int xDiff = 203, yDiff = 4, widthAndHeight = 20;
+                selectionRectangle = new Rectangle(xDiff, yDiff, widthAndHeight, widthAndHeight);
                 sprite.Draw(spriteBatch, location + movement, color);
             } else {
                 selectionRectangle = new Rectangle(-1, -1, -1, -1);
@@ -33,12 +34,12 @@ namespace Game1.HUD
 
         public void Update(GameTime time)
         {
-            //bow receives no updates.
+            // BlueCandle receives no updates.
         }
 
         public IHudItem copyOf()
         {
-            return HUDItemFactory.Instance.BuildHUDBoomerang(inv,location);
+            return HUDItemFactory.Instance.BuildHUDBlueCandle(inv, location);
         }
     }
 }

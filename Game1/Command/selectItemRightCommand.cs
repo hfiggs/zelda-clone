@@ -14,6 +14,17 @@ namespace Game1.Controller
         private Stopwatch stopWatch;
         Point SettingPoint = new Point(173, 14);
         private const int cooldown = 250; // ms
+        const int centerPointModifier = 20;
+
+        const int xDiffTRL = 203, yDiffTRL = 4, widthAndHeightTRL = 20;
+        private Rectangle topRightLimit = new Rectangle(xDiffTRL, yDiffTRL, widthAndHeightTRL, widthAndHeightTRL);
+        const int xDiffBRL = 203, yDiffBRL = 23, widthAndHeightBRL = 20;
+        private Rectangle bottomRightLimit = new Rectangle(xDiffBRL, yDiffBRL, widthAndHeightBRL, widthAndHeightBRL);
+        const int xDiffTLL = 143, yDiffTLL = 4, widthAndHeightTLL = 20;
+        private Rectangle topLeftLimit = new Rectangle(xDiffTLL, yDiffTLL, widthAndHeightTLL, widthAndHeightTLL);
+        const int xDiffBLL = 143, yDiffBLL = 23, widthAndHeightBLL = 20;
+        private Rectangle bottomLeftLimit = new Rectangle(xDiffBLL, yDiffBLL, widthAndHeightBLL, widthAndHeightBLL);
+
         public SelectItemRightCommand(Game1 game)
         {
             this.game = game;
@@ -29,31 +40,24 @@ namespace Game1.Controller
                 {
                     bool swappedSuccess = false;
                     Point centerPoint = game.HUD.displayItemTop.selectionRectangle.Center;
-                    centerPoint.X = centerPoint.X + 20;
-                    foreach (IHudItem item in game.HUD.Items)
-                    {
-                        if (item.selectionRectangle.Contains(centerPoint))
-                        {
-                            game.HUD.displayItemTop = item.copyOf();
-                            swappedSuccess = true;
-                        }
-                    }
+                    centerPoint = DetermineNextCenterPoint(centerPoint);
 
-                    if (!swappedSuccess)
-                    {
-                        centerPoint = game.HUD.displayItemTop.selectionRectangle.Center;
-                        centerPoint.X = centerPoint.X - 40;
+                    while (!swappedSuccess) {
                         foreach (IHudItem item in game.HUD.Items)
                         {
                             if (item.selectionRectangle.Contains(centerPoint))
                             {
                                 game.HUD.displayItemTop = item.copyOf();
+                                swappedSuccess = true;
                             }
                         }
+                        
+                        if (!swappedSuccess) {
+                            centerPoint = DetermineNextCenterPoint(centerPoint);
+                        }
                     }
-                }
-                else
-                {
+
+                } else {
                     foreach (IHudItem item in game.HUD.Items)
                     {
                         if (item.selectionRectangle.Contains(SettingPoint))
@@ -64,6 +68,25 @@ namespace Game1.Controller
                 }
                 stopWatch.Restart();
             }
+        }
+
+        private Point DetermineNextCenterPoint(Point centerPoint)
+        {
+            Point newCenterPoint = centerPoint;
+            Rectangle boundry = new Rectangle(150, 4, 200, 200);
+
+            if (topRightLimit.Contains(centerPoint))
+            {
+                newCenterPoint = bottomLeftLimit.Center;
+            } else if (bottomRightLimit.Contains(centerPoint)) {
+                newCenterPoint = topLeftLimit.Center;
+            } else if (boundry.Contains(centerPoint)) {
+                newCenterPoint.X = centerPoint.X + centerPointModifier;
+            } else {
+                newCenterPoint = topLeftLimit.Center;
+            }
+
+            return newCenterPoint;
         }
     }
 }

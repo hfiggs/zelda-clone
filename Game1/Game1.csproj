@@ -90,6 +90,7 @@
     <Compile Include="Controller\Keyboard\KeyboardPausedController.cs" />
     <Compile Include="Controller\Keyboard\KeyboardQuitController.cs" />
     <Compile Include="Controller\Keyboard\KeyboardStartController.cs" />
+    <Compile Include="Enemy\EnemyStateDying.cs" />
     <Compile Include="Environment\EnterBasementLoadZone.cs" />
     <Compile Include="Environment\ExitBasementLoadZone.cs" />
     <Compile Include="Environment\ExitDungeonLoadZone.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Environment\Overworld\OverworldFloor.cs" />
     <Compile Include="GameState\GameStateLose.cs" />
     <Compile Include="GameState\GameStatePaused.cs" />
+    <Compile Include="GameState\GameStateWin.cs" />
     <Compile Include="GameState\GameStatePickupItem.cs" />
     <Compile Include="GameState\TransitionStates\GameStateRoomToBasement.cs" />
     <Compile Include="GameState\TransitionStates\GameStateBasementToRoom.cs" />
@@ -126,15 +128,21 @@
     <Compile Include="GameState\TransitionStates\GameStateStartToSpawn.cs" />
     <Compile Include="GameState\GameStateStart.cs" />
     <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="HUD\HUDItems\HUDBlueCandle.cs" />
+    <Compile Include="HUD\HUDItems\HUDBluePotion.cs" />
+    <Compile Include="Item\BluePotion.cs" />
+    <Compile Include="Item\BlueCandle.cs" />
     <Compile Include="Particle\Curtain.cs" />
     <Compile Include="HUD\HUDItems\HUDLinkDot.cs" />
     <Compile Include="Particle\Waterfall.cs" />
     <Compile Include="Particle\WaterfallSpray.cs" />
+    <Compile Include="Projectile\CandleFire.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RoomLoading\Puzzle\PuzzleSpawnBoomerang.cs" />
     <Compile Include="Sprite\StartSprite.cs" />
     <Compile Include="Sprite\StartSpriteFactory.cs" />
     <Compile Include="Util\GameStateUtil.cs" />

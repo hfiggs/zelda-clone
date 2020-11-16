@@ -265,6 +265,18 @@
 /processorParam:TextureFormat=Color
 /build:Images/Enemy/enemies.png
 
+#begin Images/Enemy/enemy_despawn.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Enemy/enemy_despawn.png;Images/Enemy/enemydeath.png
+
 #begin Images/Enemy/enemyspawn.png
 /importer:TextureImporter
 /processor:TextureProcessor

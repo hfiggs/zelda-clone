@@ -11,12 +11,9 @@ namespace Game1.CollisionDetection
 {
     class EnvironmentCollisions
     {
-        private List<Collision> collisionList;
-        private List<IEnvironment> EnvironmentList;
-        private List<IEnemy> EnemyList;
-        private List<IProjectile> ProjectileList;
-        private IPlayer player;
-        private Rectangle playerHitbox;
+        private readonly List<Collision> collisionList;
+        private readonly List<IEnvironment> EnvironmentList;
+        private readonly List<IProjectile> ProjectileList;
 
         public EnvironmentCollisions(Screen screen)
         {
@@ -24,37 +21,19 @@ namespace Game1.CollisionDetection
 
             EnvironmentList = screen.CurrentRoom.InteractEnviornment;
 
-            EnemyList = screen.CurrentRoom.EnemyList;
-
             ProjectileList = screen.CurrentRoom.ProjectileList;
-
-            player = screen.Player;
-            playerHitbox = player.GetPlayerHitbox();
         }
 
         // Collision order: player to environment, enemy to environment, projectile to environment
         public List<Collision> GetCollisionList()
         {
-            bool collision = false;
-            foreach (IEnvironment environment in EnvironmentList)
+            // Projectile collides with Environment
+            foreach (IProjectile proj in ProjectileList)
             {
-                // Some environment objects have multiple hitboxes
-                if (collision)
-                    break;
-                foreach (Rectangle envHitbox in environment.GetHitboxes())
+                bool collision = false;
+                foreach (IEnvironment environment in EnvironmentList)
                 {
-                    // Player collides with Environment
-                    Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, envHitbox);
-                    if (!intersectPlayer.IsEmpty)
-                    {
-                        char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
-                        collisionList.Add(new Collision(side, intersectPlayer, player, environment));
-                        collision = true;
-                        break;
-                    }
-
-                    // Projectile collides with Environment
-                    foreach (IProjectile proj in ProjectileList)
+                    foreach (Rectangle envHitbox in environment.GetHitboxes())
                     {
                         Rectangle projHitbox = proj.GetHitbox();
                         Rectangle intersectEnv = Rectangle.Intersect(projHitbox, envHitbox);
@@ -62,24 +41,12 @@ namespace Game1.CollisionDetection
                         {
                             char side = DetermineSide(projHitbox, envHitbox, intersectEnv);
                             collisionList.Add(new Collision(side, intersectEnv, proj, environment));
+                            collision = true;
+                            break;
                         }
                     }
-
-                    // Enemy collides with Environment
-                    foreach (IEnemy enemy in EnemyList)
-                    {
-                        foreach (Rectangle enemyHitbox in enemy.GetHitboxes())
-                        {
-                            Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, envHitbox);
-                            if (!intersectEnemy.IsEmpty)
-                            {
-                                char side = DetermineSide(enemyHitbox, envHitbox, intersectEnemy);
-                                collisionList.Add(new Collision(side, intersectEnemy, enemy, environment));
-                                collision = true;
-                                break;
-                            }
-                        }
-                    }
+                    if (collision)
+                        break;
                 }
             }
 

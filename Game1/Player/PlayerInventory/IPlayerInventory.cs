@@ -6,7 +6,9 @@
         Bow = 1,
         Arrow = 2,
         Boomerang = 3,
-        Bomb = 4
+        Bomb = 4,
+        BluePotion = 5,
+        BlueCandle = 6
     }
 
     public interface IPlayerInventory
@@ -39,6 +41,12 @@
 
         bool SubKey();
 
+        int BluePotionCount { get; }
+
+        void AddBluePotion();
+
+        bool SubBluePotion();
+
         int TriforceCount { get; }
 
         void AddTriforce();
@@ -52,6 +60,8 @@
         bool IsItemInUse(ItemEnum item);
 
         void SetItemInUse(ItemEnum item, bool isInUse);
+
+        void RefreshCandle();
 
         bool HasCompass { get; set; }
 

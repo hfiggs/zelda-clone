@@ -68,7 +68,13 @@ namespace Game1.Collision_Handling
                     break;
                 case Triforce _:
                     player.PlayerInventory.AddTriforce();
-                    game.SetState(new GameStatePickupItem(game, PickupItem.Triforce, item));
+                    game.SetState(new GameStateWin(game, PickupItem.Triforce, item));
+                    break;
+                case BluePotion _:
+                    player.PlayerInventory.AddBluePotion();
+                    break;
+                case BlueCandle _:
+                    player.PlayerInventory.AddItem(ItemEnum.BlueCandle);
                     break;
             }
 

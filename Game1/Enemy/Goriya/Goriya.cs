@@ -34,6 +34,11 @@ namespace Game1.Enemy
             health -= amount;
             EnemyDamageDecorator decorator = new EnemyDamageDecorator(this, direction, game);
             game.Screen.CurrentRoom.DecoratedEnemyList.Add(decorator);
+
+            if (health <= 0)
+            {
+                state = new EnemyStateDying(state.GetPosition());
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -103,7 +108,15 @@ namespace Game1.Enemy
         }
         public bool ShouldRemove()
         {
-            return health <= zero;
+            if (state.GetType() == typeof(EnemyStateDying))
+            {
+                EnemyStateDying temp = (EnemyStateDying)state;
+                return temp.dead;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

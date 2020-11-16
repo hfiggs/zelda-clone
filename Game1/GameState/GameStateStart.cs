@@ -31,7 +31,7 @@ namespace Game1.GameState
 
         private bool isMusicStarted;
 
-        private IParticle curtain;
+        private readonly IParticle curtain;
 
         public GameStateStart(Game1 game)
         {

@@ -41,8 +41,10 @@ namespace Game1.HUD
             Items.Add(HUDItemFactory.Instance.BuildHUDKeyTextBox(playerInventory));
             Items.Add(HUDItemFactory.Instance.BuildHUDBombTextBox(playerInventory));
             Items.Add(HUDItemFactory.Instance.BuildHUDBow(playerInventory, new Vector2(177, -9)));
+            Items.Add(HUDItemFactory.Instance.BuildHUDBlueCandle(playerInventory, new Vector2(190, -9)));
             Items.Add(HUDItemFactory.Instance.BuildHUDCompass(playerInventory));
             Items.Add(HUDItemFactory.Instance.BuildHUDMap(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDBluePotion(playerInventory, new Vector2(170, 11)));
             Items.Add(HUDItemFactory.Instance.BuildHUDBomb(playerInventory, new Vector2(150, -9)));
             Items.Add(HUDItemFactory.Instance.BuildHUDBoomerang(playerInventory, new Vector2(130, -9)));
             Items.Add(HUDItemFactory.Instance.BuildHUDHeartBar(playerInventory));
@@ -78,6 +80,11 @@ namespace Game1.HUD
             return new HUDBow(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBowSprite()),position);
         }
 
+        public IHudItem BuildHUDBlueCandle(IPlayerInventory inv, Vector2 position)
+        {
+            return new HUDBlueCandle(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBlueCandleSprite()), position);
+        }
+
         public IHudItem BuildHUDCompass(IPlayerInventory inv)
         {
             return new HUDCompass(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateCompassSprite()));
@@ -90,18 +97,27 @@ namespace Game1.HUD
             HUDSprite EmptyHeart = new HUDSprite(HUDIconsTexture, 1, 12, 16, 3);
             return new HUDHeartBar(inv,FullHeart,HalfHeart,EmptyHeart);
         }
+
         public IHudItem BuildHUDFlashingDot(IPlayerInventory inv, Vector2 bossPosition)
         {
             return new HUDFlashingDot(inv,bossPosition,new HUDSprite(HUDIconsTexture,2,2,16,3) ,new HUDSprite(HUDIconsTexture,2,3,16,3));
         }
+
         public IHudItem BuildHUDBomb(IPlayerInventory inv, Vector2 position)
         {
             return new HUDBomb(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBombSprite()),position);
         }
+
+        public IHudItem BuildHUDBluePotion(IPlayerInventory inv, Vector2 position)
+        {
+            return new HUDBluePotion(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBluePotionSprite()), position);
+        }
+
         public IHudItem BuildHUDArrow(IPlayerInventory inv)
         {
             return new HUDArrow(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateArrowItemSprite()));
         }
+
         public IHudItem BuildHUDBoomerang(IPlayerInventory inv, Vector2 position)
         {
             return new HUDBoomerang(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBoomerangSprite()), position);

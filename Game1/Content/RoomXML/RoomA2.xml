@@ -185,6 +185,9 @@
 		<X>16</X>
 		<Y>16</Y>
 	</Item>
+	<Puzzle>
+		<Type>PuzzleSpawnKey</Type>
+	</Puzzle>
 
 	<InteractEnviornment>
 		<Type>LoadZoneS</Type>

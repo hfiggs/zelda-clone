@@ -73,6 +73,8 @@ namespace Game1.Command.CollisionHandlerCommands
                 } else if (proj.GetHitbox().Width != bombWidth && proj.GetHitbox().Height != bombHeight) {
                     enemy.ReceiveDamage(fourHearts, knockbackDirect);
                 }
+            } else if (proj.GetType() == typeof(CandleFire)) {
+                enemy.ReceiveDamage(halfHeart, knockbackDirect);
             }
         }
     }

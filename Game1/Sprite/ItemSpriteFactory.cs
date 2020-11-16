@@ -71,7 +71,7 @@ namespace Game1.Sprite
 
         public ISprite CreateFairySpriteOne()
         {
-            return new ItemSprite(itemSpritesheet,4,1);
+            return new ItemSprite(itemSpritesheet, 4,1);
         }
 
         public ISprite CreateFairySpriteTwo()
@@ -97,6 +97,16 @@ namespace Game1.Sprite
         public ISprite CreateClockSprite()
         {
             return new ItemSprite(itemSpritesheet, 9, 0);
+        }
+
+        public ISprite CreateBluePotionSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 9, 1);
+        }
+
+        public ISprite CreateBlueCandleSprite()
+        {
+            return new ItemSprite(itemSpritesheet, 3, 0);
         }
 
         public ISprite CreateArrowItemSprite()

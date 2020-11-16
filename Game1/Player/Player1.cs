@@ -76,7 +76,7 @@ namespace Game1.Player
             {
                 if (!PlayerInventory.IsItemInUse(item))
                 {
-                    if ((item == ItemEnum.Bow && PlayerInventory.RupeeCount >= 1) || (item == ItemEnum.Boomerang) || (item == ItemEnum.Bomb && PlayerInventory.BombCount >= 1))
+                    if ((item == ItemEnum.Bow && PlayerInventory.RupeeCount >= 1) || (item == ItemEnum.Boomerang) || (item == ItemEnum.Bomb && PlayerInventory.BombCount >= 1) || (item == ItemEnum.BluePotion && PlayerInventory.BluePotionCount >= 1) || (item == ItemEnum.BlueCandle))
                     {
                         state.UseItem();
                         return;

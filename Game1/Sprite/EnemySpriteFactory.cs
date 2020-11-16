@@ -15,6 +15,7 @@ namespace Game1.Enemy
         private Texture2D dodongoSpriteSheet;
         private Texture2D aquamentusSpriteSheet;
         private Texture2D enemySpawnSpriteSheet;
+        private Texture2D enemyDeathSpriteSheet;
 
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 
@@ -42,6 +43,7 @@ namespace Game1.Enemy
             dodongoSpriteSheet = content.Load<Texture2D>("images/Enemy/dodongo");
             aquamentusSpriteSheet = content.Load<Texture2D>("images/Enemy/Aquamentus");
             enemySpawnSpriteSheet = content.Load<Texture2D>("images/Enemy/enemyspawn");
+            enemyDeathSpriteSheet = content.Load<Texture2D>("images/Enemy/enemydeath");
         }
 
         public ISprite CreateSkeletonSprite()
@@ -163,5 +165,10 @@ namespace Game1.Enemy
         {
             return new EnemySprite(enemySpawnSpriteSheet, 0, 0, 1, 4, 4);
         }
+        public ISprite CreateEnemyDyingSprite()
+        {
+            return new EnemySprite(enemyDeathSpriteSheet, 0, 0, 1, 6, 6);
+        }
     }
 }
+

@@ -25,8 +25,13 @@ namespace Game1.HUD
         {
             if (inv.HasItem(ItemEnum.Bow))
             {
-                if(inv.HasItem(ItemEnum.Arrow))
-                    selectionRectangle = new Rectangle(183, 4, 20, 20);
+                if (inv.HasItem(ItemEnum.Arrow))
+                {
+                    const int xDiff = 183, yDiff = 4, widthAndHeight = 20;
+                    selectionRectangle = new Rectangle(xDiff, yDiff, widthAndHeight, widthAndHeight);
+                } else {
+                    selectionRectangle = new Rectangle(-1, -1, -1, -1);
+                }
 
                 sprite.Draw(spriteBatch, location + movement, color);
             }
