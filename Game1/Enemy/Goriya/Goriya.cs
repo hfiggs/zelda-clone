@@ -36,7 +36,7 @@ namespace Game1.Enemy
 
             if (health <= 0)
             {
-                state = new EnemyStateDying(state.GetPosition());
+                state = new EnemyStateDying(this, state.GetPosition());
             }
         }
 
@@ -98,7 +98,10 @@ namespace Game1.Enemy
 
         public void EditPosition(Vector2 amount)
         {
-            state.editPosition(amount);
+            if (StunnedTimer <= 0)
+            {
+                state.editPosition(amount);
+            }
         }
 
         public Vector2 GetPosition()

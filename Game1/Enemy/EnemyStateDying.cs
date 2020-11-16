@@ -21,8 +21,9 @@ namespace Game1.Enemy
 
         public ISprite Sprite { get; private set; }
 
-        public EnemyStateDying(Vector2 position)
+        public EnemyStateDying(IEnemy enemy, Vector2 position)
         {
+            enemy.StunnedTimer = 0;
             this.position = position;
             Sprite = EnemySpriteFactory.Instance.CreateEnemyDyingSprite();
 
