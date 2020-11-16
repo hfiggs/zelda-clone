@@ -36,7 +36,8 @@ namespace Game1.Projectile
             counter = 0;
             totalTime = 0;
 
-            AudioManager.PlayFireForget("swordBeam", soundDelay);
+            const string swordBeamAudio = "swordBeam";
+            AudioManager.PlayFireForget(swordBeamAudio, soundDelay);
         }
         public void Update(GameTime gameTime)
         {

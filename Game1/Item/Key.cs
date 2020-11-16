@@ -15,7 +15,8 @@ namespace Game1.Item
 
             this.Position = Position;
 
-            AudioManager.PlayFireForget("key");
+            const string keyAudio = "key";
+            AudioManager.PlayFireForget(keyAudio);
         }
         public void Update(GameTime gameTime)
         {

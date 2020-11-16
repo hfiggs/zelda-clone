@@ -56,7 +56,8 @@ namespace Game1.GameState
 
             AudioManager.StopAllMusic();
 
-            AudioManager.PlayFireForget("stairs");
+            const string stairsAudio = "stairs";
+            AudioManager.PlayFireForget(stairsAudio);
         }
 
         public void Update(GameTime gameTime)
@@ -74,7 +75,8 @@ namespace Game1.GameState
 
             if (oldRoomPos.Y <= oldRoomEndPos.Y)
             {
-                AudioManager.PlayLooped("overworld");
+                const string overworldAudio = "overworld";
+                AudioManager.PlayLooped(overworldAudio);
 
                 game.Screen.CurrentRoomKey = southRoomKey;
                 game.SetState(new GameStateRoom(game));

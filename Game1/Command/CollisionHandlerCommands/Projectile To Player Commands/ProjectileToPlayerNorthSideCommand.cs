@@ -11,6 +11,7 @@ namespace Game1.Command.CollisionHandlerCommands
         private const int boomerangDamage = 2; // 1 full heart
         private const int fireballDamage = 1; // 1 half heart
         private const char north = 'N';
+        private const string shield = "shield";
         private readonly Vector2 northVector = new Vector2(0, 1);
 
         public ProjectileToPlayerNorthSideCommand()
@@ -32,7 +33,7 @@ namespace Game1.Command.CollisionHandlerCommands
                         player.ReceiveDamage(boomerangDamage, northVector);
                     } else
                     {
-                        AudioManager.PlayFireForget("shield");
+                        AudioManager.PlayFireForget(shield);
                     }
 
                     proj.BeginDespawn();

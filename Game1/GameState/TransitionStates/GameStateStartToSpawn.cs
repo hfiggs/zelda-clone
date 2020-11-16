@@ -23,7 +23,8 @@ namespace Game1.GameState
         {
             AudioManager.StopAllMusic();
 
-            AudioManager.PlayLooped("overworld");
+            const string overworldMusic = "overworld";
+            AudioManager.PlayLooped(overworldMusic);
 
             game.SetState(new GameStateRoom(game));
         }

@@ -53,8 +53,9 @@ namespace Game1.Projectile
             particlesSpawned = false;
             particleTimer = particleTime;
 
-            AudioManager.PlayFireForget("bombPlace", bombPlaceDelay);
-            AudioManager.PlayFireForget("bombExplode", bombExplodeDelay);
+            const string bombPlacingAudio = "bombPlace", bombExplodingAudio = "bombExplode";
+            AudioManager.PlayFireForget(bombPlacingAudio, bombPlaceDelay);
+            AudioManager.PlayFireForget(bombExplodingAudio, bombExplodeDelay);
         }
 
         public void Update(GameTime gameTime)

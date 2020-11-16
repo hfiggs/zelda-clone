@@ -65,9 +65,10 @@ namespace Game1.Environment
             //hitboxes.Add(openHitbox1);
             //hitboxes.Add(openHitbox2);
 
+            const string revealAudio = "reveal";
             if (shouldPlaySound)
             {
-                AudioManager.PlayFireForget("reveal");
+                AudioManager.PlayFireForget(revealAudio);
             }
         }
     }

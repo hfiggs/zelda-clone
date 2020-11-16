@@ -12,8 +12,9 @@ namespace Game1.Particle
         private ISprite spriteSW;
 
         private Vector2 position;
-        private Vector2 positionMod = new Vector2(5.0f, 6.0f);
-        private Vector2 positionModStep = new Vector2(1.0f, 1.0f);
+        const float positionModX = 5f, positionModY = 6f, positionModStepXAndY = 1f;
+        private Vector2 positionMod = new Vector2(positionModX, positionModY);
+        private Vector2 positionModStep = new Vector2(positionModStepXAndY, positionModStepXAndY);
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 30f; // ms per frame

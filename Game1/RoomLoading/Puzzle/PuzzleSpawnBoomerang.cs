@@ -21,7 +21,8 @@ namespace Game1.RoomLoading.Puzzle
             if (!complete) {
                 if (room.EnemyList.Count == 0)
                 {
-                    room.SpawnItem(new ItemBoomerang(new Vector2(128, 88)));
+                    const int boomerangSpawnX = 128, boomerangSpawnY = 88;
+                    room.SpawnItem(new ItemBoomerang(new Vector2(boomerangSpawnX, boomerangSpawnY)));
                     complete = true;
                 }
             }

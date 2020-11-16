@@ -57,12 +57,14 @@ namespace Game1.Environment
 
         public void Open(bool shouldInstantOpen)
         {
+            const string doorLockAudio = "doorLock";
+
             // Normal unlock
             if (!shouldInstantOpen)
             {
                 open = 1;
                 timeTillOpen = openTime;
-                AudioManager.PlayFireForget("doorLock");
+                AudioManager.PlayFireForget(doorLockAudio);
             }
             // Instant unlock
             else

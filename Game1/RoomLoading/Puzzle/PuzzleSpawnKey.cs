@@ -21,7 +21,8 @@ namespace Game1.RoomLoading.Puzzle
             if (!complete) {
                 if (room.EnemyList.Count == 0)
                 {
-                    room.SpawnItem(new Key(new Vector2(128, 88)));
+                    const int keySpawnX = 128, keySpawnY = 88;
+                    room.SpawnItem(new Key(new Vector2(keySpawnX, keySpawnY)));
                     complete = true;
                 }
             }

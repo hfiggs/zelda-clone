@@ -69,9 +69,10 @@ namespace Game1.GameState
             spinAnimationTimer = spinAnimationTime;
             poppedTimer = poppedTime;
 
+            const string deathAudio = "death";
             AudioManager.StopAllMusic();
             AudioManager.StopAllSound();
-            AudioManager.PlayFireForget("death");
+            AudioManager.PlayFireForget(deathAudio);
         }
 
         public void Update(GameTime gameTime)
@@ -101,10 +102,11 @@ namespace Game1.GameState
             else if (stareTimer > 0)
             {
                 stareTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                const string linkPopAudio = "linkPop";
 
                 if (stareTimer <= 0)
                 {
-                    AudioManager.PlayFireForget("linkPop");
+                    AudioManager.PlayFireForget(linkPopAudio);
                 }
             }
             else

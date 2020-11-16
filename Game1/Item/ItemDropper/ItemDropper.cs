@@ -64,14 +64,14 @@ namespace Game1.Item.ItemDropper
 
             if (type == typeof(Goriya))
             {
-                const int randomMax = 10;
+                const int randomMax = 10, fairySpawnCase = 0, heartSpawnCase1 = 1, heartSpawnCase2 = 2, heartSpawnCase3 = 3, heartSpawnCase4 = 4;
                 int randomDrop = random.Next(randomMax);
                 switch (randomDrop)
                 {
-                    case 0:
+                    case fairySpawnCase:
                         screen.CurrentRoom.SpawnItem(new Fairy(enemy.GetPosition()));
                         break;
-                    case 1: case 2: case 3: case 4:
+                    case heartSpawnCase1: case heartSpawnCase2: case heartSpawnCase3: case heartSpawnCase4:
                         screen.CurrentRoom.SpawnItem(new Heart(enemy.GetPosition()));
                         break;
                     default:
@@ -81,17 +81,17 @@ namespace Game1.Item.ItemDropper
             }
             else if (type == typeof(Skeleton) || type == typeof(Hand) || type == typeof(Snake))
             {
-                const int randomMax = 10;
+                const int randomMax = 10, clockSpawnCase = 0, heartSpawnCase1 = 1, heartSpawnCase2 = 2, blueRupeeSpawnCase1 = 3, blueRupeeSpawnCase2 = 4;
                 int randomDrop = random.Next(randomMax);
                 switch (randomDrop)
                 {
-                    case 0:
+                    case clockSpawnCase:
                         screen.CurrentRoom.SpawnItem(new Clock(enemy.GetPosition()));
                         break;
-                    case 1: case 2:
+                    case heartSpawnCase1: case heartSpawnCase2:
                         screen.CurrentRoom.SpawnItem(new Heart(enemy.GetPosition()));
                         break;
-                    case 3: case 4:
+                    case blueRupeeSpawnCase1: case blueRupeeSpawnCase2:
                         screen.CurrentRoom.SpawnItem(new RupeeBlue(enemy.GetPosition()));
                         break;
                     default:
@@ -101,14 +101,14 @@ namespace Game1.Item.ItemDropper
             }
             else if (type == typeof(Aquamentus) || type == typeof(Dodongo))
             {
-                const int randomMax = 5;
+                const int randomMax = 5, yellowRupeeSpawnCase = 0, fairySpawnCase = 1;
                 int randomDrop = random.Next(randomMax);
                 switch (randomDrop)
                 {
-                    case 0:
+                    case yellowRupeeSpawnCase:
                         screen.CurrentRoom.SpawnItem(new RupeeYellow(enemy.GetPosition()));
                         break;
-                    case 1:
+                    case fairySpawnCase:
                         screen.CurrentRoom.SpawnItem(new Fairy(enemy.GetPosition()));
                         break;
                     default:

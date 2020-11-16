@@ -41,19 +41,21 @@ namespace Game1.Enemy
 
         private void SoundHandle(IEnemy Original)
         {
-            if (Original.GetType().Name.Equals("Aquamentus"))
+            const string aquamentusAudio = "Aquamentus", aquamentusHurtAudio = "aquamentusHurt", enemyDeathAudio = "enemyDeath", enemyHurtAudio = "enemyHurt";
+
+            if (Original.GetType().Name.Equals(aquamentusAudio))
             {
-                AudioManager.PlayFireForget("aquamentusHurt");
+                AudioManager.PlayFireForget(aquamentusHurtAudio);
             }
             else
             {
                 if (Original.ShouldRemove())
                 {
-                    AudioManager.PlayFireForget("enemyDeath", 0.0f, deathSoundVol);
+                    AudioManager.PlayFireForget(enemyDeathAudio, 0.0f, deathSoundVol);
                 }
                 else
                 {
-                    AudioManager.PlayFireForget("enemyHurt");
+                    AudioManager.PlayFireForget(enemyHurtAudio);
                 }
             }
         }

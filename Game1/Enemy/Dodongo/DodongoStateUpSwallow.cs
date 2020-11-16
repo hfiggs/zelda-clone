@@ -50,6 +50,7 @@ namespace Game1.Enemy
             const int width = 15;
             const int headHeight = 4;
             const int bodyHeight = 24;
+
             List<Rectangle> hitboxList = new List<Rectangle>();
             hitboxList.Add(new Rectangle((int)position.X + xDiff, (int)position.Y + yDiffBody, width, bodyHeight));
             hitboxList.Add(new Rectangle((int)position.X + xDiff, (int)position.Y + yDiffHead, width, headHeight));

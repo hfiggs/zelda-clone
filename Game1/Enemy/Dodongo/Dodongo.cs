@@ -21,18 +21,20 @@ namespace Game1.Enemy
             this.game = game;
             this.position = position;
 
+            const int goUp = 0, goDown = 1, goLeft = 2, goRight = 3;
+
             switch (new Random().Next(4))
             {
-                case 0:
+                case goUp:
                     nextState = new DodongoStateUp(this, position);
                     break;
-                case 1:
+                case goDown:
                     nextState = new DodongoStateDown(this, position);
                     break;
-                case 2:
+                case goLeft:
                     nextState = new DodongoStateLeft(this, position);
                     break;
-                case 3:
+                case goRight:
                 default:
                     nextState = new DodongoStateRight(this, position);
                     break;

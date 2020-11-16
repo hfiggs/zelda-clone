@@ -48,7 +48,8 @@ namespace Game1.RoomLoading.Puzzle
                         }
                     }
                     complete = true;
-                    AudioManager.PlayFireForget("doorLock");
+                    const string doorLockAudio = "doorLock";
+                    AudioManager.PlayFireForget(doorLockAudio);
                 }
 
             }

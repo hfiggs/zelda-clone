@@ -83,9 +83,11 @@ namespace Game1.GameState
 
         public void Update(GameTime gameTime)
         {
+            const string titleAudio = "title";
+
             if (!isMusicStarted)
             {
-                AudioManager.PlayLooped("title");
+                AudioManager.PlayLooped(titleAudio);
                 isMusicStarted = true;
             }
 
