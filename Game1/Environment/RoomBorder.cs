@@ -36,7 +36,7 @@ namespace Game1.Environment
 
         public RoomBorder(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createRoom();
+            sprite = EnvironmentSpriteFactory.instance.CreateRoom();
             this.position = position;
             hitboxes.Add(hitbox1);
             hitboxes.Add(hitbox2);

@@ -30,7 +30,7 @@ namespace Game1.Projectile
             moveSpeed = maxMoveSpeed;
             despawnTimer = despawnTimerMax;
 
-            sprite = EnvironmentSpriteFactory.instance.createFire();
+            sprite = EnvironmentSpriteFactory.instance.CreateFire();
         }
 
         public void Update(GameTime gameTime)

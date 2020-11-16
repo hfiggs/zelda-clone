@@ -16,7 +16,7 @@ namespace Game1.Environment
         private List<Rectangle> hitboxes = new List<Rectangle>();
         public Fire(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createFire();
+            sprite = EnvironmentSpriteFactory.instance.CreateFire();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);

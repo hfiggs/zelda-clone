@@ -1,15 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Sprite;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using Game1.Sprite;
-using Game1.Controller;
-using System.Collections.Generic;
-using SharpDX.MediaFoundation;
 
 namespace Game1.Environment
 {
-	public class EnvironmentSpriteFactory
+    public class EnvironmentSpriteFactory
 	{
 		private SpriteSheet doors;
 		private SpriteSheet tiles;
@@ -40,198 +35,201 @@ namespace Game1.Environment
 			this.doorfloors = new SpriteSheet(doorfloors, 2, 2);
 		}
 
-		/*
+        /*
 		 * Factory methods for images found in ss_tiles.png
 		 */
-
-		public ISprite createFloor()
+        #region tiles
+        public ISprite CreateFloor()
 		{
 			return new EnvironmentSprite(tiles, 0, 0, 0, false);
 		}
 
-		public ISprite createBlock()
+		public ISprite CreateBlock()
 		{
 			return new EnvironmentSprite(tiles, 1, 0, 1, false);
 		}
 
-		public ISprite createStatueFish()
+		public ISprite CreateStatueFish()
 		{
 			return new EnvironmentSprite(tiles, 2, 0, 2, false);
 		}
 
-		public ISprite createStatueDragon()
+		public ISprite CreateStatueDragon()
 		{
 			return new EnvironmentSprite(tiles, 3, 0, 3, false);
 		}
 
-		public ISprite createBlack()
+		public ISprite CreateBlack()
 		{
 			return new EnvironmentSprite(tiles, 0, 1, 4, false);
 		}
 
-		public ISprite createSand()
+		public ISprite CreateSand()
         {
 			return new EnvironmentSprite(tiles, 1, 1, 5, false);
 		}
 
-		public ISprite createWater()
+		public ISprite CreateWater()
         {
 			return new EnvironmentSprite(tiles, 2, 1, 6, false);
 		}
 
-		public ISprite createStairs()
+		public ISprite CreateStairs()
         {
 			return new EnvironmentSprite(tiles, 3, 1, 7, false);
 		}
 
-		public ISprite createBricks()
+		public ISprite CreateBricks()
         {
 			return new EnvironmentSprite(tiles, 0, 2, 8, false);
 		}
 
-		public ISprite createLadder()
+		public ISprite CreateLadder()
         {
 			return new EnvironmentSprite(tiles, 1, 2, 9, false);
 		}
 
-		public ISprite createDoorNBlank()
+		public ISprite CreateFire()
+		{
+			return new EnvironmentSprite(tiles, 2, 2, 31, true);
+		}
+		#endregion tiles
+
+		#region doors
+		public ISprite CreateDoorNBlank()
         {
 			return new EnvironmentSprite(doors, 0, 0, 10, false);
 		}
 
-		public ISprite createDoorNOpen()
+		public ISprite CreateDoorNOpen()
 		{
 			return new EnvironmentSprite(doors, 1, 0, 11, false);
 		}
 
-		public ISprite createDoorNLocked()
+		public ISprite CreateDoorNLocked()
 		{
 			return new EnvironmentSprite(doors, 2, 0, 12, false);
 		}
 
-		public ISprite createDoorNClosed()
+		public ISprite CreateDoorNClosed()
 		{
 			return new EnvironmentSprite(doors, 3, 0, 13, false);
 		}
 
-		public ISprite createDoorNHole()
+		public ISprite CreateDoorNHole()
 		{
 			return new EnvironmentSprite(doors, 4, 0, 14, false);
 		}
 
-		public ISprite createDoorWBlank()
+		public ISprite CreateDoorWBlank()
 		{
 			return new EnvironmentSprite(doors, 0, 1, 15, false);
 		}
 
-		public ISprite createDoorWOpen()
+		public ISprite CreateDoorWOpen()
 		{
 			return new EnvironmentSprite(doors, 1, 1, 16, false);
 		}
 
-		public ISprite createDoorWLocked()
+		public ISprite CreateDoorWLocked()
 		{
 			return new EnvironmentSprite(doors, 2, 1, 17, false);
 		}
 
-		public ISprite createDoorWClosed()
+		public ISprite CreateDoorWClosed()
 		{
 			return new EnvironmentSprite(doors, 3, 1, 18, false);
 		}
 
-		public ISprite createDoorWHole()
+		public ISprite CreateDoorWHole()
 		{
 			return new EnvironmentSprite(doors, 4, 1, 19, false);
 		}
 
-		public ISprite createDoorEBlank()
+		public ISprite CreateDoorEBlank()
 		{
 			return new EnvironmentSprite(doors, 0, 2, 20, false);
 		}
 
-		public ISprite createDoorEOpen()
+		public ISprite CreateDoorEOpen()
 		{
 			return new EnvironmentSprite(doors, 1, 2, 21, false);
 		}
 
-		public ISprite createDoorELocked()
+		public ISprite CreateDoorELocked()
 		{
 			return new EnvironmentSprite(doors, 2, 2, 22, false);
 		}
 
-		public ISprite createDoorEClosed()
+		public ISprite CreateDoorEClosed()
 		{
 			return new EnvironmentSprite(doors, 3, 2, 23, false);
 		}
 
-		public ISprite createDoorEHole()
+		public ISprite CreateDoorEHole()
 		{
 			return new EnvironmentSprite(doors, 4, 2, 24, false);
 		}
 
-		public ISprite createDoorSBlank()
+		public ISprite CreateDoorSBlank()
 		{
 			return new EnvironmentSprite(doors, 0, 3, 25, false);
 		}
 
-		public ISprite createDoorSOpen()
+		public ISprite CreateDoorSOpen()
 		{
 			return new EnvironmentSprite(doors, 1, 3, 26, false);
 		}
 
-		public ISprite createDoorSLocked()
+		public ISprite CreateDoorSLocked()
 		{
 			return new EnvironmentSprite(doors, 2, 3, 27, false);
 		}
 
-		public ISprite createDoorSClosed()
+		public ISprite CreateDoorSClosed()
 		{
 			return new EnvironmentSprite(doors, 3, 3, 28, false);
 		}
 
-		public ISprite createDoorSHole()
+		public ISprite CreateDoorSHole()
 		{
 			return new EnvironmentSprite(doors, 4, 3, 29, false);
 		}
 
-		public ISprite createRoom()
-        {
-			return new EnvironmentSprite(room, 0, 0, 30, false);
-        }
-
-		public ISprite createBase()
-		{
-			return new EnvironmentSprite(roomBase, 0, 0, 36, false);
-		}
-
-		public ISprite createSecretRoom()
-		{
-			return new EnvironmentSprite(secretRoom, 0, 0, 37, false);
-		}
-
-		public ISprite createFire()
-        {
-			return new EnvironmentSprite(tiles, 2, 2, 31, true);
-        }
-
-		public ISprite createDoorNFloor()
+		public ISprite CreateDoorNFloor()
 		{
 			return new EnvironmentSprite(doorfloors, 0, 0, 32, false);
 		}
 
-		public ISprite createDoorEFloor()
+		public ISprite CreateDoorEFloor()
 		{
 			return new EnvironmentSprite(doorfloors, 0, 1, 33, false);
 		}
 
-		public ISprite createDoorSFloor()
+		public ISprite CreateDoorSFloor()
 		{
 			return new EnvironmentSprite(doorfloors, 1, 1, 34, false);
 		}
 
-		public ISprite createDoorWFloor()
+		public ISprite CreateDoorWFloor()
 		{
 			return new EnvironmentSprite(doorfloors, 1, 0, 35, false);
+		}
+        #endregion doors
+
+        public ISprite CreateRoom()
+        {
+			return new EnvironmentSprite(room, 0, 0, 30, false);
+        }
+
+		public ISprite CreateBase()
+		{
+			return new EnvironmentSprite(roomBase, 0, 0, 36, false);
+		}
+
+		public ISprite CreateSecretRoom()
+		{
+			return new EnvironmentSprite(secretRoom, 0, 0, 37, false);
 		}
 	}
 }

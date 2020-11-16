@@ -27,7 +27,7 @@ namespace Game1.Environment
 
         public DoorNBombable(Vector2 position, bool isOpen)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorNBlank();
+            sprite = EnvironmentSpriteFactory.instance.CreateDoorNBlank();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
@@ -61,15 +61,14 @@ namespace Game1.Environment
         public void OpenDoor(bool shouldPlaySound)
         {
             open = true;
-            sprite = EnvironmentSpriteFactory.instance.createDoorNHole();
+            sprite = EnvironmentSpriteFactory.instance.CreateDoorNHole();
             hitboxes = new List<Rectangle>();
             //hitboxes.Add(openHitbox1);
             //hitboxes.Add(openHitbox2);
 
-            const string revealAudio = "reveal";
             if (shouldPlaySound)
             {
-                AudioManager.PlayFireForget(revealAudio);
+                AudioManager.PlayFireForget("reveal");
             }
         }
     }

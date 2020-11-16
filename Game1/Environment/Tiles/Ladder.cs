@@ -20,7 +20,7 @@ namespace Game1.Environment
 
         public Ladder(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createLadder();
+            sprite = EnvironmentSpriteFactory.instance.CreateLadder();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);

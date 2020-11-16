@@ -21,7 +21,7 @@ namespace Game1.Environment
 
         public Water(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createWater();
+            sprite = EnvironmentSpriteFactory.instance.CreateWater();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
