@@ -12,6 +12,7 @@ namespace Game1.Projectile
         private int columnModifier, counter, rowModifier;
         private float totalTime;
         private char direction; // 'N' = North, 'S' = South, 'W' = West, 'E' = East
+        private const char north = 'N', south = 'S', west = 'W', east = 'E';
         private const float moveSpeed = 200;
         private const float delay = 200; // miliseconds
         private ProjectileSpriteSheet sprite;
@@ -23,7 +24,7 @@ namespace Game1.Projectile
 
         private IParticle particles;
         private bool particlesSpawned;
-        private Vector2 particleOffset = new Vector2(14.0f, 14.0f);
+        private readonly Vector2 particleOffset = new Vector2(14.0f, 14.0f);
 
         public SwordBeam(char direction, Vector2 position)
         {
@@ -39,24 +40,27 @@ namespace Game1.Projectile
         }
         public void Update(GameTime gameTime)
         {
+            const int northSprite = 0, southSprite = 1, westSprite = 2, eastSprite = 3;
+
             totalTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (totalTime >= delay && !removeMe) {
-                if (direction == 'N') {
+                if (direction == north) {
                     position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    rowModifier = 0;
-                } else if (direction == 'S') {
+                    rowModifier = northSprite;
+                } else if (direction == south) {
                     position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    rowModifier = 1;
-                } else if (direction == 'W') {
+                    rowModifier = southSprite;
+                } else if (direction == west) {
                     position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    rowModifier = 2;
-                } else if (direction == 'E') {
+                    rowModifier = westSprite;
+                } else if (direction == east) {
                     position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    rowModifier = 3;
+                    rowModifier = eastSprite;
                 }
 
                 // Used to change sprite sheet column and allow for flashing
-                if (counter == 5) {
+                const int counterMax = 5;
+                if (counter == counterMax) {
                     if (columnModifier == 0) {
                         columnModifier = 1;
                     } else {
@@ -73,7 +77,8 @@ namespace Game1.Projectile
                 particles.Update(gameTime);
             }
 
-            if(position.Y < 10 || position.Y > 130 || position.X < 10 || position.X > 206)
+            const int topLimit = 10, bottomLimit = 130, leftLimit = 10, rightLimit = 206;
+            if(position.Y < topLimit || position.Y > bottomLimit || position.X < leftLimit || position.X > rightLimit)
             {
                 BeginDespawn();
                 /*if(!particlesSpawned)
@@ -129,13 +134,15 @@ namespace Game1.Projectile
 
             if (!removeMe)
             {
-                if (direction == 'N' || direction == 'S')
+                if (direction == north || direction == south)
                 {
-                    hitbox = new Rectangle((int)position.X + 17, (int)position.Y + 12, 7, 16);
+                    const int xDiff = 17, yDiff = 12, width = 7, height = 16;
+                    hitbox = new Rectangle((int)position.X + xDiff, (int)position.Y + yDiff, width, height);
                 }
                 else
                 {
-                    hitbox = new Rectangle((int)position.X + 11, (int)position.Y + 16, 18, 7);
+                    const int xDiff = 11, yDiff = 16, width = 18, height = 7;
+                    hitbox = new Rectangle((int)position.X + xDiff, (int)position.Y + yDiff, width, height);
                 }
             }
 

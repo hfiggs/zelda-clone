@@ -73,7 +73,8 @@ namespace Game1.Controller
         private Point DetermineNextCenterPoint(Point centerPoint)
         {
             Point newCenterPoint = centerPoint;
-            Rectangle boundry = new Rectangle(150, 4, 200, 200);
+            const int boundryX = 150, boundryY = 4, boundryWidthAndHeight = 200;
+            Rectangle boundry = new Rectangle(boundryX, boundryY, boundryWidthAndHeight, boundryWidthAndHeight);
 
             if (topRightLimit.Contains(centerPoint))
             {

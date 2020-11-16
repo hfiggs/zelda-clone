@@ -1,7 +1,6 @@
 ﻿using Game1.Player.PlayerInventory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Xml.XPath;
 
 namespace Game1.HUD
 {
@@ -24,17 +23,19 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-            location = new Vector2(85, 158);
-            HUDSprite textSprite = new HUDSprite(HUDIconsTexture, row, 0, 16, 3);
+            const int columnModifier = 1, columns = 16, rows = 3, xModifier = 9, x = 85, y = 158, placeInterval = 10;
+
+            location = new Vector2(x, y);
+            HUDSprite textSprite = new HUDSprite(HUDIconsTexture, row, 0, columns, rows);
             textSprite.Draw(spriteBatch, location + movement, color);
-            location = new Vector2(location.X + 9, location.Y);
+            location = new Vector2(location.X + xModifier, location.Y);
 
             int currentKey = inv.KeyCount;
             int totalPlaces = 1;
-            currentKey = currentKey / 10;
+            currentKey = currentKey / placeInterval;
             while (currentKey > 0)
             {
-                currentKey = currentKey / 10;
+                currentKey = currentKey / placeInterval;
                 totalPlaces++;
             }
             currentKey = inv.KeyCount;
@@ -42,16 +43,16 @@ namespace Game1.HUD
             int[] numbers = new int[totalPlaces];
             for (int i = 0; i < totalPlaces; i++)
             {
-                numbers[i] = currentKey % 10;
-                currentKey = currentKey / 10;
+                numbers[i] = currentKey % placeInterval;
+                currentKey = currentKey / placeInterval;
             }
 
 
             for(int i = totalPlaces - 1; i >= 0; i--)
             {
-                textSprite = new HUDSprite(HUDIconsTexture, row, numbers[i] + 1, 16, 3);
+                textSprite = new HUDSprite(HUDIconsTexture, row, numbers[i] + columnModifier, columns, rows);
                 textSprite.Draw(spriteBatch, location + movement, color);
-                location = new Vector2(location.X + 9, location.Y);
+                location = new Vector2(location.X + xModifier, location.Y);
             }
         }
 

@@ -7,6 +7,8 @@ namespace Game1.Command.CollisionHandlerCommands
 {
     class PlayerToEnemy : ICollisionCommand
     {
+        const char north = 'N', south = 'S', west = 'W', east = 'E';
+
         public PlayerToEnemy()
         {
 
@@ -18,13 +20,13 @@ namespace Game1.Command.CollisionHandlerCommands
             IEnemy enemy = (IEnemy)collision.collidee;
             if (collision.intersectionRec.Width != 0 || collision.intersectionRec.Height != 0)
             {
-                if (player.GetDirection() == 'E')
+                if (player.GetDirection() == east)
                     enemy.ReceiveDamage(1f, new Vector2(1, 0));
-                else if (player.GetDirection() == 'W')
+                else if (player.GetDirection() == west)
                     enemy.ReceiveDamage(1f, new Vector2(-1, 0));
-                else if (player.GetDirection() == 'S')
+                else if (player.GetDirection() == south)
                     enemy.ReceiveDamage(1f, new Vector2(0, 1));
-                else if (player.GetDirection() == 'N')
+                else if (player.GetDirection() == north)
                     enemy.ReceiveDamage(1f, new Vector2(0, -1));
             }
         }

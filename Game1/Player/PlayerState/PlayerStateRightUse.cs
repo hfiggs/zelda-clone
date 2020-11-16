@@ -102,7 +102,7 @@ namespace Game1.Player
         public void Update(GameTime time)
         {
             timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
-            ItemEnum bluePotion = (ItemEnum)5;
+            const int bluePotion = 5;
 
             if (timeUntilNextFrame <= 0 && frameCount < animationFrames)
             {
@@ -112,7 +112,7 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
-                if (item != 0 && item != bluePotion)
+                if (item != 0 && item != (ItemEnum)bluePotion)
                     player.SpawnProjectile(projectile);
                 player.SetState(new PlayerStateRight(player, position));
             }
