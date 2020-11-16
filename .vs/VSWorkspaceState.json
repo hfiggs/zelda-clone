@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Content\\Images",
-    "\\Game1\\Content\\Images\\Item",
-    "\\Game1\\Controller",
-    "\\Game1\\Controller\\Keyboard",
-    "\\Game1\\HUD",
-    "\\Game1\\HUD\\HUDItems",
+    "\\Game1\\Content",
+    "\\Game1\\GameState",
+    "\\Game1\\Player",
     "\\Game1\\Player\\PlayerInventory",
-    "\\Game1\\Player\\PlayerState"
+    "\\Game1\\RoomLoading",
+    "\\Game1\\RoomLoading\\Puzzle",
+    "\\_Documentation",
+    "\\_Documentation\\Code Reviews"
   ],
-  "SelectedNode": "\\Game1\\HUD\\HUDItems",
+  "SelectedNode": "\\Game1\\GameState\\GameStateSkyrim.cs",
   "PreviewInSolutionExplorer": false
 }

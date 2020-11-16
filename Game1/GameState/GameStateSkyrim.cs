@@ -14,7 +14,7 @@ namespace Game1.GameState
         public GameStateSkyrim(Game1 game)
         {
             this.game = game;
-            skyrim = game.Content.Load<Video>("Skyrim");
+            skyrim = game.Content.Load<Video>("bin/Windows/Content/Skyrim");
             player = new VideoPlayer();
             player.Play(skyrim);
             AudioManager.ResetAudioManager();
