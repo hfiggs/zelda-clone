@@ -30,8 +30,8 @@ namespace Game1.Item
 
         public Rectangle GetHitbox()
         {
-            const int xAndYDiff = 10, widthAndHeight = 20;
-            return new Rectangle((int)Position.X + xAndYDiff, (int)Position.Y + xAndYDiff, widthAndHeight, widthAndHeight);
+            const int xOffset = 13, yOffset = 12, width = 15, height = 15;
+            return new Rectangle((int)Position.X + xOffset, (int)Position.Y + yOffset, width, height);
         }
 
         public bool ShouldDelete { get; set; } = false;
