@@ -14,7 +14,7 @@ namespace Game1.Item
 		{
             sprite = ItemSpriteFactory.Instance.CreateBombSprite();
 
-            this.Position = Position;
+            Position = position;
 		}
 
         public void Draw(SpriteBatch spriteBatch, Color color)
