@@ -1,0 +1,35 @@
+﻿AUTHOR (OF REVIEW) - Hunter Figgs.3
+
+
+DATE - 11/16/2020
+
+
+SPRINT # - 4
+
+
+NAME OF FILE BEING REVIEWED - "...Game1\HUD\HUD.cs"
+
+
+AUTHOR OF FILE BEING REVIEWED - Jared Perkins.578
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 25
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - 
+
+1. The typing of the roomsEntered variable is not super readable as it is a lot to look at. Instead of the type List<Tuple<char, int>> (the double chevrons threw me off), the type could simply be reduced to List<(char, int)>. Making use of the parentheses in place of the tuple and double chevrons is easier to understand.
+
+
+2. This is partly readability partly just best softawre practice: all the fields at the top of the file, including things like displayItemTop and linkDot should be explicity set to private. I think the default visibility parameter is internal, which is technically fine, but explicity setting them to private makes it easier for the reader to understand what is going on. Reader's eyes can ususally skip past private fields, but anything else demands immediate attention.
+
+
+3. The Update() method is very, very dense and an eye-sore for anyone trying to parse through it. The use of helper methods would be much appreciated so that the reader could get a higher-level overview of what Update() is doing, before moving on to look at more details. This is especially important since everything in the method is inside one big foreach loop.
+
+
+4. Also in the foreach loop in the Update() method, the looping variable would be more readable if it was lowercase ("item" instead of "Item"). A lowercase looping variable is much more obviously understood, as opposed to upper case which makes me think the looping variable is a type, which doesn't make sense.
+
+
+5. In general, variable names are pretty good, especially the fields at the top of the class. It is very easy/obvious to understand what they are.
+
+
+6. In general, spacing out blocks of code would improve readability. Lines are mashed together in both the Update() and Draw() methods.

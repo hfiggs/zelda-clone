@@ -1,0 +1,28 @@
+AUTHOR (OF THE REVIEW) - PatrickHaughn
+
+
+DATE - 11/16/20
+
+
+SPRINT # - 4
+
+
+NAME OF FILE BEING REVIEWED - ItemDropper
+
+
+AUTHOR OF FILE BEING REVIEWED - Sergei Fedulov
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 13
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) -
+	- The file is split into methods with clear functionality
+	- It is obvious where you would need to edit the code to add in or change drops for existing enemies
+	- The file makes adding in new enemies and their respective drops simple
+	- Overall the ItemDropper file is clear on what it does which helps make it easier to add code in the future
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - 
+	- I don't think this change is needed, but you could use if else statements instead of switch cases for 
+	determining what item drops. This might make it easier to create probablities for each item drop. This would not
+	take much time to implement.
