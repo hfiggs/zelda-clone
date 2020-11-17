@@ -61,6 +61,8 @@ Current Bugs:
 
 	- Sometimes player and/or enemies can get pushed outside the walls (This has been greatly reduced since the last sprint, but it is still occuring sometimes. We will take another pass at improving it before next sprint. Apologies if this inconveniences testing. Sometimes enemies get pushed outside walls, but they are needed to complete room puzzle.)
 
+	- Stunning an enemy with boomerang that was already stunned with the clock will lead to the enemy being unstunned after the timer runs out. They should stay permanently stunned.
+
 
 Code Metrics/Analysis (As of Sprint #4):
 
