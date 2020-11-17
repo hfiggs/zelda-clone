@@ -1,0 +1,40 @@
+﻿AUTHOR (OF THE REVIEW) - Hunter Figgs.3
+
+
+DATE - 11/16/2020
+
+
+SPRINT # - 4
+
+
+NAME OF FILE BEING REVIEWED - "...Game1\Audio\AudioManager.cs"
+
+
+AUTHOR OF FILE BEING REVIEWED - Jeff Gaydos.33
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) -
+
+
+1. The in-line initialization of the two dictionaries (musicMap and soundMap) combined with the repeated use of the IEnumerable .Add method in LoadContent() is less maintainable than if the C# collection initializer was made use of. The current implementation is maintainable, the but amount of code to look at and to change could be reduced, making the file leaner. The link on how to use the collection initializer is below.
+(https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/object-and-collection-initializers)
+
+
+2. The massive set of constant string delcarations might not need to be maintained often, but if it does it would be an absolute pain to try and dig through and find specific string values to update, change, or add. These probably shouldn't even be in this file. Making use of a utility class would be much better. The utility class could also dynamically load in these values into something like a map. Another way would be to put all the declarations on separate lines in a #region block, possibly at the bottom of the file. This would help make the file look cleaner and would make it easier to find/change values.
+
+
+3. Most of the methods are pretty short and therfore easy to maintain, as they contain foreach loops with well-named looping variables with maybe one or two if checks inside each loop. These shorter methods are very maintainable.
+
+
+4. This is more of a readability comment, but readability heavily affects maintainability. Update() could be made much more readable with some simple spacing between lines. There is only a single space between two lines, even though the method is ~25 lines long. Spacing could also help improve readability of other methods.
+
+
+5. The PlayItemSound() method used to play a sound based off an IItem object passed in is pretty clunky. It would be difficult to maintain, especially if it got much bigger. Possibly making use of a dictionary that maps item types to commands would help make this class much easier to maintin. It would also reduce responsibility of the class. Instead of a big long switch case, the method could consist of a single line (something along the lines of AudioUtil.ItemSoundMap[item].Execute()).
+
+
+6. Last thought (adding onto #1): the musicMap and soundMap initializations should probably also be implemented in a utility file, not this audio manager file. This would also help reduce the responsibility of the class, making it easier to maintain. Also could improve modularity of audio (swapping different audio sets in/out).
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - 
+
+Heavy use of utility classes could really improve the maintainability (as well as readability) of the AudioManager class. Both the chunk of sound constants at the beginning and the item-sound switch case could be moved into utility classes. It would not be very difficult at this stage (maybe 30 mins of work if making use of commands for item sounds), but if these sections of code were much larger it would get much more difficult to fix.
