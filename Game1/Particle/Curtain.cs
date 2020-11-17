@@ -1,4 +1,5 @@
 ﻿using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -17,14 +18,14 @@ namespace Game1.Particle
         private const float stepTime = 75f; // ms
         private const int stepSize = 7; //pixels
 
-        private bool opening;
+        private readonly bool opening;
 
         private bool update = true;
         private bool remove = false;
 
         private Vector2 screenDimensions;
 
-        public Curtain(bool opening, Game1 game)
+        public Curtain(Game1 game, bool opening)
         {
             screenDimensions = game.GetWindowDimensionsScaled();
             const int divideBy2 = 2;
@@ -65,8 +66,8 @@ namespace Game1.Particle
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            curtainLeftSprite.Draw(spriteBatch, curtainLeftArea.Location.ToVector2(), color);
-            curtainRightSprite.Draw(spriteBatch, curtainRightArea.Location.ToVector2(), color);
+                curtainLeftSprite.Draw(spriteBatch, curtainLeftArea.Location.ToVector2(), color, SpriteLayerUtil.particleLayer);
+                curtainRightSprite.Draw(spriteBatch, curtainRightArea.Location.ToVector2(), color, SpriteLayerUtil.particleLayer);
         }
 
         public bool ShouldDelete()

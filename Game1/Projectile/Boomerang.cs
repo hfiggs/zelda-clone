@@ -3,6 +3,7 @@ using Game1.Environment;
 using Game1.Particle;
 using Game1.Player;
 using Game1.Player.PlayerInventory;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -195,7 +196,7 @@ namespace Game1.Projectile
                 int columnOfSprite = sprite.GetColumnOfSprite();
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite, rowModifier);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
-                spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
+                spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color, 0f, new Vector2(0f, 0f), SpriteEffects.None, SpriteLayerUtil.projectileLayer);
             }
 
             foreach (IParticle particle in particles)

@@ -1,4 +1,5 @@
 ﻿using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Game1.Environment
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, position, color);
+            sprite.Draw(spriteBatch, position, color, SpriteLayerUtil.envBelowPlayerLayer2);
         }
 
         public List<Rectangle> GetHitboxes()

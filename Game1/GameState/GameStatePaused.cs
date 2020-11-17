@@ -1,6 +1,7 @@
 ﻿/* Author: Hunter Figgs.3 */
 
 using Game1.Controller;
+using Game1.Util;
 using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -46,7 +47,7 @@ namespace Game1.GameState
 
             drawMatrix.Translation = new Vector3(0, roomOffset * resolutionManager.GetResolutionScale(), 0);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
             game.Screen.Draw(spriteBatch, color);
 

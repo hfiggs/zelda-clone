@@ -87,22 +87,12 @@
 	</NonInteractEnviornment>
 	<NonInteractEnviornment>
 		<Type>Sand</Type>
-		<X>96</X>
-		<Y>112</Y>
-	</NonInteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>Sand</Type>
 		<X>112</X>
 		<Y>112</Y>
 	</NonInteractEnviornment>
 	<NonInteractEnviornment>
 		<Type>Sand</Type>
 		<X>128</X>
-		<Y>112</Y>
-	</NonInteractEnviornment>
-	<NonInteractEnviornment>
-		<Type>Sand</Type>
-		<X>144</X>
 		<Y>112</Y>
 	</NonInteractEnviornment>
 	<NonInteractEnviornment>

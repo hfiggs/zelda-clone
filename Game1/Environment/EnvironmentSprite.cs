@@ -1,4 +1,5 @@
 ﻿using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -28,7 +29,7 @@ namespace Game1.Environment
         public void Draw(SpriteBatch spritebatch, Vector2 position, Color color)
         {
             Rectangle destRect = new Rectangle(position.ToPoint(), new Point(sourceRect.Width, sourceRect.Height));
-            spritebatch.Draw(spriteSheet.GetTexture(), destRect, sourceRect, color);
+            spritebatch.Draw(spriteSheet.GetTexture(), destRect, sourceRect, color, 0f, new Vector2(0f, 0f), SpriteEffects.None, SpriteLayerUtil.envBelowPlayerLayer1);
         }
 
         public void Draw(SpriteBatch spritebatch, Vector2 position, Color color, float layerDepth)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Util;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Sprite
@@ -42,7 +43,7 @@ namespace Game1.Sprite
             Rectangle sourceRect = new Rectangle(columnLocation, height*currentRow, width, height);
             Rectangle destinationRect = new Rectangle((int)location.X,(int)location.Y, width, height);
 
-            spriteBatch.Draw(texture, destinationRect, sourceRect, color);
+            spriteBatch.Draw(texture, destinationRect, sourceRect, color, 0f, new Vector2(0f, 0f), SpriteEffects.None, SpriteLayerUtil.playerLayer);
         }
 
         public void Draw(SpriteBatch spritebatch, Vector2 position, Color color, float layerDepth)
