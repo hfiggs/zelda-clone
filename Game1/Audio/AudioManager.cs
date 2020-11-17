@@ -31,7 +31,6 @@ namespace Game1.Audio
         private static List<SoundEffectInstance> activeSoundList = new List<SoundEffectInstance>();
 
         private static readonly float chestSoundLength = 2.0f;
-        private static readonly float triforceSoundLength = 8.0f;
 
         private static bool stopSoundInit = false;
         private static bool paused = false;

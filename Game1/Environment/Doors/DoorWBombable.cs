@@ -17,8 +17,6 @@ namespace Game1.Environment
         private Vector2 position;
         public bool open = false;
 
-        private const float topLayer = 1f;
-
         private const int width = 32, height = 8, yDiff = 24;
         private Rectangle hitboxOpen1 = new Rectangle(0, 0, width, height);
         private Rectangle hitboxOpen2 = new Rectangle(0, yDiff, width, height);

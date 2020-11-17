@@ -13,8 +13,6 @@ namespace Game1.Environment
         private ISprite spriteAbove;
         private Vector2 position;
 
-        private const float topLayer = 1f;
-
         private const int widthAndHeight = 32;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private const int width = 32, height = 8, yDiff = 24;
@@ -85,8 +83,6 @@ namespace Game1.Environment
             {
                 open = openDoor;
                 timeTillOpen = 0;
-
-<<<<<<< HEAD
                 spriteBelow = EnvironmentSpriteFactory.instance.createDoorEOpenBelow();
                 spriteAbove = EnvironmentSpriteFactory.instance.createDoorEOpenAbove();
 
@@ -95,10 +91,6 @@ namespace Game1.Environment
                     hitboxOpen1,
                     hitboxOpen2
                 };
-=======
-                sprite = EnvironmentSpriteFactory.instance.CreateDoorEOpen();
-                hitboxes.Remove(hitbox1);
->>>>>>> a27c5a9587d59af09b63ad967a58109e80d09f6f
             }
         }
     }

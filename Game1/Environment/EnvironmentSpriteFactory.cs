@@ -118,6 +118,8 @@ namespace Game1.Environment
 			return new EnvironmentSprite(tiles, ladderColumn, ladderRow, ladderID, false);
 		}
 
+        #endregion
+
         #region Doors Below
 
         public ISprite createDoorNBlankBelow()
@@ -326,14 +328,14 @@ namespace Game1.Environment
 
 		#endregion
 
-		public ISprite createRoom()
+		public ISprite CreateRoom()
         {
 			return new EnvironmentSprite(room, 0, 0, 30, false);
         }
 
-		public ISprite createBase()
+		public ISprite CreateDoorNFloor()
 		{
-			return new EnvironmentSprite(doors, DoorEHoleColumn, DoorEHoleRow, DoorEHoleID, false);
+			return new EnvironmentSprite(doorfloors, DoorNFloorColumn, DoorNFloorRow, DoorNFloorID, false);
 		}
 
 		public ISprite CreateDoorEFloor()
@@ -341,36 +343,29 @@ namespace Game1.Environment
 			return new EnvironmentSprite(doorfloors, DoorEFloorColumn, DoorEFloorRow, DoorEFloorID, false);
 		}
 
-		public ISprite CreateDoorSBlank()
-		{
-			return new EnvironmentSprite(doors, DoorSBlankColumn, DoorSBlankRow, DoorSBlankID, false);
-		}
-		
-		public ISprite CreateDoorSOpen()
-		{
-			return new EnvironmentSprite(doors, DoorSOpenColumn, DoorSOpenRow, DoorSOpenID, false);
-		}
-
-		public ISprite CreateDoorSLocked()
-		{
-			return new EnvironmentSprite(doors, DoorSLockedColumn, DoorSLockedRow, DoorSLockedID, false);
-		}
-
-		public ISprite CreateDoorSClosed()
-		{
-			return new EnvironmentSprite(doors, DoorSClosedColumn, DoorSClosedRow, DoorSClosedID, false);
-		}
-
-		public ISprite CreateDoorSHole()
-		{
-			return new EnvironmentSprite(doors, DoorSHoleColumn, DoorSHoleRow, DoorSHoleID, false);
-		}
-
 		public ISprite CreateDoorSFloor()
 		{
 			return new EnvironmentSprite(doorfloors, DoorSFloorColumn, DoorSFloorRow, DoorSFloorID, false);
 		}
 
-        #endregion Doors
-    }
+		public ISprite CreateDoorWFloor()
+		{
+			return new EnvironmentSprite(doorfloors, DoorWFloorColumn, DoorWFloorRow, DoorWFloorID, false);
+		}
+
+		public ISprite CreateBase()
+		{
+			return new EnvironmentSprite(roomBase, roomBaseColumn, roomBaseRow, roomBaseID, false);
+		}
+
+		public ISprite CreateSecretRoom()
+		{
+			return new EnvironmentSprite(secretRoom, secretRoomColumn, secretRoomRow, secretRoomID, false);
+		}
+
+		public ISprite CreateFire()
+		{
+			return new EnvironmentSprite(tiles, fireColumn, fireRow, fireID, true);
+		}
+	}
 }

@@ -15,8 +15,6 @@ namespace Game1.Environment
         private ISprite spriteAbove;
         private Vector2 position;
 
-        private const float topLayer = 1f;
-
         const int widthAndHeight = 32;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private const int width = 8, height = 32, xDiff = 24;
