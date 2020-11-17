@@ -94,12 +94,12 @@ namespace Game1.GameState
 
             drawMatrix.Translation = new Vector3(0, roomOffset * resolutionManager.GetResolutionScale(), 0);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
             game.Screen.CurrentRoom.Draw(spriteBatch, color);
 
-            playerSprite.Draw(spriteBatch, playerPosition, color);
-            itemSprite.Draw(spriteBatch, Vector2.Add(playerPosition, itemPositionOffset), color);
+            playerSprite.Draw(spriteBatch, playerPosition, color, SpriteLayerUtil.playerLayer);
+            itemSprite.Draw(spriteBatch, Vector2.Add(playerPosition, itemPositionOffset), color, SpriteLayerUtil.itemLayer);
             curtain.Draw(spriteBatch, color);
 
             spriteBatch.End();

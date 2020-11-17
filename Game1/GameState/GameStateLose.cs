@@ -6,6 +6,7 @@ using Game1.Particle;
 using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -131,12 +132,12 @@ namespace Game1.GameState
 
             drawMatrix.Translation = new Vector3(0, roomOffset * resolutionManager.GetResolutionScale(), 0);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, drawMatrix);
 
             game.Screen.CurrentRoom.Draw(spriteBatch, colorRoom);
 
             if (stareTimer > 0)
-                deadLink.Draw(spriteBatch, deadLinkPosition, colorPlayer);
+                deadLink.Draw(spriteBatch, deadLinkPosition, colorPlayer, SpriteLayerUtil.playerLayer);
 
             curtain.Draw(spriteBatch, colorRoom);
 
