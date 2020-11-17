@@ -20,7 +20,7 @@ namespace Game1.Enemy
             this.game = game;
             this.position = position;
             state = new EnemyStateSpawning(this.position, this, new AquamentusWalkLeft(game, this, position));
-            health = 6f;
+            health = 12f;
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
