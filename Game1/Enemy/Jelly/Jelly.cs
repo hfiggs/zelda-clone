@@ -20,7 +20,7 @@ namespace Game1.Enemy
             this.position = spawnPosition;
             const float halfHeart = 0.5f;
             this.health = halfHeart;
-            state = new EnemyStateSpawning(position, this, new JellyStateMoving(spawnPosition));
+            state = new EnemyStateSpawning(position, this, new JellyStateMoving(spawnPosition, this));
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
@@ -42,10 +42,7 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            if (StunnedTimer == 0)
-            {
-                state.Update(gameTime, drawingLimits);
-            }
+            state.Update(gameTime, drawingLimits);
 
             StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
             StunnedTimer = Math.Max(0, StunnedTimer);

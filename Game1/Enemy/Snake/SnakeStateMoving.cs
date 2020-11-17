@@ -30,8 +30,9 @@ namespace Game1.Enemy
         private const float animationTime = 150f; // ms per frame
 
         public ISprite Sprite { get; private set; }
+        private IEnemy snake;
 
-        public SnakeStateMoving(Game1 game, Vector2 position)
+        public SnakeStateMoving(Game1 game, Vector2 position, IEnemy snake)
         {
             rand = new Random();
 
@@ -41,6 +42,7 @@ namespace Game1.Enemy
 
             this.position = position;
             this.game = game;
+            this.snake = snake;
 
             timeUntilNewDirection = moveTime;
 
@@ -100,60 +102,69 @@ namespace Game1.Enemy
 
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
-            const int right = 2, left = 3;
-
-            timeUntilNewDirection -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
-
-            if (timeUntilNewDirection <= 0 && !playerSpotted)
+            if (snake.StunnedTimer == 0)
             {
-                const int randomNumberMax = 4;
-                moveDirection = rand.Next(randomNumberMax);
+                const int right = 2, left = 3;
 
-                timeUntilNewDirection += moveTime;
-            }
+                timeUntilNewDirection -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
 
-            if (isFacingLeft && moveDirection == right)
-            {
-                isFacingLeft = false;
-                Sprite = EnemySpriteFactory.Instance.CreateSnakeRightSprite();
-            }
-            else if (!isFacingLeft && moveDirection == left)
-            {
-                isFacingLeft = true;
-                Sprite = EnemySpriteFactory.Instance.CreateSnakeLeftSprite();
-            }
+                if (timeUntilNewDirection <= 0 && !playerSpotted)
+                {
+                    const int randomNumberMax = 4;
+                    moveDirection = rand.Next(randomNumberMax);
 
-            Vector2 windowDims = game.GetWindowDimensions();
-            if (isFacingLeft && game.Screen.GetPlayerRectangle().Intersects(new Rectangle((int)(position.X - windowDims.X), (int)position.Y, (int)windowDims.X, viewWidth))) {
-                playerSpotted = true;
-                moveDirection = left;
-            } else if (!isFacingLeft && game.Screen.GetPlayerRectangle().Intersects(new Rectangle((int)position.X, (int)position.Y, (int)windowDims.X, viewWidth))) {
-                playerSpotted = true;
-                moveDirection = right;
-            }
+                    timeUntilNewDirection += moveTime;
+                }
 
-            int speed;
-            if (playerSpotted) {
-                speed = fastSpeed;
-            } else {
-                speed = normalSpeed;
-            }
+                if (isFacingLeft && moveDirection == right)
+                {
+                    isFacingLeft = false;
+                    Sprite = EnemySpriteFactory.Instance.CreateSnakeRightSprite();
+                }
+                else if (!isFacingLeft && moveDirection == left)
+                {
+                    isFacingLeft = true;
+                    Sprite = EnemySpriteFactory.Instance.CreateSnakeLeftSprite();
+                }
 
-            const int north = 0, south = 1, east = 2, west = 3;
-            switch (moveDirection)
-            {
-                case north:
-                    position.Y -= speed;
-                    break;
-                case south:
-                    position.Y += speed;
-                    break;
-                case east:
-                    position.X += speed;
-                    break;
-                case west:
-                    position.X -= speed;
-                    break;
+                Vector2 windowDims = game.GetWindowDimensions();
+                if (isFacingLeft && game.Screen.GetPlayerRectangle().Intersects(new Rectangle((int)(position.X - windowDims.X), (int)position.Y, (int)windowDims.X, viewWidth)))
+                {
+                    playerSpotted = true;
+                    moveDirection = left;
+                }
+                else if (!isFacingLeft && game.Screen.GetPlayerRectangle().Intersects(new Rectangle((int)position.X, (int)position.Y, (int)windowDims.X, viewWidth)))
+                {
+                    playerSpotted = true;
+                    moveDirection = right;
+                }
+
+                int speed;
+                if (playerSpotted)
+                {
+                    speed = fastSpeed;
+                }
+                else
+                {
+                    speed = normalSpeed;
+                }
+
+                const int north = 0, south = 1, east = 2, west = 3;
+                switch (moveDirection)
+                {
+                    case north:
+                        position.Y -= speed;
+                        break;
+                    case south:
+                        position.Y += speed;
+                        break;
+                    case east:
+                        position.X += speed;
+                        break;
+                    case west:
+                        position.X -= speed;
+                        break;
+                }
             }
 
             timeUntilNextFrame -= (float)gametime.ElapsedGameTime.TotalMilliseconds;

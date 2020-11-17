@@ -38,19 +38,28 @@ namespace Game1.Enemy
 
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
-            const int maxTime = 2;
-            totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
-            Rectangle playerRect = game.Screen.GetPlayerRectangle();
+            if (aquamentus.StunnedTimer == 0)
+            {
+                const int maxTime = 2;
+                totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
+                Rectangle playerRect = game.Screen.GetPlayerRectangle();
 
-            if (totalTime < timeOfAttack || (counter == 1 && totalTime < maxTime)) {
-                if (drawingLimits.Contains(position.X - moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds, position.Y)) {
-                    position.X -= moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                if (totalTime < timeOfAttack || (counter == 1 && totalTime < maxTime))
+                {
+                    if (drawingLimits.Contains(position.X - moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds, position.Y))
+                    {
+                        position.X -= moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                    }
                 }
-            } else if(totalTime > timeOfAttack && counter == 0) {
-                game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position, playerRect));
-                counter++;
-            } else {
-                aquamentus.SetState(new AquamentusWalkRight(game, aquamentus, position));
+                else if (totalTime > timeOfAttack && counter == 0)
+                {
+                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position, playerRect));
+                    counter++;
+                }
+                else
+                {
+                    aquamentus.SetState(new AquamentusWalkRight(game, aquamentus, position));
+                }
             }
 
             timeUntilNextFrame -= (float)gametime.ElapsedGameTime.TotalMilliseconds;

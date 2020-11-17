@@ -79,8 +79,9 @@ namespace Game1.Enemy
                     oldDirection = state.GetDirection();
                 }
 
-                state.Update(gameTime, drawingLimits);
+                //was here
             }
+            state.Update(gameTime, drawingLimits);
 
             StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
             StunnedTimer = Math.Max(0, StunnedTimer);

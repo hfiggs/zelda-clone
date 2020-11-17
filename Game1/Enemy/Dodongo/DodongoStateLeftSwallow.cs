@@ -62,12 +62,15 @@ namespace Game1.Enemy
         {
             if (!dodongo.ShouldRemove())
             {
-                // State updating
-                timeUntilNewDirection -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
-
-                if (timeUntilNewDirection <= 0)
+                if (dodongo.StunnedTimer == 0)
                 {
-                    dodongo.SetState(new DodongoStateLeft(dodongo, position));
+                    // State updating
+                    timeUntilNewDirection -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
+
+                    if (timeUntilNewDirection <= 0)
+                    {
+                        dodongo.SetState(new DodongoStateLeft(dodongo, position));
+                    }
                 }
             }
         }

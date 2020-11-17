@@ -81,26 +81,29 @@ namespace Game1.Enemy
                     timeUntilNextFrame += animationTime;
                 }
 
-                // State updating
-                timeUntilNewDirection -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
-
-                if (timeUntilNewDirection <= 0)
+                if (dodongo.StunnedTimer == 0)
                 {
-                    const int randomNumberMax = 4, goUp = 0, goDown = 1, goLeft = 2, goRight = 3; ;
-                    switch ((new Random()).Next(randomNumberMax))
+                    // State updating
+                    timeUntilNewDirection -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
+
+                    if (timeUntilNewDirection <= 0)
                     {
-                        case goUp:
-                            dodongo.SetState(new DodongoStateUp(dodongo, position));
-                            break;
-                        case goDown:
-                            timeUntilNewDirection += moveTime;
-                            break;
-                        case goLeft:
-                            dodongo.SetState(new DodongoStateLeft(dodongo, position));
-                            break;
-                        case goRight:
-                            dodongo.SetState(new DodongoStateRight(dodongo, position));
-                            break;
+                        const int randomNumberMax = 4, goUp = 0, goDown = 1, goLeft = 2, goRight = 3; ;
+                        switch ((new Random()).Next(randomNumberMax))
+                        {
+                            case goUp:
+                                dodongo.SetState(new DodongoStateUp(dodongo, position));
+                                break;
+                            case goDown:
+                                timeUntilNewDirection += moveTime;
+                                break;
+                            case goLeft:
+                                dodongo.SetState(new DodongoStateLeft(dodongo, position));
+                                break;
+                            case goRight:
+                                dodongo.SetState(new DodongoStateRight(dodongo, position));
+                                break;
+                        }
                     }
                 }
             }

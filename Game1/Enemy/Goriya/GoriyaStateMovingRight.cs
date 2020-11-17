@@ -36,23 +36,25 @@ namespace Game1.Enemy
 
         public void Attack()
         {
-            goriya.SetState(new GoriyaStateAttackingRight(game, position));
+            goriya.SetState(new GoriyaStateAttackingRight(game, goriya, position));
         }
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-
-            totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (totalElapsedSeconds >= MovementChangeTimeSeconds)
+            if (goriya.StunnedTimer == 0)
             {
-                totalElapsedSeconds -= MovementChangeTimeSeconds;
-                this.direction = GetRandomDirection();
-                this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
-            }
-            if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
-            {
-                position += direction;
+                totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (totalElapsedSeconds >= MovementChangeTimeSeconds)
+                {
+                    totalElapsedSeconds -= MovementChangeTimeSeconds;
+                    this.direction = GetRandomDirection();
+                    this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+                }
+                if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
+                {
+                    position += direction;
+                }
             }
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;

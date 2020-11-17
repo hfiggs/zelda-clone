@@ -9,6 +9,7 @@ namespace Game1.Enemy
     class JellyStateMoving : IEnemyState
     {
         public ISprite Sprite { get; private set; }
+        private IEnemy jelly;
         private Vector2 position;
         private Vector2 direction;
         private const int moveSpeed = 1;
@@ -18,7 +19,7 @@ namespace Game1.Enemy
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        public JellyStateMoving(Vector2 position)
+        public JellyStateMoving(Vector2 position, IEnemy jelly)
         {
             this.position = position;
             this.direction = GetRandomDirection();
@@ -26,6 +27,8 @@ namespace Game1.Enemy
             Sprite = EnemySpriteFactory.Instance.CreateJellySprite();
 
             timeUntilNextFrame = animationTime;
+
+            this.jelly = jelly;
         }
 
         public void Attack()
@@ -35,19 +38,22 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            Random random = new Random(Guid.NewGuid().GetHashCode());
-
-            totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (totalElapsedSeconds >= MovementChangeTimeSeconds)
+            if (jelly.StunnedTimer == 0)
             {
-                totalElapsedSeconds -= MovementChangeTimeSeconds;
-                direction = GetRandomDirection();
-                MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
-            }
-            if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
-            {
-                position += direction;
+                Random random = new Random(Guid.NewGuid().GetHashCode());
+
+                totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (totalElapsedSeconds >= MovementChangeTimeSeconds)
+                {
+                    totalElapsedSeconds -= MovementChangeTimeSeconds;
+                    direction = GetRandomDirection();
+                    MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+                }
+                if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
+                {
+                    position += direction;
+                }
             }
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;

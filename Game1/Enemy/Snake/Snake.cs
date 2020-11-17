@@ -18,7 +18,7 @@ namespace Game1.Enemy
         {
             this.game = game;
 
-            state = new EnemyStateSpawning(position, this, new SnakeStateMoving(game, position));
+            state = new EnemyStateSpawning(position, this, new SnakeStateMoving(game, position, this));
 
             const float halfHeart = 0.5f;
             health = halfHeart;
@@ -53,10 +53,7 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            if (StunnedTimer == 0)
-            {
-                state.Update(gameTime, drawingLimits);
-            }
+            state.Update(gameTime, drawingLimits);
 
             StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
             StunnedTimer = Math.Max(0, StunnedTimer);

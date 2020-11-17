@@ -11,6 +11,7 @@ namespace Game1.Enemy
     class SkeletonStateMoving : IEnemyState
     {
         public ISprite Sprite { get; private set; }
+        private IEnemy skeleton;
         private Vector2 position;
         private Vector2 direction;
         private const float moveSpeed = .5f;
@@ -21,7 +22,7 @@ namespace Game1.Enemy
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        public SkeletonStateMoving(Vector2 position)
+        public SkeletonStateMoving(Vector2 position, IEnemy skeleton)
         {
             this.Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
 
@@ -30,9 +31,11 @@ namespace Game1.Enemy
 
             this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             this.timeUntilNextFrame = animationTime;
+
+            this.skeleton = skeleton;
         }
 
-        public SkeletonStateMoving(Room room, Vector2 position, IItem item)
+        public SkeletonStateMoving(Room room, Vector2 position, IItem item, IEnemy skeleton)
         {
             Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
 
@@ -44,6 +47,8 @@ namespace Game1.Enemy
 
             this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
             this.timeUntilNextFrame = animationTime;
+
+            this.skeleton = skeleton;
         }
 
         public void Attack()
@@ -53,23 +58,26 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+            if (skeleton.StunnedTimer == 0)
+            {
+                totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (totalElapsedSeconds >= MovementChangeTimeSeconds)
-            {
-                totalElapsedSeconds -= MovementChangeTimeSeconds;
-                direction = GetRandomDirection();
-                MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
-            }
-            if(drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
-            {
-                const int xDiff = 8, yDiff = 4;
-                position += direction;
-                if(item != null)
+                if (totalElapsedSeconds >= MovementChangeTimeSeconds)
                 {
-                    item.Position = new Vector2(position.X-xDiff, position.Y-yDiff);
+                    totalElapsedSeconds -= MovementChangeTimeSeconds;
+                    direction = GetRandomDirection();
+                    MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
                 }
-               
+                if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
+                {
+                    const int xDiff = 8, yDiff = 4;
+                    position += direction;
+                    if (item != null)
+                    {
+                        item.Position = new Vector2(position.X - xDiff, position.Y - yDiff);
+                    }
+
+                }
             }
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;

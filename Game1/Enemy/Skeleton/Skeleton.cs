@@ -21,7 +21,7 @@ namespace Game1.Enemy
         {
             this.game = game;
             positon = spawnPosition;
-            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(spawnPosition));
+            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(spawnPosition, this));
             health = twoHearts;
         }
 
@@ -30,7 +30,7 @@ namespace Game1.Enemy
             this.game = game;
             positon = spawnPosition;
             health = twoHearts;
-            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(room, spawnPosition, item));
+            state = new EnemyStateSpawning(positon, this, new SkeletonStateMoving(room, spawnPosition, item, this));
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)
@@ -53,10 +53,7 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            if (StunnedTimer == 0)
-            {
-                state.Update(gameTime, drawingLimits);
-            }
+            state.Update(gameTime, drawingLimits);
 
             StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
             StunnedTimer = Math.Max(0, StunnedTimer);

@@ -21,7 +21,7 @@ namespace Game1.Enemy
             this.position = spawnPosition;
             const float halfHeart = 0.5f;
             health = halfHeart;
-            state = new EnemyStateSpawning(position, this, new BatStateMoving(spawnPosition));
+            state = new EnemyStateSpawning(position, this, new BatStateMoving(spawnPosition, this));
         }
 
         public void ReceiveDamage(float amount, Vector2 direction)

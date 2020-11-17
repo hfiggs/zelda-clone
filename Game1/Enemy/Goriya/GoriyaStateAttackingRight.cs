@@ -10,6 +10,7 @@ namespace Game1.Enemy
     class GoriyaStateAttackingRight : IEnemyState
     {
         public ISprite Sprite { get; private set; }
+        private IEnemy goriya;
 
         private Vector2 direction;
         private Vector2 position;
@@ -22,7 +23,7 @@ namespace Game1.Enemy
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        public GoriyaStateAttackingRight(Game1 game, Vector2 position)
+        public GoriyaStateAttackingRight(Game1 game, IEnemy goriya, Vector2 position)
         {
             this.position = position;
             this.direction = new Vector2(moveSpeed, 0);
@@ -32,6 +33,8 @@ namespace Game1.Enemy
             game.Screen.CurrentRoom.SpawnProjectile(projectile);
 
             timeUntilNextFrame = animationTime;
+
+            this.goriya = goriya;
         }
 
         public void Attack()
@@ -41,7 +44,9 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            Random random = new Random(Guid.NewGuid().GetHashCode());
+            if (goriya.StunnedTimer == 0)
+            {
+                Random random = new Random(Guid.NewGuid().GetHashCode());
 
             totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
             

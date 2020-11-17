@@ -10,6 +10,7 @@ namespace Game1.Enemy
     class GoriyaStateAttackingDown : IEnemyState
     {
         public ISprite Sprite { get; private set; }
+        private IEnemy goriya;
 
         private Vector2 direction;
         private Vector2 position;
@@ -22,7 +23,7 @@ namespace Game1.Enemy
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        public GoriyaStateAttackingDown(Game1 game, Vector2 position)
+        public GoriyaStateAttackingDown(Game1 game, IEnemy goriya, Vector2 position)
         {
             this.position = position;
             this.direction = new Vector2(0, moveSpeed);
@@ -32,6 +33,8 @@ namespace Game1.Enemy
             game.Screen.CurrentRoom.SpawnProjectile(projectile);
 
             timeUntilNextFrame = animationTime;
+
+            this.goriya = goriya;
         }
 
         public void Attack()
@@ -42,16 +45,19 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            Random random = new Random(Guid.NewGuid().GetHashCode());
-
-            totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (totalElapsedSeconds >= MovementChangeTimeSeconds)
+            if (goriya.StunnedTimer == 0)
             {
+                Random random = new Random(Guid.NewGuid().GetHashCode());
 
-                totalElapsedSeconds -= MovementChangeTimeSeconds;
-                this.direction = GetRandomDirection();
-                this.MovementChangeTimeSeconds = 0;
+                totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (totalElapsedSeconds >= MovementChangeTimeSeconds)
+                {
+
+                    totalElapsedSeconds -= MovementChangeTimeSeconds;
+                    this.direction = GetRandomDirection();
+                    this.MovementChangeTimeSeconds = zero;
+                }
             }
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;

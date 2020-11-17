@@ -41,18 +41,26 @@ namespace Game1.Enemy
 
         public void Update(GameTime gametime, Rectangle drawingLimits)
         {
-            const int randomNumberMax = 100;
-            totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
-            
-            if (totalTime <= timeCap) {
-                if (drawingLimits.Contains(position.X + moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds, position.Y)) {
-                    position.X += moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
+            if (aquamentus.StunnedTimer == 0)
+            {
+                const int randomNumberMax = 100;
+                totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
+
+                if (totalTime <= timeCap)
+                {
+                    if (drawingLimits.Contains(position.X + moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds, position.Y))
+                    {
+                        position.X += moveSpeed * (float)gametime.ElapsedGameTime.TotalSeconds;
+                    }
+                    if (random.Next(randomNumberMax) < 1)
+                    {
+                        aquamentus.SetState(new AquamentusWalkRightAttack(game, aquamentus, position));
+                    }
                 }
-                if (random.Next(randomNumberMax) < 1) {
-                    aquamentus.SetState(new AquamentusWalkRightAttack(game, aquamentus, position));
+                else
+                {
+                    aquamentus.SetState(new AquamentusWalkLeft(game, aquamentus, position));
                 }
-            } else {
-                aquamentus.SetState(new AquamentusWalkLeft(game, aquamentus, position));
             }
 
             timeUntilNextFrame -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
