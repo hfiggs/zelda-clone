@@ -1,0 +1,38 @@
+﻿AUTHOR (OF THE REVIEW) - Sergei Fedulov
+
+
+DATE - 11/15/2020
+
+
+SPRINT # - 4
+
+
+NAME OF FILE BEING REVIEWED - GameStateRoomToRoomEast.cs
+
+
+AUTHOR OF FILE BEING REVIEWED - Hunter Figgs
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) -  
+
+-GameStateRoomToRoomEast implements the IGameState interface reducing the amount of coupling. This makes it a 
+ lot easier to call methods like Update and Draw on on this game state. 
+
+-GameStateRoomToRoomEast.cs has good cohesion. This state soley focuses on the transition for going through an
+ East door meaning it is only responsible for updating the screen when playing the east room transitions. 
+ It is not responsible for other game states like losing, winning, or pausing or any other transition directions.
+
+-GameStateRoom depends on IController and HUD and Screen. This is very good coupling meaking the code very easy
+ to maintain.
+
+-Really good use of SpriteBatch methods to play the transitions. This probably helped us avoid adding new sprites
+ for the room transitions and is much more maintainable than other options.
+
+-The Mouse.SetPosition(150, 150) call on line 74 includes magic numbers. Removing these will make the code 
+ easier to understand and more maintainable in the future. 
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - 
+
+-Make the room transition a serperate state instead of having it in GameStateRoom. This would make GameStateRoom
+ have even higher cohesion.
