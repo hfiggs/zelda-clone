@@ -63,7 +63,7 @@ namespace Game1.GameState
             deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
             deadLinkPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
-            curtain = new Curtain(false, game);
+            curtain = new Curtain(game, false);
 
             spinTimer = spinTime;
             stareTimer = stareTime;

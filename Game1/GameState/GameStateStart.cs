@@ -63,7 +63,7 @@ namespace Game1.GameState
 
             game.HUD = new HUDInterface(game.Screen.Player.PlayerInventory, game.Screen);
 
-            curtain = new Curtain(true, game);
+            curtain = new Curtain(game, true);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)

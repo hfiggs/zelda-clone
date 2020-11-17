@@ -58,7 +58,7 @@ namespace Game1.GameState
 
             playerPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
-            curtain = new Curtain(false, game);
+            curtain = new Curtain(game, false);
 
             stateTimer = stateTime;
         }
@@ -98,8 +98,8 @@ namespace Game1.GameState
 
             game.Screen.CurrentRoom.Draw(spriteBatch, color);
 
-            playerSprite.Draw(spriteBatch, playerPosition, color, SpriteLayerUtil.playerLayer);
-            itemSprite.Draw(spriteBatch, Vector2.Add(playerPosition, itemPositionOffset), color, SpriteLayerUtil.itemLayer);
+            playerSprite.Draw(spriteBatch, playerPosition, color, SpriteLayerUtil.topLayer);
+            itemSprite.Draw(spriteBatch, Vector2.Add(playerPosition, itemPositionOffset), color, SpriteLayerUtil.topLayer);
             curtain.Draw(spriteBatch, color);
 
             spriteBatch.End();

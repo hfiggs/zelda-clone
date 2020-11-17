@@ -22,5 +22,7 @@ namespace Game1.Util
         public const float projectileLayer = 0.6f;
 
         public const float particleLayer = 0.7f;
+
+        public const float topLayer = 1.0f;
     }
 }
