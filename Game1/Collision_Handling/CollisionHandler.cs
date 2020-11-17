@@ -53,10 +53,10 @@ namespace Game1.Collision_Handling
                 {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),south), new PlayerToEnemy() },
                 {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IEnemy),west), new PlayerToEnemy() },
                 //Enemy damages player
-                {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),east), new EnemyToPlayerEastSideCommand() },
-                {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),north), new EnemyToPlayerNorthSideCommand() },
-                {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),south), new EnemyToPlayerSouthSideCommand() },
-                {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),west), new EnemyToPlayerWestSideCommand() },
+                {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),east), new EnemyToPlayerEastSideCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),north), new EnemyToPlayerNorthSideCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),south), new EnemyToPlayerSouthSideCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IEnemy),typeof(IPlayer),west), new EnemyToPlayerWestSideCommand(game) },
                 //Projectile hits player
                 {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IPlayer),east), new ProjectileToPlayerEastSideCommand() },
                 {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IPlayer),north), new ProjectileToPlayerNorthSideCommand() },
