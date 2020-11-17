@@ -1,6 +1,7 @@
 ﻿using Game1.Audio;
 using Game1.Particle;
 using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -94,7 +95,7 @@ namespace Game1.Projectile
                 Rectangle sourceRectangle = sprite.PickSprite(columnOfSprite + columnModifier, rowModifier); ;
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
 
-                spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color);
+                spriteBatch.Draw(sprite.GetTexture(), destinationRectangle, sourceRectangle, color, 0f, new Vector2(0f, 0f), SpriteEffects.None, SpriteLayerUtil.projectileLayer);
             }
 
             if (particlesSpawned)

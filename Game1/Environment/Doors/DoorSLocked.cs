@@ -1,4 +1,5 @@
 ﻿using Game1.Sprite;
+using Game1.Util;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,8 +9,11 @@ namespace Game1.Environment
 {
     class DoorSLocked : IEnvironment
     {
-        private ISprite sprite;
+        private ISprite spriteBelow;
+        private ISprite spriteAbove;
         private Vector2 position;
+
+        private const float topLayer = 1f;
 
         private const int widthAndHeight = 32;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
@@ -24,7 +28,8 @@ namespace Game1.Environment
 
         public DoorSLocked(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorSLocked();
+            spriteBelow = EnvironmentSpriteFactory.instance.createDoorSLockedBelow();
+            spriteAbove = EnvironmentSpriteFactory.instance.createDoorSLockedAbove();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
@@ -42,7 +47,8 @@ namespace Game1.Environment
                 timeTillOpen -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (timeTillOpen <= 0)
                 {
-                    sprite = EnvironmentSpriteFactory.instance.createDoorSOpen();
+                    spriteBelow = EnvironmentSpriteFactory.instance.createDoorSOpenBelow();
+                    spriteAbove = EnvironmentSpriteFactory.instance.createDoorSOpenAbove();
                     open = openDoor;
 
                     hitboxes = new List<Rectangle>()
@@ -53,9 +59,11 @@ namespace Game1.Environment
                 }
             }
         }
+
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, position, color);
+            spriteBelow.Draw(spriteBatch, position, color, SpriteLayerUtil.envBelowPlayerLayer2);
+            spriteAbove.Draw(spriteBatch, position, color, SpriteLayerUtil.envAbovePlayerLayer);
         }
 
         public List<Rectangle> GetHitboxes()
@@ -80,7 +88,8 @@ namespace Game1.Environment
                 open = openDoor;
                 timeTillOpen = 0;
 
-                sprite = EnvironmentSpriteFactory.instance.createDoorSOpen();
+                spriteBelow = EnvironmentSpriteFactory.instance.createDoorSOpenBelow();
+                spriteAbove = EnvironmentSpriteFactory.instance.createDoorSOpenAbove();
 
                 hitboxes = new List<Rectangle>()
                 {

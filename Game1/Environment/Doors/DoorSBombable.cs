@@ -1,5 +1,6 @@
 ﻿using System;
 using Game1.Sprite;
+using Game1.Util;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,8 @@ namespace Game1.Environment
 {
     class DoorSBombable : IEnvironment
     {
-        private ISprite sprite;
+        private ISprite spriteBelow;
+        private ISprite spriteAbove;
         private Vector2 position;
         public bool open = false;
 
@@ -27,7 +29,8 @@ namespace Game1.Environment
 
         public DoorSBombable(Vector2 position, bool isOpen)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorSBlank();
+            spriteBelow = EnvironmentSpriteFactory.instance.createDoorSBlankBelow();
+            spriteAbove = EnvironmentSpriteFactory.instance.createDoorSBlankAbove();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
@@ -47,14 +50,8 @@ namespace Game1.Environment
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            if (open)
-            {
-                sprite.Draw(spriteBatch, position, color, topLayer);
-            }
-            else
-            {
-                sprite.Draw(spriteBatch, position, color);
-            }
+            spriteBelow.Draw(spriteBatch, position, color, SpriteLayerUtil.envBelowPlayerLayer2);
+            spriteAbove.Draw(spriteBatch, position, color, SpriteLayerUtil.envAbovePlayerLayer);
         }
 
         public List<Rectangle> GetHitboxes()
@@ -64,7 +61,8 @@ namespace Game1.Environment
         public void OpenDoor(bool shouldPlaySound)
         {
             open = true;
-            sprite = EnvironmentSpriteFactory.instance.createDoorSHole();
+            spriteBelow = EnvironmentSpriteFactory.instance.createDoorSHoleBelow();
+            spriteAbove = EnvironmentSpriteFactory.instance.createDoorSHoleAbove();
             hitboxes = new List<Rectangle>()
             {
                 hitboxOpen1,

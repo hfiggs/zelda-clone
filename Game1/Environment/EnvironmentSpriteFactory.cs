@@ -11,7 +11,8 @@ namespace Game1.Environment
 {
 	public class EnvironmentSpriteFactory
 	{
-		private SpriteSheet doors;
+		private SpriteSheet doorsBelow;
+		private SpriteSheet doorsAbove;
 		private SpriteSheet tiles;
 		private SpriteSheet room;
 		private SpriteSheet doorfloors;
@@ -26,7 +27,8 @@ namespace Game1.Environment
 
 		public void LoadContent(ContentManager content)
 		{
-			Texture2D doors = content.Load<Texture2D>("images/Environment/ss_doors");
+			Texture2D doorsBelow = content.Load<Texture2D>("images/Environment/Doors_Below_Player");
+			Texture2D doorsAbove = content.Load<Texture2D>("images/Environment/Doors_Above_Player");
 			Texture2D tiles = content.Load<Texture2D>("images/Environment/ss_tiles");
 			Texture2D room = content.Load<Texture2D>("images/Environment/RoomBase");
 			Texture2D doorfloors = content.Load<Texture2D>("images/Environment/door_floors");
@@ -34,7 +36,8 @@ namespace Game1.Environment
 			Texture2D secretRoom = content.Load<Texture2D>("images/Environment/SecretRoom");
 			this.roomBase = new SpriteSheet(roomBase, 1, 1);
 			this.secretRoom = new SpriteSheet(secretRoom, 1, 1);
-			this.doors = new SpriteSheet(doors, 5, 4);
+			this.doorsBelow = new SpriteSheet(doorsBelow, 5, 4);
+			this.doorsAbove = new SpriteSheet(doorsAbove, 5, 4);
 			this.tiles = new SpriteSheet(tiles, 4, 3);
 			this.room = new SpriteSheet(room, 1, 1);
 			this.doorfloors = new SpriteSheet(doorfloors, 2, 2);
@@ -94,105 +97,213 @@ namespace Game1.Environment
 			return new EnvironmentSprite(tiles, 1, 2, 9, false);
 		}
 
-		public ISprite createDoorNBlank()
+        #region Doors Below
+
+        public ISprite createDoorNBlankBelow()
         {
-			return new EnvironmentSprite(doors, 0, 0, 10, false);
+			return new EnvironmentSprite(doorsBelow, 0, 0, 10, false);
 		}
 
-		public ISprite createDoorNOpen()
+		public ISprite createDoorNOpenBelow()
 		{
-			return new EnvironmentSprite(doors, 1, 0, 11, false);
+			return new EnvironmentSprite(doorsBelow, 1, 0, 11, false);
 		}
 
-		public ISprite createDoorNLocked()
+		public ISprite createDoorNLockedBelow()
 		{
-			return new EnvironmentSprite(doors, 2, 0, 12, false);
+			return new EnvironmentSprite(doorsBelow, 2, 0, 12, false);
 		}
 
-		public ISprite createDoorNClosed()
+		public ISprite createDoorNClosedBelow()
 		{
-			return new EnvironmentSprite(doors, 3, 0, 13, false);
+			return new EnvironmentSprite(doorsBelow, 3, 0, 13, false);
 		}
 
-		public ISprite createDoorNHole()
+		public ISprite createDoorNHoleBelow()
 		{
-			return new EnvironmentSprite(doors, 4, 0, 14, false);
+			return new EnvironmentSprite(doorsBelow, 4, 0, 14, false);
 		}
 
-		public ISprite createDoorWBlank()
+		public ISprite createDoorWBlankBelow()
 		{
-			return new EnvironmentSprite(doors, 0, 1, 15, false);
+			return new EnvironmentSprite(doorsBelow, 0, 1, 15, false);
 		}
 
-		public ISprite createDoorWOpen()
+		public ISprite createDoorWOpenBelow()
 		{
-			return new EnvironmentSprite(doors, 1, 1, 16, false);
+			return new EnvironmentSprite(doorsBelow, 1, 1, 16, false);
 		}
 
-		public ISprite createDoorWLocked()
+		public ISprite createDoorWLockedBelow()
 		{
-			return new EnvironmentSprite(doors, 2, 1, 17, false);
+			return new EnvironmentSprite(doorsBelow, 2, 1, 17, false);
 		}
 
-		public ISprite createDoorWClosed()
+		public ISprite createDoorWClosedBelow()
 		{
-			return new EnvironmentSprite(doors, 3, 1, 18, false);
+			return new EnvironmentSprite(doorsBelow, 3, 1, 18, false);
 		}
 
-		public ISprite createDoorWHole()
+		public ISprite createDoorWHoleBelow()
 		{
-			return new EnvironmentSprite(doors, 4, 1, 19, false);
+			return new EnvironmentSprite(doorsBelow, 4, 1, 19, false);
 		}
 
-		public ISprite createDoorEBlank()
+		public ISprite createDoorEBlankBelow()
 		{
-			return new EnvironmentSprite(doors, 0, 2, 20, false);
+			return new EnvironmentSprite(doorsBelow, 0, 2, 20, false);
 		}
 
-		public ISprite createDoorEOpen()
+		public ISprite createDoorEOpenBelow()
 		{
-			return new EnvironmentSprite(doors, 1, 2, 21, false);
+			return new EnvironmentSprite(doorsBelow, 1, 2, 21, false);
 		}
 
-		public ISprite createDoorELocked()
+		public ISprite createDoorELockedBelow()
 		{
-			return new EnvironmentSprite(doors, 2, 2, 22, false);
+			return new EnvironmentSprite(doorsBelow, 2, 2, 22, false);
 		}
 
-		public ISprite createDoorEClosed()
+		public ISprite createDoorEClosedBelow()
 		{
-			return new EnvironmentSprite(doors, 3, 2, 23, false);
+			return new EnvironmentSprite(doorsBelow, 3, 2, 23, false);
 		}
 
-		public ISprite createDoorEHole()
+		public ISprite createDoorEHoleBelow()
 		{
-			return new EnvironmentSprite(doors, 4, 2, 24, false);
+			return new EnvironmentSprite(doorsBelow, 4, 2, 24, false);
 		}
 
-		public ISprite createDoorSBlank()
+		public ISprite createDoorSBlankBelow()
 		{
-			return new EnvironmentSprite(doors, 0, 3, 25, false);
+			return new EnvironmentSprite(doorsBelow, 0, 3, 25, false);
 		}
 
-		public ISprite createDoorSOpen()
+		public ISprite createDoorSOpenBelow()
 		{
-			return new EnvironmentSprite(doors, 1, 3, 26, false);
+			return new EnvironmentSprite(doorsBelow, 1, 3, 26, false);
 		}
 
-		public ISprite createDoorSLocked()
+		public ISprite createDoorSLockedBelow()
 		{
-			return new EnvironmentSprite(doors, 2, 3, 27, false);
+			return new EnvironmentSprite(doorsBelow, 2, 3, 27, false);
 		}
 
-		public ISprite createDoorSClosed()
+		public ISprite createDoorSClosedBelow()
 		{
-			return new EnvironmentSprite(doors, 3, 3, 28, false);
+			return new EnvironmentSprite(doorsBelow, 3, 3, 28, false);
 		}
 
-		public ISprite createDoorSHole()
+		public ISprite createDoorSHoleBelow()
 		{
-			return new EnvironmentSprite(doors, 4, 3, 29, false);
+			return new EnvironmentSprite(doorsBelow, 4, 3, 29, false);
 		}
+
+		#endregion
+
+		#region Doors Above
+
+		public ISprite createDoorNBlankAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 0, 0, 10, false);
+		}
+
+		public ISprite createDoorNOpenAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 1, 0, 11, false);
+		}
+
+		public ISprite createDoorNLockedAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 2, 0, 12, false);
+		}
+
+		public ISprite createDoorNClosedAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 3, 0, 13, false);
+		}
+
+		public ISprite createDoorNHoleAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 4, 0, 14, false);
+		}
+
+		public ISprite createDoorWBlankAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 0, 1, 15, false);
+		}
+
+		public ISprite createDoorWOpenAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 1, 1, 16, false);
+		}
+
+		public ISprite createDoorWLockedAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 2, 1, 17, false);
+		}
+
+		public ISprite createDoorWClosedAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 3, 1, 18, false);
+		}
+
+		public ISprite createDoorWHoleAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 4, 1, 19, false);
+		}
+
+		public ISprite createDoorEBlankAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 0, 2, 20, false);
+		}
+
+		public ISprite createDoorEOpenAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 1, 2, 21, false);
+		}
+
+		public ISprite createDoorELockedAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 2, 2, 22, false);
+		}
+
+		public ISprite createDoorEClosedAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 3, 2, 23, false);
+		}
+
+		public ISprite createDoorEHoleAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 4, 2, 24, false);
+		}
+
+		public ISprite createDoorSBlankAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 0, 3, 25, false);
+		}
+
+		public ISprite createDoorSOpenAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 1, 3, 26, false);
+		}
+
+		public ISprite createDoorSLockedAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 2, 3, 27, false);
+		}
+
+		public ISprite createDoorSClosedAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 3, 3, 28, false);
+		}
+
+		public ISprite createDoorSHoleAbove()
+		{
+			return new EnvironmentSprite(doorsAbove, 4, 3, 29, false);
+		}
+
+		#endregion
 
 		public ISprite createRoom()
         {

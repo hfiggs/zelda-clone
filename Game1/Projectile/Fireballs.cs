@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Util;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -50,9 +51,10 @@ namespace Game1.Projectile
             Rectangle middleFireball = new Rectangle((int)position.X, (int)position.Y, sourceRectangle.Width, sourceRectangle.Height);
             Rectangle upperFireball = new Rectangle((int)position.X, (int)(position.Y - topAndBottomModifier), sourceRectangle.Width, sourceRectangle.Height);
             Rectangle lowerFireball = new Rectangle((int)position.X, (int)(position.Y + topAndBottomModifier), sourceRectangle.Width, sourceRectangle.Height);
-            spriteBatch.Draw(sprite.GetTexture(), middleFireball, sourceRectangle, color);
-            spriteBatch.Draw(sprite.GetTexture(), upperFireball, sourceRectangle, color);
-            spriteBatch.Draw(sprite.GetTexture(), lowerFireball, sourceRectangle, color);
+
+            spriteBatch.Draw(sprite.GetTexture(), middleFireball, sourceRectangle, color, 0f, new Vector2(0f, 0f), SpriteEffects.None, SpriteLayerUtil.projectileLayer);
+            spriteBatch.Draw(sprite.GetTexture(), upperFireball, sourceRectangle, color, 0f, new Vector2(0f, 0f), SpriteEffects.None, SpriteLayerUtil.projectileLayer);
+            spriteBatch.Draw(sprite.GetTexture(), lowerFireball, sourceRectangle, color, 0f, new Vector2(0f, 0f), SpriteEffects.None, SpriteLayerUtil.projectileLayer);
         }
 
         public override bool Equals(object obj)

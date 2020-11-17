@@ -1,4 +1,5 @@
 ﻿using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -40,7 +41,7 @@ namespace Game1.Enemy
             Rectangle sourceRectangle = new Rectangle(width * column, height * (row + +currentFrame), width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, color);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, color, 0f, new Vector2(0f, 0f), SpriteEffects.None, SpriteLayerUtil.enemyLayer);
         }
 
         public void Draw(SpriteBatch spritebatch, Vector2 position, Color color, float layerDepth)

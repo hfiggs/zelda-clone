@@ -1,5 +1,6 @@
 ﻿using System;
 using Game1.Sprite;
+using Game1.Util;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,11 @@ namespace Game1.Environment
 {
     class DoorSClosed : IEnvironment
     {
-        private ISprite sprite;
+        private ISprite spriteBelow;
+        private ISprite spriteAbove;
         private Vector2 position;
+
+        private const float topLayer = 1f;
 
         const int widthAndHeight = 32;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
@@ -25,7 +29,8 @@ namespace Game1.Environment
 
         public DoorSClosed(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorSClosed();
+            spriteBelow = EnvironmentSpriteFactory.instance.createDoorSClosedBelow();
+            spriteAbove = EnvironmentSpriteFactory.instance.createDoorSClosedAbove();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
@@ -36,7 +41,7 @@ namespace Game1.Environment
             hitboxOpen2.Location += position.ToPoint();
         }
 
-public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             {
                 if (open == 1)
@@ -44,7 +49,8 @@ public void Update(GameTime gameTime)
                     timeTillOpen -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                     if (timeTillOpen <= 0)
                     {
-                        sprite = EnvironmentSpriteFactory.instance.createDoorSOpen();
+                        spriteBelow = EnvironmentSpriteFactory.instance.createDoorSOpenBelow();
+                        spriteAbove = EnvironmentSpriteFactory.instance.createDoorSOpenAbove();
                         open = openDoor;
 
                         hitboxes = new List<Rectangle>()
@@ -56,9 +62,11 @@ public void Update(GameTime gameTime)
                 }
             }
         }
+
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, position, color);
+            spriteBelow.Draw(spriteBatch, position, color, SpriteLayerUtil.envBelowPlayerLayer2);
+            spriteAbove.Draw(spriteBatch, position, color, SpriteLayerUtil.envAbovePlayerLayer);
         }
 
         public List<Rectangle> GetHitboxes()

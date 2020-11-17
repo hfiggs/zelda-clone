@@ -19,7 +19,7 @@ namespace Game1.Environment
 
         public DoorNBlank(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createDoorNBlank();
+            sprite = EnvironmentSpriteFactory.instance.createDoorNBlankBelow();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);

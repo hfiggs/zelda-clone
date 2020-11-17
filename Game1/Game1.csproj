@@ -367,6 +367,7 @@
     <Compile Include="Enemy\Goriya\GoriyaStateMovingDown.cs" />
     <Compile Include="Util\CompassDirection.cs" />
     <Compile Include="Util\RoomUtil.cs" />
+    <Compile Include="Util\SpriteLayerUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MatrixExtensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
