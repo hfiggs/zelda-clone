@@ -46,14 +46,14 @@ namespace Game1.Enemy
             {
                 Random random = new Random(Guid.NewGuid().GetHashCode());
 
-            totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
-            if (totalElapsedSeconds >= MovementChangeTimeSeconds)
-            {
-                totalElapsedSeconds -= MovementChangeTimeSeconds;
-                this.direction = GetRandomDirection();
-                this.MovementChangeTimeSeconds = 0;
+                totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+                if (totalElapsedSeconds >= MovementChangeTimeSeconds)
+                {
+                    totalElapsedSeconds -= MovementChangeTimeSeconds;
+                    this.direction = GetRandomDirection();
+                    this.MovementChangeTimeSeconds = 0;
+                }
             }
-
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
