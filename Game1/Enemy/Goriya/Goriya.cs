@@ -15,7 +15,6 @@ namespace Game1.Enemy
         private IEnemyState state;
         private Game1 game;
         private Vector2 position;
-        private const int zero = 0;
 
         private float health;
 
@@ -37,7 +36,7 @@ namespace Game1.Enemy
 
             if (health <= 0)
             {
-                state = new EnemyStateDying(state.GetPosition());
+                state = new EnemyStateDying(this, state.GetPosition());
             }
         }
 
@@ -48,7 +47,7 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            if (StunnedTimer == zero)
+            if (StunnedTimer == 0)
             {
                 Vector2 newDirection = state.GetDirection();
                 totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
@@ -61,19 +60,19 @@ namespace Game1.Enemy
 
                 else if (newDirection.X != oldDirection.X || newDirection.Y != oldDirection.Y)
                 {
-                    if (state.GetDirection().X < zero)
+                    if (state.GetDirection().X < 0)
                     {
                         state = new GoriyaStateMovingLeft(game, this, state.GetPosition());
                     }
-                    if (state.GetDirection().X > zero)
+                    if (state.GetDirection().X > 0)
                     {
                         state = new GoriyaStateMovingRight(game, this, state.GetPosition());
                     }
-                    if (state.GetDirection().Y < zero)
+                    if (state.GetDirection().Y < 0)
                     {
                         state = new GoriyaStateMovingUp(game, this, state.GetPosition());
                     }
-                    if (state.GetDirection().Y > zero)
+                    if (state.GetDirection().Y > 0)
                     {
                         state = new GoriyaStateMovingDown(game, this, state.GetPosition());
                     }
@@ -83,8 +82,8 @@ namespace Game1.Enemy
                 state.Update(gameTime, drawingLimits);
             }
 
-            StunnedTimer -= (StunnedTimer == int.MaxValue) ? zero : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-            StunnedTimer = Math.Max(zero, StunnedTimer);
+            StunnedTimer -= (StunnedTimer == int.MaxValue) ? 0 : (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            StunnedTimer = Math.Max(0, StunnedTimer);
         }
 
         public void SetState(IEnemyState state)
@@ -99,7 +98,10 @@ namespace Game1.Enemy
 
         public void EditPosition(Vector2 amount)
         {
-            state.editPosition(amount);
+            if (StunnedTimer <= 0)
+            {
+                state.editPosition(amount);
+            }
         }
 
         public Vector2 GetPosition()

@@ -1,8 +1,10 @@
 ﻿using Game1.Audio;
+using Game1.Controller;
 using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
+using System.Collections.Generic;
 
 namespace Game1.GameState
 {
@@ -11,14 +13,23 @@ namespace Game1.GameState
         Video skyrim;
         VideoPlayer player;
         Game1 game;
+        List<IController> controllerList;
+
         public GameStateSkyrim(Game1 game)
         {
             this.game = game;
             const string SkyrimVideo = "Skyrim";
             skyrim = game.Content.Load<Video>(SkyrimVideo);
             player = new VideoPlayer();
+            player.Volume = AudioManager.GetVolumeMaster();
             player.Play(skyrim);
             AudioManager.ResetAudioManager();
+
+            controllerList = new List<IController>
+            {
+                new KeyboardQuitController(game),
+                new GamepadQuitController(game, PlayerIndex.One)
+            };
         }
 
 
@@ -41,6 +52,13 @@ namespace Game1.GameState
             if (player.State == MediaState.Stopped)
             {
                 game.SetState(new GameStateStart(game));
+            }
+
+            player.Volume = AudioManager.GetVolumeMaster();
+
+            foreach (IController controller in controllerList)
+            {
+                controller.Update();
             }
         }
     }

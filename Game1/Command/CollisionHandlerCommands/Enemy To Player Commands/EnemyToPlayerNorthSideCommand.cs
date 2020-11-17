@@ -18,10 +18,12 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             IEnemy enemy = (IEnemy)collision.collider;
             IPlayer player = (IPlayer)collision.collidee;
+            if (enemy.GetType() != typeof(OldMan))
+            {
+                int damage = CollisionHandlerUtil.GetEnemyDamage(enemy.GetType());
 
-            int damage = CollisionHandlerUtil.GetEnemyDamage(enemy.GetType());
-
-            player.ReceiveDamage(damage, southVector);
+                player.ReceiveDamage(damage, southVector);
+            }
         }
     }
 }

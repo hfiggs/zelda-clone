@@ -15,7 +15,7 @@ namespace Game1.Environment
         private Vector2 position;
         public RoomBase(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createBase();
+            sprite = EnvironmentSpriteFactory.instance.CreateBase();
             this.position = position;
         }
         public void Update(GameTime gameTime)

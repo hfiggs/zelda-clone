@@ -14,7 +14,6 @@ namespace Game1.Enemy
         private Vector2 direction;
         private Vector2 position;
         private const float moveSpeed = .5f;
-        private const int zero = 0;
         private const int negative = -1;
         private IProjectile projectile;
         private double totalElapsedSeconds = 0;
@@ -26,7 +25,7 @@ namespace Game1.Enemy
         public GoriyaStateAttackingLeft(Game1 game, Vector2 position)
         {
             this.position = position;
-            this.direction = new Vector2(negative * moveSpeed, zero);
+            this.direction = new Vector2(negative * moveSpeed, 0);
             Sprite = EnemySpriteFactory.Instance.CreateGoriyaLeftSprite();
             const char boomerangDirection = 'W';
             projectile = new EnemyBoomerang(boomerangDirection, position);
@@ -48,13 +47,13 @@ namespace Game1.Enemy
             {
                 totalElapsedSeconds -= MovementChangeTimeSeconds;
                 this.direction = GetRandomDirection();
-                this.MovementChangeTimeSeconds = zero;
+                this.MovementChangeTimeSeconds = 0;
             }
 
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if (timeUntilNextFrame <= zero)
+            if (timeUntilNextFrame <= 0)
             {
                 Sprite.Update();
                 timeUntilNextFrame += animationTime;
@@ -106,13 +105,13 @@ namespace Game1.Enemy
             switch (randomDirection)
             {
                 case goLeft:
-                    return new Vector2(negative * moveSpeed, zero);
+                    return new Vector2(negative * moveSpeed, 0);
                 case goRight:
-                    return new Vector2(moveSpeed, zero);
+                    return new Vector2(moveSpeed, 0);
                 case goUp:
-                    return new Vector2(zero, negative * moveSpeed);
+                    return new Vector2(0, negative * moveSpeed);
                 default:
-                    return new Vector2(zero, moveSpeed);
+                    return new Vector2(0, moveSpeed);
             }
         }
 

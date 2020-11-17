@@ -20,7 +20,7 @@ namespace Game1.Environment
 
         public StatueDragon(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createStatueDragon();
+            sprite = EnvironmentSpriteFactory.instance.CreateStatueDragon();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);

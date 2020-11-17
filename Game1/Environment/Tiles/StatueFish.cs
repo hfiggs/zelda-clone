@@ -20,7 +20,7 @@ namespace Game1.Environment
 
         public StatueFish(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createStatueFish();
+            sprite = EnvironmentSpriteFactory.instance.CreateStatueFish();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);

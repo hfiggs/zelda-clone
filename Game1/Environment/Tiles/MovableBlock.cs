@@ -17,7 +17,6 @@ namespace Game1.Environment
         private Vector2 position;
         private float movementTime;
         private Vector2 movementSpeed;
-        //private char movementDirection;
 
         const int widthAndHeight = 16;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
@@ -27,11 +26,10 @@ namespace Game1.Environment
 
         public MovableBlock(Vector2 position, char movementDirection)
         {
-            sprite = EnvironmentSpriteFactory.instance.createBlock();
+            sprite = EnvironmentSpriteFactory.instance.CreateBlock();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
-            //this.movementDirection = movementDirection;
             hasMoved = false;
         }
 
@@ -62,13 +60,12 @@ namespace Game1.Environment
             //movement is in units of tiles (16 pixels)
             movementTime = seconds;
             //calculated differently likely due to a float rounding/truncating error
-            const float modifier1 = 15.5f, modifier2 = 16.0f;
-            float moveX = movement.X * modifier1;
-            float moveY = movement.Y * modifier1;
+            float moveX = movement.X * 15.5f;
+            float moveY = movement.Y * 15.5f;
             if (movement.X > 0)
-                moveX = movement.X * modifier2;
+                moveX = movement.X * 16.0f;
             if(movement.Y > 0)
-                moveY = movement.Y * modifier2;
+                moveY = movement.Y * 16.0f;
             movementSpeed = new Vector2(moveX, moveY) / seconds;
             hasMoved = true;
         }

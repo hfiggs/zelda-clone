@@ -17,7 +17,7 @@ namespace Game1.Environment
 
         public Black(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createBlack();
+            sprite = EnvironmentSpriteFactory.instance.CreateBlack();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);

@@ -73,14 +73,12 @@ namespace Game1.Environment
 
         public void Open(bool shouldInstantOpen)
         {
-            const string doorLockAudio = "doorLock";
-
             // Normal unlock
             if(!shouldInstantOpen)
             {
                 open = 1;
                 timeTillOpen = openTime;
-                AudioManager.PlayFireForget(doorLockAudio);
+                AudioManager.PlayFireForget("doorLock");
             }
             // Instant unlock
             else
@@ -88,6 +86,7 @@ namespace Game1.Environment
                 open = openDoor;
                 timeTillOpen = 0;
 
+<<<<<<< HEAD
                 spriteBelow = EnvironmentSpriteFactory.instance.createDoorEOpenBelow();
                 spriteAbove = EnvironmentSpriteFactory.instance.createDoorEOpenAbove();
 
@@ -96,6 +95,10 @@ namespace Game1.Environment
                     hitboxOpen1,
                     hitboxOpen2
                 };
+=======
+                sprite = EnvironmentSpriteFactory.instance.CreateDoorEOpen();
+                hitboxes.Remove(hitbox1);
+>>>>>>> a27c5a9587d59af09b63ad967a58109e80d09f6f
             }
         }
     }

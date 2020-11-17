@@ -21,7 +21,7 @@ namespace Game1.Environment
 
         public Stairs(Vector2 position)
         {
-            sprite = EnvironmentSpriteFactory.instance.createStairs();
+            sprite = EnvironmentSpriteFactory.instance.CreateStairs();
             this.position = position;
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
