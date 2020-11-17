@@ -1,0 +1,32 @@
+﻿AUTHOR (OF REVIEW) - Sergei Fedulov	
+
+
+DATE - 11/15/2020 
+
+
+SPRINT # - 4
+
+
+NAME OF FILE BEING REVIEWED - AudioManager.cs
+
+
+AUTHOR OF FILE BEING REVIEWED - Jeff Gaydos
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 30
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - 
+
+-Class is fairly long at over 350 lines. However, most of the methods are fairy short 5-15 lines long.
+
+-The method PlayItemSound compares string literals in the switch statement when it may be possible to compare 
+ and use types instead.
+
+-Few magic numbers and the magic numbers that do exist are stored in private/readonly variables.
+
+-The addition of an "app.config" file that stores a users audio settings is a pretty need and helpful idea. Makes
+ it much easier for the user to control and view their settings. This makes the readability for the user stronger
+ in my opinion.
+
+-Variable and Method names are very self-explanatory.

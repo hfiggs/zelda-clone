@@ -1,0 +1,24 @@
+AUTHOR (OF REVIEW) - Patrick Haughn
+
+
+DATE - 11/16/20
+
+
+SPRINT # - 4
+
+
+NAME OF FILE BEING REVIEWED - PuzzleMoveBlock
+
+
+AUTHOR OF FILE BEING REVIEWED - Sergei Fedulov
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 12
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - 
+	- The file is short (60 lines of code)
+	- The check method is simple and straightforward
+	- The file has variable names that do a good job at informing the reader what they do
+	- Because the file is so short it isn't an issue, but variable e could be named environment to help clarify what it represents
+	- Overall the file has good readablity and isn't necessarily in need of any changes

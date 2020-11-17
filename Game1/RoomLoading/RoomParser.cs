@@ -15,6 +15,7 @@ namespace Game1.RoomLoading
         private readonly XMLLoader roomData;
         private readonly Game1 game;
         private readonly Room room;
+        private const string xPositionTag = "X", yPositionTag = "Y", objectTypeTag = "Type", errorMessage = "Parameter cannot be null", errorParamName = "original", widthTag = "W", heightTag = "H";
         public RoomParser(Game1 game, Room room, String path)
         {
             roomData = new XMLLoader(path);
@@ -30,12 +31,12 @@ namespace Game1.RoomLoading
             foreach(XmlNode n in itemsXMLNodes)
             {
                 
-                int x = int.Parse(n["X"].InnerText);
-                int y = int.Parse(n["Y"].InnerText);
+                int x = int.Parse(n[xPositionTag].InnerText);
+                int y = int.Parse(n[yPositionTag].InnerText);
                 Vector2 position = new Vector2(x, y);
                 IItem item = null;
 
-                switch (n["Type"].InnerText)
+                switch (n[objectTypeTag].InnerText)
                 {
                     case "ArrowItem":
                         item = new ArrowItem(position);
@@ -86,7 +87,7 @@ namespace Game1.RoomLoading
                         item = new BluePotion(position);
                         break;
                     default:
-                        throw new System.ArgumentException("Parameter cannot be null", "original");
+                        throw new System.ArgumentException(errorMessage, errorParamName);
                 }
 
                 items.Add(item);
@@ -102,12 +103,12 @@ namespace Game1.RoomLoading
             foreach (XmlNode n in enemyXMLNodes)
             {
 
-                int x = int.Parse(n["X"].InnerText);
-                int y = int.Parse(n["Y"].InnerText);
+                int x = int.Parse(n[xPositionTag].InnerText);
+                int y = int.Parse(n[yPositionTag].InnerText);
                 Vector2 position = new Vector2(x, y);
                 IEnemy enemy = null;
 
-                switch (n["Type"].InnerText)
+                switch (n[objectTypeTag].InnerText)
                 {
                     case "Aquamentus":
                         enemy = new Aquamentus(game, position);
@@ -147,7 +148,7 @@ namespace Game1.RoomLoading
                         enemy = new SpikeTrap(game, position, verticalrange, horizontalRange);
                         break;
                     default:
-                        throw new System.ArgumentException("Parameter cannot be null", "original");
+                        throw new System.ArgumentException(errorMessage, errorParamName);
                 }
 
                 enemies.Add(enemy);
@@ -163,12 +164,12 @@ namespace Game1.RoomLoading
             foreach (XmlNode n in nonInteractEnviornmentNodes)
             {
 
-                int x = int.Parse(n["X"].InnerText);
-                int y = int.Parse(n["Y"].InnerText);
+                int x = int.Parse(n[xPositionTag].InnerText);
+                int y = int.Parse(n[yPositionTag].InnerText);
                 Vector2 position = new Vector2(x, y);
                 IEnvironment nonInteractEnviornment = null;
 
-                switch (n["Type"].InnerText)
+                switch (n[objectTypeTag].InnerText)
                 {
                     case "Black":
                         nonInteractEnviornment = new Black(position);
@@ -219,7 +220,7 @@ namespace Game1.RoomLoading
                         break;
 
                     default:
-                        throw new System.ArgumentException("Parameter cannot be null", "original");
+                        throw new System.ArgumentException(errorMessage, errorParamName);
                 }
 
                 nonInteractEnviornmentList.AddLast(nonInteractEnviornment);
@@ -236,19 +237,19 @@ namespace Game1.RoomLoading
             foreach (XmlNode n in interactEnviornmentNodes)
             {
 
-                int x = int.Parse(n["X"].InnerText);
-                int y = int.Parse(n["Y"].InnerText);
+                int x = int.Parse(n[xPositionTag].InnerText);
+                int y = int.Parse(n[yPositionTag].InnerText);
                 Vector2 position = new Vector2(x, y);
                 IEnvironment interactEnviornment = null;
 
-                switch (n["Type"].InnerText)
+                switch (n[objectTypeTag].InnerText)
                 {
                     case "Brick":
                         interactEnviornment = new Bricks(position);
                         break;
                     case "InvisibleWall":
-                        int w = int.Parse(n["W"].InnerText);
-                        int h = int.Parse(n["H"].InnerText);
+                        int w = int.Parse(n[widthTag].InnerText);
+                        int h = int.Parse(n[heightTag].InnerText);
                         interactEnviornment = new InvisibleWall(position, new Vector2(w,h));
                         break;
                     case "Block":
@@ -396,7 +397,7 @@ namespace Game1.RoomLoading
                         break;
 
                     default:
-                        throw new System.ArgumentException("Parameter cannot be null", "original");
+                        throw new System.ArgumentException(errorMessage, errorParamName);
                 }
 
                 interactEnviornmentList.AddLast(interactEnviornment);
@@ -409,10 +410,11 @@ namespace Game1.RoomLoading
         {
             List<AmbientSound> soundList = new List<AmbientSound>();
             XmlNodeList soundNodes = roomData.getAmbientSounds();
+            const string soundNameTag = "Name";
 
             foreach (XmlNode n in soundNodes)
             {
-                XmlElement sound = n["Name"];
+                XmlElement sound = n[soundNameTag];
                 float deltaTime = float.Parse(sound.GetAttribute("delay"));
                 float volume = float.Parse(sound.GetAttribute("volume"));
                 bool loop = bool.Parse(sound.GetAttribute("looped"));
@@ -430,7 +432,7 @@ namespace Game1.RoomLoading
 
             foreach (XmlNode n in puzzleNodes)
             {
-                switch (n["Type"].InnerText)
+                switch (n[objectTypeTag].InnerText)
                 {
                     case "PuzzleSpawnKey":
                         puzzle = new PuzzleSpawnKey();
