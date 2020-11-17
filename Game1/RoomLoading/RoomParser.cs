@@ -79,6 +79,12 @@ namespace Game1.RoomLoading
                     case "Triforce":
                         item = new Triforce(position);
                         break;
+                    case "BlueCandle":
+                        item = new BlueCandle(position);
+                        break;
+                    case "BluePotion":
+                        item = new BluePotion(position);
+                        break;
                     default:
                         throw new System.ArgumentException("Parameter cannot be null", "original");
                 }

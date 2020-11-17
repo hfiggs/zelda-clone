@@ -522,7 +522,7 @@
 	</InteractEnviornment>
 
 <!--Top Left Small Tree-->
-	<InteractEnviornment>
+	<!--<InteractEnviornment>
 		<Type>OverworldTreeTL</Type>
 		<X>48</X>
 		<Y>48</Y>
@@ -541,10 +541,10 @@
 		<Type>OverworldTreeBR</Type>
 		<X>64</X>
 		<Y>64</Y>
-	</InteractEnviornment>
+	</InteractEnviornment>-->
 
 <!--Top Right Small Tree-->
-	<InteractEnviornment>
+	<!--<InteractEnviornment>
 		<Type>OverworldTreeTL</Type>
 		<X>160</X>
 		<Y>48</Y>
@@ -563,10 +563,10 @@
 		<Type>OverworldTreeBR</Type>
 		<X>176</X>
 		<Y>64</Y>
-	</InteractEnviornment>
+	</InteractEnviornment>-->
 
 <!--Bottom Left Small Tree-->
-	<InteractEnviornment>
+	<!--<InteractEnviornment>
 		<Type>OverworldTreeTL</Type>
 		<X>64</X>
 		<Y>96</Y>
@@ -585,10 +585,10 @@
 		<Type>OverworldTreeBR</Type>
 		<X>80</X>
 		<Y>112</Y>
-	</InteractEnviornment>
+	</InteractEnviornment>-->
 
 <!--Bottom Right Small Tree-->
-	<InteractEnviornment>
+	<!--<InteractEnviornment>
 		<Type>OverworldTreeTL</Type>
 		<X>144</X>
 		<Y>96</Y>
@@ -607,8 +607,89 @@
 		<Type>OverworldTreeBR</Type>
 		<X>160</X>
 		<Y>112</Y>
-	</InteractEnviornment>
+	</InteractEnviornment>-->
 
+
+	<Item>
+		<Type>Key</Type>
+		<X>36</X>
+		<Y>116</Y>
+	</Item>
+	<Item>
+		<Type>ArrowItem</Type>
+		<X>68</X>
+		<Y>116</Y>
+	</Item>
+	<Item>
+		<Type>BluePotion</Type>
+		<X>100</X>
+		<Y>116</Y>
+	</Item>
+	<Item>
+		<Type>BlueCandle</Type>
+		<X>132</X>
+		<Y>116</Y>
+	</Item>
+	<Item>
+		<Type>Bomb</Type>
+		<X>164</X>
+		<Y>116</Y>
+	</Item>
+	<Item>
+		<Type>Bow</Type>
+		<X>196</X>
+		<Y>116</Y>
+	</Item>
+	<Item>
+		<Type>Clock</Type>
+		<X>36</X>
+		<Y>84</Y>
+	</Item>
+	<Item>
+		<Type>Compass</Type>
+		<X>68</X>
+		<Y>84</Y>
+	</Item>
+	<Item>
+		<Type>Fairy</Type>
+		<X>132</X>
+		<Y>52</Y>
+	</Item>
+	<Item>
+		<Type>Heart</Type>
+		<X>132</X>
+		<Y>84</Y>
+	</Item>
+	<Item>
+		<Type>HeartContainer</Type>
+		<X>164</X>
+		<Y>84</Y>
+	</Item>
+	<Item>
+		<Type>ItemBoomerang</Type>
+		<X>196</X>
+		<Y>84</Y>
+	</Item>
+	<Item>
+		<Type>Map</Type>
+		<X>164</X>
+		<Y>52</Y>
+	</Item>
+	<Item>
+		<Type>RupeeBlue</Type>
+		<X>196</X>
+		<Y>52</Y>
+	</Item>
+	<Item>
+		<Type>RupeeYellow</Type>
+		<X>68</X>
+		<Y>52</Y>
+	</Item>
+	<Item>
+		<Type>Triforce</Type>
+		<X>36</X>
+		<Y>52</Y>
+	</Item>
 <!--Loading Zones-->
 	<InteractEnviornment>
 		<Type>EnterDungeonLoadZone</Type>
