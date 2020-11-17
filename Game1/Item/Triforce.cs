@@ -42,8 +42,8 @@ public class Triforce : IItem
 
         public Rectangle GetHitbox()
         {
-            const int xAndYDiff = 10, widthAndHeight = 20;
-            return new Rectangle((int)Position.X + xAndYDiff, (int)Position.Y + xAndYDiff, widthAndHeight, widthAndHeight);
+            const int xOffset = 15, yOffset = 14, width = 12, height = 12;
+            return new Rectangle((int)Position.X + xOffset, (int)Position.Y + yOffset, width, height);
         }
 
         public bool ShouldDelete { get; set; } = false;

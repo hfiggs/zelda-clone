@@ -164,6 +164,10 @@ namespace Game1.Player
 
         public Rectangle GetSwordHitbox()
         {
+            if(swordHitbox.IsEmpty)
+            {
+                return new Rectangle(0, 0, 0, 0);
+            }
             return new Rectangle(swordHitbox.Location + state.position.ToPoint(), swordHitbox.Size);
         }
 
