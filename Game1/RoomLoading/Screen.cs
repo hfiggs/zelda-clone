@@ -30,7 +30,7 @@ namespace Game1.RoomLoading
         {
             this.game = game;
             RoomsDict = new Dictionary<(char, int), Room>();
-            Player = new Player2(game, playerPosition);
+            Player = new Player1(game, playerPosition);
         }
 
         public void LoadAllRooms()
