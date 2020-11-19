@@ -23,7 +23,6 @@ namespace Game1.Player
         private int timer;
         private int flickerTimer;
         private const int timerMax = 875;
-
         private const int flickerDuration = 45; // ms
 
         public bool stillSlide;
@@ -69,10 +68,7 @@ namespace Game1.Player
             decoratedPlayer.Draw(spriteBatch, damageColor);
         }
 
-        public char GetDirection()
-        {
-            return decoratedPlayer.GetDirection();
-        }
+        public char GetDirection() => decoratedPlayer.GetDirection();
 
         public void MoveDown()
         {
@@ -98,10 +94,7 @@ namespace Game1.Player
                 decoratedPlayer.MoveUp();
         }
 
-        public void ReceiveDamage(int halfHearts, Vector2 direction)
-        {
-            // cannot not recieve damage while decorated
-        }
+        public void ReceiveDamage(int halfHearts, Vector2 direction) { /* cannot not recieve damage while decorated */ }
 
         public void Update(GameTime time)
         {
@@ -124,40 +117,19 @@ namespace Game1.Player
                 decoratedPlayer.UseItem();
         }
 
-        private void RemoveDecorator()
-        {
-            game.Screen.Player = decoratedPlayer;
-        }
+        private void RemoveDecorator() => game.Screen.Player = decoratedPlayer;
 
-        public void SetState(IPlayerState state)
-        {
-            decoratedPlayer.SetState(state);
-        }
+        public void SetState(IPlayerState state) => decoratedPlayer.SetState(state);
 
-        public void SpawnProjectile(IProjectile projectile)
-        {
-            game.Screen.CurrentRoom.SpawnProjectile(projectile);
-        }
+        public void SpawnProjectile(IProjectile projectile) => game.Screen.CurrentRoom.SpawnProjectile(projectile);
 
-        public void EditPosition(Vector2 amount)
-        {
-             decoratedPlayer.EditPosition(amount);
-        }
+        public void EditPosition(Vector2 amount) => decoratedPlayer.EditPosition(amount);
 
-        public Rectangle GetPlayerHitbox()
-        {
-            return decoratedPlayer.GetPlayerHitbox();
-        }
+        public Rectangle GetPlayerHitbox() => decoratedPlayer.GetPlayerHitbox();
 
-        public Rectangle GetSwordHitbox()
-        {
-            return decoratedPlayer.GetSwordHitbox();
-        }
+        public Rectangle GetSwordHitbox() => decoratedPlayer.GetSwordHitbox();
 
-        public void SetSwordHitbox(Rectangle newHitbox)
-        {
-            decoratedPlayer.SetSwordHitbox(newHitbox);
-        }
+        public void SetSwordHitbox(Rectangle newHitbox) => decoratedPlayer.SetSwordHitbox(newHitbox);
 
         public void StopKnockback(Vector2 possibleCorrections)
         {
