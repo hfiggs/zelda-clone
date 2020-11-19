@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Item\\ItemDropper",
-    "\\_Documentation",
-    "\\_Documentation\\Code Reviews",
-    "\\_Documentation\\Sprint Reviews"
+    "\\Game1\\Command\\CollisionHandlerCommands",
+    "\\Game1\\Command\\CollisionHandlerCommands\\Projectile To Enemy Commands",
+    "\\Game1\\Player\\PlayerState",
+    "\\Game1\\RoomLoading",
+    "\\Game1\\RoomLoading\\Puzzle"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\Game1\\RoomLoading\\Screen.cs",
   "PreviewInSolutionExplorer": false
 }

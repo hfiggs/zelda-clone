@@ -60,7 +60,12 @@ namespace Game1.GameState
             game.Screen.CurrentRoom.ItemList.Clear();
             game.Screen.CurrentRoom.ProjectileList.Clear();
 
-            deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
+            if (game.Screen.Player.GetType() == typeof(Player1)) {
+                deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
+            } else {
+                deadLink = PlayerSpriteFactory.Instance.CreateZeldaDeadSprite();
+            }
+            
             deadLinkPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
             curtain = new Curtain(game, false);
@@ -96,7 +101,11 @@ namespace Game1.GameState
 
                 if (spinTimer <= 0)
                 {
-                    deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
+                    if (game.Screen.Player.GetType() == typeof(Player1)) {
+                        deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
+                    } else {
+                        deadLink = PlayerSpriteFactory.Instance.CreateZeldaDeadSprite();
+                    }
                     colorRoom = colorRoomRed;
                 }
             }

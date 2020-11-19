@@ -16,22 +16,39 @@ namespace Game1.Util
 
     public static class GameStateUtil
     {
-        public static ISprite GetPlayerPickupSprite(PickupItem pickupItem)
+        public static ISprite GetPlayerPickupSprite(PickupItem pickupItem, IPlayer player)
         {
             ISprite sprite;
 
-            switch(pickupItem)
+            if (player.GetType() == typeof(Player1))
             {
-                case PickupItem.Triforce:
-                    sprite = PlayerSpriteFactory.Instance.CreateTwoHandItemSprite();
-                    break;
-                case PickupItem.None:
-                case PickupItem.Arrow:
-                case PickupItem.Bow:
-                case PickupItem.Boomerang:
-                default:
-                    sprite = PlayerSpriteFactory.Instance.CreateOneHandItemSprite();
-                    break;
+                switch (pickupItem)
+                {
+                    case PickupItem.Triforce:
+                        sprite = PlayerSpriteFactory.Instance.CreateTwoHandItemSprite();
+                        break;
+                    case PickupItem.None:
+                    case PickupItem.Arrow:
+                    case PickupItem.Bow:
+                    case PickupItem.Boomerang:
+                    default:
+                        sprite = PlayerSpriteFactory.Instance.CreateOneHandItemSprite();
+                        break;
+                }
+            } else {
+                switch (pickupItem)
+                {
+                    case PickupItem.Triforce:
+                        sprite = PlayerSpriteFactory.Instance.CreateZeldaTwoHandItemSprite();
+                        break;
+                    case PickupItem.None:
+                    case PickupItem.Arrow:
+                    case PickupItem.Bow:
+                    case PickupItem.Boomerang:
+                    default:
+                        sprite = PlayerSpriteFactory.Instance.CreateZeldaOneHandItemSprite();
+                        break;
+                }
             }
 
             return sprite;
