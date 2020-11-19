@@ -26,9 +26,6 @@ namespace Game1.Player
         private Rectangle playerHitbox = new Rectangle(xDiff, yDiff, width, height);
         private Rectangle swordHitbox = new Rectangle();
 
-        //prevents the player from animating to "catch" the boomerang while it is in the air
-        private bool boomerangOut;
-
         private const int lowHealthHalfHearts = 2;
         private SoundEffectInstance lowHealthSound;
 
