@@ -7,7 +7,15 @@
     "\\Game1\\Player\\PlayerState",
     "\\Game1\\RoomLoading",
     "\\Game1\\RoomLoading\\Puzzle"
+    "\\Game1\\Command",
+    "\\Game1\\Command\\CollisionHandlerCommands",
+    "\\Game1\\Command\\CollisionHandlerCommands\\Enemy To Player Commands",
+    "\\Game1\\Environment",
+    "\\Game1\\Environment\\Tiles",
+    "\\Game1\\Player",
+    "\\Game1\\Player\\PlayerInventory"
   ],
   "SelectedNode": "\\Game1\\RoomLoading\\Screen.cs",
+  "SelectedNode": "\\Game1\\Command\\CollisionHandlerCommands\\PlayerToBlockCommand.cs",
   "PreviewInSolutionExplorer": false
 }

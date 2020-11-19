@@ -49,6 +49,7 @@ namespace Game1.Collision_Handling
                     break;
                 case HeartContainer _:
                     player.PlayerInventory.AddMaxHeart();
+                    player.PlayerInventory.AddHealth(heartHalfHearts);
                     break;
                 case ItemBoomerang _:
                     player.PlayerInventory.AddItem(ItemEnum.Boomerang);
@@ -68,6 +69,7 @@ namespace Game1.Collision_Handling
                     break;
                 case Triforce _:
                     player.PlayerInventory.AddTriforce();
+                    player.PlayerInventory.AddHealth(fairyHalfHearts);
                     game.SetState(new GameStateWin(game, PickupItem.Triforce, item));
                     break;
                 case BluePotion _:
