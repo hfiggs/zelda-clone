@@ -60,7 +60,6 @@ namespace Game1.Projectile
             position.Y = player.GetPlayerHitbox().Y + (player.GetPlayerHitbox().Height / 2) - (sprite.PickSprite(0, 0).Height / 2) + recieveYOffest;
 
             sound = AudioManager.PlayLooped(boomerangAudio, soundDelay, soundVol);
-            player.setBoomerangOut(true);
 
             InitRayTraceHitbox();
         }
@@ -188,7 +187,6 @@ namespace Game1.Projectile
 
         private void CatchBoomerang()
         {
-            Player.setBoomerangOut(false);
             Player.UseItem();
         }
         public void Draw(SpriteBatch spriteBatch, Color color) {

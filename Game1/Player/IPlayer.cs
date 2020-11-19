@@ -46,9 +46,5 @@ namespace Game1.Player
         Rectangle GetSwordHitbox();
 
         void SetSwordHitbox(Rectangle newHitbox);
-
-        bool getBoomerangOut();
-
-        void setBoomerangOut(bool val);
     }
 }

@@ -3,6 +3,7 @@
  * Jared Perkins
  */
 
+using Game1.Player.PlayerInventory;
 using Game1.Projectile;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
@@ -69,7 +70,7 @@ namespace Game1.Player
 
         public void UseItem()
         {
-            if (!player.getBoomerangOut())
+            if (player.PlayerInventory.HasItem(ItemEnum.Boomerang) && !player.PlayerInventory.IsItemInUse(ItemEnum.Boomerang))
             {
                 player.SetState(new PlayerStateUpUse(player, position));
             }

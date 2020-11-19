@@ -175,15 +175,5 @@ namespace Game1.Player
         {
             swordHitbox = newHitbox;
         }
-
-        public bool getBoomerangOut()
-        {
-            return boomerangOut;
-        }
-
-        public void setBoomerangOut(bool val)
-        {
-            boomerangOut = val;
-        }
     }
 }
