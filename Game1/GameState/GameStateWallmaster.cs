@@ -53,6 +53,14 @@ namespace Game1.GameState
             game.Screen.CurrentRoom.ItemList.Clear();
             game.Screen.CurrentRoom.ProjectileList.Clear();
 
+            if (player.GetType() == typeof(Player1))
+            {
+                player = PlayerSpriteFactory.Instance.CreateWalkDownSprite();
+            }
+            else
+            {
+                player = PlayerSpriteFactory.Instance.CreateZeldaWalkDownSprite();
+            }
             player = PlayerSpriteFactory.Instance.CreateWalkDownSprite();
             wallmaster = EnemySpriteFactory.Instance.CreateHandSprite();
 

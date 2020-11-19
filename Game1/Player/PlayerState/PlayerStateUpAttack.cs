@@ -22,7 +22,11 @@ namespace Game1.Player
         public PlayerStateUpAttack(IPlayer player, Vector2 position)
         {
             this.player = player;
-            Sprite = PlayerSpriteFactory.Instance.CreateAttackUpSprite();
+            if (player.GetType() == typeof(Player1)) {
+                Sprite = PlayerSpriteFactory.Instance.CreateAttackUpSprite();
+            } else {
+                Sprite = PlayerSpriteFactory.Instance.CreateZeldaAttackUpSprite();
+            }
 
             this.position = position;
 

@@ -48,7 +48,7 @@ namespace Game1.GameState
 
             game.Screen.CurrentRoom.ItemList.Remove(itemToRemove);
 
-            playerSprite = GameStateUtil.GetPlayerPickupSprite(pickupItem);
+            playerSprite = GameStateUtil.GetPlayerPickupSprite(pickupItem, game.Screen.Player);
             itemSprite = GameStateUtil.GetPickupItemSprite(pickupItem);
 
             playerPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));

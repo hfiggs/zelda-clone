@@ -138,6 +138,7 @@
     <Compile Include="HUD\HUDItems\HUDLinkDot.cs" />
     <Compile Include="Particle\Waterfall.cs" />
     <Compile Include="Particle\WaterfallSpray.cs" />
+    <Compile Include="Player\Player2.cs" />
     <Compile Include="Projectile\CandleFire.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

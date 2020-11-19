@@ -22,7 +22,12 @@ namespace Game1.Player
         public PlayerStateLeftAttack(IPlayer player, Vector2 position)
         {
             this.player = player;
-            Sprite = PlayerSpriteFactory.Instance.CreateAttackLeftSprite();
+
+            if (player.GetType() == typeof(Player1)) {
+                Sprite = PlayerSpriteFactory.Instance.CreateAttackLeftSprite();
+            } else {
+                Sprite = PlayerSpriteFactory.Instance.CreateZeldaAttackLeftSprite();
+            }
 
             this.position = position;
 
