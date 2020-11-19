@@ -148,6 +148,7 @@
     <Compile Include="RoomLoading\Puzzle\PuzzleSpawnBoomerang.cs" />
     <Compile Include="Sprite\StartSprite.cs" />
     <Compile Include="Sprite\StartSpriteFactory.cs" />
+    <Compile Include="Util\ColorIterator.cs" />
     <Compile Include="Util\GameStateUtil.cs" />
     <Compile Include="Util\ContentUtil.cs" />
     <Compile Include="ResolutionManager\IResolutionManager.cs" />

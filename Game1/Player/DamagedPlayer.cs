@@ -3,27 +3,26 @@
 using Game1.Audio;
 using Game1.Player.PlayerInventory;
 using Game1.Projectile;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace Game1.Player
 {
     class DamagedPlayer : IPlayer
     {
-        private Game1 game;
-        private IPlayer decoratedPlayer;
-        private Color[] flickers = { Color.LightBlue, Color.Orange, Color.Red };
-        private int currentFlicker = 0;
-        private Color damageColor = Color.White;
+        private readonly Game1 game;
+        private readonly IPlayer decoratedPlayer;
+        private readonly ColorIterator colorIterator;
 
         private const float xAndYMovementMagnitude = 0.33f;
-        private Vector2 damageMove = new Vector2(xAndYMovementMagnitude,xAndYMovementMagnitude); 
-
+        private Vector2 damageMove = new Vector2(xAndYMovementMagnitude,xAndYMovementMagnitude);
+        private readonly Color[] flickerColors = { Color.LightBlue, Color.Orange, Color.Red };
+        private const int flickerDuration = 45; // ms
         private const int duration = 1000; // ms
         private int timer;
-        private int flickerTimer;
         private const int timerMax = 875;
-        private const int flickerDuration = 45; // ms
 
         public bool stillSlide;
 
@@ -38,9 +37,10 @@ namespace Game1.Player
             damageMove = Vector2.Multiply(damageMove, direction);
             timer = duration;
             stillSlide = true;
-            flickerTimer = 0;
             const string linkHurtAudio = "linkHurt";
             AudioManager.PlayFireForget(linkHurtAudio, 0.0f, volume);
+
+            colorIterator = new ColorIterator(new List<Color>(flickerColors), flickerDuration);
         }
 
         public void Attack()
@@ -51,21 +51,7 @@ namespace Game1.Player
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            
-            if (flickerTimer >= flickerDuration)
-            {
-                flickerTimer = 0;
-                if (currentFlicker >= flickers.Length)
-                {
-                    currentFlicker = 0;
-                    damageColor = color;
-                }
-                else
-                    damageColor = flickers[currentFlicker];
-               
-                currentFlicker++;
-            }
-            decoratedPlayer.Draw(spriteBatch, damageColor);
+            decoratedPlayer.Draw(spriteBatch, colorIterator.GetColor(color));
         }
 
         public char GetDirection() => decoratedPlayer.GetDirection();
@@ -99,7 +85,6 @@ namespace Game1.Player
         public void Update(GameTime time)
         {
             timer -= (int)time.ElapsedGameTime.TotalMilliseconds;
-            flickerTimer += (int)time.ElapsedGameTime.TotalMilliseconds;
             if (timer <= 0)
                 RemoveDecorator();
 
@@ -109,6 +94,8 @@ namespace Game1.Player
                 stillSlide = false;
 
             decoratedPlayer.Update(time);
+
+            colorIterator.Update(time);
         }
 
         public void UseItem()
