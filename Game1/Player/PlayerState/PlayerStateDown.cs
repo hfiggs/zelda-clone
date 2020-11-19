@@ -28,7 +28,11 @@ namespace Game1.Player
         public PlayerStateDown(IPlayer player, Vector2 position)
         {
             this.player = player;
-            Sprite = PlayerSpriteFactory.Instance.CreateWalkDownSprite();
+            if (player.GetType() == typeof(Player1)) {
+                Sprite = PlayerSpriteFactory.Instance.CreateWalkDownSprite();
+            } else {
+                Sprite = PlayerSpriteFactory.Instance.CreateZeldaWalkDownSprite();
+            }
 
             isMoving = false;
             timeUntilNextFrame = animationTime;

@@ -39,34 +39,41 @@ namespace Game1.Player
             player.PlayerInventory.SetItemInUse(item, true);
             const char east = 'E';
 
+            if (player.GetType() == typeof(Player1)) {
+                Sprite = PlayerSpriteFactory.Instance.CreateUseItemRightSprite();
+            } else {
+                Sprite = PlayerSpriteFactory.Instance.CreateZeldaUseItemRightSprite();
+            }
+
             switch (item)
             {
                 case ItemEnum.Bow:
                     player.PlayerInventory.SubRupees(1);
                     projectile = new Arrow(east, new Vector2(position.X, position.Y), player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemRightSprite();
+                    
                     break;
                 case ItemEnum.Boomerang:
                     projectile = new Boomerang(east, player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemRightSprite();
                     break;
                 case ItemEnum.Bomb:
                     player.PlayerInventory.SubBomb();
                     projectile = new BombProjectile(new Vector2(position.X, position.Y), player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemRightSprite();
                     break;
                 case ItemEnum.BluePotion:
                     player.PlayerInventory.SubBluePotion();
                     player.PlayerInventory.AddHealth(bluePotionHalfHearts);
-                    Sprite = PlayerSpriteFactory.Instance.CreateIdleRightSprite();
+                    if (player.GetType() == typeof(Player1)) {
+                        Sprite = PlayerSpriteFactory.Instance.CreateIdleRightSprite();
+                    } else {
+                        Sprite = PlayerSpriteFactory.Instance.CreateZeldaIdleRightSprite();
+                    }
+                    
                     break;
                 case ItemEnum.BlueCandle:
                     const int xModifier = 28, yModifier = 12;
                     projectile = new CandleFire(east, position + new Vector2(xModifier, yModifier), player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemRightSprite();
                     break;
                 default:
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemRightSprite();
                     break;
             }
         }

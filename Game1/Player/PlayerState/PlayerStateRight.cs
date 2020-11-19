@@ -27,7 +27,11 @@ namespace Game1.Player
         public PlayerStateRight(IPlayer player, Vector2  position)
         {
             this.player = player;
-            Sprite = PlayerSpriteFactory.Instance.CreateWalkRightSprite();
+            if (player.GetType() == typeof(Player1)) {
+                Sprite = PlayerSpriteFactory.Instance.CreateWalkRightSprite();
+            } else {
+                Sprite = PlayerSpriteFactory.Instance.CreateZeldaWalkRightSprite();
+            }   
 
             isMoving = false;
             timeUntilNextFrame = animationTime;

@@ -38,34 +38,39 @@ namespace Game1.Player
             player.PlayerInventory.SetItemInUse(item, true);
             const char north = 'N';
 
+            if (player.GetType() == typeof(Player1)) {
+                Sprite = PlayerSpriteFactory.Instance.CreateUseItemUpSprite();
+            } else {
+                Sprite = PlayerSpriteFactory.Instance.CreateZeldaUseItemUpSprite();
+            }
+
             switch (item)
             {
                 case ItemEnum.Bow:
                     player.PlayerInventory.SubRupees(1);
                     projectile = new Arrow(north, new Vector2(position.X, position.Y), player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemUpSprite();
                     break;
                 case ItemEnum.Boomerang:
                     projectile = new Boomerang(north, player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemUpSprite();
                     break;
                 case ItemEnum.Bomb:
                     player.PlayerInventory.SubBomb();
                     projectile = new BombProjectile(new Vector2(position.X, position.Y), player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemUpSprite();
                     break;
                 case ItemEnum.BluePotion:
                     player.PlayerInventory.SubBluePotion();
                     player.PlayerInventory.AddHealth(bluePotionHalfHearts);
-                    Sprite = PlayerSpriteFactory.Instance.CreateIdleUpSprite();
+                    if (player.GetType() == typeof(Player1)) {
+                        Sprite = PlayerSpriteFactory.Instance.CreateIdleUpSprite();
+                    } else {
+                        Sprite = PlayerSpriteFactory.Instance.CreateZeldaIdleUpSprite();
+                    }
                     break;
                 case ItemEnum.BlueCandle:
                     const int xModifier = 12;
                     projectile = new CandleFire(north, position + new Vector2(xModifier, 0), player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemUpSprite();
                     break;
                 default:
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemUpSprite();
                     break;
             }
         }

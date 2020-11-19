@@ -27,7 +27,11 @@ namespace Game1.Player
         public PlayerStateUp(IPlayer player, Vector2 position)
         {
             this.player = player;
-            Sprite = PlayerSpriteFactory.Instance.CreateWalkUpSprite();
+            if (player.GetType() == typeof(Player1)) {
+                Sprite = PlayerSpriteFactory.Instance.CreateWalkUpSprite();
+            } else {
+                Sprite = PlayerSpriteFactory.Instance.CreateZeldaWalkUpSprite();
+            }
 
             isMoving = false;
             timeUntilNextFrame = animationTime;

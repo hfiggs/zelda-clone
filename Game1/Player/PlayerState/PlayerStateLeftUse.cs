@@ -39,34 +39,39 @@ namespace Game1.Player
             player.PlayerInventory.SetItemInUse(item, true);
             const char west = 'W';
 
+            if (player.GetType() == typeof(Player1)) {
+                Sprite = PlayerSpriteFactory.Instance.CreateUseItemLeftSprite();
+            } else {
+                Sprite = PlayerSpriteFactory.Instance.CreateZeldaUseItemLeftSprite();
+            }
+
             switch (item)
             {
                 case ItemEnum.Bow:
                     player.PlayerInventory.SubRupees(1);
                     projectile = new Arrow(west, new Vector2(position.X, position.Y), player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemLeftSprite();
                     break;
                 case ItemEnum.Boomerang:
                     projectile = new Boomerang(west, player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemLeftSprite();
                     break;
                 case ItemEnum.Bomb:
                     player.PlayerInventory.SubBomb();
                     projectile = new BombProjectile(new Vector2(position.X, position.Y), player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemLeftSprite();
                     break;
                 case ItemEnum.BluePotion:
                     player.PlayerInventory.SubBluePotion();
                     player.PlayerInventory.AddHealth(bluePotionHalfHearts);
-                    Sprite = PlayerSpriteFactory.Instance.CreateIdleLeftSprite();
+                    if (player.GetType() == typeof(Player1)) {
+                        Sprite = PlayerSpriteFactory.Instance.CreateIdleLeftSprite();
+                    } else {
+                        Sprite = PlayerSpriteFactory.Instance.CreateZeldaIdleLeftSprite();
+                    }
                     break;
                 case ItemEnum.BlueCandle:
                     const int xModifier = -4, yModifier = 12;
                     projectile = new CandleFire(west, position + new Vector2(xModifier, yModifier), player);
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemLeftSprite();
                     break;
                 default:
-                    Sprite = PlayerSpriteFactory.Instance.CreateUseItemLeftSprite();
                     break;
             }
         }
