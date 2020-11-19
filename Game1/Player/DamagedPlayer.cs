@@ -74,11 +74,6 @@ namespace Game1.Player
             return decoratedPlayer.GetDirection();
         }
 
-        public Rectangle GetLocation()
-        {
-            return decoratedPlayer.GetLocation();
-        }
-
         public void MoveDown()
         {
             if (timer <= timerMax || !stillSlide)

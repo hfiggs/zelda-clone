@@ -64,7 +64,7 @@ namespace Game1.GameState
             player = PlayerSpriteFactory.Instance.CreateWalkDownSprite();
             wallmaster = EnemySpriteFactory.Instance.CreateHandSprite();
 
-            playerPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+            playerPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
             wallmasterPosition = Vector2.Add(playerPosition, new Vector2(wallmasterXOffset, wallmasterYOffset));
         }
 

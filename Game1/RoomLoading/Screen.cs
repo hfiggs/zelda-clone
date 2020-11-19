@@ -68,7 +68,7 @@ namespace Game1.RoomLoading
 
         public Rectangle GetPlayerRectangle()
         {
-            return Player.GetLocation();
+            return Player.GetPlayerHitbox();
         }
     }
 }

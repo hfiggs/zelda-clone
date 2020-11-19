@@ -30,9 +30,6 @@ namespace Game1.Player
         void Update(GameTime time);
 
         void Draw(SpriteBatch spriteBatch, Color color);
-
-        Rectangle GetLocation();
-
         char GetDirection();
 
         void SetState(IPlayerState state);

@@ -45,25 +45,13 @@ namespace Game1.Player
             state.Sprite.Draw(spriteBatch, state.position, color);
         }
 
-        public void MoveLeft()
-        {
-            state.MoveLeft();
-        }
+        public void MoveLeft() => state.MoveLeft();
 
-        public void MoveRight()
-        {
-            state.MoveRight();
-        }
+        public void MoveRight() => state.MoveRight();
 
-        public void MoveUp()
-        {
-            state.MoveUp();
-        }
+        public void MoveUp() => state.MoveUp();
 
-        public void MoveDown()
-        {
-            state.MoveDown();
-        }
+        public void MoveDown() => state.MoveDown();
 
         public void UseItem()
         {
@@ -92,10 +80,9 @@ namespace Game1.Player
 
         public void ReceiveDamage(int halfHearts, Vector2 direction)
         {
-            // wrap damage decorator around this
             game.Screen.Player = new DamagedPlayer(game, this, direction);
             PlayerInventory.SubHealth(1);
-            //should be slightly modified once we have health mechanics - GameState?
+
             if (PlayerInventory.HalfHeartCount <= 0)
             {
                 game.SetState(new GameStateLose(game));
@@ -121,20 +108,9 @@ namespace Game1.Player
             }
         }
 
-        public Rectangle GetLocation()
-        {
-            return new Rectangle(playerHitbox.Location + state.position.ToPoint(), playerHitbox.Size);
-        }
+        public char GetDirection() => state.GetDirection();
 
-        public char GetDirection()
-        {
-            return state.GetDirection();
-        }
-
-        public void SetState(IPlayerState state)
-        {
-            this.state = state;
-        }
+        public void SetState(IPlayerState state) => this.state = state;
 
         public void SpawnProjectile(IProjectile projectile)
         {
@@ -160,9 +136,6 @@ namespace Game1.Player
             return new Rectangle(swordHitbox.Location + state.position.ToPoint(), swordHitbox.Size);
         }
 
-        public void SetSwordHitbox(Rectangle newHitbox)
-        {
-            swordHitbox = newHitbox;
-        }
+        public void SetSwordHitbox(Rectangle newHitbox) => swordHitbox = newHitbox;
     }
 }

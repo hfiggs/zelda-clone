@@ -66,7 +66,7 @@ namespace Game1.GameState
                 deadLink = PlayerSpriteFactory.Instance.CreateZeldaDeadSprite();
             }
             
-            deadLinkPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+            deadLinkPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
             curtain = new Curtain(game, false);
 

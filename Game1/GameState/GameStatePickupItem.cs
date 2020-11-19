@@ -51,7 +51,7 @@ namespace Game1.GameState
             playerSprite = GameStateUtil.GetPlayerPickupSprite(pickupItem, game.Screen.Player);
             itemSprite = GameStateUtil.GetPickupItemSprite(pickupItem);
 
-            playerPosition = Vector2.Add(game.Screen.Player.GetLocation().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+            playerPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
             stateTimer = stateTime;
         }
