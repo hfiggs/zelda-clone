@@ -69,20 +69,12 @@ namespace Game1.Player
         {
             ItemEnum item = PlayerInventory.EquippedItem;
 
-            if (PlayerInventory.HasItem(item))
+            if (PlayerInventory.HasItem(item) && !PlayerInventory.IsItemInUse(item))
             {
-                if (!PlayerInventory.IsItemInUse(item))
-                {
-                    if ((item == ItemEnum.Bow && PlayerInventory.RupeeCount >= 1) || (item == ItemEnum.Boomerang) || (item == ItemEnum.Bomb && PlayerInventory.BombCount >= 1) || (item == ItemEnum.BluePotion && PlayerInventory.BluePotionCount >= 1) || (item == ItemEnum.BlueCandle))
-                    {
-                        state.UseItem();
-                        return;
-                    }
-                }
-                else if (item == ItemEnum.Boomerang)
-                {
-                    state.UseItem();
-                }
+                if ((item == ItemEnum.Bow && PlayerInventory.RupeeCount == 0) || (item == ItemEnum.Bomb && PlayerInventory.BombCount == 0) || (item == ItemEnum.BluePotion && PlayerInventory.BluePotionCount == 0) || (PlayerInventory.HasItem(ItemEnum.Boomerang) && !!PlayerInventory.IsItemInUse(ItemEnum.Boomerang)))
+                    return;
+
+                state.UseItem();
             }
         }
 
