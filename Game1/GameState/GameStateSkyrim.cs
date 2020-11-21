@@ -13,6 +13,7 @@ namespace Game1.GameState
         Video skyrim;
         VideoPlayer player;
         Game1 game;
+        static bool hasPlayed = false;
         List<IController> controllerList;
 
         public GameStateSkyrim(Game1 game)
@@ -21,8 +22,10 @@ namespace Game1.GameState
             const string SkyrimVideo = "Skyrim";
             skyrim = game.Content.Load<Video>(SkyrimVideo);
             player = new VideoPlayer();
+            
             player.Volume = AudioManager.GetVolumeMaster();
-            player.Play(skyrim);
+            if(!hasPlayed)
+                player.Play(skyrim);
 
             controllerList = new List<IController>
             {
@@ -50,7 +53,8 @@ namespace Game1.GameState
         {
             if (player.State == MediaState.Stopped)
             {
-                AudioManager.ResetAudioManager();                
+                AudioManager.ResetAudioManager();
+                hasPlayed = true;
                 game.SetState(new GameStateStart(game));
             }
 
