@@ -23,7 +23,6 @@ namespace Game1.GameState
             player = new VideoPlayer();
             player.Volume = AudioManager.GetVolumeMaster();
             player.Play(skyrim);
-            AudioManager.ResetAudioManager();
 
             controllerList = new List<IController>
             {
@@ -51,6 +50,7 @@ namespace Game1.GameState
         {
             if (player.State == MediaState.Stopped)
             {
+                AudioManager.ResetAudioManager();                
                 game.SetState(new GameStateStart(game));
             }
 

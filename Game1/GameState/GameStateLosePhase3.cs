@@ -9,11 +9,12 @@ using Game1.Sprite;
 using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace Game1.GameState
 {
-    class GameStateLose : IGameState
+    class GameStateLosePhase3 : IGameState
     {
         private readonly Game1 game;
         private readonly List<IController> controllerList;
@@ -24,29 +25,25 @@ namespace Game1.GameState
         private const float roomOffset = 40f;
         private const float hudOffset = -136f;
 
-        private const float spinTime = 2000f; // ms
-        private float spinTimer;
-
         private const float stareTime = 1000f; // ms
         private float stareTimer;
 
         private const float poppedTime = 2000f; // ms
         private float poppedTimer;
 
-        private const float spinAnimationTime = 100f; // ms
-        private float spinAnimationTimer;
-
         private readonly Color colorHUD = Color.White;
-        private Color colorRoom = Color.White;
-        private readonly Color colorRoomRed = Color.Red;
+        private Color colorRoom = Color.Black;
         private readonly Color colorPlayer = Color.White;
 
-        private readonly IParticle curtain;
+        private const float linkPopDelay = 1000.0f;
+        private const int linkPopOffset = 12;
+
+        private IParticle linkPop;
 
         private ISprite deadLink;
         private Vector2 deadLinkPosition;
 
-        public GameStateLose(Game1 game)
+        public GameStateLosePhase3(Game1 game)
         {
             this.game = game;
 
@@ -67,49 +64,22 @@ namespace Game1.GameState
             }
             
             deadLinkPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+            linkPop = new LinkPop(deadLinkPosition + new Vector2(linkPopOffset, linkPopOffset), linkPopDelay);
 
-            curtain = new Curtain(game, false);
-
-            spinTimer = spinTime;
             stareTimer = stareTime;
-            spinAnimationTimer = spinAnimationTime;
             poppedTimer = poppedTime;
-
-            const string deathAudio = "death";
-            AudioManager.StopAllMusic();
-            AudioManager.StopAllSound();
-            AudioManager.PlayFireForget(deathAudio);
         }
 
         public void Update(GameTime gameTime)
         {
+            linkPop.Update(gameTime);
+            
             foreach (IController controller in controllerList)
             {
                 controller.Update();
             }
 
-            if (spinTimer > 0)
-            {
-                spinTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-                spinAnimationTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
-                if (spinAnimationTimer <= 0)
-                {
-                    deadLink.Update();
-                    spinAnimationTimer += spinAnimationTime;
-                }
-
-                if (spinTimer <= 0)
-                {
-                    if (game.Screen.Player.GetType() == typeof(Player1)) {
-                        deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
-                    } else {
-                        deadLink = PlayerSpriteFactory.Instance.CreateZeldaDeadSprite();
-                    }
-                    colorRoom = colorRoomRed;
-                }
-            }
-            else if (stareTimer > 0)
+            if (stareTimer > 0)
             {
                 stareTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 const string linkPopAudio = "linkPop";
@@ -121,14 +91,11 @@ namespace Game1.GameState
             }
             else
             {
-                poppedTimer -=(float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
+                poppedTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (poppedTimer <= 0)
                 {
                     game.SetState(new GameStateSkyrim(game));
                 }
-
-                curtain.Update(gameTime);
             }
         }
 
@@ -146,9 +113,12 @@ namespace Game1.GameState
             game.Screen.CurrentRoom.Draw(spriteBatch, colorRoom);
 
             if (stareTimer > 0)
-                deadLink.Draw(spriteBatch, deadLinkPosition, colorPlayer, SpriteLayerUtil.playerLayer);
-
-            curtain.Draw(spriteBatch, colorRoom);
+            {
+                deadLink.Draw(spriteBatch, deadLinkPosition, colorPlayer, SpriteLayerUtil.topLayer);
+            } else
+            {
+                linkPop.Draw(spriteBatch, colorPlayer);
+            }
 
             spriteBatch.End();
 

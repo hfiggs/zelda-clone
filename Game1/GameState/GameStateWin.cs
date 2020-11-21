@@ -10,6 +10,7 @@ using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Game1.GameState
@@ -23,6 +24,7 @@ namespace Game1.GameState
         private readonly ISprite itemSprite;
 
         private readonly IParticle curtain;
+        private readonly IParticle flash;
 
         private const float playerXOffset = -14f;
         private const float playerYOffset = -20f;
@@ -38,6 +40,12 @@ namespace Game1.GameState
         private float stateTimer;
         private const float curtainDelay = 4000f; // ms
         private const float stateTime = 8000f; // ms
+
+        private readonly Color flashColor = new Color(new Vector4(1.0f, 1.0f, 1.0f, 0.5f));
+        private const int flashes = 4;
+        private const float flashOnTime = 35.0f; //ms
+        private const float flashOffTime = 150.0f; //ms
+        private const float flashInitialDelay = 1000.0f; //ms
 
         private readonly Color color = Color.White;
 
@@ -59,6 +67,7 @@ namespace Game1.GameState
             playerPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
             curtain = new Curtain(game, false);
+            flash = new Flash(flashColor, flashes, flashOnTime, flashOffTime, flashInitialDelay);
 
             stateTimer = stateTime;
         }
@@ -77,12 +86,15 @@ namespace Game1.GameState
 
             if (stateTimer <= 0)
             {
+                AudioManager.ResetAudioManager();
                 game.SetState(new GameStateStart(game));
             }
             else if (stateTime - stateTimer >= curtainDelay)
             {
                 curtain.Update(gameTime);
             }
+
+            flash.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
@@ -101,6 +113,7 @@ namespace Game1.GameState
             playerSprite.Draw(spriteBatch, playerPosition, color, SpriteLayerUtil.topLayer);
             itemSprite.Draw(spriteBatch, Vector2.Add(playerPosition, itemPositionOffset), color, SpriteLayerUtil.topLayer);
             curtain.Draw(spriteBatch, color);
+            flash.Draw(spriteBatch, color);
 
             spriteBatch.End();
 

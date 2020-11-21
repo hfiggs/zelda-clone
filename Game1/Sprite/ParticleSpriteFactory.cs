@@ -11,6 +11,7 @@ namespace Game1.Sprite
         private Texture2D shieldDeflectSprite;
         private Texture2D waterfallSpritesheet;
         private Texture2D waterfallSpraySpritesheet;
+        private Texture2D linkPop;
 
         private const int CloudColumn = 0, CloudRow = 0, CloudMaxColumns = 1, CloudMaxRows = 3, CloudTotalFrames = 3;
         private const int BeamExplosionNWColumn = 0, BeamExplosionNWRow = 0, BeamExplosionMaxColumns = 4, BeamExplosionMaxRows = 4, BeamExplosionTotalFrames = 4;
@@ -19,8 +20,9 @@ namespace Game1.Sprite
         private const int WaterfallColumn = 0, WaterfallRow = 0, WaterfallMaxColumns = 1, WaterfallMaxRows = 3, WaterfallTotalFrames = 3;
         private const int WaterfallSprayColumn = 0, WaterfallSprayRow = 0, WaterfallSprayMaxColumns = 1, WaterfallSprayMaxRows = 2, WaterfallSprayTotalFrames = 2;
         private const int CurtainAndFlashOverlayColumn = 1, CurtainAndFlashOverlayRow = 1, CurtainAndFlashOverlayMaxColumns = 1, CurtainAndFlashOverlayMaxRows = 1, CurtainAndFlashOverlayTotalFrames = 1;
+        private const int linkPopColumns = 1, linkPopRows = 6, linkPopTotalFrames = 6;
 
-        private const string cloudFilePath = "images/Particle/cloud", beamExplosionFilePath = "images/Particle/sword_beam_exp", shieldDeflectFilePath = "images/Particle/shield_deflect", waterfallFilePath = "images/Start/Waterfall", waterfallSprayFilePath = "images/Start/WaterfallSpray";
+        private const string cloudFilePath = "images/Particle/cloud", beamExplosionFilePath = "images/Particle/sword_beam_exp", shieldDeflectFilePath = "images/Particle/shield_deflect", waterfallFilePath = "images/Start/Waterfall", waterfallSprayFilePath = "images/Start/WaterfallSpray", linkPopPath = "images/Enemy/enemydeath";
 
         private GraphicsDevice graphics;
 
@@ -45,6 +47,7 @@ namespace Game1.Sprite
             shieldDeflectSprite = content.Load<Texture2D>(shieldDeflectFilePath);
             waterfallSpritesheet = content.Load<Texture2D>(waterfallFilePath);
             waterfallSpraySpritesheet = content.Load<Texture2D>(waterfallSprayFilePath);
+            linkPop = content.Load<Texture2D>(linkPopPath);
             graphics = graphicsDevice;
         }
         
@@ -108,6 +111,11 @@ namespace Game1.Sprite
             rect.SetData(data);
 
             return new ParticleSprite(rect, CurtainAndFlashOverlayColumn, CurtainAndFlashOverlayRow, CurtainAndFlashOverlayMaxColumns, CurtainAndFlashOverlayMaxRows, CurtainAndFlashOverlayTotalFrames);
+        }
+
+        public ISprite CreateLinkPop()
+        {
+            return new ParticleSprite(linkPop, 0, 0, linkPopColumns, linkPopRows, linkPopTotalFrames);
         }
     }
 }

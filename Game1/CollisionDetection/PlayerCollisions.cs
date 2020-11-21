@@ -6,6 +6,7 @@ using Game1.Player;
 using Game1.Collision_Handling;
 using Game1.RoomLoading;
 using Game1.Environment;
+using System;
 
 namespace Game1.CollisionDetection
 {
@@ -18,6 +19,8 @@ namespace Game1.CollisionDetection
         private readonly List<IEnvironment> EnvironmentList;
         private readonly List<IEnemy> EnemyList;
         private readonly List<Collision> collisionList;
+
+        private readonly List<Type> InvalidSwordPickups = new List<Type>() { typeof(Triforce), typeof(Key), typeof(Bow), };
 
         public PlayerCollisions(Screen screen)
         {
@@ -50,7 +53,7 @@ namespace Game1.CollisionDetection
                 else
                 {
                     intersection = Rectangle.Intersect(itemHitbox, swordHitbox);
-                    if (!intersection.IsEmpty)
+                    if (!intersection.IsEmpty && !InvalidSwordPickups.Contains(item.GetType()))
                     {
                         char side = DetermineSide(swordHitbox, itemHitbox, intersection);
                         collisionList.Add(new Collision(side, intersection, player, item));
