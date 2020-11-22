@@ -109,7 +109,9 @@
     <Compile Include="Environment\Overworld\OverworldRock\OverworldRockBM.cs" />
     <Compile Include="Environment\Overworld\OverworldFloorTile.cs" />
     <Compile Include="Environment\Overworld\OverworldFloor.cs" />
-    <Compile Include="GameState\GameStateLose.cs" />
+    <Compile Include="GameState\GameStateLosePhase3.cs" />
+    <Compile Include="GameState\GameStateLosePhase2.cs" />
+    <Compile Include="GameState\GameStateLosePhase1.cs" />
     <Compile Include="GameState\GameStatePlayerToStart.cs" />
     <Compile Include="GameState\GameStateWallmaster.cs" />
     <Compile Include="GameState\GameStatePaused.cs" />
@@ -135,8 +137,10 @@
     <Compile Include="HUD\HUDItems\HUDBluePotion.cs" />
     <Compile Include="Item\BluePotion.cs" />
     <Compile Include="Item\BlueCandle.cs" />
+    <Compile Include="Particle\Flash.cs" />
     <Compile Include="Particle\Curtain.cs" />
     <Compile Include="HUD\HUDItems\HUDLinkDot.cs" />
+    <Compile Include="Particle\LinkPop.cs" />
     <Compile Include="Particle\Waterfall.cs" />
     <Compile Include="Particle\WaterfallSpray.cs" />
     <Compile Include="Player\Player2.cs" />

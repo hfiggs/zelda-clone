@@ -85,7 +85,7 @@ namespace Game1.Player
 
             if (PlayerInventory.HalfHeartCount <= 0)
             {
-                game.SetState(new GameStateLose(game));
+                game.SetState(new GameStateLosePhase1(game));
             }
             if (PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
             {
