@@ -42,7 +42,7 @@ namespace Game1.GameState
             if (videoTexture != null)
             {
                 spriteBatch.Begin();
-                spriteBatch.Draw(videoTexture, new Rectangle(0, 0, resolutionManager.GetBaseResolution().X * resolutionManager.GetResolutionScale(), resolutionManager.GetBaseResolution().Y * resolutionManager.GetResolutionScale()), Color.White);
+                spriteBatch.Draw(videoTexture, new Rectangle(0, 0, (int)(resolutionManager.GetVirtualResolution().X * resolutionManager.GetResolutionScale()), (int)(resolutionManager.GetVirtualResolution().Y * resolutionManager.GetResolutionScale())), Color.White);
                 spriteBatch.End();
             }
         }

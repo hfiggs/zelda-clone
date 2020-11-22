@@ -14,7 +14,6 @@ using Game1.GameState;
 using Game1.HUD;
 using Game1.Util;
 using Game1.Audio;
-using Game1.Particle;
 
 namespace Game1
 {
@@ -25,9 +24,9 @@ namespace Game1
 
         public IGameState State { get; private set; }
 
-        private readonly IResolutionManager resolutionManager;
-        private Point baseResolution = new Point(256, 216);
-        private const int scale = 4;
+        public IResolutionManager ResolutionManager { get; private set; }
+        private Point virtualResolution = new Point(256, 216);
+        private Point targetResolution = new Point(1024, 864);
 
         public Screen Screen { get; set; }
         public HUDInterface HUD { get; set; }
@@ -37,7 +36,7 @@ namespace Game1
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            resolutionManager = new ResolutionManager1(this, graphics, baseResolution, scale);
+            ResolutionManager = new ResolutionManager1(this, graphics, virtualResolution, targetResolution);
         }
 
         // Initialization that does not require content
@@ -78,7 +77,7 @@ namespace Game1
 
         protected override void Draw(GameTime gameTime)
         {
-            State.Draw(gameTime, spriteBatch, resolutionManager);
+            State.Draw(gameTime, spriteBatch, ResolutionManager);
 
             base.Draw(gameTime);
         }
@@ -95,7 +94,7 @@ namespace Game1
 
         public Vector2 GetWindowDimensionsScaled()
         {
-            return new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight) / scale;
+            return new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight) / ResolutionManager.GetResolutionScale();
         }
     }
 }

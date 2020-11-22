@@ -8,8 +8,10 @@ namespace Game1.ResolutionManager
     {
         Matrix GetResolutionMatrix();
 
-        Point GetBaseResolution();
+        Point GetVirtualResolution();
 
-        int GetResolutionScale();
+        float GetResolutionScale();
+
+        void ToggleFullscreen();
     }
 }

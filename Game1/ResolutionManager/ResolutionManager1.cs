@@ -2,23 +2,31 @@
 
 using Microsoft.Xna.Framework;
 using ResolutionBuddy; // Nuget package found here: https://www.nuget.org/packages/ResolutionBuddy/2.0.4
+using System;
 
 namespace Game1.ResolutionManager
 {
     public class ResolutionManager1 : IResolutionManager
     {
-        private readonly IResolution resolution;
+        private readonly Game1 game;
+        private readonly GraphicsDeviceManager graphics;
+        private readonly Point virtualResolution;
+        private readonly Point scaledResolution;
 
-        private Point baseResolution;
-        private readonly int scale;
+        private IResolution resolution;
 
-        public ResolutionManager1(Game game, GraphicsDeviceManager graphics, Point baseResolution, int scale)
+        private bool isFullscreen;
+
+        public ResolutionManager1(Game1 game, GraphicsDeviceManager graphics, Point virtualResolution, Point scaledResolution)
         {
-            this.baseResolution = baseResolution;
+            this.game = game;
+            this.graphics = graphics;
+            this.virtualResolution = virtualResolution;
+            this.scaledResolution = scaledResolution;
 
-            this.scale = scale;
+            isFullscreen = false;
 
-            resolution = new ResolutionComponent(game, graphics, baseResolution, new Point(baseResolution.X * scale, baseResolution.Y * scale), false, true, false);
+            resolution = new ResolutionComponent(game, graphics, virtualResolution, scaledResolution, isFullscreen, true, false);
         }
 
         public Matrix GetResolutionMatrix()
@@ -26,14 +34,28 @@ namespace Game1.ResolutionManager
             return resolution.TransformationMatrix();
         }
 
-        public Point GetBaseResolution()
+        public Point GetVirtualResolution()
         {
-            return baseResolution;
+            return virtualResolution;
         }
 
-        public int GetResolutionScale()
+        public float GetResolutionScale()
         {
-            return scale;
+            var scaleY = game.GetWindowDimensions().Y / resolution.VirtualResolution.Y;
+
+            var scaleX = game.GetWindowDimensions().X / resolution.VirtualResolution.X;
+
+            return Math.Min(scaleX, scaleY);
+        }
+
+        public void ToggleFullscreen()
+        {
+            isFullscreen = !isFullscreen;
+
+            game.Services.RemoveService(typeof(IResolution));
+            game.Components.Remove((IGameComponent)resolution);
+
+            resolution = new ResolutionComponent(game, graphics, virtualResolution, scaledResolution, isFullscreen, true, false);
         }
     }
 }

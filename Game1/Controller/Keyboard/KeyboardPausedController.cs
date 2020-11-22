@@ -19,7 +19,8 @@ namespace Game1.Controller
                 { Keys.RightShift, new PauseGameCommand(game) },
                 {Keys.F1, new MuteUnmuteCommand(game) },
                 {Keys.F2, new VolumeDownCommand(game) },
-                {Keys.F3, new VolumeUpCommand(game) }
+                {Keys.F3, new VolumeUpCommand(game) },
+                { Keys.F4, new ToggleFullscreenCommand(game) }
             };
         }
 

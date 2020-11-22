@@ -21,7 +21,12 @@ namespace Game1.Controller
                 { Keys.D, new SelectItemRightCommand(game) },
 
                 { Keys.Left, new SelectItemLeftCommand(game) },
-                { Keys.Right, new SelectItemRightCommand(game) }
+                { Keys.Right, new SelectItemRightCommand(game) },
+
+                { Keys.F1, new MuteUnmuteCommand(game) },
+                { Keys.F2, new VolumeDownCommand(game) },
+                { Keys.F3, new VolumeUpCommand(game) },
+                { Keys.F4, new ToggleFullscreenCommand(game) }
             };
         }
 
