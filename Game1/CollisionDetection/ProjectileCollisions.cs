@@ -13,7 +13,7 @@ namespace Game1.CollisionDetection
     {
         private List<Collision> collisionList;
         private List<IProjectile> ProjectileList;
-        private IPlayer player;
+        private List<IPlayer> players;
         private Rectangle playerHitbox;
         private List<IEnemy> EnemyList;
         private List<IItem> ItemList;
@@ -28,8 +28,8 @@ namespace Game1.CollisionDetection
 
             ProjectileList = screen.CurrentRoom.ProjectileList;
 
-            player = screen.Player;
-            playerHitbox = player.GetPlayerHitbox();
+            players = screen.Players;
+
         }
 
         // Collision order: projectile to player, projectile to enemy, projectile to item
@@ -39,13 +39,16 @@ namespace Game1.CollisionDetection
             foreach (IProjectile proj in ProjectileList)
             {
                 Rectangle projHitbox = proj.GetHitbox();
-                Rectangle intersectPlayer = Rectangle.Intersect(projHitbox, playerHitbox);
-                if (!intersectPlayer.IsEmpty)
+                foreach (IPlayer player in players)
                 {
-                    char side = DetermineSide(projHitbox, playerHitbox, intersectPlayer);
-                    collisionList.Add(new Collision(side, intersectPlayer, proj, player));
+                    playerHitbox = player.GetPlayerHitbox();
+                    Rectangle intersectPlayer = Rectangle.Intersect(projHitbox, playerHitbox);
+                    if (!intersectPlayer.IsEmpty)
+                    {
+                        char side = DetermineSide(projHitbox, playerHitbox, intersectPlayer);
+                        collisionList.Add(new Collision(side, intersectPlayer, proj, player));
+                    }
                 }
-
                 // Projectile hits Enemy
                 foreach (IEnemy enemy in EnemyList)
                 {

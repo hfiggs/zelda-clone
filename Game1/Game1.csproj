@@ -76,6 +76,13 @@
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToEnvironmentCommand.cs" />
     <Compile Include="Command\PauseGameCommand.cs" />
     <Compile Include="Command\AudioCommands\MuteUnmuteCommand.cs" />
+    <Compile Include="Command\PlayerCommands\Player2AttackCommand.cs" />
+    <Compile Include="Command\PlayerCommands\Player2DownCommand.cs" />
+    <Compile Include="Command\PlayerCommands\Player2EquipItemCommand.cs" />
+    <Compile Include="Command\PlayerCommands\Player2LeftCommand.cs" />
+    <Compile Include="Command\PlayerCommands\Player2RightCommand.cs" />
+    <Compile Include="Command\PlayerCommands\Player2UpCommand.cs" />
+    <Compile Include="Command\PlayerCommands\Player2UseItemCommand.cs" />
     <Compile Include="Command\ToggleFullscreenCommand.cs" />
     <Compile Include="Command\StartGameCommand.cs" />
     <Compile Include="Command\ExitHUDStateCommand.cs" />

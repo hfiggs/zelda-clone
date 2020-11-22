@@ -12,8 +12,11 @@ namespace Game1.RoomLoading
 {
     public class Screen
     {
+        public List<IPlayer> Players;
         public IPlayer Player { get; set; }
+        public IPlayer Player2 { get; set; }
         private readonly Vector2 playerPosition = new Vector2(100, 88);
+        private readonly Vector2 player2Position = new Vector2(120, 88);
 
         public Dictionary<(char, int), Room> RoomsDict { get; set; }
         public Room CurrentRoom { get { return RoomsDict[CurrentRoomKey]; } private set { CurrentRoom = value; } }
@@ -31,6 +34,10 @@ namespace Game1.RoomLoading
             this.game = game;
             RoomsDict = new Dictionary<(char, int), Room>();
             Player = new Player1(game, playerPosition);
+            Player2 = new Player2(game, player2Position);
+            Players = new List<IPlayer>();
+            Players.Add(Player);
+            Players.Add(Player2);
         }
 
         public void LoadAllRooms()
@@ -54,8 +61,11 @@ namespace Game1.RoomLoading
         {
             CurrentRoom.Update(gameTime);
 
-            Player.Update(gameTime);
-
+            foreach(IPlayer player in Players)
+            {
+                player.Update(gameTime);
+            }
+            
             handler.HandleCollisions(detector.GetCollisionList());
         }
 
@@ -63,7 +73,10 @@ namespace Game1.RoomLoading
         {
             CurrentRoom.Draw(spriteBatch, color);
 
-            Player.Draw(spriteBatch, color);
+           foreach(IPlayer player in Players)
+            {
+                player.Draw(spriteBatch,Color.White);
+            }
         }
 
         public Rectangle GetPlayerRectangle()
