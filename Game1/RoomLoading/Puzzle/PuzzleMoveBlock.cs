@@ -18,7 +18,7 @@ namespace Game1.RoomLoading.Puzzle
             complete = false;
         }
 
-        public void Check(GameTime gameTime, Room room)
+        public void Update(GameTime gameTime, Room room)
         {
             if (!complete) {
                 var block = room.InteractEnviornment.Where(o => o.GetType() == typeof(MovableBlock)).Cast<MovableBlock>();

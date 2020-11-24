@@ -9,6 +9,6 @@ namespace Game1.RoomLoading.Puzzle
 {
     interface IPuzzle
     {
-        void Check(GameTime gameTime, Room room);
+        void Update(GameTime gameTime, Room room);
     }
 }

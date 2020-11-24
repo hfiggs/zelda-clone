@@ -114,6 +114,8 @@
 	
 	<Puzzle>
 		<Type>PuzzleSpawnKey</Type>
+		<X>128</X>
+		<Y>48</Y>
 	</Puzzle>
 	
 </Assets>

@@ -176,17 +176,14 @@
 		<Y>88</Y>
 	</Enemy>
 	<Item>
-		<Type>Key</Type>
-		<X>116</X>
-		<Y>36</Y>
-	</Item>
-	<Item>
 		<Type>Clock</Type>
 		<X>16</X>
 		<Y>16</Y>
 	</Item>
 	<Puzzle>
 		<Type>PuzzleSpawnKey</Type>
+		<X>128</X>
+		<Y>48</Y>
 	</Puzzle>
 
 	<InteractEnviornment>

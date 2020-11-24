@@ -435,7 +435,10 @@ namespace Game1.RoomLoading
                 switch (n[objectTypeTag].InnerText)
                 {
                     case "PuzzleSpawnKey":
-                        puzzle = new PuzzleSpawnKey();
+                        int x = int.Parse(n[xPositionTag].InnerText);
+                        int y = int.Parse(n[yPositionTag].InnerText);
+                        Vector2 position = new Vector2(x, y);
+                        puzzle = new PuzzleSpawnKey(position);
                         break;
                     case "PuzzleOpenDoor":
                         puzzle = new PuzzleOpenDoor();

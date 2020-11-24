@@ -50,11 +50,12 @@
 		<X>48</X>
 		<Y>112</Y>
 	</Enemy>
-	<Item>
-		<Type>Key</Type>
-		<X>148</X>
-		<Y>116</Y>
-	</Item>
+
+	<Puzzle>
+		<Type>PuzzleSpawnKey</Type>
+		<X>160</X>
+		<Y>128</Y>
+	</Puzzle>
 
 	<InteractEnviornment>
 		<Type>LoadZoneE</Type>

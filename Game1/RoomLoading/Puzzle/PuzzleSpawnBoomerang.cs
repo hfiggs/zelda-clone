@@ -16,7 +16,7 @@ namespace Game1.RoomLoading.Puzzle
             complete = false;
         }
 
-        public void Check(GameTime gameTime, Room room)
+        public void Update(GameTime gameTime, Room room)
         {
             if (!complete) {
                 if (room.EnemyList.Count == 0)
