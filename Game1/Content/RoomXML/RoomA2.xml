@@ -175,11 +175,6 @@
 		<X>168</X>
 		<Y>88</Y>
 	</Enemy>
-	<Item>
-		<Type>Clock</Type>
-		<X>16</X>
-		<Y>16</Y>
-	</Item>
 	<Puzzle>
 		<Type>PuzzleSpawnKey</Type>
 		<X>128</X>
