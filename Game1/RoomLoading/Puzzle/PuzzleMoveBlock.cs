@@ -22,7 +22,16 @@ namespace Game1.RoomLoading.Puzzle
         {
             if (!complete) {
                 var block = room.InteractEnviornment.Where(o => o.GetType() == typeof(MovableBlock)).Cast<MovableBlock>();
-                if (room.EnemyList.Count == 0 && block.ElementAt(0).hasMoved)
+
+                if (room.EnemyList.Count > 0)
+                {
+                    block.ElementAt(0).Pushable = false;
+                }
+                else if(room.EnemyList.Count == 0 && !block.ElementAt(0).hasMoved)
+                {
+                    block.ElementAt(0).Pushable = true;
+                }
+                else if (room.EnemyList.Count == 0 && block.ElementAt(0).hasMoved)
                 {
                     foreach (IEnvironment e in room.InteractEnviornment)
                     {
