@@ -12,10 +12,10 @@ namespace Game1.Enemy
     {
         private Vector2 position;
         private float timeUntilNextFrame; // ms
-        private const float animationTime = 100f; // ms per frame
+        private const float animationTime = 50f; // ms per frame
 
         private float timeUntilNextState;
-        private const float spawnTime = 600f; // ms
+        private const float spawnTime = 300f; // ms
 
         public bool dead = false;
 
