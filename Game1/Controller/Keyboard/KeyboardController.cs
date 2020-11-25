@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Game1.Command;
 using Game1.Player.PlayerInventory;
+using System;
 
 namespace Game1.Controller
 {
@@ -11,7 +12,9 @@ namespace Game1.Controller
     {
         private readonly Dictionary<Keys, ICommand> commands;
         private readonly Stack<Keys> movement = new Stack<Keys>();
+        private readonly Stack<Keys> movement2 = new Stack<Keys>();
         private Keys currentMove = new Keys();
+        private Keys currentMove2 = new Keys();
 
         public KeyboardController(Game1 game)
         {
@@ -58,28 +61,34 @@ namespace Game1.Controller
 
         public void Update()
         {
+            int movementsExecuted = 0;
             var keys = Keyboard.GetState().GetPressedKeys();
 
             foreach (Keys k in keys)
             {
 
-                if (k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D || k == Keys.Up || k == Keys.Down || k == Keys.Left || k == Keys.Right)
+                if (k == Keys.W || k == Keys.A || k == Keys.S || k == Keys.D)
                 {
                     movement.Push(k);
+                }
+                else if (k == Keys.Up || k == Keys.Down || k == Keys.Left || k == Keys.Right)
+                {
+                    movement2.Push(k);
                 }
                 else
                 {
                     if (commands.ContainsKey(k))
                         commands[k].Execute();
                 }
-
             }
 
+            //player 1 multikey movement
             if (movement.Count == 1)
             {
                 Keys keyCheck = movement.Pop();
                 currentMove = keyCheck;
                 commands[keyCheck].Execute();
+                movementsExecuted++;
             }
             else
             {
@@ -89,12 +98,34 @@ namespace Game1.Controller
                     if (currentMove != keyCheck)
                     {
                         commands[keyCheck].Execute();
-                        break;
+                        movementsExecuted++;
+                    }
+                }
+            }
+
+            //player 2 multikey movement
+            if (movement2.Count == 1)
+            {
+                Keys keyCheck = movement2.Pop();
+                currentMove2 = keyCheck;
+                commands[keyCheck].Execute();
+                movementsExecuted++;
+            } else
+            {
+                while (movement2.Count > 0)
+                {
+                    Keys keyCheck = movement2.Pop();
+                    if (currentMove2 != keyCheck)
+                    {
+                        commands[keyCheck].Execute();
+                        movementsExecuted++;
                     }
                 }
             }
 
             movement.Clear();
+            movement2.Clear();
+            Console.WriteLine("MOVEMENT: " + movementsExecuted);
         }
     }
 }
