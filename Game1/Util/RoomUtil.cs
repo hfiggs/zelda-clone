@@ -4,12 +4,17 @@ using Game1.Environment;
 using Game1.GameState;
 using Game1.Player;
 using Game1.RoomLoading;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Game1.Util
 {
     public static class RoomUtil
     {
+        private static CompassDirection player1Request = CompassDirection.None;
+        private static CompassDirection player2Request = CompassDirection.None;
+        private static LoadZone player1LoadZone;
+        private static LoadZone player2LoadZone;
         public static (char, int) GetAdjacentRoomKey((char, int) currentRoomKey, CompassDirection adjacentDirection)
         {
             var adjacentRoomKey = (currentRoomKey.Item1, currentRoomKey.Item2);
@@ -33,26 +38,60 @@ namespace Game1.Util
             return adjacentRoomKey;
         }
 
-        public static void EnterDoor(Game1 game, IEnvironment envo)
+        public static void EnterDoor(Game1 game, IEnvironment envo, int playerID)
         {
             if (envo is LoadZone lZ)
             {
-                switch (lZ.GetTransitionDirection())
+                if(playerID == 2)
                 {
-                    case CompassDirection.North:
-                        game.SetState(new GameStateRoomToRoomNorth(game));
-                        break;
-                    case CompassDirection.East:
-                        game.SetState(new GameStateRoomToRoomEast(game));
-                        break;
-                    case CompassDirection.South:
-                        game.SetState(new GameStateRoomToRoomSouth(game));
-                        break;
-                    case CompassDirection.West:
-                        game.SetState(new GameStateRoomToRoomWest(game));
-                        break;
+                    player2Request = lZ.GetTransitionDirection();
+                    player2LoadZone = lZ;
                 }
-            }
+                else
+                {
+                    player1Request = lZ.GetTransitionDirection();
+                    player1LoadZone = lZ;
+                }
+
+                if (player1Request == player2Request && player1Request != CompassDirection.None && player2Request != CompassDirection.None)
+                {
+                    switch (lZ.GetTransitionDirection())
+                    {
+                        case CompassDirection.North:
+                            game.SetState(new GameStateRoomToRoomNorth(game));
+                            break;
+                        case CompassDirection.East:
+                            game.SetState(new GameStateRoomToRoomEast(game));
+                            break;
+                        case CompassDirection.South:
+                            game.SetState(new GameStateRoomToRoomSouth(game));
+                            break;
+                        case CompassDirection.West:
+                            game.SetState(new GameStateRoomToRoomWest(game));
+                            break;
+                    }
+                }
+                else
+                {
+                    lZ.SetWaiting(playerID);
+                }
+             }
+        }
+
+        public static void ExitDoor(int playerID)
+        {
+                if (playerID == 2 && player2LoadZone != null)
+                {
+                    player2LoadZone.SetNotWaiting(playerID);
+                    player2LoadZone = null;
+                    player2Request = CompassDirection.None;
+                }
+                else if (playerID == 1 && player1LoadZone != null)
+                {
+                    player1LoadZone.SetNotWaiting(playerID);
+                    player1LoadZone = null;
+                    player1Request = CompassDirection.None;
+                }
         }
 
         public static void EnterExitDungeon(Game1 game, IEnvironment envo)

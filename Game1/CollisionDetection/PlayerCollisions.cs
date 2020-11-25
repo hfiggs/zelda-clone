@@ -7,6 +7,7 @@ using Game1.Collision_Handling;
 using Game1.RoomLoading;
 using Game1.Environment;
 using System;
+using Game1.Util;
 
 namespace Game1.CollisionDetection
 {
@@ -21,6 +22,12 @@ namespace Game1.CollisionDetection
         private readonly List<Collision> collisionList;
 
         private readonly List<Type> InvalidSwordPickups = new List<Type>() { typeof(Triforce), typeof(Key), typeof(Bow), };
+
+        private bool foundLoadZoneCollision = false;
+
+        //roombounds: 256, 216
+        private readonly List<Rectangle> roomBounds = new List<Rectangle> { new Rectangle(-51, 0, 50, 216), new Rectangle(0, 216, 256, 50), new Rectangle(256, 0, 50, 216), new Rectangle(0, -51, 256, 50) };
+        private readonly Rectangle roomInner = new Rectangle(13, 8, 227, 157);
 
         public PlayerCollisions(Screen screen)
         {
@@ -90,12 +97,36 @@ namespace Game1.CollisionDetection
                             char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
                             collisionList.Add(new Collision(side, intersectPlayer, player, environment));
                             collision = true;
+                            if(environment is LoadZone)
+                            {
+                                foundLoadZoneCollision = true;
+                            }
                             break;
                         }
                     }
                     if (collision)
                         break;
                 }
+
+                //player intersecting with outside bounds
+                foreach(Rectangle bound in roomBounds)
+                {
+                    Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, bound);
+                    if(!intersectPlayer.IsEmpty)
+                    {
+                        char side = DetermineSide(playerHitbox, bound, intersectPlayer);
+                        collisionList.Add(new Collision(side, intersectPlayer, player, EnvironmentList[0])); //environment object here is passed as a "dummy". There will always be at least 1 evnironment object
+                        foundLoadZoneCollision = true;
+                    }
+                }
+                player.requesting = foundLoadZoneCollision;
+
+                Rectangle innerRoomInt = Rectangle.Intersect(playerHitbox, roomInner);
+                if(!innerRoomInt.IsEmpty)
+                {
+                    RoomUtil.ExitDoor(player.playerID);
+                }
+                foundLoadZoneCollision = false;
             }
             return collisionList;
         }

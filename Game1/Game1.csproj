@@ -144,6 +144,7 @@
     <Compile Include="HUD\HUDItems\HUDBluePotion.cs" />
     <Compile Include="Item\BluePotion.cs" />
     <Compile Include="Item\BlueCandle.cs" />
+    <Compile Include="Particle\PlayerWaiting.cs" />
     <Compile Include="Particle\Flash.cs" />
     <Compile Include="Particle\Curtain.cs" />
     <Compile Include="HUD\HUDItems\HUDLinkDot.cs" />

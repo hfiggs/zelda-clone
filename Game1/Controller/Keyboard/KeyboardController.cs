@@ -125,7 +125,6 @@ namespace Game1.Controller
 
             movement.Clear();
             movement2.Clear();
-            Console.WriteLine("MOVEMENT: " + movementsExecuted);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 RoomUtil.OpenLockedDoor(game.Screen, enviro, player);
 
-                RoomUtil.EnterDoor(game, enviro);
+                RoomUtil.EnterDoor(game, enviro, player.playerID);
 
                 RoomUtil.EnterExitDungeon(game, enviro);
 

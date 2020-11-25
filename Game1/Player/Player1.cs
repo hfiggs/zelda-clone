@@ -31,6 +31,10 @@ namespace Game1.Player
 
         public IPlayerInventory PlayerInventory { get; private set; }
 
+        public int playerID { get; } = 1;
+
+        public bool requesting { get; set; } = false;
+
         public Player1(Game1 game, Vector2 position)
         {
             this.game = game;

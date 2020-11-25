@@ -11,7 +11,8 @@ namespace Game1.Util
         North = 0,
         East = 1,
         South = 2,
-        West = 3
+        West = 3,
+        None = 4
     }
 
     public static class CompassDirectionUtil
