@@ -23,7 +23,8 @@ namespace Game1.CollisionDetection
 
         private readonly List<Type> InvalidSwordPickups = new List<Type>() { typeof(Triforce), typeof(Key), typeof(Bow), };
 
-        private bool foundLoadZoneCollision = false;
+        private bool[] foundLoadZoneCollision;
+        private int innerLoadZoneLoopCounter, outerLoadZoneLoopCounter;
 
         //roombounds: 256, 216
         private readonly List<Rectangle> roomBounds = new List<Rectangle> { new Rectangle(-51, 0, 50, 216), new Rectangle(0, 216, 256, 50), new Rectangle(256, 0, 50, 216), new Rectangle(0, -51, 256, 50) };
@@ -41,6 +42,8 @@ namespace Game1.CollisionDetection
 
             players = screen.Players;
 
+            foundLoadZoneCollision = new bool[screen.Players.Count];
+            outerLoadZoneLoopCounter = 0;
         }
 
         // Collision order: player to item, player to enemy
@@ -99,7 +102,7 @@ namespace Game1.CollisionDetection
                             collision = true;
                             if(environment is LoadZone)
                             {
-                                foundLoadZoneCollision = true;
+                                foundLoadZoneCollision[outerLoadZoneLoopCounter] = true;
                             }
                             break;
                         }
@@ -108,25 +111,49 @@ namespace Game1.CollisionDetection
                         break;
                 }
 
+                // Player collides with Player
+                innerLoadZoneLoopCounter = 0;
+                foreach (IPlayer player2 in players)
+                {
+                    Rectangle player2Hitbox = player2.GetPlayerHitbox();
+
+                    Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, player2Hitbox);
+                    if ((intersectPlayer.Width == playerHitbox.Width && intersectPlayer.Height == playerHitbox.Height) || foundLoadZoneCollision[innerLoadZoneLoopCounter]) { 
+                        // Do nothing if they are the same or if player is in a load zone
+                    } else if (!intersectPlayer.IsEmpty)
+                    {
+                        char side = DetermineSide(playerHitbox, player2Hitbox, intersectPlayer);
+                        collisionList.Add(new Collision(side, intersectPlayer, player, player2));
+                        collision = true;
+                        break;
+                    }
+
+                    innerLoadZoneLoopCounter++;
+
+                    if (collision)
+                        break;
+                }
+
                 //player intersecting with outside bounds
-                foreach(Rectangle bound in roomBounds)
+                foreach (Rectangle bound in roomBounds)
                 {
                     Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, bound);
                     if(!intersectPlayer.IsEmpty)
                     {
                         char side = DetermineSide(playerHitbox, bound, intersectPlayer);
                         collisionList.Add(new Collision(side, intersectPlayer, player, EnvironmentList[0])); //environment object here is passed as a "dummy". There will always be at least 1 evnironment object
-                        foundLoadZoneCollision = true;
+                        foundLoadZoneCollision[outerLoadZoneLoopCounter] = true;
                     }
                 }
-                player.requesting = foundLoadZoneCollision;
+                player.requesting = foundLoadZoneCollision[outerLoadZoneLoopCounter];
 
                 Rectangle innerRoomInt = Rectangle.Intersect(playerHitbox, roomInner);
                 if(!innerRoomInt.IsEmpty)
                 {
                     RoomUtil.ExitDoor(player.playerID);
                 }
-                foundLoadZoneCollision = false;
+
+                outerLoadZoneLoopCounter++;
             }
             return collisionList;
         }
