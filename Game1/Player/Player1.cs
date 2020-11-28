@@ -91,7 +91,7 @@ namespace Game1.Player
                 game.SetState(new GameStateLosePhase1(game));
             } else
             {
-                game.Screen.Player = new DamagedPlayer(game, this, direction);
+                game.Screen.Players[playerID - 1] = new DamagedPlayer(game, this, direction);
             }
             if(PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
             {

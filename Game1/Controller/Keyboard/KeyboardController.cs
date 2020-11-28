@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Game1.Command;
 using Game1.Player.PlayerInventory;
 using System;
+using Microsoft.Xna.Framework;
 
 namespace Game1.Controller
 {
@@ -18,45 +19,92 @@ namespace Game1.Controller
 
         public KeyboardController(Game1 game)
         {
-            commands = new Dictionary<Keys, ICommand>
-            {
-                { Keys.Q, new QuitCommand(game) },
-                { Keys.LeftShift, new PauseGameCommand(game) },
-                { Keys.RightShift, new PauseGameCommand(game) },
+            if (game.Mode == 1) {
+                //MULTIPLAYER CONTROLS
+                commands = new Dictionary<Keys, ICommand>
+                {
+                    { Keys.Q, new QuitCommand(game) },
+                    { Keys.LeftShift, new PauseGameCommand(game) },
+                    { Keys.RightShift, new PauseGameCommand(game) },
 
-                { Keys.W, new PlayerUpCommand(game) },
-                { Keys.A, new PlayerLeftCommand(game) },
-                { Keys.S, new PlayerDownCommand(game) },
-                { Keys.D, new PlayerRightCommand(game) },
-                { Keys.Up, new Player2UpCommand(game) },
-                { Keys.Left, new Player2LeftCommand(game) },
-                { Keys.Down, new Player2DownCommand(game) },
-                { Keys.Right, new Player2RightCommand(game) },
+                    { Keys.W, new PlayerUpCommand(game, PlayerIndex.One) },
+                    { Keys.A, new PlayerLeftCommand(game, PlayerIndex.One) },
+                    { Keys.S, new PlayerDownCommand(game, PlayerIndex.One) },
+                    { Keys.D, new PlayerRightCommand(game, PlayerIndex.One) },
+                    { Keys.Up, new PlayerUpCommand(game, PlayerIndex.Two) },
+                    { Keys.Left, new PlayerLeftCommand(game, PlayerIndex.Two) },
+                    { Keys.Down, new PlayerDownCommand(game, PlayerIndex.Two) },
+                    { Keys.Right, new PlayerRightCommand(game, PlayerIndex.Two) },
 
-                { Keys.Z, new PlayerAttackCommand(game) },
-                { Keys.N, new Player2AttackCommand(game) },
+                    { Keys.Z, new PlayerAttackCommand(game, PlayerIndex.One) },
+                    { Keys.N, new PlayerAttackCommand(game, PlayerIndex.Two) },
 
-                { Keys.X, new PlayerUseItemCommand(game) },
-                { Keys.M, new Player2UseItemCommand(game) },
+                    { Keys.X, new PlayerUseItemCommand(game, PlayerIndex.One) },
+                    { Keys.M, new PlayerUseItemCommand(game, PlayerIndex.Two) },
 
-                { Keys.D1, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
-                { Keys.D2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
-                { Keys.D3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
-                { Keys.D4, new PlayerEquipItemCommand(game, ItemEnum.BluePotion) },
-                { Keys.D5, new PlayerEquipItemCommand(game, ItemEnum.BlueCandle) },
+                    { Keys.D1, new PlayerEquipItemCommand(game, ItemEnum.Bow, PlayerIndex.One) },
+                    { Keys.D2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang, PlayerIndex.One) },
+                    { Keys.D3, new PlayerEquipItemCommand(game, ItemEnum.Bomb, PlayerIndex.One) },
+                    { Keys.D4, new PlayerEquipItemCommand(game, ItemEnum.BluePotion, PlayerIndex.One) },
+                    { Keys.D5, new PlayerEquipItemCommand(game, ItemEnum.BlueCandle, PlayerIndex.One) },
 
-                { Keys.NumPad1, new Player2EquipItemCommand(game, ItemEnum.Bow) },
-                { Keys.NumPad2, new Player2EquipItemCommand(game, ItemEnum.Boomerang) },
-                { Keys.NumPad3, new Player2EquipItemCommand(game, ItemEnum.Bomb) },
-                { Keys.NumPad4, new Player2EquipItemCommand(game, ItemEnum.BluePotion) },
-                { Keys.NumPad5, new Player2EquipItemCommand(game, ItemEnum.BlueCandle) },
+                    { Keys.NumPad1, new PlayerEquipItemCommand(game, ItemEnum.Bow, PlayerIndex.Two) },
+                    { Keys.NumPad2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang, PlayerIndex.Two) },
+                    { Keys.NumPad3, new PlayerEquipItemCommand(game, ItemEnum.Bomb, PlayerIndex.Two) },
+                    { Keys.NumPad4, new PlayerEquipItemCommand(game, ItemEnum.BluePotion, PlayerIndex.Two) },
+                    { Keys.NumPad5, new PlayerEquipItemCommand(game, ItemEnum.BlueCandle, PlayerIndex.Two) },
 
-                {Keys.Escape, new EnterHUDStateCommand(game) },
-                {Keys.F1, new MuteUnmuteCommand(game) },
-                {Keys.F2, new VolumeDownCommand(game) },
-                {Keys.F3, new VolumeUpCommand(game) },
-                { Keys.F4, new ToggleFullscreenCommand(game) }
-            };
+                    {Keys.Escape, new EnterHUDStateCommand(game) },
+                    {Keys.F1, new MuteUnmuteCommand(game) },
+                    {Keys.F2, new VolumeDownCommand(game) },
+                    {Keys.F3, new VolumeUpCommand(game) },
+                    {Keys.F4, new ToggleFullscreenCommand(game) }
+                };
+            } 
+            else
+            {   
+                //SINGLEPLAYER/AI CONTROLS
+                commands = new Dictionary<Keys, ICommand>
+                    {
+                        { Keys.Q, new QuitCommand(game) },
+                        { Keys.LeftShift, new PauseGameCommand(game) },
+                        { Keys.RightShift, new PauseGameCommand(game) },
+
+                        { Keys.W, new PlayerUpCommand(game) },
+                        { Keys.A, new PlayerLeftCommand(game) },
+                        { Keys.S, new PlayerDownCommand(game) },
+                        { Keys.D, new PlayerRightCommand(game) },
+                        { Keys.Up, new PlayerUpCommand(game) },
+                        { Keys.Left, new PlayerLeftCommand(game) },
+                        { Keys.Down, new PlayerDownCommand(game) },
+                        { Keys.Right, new PlayerRightCommand(game) },
+
+                        { Keys.Z, new PlayerAttackCommand(game) },
+                        { Keys.N, new PlayerAttackCommand(game) },
+
+                        { Keys.X, new PlayerUseItemCommand(game) },
+                        { Keys.M, new PlayerUseItemCommand(game) },
+
+                        { Keys.D1, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
+                        { Keys.D2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
+                        { Keys.D3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
+                        { Keys.D4, new PlayerEquipItemCommand(game, ItemEnum.BluePotion) },
+                        { Keys.D5, new PlayerEquipItemCommand(game, ItemEnum.BlueCandle) },
+
+                        { Keys.NumPad1, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
+                        { Keys.NumPad2, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
+                        { Keys.NumPad3, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
+                        { Keys.NumPad4, new PlayerEquipItemCommand(game, ItemEnum.BluePotion) },
+                        { Keys.NumPad5, new PlayerEquipItemCommand(game, ItemEnum.BlueCandle) },
+
+                        {Keys.Escape, new EnterHUDStateCommand(game) },
+                        {Keys.F1, new MuteUnmuteCommand(game) },
+                        {Keys.F2, new VolumeDownCommand(game) },
+                        {Keys.F3, new VolumeUpCommand(game) },
+                        {Keys.F4, new ToggleFullscreenCommand(game) }
+                    };
+
+            }
         }
 
         public void Update()

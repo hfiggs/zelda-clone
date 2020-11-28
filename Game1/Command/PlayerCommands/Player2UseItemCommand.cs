@@ -3,6 +3,7 @@
     class Player2UseItemCommand : ICommand
     {
         private Game1 game;
+        private const int playerIndex = 1;
 
         public Player2UseItemCommand(Game1 game)
         {
@@ -11,7 +12,7 @@
 
         public void Execute()
         {
-            game.Screen.Player2.UseItem();
+            game.Screen.Players[playerIndex].UseItem();
         }
     }
 }

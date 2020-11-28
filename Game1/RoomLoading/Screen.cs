@@ -15,8 +15,9 @@ namespace Game1.RoomLoading
         public List<IPlayer> Players;
         public IPlayer Player { get; set; }
         public IPlayer Player2 { get; set; }
-        private readonly Vector2 playerPosition = new Vector2(100, 88);
-        private readonly Vector2 player2Position = new Vector2(120, 88);
+
+        private readonly Vector2 playerPosition = new Vector2(100.0f, 88.0f);
+        private readonly Vector2 nextPlayerOffset = new Vector2(20.0f, 0.0f);
 
         public Dictionary<(char, int), Room> RoomsDict { get; set; }
         public Room CurrentRoom { get { return RoomsDict[CurrentRoomKey]; } private set { CurrentRoom = value; } }
@@ -33,11 +34,12 @@ namespace Game1.RoomLoading
         {
             this.game = game;
             RoomsDict = new Dictionary<(char, int), Room>();
-            Player = new Player1(game, playerPosition);
-            Player2 = new Player2(game, player2Position);
+            //Player = new Player1(game, playerPosition);
+            //Player2 = new Player2(game, player2Position);
             Players = new List<IPlayer>();
-            Players.Add(Player);
-            Players.Add(Player2);
+            HandleGameMode();
+            //Players.Add(Player);
+            //Players.Add(Player2);
         }
 
         public void LoadAllRooms()
@@ -79,9 +81,37 @@ namespace Game1.RoomLoading
             }
         }
 
-        public Rectangle GetPlayerRectangle()
+        public Rectangle GetPlayerRectangle(int playerIndex = 0)
         {
-            return Player.GetPlayerHitbox();
+            return Players[playerIndex].GetPlayerHitbox();
+        }
+
+        public void HandleGameMode()
+        {
+            Players.Clear();
+            switch (game.Mode)
+            {
+                case 0:
+                    //singleplayer
+                    //BAD - REMOVE these references once screen is 100% listized
+                    Player = new Player1(game, playerPosition);
+                    Players.Add(Player);
+                    break;
+                case 1:
+                    //multiplayer
+                    //BAD - REMOVE these references once screen is 100% listized
+                    Player = new Player1(game, playerPosition);
+                    Players.Add(Player);
+                    Player2 = new Player2(game, playerPosition + nextPlayerOffset);
+                    Players.Add(Player2);
+                    break;
+                case 2:
+                    //AI
+                    Player = new Player1(game, playerPosition);
+                    Players.Add(Player);
+                    //Add AI-based constructor here
+                    break;
+            }
         }
     }
 }

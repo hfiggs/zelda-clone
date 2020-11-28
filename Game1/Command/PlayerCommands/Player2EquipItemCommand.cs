@@ -6,6 +6,7 @@ namespace Game1.Command
     {
         private Game1 game;
         private ItemEnum itemToEquip;
+        private const int playerIndex = 1;
 
         public Player2EquipItemCommand(Game1 game, ItemEnum itemToEquip)
         {
@@ -15,9 +16,9 @@ namespace Game1.Command
 
         public void Execute()
         {
-            if(game.Screen.Player2.PlayerInventory.HasItem(itemToEquip) && itemToEquip != ItemEnum.Arrow)
+            if(game.Screen.Players[playerIndex].PlayerInventory.HasItem(itemToEquip) && itemToEquip != ItemEnum.Arrow)
             {
-                game.Screen.Player2.PlayerInventory.EquippedItem = itemToEquip;
+                game.Screen.Players[playerIndex].PlayerInventory.EquippedItem = itemToEquip;
             }
         }
     }

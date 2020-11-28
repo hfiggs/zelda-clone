@@ -23,6 +23,7 @@ namespace Game1
         private SpriteBatch spriteBatch;
 
         public IGameState State { get; private set; }
+        public int Mode { get; set; }
 
         public IResolutionManager ResolutionManager { get; private set; }
         private Point virtualResolution = new Point(256, 216);
@@ -60,6 +61,7 @@ namespace Game1
             HUD = new HUDInterface(Screen.Player.PlayerInventory, Screen);
 
             State = new GameStateStart(this);
+
         }
 
         protected override void UnloadContent()
@@ -96,6 +98,13 @@ namespace Game1
         public Vector2 GetWindowDimensionsScaled()
         {
             return new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight) / ResolutionManager.GetResolutionScale();
+        }
+
+        public void SetMode(int gameMode)
+        {
+            Mode = gameMode;
+            Screen.HandleGameMode();
+            RoomUtil.constructRoomUtil(Screen);
         }
     }
 }

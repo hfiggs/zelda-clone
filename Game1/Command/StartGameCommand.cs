@@ -2,6 +2,7 @@
 
 using Game1.Audio;
 using Game1.GameState;
+using Game1.RoomLoading;
 using System.Diagnostics;
 
 namespace Game1.Command
@@ -17,7 +18,6 @@ namespace Game1.Command
             this.game = game;
             stopWatch = new Stopwatch();
             stopWatch.Start();
-
         }
 
         public void Execute()
@@ -25,6 +25,9 @@ namespace Game1.Command
             if (stopWatch.ElapsedMilliseconds >= cooldown)
             {
                 AudioManager.StopAllMusic();
+
+                game.SetMode((game.State as GameStateStart).GetOption());
+                
 
                 game.SetState(new GameStateStartToSpawn(game));
 

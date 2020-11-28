@@ -1,5 +1,7 @@
 ﻿using Game1.Audio;
+using Game1.Player;
 using Game1.ResolutionManager;
+using Game1.RoomLoading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
