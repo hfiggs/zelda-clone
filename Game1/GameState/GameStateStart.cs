@@ -9,6 +9,7 @@ using Game1.Sprite;
 using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace Game1.GameState
@@ -21,6 +22,16 @@ namespace Game1.GameState
         private readonly Color color = Color.White;
 
         private readonly ISprite background;
+        private readonly ISprite cursor;
+        private const int optionsNum = 3;
+        private readonly List<ISprite> optionList = new List<ISprite>(optionsNum);
+        private readonly List<Vector2> optionPositions = new List<Vector2>(optionsNum);
+        private readonly List<Color> optionColors = new List<Color>(optionsNum);
+        private readonly Color optionHighlightColor = new Color(new Vector3(0.0f, 0.0f, 0.7373f));
+        private readonly Vector2 optionPosition = new Vector2(52.0f, 148.0f);
+        private readonly Vector2 optionPositionOffset = new Vector2(85.0f, 10.0f);
+        private int cursorPosition = 0;
+        private readonly Vector2 cursorOffset = new Vector2(-30.0f, -15.0f);
         private readonly Vector2 backgroundPosition = new Vector2(0, 0);
 
         private readonly List<IParticle> waterfallParticles;
@@ -45,6 +56,15 @@ namespace Game1.GameState
             };
 
             background = StartSpriteFactory.Instance.CreateStartBackgroundSprite();
+            cursor = StartSpriteFactory.Instance.CreateCursor();
+            for (int i = 0; i < optionsNum; i++)
+            {
+                optionList.Add(StartSpriteFactory.Instance.CreateOption(i));
+                optionPositions.Add(optionPosition);
+                optionColors.Add(Color.Black);
+                optionPosition += calculateNextOffset(i, optionPositionOffset);
+            }
+            optionColors[cursorPosition] = optionHighlightColor;
 
             waterfallParticles = new List<IParticle>()
             {
@@ -75,6 +95,13 @@ namespace Game1.GameState
 
             background.Draw(spriteBatch, backgroundPosition, color);
 
+            cursor.Draw(spriteBatch, optionPositions[cursorPosition] + cursorOffset, Color.White, 1.0f);
+
+            for (int i = 0; i < optionList.Count; i++)
+            {
+                optionList[i].Draw(spriteBatch, optionPositions[i], optionColors[i]);
+            }
+
             waterfallParticles.ForEach(p => p.Draw(spriteBatch, color));
 
             curtain.Draw(spriteBatch, color);
@@ -100,6 +127,27 @@ namespace Game1.GameState
             }
 
             curtain.Update(gameTime);
+            cursor.Update();
+        }
+
+        private Vector2 calculateNextOffset(int i, Vector2 offsetVector)
+        {
+            const float YFactor = -2.0f;
+            float offsetX = offsetVector.X * (float)(Math.Pow(-1.0, (double)i));
+            float offsetY = offsetVector.Y * (float)((Math.Pow(-1.0, (double)i)) - 1.0f) / YFactor;
+            return new Vector2(offsetX, offsetY);
+        }
+
+        public void MoveCursor()
+        {
+            optionColors[cursorPosition] = Color.Black;
+            cursorPosition = (cursorPosition + 1) % optionsNum;
+            optionColors[cursorPosition] = optionHighlightColor;
+        }
+
+        public int GetOption()
+        {
+            return cursorPosition;
         }
     }
 }

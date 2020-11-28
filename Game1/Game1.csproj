@@ -84,6 +84,7 @@
     <Compile Include="Command\PlayerCommands\Player2RightCommand.cs" />
     <Compile Include="Command\PlayerCommands\Player2UpCommand.cs" />
     <Compile Include="Command\PlayerCommands\Player2UseItemCommand.cs" />
+    <Compile Include="Command\TitleSelectCommand.cs" />
     <Compile Include="Command\ToggleFullscreenCommand.cs" />
     <Compile Include="Command\StartGameCommand.cs" />
     <Compile Include="Command\ExitHUDStateCommand.cs" />
