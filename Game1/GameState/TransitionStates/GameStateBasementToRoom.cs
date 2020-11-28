@@ -2,6 +2,7 @@
 
 using Game1.Audio;
 using Game1.Controller;
+using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.Util;
 using Microsoft.Xna.Framework;
@@ -24,6 +25,8 @@ namespace Game1.GameState
 
         private const int newPlayerX = 104;
         private const int newPlayerY = 84;
+
+        private const int playerOffset = 16;
 
         private Color color = Color.White;
 
@@ -49,9 +52,13 @@ namespace Game1.GameState
 
             oldRoomPos = oldRoomStartPos;
 
-            game.Screen.Player.EditPosition(Vector2.Subtract(newPlayerPosition, game.Screen.Player.GetPlayerHitbox().Location.ToVector2()));
-            game.Screen.Player.MoveLeft();
-            game.Screen.Player.PlayerInventory.RefreshCandle();
+            foreach (IPlayer p in game.Screen.Players)
+            {
+                p.EditPosition(Vector2.Subtract(newPlayerPosition, p.GetPlayerHitbox().Location.ToVector2()));
+                p.PlayerInventory.RefreshCandle();
+                p.MoveLeft();
+                newPlayerPosition.X -= playerOffset;
+            }
 
             northRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.North);
 

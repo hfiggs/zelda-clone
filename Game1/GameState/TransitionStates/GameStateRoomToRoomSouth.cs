@@ -1,6 +1,7 @@
 ﻿/* Author: Hunter Figgs.3 */
 
 using Game1.Controller;
+using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.Util;
 using Microsoft.Xna.Framework;
@@ -55,8 +56,26 @@ namespace Game1.GameState
                 newPlayerPosition.Y += newPlayerYLockedOffset;
             }
 
-            game.Screen.Player.EditPosition(Vector2.Subtract(newPlayerPosition, game.Screen.Player.GetPlayerHitbox().Location.ToVector2()));
-            game.Screen.Player.PlayerInventory.RefreshCandle();
+            List<IPlayer> playerList = game.Screen.Players;
+            IPlayer requestingPlayer = null; //will always be set to non-null. 1 player will always be requesting
+            foreach (IPlayer p in playerList)
+            {
+                if (p.requesting)
+                {
+                    requestingPlayer = p;
+                }
+            }
+            playerList.Remove(requestingPlayer);
+            playerList.Reverse();
+            playerList.Add(requestingPlayer);
+            playerList.Reverse();
+
+            foreach (IPlayer p in playerList)
+            {
+                p.EditPosition(Vector2.Subtract(newPlayerPosition, p.GetPlayerHitbox().Location.ToVector2()));
+                p.PlayerInventory.RefreshCandle();
+                newPlayerPosition.Y += newPlayerYLockedOffset;
+            }
 
             southRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.South);
 
@@ -107,7 +126,10 @@ namespace Game1.GameState
 
             newRoom.Draw(spriteBatch, color);
 
-            game.Screen.Player.Draw(spriteBatch, Color.White);
+            foreach (IPlayer p in game.Screen.Players)
+            {
+                p.Draw(spriteBatch, Color.White);
+            }
 
             spriteBatch.End();
 

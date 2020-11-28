@@ -118,8 +118,8 @@ namespace Game1.CollisionDetection
                     Rectangle player2Hitbox = player2.GetPlayerHitbox();
 
                     Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, player2Hitbox);
-                    if ((intersectPlayer.Width == playerHitbox.Width && intersectPlayer.Height == playerHitbox.Height) || foundLoadZoneCollision[innerLoadZoneLoopCounter]) { 
-                        // Do nothing if they are the same or if player is in a load zone
+                    if ((intersectPlayer.Width == playerHitbox.Width && intersectPlayer.Height == playerHitbox.Height) || player.requesting || player2.requesting) { 
+                        // Do nothing if they are the same or if player is requesting
                     } else if (!intersectPlayer.IsEmpty)
                     {
                         char side = DetermineSide(playerHitbox, player2Hitbox, intersectPlayer);
@@ -151,6 +151,10 @@ namespace Game1.CollisionDetection
                 if(!innerRoomInt.IsEmpty)
                 {
                     RoomUtil.ExitDoor(player.playerID);
+                } else
+                {
+                    foundLoadZoneCollision[outerLoadZoneLoopCounter] = true;
+                    player.requesting = true;
                 }
 
                 outerLoadZoneLoopCounter++;
