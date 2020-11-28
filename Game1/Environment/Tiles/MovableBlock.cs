@@ -69,5 +69,7 @@ namespace Game1.Environment
             movementSpeed = new Vector2(moveX, moveY) / seconds;
             hasMoved = true;
         }
+
+        public bool Pushable { get; set; } = true;
     }
 }

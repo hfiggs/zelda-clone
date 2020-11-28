@@ -282,8 +282,8 @@
 	</Enemy>
 	<Enemy>
 		<Type>SkeletonKey</Type>
-		<X>186</X>
-		<Y>42</Y>
+		<X>192</X>
+		<Y>56</Y>
 	</Enemy>
 
 	<InteractEnviornment>

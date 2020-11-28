@@ -89,7 +89,7 @@ namespace Game1.RoomLoading
 
             NonInteractEnviornment.ForEach(env => env.Update(gameTime));
 
-            puzzle?.Check(gameTime, this);
+            puzzle?.Update(gameTime, this);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)

@@ -29,7 +29,7 @@ namespace Game1.Command.CollisionHandlerCommands
 
             // side is side of block (collidee)
 
-            if (enviro is MovableBlock mB && !(mB.hasMoved))
+            if (enviro is MovableBlock mB && !(mB.hasMoved) && mB.Pushable)
             {
                 mB.Move(Vector2.Multiply(CompassDirectionUtil.GetDirectionVector(side), negativeVector), moveBlockTime);
             }

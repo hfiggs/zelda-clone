@@ -41,7 +41,10 @@ namespace Game1.Command.CollisionHandlerCommands
                         proj.BeginDespawn();
                         break;
                     default:
-                        enemy.StunnedTimer = boomerangStunTime;
+                        if (enemy.StunnedTimer != int.MaxValue)
+                        {
+                            enemy.StunnedTimer = boomerangStunTime;
+                        }
                         proj.BeginDespawn();
                         break;
                 }
