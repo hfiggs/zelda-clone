@@ -90,7 +90,6 @@ namespace Game1.Environment
         public void SetNotWaiting(int playerID)
         {
             waiting = false;
-            Console.WriteLine("SetNotWaiting");
         }
     }
 }

@@ -11,10 +11,19 @@ namespace Game1.Util
 {
     public static class RoomUtil
     {
-        private static CompassDirection player1Request = CompassDirection.None;
-        private static CompassDirection player2Request = CompassDirection.None;
-        private static LoadZone player1LoadZone;
-        private static LoadZone player2LoadZone;
+        private static List<CompassDirection> playerRequests = new List<CompassDirection>(2);
+        private static List<LoadZone> loadZones = new List<LoadZone>(2);
+
+        public static void constructRoomUtil(Screen screen)
+        {
+            playerRequests = new List<CompassDirection>(screen.Players.Count);
+            loadZones = new List<LoadZone>(screen.Players.Count);
+            for (int i = 0; i < screen.Players.Count; i++)
+            {
+                playerRequests.Add(CompassDirection.None);
+                loadZones.Add(null);
+            }
+        }
         public static (char, int) GetAdjacentRoomKey((char, int) currentRoomKey, CompassDirection adjacentDirection)
         {
             var adjacentRoomKey = (currentRoomKey.Item1, currentRoomKey.Item2);
@@ -42,18 +51,20 @@ namespace Game1.Util
         {
             if (envo is LoadZone lZ)
             {
-                if(playerID == 2)
+                playerRequests[playerID - 1] = lZ.GetTransitionDirection();
+                loadZones[playerID - 1] = lZ;
+                bool playersAgree = true;
+                CompassDirection lastDirection = playerRequests[0];
+                foreach(CompassDirection dir in playerRequests)
                 {
-                    player2Request = lZ.GetTransitionDirection();
-                    player2LoadZone = lZ;
-                }
-                else
-                {
-                    player1Request = lZ.GetTransitionDirection();
-                    player1LoadZone = lZ;
+                    if(lastDirection != dir || dir == CompassDirection.None)
+                    {
+                        playersAgree = false;
+                    }
+                    lastDirection = dir;
                 }
 
-                if (player1Request == player2Request && player1Request != CompassDirection.None && player2Request != CompassDirection.None)
+                if (playersAgree)
                 {
                     switch (lZ.GetTransitionDirection())
                     {
@@ -80,18 +91,13 @@ namespace Game1.Util
 
         public static void ExitDoor(int playerID)
         {
-                if (playerID == 2 && player2LoadZone != null)
-                {
-                    player2LoadZone.SetNotWaiting(playerID);
-                    player2LoadZone = null;
-                    player2Request = CompassDirection.None;
-                }
-                else if (playerID == 1 && player1LoadZone != null)
-                {
-                    player1LoadZone.SetNotWaiting(playerID);
-                    player1LoadZone = null;
-                    player1Request = CompassDirection.None;
-                }
+            List<LoadZone> view = loadZones;
+            if(loadZones[playerID - 1] != null)
+            {
+                loadZones[playerID - 1].SetNotWaiting(playerID);
+                loadZones[playerID - 1] = null;
+                playerRequests[playerID - 1] = CompassDirection.None;
+            }
         }
 
         public static void EnterExitDungeon(Game1 game, IEnvironment envo)

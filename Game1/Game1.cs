@@ -43,7 +43,7 @@ namespace Game1
         protected override void Initialize()
         {
             IsMouseVisible = false;
-            
+
             base.Initialize();
         }
 
@@ -54,6 +54,7 @@ namespace Game1
             ContentUtil.LoadAllContent(Content, GraphicsDevice);
 
             Screen = new Screen(this);
+            RoomUtil.constructRoomUtil(Screen);
             Screen.LoadAllRooms();
 
             HUD = new HUDInterface(Screen.Player.PlayerInventory, Screen);

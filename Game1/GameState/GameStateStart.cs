@@ -6,6 +6,7 @@ using Game1.Particle;
 using Game1.ResolutionManager;
 using Game1.RoomLoading;
 using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
