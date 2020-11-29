@@ -7,6 +7,7 @@ using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Game1.GameState
@@ -38,7 +39,7 @@ namespace Game1.GameState
 
         private readonly (char, int) eastRoomKey;
 
-        public GameStateRoomToRoomEast(Game1 game)
+        public GameStateRoomToRoomEast(Game1 game, int playerID)
         {
             this.game = game;
 
@@ -56,19 +57,11 @@ namespace Game1.GameState
                 newPlayerPosition.X += newPlayerXLockedOffset;
             }
 
-            List<IPlayer> playerList = game.Screen.Players;
-            IPlayer requestingPlayer = null; //will always be set to non-null. 1 player will always be requesting
-            foreach (IPlayer p in playerList)
-            {
-                if(p.requesting)
-                {
-                    requestingPlayer = p;
-                }
-            }
-            playerList.Remove(requestingPlayer);
-            playerList.Reverse();
-            playerList.Add(requestingPlayer);
-            playerList.Reverse();
+            List<IPlayer> playerList = new List<IPlayer>();
+            playerList.AddRange(game.Screen.Players); //copy to avoid messing up controls
+            
+            if (playerID != 1)
+                playerList.Reverse();
 
             foreach (IPlayer p in playerList)
             {

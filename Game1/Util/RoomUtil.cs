@@ -69,16 +69,20 @@ namespace Game1.Util
                     switch (lZ.GetTransitionDirection())
                     {
                         case CompassDirection.North:
-                            game.SetState(new GameStateRoomToRoomNorth(game));
+                            if(game.State.GetType() != typeof(GameStateRoomToRoomNorth))
+                                game.SetState(new GameStateRoomToRoomNorth(game, playerID));
                             break;
                         case CompassDirection.East:
-                            game.SetState(new GameStateRoomToRoomEast(game));
+                            if (game.State.GetType() != typeof(GameStateRoomToRoomEast))
+                                game.SetState(new GameStateRoomToRoomEast(game, playerID));
                             break;
                         case CompassDirection.South:
-                            game.SetState(new GameStateRoomToRoomSouth(game));
+                            if (game.State.GetType() != typeof(GameStateRoomToRoomSouth))
+                                game.SetState(new GameStateRoomToRoomSouth(game, playerID));
                             break;
                         case CompassDirection.West:
-                            game.SetState(new GameStateRoomToRoomWest(game));
+                            if (game.State.GetType() != typeof(GameStateRoomToRoomWest))
+                                game.SetState(new GameStateRoomToRoomWest(game, playerID));
                             break;
                     }
                 }
