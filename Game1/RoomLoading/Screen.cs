@@ -13,8 +13,9 @@ namespace Game1.RoomLoading
     public class Screen
     {
         public List<IPlayer> Players;
+        private List<Rectangle> PlayerHitboxes;
         public IPlayer Player { get; set; }
-        public IPlayer Player2 { get; set; }
+        //public IPlayer Player2 { get; set; }
 
         private readonly Vector2 playerPosition = new Vector2(100.0f, 88.0f);
         private readonly Vector2 nextPlayerOffset = new Vector2(20.0f, 0.0f);
@@ -27,8 +28,8 @@ namespace Game1.RoomLoading
         private CollisionDetector detector;
         private CollisionHandler handler;
 
-        private const char startingLetter = 'G';
-        private const int startingNumber = 2;
+        private const char startingLetter = 'B';
+        private const int startingNumber = 4;
         
         public Screen(Game1 game)
         {
@@ -37,7 +38,12 @@ namespace Game1.RoomLoading
             //Player = new Player1(game, playerPosition);
             //Player2 = new Player2(game, player2Position);
             Players = new List<IPlayer>();
+            PlayerHitboxes = new List<Rectangle>();
             HandleGameMode();
+
+            //BAD - REMOVE once screen is fully listized, solely so that UI can work so I can test
+            Player = Players[0];
+
             //Players.Add(Player);
             //Players.Add(Player2);
         }
@@ -81,34 +87,46 @@ namespace Game1.RoomLoading
             }
         }
 
-        public Rectangle GetPlayerRectangle(int playerIndex = 0)
+        public List<Rectangle> GetPlayerRectangle()
         {
-            return Players[playerIndex].GetPlayerHitbox();
+            //return Players[playerIndex].GetPlayerHitbox();
+            PlayerHitboxes.Clear();
+            foreach(IPlayer p in Players)
+            {
+                PlayerHitboxes.Add(p.GetPlayerHitbox());
+            }
+            return PlayerHitboxes;
         }
 
         public void HandleGameMode()
         {
             Players.Clear();
+            IPlayer player;
+            IPlayer player2;
             switch (game.Mode)
             {
                 case 0:
                     //singleplayer
-                    //BAD - REMOVE these references once screen is 100% listized
-                    Player = new Player1(game, playerPosition);
-                    Players.Add(Player);
+                    player = new Player1(game, playerPosition);
+                    Players.Add(player);
+                    PlayerHitboxes.Add(player.GetPlayerHitbox());
                     break;
                 case 1:
                     //multiplayer
-                    //BAD - REMOVE these references once screen is 100% listized
-                    Player = new Player1(game, playerPosition);
-                    Players.Add(Player);
-                    Player2 = new Player2(game, playerPosition + nextPlayerOffset);
-                    Players.Add(Player2);
+                    player = new Player1(game, playerPosition);
+                    Players.Add(player);
+                    player2 = new Player2(game, playerPosition + nextPlayerOffset);
+                    Players.Add(player2);
+                    foreach(IPlayer p in Players)
+                    {
+                        PlayerHitboxes.Add(p.GetPlayerHitbox());                        
+                    }
                     break;
                 case 2:
                     //AI
-                    Player = new Player1(game, playerPosition);
-                    Players.Add(Player);
+                    player = new Player1(game, playerPosition);
+                    Players.Add(player);
+                    PlayerHitboxes.Add(player.GetPlayerHitbox());
                     //Add AI-based constructor here
                     break;
             }

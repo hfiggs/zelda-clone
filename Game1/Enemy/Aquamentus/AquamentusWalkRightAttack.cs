@@ -2,6 +2,7 @@
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace Game1.Enemy
@@ -40,7 +41,7 @@ namespace Game1.Enemy
             {
                 const int maxTime = 2;
                 totalTime += (float)gametime.ElapsedGameTime.TotalSeconds;
-                Rectangle playerRect = game.Screen.GetPlayerRectangle();
+                List<Rectangle> playerRectList = game.Screen.GetPlayerRectangle();
 
                 if (totalTime < timeOfAttack || (counter == 1 && totalTime < maxTime))
                 {
@@ -51,7 +52,9 @@ namespace Game1.Enemy
                 }
                 else if (totalTime > timeOfAttack && counter == 0)
                 {
-                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position, playerRect));
+                    Random rand = new Random();
+                    int randIndex = rand.Next(0, game.Screen.Players.Count);
+                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position, playerRectList[randIndex]));
                     counter++;
                 }
                 else

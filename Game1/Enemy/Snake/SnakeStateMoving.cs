@@ -128,15 +128,18 @@ namespace Game1.Enemy
                 }
 
                 Vector2 windowDims = game.GetWindowDimensions();
-                if (isFacingLeft && game.Screen.GetPlayerRectangle().Intersects(new Rectangle((int)(position.X - windowDims.X), (int)position.Y, (int)windowDims.X, viewWidth)))
+                foreach (Rectangle playerRect in game.Screen.GetPlayerRectangle())
                 {
-                    playerSpotted = true;
-                    moveDirection = left;
-                }
-                else if (!isFacingLeft && game.Screen.GetPlayerRectangle().Intersects(new Rectangle((int)position.X, (int)position.Y, (int)windowDims.X, viewWidth)))
-                {
-                    playerSpotted = true;
-                    moveDirection = right;
+                    if (isFacingLeft && playerRect.Intersects(new Rectangle((int)(position.X - windowDims.X), (int)position.Y, (int)windowDims.X, viewWidth)))
+                    {
+                        playerSpotted = true;
+                        moveDirection = left;
+                    }
+                    else if (!isFacingLeft && playerRect.Intersects(new Rectangle((int)position.X, (int)position.Y, (int)windowDims.X, viewWidth)))
+                    {
+                        playerSpotted = true;
+                        moveDirection = right;
+                    }
                 }
 
                 int speed;
