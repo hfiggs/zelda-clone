@@ -25,21 +25,29 @@ namespace Game1.Collision_Handling
             switch (item)
             {
                 case ArrowItem _:
-                    player.PlayerInventory.AddItem(ItemEnum.Arrow);
+                    foreach (IPlayer Player in game.Screen.Players)
+                    {
+                        Player.PlayerInventory.AddItem(ItemEnum.Arrow);
+                    }
                     game.SetState(new GameStatePickupItem(game, PickupItem.Arrow, item));
                     break;
                 case Bomb _:
                     player.PlayerInventory.AddBomb();
                     break;
                 case Bow _:
-                    player.PlayerInventory.AddItem(ItemEnum.Bow);
+                    foreach (IPlayer Player in game.Screen.Players)
+                    {
+                        Player.PlayerInventory.AddItem(ItemEnum.Bow);
+                    }
                     game.SetState(new GameStatePickupItem(game, PickupItem.Bow, item));
                     break;
                 case Clock _:
                     // ShouldDelete gets set to true
                     break;
                 case Compass _:
-                    player.PlayerInventory.HasCompass = true;
+                    foreach (IPlayer Player in game.Screen.Players) {
+                        Player.PlayerInventory.HasCompass = true;
+                    }
                     break;
                 case Fairy _:
                     player.PlayerInventory.AddHealth(fairyHalfHearts);
@@ -48,18 +56,30 @@ namespace Game1.Collision_Handling
                     player.PlayerInventory.AddHealth(heartHalfHearts);
                     break;
                 case HeartContainer _:
-                    player.PlayerInventory.AddMaxHeart();
+                    foreach (IPlayer Player in game.Screen.Players)
+                    {
+                        Player.PlayerInventory.AddMaxHeart();
+                    }
                     player.PlayerInventory.AddHealth(heartHalfHearts);
                     break;
                 case ItemBoomerang _:
-                    player.PlayerInventory.AddItem(ItemEnum.Boomerang);
+                    foreach (IPlayer Player in game.Screen.Players)
+                    {
+                        Player.PlayerInventory.AddItem(ItemEnum.Boomerang);
+                    }
                     game.SetState(new GameStatePickupItem(game, PickupItem.Boomerang, item));
                     break;
                 case Key _:
-                    player.PlayerInventory.AddKey();
+                    foreach (IPlayer Player in game.Screen.Players)
+                    {
+                        Player.PlayerInventory.AddKey();
+                    }
                     break;
                 case Map _:
-                    player.PlayerInventory.HasMap = true;
+                    foreach (IPlayer Player in game.Screen.Players)
+                    {
+                        Player.PlayerInventory.HasMap = true;
+                    }
                     break;
                 case RupeeYellow _:
                     player.PlayerInventory.AddRupees(yellowRupee);
@@ -76,7 +96,10 @@ namespace Game1.Collision_Handling
                     player.PlayerInventory.AddBluePotion();
                     break;
                 case BlueCandle _:
-                    player.PlayerInventory.AddItem(ItemEnum.BlueCandle);
+                    foreach (IPlayer Player in game.Screen.Players)
+                    {
+                        Player.PlayerInventory.AddItem(ItemEnum.BlueCandle);
+                    }
                     break;
             }
 
