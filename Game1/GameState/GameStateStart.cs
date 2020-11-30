@@ -81,8 +81,6 @@ namespace Game1.GameState
 
             game.Screen = new Screen(game);
             game.Screen.LoadAllRooms();
-            
-            // game.HUD = new HUDInterface(game.Screen.Player.PlayerInventory, game.Screen.Player2.PlayerInventory, game.Screen); TODO remove
 
             curtain = new Curtain(game, true);
         }

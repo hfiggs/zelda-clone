@@ -20,7 +20,7 @@ namespace Game1.HUD
         Texture2D map;
         Texture2D HUDbase;
         Texture2D HUD2base;
-        private const int bowXPosition = 177, bowYPosition = -9, blueCandleXPosition = 190, blueCandleYPosition = -9, bluePotionXPosition = 170, bluePotionYPosition = 11, bombXPosition = 150, bombYPosition = -9, boomerangXPosition = 130, boomerangYPosition = -9, flashingDotXPosition = 65, flashingDotYPosition = 149;
+        private const int bowXPosition = 177, bowYPosition = -9, blueCandleXPosition = 190, blueCandleYPosition = -9, bluePotionXPosition = 170, bluePotionYPosition = 11, bombXPosition = 150, bombYPosition = -9, boomerangXPosition = 130, boomerangYPosition = -9, flashingDotXPosition = 39, flashingDotYPosition = 149;
         private const int textBoxRow = 1;
         private const string HUDBaseFilePath = "Images/HUD/HUD1", HUD2BaseFilePath = "Images/HUD/HUD2", mapFilePath = "Images/HUD/Dungeon1 Minimap", selectionSquareFilePath = "Images/HUD/selection rectangles", HUDIconFilePath = "Images/HUD/HUD Icons";
         private static HUDItemFactory instance = new HUDItemFactory();
