@@ -16,7 +16,6 @@ namespace Game1.Command
             this.game = game;
             stopWatch = new Stopwatch();
             stopWatch.Start();
-
         }
 
         public void Execute()

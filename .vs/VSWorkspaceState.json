@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\_Documentation",
-    "\\_Documentation\\Code Reviews"
+    "\\Game1",
+    "\\Game1\\HUD",
+    "\\Game1\\HUD\\HUDItems",
+    "\\Game1\\RoomLoading"
   ],
-  "SelectedNode": "\\_Documentation\\Code Reviews\\Sprint 4 Code Reviews",
+  "SelectedNode": "\\Game1\\RoomLoading\\Screen.cs",
   "PreviewInSolutionExplorer": false
 }

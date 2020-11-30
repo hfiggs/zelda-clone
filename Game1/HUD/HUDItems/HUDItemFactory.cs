@@ -19,9 +19,10 @@ namespace Game1.HUD
         Texture2D HUDIconsTexture;
         Texture2D map;
         Texture2D HUDbase;
+        Texture2D HUD2base;
         private const int bowXPosition = 177, bowYPosition = -9, blueCandleXPosition = 190, blueCandleYPosition = -9, bluePotionXPosition = 170, bluePotionYPosition = 11, bombXPosition = 150, bombYPosition = -9, boomerangXPosition = 130, boomerangYPosition = -9, flashingDotXPosition = 65, flashingDotYPosition = 149;
         private const int textBoxRow = 1;
-        private const string HUDBaseFilePath = "Images/HUD/HUD", mapFilePath = "Images/HUD/Dungeon1 Minimap", selectionSquareFilePath = "Images/HUD/selection rectangles", HUDIconFilePath = "Images/HUD/HUD Icons";
+        private const string HUDBaseFilePath = "Images/HUD/HUD1", HUD2BaseFilePath = "Images/HUD/HUD2", mapFilePath = "Images/HUD/Dungeon1 Minimap", selectionSquareFilePath = "Images/HUD/selection rectangles", HUDIconFilePath = "Images/HUD/HUD Icons";
         private static HUDItemFactory instance = new HUDItemFactory();
 
         public static HUDItemFactory Instance
@@ -32,11 +33,10 @@ namespace Game1.HUD
             }
         }
 
-        public List<IHudItem> buildHUDList(IPlayerInventory playerInventory)
+        public List<IHudItem> BuildHUDList(IPlayerInventory playerInventory)
         {
             List<IHudItem> Items = new List<IHudItem>();
 
-            Items.Add(HUDItemFactory.Instance.BuildHUDBase());
             Items.Add(HUDItemFactory.Instance.BuildDungeonOneMap(playerInventory));
             Items.Add(HUDItemFactory.Instance.BuildHUDRupeeTextBox(playerInventory));
             Items.Add(HUDItemFactory.Instance.BuildHUDArrow(playerInventory));
@@ -55,9 +55,34 @@ namespace Game1.HUD
 
             return Items;
         }
+
+        public List<IHudItem> AddSinglePlayerHUDList()
+        {
+            List<IHudItem> Items = new List<IHudItem>();
+
+            Items.Add(HUDItemFactory.Instance.BuildHUDBase());
+
+            return Items;
+        }
+
+        public List<IHudItem> AddTwoPlayerHUDList(IPlayerInventory playerInventory)
+        {
+            List<IHudItem> Items = new List<IHudItem>();
+
+            Items.Add(HUDItemFactory.Instance.BuildHUD2Base());
+            Items.Add(HUDItemFactory.Instance.BuildHUDSword2());
+            Items.Add(HUDItemFactory.Instance.BuildHUDHeartBar2(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDRupeeTextBox2(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDKeyTextBox2(playerInventory));
+            Items.Add(HUDItemFactory.Instance.BuildHUDBombTextBox2(playerInventory));
+
+            return Items;
+        }
+
         public void LoadAllTextures(ContentManager content)
         {
             HUDbase = content.Load<Texture2D>(HUDBaseFilePath);
+            HUD2base = content.Load<Texture2D>(HUD2BaseFilePath);
             map = content.Load<Texture2D>(mapFilePath);
             selectionSquareTexture = content.Load<Texture2D>(selectionSquareFilePath);
             HUDIconsTexture = content.Load<Texture2D>(HUDIconFilePath);
@@ -77,6 +102,12 @@ namespace Game1.HUD
         {
             const int HUDBaseColumn = 0, HUDBaseRow = 0, HUDBaseColumns = 1, HUDBaseRows = 1;
             return new HUDBase(new HUDSprite(HUDbase, HUDBaseColumn, HUDBaseRow, HUDBaseColumns, HUDBaseRows));
+        }
+
+        public IHudItem BuildHUD2Base()
+        {
+            const int HUDBaseColumn = 0, HUDBaseRow = 0, HUDBaseColumns = 1, HUDBaseRows = 1;
+            return new HUDBase(new HUDSprite(HUD2base, HUDBaseColumn, HUDBaseRow, HUDBaseColumns, HUDBaseRows));
         }
 
         public IHudItem BuildHUDBow(IPlayerInventory inv, Vector2 position)
@@ -100,7 +131,16 @@ namespace Game1.HUD
             HUDSprite FullHeart = new HUDSprite(HUDIconsTexture, fullHeartColumn, fullHeartRow, heartColumns, heartRows);
             HUDSprite HalfHeart = new HUDSprite(HUDIconsTexture, halfHeartColumn, halfHeartRow, heartColumns, heartRows);
             HUDSprite EmptyHeart = new HUDSprite(HUDIconsTexture, emptyHeartColumn, emptyHeartRow, heartColumns, heartRows);
-            return new HUDHeartBar(inv,FullHeart,HalfHeart,EmptyHeart);
+            return new HUDHeartBar(inv,FullHeart,HalfHeart,EmptyHeart, false);
+        }
+
+        public IHudItem BuildHUDHeartBar2(IPlayerInventory inv)
+        {
+            const int fullHeartColumn = 1, fullHeartRow = 14, halfHeartColumn = 1, halfHeartRow = 13, emptyHeartColumn = 1, emptyHeartRow = 12, heartColumns = 16, heartRows = 3;
+            HUDSprite FullHeart = new HUDSprite(HUDIconsTexture, fullHeartColumn, fullHeartRow, heartColumns, heartRows);
+            HUDSprite HalfHeart = new HUDSprite(HUDIconsTexture, halfHeartColumn, halfHeartRow, heartColumns, heartRows);
+            HUDSprite EmptyHeart = new HUDSprite(HUDIconsTexture, emptyHeartColumn, emptyHeartRow, heartColumns, heartRows);
+            return new HUDHeartBar(inv, FullHeart, HalfHeart, EmptyHeart, true);
         }
 
         public IHudItem BuildHUDFlashingDot(IPlayerInventory inv, Vector2 bossPosition)
@@ -158,22 +198,42 @@ namespace Game1.HUD
 
         public IHudItem BuildHUDRupeeTextBox(IPlayerInventory inv)
         {
-            return new HUDRupeeTextBox(HUDIconsTexture,textBoxRow,inv);
+            return new HUDRupeeTextBox(HUDIconsTexture,textBoxRow,inv, false);
         }
 
         public IHudItem BuildHUDBombTextBox(IPlayerInventory inv)
         {
-            return new HUDBombTextBox(HUDIconsTexture, textBoxRow, inv);
+            return new HUDBombTextBox(HUDIconsTexture, textBoxRow, inv, false);
         }
 
         public IHudItem BuildHUDKeyTextBox(IPlayerInventory inv)
         {
-            return new HUDKeyTextBox(HUDIconsTexture, textBoxRow, inv);
+            return new HUDKeyTextBox(HUDIconsTexture, textBoxRow, inv, false);
+        }
+
+        public IHudItem BuildHUDRupeeTextBox2(IPlayerInventory inv)
+        {
+            return new HUDRupeeTextBox(HUDIconsTexture,textBoxRow,inv, true);
+        }
+
+        public IHudItem BuildHUDBombTextBox2(IPlayerInventory inv)
+        {
+            return new HUDBombTextBox(HUDIconsTexture, textBoxRow, inv, true);
+        }
+
+        public IHudItem BuildHUDKeyTextBox2(IPlayerInventory inv)
+        {
+            return new HUDKeyTextBox(HUDIconsTexture, textBoxRow, inv, true);
         }
 
         public IHudItem BuildHUDSword()
         {
-            return new HUDSword(new HUDSprite(ItemSpriteFactory.Instance.CreateSwordSprite()));
+            return new HUDSword(new HUDSprite(ItemSpriteFactory.Instance.CreateSwordSprite()), false);
+        }
+
+        public IHudItem BuildHUDSword2()
+        {
+            return new HUDSword(new HUDSprite(ItemSpriteFactory.Instance.CreateSwordSprite()), true);
         }
 
         public IHudItem BuildHUDSelectionSquare()

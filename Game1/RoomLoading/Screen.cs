@@ -1,6 +1,7 @@
 ﻿using Game1.Collision_Handling;
 using Game1.CollisionDetection;
 using Game1.Player;
+using Game1.HUD;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -130,6 +131,7 @@ namespace Game1.RoomLoading
                     //Add AI-based constructor here
                     break;
             }
+            game.HUD = new HUDInterface(Players, game.Screen);
         }
     }
 }

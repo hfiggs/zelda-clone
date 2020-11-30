@@ -72,6 +72,8 @@
     <Compile Include="CollisionDetection\EnvironmentCollisions.cs" />
     <Compile Include="Command\AudioCommands\VolumeUpCommand.cs" />
     <Compile Include="Command\AudioCommands\VolumeDownCommand.cs" />
+    <Compile Include="Command\SelectPlayerOneHUDCommand.cs" />
+    <Compile Include="Command\SelectPlayerTwoHUDCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\PlayerToPlayerCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\PlayerToBlockCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToEnvironmentCommand.cs" />

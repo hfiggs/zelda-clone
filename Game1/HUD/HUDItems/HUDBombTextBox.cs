@@ -13,20 +13,28 @@ namespace Game1.HUD
         public Vector2 location { get ; set; }
         public Rectangle selectionRectangle { get; set; }
         private IPlayerInventory inv;
-        public HUDBombTextBox(Texture2D HUDIconsTexture, int row, IPlayerInventory inv)
+        private bool twoPlayers;
+
+        public HUDBombTextBox(Texture2D HUDIconsTexture, int row, IPlayerInventory inv, bool twoPlayers)
         {
             this.inv = inv;
             this.HUDIconsTexture = HUDIconsTexture;
             this.row = row;
+            this.twoPlayers = twoPlayers;
         }
-
-
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-            const int columnModifier = 1, columns = 16, rows = 3, xModifier = 9, x = 85, y = 168, placeInterval = 10;
+            const int columnModifier = 1, columns = 16, rows = 3, xModifier = 8, x = 66, y = 168, placeInterval = 10;
+            int twoPlayerXModifier = 0;
 
-            location = new Vector2(x,y);
+            if (twoPlayers)
+            {
+                const int secondPlayerTextBoxXLocation = 34;
+                twoPlayerXModifier = secondPlayerTextBoxXLocation;
+            }
+
+            location = new Vector2(x + twoPlayerXModifier, y);
             HUDSprite textSprite = new HUDSprite(HUDIconsTexture, row, 0, columns, rows);
             textSprite.Draw(spriteBatch, location + movement, color);
             location = new Vector2(location.X + xModifier, location.Y);

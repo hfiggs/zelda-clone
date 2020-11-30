@@ -58,7 +58,7 @@ namespace Game1
             RoomUtil.constructRoomUtil(Screen);
             Screen.LoadAllRooms();
 
-            HUD = new HUDInterface(Screen.Player.PlayerInventory, Screen);
+            //HUD = new HUDInterface(Screen.Player.PlayerInventory, Screen.Player2.PlayerInventory, Screen); TODO remove
 
             State = new GameStateStart(this);
 

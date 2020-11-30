@@ -1,18 +1,14 @@
-﻿/* Author: Hunter Figgs.3 */
-
-using Game1.GameState;
-using Game1.HUD;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Game1.Command
 {
-    class ExitHUDStateCommand : ICommand
+    class SelectPlayerTwoHUDCommand : ICommand
     {
         private Game1 game;
         private Stopwatch stopWatch;
         private const int cooldown = 250; // ms
 
-        public ExitHUDStateCommand(Game1 game)
+        public SelectPlayerTwoHUDCommand(Game1 game)
         {
             this.game = game;
             stopWatch = new Stopwatch();
@@ -23,7 +19,12 @@ namespace Game1.Command
         {
             if (stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                game.SetState(new GameStateHUDToRoom(game));
+                if (game.HUD.twoPlayers)
+                {
+                    game.HUD.displayHUD2 = true;
+                    game.HUD.displayHUD1 = false;
+                }
+                
 
                 stopWatch.Restart();
             }
