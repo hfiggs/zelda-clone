@@ -84,7 +84,7 @@ namespace Game1.Player
 
         public void ReceiveDamage(int halfHearts, Vector2 direction)
         {
-            PlayerInventory.SubHealth(1);
+            PlayerInventory.SubHealth(halfHearts);
 
             if(PlayerInventory.HalfHeartCount <= 0)
             {

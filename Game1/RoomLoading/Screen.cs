@@ -70,9 +70,8 @@ namespace Game1.RoomLoading
         {
             CurrentRoom.Update(gameTime);
 
-            foreach(IPlayer player in Players)
-            {
-                player.Update(gameTime);
+            for (int i = 0; i < Players.Count; i++) {
+                Players[i].Update(gameTime);
             }
             
             handler.HandleCollisions(detector.GetCollisionList());
