@@ -88,7 +88,7 @@ namespace Game1.Player
 
             if (PlayerInventory.HalfHeartCount <= 0)
             {
-                game.SetState(new GameStateLosePhase1(game));
+                game.SetState(new GameStateLosePhase1(game, this));
             } else 
             {
                 game.Screen.Players[playerID - 1] = new DamagedPlayer(game, this, direction);

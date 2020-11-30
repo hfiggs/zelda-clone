@@ -29,7 +29,7 @@ namespace Game1.Collision_Handling
                     {
                         Player.PlayerInventory.AddItem(ItemEnum.Arrow);
                     }
-                    game.SetState(new GameStatePickupItem(game, PickupItem.Arrow, item));
+                    game.SetState(new GameStatePickupItem(game, PickupItem.Arrow, item, player));
                     break;
                 case Bomb _:
                     player.PlayerInventory.AddBomb();
@@ -39,7 +39,7 @@ namespace Game1.Collision_Handling
                     {
                         Player.PlayerInventory.AddItem(ItemEnum.Bow);
                     }
-                    game.SetState(new GameStatePickupItem(game, PickupItem.Bow, item));
+                    game.SetState(new GameStatePickupItem(game, PickupItem.Bow, item, player));
                     break;
                 case Clock _:
                     // ShouldDelete gets set to true
@@ -67,7 +67,7 @@ namespace Game1.Collision_Handling
                     {
                         Player.PlayerInventory.AddItem(ItemEnum.Boomerang);
                     }
-                    game.SetState(new GameStatePickupItem(game, PickupItem.Boomerang, item));
+                    game.SetState(new GameStatePickupItem(game, PickupItem.Boomerang, item, player));
                     break;
                 case Key _:
                     foreach (IPlayer Player in game.Screen.Players)
@@ -90,7 +90,7 @@ namespace Game1.Collision_Handling
                 case Triforce _:
                     player.PlayerInventory.AddTriforce();
                     player.PlayerInventory.AddHealth(fairyHalfHearts);
-                    game.SetState(new GameStateWin(game, PickupItem.Triforce, item));
+                    game.SetState(new GameStateWin(game, PickupItem.Triforce, item, player));
                     break;
                 case BluePotion _:
                     player.PlayerInventory.AddBluePotion();

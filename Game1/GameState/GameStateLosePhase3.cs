@@ -43,7 +43,7 @@ namespace Game1.GameState
         private ISprite deadLink;
         private Vector2 deadLinkPosition;
 
-        public GameStateLosePhase3(Game1 game)
+        public GameStateLosePhase3(Game1 game, IPlayer player)
         {
             this.game = game;
 
@@ -57,13 +57,13 @@ namespace Game1.GameState
             game.Screen.CurrentRoom.ItemList.Clear();
             game.Screen.CurrentRoom.ProjectileList.Clear();
 
-            if (game.Screen.Player.GetType() == typeof(Player1)) {
+            if (player.GetType() == typeof(Player1)) {
                 deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
             } else {
                 deadLink = PlayerSpriteFactory.Instance.CreateZeldaDeadSprite();
             }
             
-            deadLinkPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+            deadLinkPosition = Vector2.Add(player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
             linkPop = new LinkPop(deadLinkPosition + new Vector2(linkPopOffset, linkPopOffset), linkPopDelay);
 
             stareTimer = stareTime;
