@@ -84,19 +84,19 @@ namespace Game1.Player
 
         public void ReceiveDamage(int halfHearts, Vector2 direction)
         {
-            game.Screen.Player = new DamagedPlayer(game, this, direction);
-            PlayerInventory.SubHealth(1);
+               /* game.Screen.Player = new DamagedPlayer(game, this, direction);
+                PlayerInventory.SubHealth(1);
 
-            if (PlayerInventory.HalfHeartCount <= 0)
-            {
-                game.SetState(new GameStateLosePhase1(game));
-            }
-            if (PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
-            {
-                const string lowHealthAudio = "lowHealth";
-                lowHealthSound = AudioManager.PlayLooped(lowHealthAudio);
-                isLowHealth = true;
-            }
+                if (PlayerInventory.HalfHeartCount <= 0)
+                {
+                    game.SetState(new GameStateLosePhase1(game));
+                }
+                if (PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
+                {
+                    const string lowHealthAudio = "lowHealth";
+                    lowHealthSound = AudioManager.PlayLooped(lowHealthAudio);
+                    isLowHealth = true;
+                }*/
         }
 
         public void Update(GameTime time)

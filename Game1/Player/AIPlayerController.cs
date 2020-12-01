@@ -1,5 +1,6 @@
 ﻿using Game1.Enemy;
 using Game1.Environment;
+using Game1.Projectile;
 using Game1.RoomLoading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -28,49 +29,84 @@ namespace Game1.Player
 
         public void Update(GameTime time)
         {
-            Rectangle controlledPlayerVector = controlledPlayer.GetPlayerHitbox();
-            Rectangle nonControlledPlayerVector = nonControlledPlayer.GetPlayerHitbox();
+            Rectangle controlledPlayerHB = controlledPlayer.GetPlayerHitbox();
+
             float xDiff;
             float yDiff;
+            List<Rectangle> obstacles = new List<Rectangle>();
+            foreach (IEnvironment env in screen.CurrentRoom.InteractEnviornment)
+            {
+                obstacles.AddRange(env.GetHitboxes());
+            }
 
             if (screen.CurrentRoom.EnemyList.Count + screen.CurrentRoom.DecoratedEnemyList.Count == 0)
             {
-                 xDiff = nonControlledPlayerVector.X - controlledPlayerVector.X;
-                 yDiff = nonControlledPlayerVector.Y - controlledPlayerVector.Y;
+                Rectangle nonControlledPlayerHB = nonControlledPlayer.GetPlayerHitbox();
+                xDiff = nonControlledPlayerHB.X - controlledPlayerHB.X;
+                yDiff = nonControlledPlayerHB.Y - controlledPlayerHB.Y;
 
-                if(Math.Abs(xDiff) + Math.Abs(yDiff) >= distanceFromTarget)
+                if (Math.Abs(xDiff) + Math.Abs(yDiff) >= distanceFromTarget)
                 {
-                    List<Rectangle> obstacles = new List<Rectangle>();
-                    foreach(IEnvironment env in screen.CurrentRoom.InteractEnviornment)
-                    {
-                        obstacles.AddRange(env.GetHitboxes());
-                    }
-                    int direction = AStarPathfinding.Program.findNextDecision(controlledPlayerVector, nonControlledPlayerVector, obstacles);
-                    if(direction == -5)
-                    {
-                    }else if(direction == -1)
-                    {
-                        controlledPlayer.MoveLeft();
-                    }else if(direction == 1)
-                    {
-                        controlledPlayer.MoveRight();
-                    }else if(direction == 2)
-                    {
-                        controlledPlayer.MoveUp();
-                    }else if(direction == 4)
-                    {
-                        controlledPlayer.MoveDown();
-                    }
+                    DecideDirection(controlledPlayerHB, nonControlledPlayerHB, obstacles);
                 }
+
+
             }
-            else if(target == null)
+            else if(target == null || target.ShouldRemove())
             {
                 target = screen.CurrentRoom.EnemyList[0];
             }else
             {
-                xDiff = nonControlledPlayerVector.X - target.GetPosition().X;
-                yDiff = nonControlledPlayerVector.Y - target.GetPosition().Y;
+                Rectangle enemyHB = target.GetHitboxes()[0];
+                xDiff = controlledPlayerHB.X - enemyHB.X;
+                yDiff = controlledPlayerHB.Y - enemyHB.Y;
+                foreach(IEnemy enemy in screen.CurrentRoom.EnemyList)
+                {
+                    if(!enemy.Equals(target))
+                    obstacles.AddRange(enemy.GetHitboxes());
+                }
+                foreach(IEnemy enemy in screen.CurrentRoom.DecoratedEnemyList)
+                {
+                    obstacles.AddRange(enemy.GetHitboxes());
+                }
+                foreach(IProjectile proj in screen.CurrentRoom.ProjectileList)
+                {
+                    obstacles.Add(proj.GetHitbox());
+                }
+
+                if (Math.Abs(xDiff) + Math.Abs(yDiff) >= distanceFromTarget)
+                {
+                    DecideDirection(controlledPlayerHB, enemyHB, obstacles);
+                }
+                else
+                    controlledPlayer.Attack();
+
             }
+        }
+
+        private void DecideDirection(Rectangle controlledPlayerHB, Rectangle nonControlledPlayerHB, List<Rectangle> obstacles)
+        {
+
+                int direction = AStarPathfinding.Program.findNextDecision(controlledPlayerHB, nonControlledPlayerHB, obstacles);
+                if (direction == -5)
+                {
+                }
+                else if (direction == -1)
+                {
+                    controlledPlayer.MoveLeft();
+                }
+                else if (direction == 1)
+                {
+                    controlledPlayer.MoveRight();
+                }
+                else if (direction == 2)
+                {
+                    controlledPlayer.MoveUp();
+                }
+                else if (direction == 4)
+                {
+                    controlledPlayer.MoveDown();
+                }
         }
     }
 }

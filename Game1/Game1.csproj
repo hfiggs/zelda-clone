@@ -156,7 +156,7 @@
     <Compile Include="Particle\Waterfall.cs" />
     <Compile Include="Particle\WaterfallSpray.cs" />
     <Compile Include="Player\AIPlayerController.cs" />
-    <Compile Include="Player\AIUtil\Class1.cs" />
+    <Compile Include="Player\AIUtil\AStarUtil.cs" />
     <Compile Include="Player\Player2.cs" />
     <Compile Include="Projectile\CandleFire.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

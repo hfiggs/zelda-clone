@@ -7,22 +7,25 @@ namespace Game1.Command.CollisionHandlerCommands
 {
     class PlayerToPlayerCommand : ICollisionCommand
     {
-        public PlayerToPlayerCommand() { }
+        Game1 game;
+        public PlayerToPlayerCommand(Game1 game) { this.game = game; }
 
         public void Execute(Collision collision)
         {
-            IPlayer player1 = (IPlayer)collision.collider;
-            char side = collision.side;
-
-            // side is side of player2 (collidee)
-            Vector2 moveAmount = Vector2.Multiply(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height), CompassDirectionUtil.GetDirectionVector(side));
-            player1.EditPosition(moveAmount);
-
-            if (player1 is DamagedPlayer dP && dP.stillSlide)
+            if (game.Mode != 2)
             {
-                dP.StopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
-            }
+                IPlayer player1 = (IPlayer)collision.collider;
+                char side = collision.side;
 
+                // side is side of player2 (collidee)
+                Vector2 moveAmount = Vector2.Multiply(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height), CompassDirectionUtil.GetDirectionVector(side));
+                player1.EditPosition(moveAmount);
+
+                if (player1 is DamagedPlayer dP && dP.stillSlide)
+                {
+                    dP.StopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
+                }
+            }
         }
     }
 }
