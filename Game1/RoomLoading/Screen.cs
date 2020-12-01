@@ -20,7 +20,7 @@ namespace Game1.RoomLoading
 
         private readonly Vector2 playerPosition = new Vector2(100.0f, 88.0f);
         private readonly Vector2 nextPlayerOffset = new Vector2(20.0f, 0.0f);
-
+        public AIPlayerController AIPlayerControl;
         public Dictionary<(char, int), Room> RoomsDict { get; set; }
         public Room CurrentRoom { get { return RoomsDict[CurrentRoomKey]; } private set { CurrentRoom = value; } }
         public (char, int) CurrentRoomKey { get; set; }
@@ -29,8 +29,8 @@ namespace Game1.RoomLoading
         private CollisionDetector detector;
         private CollisionHandler handler;
 
-        private const char startingLetter = 'B';
-        private const int startingNumber = 4;
+        private const char startingLetter = 'G';
+        private const int startingNumber = 2;
         
         public Screen(Game1 game)
         {
@@ -74,7 +74,12 @@ namespace Game1.RoomLoading
             {
                 player.Update(gameTime);
             }
-            
+
+            if (game.Mode == 2)
+            {
+                AIPlayerControl.Update(gameTime);
+            }
+
             handler.HandleCollisions(detector.GetCollisionList());
         }
 
@@ -129,6 +134,9 @@ namespace Game1.RoomLoading
                     Players.Add(player);
                     PlayerHitboxes.Add(player.GetPlayerHitbox());
                     //Add AI-based constructor here
+                    player2 = new Player2(game, playerPosition + nextPlayerOffset);
+                    Players.Add(player2);
+                    AIPlayerControl = new AIPlayerController(player, player2, this);
                     break;
             }
             game.HUD = new HUDInterface(Players, game.Screen);
