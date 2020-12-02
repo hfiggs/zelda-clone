@@ -18,7 +18,7 @@ namespace Game1.GameState
         private readonly Game1 game;
         private readonly List<IController> controllerList;
 
-        private ISprite player;
+        private ISprite playerSprite;
         private ISprite wallmaster;
 
         private Vector2 playerPosition;
@@ -39,7 +39,7 @@ namespace Game1.GameState
 
         private Color color = Color.White;
 
-        public GameStateWallmaster(Game1 game)
+        public GameStateWallmaster(Game1 game, IPlayer player)
         {
             this.game = game;
 
@@ -53,18 +53,17 @@ namespace Game1.GameState
             game.Screen.CurrentRoom.ItemList.Clear();
             game.Screen.CurrentRoom.ProjectileList.Clear();
 
-            if (player.GetType() == typeof(Player1))
+            if (player.playerID == 1)
             {
-                player = PlayerSpriteFactory.Instance.CreateWalkDownSprite();
+                playerSprite = PlayerSpriteFactory.Instance.CreateWalkDownSprite();
             }
             else
             {
-                player = PlayerSpriteFactory.Instance.CreateZeldaWalkDownSprite();
+                playerSprite = PlayerSpriteFactory.Instance.CreateZeldaWalkDownSprite();
             }
-            player = PlayerSpriteFactory.Instance.CreateWalkDownSprite();
             wallmaster = EnemySpriteFactory.Instance.CreateHandSprite();
 
-            playerPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+            playerPosition = Vector2.Add(player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
             wallmasterPosition = Vector2.Add(playerPosition, new Vector2(wallmasterXOffset, wallmasterYOffset));
         }
 
@@ -97,7 +96,7 @@ namespace Game1.GameState
 
             game.Screen.CurrentRoom.Draw(spriteBatch, color);
 
-            player.Draw(spriteBatch, playerPosition, color);
+            playerSprite.Draw(spriteBatch, playerPosition, color);
 
             wallmaster.Draw(spriteBatch, wallmasterPosition, color, SpriteLayerUtil.topLayer);
 
