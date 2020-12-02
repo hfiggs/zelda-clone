@@ -54,7 +54,7 @@ namespace Game1
             ContentUtil.LoadAllContent(Content, GraphicsDevice);
 
             Screen = new Screen(this);
-            Screen.LoadAllRooms();
+            Screen.LoadAllRooms(0);
 
             HUD = new HUDInterface(Screen.Player.PlayerInventory, Screen);
 

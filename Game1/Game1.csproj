@@ -76,6 +76,9 @@
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToEnvironmentCommand.cs" />
     <Compile Include="Command\PauseGameCommand.cs" />
     <Compile Include="Command\AudioCommands\MuteUnmuteCommand.cs" />
+    <Compile Include="Command\SetHardDifficultyCommand.cs" />
+    <Compile Include="Command\SetNormalDifficultyCommand.cs" />
+    <Compile Include="Command\SetEasyDifficultyCommand.cs" />
     <Compile Include="Command\ToggleFullscreenCommand.cs" />
     <Compile Include="Command\StartGameCommand.cs" />
     <Compile Include="Command\ExitHUDStateCommand.cs" />

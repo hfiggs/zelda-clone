@@ -33,14 +33,14 @@ namespace Game1.RoomLoading
             Player = new Player1(game, playerPosition);
         }
 
-        public void LoadAllRooms()
+        public void LoadAllRooms(int difficulty)
         {
             const string roomXMLDirectory = "/RoomXML", xmlFileTag = "*.xml";
             foreach (string file in Directory.EnumerateFiles(game.Content.RootDirectory + roomXMLDirectory, xmlFileTag))
             {
                 var identifer = Regex.Match(file, @"\w{2}(?=\.\w+$)");
                 String identiferStr = identifer.Value;
-                Room room = new Room(game, file);
+                Room room = new Room(game, file, difficulty);
                 RoomsDict.Add((identiferStr[0], (int)char.GetNumericValue(identiferStr[1])), room);
             }
 

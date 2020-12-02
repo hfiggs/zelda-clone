@@ -59,7 +59,6 @@ namespace Game1.GameState
             isMusicStarted = false;
 
             game.Screen = new Screen(game);
-            game.Screen.LoadAllRooms();
 
             game.HUD = new HUDInterface(game.Screen.Player.PlayerInventory, game.Screen);
 

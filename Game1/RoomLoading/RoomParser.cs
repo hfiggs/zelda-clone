@@ -16,9 +16,9 @@ namespace Game1.RoomLoading
         private readonly Game1 game;
         private readonly Room room;
         private const string xPositionTag = "X", yPositionTag = "Y", objectTypeTag = "Type", errorMessage = "Parameter cannot be null", errorParamName = "original", widthTag = "W", heightTag = "H";
-        public RoomParser(Game1 game, Room room, String path)
+        public RoomParser(Game1 game, Room room, String path, int difficulty)
         {
-            roomData = new XMLLoader(path);
+            roomData = new XMLLoader(path, difficulty);
             this.game = game;
             this.room = room;
         }
