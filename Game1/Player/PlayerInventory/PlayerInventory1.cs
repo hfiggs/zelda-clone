@@ -14,8 +14,8 @@ namespace Game1.Player.PlayerInventory
         private const int maxTriforceCount = 8;
         private const int maxBluePotionCount = 1;
 
-        private const int numItems = 7;
-        private bool[] hasItem; // based on ItemEnum (None, Bow, Arrow, Boomerang, Bomb, BluePotion, BlueCandle)
+        private const int numItems = 8;
+        private bool[] hasItem; // based on ItemEnum (None, Bow, Arrow, Boomerang, Bomb, BluePotion, BlueCandle, PortalGun)
         private bool[] isItemInUse;
 
         public PlayerInventory1()
@@ -23,8 +23,8 @@ namespace Game1.Player.PlayerInventory
             HalfHeartCount = defaultHalfHearts;
             MaxHalfHearts = defaultHalfHearts;
 
-            hasItem = new bool[numItems] { true, false, false, false, true, false, false };
-            isItemInUse = new bool[numItems] { false, false, false, false, false, false, false };
+            hasItem = new bool[numItems] { true, false, false, false, true, false, false , true };
+            isItemInUse = new bool[numItems] { false, false, false, false, false, false, false , false };
 
             BombCount = maxBombCount;
 

@@ -20,6 +20,8 @@ namespace Game1.Player
         private const float animationTime = 125f; // ms per frame
         private const int animationFrames = 3;
 
+        const int projXOffset = 12;
+
         private ItemEnum item;
 
         private const int bluePotionHalfHearts = 26; // 16 full hearts (max from all heart pieces)
@@ -35,7 +37,10 @@ namespace Game1.Player
             {
                 item = 0;
             }
-            player.PlayerInventory.SetItemInUse(item, true);
+
+            if (item != ItemEnum.PortalGun)
+                player.PlayerInventory.SetItemInUse(item, true);
+
             const char north = 'N';
 
             if (player.GetType() == typeof(Player1)) {
@@ -67,42 +72,21 @@ namespace Game1.Player
                     }
                     break;
                 case ItemEnum.BlueCandle:
-                    const int xModifier = 12;
-                    projectile = new CandleFire(north, position + new Vector2(xModifier, 0), player);
+                    projectile = new CandleFire(north, position + new Vector2(projXOffset, 0), player);
                     break;
+                case ItemEnum.PortalGun:
                 default:
                     break;
             }
         }
 
-        public void Attack()
-        {
-            // Do nothing
-        }
+        public void Attack() { }
+        public void MoveDown() { }
+        public void MoveLeft() { }
+        public void MoveRight() { }
+        public void MoveUp() { }
+        public void UseItem() { }
 
-        public void MoveDown()
-        {
-            // Do nothing
-        }
-
-        public void MoveLeft()
-        {
-            // Do nothing
-        }
-
-        public void MoveRight()
-        {
-            // Do nothing
-        }
-
-        public void MoveUp()
-        {
-            // Do nothing
-        }
-        public void UseItem()
-        {
-            // Do nothing
-        }
         public void Update(GameTime time)
         {
             timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
@@ -116,9 +100,14 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
-                if (item != 0 && item != (ItemEnum)bluePotion)
+                if (item != 0 && item != (ItemEnum)bluePotion && item != ItemEnum.PortalGun)
                     player.SpawnProjectile(projectile);
                 player.SetState(new PlayerStateUp(player, position));
+            }
+
+            if (item == ItemEnum.PortalGun)
+            {
+                player.SetState(new PlayerStatePortalUp(player, position));
             }
         }
 

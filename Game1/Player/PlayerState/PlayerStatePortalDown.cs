@@ -3,12 +3,14 @@
  * Jared Perkins
  */
 
+using Game1.Player.PlayerInventory;
+using Game1.Projectile;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 
 namespace Game1.Player
 {
-    class PlayerStateLeft : IPlayerState
+    class PlayerStatePortalDown : IPlayerState
     {
         private IPlayer player;
         public ISprite Sprite { get; private set; }
@@ -18,20 +20,19 @@ namespace Game1.Player
 
         private float timeUntilNextFrame; // ms
 
-        const float x = -1.33f;
-        private Vector2 moveSpeed = new Vector2(-1.33f, 0);
+        private const float y = 1.33f;
+        private Vector2 moveSpeed = new Vector2(0, y);
         private const float animationTime = 150f; // ms per frame
 
-        public PlayerStateLeft(IPlayer player, Vector2 position)
+        public PlayerStatePortalDown(IPlayer player, Vector2 position)
         {
             this.player = player;
 
             if (player.GetType() == typeof(Player1)) {
-                Sprite = PlayerSpriteFactory.Instance.CreateWalkLeftSprite();
+                Sprite = PlayerSpriteFactory.Instance.CreatePortalDownSprite();
             } else {
-                Sprite = PlayerSpriteFactory.Instance.CreateZeldaWalkLeftSprite();
+                Sprite = PlayerSpriteFactory.Instance.CreateZeldaWalkDownSprite();
             }
-
 
             isMoving = false;
             timeUntilNextFrame = animationTime;
@@ -41,35 +42,42 @@ namespace Game1.Player
 
         public void Attack()
         {
-            player.SetState(new PlayerStateLeftAttack(player, position));
+            player.SetState(new PlayerStateDownAttack(player, position));
         }
 
         public void MoveDown()
         {
-            if (!isMoving)
-                player.SetState(new PlayerStateDown(player, position));
+            isMoving = true;
         }
 
         public void MoveLeft()
         {
-            isMoving = true;
+            if (!isMoving)
+                player.SetState(new PlayerStatePortalLeft(player, position));
         }
 
         public void MoveRight()
         {
             if (!isMoving)
-                player.SetState(new PlayerStateRight(player, position));
+                player.SetState(new PlayerStatePortalRight(player, position));
         }
 
         public void MoveUp()
         {
             if (!isMoving)
-                player.SetState(new PlayerStateUp(player, position));
+                player.SetState(new PlayerStatePortalUp(player, position));
         }
 
         public void UseItem()
         {
-            player.SetState(new PlayerStateLeftUse(player, position));
+            if (player.PlayerInventory.EquippedItem != ItemEnum.PortalGun)
+            {
+                player.SetState(new PlayerStateRightUse(player, position));
+            }
+            else if (!player.PlayerInventory.IsItemInUse(ItemEnum.PortalGun))
+            {
+                player.SpawnProjectile(new PortalProjectile(Util.CompassDirection.South, position, player));
+            }
         }
 
         public void Update(GameTime time)
@@ -88,13 +96,12 @@ namespace Game1.Player
             }
 
             isMoving = false;
-
         }
 
         public char GetDirection()
         {
-            const char west = 'W';
-            return west;
+            const char south = 'S';
+            return south;
         }
     }
 }

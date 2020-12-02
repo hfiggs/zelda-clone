@@ -120,6 +120,7 @@
     <Compile Include="Environment\Overworld\OverworldRock\OverworldRockBM.cs" />
     <Compile Include="Environment\Overworld\OverworldFloorTile.cs" />
     <Compile Include="Environment\Overworld\OverworldFloor.cs" />
+    <Compile Include="Environment\Tiles\PortalBlock.cs" />
     <Compile Include="GameState\GameStateLosePhase3.cs" />
     <Compile Include="GameState\GameStateLosePhase2.cs" />
     <Compile Include="GameState\GameStateLosePhase1.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="GameState\IGameState.cs" />
     <Compile Include="HUD\HUDItems\HUDBlueCandle.cs" />
     <Compile Include="HUD\HUDItems\HUDBluePotion.cs" />
+    <Compile Include="HUD\HUDItems\HUDPortalGun.cs" />
     <Compile Include="Item\BluePotion.cs" />
     <Compile Include="Item\BlueCandle.cs" />
     <Compile Include="Particle\PlayerWaiting.cs" />
@@ -156,6 +158,11 @@
     <Compile Include="Particle\Waterfall.cs" />
     <Compile Include="Particle\WaterfallSpray.cs" />
     <Compile Include="Player\Player2.cs" />
+    <Compile Include="Player\PlayerState\PlayerStateDown.cs" />
+    <Compile Include="Player\PlayerState\PlayerStatePortalLeft.cs" />
+    <Compile Include="Player\PlayerState\PlayerStatePortalUp.cs" />
+    <Compile Include="Player\PlayerState\PlayerStatePortalRight.cs" />
+    <Compile Include="Projectile\PortalProjectile.cs" />
     <Compile Include="Projectile\CandleFire.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -353,7 +360,7 @@
     <Compile Include="Player\DamagedPlayer.cs" />
     <Compile Include="Player\PlayerState\PlayerStateDownUse.cs" />
     <Compile Include="Player\PlayerState\PlayerStateLeft.cs" />
-    <Compile Include="Player\PlayerState\PlayerStateDown.cs" />
+    <Compile Include="Player\PlayerState\PlayerStatePortalDown.cs" />
     <Compile Include="Player\PlayerState\PlayerStateLeftUse.cs" />
     <Compile Include="Player\PlayerState\PlayerStateRightUse.cs" />
     <Compile Include="Player\PlayerState\PlayerStateRightAttack.cs" />

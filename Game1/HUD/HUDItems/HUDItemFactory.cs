@@ -21,6 +21,7 @@ namespace Game1.HUD
         Texture2D HUDbase;
         Texture2D HUD2base;
         private const int bowXPosition = 177, bowYPosition = -9, blueCandleXPosition = 190, blueCandleYPosition = -9, bluePotionXPosition = 170, bluePotionYPosition = 11, bombXPosition = 150, bombYPosition = -9, boomerangXPosition = 130, boomerangYPosition = -9, flashingDotXPosition = 39, flashingDotYPosition = 149;
+        private const int portalGunX = 190, portalGunY = 11;
         private const int textBoxRow = 1;
         private const string HUDBaseFilePath = "Images/HUD/HUD1", HUD2BaseFilePath = "Images/HUD/HUD2", mapFilePath = "Images/HUD/Dungeon1 Minimap", selectionSquareFilePath = "Images/HUD/selection rectangles", HUDIconFilePath = "Images/HUD/HUD Icons";
         private static HUDItemFactory instance = new HUDItemFactory();
@@ -49,6 +50,7 @@ namespace Game1.HUD
             Items.Add(HUDItemFactory.Instance.BuildHUDBluePotion(playerInventory, new Vector2(bluePotionXPosition, bluePotionYPosition)));
             Items.Add(HUDItemFactory.Instance.BuildHUDBomb(playerInventory, new Vector2(bombXPosition, bombYPosition)));
             Items.Add(HUDItemFactory.Instance.BuildHUDBoomerang(playerInventory, new Vector2(boomerangXPosition, boomerangYPosition)));
+            Items.Add(HUDItemFactory.Instance.BuildHUDPortalGun(playerInventory, new Vector2(portalGunX, portalGunY)));
             Items.Add(HUDItemFactory.Instance.BuildHUDHeartBar(playerInventory));
             Items.Add(HUDItemFactory.Instance.BuildHUDFlashingDot(playerInventory, new Vector2(flashingDotXPosition, flashingDotYPosition)));
             Items.Add(HUDItemFactory.Instance.BuildHUDSword());
@@ -167,6 +169,11 @@ namespace Game1.HUD
         public IHudItem BuildHUDBoomerang(IPlayerInventory inv, Vector2 position)
         {
             return new HUDBoomerang(inv, new HUDSprite(ItemSpriteFactory.Instance.CreateBoomerangSprite()), position);
+        }
+
+        public IHudItem BuildHUDPortalGun(IPlayerInventory inv, Vector2 position)
+        {
+            return new HUDPortalGun(inv, new HUDSprite(ItemSpriteFactory.Instance.CreatePortalGunSprite()), position);
         }
 
         public IHudItem BuildRoom(Room room, Vector2 position)

@@ -8,7 +8,8 @@ namespace Game1.Sprite
     {
         private Texture2D itemSpritesheet;
         private Texture2D nothingItemSpritesheet;
-        private const string itemFilePath = "Images/Item/items", nothingItemFilePath = "Images/Item/nothingItem";
+        private Texture2D portalGunSpritesheet;
+        private const string itemFilePath = "Images/Item/items", nothingItemFilePath = "Images/Item/nothingItem", portalGunItemFilePath = "Images/Item/PortalGun";
 
         private const int CompassColumn = 2, CompassRow = 1, KeyColumn = 7, KeyRow = 1;
         private const int MapColumn = 6, MapRow = 2, HeartContainerColumn = 6, HeartContainerRow = 1;
@@ -39,6 +40,7 @@ namespace Game1.Sprite
         {
             itemSpritesheet = content.Load<Texture2D>(itemFilePath);
             nothingItemSpritesheet = content.Load<Texture2D>(nothingItemFilePath);
+            portalGunSpritesheet = content.Load<Texture2D>(portalGunItemFilePath);
         }
         
         public ISprite CreateCompassSprite()
@@ -80,6 +82,11 @@ namespace Game1.Sprite
         public ISprite CreateBoomerangSprite()
         {
             return new ItemSprite(itemSpritesheet, BoomerangColumn, BoomerangRow);
+        }
+
+        public ISprite CreatePortalGunSprite()
+        {
+            return new ParticleSprite(portalGunSpritesheet, 0, 0, 1, 1, 1);
         }
 
         public ISprite CreateFairySpriteOne()
