@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Threading;
+using System.Diagnostics;
 
 namespace Game1.Enemy
 {
@@ -12,7 +14,7 @@ namespace Game1.Enemy
         private IEnemy jelly;
         private Vector2 position;
         private Vector2 direction;
-        private const int moveSpeed = 1;
+        private const float moveSpeed = 0.4f;
         private double totalElapsedSeconds = 0;
         private double MovementChangeTimeSeconds;
 
@@ -44,11 +46,13 @@ namespace Game1.Enemy
 
                 totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
 
+                Stopwatch stopWatch = new Stopwatch();
                 if (totalElapsedSeconds >= MovementChangeTimeSeconds)
                 {
-                    totalElapsedSeconds -= MovementChangeTimeSeconds;
-                    direction = GetRandomDirection();
-                    MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+                        totalElapsedSeconds -= MovementChangeTimeSeconds;
+                        direction = GetRandomDirection();
+                        MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
+                        stopWatch.Restart();
                 }
                 if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
                 {
@@ -94,9 +98,8 @@ namespace Game1.Enemy
 
         private float GetRandomDirectionMovementChangeTimeSeconds()
         {
-            const double minimumTime = 0.3;
-            Random random = new Random();
-            return (float)(random.NextDouble() * 1.0 + minimumTime);
+            const double minimumTime = 0.8;
+            return (float)(minimumTime);
         }
         private Vector2 GetRandomDirection()
         {

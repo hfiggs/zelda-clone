@@ -148,4 +148,16 @@
 			<Y>72</Y>
 		</InteractEnviornment>
 	</Easy>
+	<Medium>
+		<Enemy>
+			<Type>Jelly</Type>
+			<X>168</X>
+			<Y>88</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Jelly</Type>
+			<X>128</X>
+			<Y>104</Y>
+		</Enemy>
+	</Medium>
 </Assets>

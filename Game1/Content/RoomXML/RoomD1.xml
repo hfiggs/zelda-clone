@@ -88,11 +88,6 @@
 		</Enemy>
 		<Enemy>
 			<Type>Bat</Type>
-			<X>80</X>
-			<Y>96</Y>
-		</Enemy>
-		<Enemy>
-			<Type>Bat</Type>
 			<X>48</X>
 			<Y>112</Y>
 		</Enemy>
@@ -122,4 +117,21 @@
 			<Type>PuzzleOpenDoor</Type>
 		</Puzzle>
 	</Easy>
+	<Medium>
+		<Enemy>
+			<Type>Bat</Type>
+			<X>80</X>
+			<Y>48</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Bat</Type>
+			<X>96</X>
+			<Y>112</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Snake</Type>
+			<X>160</X>
+			<Y>80</Y>
+		</Enemy>
+	</Medium>
 </Assets>

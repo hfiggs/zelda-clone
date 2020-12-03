@@ -64,7 +64,7 @@
 		<Enemy>
 			<Type>Goriya</Type>
 			<X>154</X>
-			<Y>56</Y>
+			<Y>48</Y>
 		</Enemy>
 		<Enemy>
 			<Type>Goriya</Type>
@@ -96,4 +96,21 @@
 			<Y>72</Y>
 		</InteractEnviornment>
 	</Easy>
+	<Medium>
+		<Enemy>
+			<Type>Skeleton</Type>
+			<X>56</X>
+			<Y>56</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Skeleton</Type>
+			<X>48</X>
+			<Y>104</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Goriya</Type>
+			<X>96</X>
+			<Y>104</Y>
+		</Enemy>
+	</Medium>
 </Assets>

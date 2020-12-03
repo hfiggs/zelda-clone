@@ -193,4 +193,21 @@
 			<Y>72</Y>
 		</InteractEnviornment>
 	</Easy>
+	<Medium>
+		<Enemy>
+			<Type>Goriya</Type>
+			<X>120</X>
+			<Y>88</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Bat</Type>
+			<X>32</X>
+			<Y>32</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Bat</Type>
+			<X>208</X>
+			<Y>32</Y>
+		</Enemy>
+	</Medium>
 </Assets>

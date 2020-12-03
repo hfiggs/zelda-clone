@@ -64,4 +64,26 @@
 			<Y>72</Y>
 		</InteractEnviornment>
 	</Easy>
+	<Medium>
+		<Enemy>
+			<Type>Bat</Type>
+			<X>128</X>
+			<Y>48</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Bat</Type>
+			<X>80</X>
+			<Y>64</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Bat</Type>
+			<X>90</X>
+			<Y>112</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Snake</Type>
+			<X>128</X>
+			<Y>80</Y>
+		</Enemy>
+	</Medium>
 </Assets>

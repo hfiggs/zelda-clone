@@ -10,7 +10,6 @@ namespace Game1.RoomLoading
     class XMLLoader
     {
         private XmlDocument xmlDoc { get; set; }
-        private XmlNodeList levelDifficulty;
 
         // xml Tag Names
         private const string itemTag = "Item", projectileTag = "Projectile", enemyTag = "Enemy", interactEnviornmentTag = "InteractEnviornment", nonInteractEnviornment = "NonInteractEnviornment", puzzleTag = "Puzzle", soundsTag = "Sounds";
@@ -21,14 +20,15 @@ namespace Game1.RoomLoading
             xmlDoc.Load(fileName);
             switch (difficulty)
             {
-                case 2:
-                    levelDifficulty = getEasyNodes();
-                    break;
+                case 0:
+                    if(xmlDoc.GetElementsByTagName("Medium").Count > 0)
+                        xmlDoc.DocumentElement.RemoveChild(xmlDoc.DocumentElement.SelectSingleNode("Medium"));
+                    goto case 1;
                 case 1:
-                    levelDifficulty = getMediumlNodes();
+                    if (xmlDoc.GetElementsByTagName("Hard").Count > 0)
+                        xmlDoc.DocumentElement.RemoveChild(xmlDoc.DocumentElement.SelectSingleNode("Hard"));
                     break;
                 default:
-                    levelDifficulty = getEasyNodes();
                     break;
                
             }
@@ -36,49 +36,34 @@ namespace Game1.RoomLoading
 
         }
 
-        public XmlNodeList getEasyNodes()
-        {
-            return xmlDoc.GetElementsByTagName("Easy");
-        }
-
-        public XmlNodeList getMediumlNodes()
-        {
-            return (XmlNodeList)xmlDoc.GetElementsByTagName("Medium").Cast<XmlNode>().Concat<XmlNode>(getEasyNodes().Cast<XmlNode>());
-        }
-
-        public XmlNodeList getHardlNodes()
-        {
-            return (XmlNodeList) xmlDoc.GetElementsByTagName("Hard").Cast<XmlNode>().Concat<XmlNode>(getMediumlNodes().Cast<XmlNode>());
-        }
-
         public XmlNodeList getItemNodes()
         {
-            return levelDifficulty[0].SelectNodes(itemTag);
+            return xmlDoc.GetElementsByTagName(itemTag);
         }
 
         public XmlNodeList getProjectileNodes()
         {
-            return levelDifficulty[0].SelectNodes(projectileTag);
+            return xmlDoc.GetElementsByTagName(projectileTag);
         }
         public XmlNodeList getEnemyNodes()
         {
-            return levelDifficulty[0].SelectNodes(enemyTag); ;
+            return xmlDoc.GetElementsByTagName(enemyTag); ;
         }
         public XmlNodeList getInteractEnviornmentNodes()
         {
-            return levelDifficulty[0].SelectNodes(interactEnviornmentTag); ;
+            return xmlDoc.GetElementsByTagName(interactEnviornmentTag); ;
         }
         public XmlNodeList getNonInteractEnviornmentNodes()
         {
-            return levelDifficulty[0].SelectNodes(nonInteractEnviornment); ;
+            return xmlDoc.GetElementsByTagName(nonInteractEnviornment); ;
         }
         public XmlNodeList getPuzzleNodes()
         {
-            return levelDifficulty[0].SelectNodes(puzzleTag);
+            return xmlDoc.GetElementsByTagName(puzzleTag);
         }
         public XmlNodeList getAmbientSounds()
         {
-            return levelDifficulty[0].SelectNodes(soundsTag);
+            return xmlDoc.GetElementsByTagName(soundsTag);
         }
     }
 }

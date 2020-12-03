@@ -119,5 +119,11 @@
 			<Y>48</Y>
 		</Puzzle>
 	</Easy>
-	
+	<Medium>
+		<Enemy>
+			<Type>Skeleton</Type>
+			<X>80</X>
+			<Y>32</Y>
+		</Enemy>
+	</Medium>
 </Assets>

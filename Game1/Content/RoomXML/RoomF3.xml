@@ -128,4 +128,16 @@
 			<Y>72</Y>
 		</InteractEnviornment>
 	</Easy>
+	<Medium>
+		<Enemy>
+			<Type>Skeleton</Type>
+			<X>80</X>
+			<Y>92</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Skeleton</Type>
+			<X>96</X>
+			<Y>108</Y>
+		</Enemy>
+	</Medium>
 </Assets>

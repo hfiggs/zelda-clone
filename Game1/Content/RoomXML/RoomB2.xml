@@ -298,4 +298,16 @@
 			<Y>175</Y>
 		</InteractEnviornment>
 	</Easy>
+	<Medium>
+		<Enemy>
+			<Type>Goriya</Type>
+			<X>42</X>
+			<Y>80</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Goriya</Type>
+			<X>128</X>
+			<Y>80</Y>
+		</Enemy>
+	</Medium>
 </Assets>
