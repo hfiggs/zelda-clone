@@ -88,10 +88,10 @@ namespace Game1.Collision_Handling
                 {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),south), new ProjectileToEnvironmentCommand(game) },
                 {new Tuple<Type,Type,char>(typeof(IProjectile),typeof(IEnvironment),west), new ProjectileToEnvironmentCommand(game) },
                 //Player collides with Player
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IPlayer),east), new PlayerToPlayerCommand() },
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IPlayer),north), new PlayerToPlayerCommand() },
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IPlayer),south), new PlayerToPlayerCommand() },
-                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IPlayer),west), new PlayerToPlayerCommand() }
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IPlayer),east), new PlayerToPlayerCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IPlayer),north), new PlayerToPlayerCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IPlayer),south), new PlayerToPlayerCommand(game) },
+                {new Tuple<Type,Type,char>(typeof(IPlayer),typeof(IPlayer),west), new PlayerToPlayerCommand(game) }
 
             };
         }

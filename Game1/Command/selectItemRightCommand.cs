@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Audio;
 using Game1.Command;
 using Game1.HUD;
 using Microsoft.Xna.Framework;
@@ -35,6 +36,7 @@ namespace Game1.Controller
         {
             if (stopWatch.ElapsedMilliseconds >= cooldown)
             {
+                AudioManager.PlayFireForget("rupeePickUp");
                 if (game.HUD.displayHUD1) {
                     ExecutePlayer1();
                 } else {

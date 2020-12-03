@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Game1.Audio;
+using System.Diagnostics;
 
 namespace Game1.Command
 {
@@ -21,10 +22,10 @@ namespace Game1.Command
             {
                 if (game.HUD.twoPlayers)
                 {
+                    AudioManager.PlayFireForget("linkPop");
                     game.HUD.displayHUD2 = true;
                     game.HUD.displayHUD1 = false;
                 }
-                
 
                 stopWatch.Restart();
             }

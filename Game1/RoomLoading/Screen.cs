@@ -15,12 +15,10 @@ namespace Game1.RoomLoading
     {
         public List<IPlayer> Players;
         private List<Rectangle> PlayerHitboxes;
-        public IPlayer Player { get; set; }
-        //public IPlayer Player2 { get; set; }
 
         private readonly Vector2 playerPosition = new Vector2(100.0f, 88.0f);
         private readonly Vector2 nextPlayerOffset = new Vector2(20.0f, 0.0f);
-
+        public AIPlayerController AIPlayerControl;
         public Dictionary<(char, int), Room> RoomsDict { get; set; }
         public Room CurrentRoom { get { return RoomsDict[CurrentRoomKey]; } private set { CurrentRoom = value; } }
         public (char, int) CurrentRoomKey { get; set; }
@@ -37,19 +35,9 @@ namespace Game1.RoomLoading
         {
             this.game = game;
             RoomsDict = new Dictionary<(char, int), Room>();
-            //Player = new Player1(game, playerPosition);
-            //Player2 = new Player2(game, player2Position);
             Players = new List<IPlayer>();
             PlayerHitboxes = new List<Rectangle>();
             HandleGameMode();
-
-            //BAD - REMOVE once screen is fully listized, solely so that UI can work so I can test
-            Player = Players[0];
-
-            PortalManager = new PortalManager(this);
-
-            //Players.Add(Player);
-            //Players.Add(Player2);
         }
 
         public void LoadAllRooms()
@@ -76,7 +64,12 @@ namespace Game1.RoomLoading
             for (int i = 0; i < Players.Count; i++) {
                 Players[i].Update(gameTime);
             }
-            
+
+            if (game.Mode == 2)
+            {
+                AIPlayerControl.Update(gameTime);
+            }
+
             handler.HandleCollisions(detector.GetCollisionList());
 
             PortalManager.Update(gameTime);
@@ -94,7 +87,6 @@ namespace Game1.RoomLoading
 
         public List<Rectangle> GetPlayerRectangle()
         {
-            //return Players[playerIndex].GetPlayerHitbox();
             PlayerHitboxes.Clear();
             foreach(IPlayer p in Players)
             {
@@ -133,6 +125,9 @@ namespace Game1.RoomLoading
                     Players.Add(player);
                     PlayerHitboxes.Add(player.GetPlayerHitbox());
                     //Add AI-based constructor here
+                    player2 = new Player2(game, playerPosition + nextPlayerOffset);
+                    Players.Add(player2);
+                    AIPlayerControl = new AIPlayerController(player, player2, this);
                     break;
             }
             game.HUD = new HUDInterface(Players, game.Screen);

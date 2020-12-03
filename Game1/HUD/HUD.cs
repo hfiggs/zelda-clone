@@ -69,7 +69,6 @@ namespace Game1.HUD
         public void Update(GameTime gameTime)
         {
             Point position = Mouse.GetState().Position;
-            System.Console.WriteLine(position);
 
             if (displayHUD1 || !twoPlayers) {
                 foreach (IHudItem Item in Items[0])

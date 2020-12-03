@@ -24,11 +24,8 @@ namespace Game1.Command
         {
             if (stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                AudioManager.StopAllMusic();
-
                 game.SetMode((game.State as GameStateStart).GetOption());
                 
-
                 game.SetState(new GameStateStartToSpawn(game));
 
                 stopWatch.Restart();

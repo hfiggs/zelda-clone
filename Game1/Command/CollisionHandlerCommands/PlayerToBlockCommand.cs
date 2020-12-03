@@ -5,8 +5,6 @@ using Game1.Environment;
 using Game1.Player;
 using Game1.Util;
 using Microsoft.Xna.Framework;
-using System.Collections;
-using System.Linq;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
@@ -64,3 +62,4 @@ namespace Game1.Command.CollisionHandlerCommands
         }
     }
 }
+

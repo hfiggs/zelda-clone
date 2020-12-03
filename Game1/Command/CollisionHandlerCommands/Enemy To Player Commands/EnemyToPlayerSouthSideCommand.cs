@@ -34,7 +34,7 @@ namespace Game1.Command.CollisionHandlerCommands
 
                 if (player.PlayerInventory.HalfHeartCount != 0)
                 {
-                    game.SetState(new GameStateWallmaster(game));
+                    game.SetState(new GameStateWallmaster(game, player));
                 }
             }
             else

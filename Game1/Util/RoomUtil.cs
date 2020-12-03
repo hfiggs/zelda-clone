@@ -64,7 +64,7 @@ namespace Game1.Util
                     lastDirection = dir;
                 }
 
-                if (playersAgree)
+                if (playersAgree || game.Mode == 2)
                 {
                     switch (lZ.GetTransitionDirection())
                     {
