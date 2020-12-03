@@ -36,7 +36,7 @@ namespace AStarPathfinding
         var openList = new List<Location>();
         var closedList = new List<Location>();
         int g = 0;
-        const int runTimer = 50;
+        const int runTimer = 500;
         int iteration = 0;
         // start by adding the original position to the open list
         openList.Add(start);

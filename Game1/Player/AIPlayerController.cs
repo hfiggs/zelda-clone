@@ -18,6 +18,7 @@ namespace Game1.Player
         private IPlayer nonControlledPlayer;
         private Screen screen;
         private IEnemy target;
+        private char direction;
         private const float distanceFromTarget = 24f;
 
         public AIPlayerController(IPlayer player, IPlayer AIPlayer, Screen screen)
@@ -79,8 +80,25 @@ namespace Game1.Player
                     DecideDirection(controlledPlayerHB, enemyHB, obstacles);
                 }
                 else
+                {
+                    if (Math.Abs(yDiff) > Math.Abs(xDiff))
+                    {
+                        if (yDiff < 0 && direction != 'S')
+                        {
+                            controlledPlayer.MoveDown();
+                            controlledPlayer.Attack();
+                        }
+                        else if (yDiff > 0 && direction != 'N')
+                        {
+                            controlledPlayer.MoveUp();
+                            controlledPlayer.Attack();  
+                        }
+                        else
+                            controlledPlayer.Attack();
+                    }
+                    else
                     controlledPlayer.Attack();
-
+                }
             }
         }
 
@@ -94,18 +112,22 @@ namespace Game1.Player
                 else if (direction == -1)
                 {
                     controlledPlayer.MoveLeft();
+                    this.direction = 'E';
                 }
                 else if (direction == 1)
                 {
                     controlledPlayer.MoveRight();
+                    this.direction = 'W';
                 }
                 else if (direction == 2)
                 {
                     controlledPlayer.MoveUp();
+                    this.direction = 'N';
                 }
                 else if (direction == 4)
                 {
                     controlledPlayer.MoveDown();
+                    this.direction = 'S';
                 }
         }
     }
