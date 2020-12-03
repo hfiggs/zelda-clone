@@ -25,7 +25,23 @@ namespace Game1.Command.CollisionHandlerCommands
             IProjectile proj = ((IProjectile)collision.collider);
             IEnvironment envo = (IEnvironment)collision.collidee;
 
-            if (proj is BombProjectile && proj.GetHitbox().Width > bombWidth && proj.GetHitbox().Height > bombHeight)
+            if (proj is PortalProjectile && envo is PortalBlock)
+            {
+                switch (((PortalProjectile)proj).PortalColor)
+                {
+                    case PortalColor.Blue:
+                        game.Screen.PortalManager.BluePortal = (PortalBlock)envo;
+                        break;
+                    case PortalColor.Orange:
+                        game.Screen.PortalManager.OrangePortal = (PortalBlock)envo;
+                        break;
+                    default:
+                        break;
+                }
+
+                proj.BeginDespawn();
+            }
+            else if (proj is BombProjectile && proj.GetHitbox().Width > bombWidth && proj.GetHitbox().Height > bombHeight)
             {
                 RoomUtil.OpenBombableDoor(game.Screen, envo);
             }

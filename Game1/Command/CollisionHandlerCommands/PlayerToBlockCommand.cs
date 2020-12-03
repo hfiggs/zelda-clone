@@ -1,11 +1,12 @@
 ﻿/* Author: Hunter Figgs */
 
-using Game1.Audio;
 using Game1.Collision_Handling;
 using Game1.Environment;
 using Game1.Player;
 using Game1.Util;
 using Microsoft.Xna.Framework;
+using System.Collections;
+using System.Linq;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
@@ -29,7 +30,11 @@ namespace Game1.Command.CollisionHandlerCommands
 
             // side is side of block (collidee)
 
-            if (enviro is MovableBlock mB && !(mB.hasMoved) && mB.Pushable)
+            if (enviro is PortalBlock portal && (portal.State == PortalBlockState.Blue || portal.State == PortalBlockState.Orange))
+            {
+                PortalUtil.HandlePortal(portal, player, game.Screen.CurrentRoom);
+            }
+            else if (enviro is MovableBlock mB && !(mB.hasMoved) && mB.Pushable)
             {
                 mB.Move(Vector2.Multiply(CompassDirectionUtil.GetDirectionVector(side), negativeVector), moveBlockTime);
             }

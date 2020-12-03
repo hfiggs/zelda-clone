@@ -76,7 +76,8 @@ namespace Game1.Player
             }
             else if (!player.PlayerInventory.IsItemInUse(ItemEnum.PortalGun))
             {
-                player.SpawnProjectile(new PortalProjectile(Util.CompassDirection.East, position, player));
+                player.SpawnProjectile(new PortalProjectile(Util.CompassDirection.East, position, player, PortalGunManager.Instance.Player1Color));
+                PortalGunManager.Instance.Shoot(player);
             }
         }
 

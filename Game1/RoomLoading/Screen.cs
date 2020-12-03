@@ -28,6 +28,7 @@ namespace Game1.RoomLoading
         private readonly Game1 game;
         private CollisionDetector detector;
         private CollisionHandler handler;
+        public PortalManager PortalManager { get; private set; }
 
         private const char startingLetter = 'G';
         private const int startingNumber = 2;
@@ -44,6 +45,8 @@ namespace Game1.RoomLoading
 
             //BAD - REMOVE once screen is fully listized, solely so that UI can work so I can test
             Player = Players[0];
+
+            PortalManager = new PortalManager(this);
 
             //Players.Add(Player);
             //Players.Add(Player2);
@@ -75,6 +78,8 @@ namespace Game1.RoomLoading
             }
             
             handler.HandleCollisions(detector.GetCollisionList());
+
+            PortalManager.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)

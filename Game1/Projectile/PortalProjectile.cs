@@ -7,10 +7,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Projectile
 {
+    public enum PortalColor
+    {
+        Blue = 0,
+        Orange = 1
+    }
+
     class PortalProjectile : IProjectile
     {
         private readonly ISprite sprite;
         private Vector2 position;
+
+        public PortalColor PortalColor { get; set; }
 
         private const int hitboxOffset = 15, hitboxDiameter = 10;
 
@@ -26,10 +34,12 @@ namespace Game1.Projectile
 
         public IPlayer Player { get; private set; }
 
-        public PortalProjectile(CompassDirection direction, Vector2 position, IPlayer player)
+        public PortalProjectile(CompassDirection direction, Vector2 position, IPlayer player, PortalColor portalColor)
         {
             this.position = position;
             Player = player;
+
+            PortalColor = portalColor;
 
             Player.PlayerInventory.SetItemInUse(ItemEnum.PortalGun, true);
 

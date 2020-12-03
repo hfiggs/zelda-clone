@@ -6,14 +6,14 @@ using System.Collections.Generic;
 
 namespace Game1.Environment
 {
-    enum PortalBlockState
+    public enum PortalBlockState
     {
         Normal = 0,
         Blue = 1,
         Orange = 2
     }
 
-    class PortalBlock : IEnvironment
+    public class PortalBlock : IEnvironment
     {
         private ISprite sprite;
         private readonly Vector2 position;
@@ -27,6 +27,9 @@ namespace Game1.Environment
         private float timeUntilNextFrame; // ms
         private const float animationTime = 100f; // ms per frame
 
+        public bool IsReady { get; set; }
+        public bool IsOccupied { get; set; }
+
         public PortalBlock(Vector2 position)
         {
             sprite = EnvironmentSpriteFactory.instance.CreatePortalBlock();
@@ -37,6 +40,9 @@ namespace Game1.Environment
             timeUntilNextFrame = animationTime;
 
             state = PortalBlockState.Normal;
+
+            IsReady = true;
+            IsOccupied = false;
         }
 
         public void Update(GameTime gameTime)
@@ -48,6 +54,13 @@ namespace Game1.Environment
                 sprite.Update();
                 timeUntilNextFrame += animationTime;
             }
+
+            if (!IsOccupied && !IsReady)
+            {
+                IsReady = true;
+            }
+
+            IsOccupied = false;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -76,8 +89,12 @@ namespace Game1.Environment
                     case PortalBlockState.Normal:
                     default:
                         sprite = EnvironmentSpriteFactory.instance.CreatePortalBlock();
+                        IsReady = true;
+                        IsOccupied = false;
                         break;
                 }
+
+                state = value;
             }
         }
     }

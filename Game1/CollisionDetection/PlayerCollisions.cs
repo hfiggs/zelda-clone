@@ -89,7 +89,7 @@ namespace Game1.CollisionDetection
                 }
 
                 bool collision = false;
-                foreach (IEnvironment environment in EnvironmentList)
+                foreach (IEnvironment environment in CollisonDetectionUtil.GetSingleCollisionObjects(EnvironmentList))
                 {
                     foreach (Rectangle envHitbox in environment.GetHitboxes())
                     {
@@ -99,16 +99,31 @@ namespace Game1.CollisionDetection
                         {
                             char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
                             collisionList.Add(new Collision(side, intersectPlayer, player, environment));
-                            collision = true;
+                            
                             if(environment is LoadZone)
                             {
                                 foundLoadZoneCollision[outerLoadZoneLoopCounter] = true;
                             }
+
+                            collision = true;
                             break;
                         }
                     }
                     if (collision)
                         break;
+                }
+
+                foreach (IEnvironment environment in CollisonDetectionUtil.GetMultiCollisionObjects(EnvironmentList))
+                {
+                    foreach (Rectangle envHitbox in environment.GetHitboxes())
+                    {
+                        Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, envHitbox);
+                        if (!intersectPlayer.IsEmpty)
+                        {
+                            char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
+                            collisionList.Add(new Collision(side, intersectPlayer, player, environment));
+                        }
+                    }
                 }
 
                 // Player collides with Player

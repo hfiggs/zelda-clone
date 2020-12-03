@@ -6,6 +6,22 @@
 		<Y>32</Y>
 	</NonInteractEnviornment>
 
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>32</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>48</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>64</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+
 <!--Left Water Column-->
 	<InteractEnviornment>
 		<Type>OverworldWater</Type>
