@@ -19,13 +19,15 @@ namespace Game1.Player
         private Screen screen;
         private IEnemy target;
         private char direction;
-        private const float distanceFromTarget = 24f;
-
+        private const float distanceFromTarget = 30f;
+        private const float distanceFromPlayer = 24f;
+        private Stack<int> Directions;
         public AIPlayerController(IPlayer player, IPlayer AIPlayer, Screen screen)
         {
             controlledPlayer = AIPlayer;
             nonControlledPlayer = player;
             this.screen = screen;
+            Directions = new Stack<int>();
         }
 
         public void Update(GameTime time)
@@ -39,14 +41,22 @@ namespace Game1.Player
             {
                 obstacles.AddRange(env.GetHitboxes());
             }
-
-            if (screen.CurrentRoom.EnemyList.Count + screen.CurrentRoom.DecoratedEnemyList.Count == 0)
+            bool containsTrap = false;
+            foreach(IEnemy E in screen.CurrentRoom.EnemyList)
             {
+                if(E.GetType() == typeof(SpikeTrap))
+                {
+                    containsTrap = true;
+                }
+            }
+            if (screen.CurrentRoom.EnemyList.Count + screen.CurrentRoom.DecoratedEnemyList.Count == 0 || containsTrap)
+            {
+
                 Rectangle nonControlledPlayerHB = nonControlledPlayer.GetPlayerHitbox();
                 xDiff = nonControlledPlayerHB.X - controlledPlayerHB.X;
                 yDiff = nonControlledPlayerHB.Y - controlledPlayerHB.Y;
 
-                if (Math.Abs(xDiff) + Math.Abs(yDiff) >= distanceFromTarget)
+                if (Math.Abs(xDiff) + Math.Abs(yDiff) >= distanceFromPlayer)
                 {
                     DecideDirection(controlledPlayerHB, nonControlledPlayerHB, obstacles);
                 }
@@ -68,6 +78,7 @@ namespace Game1.Player
                 }
                 foreach(IEnemy enemy in screen.CurrentRoom.DecoratedEnemyList)
                 {
+                    if(!enemy.Equals(target))
                     obstacles.AddRange(enemy.GetHitboxes());
                 }
                 foreach(IProjectile proj in screen.CurrentRoom.ProjectileList)
@@ -81,22 +92,6 @@ namespace Game1.Player
                 }
                 else
                 {
-                    if (Math.Abs(yDiff) > Math.Abs(xDiff))
-                    {
-                        if (yDiff < 0 && direction != 'S')
-                        {
-                            controlledPlayer.MoveDown();
-                            controlledPlayer.Attack();
-                        }
-                        else if (yDiff > 0 && direction != 'N')
-                        {
-                            controlledPlayer.MoveUp();
-                            controlledPlayer.Attack();  
-                        }
-                        else
-                            controlledPlayer.Attack();
-                    }
-                    else
                     controlledPlayer.Attack();
                 }
             }
@@ -104,31 +99,47 @@ namespace Game1.Player
 
         private void DecideDirection(Rectangle controlledPlayerHB, Rectangle nonControlledPlayerHB, List<Rectangle> obstacles)
         {
+            int direction = 0;
+            if (Directions.Count == 0)
+                Directions = AStarPathfinding.Program.findNextDecision(controlledPlayerHB, nonControlledPlayerHB, obstacles);
+            if (Directions.Count != 0)
+                direction = Directions.Pop();
+            else
+                controlledPlayer.Attack();
+            if (direction == -5)
+            {
 
-                int direction = AStarPathfinding.Program.findNextDecision(controlledPlayerHB, nonControlledPlayerHB, obstacles);
-                if (direction == -5)
-                {
-                }
-                else if (direction == -1)
-                {
+            }
+            else if (direction == -2)
+            {
+                controlledPlayer.MoveLeft();
+                if (this.direction != 'E')
                     controlledPlayer.MoveLeft();
-                    this.direction = 'E';
-                }
-                else if (direction == 1)
-                {
+                this.direction = 'E';
+            }
+            else if (direction == 2)
+            {
+
+                controlledPlayer.MoveRight();
+                if (this.direction != 'W')
                     controlledPlayer.MoveRight();
-                    this.direction = 'W';
-                }
-                else if (direction == 2)
-                {
+                this.direction = 'W';
+            }
+            else if (direction == 1)
+            {
+                controlledPlayer.MoveUp();
+                if (this.direction != 'N')
                     controlledPlayer.MoveUp();
-                    this.direction = 'N';
-                }
-                else if (direction == 4)
-                {
+                this.direction = 'N';
+            }
+            else if (direction == 5)
+            {
+                controlledPlayer.MoveDown();
+                if (this.direction != 'S')
                     controlledPlayer.MoveDown();
-                    this.direction = 'S';
-                }
+                this.direction = 'S';
+            }
+            
         }
     }
 }
