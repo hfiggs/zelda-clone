@@ -1,5 +1,6 @@
 ﻿/* Author: Hunter Figgs */
 
+using Game1.Audio;
 using Game1.GameState;
 using System.Diagnostics;
 
@@ -20,6 +21,8 @@ namespace Game1.Command
             if(!executed)
             {
                 (game.State as GameStateStart).MoveCursor();
+                AudioManager.PlayFireForget("rupeeAddShort");
+                AudioManager.PlayFireForget("shield");
                 executed = true;
             }
         }

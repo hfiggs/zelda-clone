@@ -132,36 +132,50 @@ namespace Game1.Util
 
         public static void OpenLockedDoor(Screen screen, IEnvironment envo, IPlayer player)
         {
+            bool playerHasKey = player.PlayerInventory.KeyCount > 0;
+            bool doorOpened = false;
+
             switch (envo)
             {
                 case DoorNLocked _:
-                    if (((DoorNLocked)envo).open == 0 && player.PlayerInventory.SubKey())
+                    if (((DoorNLocked)envo).open == 0 && playerHasKey)
                     {
                         ((DoorNLocked)envo).Open(false);
                         OpenAdjacentLockedDoor(screen, CompassDirection.North);
+                        doorOpened = true;
                     }
                     break;
                 case DoorELocked _:
-                    if (((DoorELocked)envo).open == 0 && player.PlayerInventory.SubKey())
+                    if (((DoorELocked)envo).open == 0 && playerHasKey)
                     {
                         ((DoorELocked)envo).Open(false);
                         OpenAdjacentLockedDoor(screen, CompassDirection.East);
+                        doorOpened = true;
                     }
                     break;
                 case DoorSLocked _:
-                    if (((DoorSLocked)envo).open == 0 && player.PlayerInventory.SubKey())
+                    if (((DoorSLocked)envo).open == 0 && playerHasKey)
                     {
                         ((DoorSLocked)envo).Open(false);
                         OpenAdjacentLockedDoor(screen, CompassDirection.South);
+                        doorOpened = true;
                     }
                     break;
                 case DoorWLocked _:
-                    if (((DoorWLocked)envo).open == 0 && player.PlayerInventory.SubKey())
+                    if (((DoorWLocked)envo).open == 0 && playerHasKey)
                     {
                         ((DoorWLocked)envo).Open(false);
                         OpenAdjacentLockedDoor(screen, CompassDirection.West);
+                        doorOpened = true;
                     }
                     break;
+            }
+
+            if (doorOpened) {
+                foreach (IPlayer Player in screen.Players)
+                {
+                    Player.PlayerInventory.SubKey();
+                }
             }
         }
 

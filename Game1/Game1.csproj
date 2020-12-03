@@ -66,6 +66,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Audio\AudioFactory.cs" />
     <Compile Include="CollisionDetection\ProjectileCollisions.cs" />
     <Compile Include="CollisionDetection\EnemyCollisions.cs" />
     <Compile Include="CollisionDetection\PlayerCollisions.cs" />

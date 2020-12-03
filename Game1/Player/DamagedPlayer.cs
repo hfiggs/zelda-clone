@@ -108,7 +108,7 @@ namespace Game1.Player
                 decoratedPlayer.UseItem();
         }
 
-        private void RemoveDecorator() => game.Screen.Player = decoratedPlayer;
+        private void RemoveDecorator() => game.Screen.Players[playerID - 1] = decoratedPlayer;
 
         public void SetState(IPlayerState state) => decoratedPlayer.SetState(state);
 

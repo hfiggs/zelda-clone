@@ -110,7 +110,10 @@ namespace Game1.GameState
 
             newRoom.Draw(spriteBatch, color);
 
-            game.Screen.Player.Draw(spriteBatch, Color.White);
+            foreach (IPlayer p in game.Screen.Players)
+            {
+                p.Draw(spriteBatch, Color.White);
+            }
 
             spriteBatch.End();
 

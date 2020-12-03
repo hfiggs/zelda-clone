@@ -84,11 +84,11 @@ namespace Game1.Player
 
         public void ReceiveDamage(int halfHearts, Vector2 direction)
         {
-            PlayerInventory.SubHealth(1);
+            PlayerInventory.SubHealth(halfHearts);
 
             if(PlayerInventory.HalfHeartCount <= 0)
             {
-                game.SetState(new GameStateLosePhase1(game));
+                game.SetState(new GameStateLosePhase1(game, this));
             } else
             {
                 game.Screen.Players[playerID - 1] = new DamagedPlayer(game, this, direction);

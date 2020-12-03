@@ -15,8 +15,6 @@ namespace Game1.RoomLoading
     {
         public List<IPlayer> Players;
         private List<Rectangle> PlayerHitboxes;
-        public IPlayer Player { get; set; }
-        //public IPlayer Player2 { get; set; }
 
         private readonly Vector2 playerPosition = new Vector2(100.0f, 88.0f);
         private readonly Vector2 nextPlayerOffset = new Vector2(20.0f, 0.0f);
@@ -36,17 +34,9 @@ namespace Game1.RoomLoading
         {
             this.game = game;
             RoomsDict = new Dictionary<(char, int), Room>();
-            //Player = new Player1(game, playerPosition);
-            //Player2 = new Player2(game, player2Position);
             Players = new List<IPlayer>();
             PlayerHitboxes = new List<Rectangle>();
             HandleGameMode();
-
-            //BAD - REMOVE once screen is fully listized, solely so that UI can work so I can test
-            Player = Players[0];
-
-            //Players.Add(Player);
-            //Players.Add(Player2);
         }
 
         public void LoadAllRooms()
@@ -70,9 +60,8 @@ namespace Game1.RoomLoading
         {
             CurrentRoom.Update(gameTime);
 
-            foreach(IPlayer player in Players)
-            {
-                player.Update(gameTime);
+            for (int i = 0; i < Players.Count; i++) {
+                Players[i].Update(gameTime);
             }
 
             if (game.Mode == 2)
@@ -95,7 +84,6 @@ namespace Game1.RoomLoading
 
         public List<Rectangle> GetPlayerRectangle()
         {
-            //return Players[playerIndex].GetPlayerHitbox();
             PlayerHitboxes.Clear();
             foreach(IPlayer p in Players)
             {
