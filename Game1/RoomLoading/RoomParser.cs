@@ -399,6 +399,9 @@ namespace Game1.RoomLoading
                     case "PortalBlock":
                         interactEnviornment = new PortalBlock(position);
                         break;
+                    case "LaserField":
+                        interactEnviornment = new LaserField(position);
+                        break;
 
                     default:
                         throw new System.ArgumentException(errorMessage, errorParamName);

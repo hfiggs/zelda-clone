@@ -120,6 +120,7 @@
     <Compile Include="Environment\Overworld\OverworldRock\OverworldRockBM.cs" />
     <Compile Include="Environment\Overworld\OverworldFloorTile.cs" />
     <Compile Include="Environment\Overworld\OverworldFloor.cs" />
+    <Compile Include="Environment\Tiles\LaserField.cs" />
     <Compile Include="Environment\Tiles\PortalBlock.cs" />
     <Compile Include="GameState\GameStateLosePhase3.cs" />
     <Compile Include="GameState\GameStateLosePhase2.cs" />

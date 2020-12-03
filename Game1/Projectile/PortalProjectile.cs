@@ -101,5 +101,10 @@ namespace Game1.Projectile
             shouldDelete = true;
             Player.PlayerInventory.SetItemInUse(ItemEnum.PortalGun, false);
         }
+
+        public void EditPosition(Vector2 amount)
+        {
+            position = Vector2.Add(amount, position);
+        }
     }
 }

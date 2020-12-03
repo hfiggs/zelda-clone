@@ -32,7 +32,7 @@ namespace Game1.Command.CollisionHandlerCommands
 
             if (enviro is PortalBlock portal && (portal.State == PortalBlockState.Blue || portal.State == PortalBlockState.Orange))
             {
-                PortalUtil.HandlePortal(portal, player, game.Screen.CurrentRoom);
+                PortalUtil.HandlePlayerPortal(portal, player, game.Screen.CurrentRoom);
             }
             else if (enviro is MovableBlock mB && !(mB.hasMoved) && mB.Pushable)
             {

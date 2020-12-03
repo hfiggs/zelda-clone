@@ -72,7 +72,7 @@ namespace Game1.Player
         {
             if (player.PlayerInventory.EquippedItem != ItemEnum.PortalGun)
             {
-                player.SetState(new PlayerStateRightUse(player, position));
+                player.SetState(new PlayerStateUpUse(player, position));
             }
             else if (!player.PlayerInventory.IsItemInUse(ItemEnum.PortalGun))
             {

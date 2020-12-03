@@ -25,21 +25,13 @@ namespace Game1.Command.CollisionHandlerCommands
             IProjectile proj = ((IProjectile)collision.collider);
             IEnvironment envo = (IEnvironment)collision.collidee;
 
-            if (proj is PortalProjectile && envo is PortalBlock)
+            if (envo is LaserField)
             {
-                switch (((PortalProjectile)proj).PortalColor)
-                {
-                    case PortalColor.Blue:
-                        game.Screen.PortalManager.BluePortal = (PortalBlock)envo;
-                        break;
-                    case PortalColor.Orange:
-                        game.Screen.PortalManager.OrangePortal = (PortalBlock)envo;
-                        break;
-                    default:
-                        break;
-                }
-
                 proj.BeginDespawn();
+            }
+            else if (envo is PortalBlock portalBlock)
+            {
+                PortalUtil.HandleProjectilePortal(portalBlock, proj, game.Screen);
             }
             else if (proj is BombProjectile && proj.GetHitbox().Width > bombWidth && proj.GetHitbox().Height > bombHeight)
             {

@@ -6,22 +6,6 @@
 		<Y>32</Y>
 	</NonInteractEnviornment>
 
-	<InteractEnviornment>
-		<Type>PortalBlock</Type>
-		<X>32</X>
-		<Y>32</Y>
-	</InteractEnviornment>
-	<InteractEnviornment>
-		<Type>PortalBlock</Type>
-		<X>48</X>
-		<Y>32</Y>
-	</InteractEnviornment>
-	<InteractEnviornment>
-		<Type>PortalBlock</Type>
-		<X>64</X>
-		<Y>32</Y>
-	</InteractEnviornment>
-
 <!--Left Water Column-->
 	<InteractEnviornment>
 		<Type>OverworldWater</Type>
@@ -219,6 +203,7 @@
 		<X>224</X>
 		<Y>64</Y>
 	</InteractEnviornment>
+	<!--
 	<InteractEnviornment>
 		<Type>InvisibleWall</Type>
 		<X>224</X>
@@ -226,6 +211,7 @@
 		<W>16</W>
 		<H>16</H>
 	</InteractEnviornment>
+	-->
 	<NonInteractEnviornment>
 		<Type>OverworldFloorTile</Type>
 		<X>224</X>
@@ -711,5 +697,11 @@
 		<Type>EnterDungeonLoadZone</Type>
 		<X>104</X>
 		<Y>64</Y>
+	</InteractEnviornment>
+
+	<InteractEnviornment>
+		<Type>LoadZoneE</Type>
+		<X>255</X>
+		<Y>72</Y>
 	</InteractEnviornment>
 </Assets>

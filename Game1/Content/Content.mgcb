@@ -445,6 +445,18 @@
 /processorParam:TextureFormat=Color
 /build:Images/Environment/Overworld/TreeDoor.png
 
+#begin Images/Environment/Portal/LaserField.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Portal/LaserField.png
+
 #begin Images/Environment/Portal/Portal.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1033,6 +1045,9 @@
 #begin RoomXML/RoomE2.xml
 /copy:RoomXML/RoomE2.xml
 
+#begin RoomXML/RoomE4.xml
+/copy:RoomXML/RoomE4.xml
+
 #begin RoomXML/RoomF1.xml
 /copy:RoomXML/RoomF1.xml
 
@@ -1042,8 +1057,17 @@
 #begin RoomXML/RoomF3.xml
 /copy:RoomXML/RoomF3.xml
 
+#begin RoomXML/RoomF4.xml
+/copy:RoomXML/RoomF4.xml
+
 #begin RoomXML/RoomG2.xml
 /copy:RoomXML/RoomG2.xml
+
+#begin RoomXML/RoomG3.xml
+/copy:RoomXML/RoomG3.xml
+
+#begin RoomXML/RoomG4.xml
+/copy:RoomXML/RoomG4.xml
 
 #begin RoomXML/RoomZ0.xml
 /copy:RoomXML/RoomZ0.xml

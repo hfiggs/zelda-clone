@@ -23,7 +23,11 @@ namespace Game1.Player.PlayerInventory
             HalfHeartCount = defaultHalfHearts;
             MaxHalfHearts = defaultHalfHearts;
 
-            hasItem = new bool[numItems] { true, false, false, false, true, false, false , true };
+            //hasItem = new bool[numItems] { true, false, false, false, true, false, false , true };
+
+            hasItem = new bool[numItems] { true, true, true, true, true, false, false , true };
+            RupeeCount = 16;
+
             isItemInUse = new bool[numItems] { false, false, false, false, false, false, false , false };
 
             BombCount = maxBombCount;
