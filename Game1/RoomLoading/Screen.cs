@@ -38,6 +38,8 @@ namespace Game1.RoomLoading
             Players = new List<IPlayer>();
             PlayerHitboxes = new List<Rectangle>();
             HandleGameMode();
+
+            PortalManager = new PortalManager(this);
         }
 
         public void LoadAllRooms()
