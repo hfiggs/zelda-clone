@@ -37,7 +37,7 @@ namespace Game1.Command.CollisionHandlerCommands
                     break;
             }
 
-            if (!projectile.GetType().Equals(typeof(SwordBeam)) && !projectile.GetType().Equals(typeof(EnemyBoomerang)) && !projectile.GetType().Equals(typeof(Fireballs))) {
+            if (!projectile.GetType().Equals(typeof(SwordBeam)) && !projectile.GetType().Equals(typeof(EnemyBoomerang)) && !projectile.GetType().Equals(typeof(Fireballs)) && !projectile.GetType().Equals(typeof(SingleFireball))) {
                 AudioManager.PlayItemSound(item);
             }
         }

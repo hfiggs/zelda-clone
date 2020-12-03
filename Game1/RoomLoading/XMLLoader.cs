@@ -29,6 +29,8 @@ namespace Game1.RoomLoading
                         xmlDoc.DocumentElement.RemoveChild(xmlDoc.DocumentElement.SelectSingleNode("Hard"));
                     break;
                 default:
+                    if (xmlDoc.GetElementsByTagName("Medium").Count > 0)
+                        xmlDoc.DocumentElement.RemoveChild(xmlDoc.DocumentElement.SelectSingleNode("Medium"));
                     break;
                
             }

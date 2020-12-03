@@ -310,4 +310,16 @@
 			<Y>80</Y>
 		</Enemy>
 	</Medium>
+	<Hard>
+		<Enemy>
+			<Type>HardSkeleton</Type>
+			<X>42</X>
+			<Y>80</Y>
+		</Enemy>
+		<Enemy>
+			<Type>HardSkeleton</Type>
+			<X>128</X>
+			<Y>80</Y>
+		</Enemy>
+	</Hard>
 </Assets>

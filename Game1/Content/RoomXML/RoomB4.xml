@@ -169,4 +169,11 @@
 			<Y>175</Y>
 		</InteractEnviornment>
 	</Easy>
+	<Hard>
+		<Enemy>
+			<Type>Aquamentus</Type>
+			<X>128</X>
+			<Y>48</Y>
+		</Enemy>
+	</Hard>
 </Assets>

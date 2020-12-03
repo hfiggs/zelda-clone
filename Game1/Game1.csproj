@@ -95,6 +95,11 @@
     <Compile Include="Controller\Keyboard\KeyboardQuitController.cs" />
     <Compile Include="Controller\Keyboard\KeyboardStartController.cs" />
     <Compile Include="Enemy\EnemyStateDying.cs" />
+    <Compile Include="Enemy\Goriya\HardGoriya.cs" />
+    <Compile Include="Enemy\Skeleton\ShootingSkeletonStateMoving.cs" />
+    <Compile Include="Enemy\Skeleton\ShootingSkeleton.cs" />
+    <Compile Include="Enemy\Skeleton\HardSkeleton.cs" />
+    <Compile Include="Enemy\Skeleton\HardSkeletonStateMoving.cs" />
     <Compile Include="Environment\EnterBasementLoadZone.cs" />
     <Compile Include="Environment\ExitBasementLoadZone.cs" />
     <Compile Include="Environment\ExitDungeonLoadZone.cs" />
@@ -147,7 +152,9 @@
     <Compile Include="Particle\Waterfall.cs" />
     <Compile Include="Particle\WaterfallSpray.cs" />
     <Compile Include="Player\Player2.cs" />
+    <Compile Include="Projectile\EnemyArrow.cs" />
     <Compile Include="Projectile\CandleFire.cs" />
+    <Compile Include="Projectile\SingleFireball.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -156,6 +163,7 @@
     <Compile Include="RoomLoading\Puzzle\PuzzleSpawnBoomerang.cs" />
     <Compile Include="Sprite\StartSprite.cs" />
     <Compile Include="Sprite\StartSpriteFactory.cs" />
+    <Compile Include="Util\AStarUtil.cs" />
     <Compile Include="Util\ColorIterator.cs" />
     <Compile Include="Util\GameStateUtil.cs" />
     <Compile Include="Util\ContentUtil.cs" />

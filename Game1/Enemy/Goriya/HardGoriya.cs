@@ -5,23 +5,23 @@ using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
-    class Goriya : IEnemy
+    class HardGoriya : IEnemy
     {
         public int StunnedTimer { get; set; } = 0;
 
         private Vector2 oldDirection;
         private double totalElapsedSeconds;
-        private const double attackCooldown = 1;
+        private const double attackCooldown = .2;
         private IEnemyState state;
         private Game1 game;
         private Vector2 position;
 
         private float health;
-
-        public Goriya(Game1 game, Vector2 spawnPosition)
+        
+        public HardGoriya(Game1 game, Vector2 spawnPosition)
         {
-            const float threeHearts = 3.0f;
-            health = threeHearts;
+            const float eightHearts = 8.0f;
+            health = eightHearts;
             this.game = game;
             this.position = spawnPosition;
             state = new EnemyStateSpawning(position, this, new GoriyaStateMovingRight(game, this, spawnPosition));

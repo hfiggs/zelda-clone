@@ -51,7 +51,7 @@ namespace Game1.Projectile
                     position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 } else if (direction == south) {
                     position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == widthAndHeight) {
+                } else if (direction == west) {
                     position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 } else {
                     position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -61,7 +61,7 @@ namespace Game1.Projectile
                     position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 } else if (direction == south) {
                     position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                } else if (direction == widthAndHeight) {
+                } else if (direction == west) {
                     position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 } else {
                     position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;

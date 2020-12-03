@@ -132,7 +132,7 @@
 		<Enemy>
 			<Type>Skeleton</Type>
 			<X>80</X>
-			<Y>92</Y>
+			<Y>48</Y>
 		</Enemy>
 		<Enemy>
 			<Type>Skeleton</Type>
@@ -140,4 +140,16 @@
 			<Y>108</Y>
 		</Enemy>
 	</Medium>
+	<Hard>
+		<Enemy>
+			<Type>ShootingSkeleton</Type>
+			<X>200</X>
+			<Y>92</Y>
+		</Enemy>
+		<!--<Enemy>
+			<Type>ShootingSkeleton</Type>
+			<X>96</X>
+			<Y>108</Y>
+		</Enemy>-->
+	</Hard>
 </Assets>

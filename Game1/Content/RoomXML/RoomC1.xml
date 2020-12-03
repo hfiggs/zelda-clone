@@ -104,4 +104,21 @@
 			<Y>104</Y>
 		</Enemy>
 	</Medium>
+	<Hard>
+		<Enemy>
+			<Type>Jelly</Type>
+			<X>128</X>
+			<Y>72</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Jelly</Type>
+			<X>160</X>
+			<Y>40</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Jelly</Type>
+			<X>160</X>
+			<Y>104</Y>
+		</Enemy>
+	</Hard>
 </Assets>

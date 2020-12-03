@@ -18,7 +18,7 @@ namespace Game1.Enemy
         private const float animationTime = 150f; // ms per frame
 
         private float timeUntilNewDirection;
-        private const float moveTime = 1000f; // ms
+        private const float moveTime = 1500f; // ms
 
         private const float moveSpeed = 0.6f;
 

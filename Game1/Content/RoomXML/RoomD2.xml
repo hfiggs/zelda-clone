@@ -126,4 +126,11 @@
 			<Y>32</Y>
 		</Enemy>
 	</Medium>
+	<Hard>
+		<Enemy>
+			<Type>HardSkeleton</Type>
+			<X>80</X>
+			<Y>32</Y>
+		</Enemy>
+	</Hard>
 </Assets>

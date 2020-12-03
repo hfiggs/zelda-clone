@@ -122,6 +122,9 @@ namespace Game1.RoomLoading
                     case "Goriya":
                         enemy = new Goriya(game, position);
                         break;
+                    case "HardGoriya":
+                        enemy = new HardGoriya(game, position);
+                        break;
                     case "Hand":
                         enemy = new Hand(game, position);
                         break;
@@ -136,6 +139,12 @@ namespace Game1.RoomLoading
                         break;
                     case "Skeleton":
                         enemy = new Skeleton(game, position);
+                        break;
+                    case "HardSkeleton":
+                        enemy = new HardSkeleton(game, position);
+                        break;
+                    case "ShootingSkeleton":
+                        enemy = new ShootingSkeleton(game, position);
                         break;
                     case "SkeletonKey":
                         enemy = new Skeleton(game, room, position, new Key(position));

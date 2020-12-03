@@ -218,4 +218,11 @@
 			<Y>72</Y>
 		</InteractEnviornment>
 	</Easy>
+	<Hard>
+		<Enemy>
+			<Type>Snake</Type>
+			<X>48</X>
+			<Y>128</Y>
+		</Enemy>
+	</Hard>
 </Assets>

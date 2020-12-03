@@ -15,7 +15,7 @@ namespace Game1.Enemy
         public ISprite Sprite { get; private set; }
 
         private float timeUntilNewDirection;
-        private const float moveTime = 1000f; // ms
+        private const float moveTime = 1500f; // ms
 
         public DodongoStateLeftSwallow(IEnemy dodongo, Vector2 position)
         {

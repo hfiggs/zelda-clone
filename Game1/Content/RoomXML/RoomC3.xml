@@ -113,4 +113,11 @@
 			<Y>104</Y>
 		</Enemy>
 	</Medium>
+	<Hard>
+		<Enemy>
+			<Type>ShootingSkeleton</Type>
+			<X>56</X>
+			<Y>56</Y>
+		</Enemy>
+	</Hard>
 </Assets>

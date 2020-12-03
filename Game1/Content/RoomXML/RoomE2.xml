@@ -115,4 +115,21 @@
 			<Y>100</Y>
 		</Enemy>
 	</Medium>
+	<Hard>
+		<Enemy>
+			<Type>HardGoriya</Type>
+			<X>80</X>
+			<Y>28</Y>
+		</Enemy>
+		<Enemy>
+			<Type>HardGoriya</Type>
+			<X>80</X>
+			<Y>100</Y>
+		</Enemy>
+		<Enemy>
+			<Type>HardGoriya</Type>
+			<X>150</X>
+			<Y>100</Y>
+		</Enemy>
+	</Hard>
 </Assets>

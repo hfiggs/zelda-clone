@@ -134,4 +134,21 @@
 			<Y>80</Y>
 		</Enemy>
 	</Medium>
+	<Hard>
+		<Enemy>
+			<Type>Bat</Type>
+			<X>80</X>
+			<Y>48</Y>
+		</Enemy>
+		<Enemy>
+			<Type>Bat</Type>
+			<X>96</X>
+			<Y>112</Y>
+		</Enemy>
+		<Enemy>
+			<Type>ShootingSkeleton</Type>
+			<X>56</X>
+			<Y>56</Y>
+		</Enemy>
+	</Hard>
 </Assets>

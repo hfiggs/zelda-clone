@@ -195,7 +195,7 @@
 	</Easy>
 	<Medium>
 		<Enemy>
-			<Type>Goriya</Type>
+			<Type>HardGoriya</Type>
 			<X>120</X>
 			<Y>88</Y>
 		</Enemy>
