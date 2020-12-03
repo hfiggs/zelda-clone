@@ -44,7 +44,7 @@ namespace Game1.Player
             bool containsTrap = false;
             foreach(IEnemy E in screen.CurrentRoom.EnemyList)
             {
-                if(E.GetType() == typeof(SpikeTrap))
+                if(E.GetType() == typeof(SpikeTrap) || E.GetType() == typeof(OldMan))
                 {
                     containsTrap = true;
                 }

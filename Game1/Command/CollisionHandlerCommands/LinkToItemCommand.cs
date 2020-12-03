@@ -19,9 +19,12 @@ namespace Game1.Command.CollisionHandlerCommands
             IPlayer player = (IPlayer)collision.collider;
             IItem item = (IItem)collision.collidee;
 
-            CollisionHandlerUtil.HandlePlayerPickupItem(game, player, item);
+            if (!(player.GetType() == typeof(Player2) && game.Mode == 2))
+            {
+                CollisionHandlerUtil.HandlePlayerPickupItem(game, player, item);
 
-            AudioManager.PlayItemSound(item);
+                AudioManager.PlayItemSound(item);
+            }
         }
     }
 }
