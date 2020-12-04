@@ -119,6 +119,7 @@ namespace Game1.Player.PlayerInventory
         public void AddBluePotion()
         {
             if (BluePotionCount < maxBluePotionCount) BluePotionCount++;
+            hasItem[(int)ItemEnum.BluePotion] = true;
         }
 
         public bool SubBluePotion()
