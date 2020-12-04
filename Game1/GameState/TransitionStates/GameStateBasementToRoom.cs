@@ -17,7 +17,7 @@ namespace Game1.GameState
         private readonly Game1 game;
         private readonly List<IController> controllerList;
 
-        private const float transitionSpeed = 0.1f; // pixels per ms
+        private const float transitionSpeed = TransitionUtil.TransitionSpeed; // pixels per ms
 
         private const float hudOffset = -136f;
         private const float vertRoomOffset = 40f;

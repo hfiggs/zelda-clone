@@ -409,6 +409,7 @@
     <Compile Include="Enemy\Goriya\GoriyaStateMovingDown.cs" />
     <Compile Include="Util\CompassDirection.cs" />
     <Compile Include="Util\PortalUtil.cs" />
+    <Compile Include="Util\TransitionUtil.cs" />
     <Compile Include="Util\RoomUtil.cs" />
     <Compile Include="Util\SpriteLayerUtil.cs" />
   </ItemGroup>
