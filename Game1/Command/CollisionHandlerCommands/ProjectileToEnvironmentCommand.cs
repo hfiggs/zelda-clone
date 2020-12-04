@@ -25,7 +25,15 @@ namespace Game1.Command.CollisionHandlerCommands
             IProjectile proj = ((IProjectile)collision.collider);
             IEnvironment envo = (IEnvironment)collision.collidee;
 
-            if (proj is BombProjectile && proj.GetHitbox().Width > bombWidth && proj.GetHitbox().Height > bombHeight)
+            if (envo is LaserField)
+            {
+                proj.BeginDespawn();
+            }
+            else if (envo is PortalBlock portalBlock)
+            {
+                PortalUtil.HandleProjectilePortal(portalBlock, proj, game.Screen);
+            }
+            else if (proj is BombProjectile && proj.GetHitbox().Width > bombWidth && proj.GetHitbox().Height > bombHeight)
             {
                 RoomUtil.OpenBombableDoor(game.Screen, envo);
             }

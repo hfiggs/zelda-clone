@@ -14,6 +14,9 @@ namespace Game1.Environment
 		private SpriteSheet doorsBelow;
 		private SpriteSheet doorsAbove;
 		private SpriteSheet tiles;
+		private Texture2D portalTile;
+		private Texture2D laserField;
+		private Texture2D portal;
 		private SpriteSheet room;
 		private SpriteSheet doorfloors;
 		private SpriteSheet roomBase;
@@ -43,6 +46,9 @@ namespace Game1.Environment
 			this.doorsBelow = new SpriteSheet(doorsBelow, 5, 4);
 			this.doorsAbove = new SpriteSheet(doorsAbove, 5, 4);
 			this.tiles = new SpriteSheet(tiles, 4, 3);
+			portalTile = content.Load<Texture2D>("images/Environment/Portal/PortalTile");
+			laserField = content.Load<Texture2D>("images/Environment/Portal/LaserField");
+			portal = content.Load<Texture2D>("images/Environment/Portal/Portal");
 			this.room = new SpriteSheet(room, 1, 1);
 			this.doorfloors = new SpriteSheet(doorfloors, 2, 2);
 		}
@@ -76,6 +82,25 @@ namespace Game1.Environment
 		public ISprite CreateBlock()
 		{
 			return new EnvironmentSprite(tiles, blockColumn, blockRow, blockID, false);
+		}
+
+		public ISprite CreatePortalBlock()
+		{
+			return new ParticleSprite(portalTile, 0, 0, 1, 1, 1);
+		}
+
+		public ISprite CreateLaserField()
+		{
+			return new ParticleSprite(laserField, 0, 0, 1, 1, 1);
+		}
+		public ISprite CreateOrangePortal()
+		{
+			return new ParticleSprite(portal, 0, 0, 2, 27, 27);
+		}
+
+		public ISprite CreateBluePortal()
+		{
+			return new ParticleSprite(portal, 1, 0, 2, 27, 27);
 		}
 
 		public ISprite CreateStatueFish()

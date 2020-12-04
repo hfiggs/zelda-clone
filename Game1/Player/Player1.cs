@@ -31,6 +31,10 @@ namespace Game1.Player
 
         public IPlayerInventory PlayerInventory { get; private set; }
 
+        public int playerID { get; } = 1;
+
+        public bool requesting { get; set; } = false;
+
         public Player1(Game1 game, Vector2 position)
         {
             this.game = game;
@@ -80,14 +84,14 @@ namespace Game1.Player
 
         public void ReceiveDamage(int halfHearts, Vector2 direction)
         {
-            PlayerInventory.SubHealth(1);
+            PlayerInventory.SubHealth(halfHearts);
 
             if(PlayerInventory.HalfHeartCount <= 0)
             {
-                game.SetState(new GameStateLosePhase1(game));
+                game.SetState(new GameStateLosePhase1(game, this));
             } else
             {
-                game.Screen.Player = new DamagedPlayer(game, this, direction);
+                game.Screen.Players[playerID - 1] = new DamagedPlayer(game, this, direction);
             }
             if(PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
             {

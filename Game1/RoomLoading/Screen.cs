@@ -1,6 +1,7 @@
 ﻿using Game1.Collision_Handling;
 using Game1.CollisionDetection;
 using Game1.Player;
+using Game1.HUD;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -12,9 +13,12 @@ namespace Game1.RoomLoading
 {
     public class Screen
     {
-        public IPlayer Player { get; set; }
-        private readonly Vector2 playerPosition = new Vector2(100, 88);
+        public List<IPlayer> Players;
+        private List<Rectangle> PlayerHitboxes;
 
+        private readonly Vector2 playerPosition = new Vector2(100.0f, 88.0f);
+        private readonly Vector2 nextPlayerOffset = new Vector2(20.0f, 0.0f);
+        public AIPlayerController AIPlayerControl;
         public Dictionary<(char, int), Room> RoomsDict { get; set; }
         public Room CurrentRoom { get { return RoomsDict[CurrentRoomKey]; } private set { CurrentRoom = value; } }
         public (char, int) CurrentRoomKey { get; set; }
@@ -22,6 +26,7 @@ namespace Game1.RoomLoading
         private readonly Game1 game;
         private CollisionDetector detector;
         private CollisionHandler handler;
+        public PortalManager PortalManager { get; private set; }
 
         private const char startingLetter = 'G';
         private const int startingNumber = 2;
@@ -30,7 +35,11 @@ namespace Game1.RoomLoading
         {
             this.game = game;
             RoomsDict = new Dictionary<(char, int), Room>();
-            Player = new Player1(game, playerPosition);
+            Players = new List<IPlayer>();
+            PlayerHitboxes = new List<Rectangle>();
+            HandleGameMode();
+
+            PortalManager = new PortalManager(this);
         }
 
         public void LoadAllRooms(int difficulty)
@@ -54,21 +63,76 @@ namespace Game1.RoomLoading
         {
             CurrentRoom.Update(gameTime);
 
-            Player.Update(gameTime);
+            for (int i = 0; i < Players.Count; i++) {
+                Players[i].Update(gameTime);
+            }
+
+            if (game.Mode == 2)
+            {
+                AIPlayerControl.Update(gameTime);
+            }
 
             handler.HandleCollisions(detector.GetCollisionList());
+
+            PortalManager.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             CurrentRoom.Draw(spriteBatch, color);
 
-            Player.Draw(spriteBatch, color);
+           foreach(IPlayer player in Players)
+            {
+                player.Draw(spriteBatch,Color.White);
+            }
         }
 
-        public Rectangle GetPlayerRectangle()
+        public List<Rectangle> GetPlayerRectangle()
         {
-            return Player.GetPlayerHitbox();
+            PlayerHitboxes.Clear();
+            foreach(IPlayer p in Players)
+            {
+                PlayerHitboxes.Add(p.GetPlayerHitbox());
+            }
+            return PlayerHitboxes;
+        }
+
+        public void HandleGameMode()
+        {
+            Players.Clear();
+            IPlayer player;
+            IPlayer player2;
+            switch (game.Mode)
+            {
+                case 0:
+                    //singleplayer
+                    player = new Player1(game, playerPosition);
+                    Players.Add(player);
+                    PlayerHitboxes.Add(player.GetPlayerHitbox());
+                    break;
+                case 1:
+                    //multiplayer
+                    player = new Player1(game, playerPosition);
+                    Players.Add(player);
+                    player2 = new Player2(game, playerPosition + nextPlayerOffset);
+                    Players.Add(player2);
+                    foreach(IPlayer p in Players)
+                    {
+                        PlayerHitboxes.Add(p.GetPlayerHitbox());                        
+                    }
+                    break;
+                case 2:
+                    //AI
+                    player = new Player1(game, playerPosition);
+                    Players.Add(player);
+                    PlayerHitboxes.Add(player.GetPlayerHitbox());
+                    //Add AI-based constructor here
+                    player2 = new Player2(game, playerPosition + nextPlayerOffset);
+                    Players.Add(player2);
+                    AIPlayerControl = new AIPlayerController(player, player2, this);
+                    break;
+            }
+            game.HUD = new HUDInterface(Players, game.Screen);
         }
     }
 }

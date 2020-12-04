@@ -12,5 +12,6 @@ namespace Game1.Projectile
         Rectangle GetHitbox();
         bool ShouldDelete();
         void BeginDespawn();
+        void EditPosition(Vector2 amount);
     }
 }

@@ -14,8 +14,8 @@ namespace Game1.Player.PlayerInventory
         private const int maxTriforceCount = 8;
         private const int maxBluePotionCount = 1;
 
-        private const int numItems = 7;
-        private bool[] hasItem; // based on ItemEnum (None, Bow, Arrow, Boomerang, Bomb, BluePotion, BlueCandle)
+        private const int numItems = 8;
+        private bool[] hasItem; // based on ItemEnum (None, Bow, Arrow, Boomerang, Bomb, BluePotion, BlueCandle, PortalGun)
         private bool[] isItemInUse;
 
         public PlayerInventory1()
@@ -23,17 +23,14 @@ namespace Game1.Player.PlayerInventory
             HalfHeartCount = defaultHalfHearts;
             MaxHalfHearts = defaultHalfHearts;
 
-            hasItem = new bool[numItems] { true, false, false, false, true, false, false };
-            isItemInUse = new bool[numItems] { false, false, false, false, false, false, false };
+            //hasItem = new bool[numItems] { true, false, false, false, true, false, false , true };
 
-            // TODO: Remove this when item drops are working and boomerang is acquirable
-            hasItem[(int)ItemEnum.Boomerang] = true;
-            hasItem[(int)ItemEnum.BlueCandle] = true;
-            hasItem[(int)ItemEnum.BluePotion] = true;
+            hasItem = new bool[numItems] { true, true, true, true, true, false, false , true };
+            RupeeCount = 16;
+
+            isItemInUse = new bool[numItems] { false, false, false, false, false, false, false , false };
 
             BombCount = maxBombCount;
-
-            BluePotionCount = maxBluePotionCount;
 
             // everything else auto-initializes to 0 or false
         }

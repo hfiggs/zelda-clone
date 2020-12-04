@@ -82,5 +82,10 @@ namespace Game1.Projectile
             const int xdiff = 16, ydiff = 15, width = 8, height = 10;
             return new Rectangle((int)position.X + xdiff, (int)position.Y + ydiff, width, height);
         }
+
+        public void EditPosition(Vector2 amount)
+        {
+            position = Vector2.Add(amount, position);
+        }
     }
 }

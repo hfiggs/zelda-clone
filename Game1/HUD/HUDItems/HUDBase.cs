@@ -22,9 +22,7 @@ namespace Game1.HUD.HUDItems
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-
-                sprite.Draw(spriteBatch, location + movement, color);
-            
+            sprite.Draw(spriteBatch, location + movement, color);
         }
 
         public void Update(GameTime time)

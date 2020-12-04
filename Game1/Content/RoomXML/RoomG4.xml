@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Assets>
+	<InteractEnviornment>
+		<Type>RoomBorder</Type>
+		<X>0</X>
+		<Y>0</Y>
+	</InteractEnviornment>
+	<NonInteractEnviornment>
+		<Type>RoomBase</Type>
+		<X>32</X>
+		<Y>32</Y>
+	</NonInteractEnviornment>
+	<InteractEnviornment>
+		<Type>DoorWOpen</Type>
+		<X>0</X>
+		<Y>72</Y>
+	</InteractEnviornment>
+	<NonInteractEnviornment>
+		<Type>DoorWFloor</Type>
+		<X>0</X>
+		<Y>72</Y>
+	</NonInteractEnviornment>
+	<InteractEnviornment>
+		<Type>DoorNClosed</Type>
+		<X>112</X>
+		<Y>0</Y>
+	</InteractEnviornment>
+	<NonInteractEnviornment>
+		<Type>DoorNFloor</Type>
+		<X>112</X>
+		<Y>0</Y>
+	</NonInteractEnviornment>
+	<InteractEnviornment>
+		<Type>DoorSBlank</Type>
+		<X>112</X>
+		<Y>144</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>DoorEBlank</Type>
+		<X>224</X>
+		<Y>72</Y>
+	</InteractEnviornment>
+
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>64</X>
+		<Y>80</Y>
+	</InteractEnviornment>
+
+	<Item>
+		<Type>RupeeBlue</Type>
+		<X>52</X>
+		<Y>32</Y>
+	</Item>
+	<Item>
+		<Type>RupeeBlue</Type>
+		<X>52</X>
+		<Y>96</Y>
+	</Item>
+
+	<Enemy>
+		<Type>Snake</Type>
+		<X>176</X>
+		<Y>112</Y>
+	</Enemy>
+		<Enemy>
+		<Type>Snake</Type>
+		<X>176</X>
+		<Y>48</Y>
+	</Enemy>
+
+	<Puzzle>
+		<Type>PuzzleOpenDoor</Type>
+	</Puzzle>
+
+	<!-- -->
+	<!-- Top Cage -->
+	<!-- -->
+
+	<!-- First Column-->
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>144</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>144</X>
+		<Y>48</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>144</X>
+		<Y>64</Y>
+	</InteractEnviornment>
+
+	<!-- Second Column-->
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>160</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+		<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>160</X>
+		<Y>64</Y>
+	</InteractEnviornment>
+
+	<!-- Third Column-->
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>176</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>176</X>
+		<Y>64</Y>
+	</InteractEnviornment>
+
+	<!-- Fourth Column-->
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>192</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+		<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>192</X>
+		<Y>64</Y>
+	</InteractEnviornment>
+
+	<!-- Fifth Column-->
+	<InteractEnviornment>
+		<Type>Block</Type>
+		<X>208</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>208</X>
+		<Y>48</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Block</Type>
+		<X>208</X>
+		<Y>64</Y>
+	</InteractEnviornment>
+
+	<!-- -->
+	<!-- Bottom Cage -->
+	<!-- -->
+
+	<!-- First Column-->
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>144</X>
+		<Y>96</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>144</X>
+		<Y>112</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>144</X>
+		<Y>128</Y>
+	</InteractEnviornment>
+
+	<!-- Second Column-->
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>160</X>
+		<Y>96</Y>
+	</InteractEnviornment>
+		<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>160</X>
+		<Y>128</Y>
+	</InteractEnviornment>
+
+	<!-- Third Column-->
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>176</X>
+		<Y>96</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>176</X>
+		<Y>128</Y>
+	</InteractEnviornment>
+
+	<!-- Fourth Column-->
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>192</X>
+		<Y>96</Y>
+	</InteractEnviornment>
+		<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>192</X>
+		<Y>128</Y>
+	</InteractEnviornment>
+
+	<!-- Fifth Column-->
+	<InteractEnviornment>
+		<Type>Block</Type>
+		<X>208</X>
+		<Y>96</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>208</X>
+		<Y>112</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Block</Type>
+		<X>208</X>
+		<Y>128</Y>
+	</InteractEnviornment>
+
+	<InteractEnviornment>
+		<Type>LoadZoneN</Type>
+		<X>112</X>
+		<Y>0</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LoadZoneW</Type>
+		<X>0</X>
+		<Y>72</Y>
+	</InteractEnviornment>
+</Assets>

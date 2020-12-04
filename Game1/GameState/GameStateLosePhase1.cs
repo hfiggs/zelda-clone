@@ -42,10 +42,11 @@ namespace Game1.GameState
         private readonly IParticle flash1;
         private readonly IParticle flash2;
 
+        private IPlayer player;
         private ISprite deadLink;
         private Vector2 deadLinkPosition;
 
-        public GameStateLosePhase1(Game1 game)
+        public GameStateLosePhase1(Game1 game, IPlayer player)
         {
             this.game = game;
 
@@ -59,13 +60,15 @@ namespace Game1.GameState
             game.Screen.CurrentRoom.ItemList.Clear();
             game.Screen.CurrentRoom.ProjectileList.Clear();
 
-            if (game.Screen.Player.GetType() == typeof(Player1)) {
+            this.player = player;
+
+            if (player.GetType() == typeof(Player1)) {
                 deadLink = PlayerSpriteFactory.Instance.CreateDeadSprite();
             } else {
                 deadLink = PlayerSpriteFactory.Instance.CreateZeldaDeadSprite();
             }
             
-            deadLinkPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+            deadLinkPosition = Vector2.Add(player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
             flash1 = new Flash(flashColorRed1, 1, flashOnTime, flashOffTime, flashInitialDelay);
             flash2 = new Flash(flashColorRed2, 1, flashOnTime, flashOffTime, flashInitialDelay);
@@ -92,7 +95,7 @@ namespace Game1.GameState
                 colorRoom = colorRoomRed;
                 flash1.Update(gameTime);
                 flash2.Update(gameTime);
-                game.SetState(new GameStateLosePhase2(game, flash1, flash2));
+                game.SetState(new GameStateLosePhase2(game, flash1, flash2, player));
             }
         }
 

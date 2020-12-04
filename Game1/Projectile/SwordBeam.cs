@@ -156,5 +156,10 @@ namespace Game1.Projectile
             particles = new BeamExplosion(position + particleOffset);
             particlesSpawned = true;
         }
+
+        public void EditPosition(Vector2 amount)
+        {
+            position = Vector2.Add(amount, position);
+        }
     }
 }

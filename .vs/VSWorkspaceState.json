@@ -1,9 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\_Documentation",
-    "\\_Documentation\\Code Reviews"
+    "\\Game1",
+    "\\Game1\\Command",
+    "\\Game1\\Command\\CollisionHandlerCommands",
+    "\\Game1\\Environment\\Overworld",
+    "\\Game1\\HUD\\HUDItems",
+    "\\Game1\\Player"
   ],
-  "SelectedNode": "\\_Documentation\\Code Reviews\\Sprint 4 Code Reviews",
+  "SelectedNode": "\\Game1\\Player\\DamagedPlayer.cs",
   "PreviewInSolutionExplorer": false
 }

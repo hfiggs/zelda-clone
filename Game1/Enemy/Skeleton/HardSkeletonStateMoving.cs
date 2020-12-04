@@ -30,7 +30,7 @@ namespace Game1.Enemy
             this.Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
 
             this.position = position;
-            this.player = screen.Player;
+            this.player = screen.Players[0];
             this.screen = screen;
             this.direction = new Vector2(0,0);
 
@@ -108,7 +108,7 @@ namespace Game1.Enemy
             {
                 obstacleHitboxes.AddRange(e.GetHitboxes());
             }
-            int optimalDirection = AStarPathfinding.Program.findNextDecision(skeleton.GetHitboxes()[0], player.GetPlayerHitbox(), obstacleHitboxes);
+            int optimalDirection = AStarEnemyPathfinding.Program.findNextDecision(skeleton.GetHitboxes()[0], player.GetPlayerHitbox(), obstacleHitboxes);
 
             const int goLeft = -1, goRight = 1, goUp = 2, goDown = 4;
             switch (optimalDirection)

@@ -2,6 +2,7 @@
 
 using Game1.Controller;
 using Game1.Particle;
+using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.Util;
 using Microsoft.Xna.Framework;
@@ -23,6 +24,7 @@ namespace Game1.GameState
 
         private const int newPlayerX = 120;
         private const int newPlayerY = 142;
+        private const int newPlayerOffset = 16;
 
         private Color color = Color.White;
 
@@ -51,10 +53,13 @@ namespace Game1.GameState
 
             newPlayerPosition = new Vector2(newPlayerX, newPlayerY);
 
-            game.Screen.Player.EditPosition(Vector2.Subtract(newPlayerPosition, game.Screen.Player.GetPlayerHitbox().Location.ToVector2()));
-            game.Screen.Player.MoveUp();
-
-            game.Screen.Player.PlayerInventory.RefreshCandle();
+            foreach(IPlayer p in game.Screen.Players)
+            {
+                p.EditPosition(Vector2.Subtract(newPlayerPosition, p.GetPlayerHitbox().Location.ToVector2()));
+                p.MoveUp();
+                p.PlayerInventory.RefreshCandle();
+                newPlayerPosition.Y -= newPlayerOffset;
+            }
 
             game.Screen.CurrentRoom.StopRoomAmbience();
 

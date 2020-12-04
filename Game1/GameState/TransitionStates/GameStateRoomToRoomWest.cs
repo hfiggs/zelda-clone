@@ -1,11 +1,13 @@
 ﻿/* Author: Hunter Figgs.3 */
 
 using Game1.Controller;
+using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Game1.GameState
@@ -37,7 +39,7 @@ namespace Game1.GameState
 
         private readonly (char, int) westRoomKey;
 
-        public GameStateRoomToRoomWest(Game1 game)
+        public GameStateRoomToRoomWest(Game1 game, int playerID)
         {
             this.game = game;
 
@@ -55,8 +57,18 @@ namespace Game1.GameState
                 newPlayerPosition.X += newPlayerXLockedOffset;
             }
 
-            game.Screen.Player.EditPosition(Vector2.Subtract(newPlayerPosition, game.Screen.Player.GetPlayerHitbox().Location.ToVector2()));
-            game.Screen.Player.PlayerInventory.RefreshCandle();
+            List<IPlayer> playerList = new List<IPlayer>();
+            playerList.AddRange(game.Screen.Players); //copy to avoid messing up controls
+
+            if (playerID != 1)
+                playerList.Reverse();
+
+            foreach (IPlayer p in playerList)
+            {
+                p.EditPosition(Vector2.Subtract(newPlayerPosition, p.GetPlayerHitbox().Location.ToVector2()));
+                p.PlayerInventory.RefreshCandle();
+                newPlayerPosition.X += newPlayerXLockedOffset;
+            }
 
             westRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.West);
 
@@ -107,7 +119,10 @@ namespace Game1.GameState
 
             newRoom.Draw(spriteBatch, color);
 
-            game.Screen.Player.Draw(spriteBatch, Color.White);
+            foreach (IPlayer p in game.Screen.Players)
+            {
+                p.Draw(spriteBatch, Color.White);
+            }
 
             spriteBatch.End();
 

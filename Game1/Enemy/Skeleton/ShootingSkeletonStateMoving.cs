@@ -31,7 +31,7 @@ namespace Game1.Enemy
             this.Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
 
             this.position = position;
-            this.player = screen.Player;
+            this.player = screen.Players[0];
             this.screen = screen;
             this.direction = new Vector2(0,0);
 

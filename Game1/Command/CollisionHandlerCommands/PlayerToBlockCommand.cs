@@ -1,6 +1,5 @@
 ﻿/* Author: Hunter Figgs */
 
-using Game1.Audio;
 using Game1.Collision_Handling;
 using Game1.Environment;
 using Game1.Player;
@@ -29,7 +28,11 @@ namespace Game1.Command.CollisionHandlerCommands
 
             // side is side of block (collidee)
 
-            if (enviro is MovableBlock mB && !(mB.hasMoved) && mB.Pushable)
+            if (enviro is PortalBlock portal && (portal.State == PortalBlockState.Blue || portal.State == PortalBlockState.Orange))
+            {
+                PortalUtil.HandlePlayerPortal(portal, player, game.Screen.CurrentRoom);
+            }
+            else if (enviro is MovableBlock mB && !(mB.hasMoved) && mB.Pushable)
             {
                 mB.Move(Vector2.Multiply(CompassDirectionUtil.GetDirectionVector(side), negativeVector), moveBlockTime);
             }
@@ -41,7 +44,7 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 RoomUtil.OpenLockedDoor(game.Screen, enviro, player);
 
-                RoomUtil.EnterDoor(game, enviro);
+                RoomUtil.EnterDoor(game, enviro, player.playerID);
 
                 RoomUtil.EnterExitDungeon(game, enviro);
 
@@ -59,3 +62,4 @@ namespace Game1.Command.CollisionHandlerCommands
         }
     }
 }
+

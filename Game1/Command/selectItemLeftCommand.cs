@@ -1,10 +1,10 @@
 ﻿
 /* Author: Hunter Figgs */
 
+using Game1.Audio;
 using Game1.Command;
 using Game1.HUD;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 
 namespace Game1.Controller
@@ -13,7 +13,7 @@ namespace Game1.Controller
     {
         private Game1 game;
         private Stopwatch stopWatch;
-        Point SettingPoint = new Point(173, 14);
+        Point SettingPoint = new Point(130, 14);
         private const int cooldown = 250; // ms
         const int centerPointModifier = 20;
 
@@ -36,34 +36,73 @@ namespace Game1.Controller
         public void Execute()
         {
             if (stopWatch.ElapsedMilliseconds >= cooldown) {
-                if (game.HUD.displayItemTop != null) {
-                    bool swappedSuccess = false;
-                    Point centerPoint = game.HUD.displayItemTop.selectionRectangle.Center;
-                    centerPoint = DetermineNextCenterPoint(centerPoint);
-
-                    while (!swappedSuccess) {
-                        foreach (IHudItem item in game.HUD.Items)
-                        {
-                            if (item.selectionRectangle.Contains(centerPoint)) {
-                                game.HUD.displayItemTop = item.copyOf();
-                                swappedSuccess = true;
-                            }
-                        }
-
-                        if (!swappedSuccess) {
-                            centerPoint = DetermineNextCenterPoint(centerPoint);
-                        }
-                    }
-
+                AudioManager.PlayFireForget("rupeePickUp");
+                if (game.HUD.displayHUD1) {
+                    ExecutePlayer1();
                 } else {
-                    foreach (IHudItem item in game.HUD.Items)
-                    {
-                        if (item.selectionRectangle.Contains(SettingPoint)) {
-                            game.HUD.displayItemTop = item.copyOf();
-                        }
-                    }
+                    ExecutePlayer2();
                 }
                 stopWatch.Restart();
+            }
+        }
+
+        private void ExecutePlayer1()
+        {
+            if (game.HUD.displayItemTop != null)
+            {
+                bool swappedSuccess = false;
+                Point centerPoint = game.HUD.displayItemTop.selectionRectangle.Center;
+                centerPoint = DetermineNextCenterPoint(centerPoint);
+
+                while (!swappedSuccess) {
+                    foreach (IHudItem item in game.HUD.Items[0]) {
+                        if (item.selectionRectangle.Contains(centerPoint))
+                        {
+                            game.HUD.displayItemTop = item.copyOf();
+                            swappedSuccess = true;
+                        }
+                    }
+
+                    if (!swappedSuccess) {
+                        centerPoint = DetermineNextCenterPoint(centerPoint);
+                    }
+                }
+            } else {
+                foreach (IHudItem item in game.HUD.Items[0]) {
+                    if (item.selectionRectangle.Contains(SettingPoint)) {
+                        game.HUD.displayItemTop = item.copyOf();
+                    }
+                }
+            }
+        }
+
+        private void ExecutePlayer2()
+        {
+            if (game.HUD.displayItemTop2 != null) {
+                bool swappedSuccess = false;
+                Point centerPoint = game.HUD.displayItemTop2.selectionRectangle.Center;
+                centerPoint = DetermineNextCenterPoint(centerPoint);
+
+                while (!swappedSuccess) {
+                    foreach (IHudItem item in game.HUD.Items[0]) {
+                        if (item.selectionRectangle.Contains(centerPoint))
+                        {
+                            game.HUD.displayItemTop2 = item.copyOf();
+                            swappedSuccess = true;
+                        }
+                    }
+
+                    if (!swappedSuccess) {
+                        centerPoint = DetermineNextCenterPoint(centerPoint);
+                    }
+                }
+
+            } else {
+                foreach (IHudItem item in game.HUD.Items[0]) {
+                    if (item.selectionRectangle.Contains(SettingPoint)) {
+                        game.HUD.displayItemTop2 = item.copyOf();
+                    }
+                }
             }
         }
 
@@ -73,13 +112,20 @@ namespace Game1.Controller
             const int boundryX = 150, boundryY = 4, boundryWidthAndHeight = 200;
             Rectangle boundry = new Rectangle(boundryX, boundryY, boundryWidthAndHeight, boundryWidthAndHeight);
 
-            if (topLeftLimit.Contains(centerPoint)) {
+            if (topLeftLimit.Contains(centerPoint))
+            {
                 newCenterPoint = bottomRightLimit.Center;
-            } else if (bottomLeftLimit.Contains(centerPoint)) {
+            }
+            else if (bottomLeftLimit.Contains(centerPoint))
+            {
                 newCenterPoint = topRightLimit.Center;
-            } else if (boundry.Contains(centerPoint)) {
+            }
+            else if (boundry.Contains(centerPoint))
+            {
                 newCenterPoint.X = centerPoint.X - centerPointModifier;
-            } else {
+            }
+            else
+            {
                 newCenterPoint = topLeftLimit.Center;
             }
 

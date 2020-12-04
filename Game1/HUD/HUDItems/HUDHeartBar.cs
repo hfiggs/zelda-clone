@@ -13,21 +13,27 @@ namespace Game1.HUD
         private HUDSprite fullHeart;
         private HUDSprite halfHeart;
         private HUDSprite emptyHeart;
+        private bool twoPlayers;
 
-        public HUDHeartBar(IPlayerInventory inv, HUDSprite FullHeart, HUDSprite HalfHeart, HUDSprite EmptyHeart)
+        public HUDHeartBar(IPlayerInventory inv, HUDSprite FullHeart, HUDSprite HalfHeart, HUDSprite EmptyHeart, bool twoPlayers)
         {
             this.inv = inv;
             this.fullHeart = FullHeart;
             this.halfHeart = HalfHeart;
             this.emptyHeart = EmptyHeart;
             selectionRectangle = new Rectangle(-1, -1, -1, -1);
+            this.twoPlayers = twoPlayers;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
-            const int x = 180, y = 155, xModifier = 9, heart = 2 ;
-
-            this.location = new Vector2(x, y);
+            const int x = 218, y = 151, xModifier = 9, heart = 2, twoPlayerYModifier = 10;
+            if (twoPlayers) {
+                location = new Vector2(x, y + twoPlayerYModifier);
+            } else {
+                location = new Vector2(x, y);
+            }
+            
             int heartDrawCount = inv.HalfHeartCount;
             int emptyHeartCount = inv.MaxHalfHearts - inv.HalfHeartCount;
             while (heartDrawCount != 0)

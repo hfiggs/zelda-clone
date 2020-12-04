@@ -24,7 +24,11 @@ namespace Game1.Controller
                 { Buttons.DPadLeft, new SelectItemLeftCommand(game) },
                 { Buttons.DPadRight, new SelectItemRightCommand(game) },
                 { Buttons.LeftThumbstickLeft, new SelectItemLeftCommand(game) },
-                { Buttons.LeftThumbstickRight, new SelectItemRightCommand(game) }
+                { Buttons.LeftThumbstickRight, new SelectItemRightCommand(game) },
+                { Buttons.DPadUp, new SelectPlayerOneHUDCommand(game) },
+                { Buttons.DPadDown, new SelectPlayerTwoHUDCommand(game) },
+                { Buttons.LeftThumbstickUp, new SelectPlayerOneHUDCommand(game) },
+                { Buttons.LeftThumbstickDown, new SelectPlayerTwoHUDCommand(game) }
 
             };
 

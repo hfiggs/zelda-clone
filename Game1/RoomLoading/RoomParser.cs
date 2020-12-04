@@ -405,6 +405,13 @@ namespace Game1.RoomLoading
                         interactEnviornment = new OverworldTreeBR(position);
                         break;
 
+                    case "PortalBlock":
+                        interactEnviornment = new PortalBlock(position);
+                        break;
+                    case "LaserField":
+                        interactEnviornment = new LaserField(position);
+                        break;
+
                     default:
                         throw new System.ArgumentException(errorMessage, errorParamName);
                 }

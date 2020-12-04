@@ -17,48 +17,98 @@ namespace Game1.Controller
 
         private readonly PlayerIndex playerIndex;
 
-        private readonly HashSet<Buttons> movementButtons;
+        private readonly HashSet<Buttons> movementButtons;        
 
         public GamepadController(Game1 game, PlayerIndex playerIndex)
         {
-            commands = new Dictionary<Buttons, ICommand>
+            if (game.Mode == 1)
             {
-                { Buttons.Back, new QuitCommand(game) },
-                { Buttons.Start, new EnterHUDStateCommand(game) },
+                //MUTLIPLAYER CONTROLS (SHARED CONTROLLER)
+                commands = new Dictionary<Buttons, ICommand>
+                    {
+                        { Buttons.Back, new QuitCommand(game) },
+                        { Buttons.Start, new EnterHUDStateCommand(game) },
 
-                { Buttons.BigButton, new PauseGameCommand(game) },
+                        { Buttons.BigButton, new PauseGameCommand(game) },
 
-                { Buttons.DPadUp, new PlayerUpCommand(game) },
-                { Buttons.DPadLeft, new PlayerLeftCommand(game) },
-                { Buttons.DPadDown, new PlayerDownCommand(game) },
-                { Buttons.DPadRight, new PlayerRightCommand(game) },
-                { Buttons.LeftThumbstickUp, new PlayerUpCommand(game) },
-                { Buttons.LeftThumbstickLeft, new PlayerLeftCommand(game) },
-                { Buttons.LeftThumbstickDown, new PlayerDownCommand(game) },
-                { Buttons.LeftThumbstickRight, new PlayerRightCommand(game) },
+                        { Buttons.RightThumbstickUp, new PlayerUpCommand(game, PlayerIndex.One) },
+                        { Buttons.RightThumbstickLeft, new PlayerLeftCommand(game, PlayerIndex.One) },
+                        { Buttons.RightThumbstickDown, new PlayerDownCommand(game, PlayerIndex.One) },
+                        { Buttons.RightThumbstickRight, new PlayerRightCommand(game, PlayerIndex.One) },
+                        { Buttons.LeftThumbstickUp, new PlayerUpCommand(game, PlayerIndex.Two) },
+                        { Buttons.LeftThumbstickLeft, new PlayerLeftCommand(game, PlayerIndex.Two) },
+                        { Buttons.LeftThumbstickDown, new PlayerDownCommand(game, PlayerIndex.Two) },
+                        { Buttons.LeftThumbstickRight, new PlayerRightCommand(game, PlayerIndex.Two) },
 
-                { Buttons.A, new PlayerAttackCommand(game) },
-                { Buttons.B, new PlayerUseItemCommand(game) },
+                        { Buttons.RightTrigger, new PlayerAttackCommand(game, PlayerIndex.One) },
+                        { Buttons.RightShoulder, new PlayerUseItemCommand(game, PlayerIndex.One) },
+                        { Buttons.LeftTrigger, new PlayerAttackCommand(game, PlayerIndex.Two) },
+                        { Buttons.LeftShoulder, new PlayerUseItemCommand(game, PlayerIndex.Two) },
 
-                { Buttons.RightThumbstickLeft, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
-                { Buttons.RightThumbstickUp, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
-                { Buttons.RightThumbstickRight, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
-                { Buttons.RightThumbstickDown, new PlayerEquipItemCommand(game, ItemEnum.BluePotion) },
-            };
+                        { Buttons.Y, new PlayerEquipItemCommand(game, ItemEnum.Bow, PlayerIndex.One) },
+                        { Buttons.B, new PlayerEquipItemCommand(game, ItemEnum.Boomerang, PlayerIndex.One) },
+                        { Buttons.A, new PlayerEquipItemCommand(game, ItemEnum.Bomb, PlayerIndex.One) },
+                        { Buttons.X, new PlayerEquipItemCommand(game, ItemEnum.BluePotion, PlayerIndex.One) },
+                        { Buttons.DPadUp, new PlayerEquipItemCommand(game, ItemEnum.BluePotion, PlayerIndex.Two) },
+                        { Buttons.DPadRight, new PlayerEquipItemCommand(game, ItemEnum.Boomerang, PlayerIndex.Two) },
+                        { Buttons.DPadDown, new PlayerEquipItemCommand(game, ItemEnum.Bomb, PlayerIndex.Two) },
+                        { Buttons.DPadLeft, new PlayerEquipItemCommand(game, ItemEnum.BluePotion, PlayerIndex.Two) },
+                    };
+
+                movementButtons = new HashSet<Buttons>()
+                    {
+                        Buttons.RightThumbstickUp,
+                        Buttons.RightThumbstickLeft,
+                        Buttons.RightThumbstickDown,
+                        Buttons.RightThumbstickRight,
+                        Buttons.LeftThumbstickUp,
+                        Buttons.LeftThumbstickLeft,
+                        Buttons.LeftThumbstickDown,
+                        Buttons.LeftThumbstickRight
+                    };
+            }
+            else
+            {
+                //SINGLEPLAYER/AI CONTROLS
+                commands = new Dictionary<Buttons, ICommand>
+                    {
+                        { Buttons.Back, new QuitCommand(game) },
+                        { Buttons.Start, new EnterHUDStateCommand(game) },
+
+                        { Buttons.BigButton, new PauseGameCommand(game) },
+
+                        { Buttons.DPadUp, new PlayerUpCommand(game) },
+                        { Buttons.DPadLeft, new PlayerLeftCommand(game) },
+                        { Buttons.DPadDown, new PlayerDownCommand(game) },
+                        { Buttons.DPadRight, new PlayerRightCommand(game) },
+                        { Buttons.LeftThumbstickUp, new PlayerUpCommand(game) },
+                        { Buttons.LeftThumbstickLeft, new PlayerLeftCommand(game) },
+                        { Buttons.LeftThumbstickDown, new PlayerDownCommand(game) },
+                        { Buttons.LeftThumbstickRight, new PlayerRightCommand(game) },
+
+                        { Buttons.A, new PlayerAttackCommand(game) },
+                        { Buttons.B, new PlayerUseItemCommand(game) },
+
+                        { Buttons.RightThumbstickLeft, new PlayerEquipItemCommand(game, ItemEnum.Bow) },
+                        { Buttons.RightThumbstickUp, new PlayerEquipItemCommand(game, ItemEnum.Boomerang) },
+                        { Buttons.RightThumbstickRight, new PlayerEquipItemCommand(game, ItemEnum.Bomb) },
+                        { Buttons.RightThumbstickDown, new PlayerEquipItemCommand(game, ItemEnum.BluePotion) },
+                    };
+
+                movementButtons = new HashSet<Buttons>()
+                    {
+                        Buttons.DPadUp,
+                        Buttons.DPadLeft,
+                        Buttons.DPadDown,
+                        Buttons.DPadRight,
+                        Buttons.LeftThumbstickUp,
+                        Buttons.LeftThumbstickLeft,
+                        Buttons.LeftThumbstickDown,
+                        Buttons.LeftThumbstickRight
+                    };
+            }
 
             this.playerIndex = playerIndex;
-
-            movementButtons = new HashSet<Buttons>()
-            {
-                Buttons.DPadUp,
-                Buttons.DPadLeft,
-                Buttons.DPadDown,
-                Buttons.DPadRight,
-                Buttons.LeftThumbstickUp,
-                Buttons.LeftThumbstickLeft,
-                Buttons.LeftThumbstickDown,
-                Buttons.LeftThumbstickRight
-            };
         }
 
         public void Update()

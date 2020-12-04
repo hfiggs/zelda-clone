@@ -10,7 +10,7 @@ using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
+using Game1.Player;
 using System.Collections.Generic;
 
 namespace Game1.GameState
@@ -49,7 +49,7 @@ namespace Game1.GameState
 
         private readonly Color color = Color.White;
 
-        public GameStateWin(Game1 game, PickupItem pickupItem, IItem itemToRemove)
+        public GameStateWin(Game1 game, PickupItem pickupItem, IItem itemToRemove, IPlayer player)
         {
             this.game = game;
 
@@ -61,10 +61,10 @@ namespace Game1.GameState
 
             game.Screen.CurrentRoom.ItemList.Remove(itemToRemove);
 
-            playerSprite = GameStateUtil.GetPlayerPickupSprite(pickupItem, game.Screen.Player);
+            playerSprite = GameStateUtil.GetPlayerPickupSprite(pickupItem, player);
             itemSprite = GameStateUtil.GetPickupItemSprite(pickupItem);
 
-            playerPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+            playerPosition = Vector2.Add(player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
             curtain = new Curtain(game, false);
             flash = new Flash(flashColor, flashes, flashOnTime, flashOffTime, flashInitialDelay);

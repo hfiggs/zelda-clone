@@ -28,6 +28,10 @@ namespace Game1.Player
 
         public IPlayerInventory PlayerInventory { get => decoratedPlayer.PlayerInventory;}
 
+        public int playerID { get => decoratedPlayer.playerID; }
+
+        public bool requesting { get => decoratedPlayer.requesting; set => decoratedPlayer.requesting = value; }
+
         private const float volume = 0.25f;
 
         public DamagedPlayer(Game1 game, IPlayer decoratedPlayer, Vector2 direction)
@@ -104,7 +108,7 @@ namespace Game1.Player
                 decoratedPlayer.UseItem();
         }
 
-        private void RemoveDecorator() => game.Screen.Player = decoratedPlayer;
+        private void RemoveDecorator() => game.Screen.Players[playerID - 1] = decoratedPlayer;
 
         public void SetState(IPlayerState state) => decoratedPlayer.SetState(state);
 

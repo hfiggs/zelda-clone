@@ -91,5 +91,10 @@ namespace Game1.Projectile
             removeMe = true;
             Player.PlayerInventory.SetItemInUse(ItemEnum.Bow, false);
         }
+
+        public void EditPosition(Vector2 amount)
+        {
+            position = Vector2.Add(amount, position);
+        }
     }
 }

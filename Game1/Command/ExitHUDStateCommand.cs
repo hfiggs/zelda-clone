@@ -1,6 +1,7 @@
 ﻿/* Author: Hunter Figgs.3 */
 
 using Game1.GameState;
+using Game1.HUD;
 using System.Diagnostics;
 
 namespace Game1.Command
@@ -16,7 +17,6 @@ namespace Game1.Command
             this.game = game;
             stopWatch = new Stopwatch();
             stopWatch.Start();
-
         }
 
         public void Execute()

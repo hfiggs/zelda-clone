@@ -8,7 +8,8 @@
         Boomerang = 3,
         Bomb = 4,
         BluePotion = 5,
-        BlueCandle = 6
+        BlueCandle = 6,
+        PortalGun = 7
     }
 
     public interface IPlayerInventory

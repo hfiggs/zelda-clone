@@ -5,6 +5,7 @@ using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Game1.GameState
@@ -28,7 +29,7 @@ namespace Game1.GameState
                 new KeyboardController(game),
                 new GamepadController(game, PlayerIndex.One)
             };
-
+            Console.WriteLine(game.Screen.CurrentRoomKey.ToString());
             game.Screen.CurrentRoom.PlayRoomAmbience();
         }
 

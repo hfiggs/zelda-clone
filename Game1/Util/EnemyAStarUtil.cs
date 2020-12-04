@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 //This code is based off code found at: https://gigi.nullneuron.net/gigilabs/a-pathfinding-example-in-c/
 
-namespace AStarPathfinding
+namespace AStarEnemyPathfinding
 {
     class Location
     {

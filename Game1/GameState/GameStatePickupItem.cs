@@ -5,6 +5,7 @@ using Game1.Item;
 using Game1.ResolutionManager;
 using Game1.Sprite;
 using Game1.Util;
+using Game1.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -36,7 +37,7 @@ namespace Game1.GameState
 
         private readonly Color color = Color.White;
 
-        public GameStatePickupItem(Game1 game, PickupItem pickupItem, IItem itemToRemove)
+        public GameStatePickupItem(Game1 game, PickupItem pickupItem, IItem itemToRemove, IPlayer player)
         {
             this.game = game;
 
@@ -48,10 +49,10 @@ namespace Game1.GameState
 
             game.Screen.CurrentRoom.ItemList.Remove(itemToRemove);
 
-            playerSprite = GameStateUtil.GetPlayerPickupSprite(pickupItem, game.Screen.Player);
+            playerSprite = GameStateUtil.GetPlayerPickupSprite(pickupItem, player);
             itemSprite = GameStateUtil.GetPickupItemSprite(pickupItem);
 
-            playerPosition = Vector2.Add(game.Screen.Player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
+            playerPosition = Vector2.Add(player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
             stateTimer = stateTime;
         }

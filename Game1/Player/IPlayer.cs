@@ -12,6 +12,8 @@ namespace Game1.Player
     public interface IPlayer
     {
         IPlayerInventory PlayerInventory { get; }
+        int playerID { get; }
+        bool requesting { get; set; }
 
         void MoveLeft();
 

@@ -4,12 +4,26 @@ using Game1.Environment;
 using Game1.GameState;
 using Game1.Player;
 using Game1.RoomLoading;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Game1.Util
 {
     public static class RoomUtil
     {
+        private static List<CompassDirection> playerRequests = new List<CompassDirection>(2);
+        private static List<LoadZone> loadZones = new List<LoadZone>(2);
+
+        public static void constructRoomUtil(Screen screen)
+        {
+            playerRequests = new List<CompassDirection>(screen.Players.Count);
+            loadZones = new List<LoadZone>(screen.Players.Count);
+            for (int i = 0; i < screen.Players.Count; i++)
+            {
+                playerRequests.Add(CompassDirection.None);
+                loadZones.Add(null);
+            }
+        }
         public static (char, int) GetAdjacentRoomKey((char, int) currentRoomKey, CompassDirection adjacentDirection)
         {
             var adjacentRoomKey = (currentRoomKey.Item1, currentRoomKey.Item2);
@@ -33,25 +47,60 @@ namespace Game1.Util
             return adjacentRoomKey;
         }
 
-        public static void EnterDoor(Game1 game, IEnvironment envo)
+        public static void EnterDoor(Game1 game, IEnvironment envo, int playerID)
         {
             if (envo is LoadZone lZ)
             {
-                switch (lZ.GetTransitionDirection())
+                playerRequests[playerID - 1] = lZ.GetTransitionDirection();
+                loadZones[playerID - 1] = lZ;
+                bool playersAgree = true;
+                CompassDirection lastDirection = playerRequests[0];
+                foreach(CompassDirection dir in playerRequests)
                 {
-                    case CompassDirection.North:
-                        game.SetState(new GameStateRoomToRoomNorth(game));
-                        break;
-                    case CompassDirection.East:
-                        game.SetState(new GameStateRoomToRoomEast(game));
-                        break;
-                    case CompassDirection.South:
-                        game.SetState(new GameStateRoomToRoomSouth(game));
-                        break;
-                    case CompassDirection.West:
-                        game.SetState(new GameStateRoomToRoomWest(game));
-                        break;
+                    if(lastDirection != dir || dir == CompassDirection.None)
+                    {
+                        playersAgree = false;
+                    }
+                    lastDirection = dir;
                 }
+
+                if (playersAgree || game.Mode == 2)
+                {
+                    switch (lZ.GetTransitionDirection())
+                    {
+                        case CompassDirection.North:
+                            if(game.State.GetType() != typeof(GameStateRoomToRoomNorth))
+                                game.SetState(new GameStateRoomToRoomNorth(game, playerID));
+                            break;
+                        case CompassDirection.East:
+                            if (game.State.GetType() != typeof(GameStateRoomToRoomEast))
+                                game.SetState(new GameStateRoomToRoomEast(game, playerID));
+                            break;
+                        case CompassDirection.South:
+                            if (game.State.GetType() != typeof(GameStateRoomToRoomSouth))
+                                game.SetState(new GameStateRoomToRoomSouth(game, playerID));
+                            break;
+                        case CompassDirection.West:
+                            if (game.State.GetType() != typeof(GameStateRoomToRoomWest))
+                                game.SetState(new GameStateRoomToRoomWest(game, playerID));
+                            break;
+                    }
+                }
+                else
+                {
+                    lZ.SetWaiting(playerID);
+                }
+             }
+        }
+
+        public static void ExitDoor(int playerID)
+        {
+            List<LoadZone> view = loadZones;
+            if(loadZones[playerID - 1] != null)
+            {
+                loadZones[playerID - 1].SetNotWaiting(playerID);
+                loadZones[playerID - 1] = null;
+                playerRequests[playerID - 1] = CompassDirection.None;
             }
         }
 
@@ -83,36 +132,50 @@ namespace Game1.Util
 
         public static void OpenLockedDoor(Screen screen, IEnvironment envo, IPlayer player)
         {
+            bool playerHasKey = player.PlayerInventory.KeyCount > 0;
+            bool doorOpened = false;
+
             switch (envo)
             {
                 case DoorNLocked _:
-                    if (((DoorNLocked)envo).open == 0 && player.PlayerInventory.SubKey())
+                    if (((DoorNLocked)envo).open == 0 && playerHasKey)
                     {
                         ((DoorNLocked)envo).Open(false);
                         OpenAdjacentLockedDoor(screen, CompassDirection.North);
+                        doorOpened = true;
                     }
                     break;
                 case DoorELocked _:
-                    if (((DoorELocked)envo).open == 0 && player.PlayerInventory.SubKey())
+                    if (((DoorELocked)envo).open == 0 && playerHasKey)
                     {
                         ((DoorELocked)envo).Open(false);
                         OpenAdjacentLockedDoor(screen, CompassDirection.East);
+                        doorOpened = true;
                     }
                     break;
                 case DoorSLocked _:
-                    if (((DoorSLocked)envo).open == 0 && player.PlayerInventory.SubKey())
+                    if (((DoorSLocked)envo).open == 0 && playerHasKey)
                     {
                         ((DoorSLocked)envo).Open(false);
                         OpenAdjacentLockedDoor(screen, CompassDirection.South);
+                        doorOpened = true;
                     }
                     break;
                 case DoorWLocked _:
-                    if (((DoorWLocked)envo).open == 0 && player.PlayerInventory.SubKey())
+                    if (((DoorWLocked)envo).open == 0 && playerHasKey)
                     {
                         ((DoorWLocked)envo).Open(false);
                         OpenAdjacentLockedDoor(screen, CompassDirection.West);
+                        doorOpened = true;
                     }
                     break;
+            }
+
+            if (doorOpened) {
+                foreach (IPlayer Player in screen.Players)
+                {
+                    Player.PlayerInventory.SubKey();
+                }
             }
         }
 

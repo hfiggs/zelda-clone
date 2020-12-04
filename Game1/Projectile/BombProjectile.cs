@@ -148,5 +148,10 @@ namespace Game1.Projectile
             swallowed = true;
             player.PlayerInventory.SetItemInUse(ItemEnum.Bomb, false);
         }
+
+        public void EditPosition(Vector2 amount)
+        {
+            position = Vector2.Add(amount, position);
+        }
     }
 }

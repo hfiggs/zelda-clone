@@ -445,6 +445,42 @@
 /processorParam:TextureFormat=Color
 /build:Images/Environment/Overworld/TreeDoor.png
 
+#begin Images/Environment/Portal/LaserField.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Portal/LaserField.png
+
+#begin Images/Environment/Portal/Portal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Portal/Portal.png
+
+#begin Images/Environment/Portal/PortalTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Environment/Portal/PortalTile.png
+
 #begin Images/Environment/RoomBase.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -553,6 +589,30 @@
 /processorParam:TextureFormat=Color
 /build:Images/HUD/HUD.png
 
+#begin Images/HUD/HUD1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/HUD/HUD1.png
+
+#begin Images/HUD/HUD2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/HUD/HUD2.png
+
 #begin Images/HUD/selection rectangles.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -588,6 +648,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/Item/nothingItem.png
+
+#begin Images/Item/PortalGun.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Item/PortalGun.png
 
 #begin Images/Particle/cloud.png
 /importer:TextureImporter
@@ -721,6 +793,78 @@
 /processorParam:TextureFormat=Color
 /build:Images/Player/LinkUp.png
 
+#begin Images/Player/Portal/LinkPortalDown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Player/Portal/LinkPortalDown.png
+
+#begin Images/Player/Portal/LinkPortalLeft.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Player/Portal/LinkPortalLeft.png
+
+#begin Images/Player/Portal/LinkPortalRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Player/Portal/LinkPortalRight.png
+
+#begin Images/Player/Portal/LinkPortalUp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Player/Portal/LinkPortalUp.png
+
+#begin Images/Player/WaitingArrows.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Player/WaitingArrows.png
+
+#begin Images/Player/WaitingPlayer.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Player/WaitingPlayer.png
+
 #begin Images/Player/ZeldaDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -781,6 +925,18 @@
 /processorParam:TextureFormat=Color
 /build:Images/Player/ZeldaUp.png
 
+#begin Images/Projectile/PortalProjectile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Projectile/PortalProjectile.png
+
 #begin Images/Projectile/projectiles.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -804,6 +960,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/Start/StartBackground.png
+
+#begin Images/Start/TitleOptions.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Start/TitleOptions.png
 
 #begin Images/Start/Waterfall.png
 /importer:TextureImporter
@@ -877,6 +1045,9 @@
 #begin RoomXML/RoomE2.xml
 /copy:RoomXML/RoomE2.xml
 
+#begin RoomXML/RoomE4.xml
+/copy:RoomXML/RoomE4.xml
+
 #begin RoomXML/RoomF1.xml
 /copy:RoomXML/RoomF1.xml
 
@@ -886,8 +1057,17 @@
 #begin RoomXML/RoomF3.xml
 /copy:RoomXML/RoomF3.xml
 
+#begin RoomXML/RoomF4.xml
+/copy:RoomXML/RoomF4.xml
+
 #begin RoomXML/RoomG2.xml
 /copy:RoomXML/RoomG2.xml
+
+#begin RoomXML/RoomG3.xml
+/copy:RoomXML/RoomG3.xml
+
+#begin RoomXML/RoomG4.xml
+/copy:RoomXML/RoomG4.xml
 
 #begin RoomXML/RoomZ0.xml
 /copy:RoomXML/RoomZ0.xml

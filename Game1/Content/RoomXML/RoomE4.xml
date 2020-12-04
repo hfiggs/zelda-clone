@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Assets>
+	<InteractEnviornment>
+		<Type>RoomBorder</Type>
+		<X>0</X>
+		<Y>0</Y>
+	</InteractEnviornment>
+	<NonInteractEnviornment>
+		<Type>RoomBase</Type>
+		<X>32</X>
+		<Y>32</Y>
+	</NonInteractEnviornment>
+	<InteractEnviornment>
+		<Type>DoorNBlank</Type>
+		<X>112</X>
+		<Y>0</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>DoorSOpen</Type>
+		<X>112</X>
+		<Y>144</Y>
+	</InteractEnviornment>
+	<NonInteractEnviornment>
+		<Type>DoorSFloor</Type>
+		<X>112</X>
+		<Y>144</Y>
+	</NonInteractEnviornment>
+	<InteractEnviornment>
+		<Type>DoorWBlank</Type>
+		<X>0</X>
+		<Y>72</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>DoorEBlank</Type>
+		<X>224</X>
+		<Y>72</Y>
+	</InteractEnviornment>
+
+	<Item>
+		<Type>HeartContainer</Type>
+		<X>130</X>
+		<Y>40</Y>
+	</Item>
+
+	<Enemy>
+		<Type>Aquamentus</Type>
+		<X>176</X>
+		<Y>64</Y>
+	</Enemy>
+
+	<!-- Fourth Column-->
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>80</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>80</X>
+		<Y>48</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>80</X>
+		<Y>64</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>80</X>
+		<Y>80</Y>
+	</InteractEnviornment>
+
+	<!-- Fifth Column-->
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>96</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>96</X>
+		<Y>80</Y>
+	</InteractEnviornment>
+
+	<!-- Sixth Column-->
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>112</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>112</X>
+		<Y>80</Y>
+	</InteractEnviornment>
+
+	<!-- Seventh Column-->
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>128</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>128</X>
+		<Y>80</Y>
+	</InteractEnviornment>
+
+	<!-- Eighth Column-->
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>144</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>144</X>
+		<Y>80</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>144</X>
+		<Y>96</Y>
+	</InteractEnviornment>
+
+	<!-- Ninth Column-->
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>160</X>
+		<Y>32</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>160</X>
+		<Y>48</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>160</X>
+		<Y>64</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Water</Type>
+		<X>160</X>
+		<Y>80</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>160</X>
+		<Y>96</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>LaserField</Type>
+		<X>160</X>
+		<Y>112</Y>
+	</InteractEnviornment>
+	<InteractEnviornment>
+		<Type>Block</Type>
+		<X>160</X>
+		<Y>128</Y>
+	</InteractEnviornment>
+
+	<!-- Eleventh Column-->
+	<InteractEnviornment>
+		<Type>PortalBlock</Type>
+		<X>192</X>
+		<Y>128</Y>
+	</InteractEnviornment>
+
+
+	<!-- Loading Zones-->
+	<InteractEnviornment>
+		<Type>LoadZoneN</Type>
+		<X>112</X>
+		<Y>0</Y>
+	</InteractEnviornment>
+		<InteractEnviornment>
+		<Type>LoadZoneS</Type>
+		<X>112</X>
+		<Y>175</Y>
+	</InteractEnviornment>
+
+</Assets>

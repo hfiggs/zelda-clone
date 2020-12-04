@@ -31,6 +31,10 @@ namespace Game1.Player
 
         public IPlayerInventory PlayerInventory { get; private set; }
 
+        public int playerID { get; } = 2;
+
+        public bool requesting { get; set; } = false;
+
         public Player2(Game1 game, Vector2 position)
         {
             this.game = game;
@@ -80,19 +84,26 @@ namespace Game1.Player
 
         public void ReceiveDamage(int halfHearts, Vector2 direction)
         {
-            game.Screen.Player = new DamagedPlayer(game, this, direction);
-            PlayerInventory.SubHealth(1);
 
-            if (PlayerInventory.HalfHeartCount <= 0)
+            if (game.Mode != 2)
             {
-                game.SetState(new GameStateLosePhase1(game));
+                PlayerInventory.SubHealth(halfHearts);
             }
-            if (PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
-            {
-                const string lowHealthAudio = "lowHealth";
-                lowHealthSound = AudioManager.PlayLooped(lowHealthAudio);
-                isLowHealth = true;
-            }
+
+                if (PlayerInventory.HalfHeartCount <= 0)
+                {
+                    game.SetState(new GameStateLosePhase1(game, this));
+                }
+                else
+                {
+                    game.Screen.Players[playerID - 1] = new DamagedPlayer(game, this, direction);
+                }
+                if (PlayerInventory.HalfHeartCount <= lowHealthHalfHearts && !isLowHealth)
+                {
+                    const string lowHealthAudio = "lowHealth";
+                    lowHealthSound = AudioManager.PlayLooped(lowHealthAudio);
+                    isLowHealth = true;
+                }
         }
 
         public void Update(GameTime time)

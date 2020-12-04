@@ -23,6 +23,8 @@ namespace Game1.Player
         private const float animationTime = 125f; // ms per frame
         private const int animationFrames = 3;
 
+        private const int projXOffset = 28, projYOffset = 12;
+
         private const int bluePotionHalfHearts = 26; // 16 full hearts (max from all heart pieces)
 
         public PlayerStateRightUse(IPlayer player, Vector2 position)
@@ -36,7 +38,10 @@ namespace Game1.Player
             {
                 item = 0;
             }
-            player.PlayerInventory.SetItemInUse(item, true);
+
+            if (item != ItemEnum.PortalGun)
+                player.PlayerInventory.SetItemInUse(item, true);
+
             const char east = 'E';
 
             if (player.GetType() == typeof(Player1)) {
@@ -67,45 +72,23 @@ namespace Game1.Player
                     } else {
                         Sprite = PlayerSpriteFactory.Instance.CreateZeldaIdleRightSprite();
                     }
-                    
                     break;
                 case ItemEnum.BlueCandle:
-                    const int xModifier = 28, yModifier = 12;
-                    projectile = new CandleFire(east, position + new Vector2(xModifier, yModifier), player);
+                    projectile = new CandleFire(east, position + new Vector2(projXOffset, projYOffset), player);
                     break;
+                case ItemEnum.PortalGun:
                 default:
                     break;
             }
         }
 
-        public void Attack()
-        {
-            // Do nothing
-        }
+        public void Attack() { }
+        public void MoveDown() { }
+        public void MoveLeft() { }
+        public void MoveRight() { }
+        public void MoveUp() { }
+        public void UseItem() { }
 
-        public void MoveDown()
-        {
-            // Do nothing
-        }
-
-        public void MoveLeft()
-        {
-            // Do nothing
-        }
-
-        public void MoveRight()
-        {
-            // Do nothing
-        }
-
-        public void MoveUp()
-        {
-            // Do nothing
-        }
-        public void UseItem()
-        {
-            // Do nothing
-        }
         public void Update(GameTime time)
         {
             timeUntilNextFrame -= (float)time.ElapsedGameTime.TotalMilliseconds;
@@ -119,9 +102,14 @@ namespace Game1.Player
             }
             else if(frameCount == animationFrames)
             {
-                if (item != 0 && item != (ItemEnum)bluePotion)
+                if (item != 0 && item != (ItemEnum)bluePotion && item != ItemEnum.PortalGun)
                     player.SpawnProjectile(projectile);
                 player.SetState(new PlayerStateRight(player, position));
+            }
+
+            if (item == ItemEnum.PortalGun)
+            {
+                player.SetState(new PlayerStatePortalRight(player, position));
             }
         }
 

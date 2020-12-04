@@ -12,8 +12,8 @@ namespace Game1.CollisionDetection
     {
         
         private readonly List<IEnemy> EnemyList;
-        private IPlayer player;
-        private readonly Rectangle playerHitbox;
+        private List<IPlayer> players;
+        private Rectangle playerHitbox;
         private readonly List<IEnvironment> EnvironmentList;
         private readonly List<Collision> collisionList;
 
@@ -25,8 +25,8 @@ namespace Game1.CollisionDetection
 
             EnvironmentList = screen.CurrentRoom.InteractEnviornment;
 
-            player = screen.Player;
-            playerHitbox = player.GetPlayerHitbox();
+            players = screen.Players;
+
         }
 
         public List<Collision> GetCollisionList()
@@ -36,11 +36,15 @@ namespace Game1.CollisionDetection
             {
                 foreach (Rectangle enemyHitbox in enemy.GetHitboxes())
                 {
-                    Rectangle intersectPlayer = Rectangle.Intersect(enemyHitbox, playerHitbox);
-                    if (!intersectPlayer.IsEmpty)
+                    foreach (IPlayer player in players)
                     {
-                        char side = DetermineSide(enemyHitbox, playerHitbox, intersectPlayer);
-                        collisionList.Add(new Collision(side, intersectPlayer, enemy, player));
+                        playerHitbox = player.GetPlayerHitbox();
+                        Rectangle intersectPlayer = Rectangle.Intersect(enemyHitbox, playerHitbox);
+                        if (!intersectPlayer.IsEmpty)
+                        {
+                            char side = DetermineSide(enemyHitbox, playerHitbox, intersectPlayer);
+                            collisionList.Add(new Collision(side, intersectPlayer, enemy, player));
+                        }
                     }
                 }
             }

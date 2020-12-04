@@ -14,7 +14,7 @@ namespace Game1.Player
         public ISprite Sprite { get; private set; }
 
         private bool isMoving;
-         public Vector2 position { get; set; }
+        public Vector2 position { get; set; }
 
         private float timeUntilNextFrame; // ms
 
