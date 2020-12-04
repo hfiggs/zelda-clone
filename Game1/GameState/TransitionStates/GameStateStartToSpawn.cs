@@ -19,6 +19,7 @@ namespace Game1.GameState
         {
             this.game = game;
             AudioManager.StopAllMusic();
+            AudioManager.ResetAudioManager();
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
