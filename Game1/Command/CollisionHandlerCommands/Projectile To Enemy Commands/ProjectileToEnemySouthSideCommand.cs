@@ -60,7 +60,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (proj.GetType() == typeof(BombProjectile))
             {
-                const int bombWidth = 12; // bomb's width before explosion
+                const int bombWidth = 16; // bomb's width before explosion
                 const int bombHeight = 16; // bomb's height before explosion
                 if (enemy.GetType() == typeof(Dodongo) && proj.GetHitbox().Width == bombWidth && proj.GetHitbox().Height == bombHeight)
                 {

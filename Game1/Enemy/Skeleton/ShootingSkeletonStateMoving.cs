@@ -22,6 +22,7 @@ namespace Game1.Enemy
         private const float moveSpeed = .8f;
         private double totalElapsedSeconds = 0;
         private double MovementChangeTimeSeconds = 0.8;
+        private const char middle = 'M';
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
@@ -55,7 +56,7 @@ namespace Game1.Enemy
                 {
                     totalElapsedSeconds -= MovementChangeTimeSeconds;
                     direction = GetRandomDirection();
-                    screen.CurrentRoom.SpawnProjectile(new SingleFireball(position, player.GetPlayerHitbox()));
+                    screen.CurrentRoom.SpawnProjectile(new Fireballs(position, player.GetPlayerHitbox(), middle));
                 }
                 if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
                 {

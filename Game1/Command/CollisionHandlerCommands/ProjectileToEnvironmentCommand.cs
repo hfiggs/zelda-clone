@@ -41,6 +41,9 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 if (collision.intersectionRec.X >= rightBorder || collision.intersectionRec.X <= leftBorder || collision.intersectionRec.Y >= bottomBorder || collision.intersectionRec.Y <= topBorder)
                     proj.BeginDespawn();
+            } else if (proj is Fireballs)
+            {
+                proj.BeginDespawn();
             }
         }
     }
