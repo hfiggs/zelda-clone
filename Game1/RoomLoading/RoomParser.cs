@@ -16,9 +16,9 @@ namespace Game1.RoomLoading
         private readonly Game1 game;
         private readonly Room room;
         private const string xPositionTag = "X", yPositionTag = "Y", objectTypeTag = "Type", errorMessage = "Parameter cannot be null", errorParamName = "original", widthTag = "W", heightTag = "H";
-        public RoomParser(Game1 game, Room room, String path)
+        public RoomParser(Game1 game, Room room, String path, int difficulty)
         {
-            roomData = new XMLLoader(path);
+            roomData = new XMLLoader(path, difficulty);
             this.game = game;
             this.room = room;
         }
@@ -122,6 +122,9 @@ namespace Game1.RoomLoading
                     case "Goriya":
                         enemy = new Goriya(game, position);
                         break;
+                    case "HardGoriya":
+                        enemy = new HardGoriya(game, position);
+                        break;
                     case "Hand":
                         enemy = new Hand(game, position);
                         break;
@@ -136,6 +139,12 @@ namespace Game1.RoomLoading
                         break;
                     case "Skeleton":
                         enemy = new Skeleton(game, position);
+                        break;
+                    case "HardSkeleton":
+                        enemy = new HardSkeleton(game, position);
+                        break;
+                    case "ShootingSkeleton":
+                        enemy = new ShootingSkeleton(game, position);
                         break;
                     case "SkeletonKey":
                         enemy = new Skeleton(game, room, position, new Key(position));

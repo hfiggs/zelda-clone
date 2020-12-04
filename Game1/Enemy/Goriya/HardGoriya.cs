@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Game1.Enemy
 {
-    class Goriya : IEnemy
+    class HardGoriya : IEnemy
     {
         public int StunnedTimer { get; set; } = 0;
 
@@ -17,11 +17,11 @@ namespace Game1.Enemy
         private Vector2 position;
 
         private float health;
-
-        public Goriya(Game1 game, Vector2 spawnPosition)
+        
+        public HardGoriya(Game1 game, Vector2 spawnPosition)
         {
-            const float threeHearts = 3.0f;
-            health = threeHearts;
+            const float sixHearts = 6.0f;
+            health = sixHearts;
             this.game = game;
             this.position = spawnPosition;
             state = new EnemyStateSpawning(position, this, new GoriyaStateMovingRight(game, this, spawnPosition));

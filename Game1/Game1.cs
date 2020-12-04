@@ -55,8 +55,10 @@ namespace Game1
             ContentUtil.LoadAllContent(Content, GraphicsDevice);
 
             Screen = new Screen(this);
+
             RoomUtil.constructRoomUtil(Screen);
-            Screen.LoadAllRooms();
+            Screen.LoadAllRooms(0);
+
 
             State = new GameStateStart(this);
 

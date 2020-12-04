@@ -118,7 +118,7 @@ namespace Game1.HUD
                 }
 
                 selectionSquare2.Update(gameTime);
-            } 
+            }
 
             Tuple<char, int> currentRoom = screen.CurrentRoomKey.ToTuple();
             if(!roomsEntered.Contains(currentRoom))

@@ -104,6 +104,11 @@
     <Compile Include="Controller\Keyboard\KeyboardQuitController.cs" />
     <Compile Include="Controller\Keyboard\KeyboardStartController.cs" />
     <Compile Include="Enemy\EnemyStateDying.cs" />
+    <Compile Include="Enemy\Goriya\HardGoriya.cs" />
+    <Compile Include="Enemy\Skeleton\ShootingSkeletonStateMoving.cs" />
+    <Compile Include="Enemy\Skeleton\ShootingSkeleton.cs" />
+    <Compile Include="Enemy\Skeleton\HardSkeleton.cs" />
+    <Compile Include="Enemy\Skeleton\HardSkeletonStateMoving.cs" />
     <Compile Include="Environment\EnterBasementLoadZone.cs" />
     <Compile Include="Environment\ExitBasementLoadZone.cs" />
     <Compile Include="Environment\ExitDungeonLoadZone.cs" />
@@ -127,6 +132,7 @@
     <Compile Include="GameState\GameStateLosePhase2.cs" />
     <Compile Include="GameState\GameStateLosePhase1.cs" />
     <Compile Include="GameState\GameStatePlayerToStart.cs" />
+    <Compile Include="GameState\GameStateStartDifficulty.cs" />
     <Compile Include="GameState\GameStateWallmaster.cs" />
     <Compile Include="GameState\GameStatePaused.cs" />
     <Compile Include="GameState\GameStateWin.cs" />
@@ -162,12 +168,14 @@
     <Compile Include="Player\AIPlayerController.cs" />
     <Compile Include="Player\AIUtil\AStarUtil.cs" />
     <Compile Include="Player\Player2.cs" />
+    <Compile Include="Projectile\EnemyArrow.cs" />
     <Compile Include="Player\PlayerState\PlayerStateDown.cs" />
     <Compile Include="Player\PlayerState\PlayerStatePortalLeft.cs" />
     <Compile Include="Player\PlayerState\PlayerStatePortalUp.cs" />
     <Compile Include="Player\PlayerState\PlayerStatePortalRight.cs" />
     <Compile Include="Projectile\PortalProjectile.cs" />
     <Compile Include="Projectile\CandleFire.cs" />
+    <Compile Include="Projectile\SingleFireball.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -177,6 +185,7 @@
     <Compile Include="RoomLoading\Puzzle\PuzzleSpawnBoomerang.cs" />
     <Compile Include="Sprite\StartSprite.cs" />
     <Compile Include="Sprite\StartSpriteFactory.cs" />
+    <Compile Include="Util\EnemyAStarUtil.cs" />
     <Compile Include="Util\CollisonDetectionUtil.cs" />
     <Compile Include="Util\ColorIterator.cs" />
     <Compile Include="Player\PortalGunManager.cs" />
@@ -452,6 +461,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Start\DifficultyOptions.png" />
+    <Content Include="Content\Images\Start\StartBackground.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

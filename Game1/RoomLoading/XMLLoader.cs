@@ -14,20 +14,38 @@ namespace Game1.RoomLoading
         // xml Tag Names
         private const string itemTag = "Item", projectileTag = "Projectile", enemyTag = "Enemy", interactEnviornmentTag = "InteractEnviornment", nonInteractEnviornment = "NonInteractEnviornment", puzzleTag = "Puzzle", soundsTag = "Sounds";
 
-        public XMLLoader(String fileName)
+        public XMLLoader(String fileName, int difficulty)
         {
             this.xmlDoc = new XmlDocument();
             xmlDoc.Load(fileName);
+            switch (difficulty)
+            {
+                case 0:
+                    if(xmlDoc.GetElementsByTagName("Medium").Count > 0)
+                        xmlDoc.DocumentElement.RemoveChild(xmlDoc.DocumentElement.SelectSingleNode("Medium"));
+                    goto case 1;
+                case 1:
+                    if (xmlDoc.GetElementsByTagName("Hard").Count > 0)
+                        xmlDoc.DocumentElement.RemoveChild(xmlDoc.DocumentElement.SelectSingleNode("Hard"));
+                    break;
+                default:
+                    if (xmlDoc.GetElementsByTagName("Medium").Count > 0)
+                        xmlDoc.DocumentElement.RemoveChild(xmlDoc.DocumentElement.SelectSingleNode("Medium"));
+                    break;
+               
+            }
+
+
         }
 
         public XmlNodeList getItemNodes()
         {
-            return xmlDoc.GetElementsByTagName(itemTag); 
+            return xmlDoc.GetElementsByTagName(itemTag);
         }
 
         public XmlNodeList getProjectileNodes()
         {
-            return xmlDoc.GetElementsByTagName(projectileTag); ;
+            return xmlDoc.GetElementsByTagName(projectileTag);
         }
         public XmlNodeList getEnemyNodes()
         {

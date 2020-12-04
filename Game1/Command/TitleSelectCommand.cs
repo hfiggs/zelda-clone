@@ -20,7 +20,15 @@ namespace Game1.Command
         {
             if(!executed)
             {
-                (game.State as GameStateStart).MoveCursor();
+                if(game.State.GetType() == typeof(GameStateStart))
+                {
+                    (game.State as GameStateStart).MoveCursor();
+                }
+                else
+                {
+                    (game.State as GameStateStartDifficulty).MoveCursor();
+                }
+                
                 AudioManager.PlayFireForget("rupeeAddShort");
                 AudioManager.PlayFireForget("shield");
                 executed = true;

@@ -3,6 +3,7 @@
 using Game1.Audio;
 using Game1.GameState;
 using Game1.RoomLoading;
+using System;
 using System.Diagnostics;
 
 namespace Game1.Command
@@ -24,9 +25,18 @@ namespace Game1.Command
         {
             if (stopWatch.ElapsedMilliseconds >= cooldown)
             {
-                game.SetMode((game.State as GameStateStart).GetOption());
+                if (game.State.GetType() == typeof(GameStateStart))
+                {
+                    game.SetMode((game.State as GameStateStart).GetOption());
+                    game.SetState(new GameStateStartDifficulty(game));
+                }
+                else
+                {
+                    game.Screen.LoadAllRooms((game.State as GameStateStartDifficulty).GetOption());
+                    game.SetState(new GameStateStartToSpawn(game));
+                }
                 
-                game.SetState(new GameStateStartToSpawn(game));
+               
 
                 stopWatch.Restart();
             }

@@ -31,9 +31,9 @@ namespace Game1.RoomLoading
         private const int roomWidth = 256;
         private const int roomHeight = 176;
 
-        public Room(Game1 game, string file)
+        public Room(Game1 game, string file, int difficulty)
         {
-            RoomParser parser = new RoomParser(game, this, file);
+            RoomParser parser = new RoomParser(game, this, file, difficulty);
 
             ItemList = new List<IItem>(parser.GetItems());
 

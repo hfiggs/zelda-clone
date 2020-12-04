@@ -125,6 +125,7 @@ namespace Game1.Collision_Handling
             { typeof(Merchant), noDamage },
             { typeof(OldMan), noDamage },
             { typeof(Skeleton), halfHeart },
+            { typeof(HardSkeleton), fullHeart },
             { typeof(Snake), halfHeart },
             { typeof(SpikeTrap), halfHeart }
         };

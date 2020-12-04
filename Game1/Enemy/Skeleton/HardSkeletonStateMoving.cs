@@ -2,35 +2,41 @@
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using Game1.Item;
 using System.Collections.Generic;
-using System.Threading;
-using System.Diagnostics;
+using Game1.RoomLoading;
+using Game1.Player;
+using Game1.Environment;
 
 namespace Game1.Enemy
 {
-    class JellyStateMoving : IEnemyState
+    class HardSkeletonStateMoving : IEnemyState
     {
         public ISprite Sprite { get; private set; }
-        private IEnemy jelly;
+        private IEnemy skeleton;
+        private IPlayer player;
+        private Screen screen;
         private Vector2 position;
         private Vector2 direction;
-        private const float moveSpeed = 0.4f;
+        private const float moveSpeed = .8f;
         private double totalElapsedSeconds = 0;
-        private double MovementChangeTimeSeconds;
+        private double MovementChangeTimeSeconds = 0.1;
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
 
-        public JellyStateMoving(Vector2 position, IEnemy jelly)
+        public HardSkeletonStateMoving(Vector2 position, IEnemy skeleton, Screen screen)
         {
+            this.Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
+
             this.position = position;
-            this.direction = GetRandomDirection();
-            this.MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
-            Sprite = EnemySpriteFactory.Instance.CreateJellySprite();
+            this.player = screen.Players[0];
+            this.screen = screen;
+            this.direction = new Vector2(0,0);
 
-            timeUntilNextFrame = animationTime;
+            this.timeUntilNextFrame = animationTime;
 
-            this.jelly = jelly;
+            this.skeleton = skeleton;
         }
 
         public void Attack()
@@ -40,19 +46,14 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
-            if (jelly.StunnedTimer == 0)
+            if (skeleton.StunnedTimer == 0)
             {
-                Random random = new Random(Guid.NewGuid().GetHashCode());
-
                 totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
 
-                Stopwatch stopWatch = new Stopwatch();
                 if (totalElapsedSeconds >= MovementChangeTimeSeconds)
                 {
-                        totalElapsedSeconds -= MovementChangeTimeSeconds;
-                        direction = GetRandomDirection();
-                        MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
-                        stopWatch.Restart();
+                    totalElapsedSeconds -= MovementChangeTimeSeconds;
+                    direction = GetOptimalDirection();
                 }
                 if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
                 {
@@ -72,43 +73,45 @@ namespace Game1.Enemy
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             Sprite.Draw(spriteBatch, position, color);
+            
         }
 
-        public Vector2 GetPosition()
+        public ISprite GetSprite()
         {
-            return position;
-        }
+            return this.Sprite;
+        } 
 
         public Vector2 GetDirection()
         {
             return direction;
         }
+        public Vector2 GetPosition()
+        {
+            return position;
+        }
 
         public List<Rectangle> GetHitboxes()
         {
-            const int xDiff = 11;
-            const int yDiff = 10;
-            const int width = 8;
-            const int height = 9;
-
+            const int xAndYDiff = 7;
+            const int width = 15;
+            const int height = 16;
             List<Rectangle> hitboxList = new List<Rectangle>();
-            hitboxList.Add(new Rectangle((int)position.X + xDiff, (int)position.Y + yDiff, width, height));
+            hitboxList.Add(new Rectangle((int)position.X + xAndYDiff, (int)position.Y + xAndYDiff, width, height));
             return hitboxList;
         }
 
-        private float GetRandomDirectionMovementChangeTimeSeconds()
+        private Vector2 GetOptimalDirection()
         {
-            const double minimumTime = 0.8;
-            return (float)(minimumTime);
-        }
-        private Vector2 GetRandomDirection()
-        {
-            Random random = new Random(Guid.NewGuid().GetHashCode());
-            const int randomNumberMax = 4;
-            int randomDirection = random.Next(randomNumberMax);
+            List<IEnvironment> obstacles = screen.CurrentRoom.InteractEnviornment;
+            List<Rectangle> obstacleHitboxes = new List<Rectangle>();
+            foreach(IEnvironment e in obstacles)
+            {
+                obstacleHitboxes.AddRange(e.GetHitboxes());
+            }
+            int optimalDirection = AStarEnemyPathfinding.Program.findNextDecision(skeleton.GetHitboxes()[0], player.GetPlayerHitbox(), obstacleHitboxes);
 
-            const int goLeft = 0, goRight = 1, goUp = 2;
-            switch (randomDirection)
+            const int goLeft = -1, goRight = 1, goUp = 2, goDown = 4;
+            switch (optimalDirection)
             {
                 case goLeft:
                     return new Vector2(-1 * moveSpeed, 0);
@@ -116,11 +119,12 @@ namespace Game1.Enemy
                     return new Vector2(moveSpeed, 0);
                 case goUp:
                     return new Vector2(0, -1 * moveSpeed);
-                default:
+                case goDown:
                     return new Vector2(0, moveSpeed);
+                default:
+                    return new Vector2(0, 0);
             }
         }
-
         public void editPosition(Vector2 amount)
         {
             position = Vector2.Add(position, amount);
