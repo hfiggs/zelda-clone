@@ -1,0 +1,32 @@
+﻿AUTHOR (OF REVIEW) - Sergei Fedulov
+
+DATE - 12/4/2020
+
+
+SPRINT # - Sprint 5
+
+
+NAME OF FILE BEING REVIEWED - PortalUtil
+
+
+AUTHOR OF FILE BEING REVIEWED - Hunter Figgs
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 20
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - 
+
+-The class overall is just under 86 lines and each method is a reasonable length makig the code easy to read.
+
+-The method and variale names are self explanatory making it easy to understand what each method does.
+
+-No magic numbers anywhere in the code. Any arbitrary values are difend using constant fields.
+
+-Defining the otherPortal, editVector and other variables implicitly using var can be a bit confusing and may
+hurt the readability of the code since the type of the varaible is not explicitly stated.
+
+-The way otherPortal is first defined in HandlePlayerProtal is very long and can be a bit confusing if the reader
+is not familiar with lambda functions and conditional operators.
+
+-
