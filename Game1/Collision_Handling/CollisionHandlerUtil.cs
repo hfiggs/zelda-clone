@@ -59,8 +59,8 @@ namespace Game1.Collision_Handling
                     foreach (IPlayer Player in game.Screen.Players)
                     {
                         Player.PlayerInventory.AddMaxHeart();
+                        Player.PlayerInventory.AddHealth(heartHalfHearts);
                     }
-                    player.PlayerInventory.AddHealth(heartHalfHearts);
                     break;
                 case ItemBoomerang _:
                     foreach (IPlayer Player in game.Screen.Players)
