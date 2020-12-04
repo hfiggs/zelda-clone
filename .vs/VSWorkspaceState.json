@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Content",
-    "\\Game1\\Content\\RoomXML",
-    "\\Game1\\Enemy",
-    "\\Game1\\Enemy\\Aquamentus"
+    "\\Game1\\Command",
+    "\\Game1\\GameState",
+    "\\_Documentation",
+    "\\_Documentation\\Code Reviews",
+    "\\_Documentation\\Code Reviews\\Sprint 5 Code Reviews"
   ],
-  "SelectedNode": "\\Game1\\Content\\RoomXML\\RoomB4.xml",
+  "SelectedNode": "\\Game1\\GameState\\GameStateStartDifficulty.cs",
   "PreviewInSolutionExplorer": false
 }

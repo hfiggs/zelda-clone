@@ -11,14 +11,14 @@ namespace Game1.GameState
     {
         private readonly Game1 game;
         private const float startSoundDelay = 750.0f; //ms
+        private const float soundVolume = 0.5f;
+        private bool playedSound = false;
         private float timer = 0;
 
         public GameStateStartToSpawn(Game1 game)
         {
             this.game = game;
             AudioManager.StopAllMusic();
-            AudioManager.PlayFireForget("swordBeam");
-            AudioManager.PlayFireForget("rupeePickUp");
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
@@ -36,6 +36,16 @@ namespace Game1.GameState
                 AudioManager.PlayLooped(overworldMusic);
 
                 game.SetState(new GameStateRoom(game));
+            }
+
+            AudioManager.Update(gameTime);
+
+            if (!playedSound)
+            {
+                AudioManager.PlayFireForget("swordBeam");
+                AudioManager.PlayFireForget("powerPickUp", 0.0f, soundVolume);
+                AudioManager.PlayFireForget("key", 0.0f, soundVolume);
+                playedSound = true;
             }
         }
     }

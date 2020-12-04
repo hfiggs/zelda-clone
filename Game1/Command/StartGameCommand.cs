@@ -27,12 +27,14 @@ namespace Game1.Command
             {
                 if (game.State.GetType() == typeof(GameStateStart))
                 {
+                    AudioManager.PlayFireForget("swordBeam");
                     game.SetMode((game.State as GameStateStart).GetOption());
                     game.SetState(new GameStateStartDifficulty(game));
                 }
                 else
                 {
                     game.Screen.LoadAllRooms((game.State as GameStateStartDifficulty).GetOption());
+                    AudioManager.ResetAudioManager();
                     game.SetState(new GameStateStartToSpawn(game));
                 }
                 

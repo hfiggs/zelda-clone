@@ -119,6 +119,8 @@ namespace Game1.GameState
                 controller.Update();
             }
             cursor.Update();
+
+            AudioManager.Update(gameTime);
         }
 
         private Vector2 calculateNextOffset(int i, Vector2 offsetVector)

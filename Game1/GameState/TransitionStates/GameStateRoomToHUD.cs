@@ -2,6 +2,7 @@
 
 using Game1.Controller;
 using Game1.ResolutionManager;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -15,7 +16,7 @@ namespace Game1.GameState
         private readonly Game1 game;
         private readonly List<IController> controllerList;
 
-        private const float transitionSpeed = 0.1f; // pixels per ms
+        private const float transitionSpeed = TransitionUtil.TransitionSpeed; // pixels per ms
 
         private const float roomStartOffset = 40f;
         private const float hudStartOffset = -136f;
