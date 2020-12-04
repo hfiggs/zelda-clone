@@ -277,7 +277,7 @@ namespace Game1.Player
 
         public ISprite CreateLinkPortalBlueUpSprite()
         {
-            return new PlayerSprite(linkPortalOrangeSheet, 2, 4, 3, 2);
+            return new PlayerSprite(linkPortalBlueSheet, 2, 4, 3, 2);
         }
 
         // Link Portal Orange
@@ -321,7 +321,7 @@ namespace Game1.Player
 
         public ISprite CreateZeldaPortalBlueUpSprite()
         {
-            return new PlayerSprite(zeldaPortalOrangeSheet, 2, 4, 3, 2);
+            return new PlayerSprite(zeldaPortalBlueSheet, 2, 4, 3, 2);
         }
 
         // Zelda Portal Orange

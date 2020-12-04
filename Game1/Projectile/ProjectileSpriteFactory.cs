@@ -10,10 +10,13 @@ namespace Game1.Projectile
 		private const int projectileColumns = 6, projectileRows = 4, swordBeamColumn = 1, arrowColumn = 0, boomerangColumn = 3, fireballColumn = 4, bombColumn = 5, bombRow = 0, bombTotalFrames = 1;
 		private const string projectileSpriteFilePath = "Images/Projectile/Projectiles";
 
-		private Texture2D portalProjectileSpriteSheet;
+		private Texture2D portalBlueProjectileSpriteSheet;
+		private Texture2D portalOrangeProjectileSpriteSheet;
+		private const string portalBlueProjectileSpriteSheetFilePath = "Images/Projectile/PortalBlueProjectile";
+		private const string portalOrangeProjectileSpriteSheetFilePath = "Images/Projectile/PortalOrangeProjectile";
 
 		private static ProjectileSpriteFactory instance = new ProjectileSpriteFactory();
-		private const string portalProjectileSpriteSheetFilePath = "Images/Projectile/PortalProjectile";
+		
 
 		public static ProjectileSpriteFactory Instance
 		{
@@ -30,14 +33,10 @@ namespace Game1.Projectile
 		public void LoadAllTextures(ContentManager content)
 		{
 			projectileSpriteSheet = content.Load<Texture2D>(projectileSpriteFilePath);
-			portalProjectileSpriteSheet = content.Load<Texture2D>(portalProjectileSpriteSheetFilePath);
+			portalBlueProjectileSpriteSheet = content.Load<Texture2D>(portalBlueProjectileSpriteSheetFilePath);
+			portalOrangeProjectileSpriteSheet = content.Load<Texture2D>(portalOrangeProjectileSpriteSheetFilePath);
 		}
 
-		public ISprite CreatePortalProjectileSprite()
-        {
-			return new ParticleSprite(portalProjectileSpriteSheet, 0, 0, 1, 4, 4);
-        }
-		
 		public ProjectileSpriteSheet CreateSwordBeamSprite()
 		{
 			return new ProjectileSpriteSheet(projectileSpriteSheet, projectileColumns, projectileRows, swordBeamColumn);
@@ -61,5 +60,54 @@ namespace Game1.Projectile
 		{
 			return new ProjectileSprite(projectileSpriteSheet, bombColumn, bombRow, projectileColumns, projectileRows, bombTotalFrames);
 		}
+
+		#region Portal Projectiles
+
+		// Blue Portal
+
+		public ISprite CreatePortalBlueDownProjectileSprite()
+		{
+			return new ParticleSprite(portalBlueProjectileSpriteSheet, 0, 0, 4, 4, 4);
+		}
+
+		public ISprite CreatePortalBlueLeftProjectileSprite()
+		{
+			return new ParticleSprite(portalBlueProjectileSpriteSheet, 1, 0, 4, 4, 4);
+		}
+
+		public ISprite CreatePortalBlueRightProjectileSprite()
+		{
+			return new ParticleSprite(portalBlueProjectileSpriteSheet, 2, 0, 4, 4, 4);
+		}
+
+		public ISprite CreatePortalBlueUpProjectileSprite()
+		{
+			return new ParticleSprite(portalBlueProjectileSpriteSheet, 3, 0, 4, 4, 4);
+		}
+
+		// Blue Orange
+
+		public ISprite CreatePortalOrangeDownProjectileSprite()
+		{
+			return new ParticleSprite(portalOrangeProjectileSpriteSheet, 0, 0, 4, 4, 4);
+		}
+
+		public ISprite CreatePortalOrangeLeftProjectileSprite()
+		{
+			return new ParticleSprite(portalOrangeProjectileSpriteSheet, 1, 0, 4, 4, 4);
+		}
+
+		public ISprite CreatePortalOrangeRightProjectileSprite()
+		{
+			return new ParticleSprite(portalOrangeProjectileSpriteSheet, 2, 0, 4, 4, 4);
+		}
+
+		public ISprite CreatePortalOrangeUpProjectileSprite()
+		{
+			return new ParticleSprite(portalOrangeProjectileSpriteSheet, 3, 0, 4, 4, 4);
+		}
+
+		#endregion
+
 	}
 }

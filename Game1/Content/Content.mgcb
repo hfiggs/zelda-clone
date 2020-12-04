@@ -925,7 +925,7 @@
 /processorParam:TextureFormat=Color
 /build:Images/Player/ZeldaUp.png
 
-#begin Images/Projectile/PortalProjectile.png
+#begin Images/Projectile/PortalBlueProjectile.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -935,7 +935,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Projectile/PortalProjectile.png
+/build:Images/Projectile/PortalBlueProjectile.png
+
+#begin Images/Projectile/PortalOrangeProjectile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Projectile/PortalOrangeProjectile.png
 
 #begin Images/Projectile/projectiles.png
 /importer:TextureImporter

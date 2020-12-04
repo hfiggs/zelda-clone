@@ -15,10 +15,11 @@ namespace Game1.Projectile
 
     class PortalProjectile : IProjectile
     {
-        private readonly ISprite sprite;
+        private ISprite sprite;
         private Vector2 position;
 
         public PortalColor PortalColor { get; set; }
+        private readonly CompassDirection direction;
 
         private const int hitboxOffset = 15, hitboxDiameter = 10;
 
@@ -38,18 +39,20 @@ namespace Game1.Projectile
         {
             this.position = position;
             Player = player;
+            Player.PlayerInventory.SetItemInUse(ItemEnum.PortalGun, true);
 
             PortalColor = portalColor;
 
-            Player.PlayerInventory.SetItemInUse(ItemEnum.PortalGun, true);
+            this.direction = direction;
 
-            sprite = ProjectileSpriteFactory.Instance.CreatePortalProjectileSprite();
+            SetSprite();
 
             moveVector = Vector2.Multiply(CompassDirectionUtil.GetDirectionVector(direction), moveSpeed);
 
             timeUntilNextFrame = animationTime;
             timeUntilDespawn = aliveTime;
         }
+
         public void Update(GameTime gameTime)
         {
             position = Vector2.Add(position, Vector2.Multiply(moveVector, (float)gameTime.ElapsedGameTime.TotalMilliseconds));
@@ -105,6 +108,25 @@ namespace Game1.Projectile
         public void EditPosition(Vector2 amount)
         {
             position = Vector2.Add(amount, position);
+        }
+
+        private void SetSprite()
+        {
+            switch (direction)
+            {
+                case CompassDirection.North:
+                    sprite = PortalColor == PortalColor.Blue ? ProjectileSpriteFactory.Instance.CreatePortalBlueUpProjectileSprite() : ProjectileSpriteFactory.Instance.CreatePortalOrangeUpProjectileSprite();
+                    break;
+                case CompassDirection.East:
+                    sprite = PortalColor == PortalColor.Blue ? ProjectileSpriteFactory.Instance.CreatePortalBlueRightProjectileSprite() : ProjectileSpriteFactory.Instance.CreatePortalOrangeRightProjectileSprite();
+                    break;
+                case CompassDirection.South:
+                    sprite = PortalColor == PortalColor.Blue ? ProjectileSpriteFactory.Instance.CreatePortalBlueDownProjectileSprite() : ProjectileSpriteFactory.Instance.CreatePortalOrangeDownProjectileSprite();
+                    break;
+                case CompassDirection.West:
+                    sprite = PortalColor == PortalColor.Blue ? ProjectileSpriteFactory.Instance.CreatePortalBlueLeftProjectileSprite() : ProjectileSpriteFactory.Instance.CreatePortalOrangeLeftProjectileSprite();
+                    break;
+            }
         }
     }
 }

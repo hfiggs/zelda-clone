@@ -53,6 +53,7 @@ namespace Game1.Util
 
                 case Arrow _:
                 case Boomerang _:
+                case SwordBeam _:
                     if (portalBlock.State != PortalBlockState.Normal)
                     {
                         HandleProjectileTeleport(portalBlock, proj, screen.CurrentRoom);
