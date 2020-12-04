@@ -8,7 +8,7 @@ namespace Game1.HUD.HUDItems
 {
     class DungeonOneMap : IHudItem
     {
-        private const int x = 5, y = 140;
+        private const int x = 5, y = 144;
         public Vector2 location { get; set; } = new Vector2(x, y);
         public ItemEnum myItem { get; private set; } = ItemEnum.None;
         public Rectangle selectionRectangle { get; set; }
