@@ -1,0 +1,23 @@
+AUTHOR (OF REVIEW) - Patrick Haughn
+
+
+DATE - 12/4/20
+
+
+SPRINT # - 5
+
+
+NAME OF FILE BEING REVIEWED - AIPlayerController
+
+
+AUTHOR OF FILE BEING REVIEWED - Jared Perkins
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 17
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - 
+	- The file has good variable names which makes it easy to read and figure out what's going on.
+	- There are a decent amount of loops and ifs which make it a bit confusing at first glance, but they are necessary and pretty straight forward/simple.
+	- DecideDirection could use variable named constants to help clarify what is being checked for in the if statements.
+	- Overall the file has pretty good readability. Getting a general idea of what's going on and which sections do what isn't that difficult.

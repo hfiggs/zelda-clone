@@ -1,0 +1,28 @@
+AUTHOR (OF THE REVIEW) - Patrick Haughn
+
+
+DATE - 12/4/20
+
+
+SPRINT # - 5
+
+
+NAME OF FILE BEING REVIEWED - PortalUtil
+
+
+AUTHOR OF FILE BEING REVIEWED -  Hunter Figgs
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 15
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) - 
+	- The utility class has good readability, the variables are well named and the file is less than 100 lines.
+	- The class is clear on which methods handle what due to clear naming.
+	- It would be easy to add in more interactions with the portals in the future by either adding in another method or adding cases into the existing switch statements.
+	- The file has pretty low coupling, it only knows about Environment, Player, Projectile and Roomloading.
+	- Overall the file seems very maintainable and easy to add on to or edit in the future.
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - 
+	- This isn't necessary but you could add special interactions between enemies and the portals for different puzzle types 
+	(Navigating through tricky rooms). This wouldn't be hard to add you would just need to add in a method that handles portalblock, enemy interactions.
