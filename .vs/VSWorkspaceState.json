@@ -2,12 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Command",
-    "\\Game1\\GameState",
-    "\\_Documentation",
-    "\\_Documentation\\Code Reviews",
-    "\\_Documentation\\Code Reviews\\Sprint 5 Code Reviews"
+    "\\Game1\\Command\\CollisionHandlerCommands\\Projectile To Enemy Commands",
+    "\\Game1\\Content",
+    "\\Game1\\Content\\Images",
+    "\\Game1\\Content\\Images\\HUD",
+    "\\Game1\\Enemy\\Aquamentus",
+    "\\Game1\\HUD",
+    "\\Game1\\HUD\\HUDItems"
   ],
-  "SelectedNode": "\\Game1\\GameState\\GameStateStartDifficulty.cs",
+  "SelectedNode": "\\Game1\\Content\\Content.mgcb",
   "PreviewInSolutionExplorer": false
 }
