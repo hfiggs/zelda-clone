@@ -20,6 +20,7 @@ namespace Game1.Player
         private int frameCount = 0;
 
         private const float animationTime = 125f; // ms per frame
+        private const float bombOffset = 16;
         private const int animationFrames = 3;
 
         const int projXOffset = 12, projYOffset = 30;
@@ -60,7 +61,7 @@ namespace Game1.Player
                     break;
                 case ItemEnum.Bomb:
                     player.PlayerInventory.SubBomb();
-                    projectile = new BombProjectile(new Vector2(position.X, position.Y), player);
+                    projectile = new BombProjectile(new Vector2(position.X, position.Y + bombOffset), player);
                     break;
                 case ItemEnum.BluePotion:
                     player.PlayerInventory.SubBluePotion();
