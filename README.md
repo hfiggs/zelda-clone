@@ -54,6 +54,8 @@ All Extra Features
 
 - AI - pathfinds to the player until finding an enemy, at which point it attacks, for 1 human
 
+- Difficulty - 3 difficulty settings to choose from
+
 - Added extra rooms - Exterior of dungeon and portal rooms to the right
 
 - Portals - Portals can only be created on white tiles in the rooms to the right of the starting room (overworld)
@@ -61,6 +63,8 @@ All Extra Features
 - Full Screen vs Windowed option - Maximize with the typical windows button or by pressing F4
 
 - Persistant Volume Controls - increase, decrease, and mute all sound using F1, F2, and F3 using built in project properties
+
+- Special Death sequence - plays once to avoid player annoyance
 
 Current Bugs:
 
