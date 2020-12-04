@@ -462,6 +462,9 @@ namespace Game1.RoomLoading
                     case "PuzzleMoveBlock":
                         puzzle = new PuzzleMoveBlock();
                         break;
+                    case "PuzzleMoveBlockNS":
+                        puzzle = new PuzzleMoveBlockNS();
+                        break;
                     case "PuzzleSpawnBoomerang":
                         puzzle = new PuzzleSpawnBoomerang();
                         break;

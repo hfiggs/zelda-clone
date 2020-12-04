@@ -23,6 +23,7 @@ namespace Game1.Environment
 
         private List<Rectangle> hitboxes = new List<Rectangle>();
         public bool hasMoved;
+        public CompassDirection hasMovedDir { get; private set; } = CompassDirection.None;
 
         public MovableBlock(Vector2 position, char movementDirection)
         {
@@ -68,6 +69,32 @@ namespace Game1.Environment
                 moveY = movement.Y * 16.0f;
             movementSpeed = new Vector2(moveX, moveY) / seconds;
             hasMoved = true;
+
+            SetMovementDirection(movement);
+        }
+
+        private void SetMovementDirection(Vector2 movement)
+        {
+            Vector2 normalized = movement;
+            normalized.Normalize();
+            //NOTE: deliberate float equality
+            if (normalized.X == 1.0f)
+            {
+                hasMovedDir = CompassDirection.East;
+            }
+            else if (normalized.X == -1.0f)
+            {
+                hasMovedDir = CompassDirection.West;
+            }
+            else if (normalized.Y == 1.0f)
+            {
+                hasMovedDir = CompassDirection.South;
+            }
+            else
+            {
+                hasMovedDir = CompassDirection.North;
+            }
+            Console.WriteLine("Has Moved: " + hasMovedDir + ", " + normalized);
         }
 
         public bool Pushable { get; set; } = true;
