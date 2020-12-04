@@ -132,6 +132,7 @@ namespace Game1.RoomLoading
                     AIPlayerControl = new AIPlayerController(player, player2, this);
                     break;
             }
+
             game.HUD = new HUDInterface(Players, game.Screen);
         }
     }

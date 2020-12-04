@@ -39,7 +39,7 @@ namespace Game1.GameState
             {
                 controller.Update();
             }
-
+            Console.WriteLine(game.Screen.CurrentRoomKey.ToString());
             game.HUD.Update(gameTime);
 
             const int mousePosition = 150;

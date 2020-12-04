@@ -11,7 +11,7 @@ namespace Game1.Enemy
 
         private Vector2 oldDirection;
         private double totalElapsedSeconds;
-        private const double attackCooldown = .2;
+        private const double attackCooldown = 1;
         private IEnemyState state;
         private Game1 game;
         private Vector2 position;
@@ -20,8 +20,8 @@ namespace Game1.Enemy
         
         public HardGoriya(Game1 game, Vector2 spawnPosition)
         {
-            const float eightHearts = 8.0f;
-            health = eightHearts;
+            const float sixHearts = 6.0f;
+            health = sixHearts;
             this.game = game;
             this.position = spawnPosition;
             state = new EnemyStateSpawning(position, this, new GoriyaStateMovingRight(game, this, spawnPosition));

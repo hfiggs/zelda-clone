@@ -9,6 +9,7 @@ namespace Game1.Enemy
         private Texture2D startBgSpriteSheet;
         private Texture2D options;
         private Texture2D cursorSheet;
+        private Texture2D difficulty;
 
         private static StartSpriteFactory instance = new StartSpriteFactory();
 
@@ -29,8 +30,10 @@ namespace Game1.Enemy
             const string startBackgroundFilePath = "images/Start/StartBackground";
             const string optionsPath = "images/Start/TitleOptions";
             const string cursorSheetPath = "images/Projectile/projectiles";
+            const string difficultyPath = "images/Start/DifficultyOptions";
             startBgSpriteSheet = content.Load<Texture2D>(startBackgroundFilePath);
             options = content.Load<Texture2D>(optionsPath);
+            difficulty = content.Load<Texture2D>(difficultyPath);
             cursorSheet = content.Load<Texture2D>(cursorSheetPath);
         }
 
@@ -42,6 +45,11 @@ namespace Game1.Enemy
         public ISprite CreateOption(int optionNum)
         {
             return new StartSprite(options, 0, optionNum, 1, 3, 1);
+        }
+
+        public ISprite CreateDifficultyOption(int optionNum)
+        {
+            return new StartSprite(difficulty, 0, optionNum, 1, 3, 1);
         }
 
         public ISprite CreateCursor()

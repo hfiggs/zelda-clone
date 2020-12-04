@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace Game1.GameState
 {
-    class GameStateStart : IGameState
+    class GameStateStartDifficulty : IGameState
     {
         private readonly Game1 game;
         private readonly List<IController> controllerList;
@@ -28,8 +28,8 @@ namespace Game1.GameState
         private readonly List<Vector2> optionPositions = new List<Vector2>(optionsNum);
         private readonly List<Color> optionColors = new List<Color>(optionsNum);
         private readonly Color optionHighlightColor = new Color(new Vector3(0.0f, 0.0f, 0.7373f));
-        private readonly Vector2 optionPosition = new Vector2(52.0f, 148.0f);
-        private readonly Vector2 optionPositionOffset = new Vector2(85.0f, 10.0f);
+        private readonly Vector2 optionPosition = new Vector2(65.0f, 148.0f);
+        private readonly Vector2 optionPositionOffset = new Vector2(80.0f, 10.0f);
         private int cursorPosition = 0;
         private readonly Vector2 cursorOffset = new Vector2(-30.0f, -15.0f);
         private readonly Vector2 backgroundPosition = new Vector2(0, 0);
@@ -45,7 +45,7 @@ namespace Game1.GameState
 
         private readonly IParticle curtain;
 
-        public GameStateStart(Game1 game)
+        public GameStateStartDifficulty(Game1 game)
         {
             this.game = game;
 
@@ -59,7 +59,7 @@ namespace Game1.GameState
             cursor = StartSpriteFactory.Instance.CreateCursor();
             for (int i = 0; i < optionsNum; i++)
             {
-                optionList.Add(StartSpriteFactory.Instance.CreateOption(i));
+                optionList.Add(StartSpriteFactory.Instance.CreateDifficultyOption(i));
                 optionPositions.Add(optionPosition);
                 optionColors.Add(Color.Black);
                 optionPosition += calculateNextOffset(i, optionPositionOffset);
@@ -77,11 +77,8 @@ namespace Game1.GameState
                 waterfallParticles.Add(new Waterfall(Vector2.Add(waterfallSprayPosition, new Vector2(0, (i + 1) * waterfallParticleSpacing + waterfallParticleOffset)), i == 0 ? 0 : offset));
             }
 
-            isMusicStarted = false;
+            isMusicStarted = true;
 
-            game.Screen = new Screen(game);
-
-            curtain = new Curtain(game, true);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
@@ -101,7 +98,6 @@ namespace Game1.GameState
 
             waterfallParticles.ForEach(p => p.Draw(spriteBatch, color));
 
-            curtain.Draw(spriteBatch, color);
 
             spriteBatch.End();
         }
@@ -122,8 +118,6 @@ namespace Game1.GameState
             {
                 controller.Update();
             }
-
-            curtain.Update(gameTime);
             cursor.Update();
         }
 

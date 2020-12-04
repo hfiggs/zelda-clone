@@ -80,9 +80,6 @@
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToEnvironmentCommand.cs" />
     <Compile Include="Command\PauseGameCommand.cs" />
     <Compile Include="Command\AudioCommands\MuteUnmuteCommand.cs" />
-    <Compile Include="Command\SetHardDifficultyCommand.cs" />
-    <Compile Include="Command\SetNormalDifficultyCommand.cs" />
-    <Compile Include="Command\SetEasyDifficultyCommand.cs" />
     <Compile Include="Command\PlayerCommands\Player2AttackCommand.cs" />
     <Compile Include="Command\PlayerCommands\Player2DownCommand.cs" />
     <Compile Include="Command\PlayerCommands\Player2EquipItemCommand.cs" />
@@ -135,6 +132,7 @@
     <Compile Include="GameState\GameStateLosePhase2.cs" />
     <Compile Include="GameState\GameStateLosePhase1.cs" />
     <Compile Include="GameState\GameStatePlayerToStart.cs" />
+    <Compile Include="GameState\GameStateStartDifficulty.cs" />
     <Compile Include="GameState\GameStateWallmaster.cs" />
     <Compile Include="GameState\GameStatePaused.cs" />
     <Compile Include="GameState\GameStateWin.cs" />
@@ -463,6 +461,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Start\DifficultyOptions.png" />
     <Content Include="Content\Images\Start\StartBackground.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>

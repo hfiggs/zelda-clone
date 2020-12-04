@@ -14,9 +14,6 @@ namespace Game1.Controller
         {
             commands = new Dictionary<Keys, ICommand>
             {
-                {Keys.D1, new SetEasyDifficultyCommand(game) },
-                {Keys.D2, new SetNormalDifficultyCommand(game) },
-                {Keys.D3, new SetHardDifficultyCommand(game) },
                 { Keys.Q, new QuitCommand(game) },
                 { Keys.Enter, new StartGameCommand(game) },
                 {Keys.F1, new MuteUnmuteCommand(game) },
