@@ -10,10 +10,12 @@ namespace Game1.Enemy
     class AquamentusWalkLeftAttack : IEnemyState
     {
         private Vector2 position;
+        private readonly Vector2 attackPositionOffset = new Vector2(0, 0);
         private int counter;
         private float totalTime;
         private const float timeOfAttack = 1;
         private const float moveSpeed = 7;
+        private const char top = 'T', bottom = 'B', middle = 'M';
         Game1 game;
         IEnemy aquamentus;
 
@@ -56,7 +58,9 @@ namespace Game1.Enemy
                 {
                     Random rand = new Random();
                     int randIndex = rand.Next(0, game.Screen.Players.Count);
-                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position, playerRectList[randIndex]));
+                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position - attackPositionOffset, playerRectList[randIndex], top));
+                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position - attackPositionOffset, playerRectList[randIndex], bottom));
+                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position - attackPositionOffset, playerRectList[randIndex], middle));
                     counter++;
                 }
                 else

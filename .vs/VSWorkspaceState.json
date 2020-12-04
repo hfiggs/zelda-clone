@@ -2,12 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Command",
     "\\Game1\\Command\\CollisionHandlerCommands",
-    "\\Game1\\Environment\\Overworld",
-    "\\Game1\\HUD\\HUDItems",
-    "\\Game1\\Player"
+    "\\Game1\\Content",
+    "\\Game1\\Content\\RoomXML",
+    "\\Game1\\RoomLoading"
   ],
-  "SelectedNode": "\\Game1\\Player\\DamagedPlayer.cs",
+  "SelectedNode": "\\Game1\\RoomLoading\\Screen.cs",
   "PreviewInSolutionExplorer": false
 }
