@@ -55,9 +55,9 @@ namespace Game1.Enemy
                 {
                     Random rand = new Random();
                     int randIndex = rand.Next(0, game.Screen.Players.Count);
-                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position - attackPositionOffset, playerRectList[randIndex], top));
-                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position - attackPositionOffset, playerRectList[randIndex], bottom));
-                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position - attackPositionOffset, playerRectList[randIndex], middle));
+                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position, playerRectList[randIndex], top));
+                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position, playerRectList[randIndex], bottom));
+                    game.Screen.CurrentRoom.SpawnProjectile(new Fireballs(position, playerRectList[randIndex], middle));
                     counter++;
                 }
                 else
