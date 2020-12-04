@@ -1,0 +1,25 @@
+﻿AUTHOR (OF THE REVIEW) - Jared Perkins
+
+
+DATE - 12/3/2020
+
+
+SPRINT # - 5
+
+
+NAME OF FILE BEING REVIEWED - AudioManager	
+
+
+AUTHOR OF FILE BEING REVIEWED -  Jeff Gaydos
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) - First notice is the class is almost 350 lines long.
+													Lost of broken apart methods, would most likely work with added features easily.
+													Stop music method has a comment about something deliberately left unchecked with no explanation
+													Same as above for stop sound
+													Simple methods, basic boolean logic, not a lot of nested statements.
+													
+
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - Definitely break some things off into Util classes. Maybe a soundEffects manager and a music manager. Lots of code in one class, could be brought down.

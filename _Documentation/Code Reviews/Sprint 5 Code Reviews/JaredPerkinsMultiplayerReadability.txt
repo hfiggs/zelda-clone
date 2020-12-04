@@ -1,0 +1,26 @@
+﻿AUTHOR (OF REVIEW) - Jared Perkins
+
+
+DATE - 12/3/2020
+
+
+SPRINT # - 5
+
+
+NAME OF FILE BEING REVIEWED -  Multiplayer files (Player2, all changes made across multiple files to support new player)
+
+
+AUTHOR OF FILE BEING REVIEWED - Jeff Gaydos and Patrick Haughn
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 45 minutes (lots of code to look over in different places)
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - Player 2 reads just as well as player 1. Decent length, nothing unneeded.
+																	One issue in player class, long line boolean check in use item. Maybe pull that into a method so its more readable.
+																	New player to player collision command reads easy. 
+																	New HUD work made a lot of long calculations and logic that is a little difficult to read. 
+																	New HUD work put the class at almost 200 lines. 
+																	Maybe split the hud types into two different classes.
+																	Collision detection for player 2 checks is just added another layer of loops to detection.
+																	Not sure if it falls into readability, but new Player 2 sprites look really good.
