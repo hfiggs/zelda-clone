@@ -10,7 +10,6 @@ namespace Game1.Enemy
     class AquamentusWalkRightAttack : IEnemyState
     {
         private Vector2 position;
-        private readonly Vector2 attackPositionOffset = new Vector2(0, 0);
         private int counter;
         private float totalTime;
         private const float timeOfAttack = 1;

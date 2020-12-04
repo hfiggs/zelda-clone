@@ -2,11 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Command\\CollisionHandlerCommands",
     "\\Game1\\Content",
     "\\Game1\\Content\\RoomXML",
-    "\\Game1\\RoomLoading"
+    "\\Game1\\Enemy",
+    "\\Game1\\Enemy\\Aquamentus"
   ],
-  "SelectedNode": "\\Game1\\RoomLoading\\Screen.cs",
+  "SelectedNode": "\\Game1\\Content\\RoomXML\\RoomB4.xml",
   "PreviewInSolutionExplorer": false
 }
