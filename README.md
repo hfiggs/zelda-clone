@@ -37,6 +37,16 @@ Current Game Controls:
 		Start --------------------------- Enter/Exit HUD
 		BigButton ---------------------- Start Game
 
+Difficulty Settings:
+
+	-Easy:
+		This diffiuclty most closely resembles the original Legeon of Zelda game on the NES.
+
+	-Medium:
+		This difficulty adds a greater varity of monsters to the rooms as well as adds more monsters to each room.
+
+	-Hard:
+		This diffuclty adds more mechanics to the monsters and incresase certain monsters health and damage.
 
 Current Bugs:
 
