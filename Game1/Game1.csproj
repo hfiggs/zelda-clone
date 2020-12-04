@@ -175,7 +175,6 @@
     <Compile Include="Player\PlayerState\PlayerStatePortalRight.cs" />
     <Compile Include="Projectile\PortalProjectile.cs" />
     <Compile Include="Projectile\CandleFire.cs" />
-    <Compile Include="Projectile\SingleFireball.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
