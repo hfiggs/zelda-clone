@@ -793,7 +793,7 @@
 /processorParam:TextureFormat=Color
 /build:Images/Player/LinkUp.png
 
-#begin Images/Player/Portal/LinkPortalDown.png
+#begin Images/Player/Portal/LinkPortalBlue.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -803,9 +803,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Player/Portal/LinkPortalDown.png
+/build:Images/Player/Portal/LinkPortalBlue.png
 
-#begin Images/Player/Portal/LinkPortalLeft.png
+#begin Images/Player/Portal/LinkPortalOrange.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -815,9 +815,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Player/Portal/LinkPortalLeft.png
+/build:Images/Player/Portal/LinkPortalOrange.png
 
-#begin Images/Player/Portal/LinkPortalRight.png
+#begin Images/Player/Portal/ZeldaPortalBlue.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -827,9 +827,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Player/Portal/LinkPortalRight.png
+/build:Images/Player/Portal/ZeldaPortalBlue.png
 
-#begin Images/Player/Portal/LinkPortalUp.png
+#begin Images/Player/Portal/ZeldaPortalOrange.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -839,7 +839,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Images/Player/Portal/LinkPortalUp.png
+/build:Images/Player/Portal/ZeldaPortalOrange.png
 
 #begin Images/Player/WaitingArrows.png
 /importer:TextureImporter

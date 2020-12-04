@@ -13,10 +13,10 @@ namespace Game1.Player
         private Texture2D linkDownSheet;
         private Texture2D linkRightSheet;
         private Texture2D linkLeftSheet;
-        private Texture2D linkPortalUpSheet;
-        private Texture2D linkPortalDownSheet;
-        private Texture2D linkPortalRightSheet;
-        private Texture2D linkPortalLeftSheet;
+        private Texture2D linkPortalBlueSheet;
+        private Texture2D linkPortalOrangeSheet;
+        private Texture2D zeldaPortalBlueSheet;
+        private Texture2D zeldaPortalOrangeSheet;
         private Texture2D linkDeadSheet;
         private Texture2D ZeldaUpSheet;
         private Texture2D ZeldaItemSheet;
@@ -27,7 +27,7 @@ namespace Game1.Player
         private const int playerSpriteColumns = 1, playerSpriteRows = 4, startingFrame = 0, walkingMaxRows = 2, idleMaxRows = 1, attackMaxRows = 4, useItemMaxRows = 3, playerDeadMaxRows = 4;
         private const int oneHandRows = 1, oneHandColumns = 2, oneHandMaxRows = 1, twoHandRows = 1, twoHandColumns = 2, twoHandStartingFrame = 1, twoHandMaxRows = 1;
         private const string leftSpriteFilePath = "Images/Player/LinkLeft", rightSpriteFilePath = "Images/Player/LinkRight", upSpriteFilePath = "Images/Player/LinkUp", downSpriteFilePath = "Images/Player/LinkDown", itemSpriteFilePath = "Images/Player/LinkItem", deadSpriteFilePath = "Images/Player/DeadLink";
-        private const string portalLeftSpriteFilePath = "Images/Player/Portal/LinkPortalLeft", portalRightSpriteFilePath = "Images/Player/Portal/LinkPortalRight", portalUpSpriteFilePath = "Images/Player/Portal/LinkPortalUp", portalDownSpriteFilePath = "Images/Player/Portal/LinkPortalDown";
+        private const string linkPortalBluePath = "Images/Player/Portal/LinkPortalBlue", linkPortalOrangePath = "Images/Player/Portal/LinkPortalOrange", zeldaPortalBluePath = "Images/Player/Portal/ZeldaPortalBlue", zeldaPortalOrangePath = "Images/Player/Portal/ZeldaPortalOrange";
         private const string leftZeldaSpriteFilePath = "Images/Player/ZeldaLeft", rightZeldaSpriteFilePath = "Images/Player/ZeldaRight", upZeldaSpriteFilePath = "Images/Player/ZeldaUp", downZeldaSpriteFilePath = "Images/Player/ZeldaDown", itemZeldaSpriteFilePath = "Images/Player/ZeldaItem", deadZeldaSpriteFilePath = "Images/Player/DeadZelda";
 
         private static PlayerSpriteFactory instance = new PlayerSpriteFactory();
@@ -51,10 +51,12 @@ namespace Game1.Player
             linkUpSheet = content.Load<Texture2D>(upSpriteFilePath);
             linkItemSheet = content.Load<Texture2D>(itemSpriteFilePath);
             linkDownSheet = content.Load<Texture2D>(downSpriteFilePath);
-            linkPortalLeftSheet = content.Load<Texture2D>(portalLeftSpriteFilePath);
-            linkPortalRightSheet = content.Load<Texture2D>(portalRightSpriteFilePath);
-            linkPortalUpSheet = content.Load<Texture2D>(portalUpSpriteFilePath);
-            linkPortalDownSheet = content.Load<Texture2D>(portalDownSpriteFilePath);
+
+            linkPortalBlueSheet = content.Load<Texture2D>(linkPortalBluePath);
+            linkPortalOrangeSheet = content.Load<Texture2D>(linkPortalOrangePath);
+            zeldaPortalBlueSheet = content.Load<Texture2D>(zeldaPortalBluePath);
+            zeldaPortalOrangeSheet = content.Load<Texture2D>(zeldaPortalOrangePath);
+
             linkDeadSheet = content.Load<Texture2D>(deadSpriteFilePath);
             ZeldaLeftSheet = content.Load<Texture2D>(leftZeldaSpriteFilePath);
             ZeldaRightSheet = content.Load<Texture2D>(rightZeldaSpriteFilePath);
@@ -82,26 +84,6 @@ namespace Game1.Player
         public ISprite CreateWalkUpSprite()
         {
             return new PlayerSprite(linkUpSheet, playerSpriteRows, playerSpriteColumns, startingFrame, walkingMaxRows);
-        }
-
-        public ISprite CreatePortalLeftSprite()
-        {
-            return new PlayerSprite(linkPortalLeftSheet, 2, 1, startingFrame, 2);
-        }
-
-        public ISprite CreatePortalRightSprite()
-        {
-            return new PlayerSprite(linkPortalRightSheet, 2, 1, startingFrame, 2);
-        }
-
-        public ISprite CreatePortalDownSprite()
-        {
-            return new PlayerSprite(linkPortalDownSheet, 2, 1, startingFrame, 2);
-        }
-
-        public ISprite CreatePortalUpSprite()
-        {
-            return new PlayerSprite(linkPortalUpSheet, 2, 1, startingFrame, 2);
         }
 
         public ISprite CreateIdleLeftSprite()
@@ -273,5 +255,97 @@ namespace Game1.Player
         {
             return new PlayerSprite(ZeldaDeadSheet, playerSpriteRows, playerSpriteColumns, startingFrame, playerDeadMaxRows);
         }
+
+        #region Portal Sprites
+
+        // Link Portal Blue
+
+        public ISprite CreateLinkPortalBlueDownSprite()
+        {
+            return new PlayerSprite(linkPortalBlueSheet, 2, 4, 0, 2);
+        }
+
+        public ISprite CreateLinkPortalBlueLeftSprite()
+        {
+            return new PlayerSprite(linkPortalBlueSheet, 2, 4, 1, 2);
+        }
+
+        public ISprite CreateLinkPortalBlueRightSprite()
+        {
+            return new PlayerSprite(linkPortalBlueSheet, 2, 4, 2, 2);
+        }
+
+        public ISprite CreateLinkPortalBlueUpSprite()
+        {
+            return new PlayerSprite(linkPortalOrangeSheet, 2, 4, 3, 2);
+        }
+
+        // Link Portal Orange
+
+        public ISprite CreateLinkPortalOrangeDownSprite()
+        {
+            return new PlayerSprite(linkPortalOrangeSheet, 2, 4, 0, 2);
+        }
+
+        public ISprite CreateLinkPortalOrangeLeftSprite()
+        {
+            return new PlayerSprite(linkPortalOrangeSheet, 2, 4, 1, 2);
+        }
+
+        public ISprite CreateLinkPortalOrangeRightSprite()
+        {
+            return new PlayerSprite(linkPortalOrangeSheet, 2, 4, 2, 2);
+        }
+
+        public ISprite CreateLinkPortalOrangeUpSprite()
+        {
+            return new PlayerSprite(linkPortalOrangeSheet, 2, 4, 3, 2);
+        }
+
+        // Zelda Portal Blue
+
+        public ISprite CreateZeldaPortalBlueDownSprite()
+        {
+            return new PlayerSprite(zeldaPortalBlueSheet, 2, 4, 0, 2);
+        }
+
+        public ISprite CreateZeldaPortalBlueLeftSprite()
+        {
+            return new PlayerSprite(zeldaPortalBlueSheet, 2, 4, 1, 2);
+        }
+
+        public ISprite CreateZeldaPortalBlueRightSprite()
+        {
+            return new PlayerSprite(zeldaPortalBlueSheet, 2, 4, 2, 2);
+        }
+
+        public ISprite CreateZeldaPortalBlueUpSprite()
+        {
+            return new PlayerSprite(zeldaPortalOrangeSheet, 2, 4, 3, 2);
+        }
+
+        // Zelda Portal Orange
+
+        public ISprite CreateZeldaPortalOrangeDownSprite()
+        {
+            return new PlayerSprite(zeldaPortalOrangeSheet, 2, 4, 0, 2);
+        }
+
+        public ISprite CreateZeldaPortalOrangeLeftSprite()
+        {
+            return new PlayerSprite(zeldaPortalOrangeSheet, 2, 4, 1, 2);
+        }
+
+        public ISprite CreateZeldaPortalOrangeRightSprite()
+        {
+            return new PlayerSprite(zeldaPortalOrangeSheet, 2, 4, 2, 2);
+        }
+
+        public ISprite CreateZeldaPortalOrangeUpSprite()
+        {
+            return new PlayerSprite(zeldaPortalOrangeSheet, 2, 4, 3, 2);
+        }
+
+        #endregion
     }
 }

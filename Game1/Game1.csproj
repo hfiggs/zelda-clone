@@ -188,7 +188,6 @@
     <Compile Include="Util\EnemyAStarUtil.cs" />
     <Compile Include="Util\CollisonDetectionUtil.cs" />
     <Compile Include="Util\ColorIterator.cs" />
-    <Compile Include="Player\PortalGunManager.cs" />
     <Compile Include="Util\GameStateUtil.cs" />
     <Compile Include="Util\ContentUtil.cs" />
     <Compile Include="ResolutionManager\IResolutionManager.cs" />

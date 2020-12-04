@@ -24,16 +24,15 @@ namespace Game1.Player
         private Vector2 moveSpeed = new Vector2(-1.33f, 0);
         private const float animationTime = 150f; // ms per frame
 
-        public PlayerStatePortalLeft(IPlayer player, Vector2 position)
+        private PortalColor portalColor;
+
+        public PlayerStatePortalLeft(IPlayer player, Vector2 position, PortalColor portalColor = PortalColor.Blue)
         {
             this.player = player;
 
-            if (player.GetType() == typeof(Player1)) {
-                Sprite = PlayerSpriteFactory.Instance.CreatePortalLeftSprite();
-            } else {
-                Sprite = PlayerSpriteFactory.Instance.CreateZeldaWalkLeftSprite();
-            }
+            this.portalColor = portalColor;
 
+            SetSprite();
 
             isMoving = false;
             timeUntilNextFrame = animationTime;
@@ -49,7 +48,7 @@ namespace Game1.Player
         public void MoveDown()
         {
             if (!isMoving)
-                player.SetState(new PlayerStatePortalDown(player, position));
+                player.SetState(new PlayerStatePortalDown(player, position, portalColor));
         }
 
         public void MoveLeft()
@@ -60,13 +59,13 @@ namespace Game1.Player
         public void MoveRight()
         {
             if (!isMoving)
-                player.SetState(new PlayerStatePortalRight(player, position));
+                player.SetState(new PlayerStatePortalRight(player, position, portalColor));
         }
 
         public void MoveUp()
         {
             if (!isMoving)
-                player.SetState(new PlayerStatePortalUp(player, position));
+                player.SetState(new PlayerStatePortalUp(player, position, portalColor));
         }
 
         public void UseItem()
@@ -77,8 +76,7 @@ namespace Game1.Player
             }
             else if (!player.PlayerInventory.IsItemInUse(ItemEnum.PortalGun))
             {
-                player.SpawnProjectile(new PortalProjectile(Util.CompassDirection.West, position, player, PortalGunManager.Instance.Player1Color));
-                PortalGunManager.Instance.Shoot(player);
+                FirePortal();
             }
         }
 
@@ -105,6 +103,25 @@ namespace Game1.Player
         {
             const char west = 'W';
             return west;
+        }
+
+        private void FirePortal()
+        {
+            player.SpawnProjectile(new PortalProjectile(Util.CompassDirection.West, position, player, portalColor));
+            portalColor = portalColor == PortalColor.Blue ? PortalColor.Orange : PortalColor.Blue;
+            SetSprite();
+        }
+
+        private void SetSprite()
+        {
+            if (player is Player1)
+            {
+                Sprite = portalColor == PortalColor.Blue ? PlayerSpriteFactory.Instance.CreateLinkPortalBlueLeftSprite() : PlayerSpriteFactory.Instance.CreateLinkPortalOrangeLeftSprite();
+            }
+            else
+            {
+                Sprite = portalColor == PortalColor.Blue ? PlayerSpriteFactory.Instance.CreateZeldaPortalBlueLeftSprite() : PlayerSpriteFactory.Instance.CreateZeldaPortalOrangeLeftSprite();
+            }
         }
     }
 }
