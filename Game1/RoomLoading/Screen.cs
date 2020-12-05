@@ -29,8 +29,8 @@ namespace Game1.RoomLoading
         private CollisionHandler handler;
         public PortalManager PortalManager { get; private set; }
         private readonly List<Color> clockColor;
-        private const char startingLetter = 'C';
-        private const int startingNumber = 1;
+        private const char startingLetter = 'G';
+        private const int startingNumber = 2;
         private const float clockDuration = 45f;
         private ColorIterator iterator;
 
