@@ -21,6 +21,8 @@ namespace Game1.Enemy
 
         private const int SpikeTrapAndOldManColumn = 0, SpikeTrapAndOldManRow = 0, SpikeTrapAndOldManMaxColumns = 1, SpikeTrapAndOldManMaxRows = 1, SpikeTrapAndOldManTotalFrames = 1;
         private const int SkeletonColumn = 14, SkeletonRow = 4, SkeletonMaxColumns = 15, SkeletonMaxRows = 8, SkeletonTotalFrames = 2;
+        private const int RedSkeletonColumn = 12, RedSkeletonRow = 4, RedSkeletonMaxColumns = 15, RedSkeletonMaxRows = 8, RedSkeletonTotalFrames = 2;
+        private const int GraySkeletonColumn = 13, GraySkeletonRow = 4, GraySkeletonMaxColumns = 15, GraySkeletonMaxRows = 8, GraySkeletonTotalFrames = 2;
         private const int MerchantColumn = 0, MerchantRow = 0, MerchantMaxColumns = 1, MerchantMaxRows = 1, MerchantTotalFrames = 0;
         private const int JellyColumn = 14, JellyRow = 6, JellyMaxColumns = 15, JellyMaxRows = 8, JellyTotalFrames = 2;
         private const int BatColumn = 0, BatRow = 0, BatMaxColumns = 1, BatMaxRows = 2, BatTotalFrames = 2;
@@ -67,6 +69,16 @@ namespace Game1.Enemy
         public ISprite CreateSkeletonSprite()
         {
             return new EnemySprite(enemySpritesheet, SkeletonColumn, SkeletonRow, SkeletonMaxColumns, SkeletonMaxRows, SkeletonTotalFrames);
+        }
+
+        public ISprite CreateRedSkeletonSprite()
+        {
+            return new EnemySprite(enemySpritesheet, RedSkeletonColumn, RedSkeletonRow, RedSkeletonMaxColumns, RedSkeletonMaxRows, RedSkeletonTotalFrames);
+        }
+
+        public ISprite CreateGraySkeletonSprite()
+        {
+            return new EnemySprite(enemySpritesheet, GraySkeletonColumn, GraySkeletonRow, GraySkeletonMaxColumns, GraySkeletonMaxRows, GraySkeletonTotalFrames);
         }
 
         public ISprite CreateSpikeTrapSprite()

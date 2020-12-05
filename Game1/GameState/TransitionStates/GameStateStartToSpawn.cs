@@ -16,9 +16,13 @@ namespace Game1.GameState
         private bool playedSound = false;
         private float timer = 0;
 
+        private readonly Room newRoom;
+        private readonly (char, int) newRoomKey = ('G', 2);
+
         public GameStateStartToSpawn(Game1 game)
         {
             this.game = game;
+            game.Screen.RoomsDict.TryGetValue(newRoomKey, out newRoom);
             AudioManager.StopAllMusic();
             AudioManager.ResetAudioManager();
         }
@@ -34,12 +38,7 @@ namespace Game1.GameState
             {
                 AudioManager.StopAllMusic();
 
-                const string overworldIntro = "overworldIntro";
-                Tuple<string, float> overworldLoopedTuple;
-                AudioManager.musicWithIntros.TryGetValue(overworldIntro, out overworldLoopedTuple);
-
-                AudioManager.PlayFireForget(overworldIntro);
-                AudioManager.PlayLooped(overworldLoopedTuple.Item1, overworldLoopedTuple.Item2);
+                newRoom.PlayMusic();
 
                 game.SetState(new GameStateRoom(game));
             }

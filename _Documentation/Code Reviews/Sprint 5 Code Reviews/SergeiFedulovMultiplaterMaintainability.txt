@@ -1,0 +1,39 @@
+﻿AUTHOR (OF THE REVIEW) - Sergei Fedulov
+
+
+DATE - 12/4/2020
+
+
+SPRINT # - 5
+
+
+NAME OF FILE BEING REVIEWED - Player2.cs
+
+
+AUTHOR OF FILE BEING REVIEWED - Jared Perkins and Hunter Figgs
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) -
+
+-Player2 implements the IPlayer interface, just like Player1 increasing the maintainability of the code.
+
+-Use of the state pattern using IPlayerState and various PlayerState classes to handle events like movement,
+and attacking. The state pattern makes it easy to add new functionality in the future.
+
+-Good use of properties in order to get and set certain variables. The uses of properties decreases coupling
+making the class more maintainable.
+
+-Overall the class has high cohesion and low coupling. Player2 has several refreces to PlayerInventory and game
+so those would probably be its two biggest dependencies.
+
+-Use item has a very long condiional statement listing the counts of a players items. This would mean that if we
+added another item that Link can use then we would also have to make sure we change the conditional statement. This
+is not very maintainable.
+
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - 
+
+As mentioned in the last comment. The conditional statement in UseItem can present a lot of issues when implementing
+new items. It may be beneficial to come up with a different way to check whether Link can use an item. Potentially using
+a utility class or a dictionary.

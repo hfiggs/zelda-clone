@@ -29,7 +29,7 @@ namespace Game1.Enemy
 
         public ShootingSkeletonStateMoving(Vector2 position, IEnemy skeleton, Screen screen)
         {
-            this.Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
+            this.Sprite = EnemySpriteFactory.Instance.CreateRedSkeletonSprite();
 
             this.position = position;
             this.player = screen.Players[0];

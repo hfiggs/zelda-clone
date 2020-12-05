@@ -11,7 +11,7 @@ namespace Game1.Enemy
 
         private Vector2 oldDirection;
         private double totalElapsedSeconds;
-        private const double attackCooldown = 1;
+        private const double attackCooldown = 3.5;
         private IEnemyState state;
         private Game1 game;
         private Vector2 position;
