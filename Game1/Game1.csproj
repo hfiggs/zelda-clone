@@ -183,6 +183,7 @@
     </Compile>
     <Compile Include="RoomLoading\PortalManager.cs" />
     <Compile Include="RoomLoading\Puzzle\PuzzleMoveBlockNS.cs" />
+    <Compile Include="RoomLoading\Puzzle\PuzzleShootFireballs.cs" />
     <Compile Include="RoomLoading\Puzzle\PuzzleSpawnBoomerang.cs" />
     <Compile Include="Sprite\StartSprite.cs" />
     <Compile Include="Sprite\StartSpriteFactory.cs" />
