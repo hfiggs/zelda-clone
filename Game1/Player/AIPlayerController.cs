@@ -51,7 +51,7 @@ namespace Game1.Player
             }
             if (screen.CurrentRoom.EnemyList.Count + screen.CurrentRoom.DecoratedEnemyList.Count == 0 || containsTrap)
             {
-
+                target = null;
                 Rectangle nonControlledPlayerHB = nonControlledPlayer.GetPlayerHitbox();
                 xDiff = nonControlledPlayerHB.X - controlledPlayerHB.X;
                 yDiff = nonControlledPlayerHB.Y - controlledPlayerHB.Y;
@@ -60,10 +60,8 @@ namespace Game1.Player
                 {
                     DecideDirection(controlledPlayerHB, nonControlledPlayerHB, obstacles);
                 }
-
-
             }
-            else if(target == null || target.ShouldRemove())
+            else if(target == null || target.ShouldRemove() || target.GetPosition().Equals(new Vector2(0,0)))
             {
                 target = screen.CurrentRoom.EnemyList[0];
             }else

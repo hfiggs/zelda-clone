@@ -195,7 +195,7 @@
     <Compile Include="Item\ItemDropper\ItemDropper.cs" />
     <Compile Include="Particle\ShieldDeflect.cs" />
     <Compile Include="Particle\BombOverlay.cs" />
-    <Compile Include="RoomLoading\AmbientSound.cs" />
+    <Compile Include="Audio\AmbientSound.cs" />
     <Compile Include="Audio\AudioManager.cs" />
     <Compile Include="Collision_Handling\Collision.cs" />
     <Compile Include="Collision_Handling\CollisionHandler.cs" />

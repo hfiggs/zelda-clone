@@ -82,8 +82,7 @@ namespace Game1.GameState
 
             if (oldRoomPos.Y <= oldRoomEndPos.Y)
             {
-                const string overworldAudio = "overworld";
-                AudioManager.PlayLooped(overworldAudio);
+                game.Screen.CurrentRoom.PlayMusic();
 
                 game.Screen.CurrentRoomKey = southRoomKey;
                 game.SetState(new GameStateRoom(game));

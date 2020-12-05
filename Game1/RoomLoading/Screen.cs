@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using Game1.Util;
 
 namespace Game1.RoomLoading
 {
@@ -27,10 +28,12 @@ namespace Game1.RoomLoading
         private CollisionDetector detector;
         private CollisionHandler handler;
         public PortalManager PortalManager { get; private set; }
-
+        private readonly List<Color> clockColor;
         private const char startingLetter = 'G';
         private const int startingNumber = 2;
-        
+        private const float clockDuration = 45f;
+        private ColorIterator iterator;
+
         public Screen(Game1 game)
         {
             this.game = game;
@@ -38,7 +41,11 @@ namespace Game1.RoomLoading
             Players = new List<IPlayer>();
             PlayerHitboxes = new List<Rectangle>();
             HandleGameMode();
-
+            clockColor = new List<Color>();
+            clockColor.Add(Color.Red);
+            clockColor.Add(Color.LightBlue);
+            clockColor.Add(Color.White);
+            iterator = new ColorIterator(clockColor, clockDuration);
             PortalManager = new PortalManager(this);
         }
 
@@ -61,6 +68,11 @@ namespace Game1.RoomLoading
 
         public void Update(GameTime gameTime)
         {
+            if (CurrentRoom.Clocked)
+            {
+                iterator.Update(gameTime);
+            }
+
             CurrentRoom.Update(gameTime);
 
             for (int i = 0; i < Players.Count; i++) {
@@ -83,7 +95,10 @@ namespace Game1.RoomLoading
 
            foreach(IPlayer player in Players)
             {
-                player.Draw(spriteBatch,Color.White);
+                if (!CurrentRoom.Clocked)
+                    player.Draw(spriteBatch, Color.White);
+                else
+                    player.Draw(spriteBatch, iterator.GetColor(Color.White));
             }
         }
 

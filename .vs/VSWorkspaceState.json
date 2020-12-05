@@ -2,14 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Game1",
-    "\\Game1\\Command\\CollisionHandlerCommands\\Projectile To Enemy Commands",
-    "\\Game1\\Content",
-    "\\Game1\\Content\\Images",
-    "\\Game1\\Content\\Images\\HUD",
-    "\\Game1\\Enemy\\Aquamentus",
+    "\\Game1\\GameState",
+    "\\Game1\\GameState\\TransitionStates",
     "\\Game1\\HUD",
-    "\\Game1\\HUD\\HUDItems"
+    "\\Game1\\HUD\\HUDItems",
+    "\\Game1\\Player",
+    "\\Game1\\RoomLoading",
+    "\\_Documentation",
+    "\\_Documentation\\Code Reviews"
   ],
-  "SelectedNode": "\\Game1\\Content\\Content.mgcb",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }

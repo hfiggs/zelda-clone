@@ -1,19 +1,26 @@
-﻿AUTHOR (OF THE REVIEW) - 
+﻿AUTHOR (OF THE REVIEW) - Jeffrey Gaydos
 
 
-DATE -
+DATE - 12/4/2020
 
 
-SPRINT # - 
+SPRINT # 5
 
 
-NAME OF FILE BEING REVIEWED - 
+NAME OF FILE BEING REVIEWED - AIPlayerController.cs
 
 
-AUTHOR OF FILE BEING REVIEWED -  
+AUTHOR OF FILE BEING REVIEWED - Jarred Perkins
 
 
-SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) -
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) - Constant characters are used for direction, consider refactoring these to use the CompassDirection Enum from the Util folder of our project.
+													There are very few fields, and most custom types use interfaces rather than concrete classes. Pathfinding uses a list of obsticles that is
+													able to used within any room. Path finding is handled cleanly, and an alternate pathfinding algorithm could be easily swapped in. Could use
+													more encapsulation in terms of limiting the size of functions, either within the class or with new classes (see Update function).
 
 
-A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - 
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - Have the AI control an Enemy instead of a player.
+																										  To make this happen, the fields for controlledPlayer would have to be changed to an
+																										  IEnemy, and the nonControlledPlayer field would likely be removed as the player to
+																										  follow would end up being the target (again changed from IEnemy to Player). The path
+																										  finding algorithm and the obsticle avoidance would remain mostly unchanged.

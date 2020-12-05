@@ -43,11 +43,10 @@ namespace Game1.GameState
 
         private bool isMusicStarted;
 
-        private readonly IParticle curtain;
-
         public GameStateStartDifficulty(Game1 game)
         {
             this.game = game;
+            AudioManager.PlayFireForget("swordBeam");
 
             controllerList = new List<IController>
             {

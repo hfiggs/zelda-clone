@@ -12,7 +12,7 @@ namespace Game1.RoomLoading
         private XmlDocument xmlDoc { get; set; }
 
         // xml Tag Names
-        private const string itemTag = "Item", projectileTag = "Projectile", enemyTag = "Enemy", interactEnviornmentTag = "InteractEnviornment", nonInteractEnviornment = "NonInteractEnviornment", puzzleTag = "Puzzle", soundsTag = "Sounds";
+        private const string itemTag = "Item", projectileTag = "Projectile", enemyTag = "Enemy", interactEnviornmentTag = "InteractEnviornment", nonInteractEnviornment = "NonInteractEnviornment", puzzleTag = "Puzzle", soundsTag = "Sounds", musicTag = "Music";
 
         public XMLLoader(String fileName, int difficulty)
         {
@@ -66,6 +66,11 @@ namespace Game1.RoomLoading
         public XmlNodeList getAmbientSounds()
         {
             return xmlDoc.GetElementsByTagName(soundsTag);
+        }
+
+        public XmlNodeList getMusic()
+        {
+            return xmlDoc.GetElementsByTagName(musicTag);
         }
     }
 }
