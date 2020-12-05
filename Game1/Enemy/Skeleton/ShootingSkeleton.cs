@@ -42,7 +42,7 @@ namespace Game1.Enemy
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
            
-            state.Draw(spriteBatch, Color.Red);
+            state.Draw(spriteBatch, color);
         
             
         }
