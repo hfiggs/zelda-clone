@@ -1,0 +1,31 @@
+﻿AUTHOR (OF REVIEW) - Hunter Figgs.3
+
+
+DATE - 12/4/2020 
+
+
+SPRINT # - 5
+
+
+NAME OF FILE BEING REVIEWED - "...Game1\Audio\AudioManager.cs"
+
+
+AUTHOR OF FILE BEING REVIEWED - Jeff Gaydos.33
+
+
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 25
+
+
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - 
+
+
+1. Looking at the first section of the AudioManager file... the private declarations and constants are pretty clean. Good spacing is used, a few comments to help the reader not be overwhelmed, variables are named to be very readable. One declaration "errorMessage" is not explicitly marked as private. It should be to improve readability.
+
+
+2. While all the declarations near the top of the file are relatively clean themselves, there are quite a few... around 30 lines. So as to not distract the reader as much, these should probably be moved to a utility class (ex: AudioUtil.cs). This will not necessarily hamper readibility further down in the file, and will make the file feel more cohesive.
+
+3. Skipping the initializer and loader -- both are short and sweet -- the first several real methods are pretty chunky. There are nested conditions, blocks of unspaced code, and honestly too long (~30 lines), which makes the purpose of the methods hard to digest. These should be broken up into smaller methods to handle the various conditions.
+
+4. The next several methods are pretty short, which is good. They could probably make use of some nice programming language features such as the ternary operator and possibly some C# linq stuff to make the foreach loops more succint (however the latter is based on preference).
+
+5. In the PlayItemSound method, the many constant strings should be moved to the top of the file, or better yet into a utility class. They are distracting -- a long list of constants don't belong in a method. The long-ish switch case is slightly ugly, but hard to get around having to use. At least once, there is a block of repeated code, which could be moved into a private helper method. This would make the switch case more readable.
