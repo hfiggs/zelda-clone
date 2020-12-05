@@ -68,16 +68,15 @@ namespace Game1.Enemy
                     direction = GetRandomDirection();
                     MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
                 }
-                if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
+               
+                const int xDiff = 8, yDiff = 5;
+                position += direction;
+                if (item != null)
                 {
-                    const int xDiff = 8, yDiff = 4;
-                    position += direction;
-                    if (item != null)
-                    {
-                        item.Position = new Vector2(position.X - xDiff, position.Y - yDiff);
-                    }
-
+                    item.Position = new Vector2(position.X - xDiff, position.Y - yDiff);
                 }
+
+                
             }
 
             timeUntilNextFrame -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
