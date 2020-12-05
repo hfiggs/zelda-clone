@@ -22,6 +22,7 @@ namespace Game1.Audio
         //used for looking up sounds
         private static Dictionary<string, SoundEffect> musicMap = new Dictionary<string, SoundEffect>();
         private static Dictionary<string, SoundEffect> soundMap = new Dictionary<string, SoundEffect>();
+        private static Dictionary<string, Tuple<SoundEffectInstance, int>> singleSoundMap = new Dictionary<string, Tuple<SoundEffectInstance, int>>();
 
         public static Dictionary<string, Tuple<string, float>> musicWithIntros = new Dictionary<string, Tuple<string, float>>() { { "overworldIntro", new Tuple<string, float>("overworldLoop", 6.5f) } };
 
@@ -140,6 +141,43 @@ namespace Game1.Audio
                 throw new NotImplementedException(sound + errorMessage);
             }
             return reference;
+        }
+
+        public static void PlaySingleSoundLooped(string sound, float delay = 0.0f, float volume = 1.0f)
+        {
+            if(!singleSoundMap.ContainsKey(sound))
+            {
+                SoundEffectInstance reference = PlayLooped(sound, delay, volume);
+                Tuple<SoundEffectInstance, int> singleEntry = new Tuple<SoundEffectInstance, int>(reference, 1);
+                singleSoundMap.Add(sound, singleEntry);
+            } else
+            {
+                Tuple<SoundEffectInstance, int> singleEntry;
+                singleSoundMap.TryGetValue(sound, out singleEntry);
+                singleSoundMap.Remove(sound);                
+                Tuple<SoundEffectInstance, int> newSingleEntry = new Tuple<SoundEffectInstance, int>(singleEntry.Item1, singleEntry.Item2 + 1);
+                Console.WriteLine("Incrimented singleSound: " + newSingleEntry.Item2);
+                singleSoundMap.Add(sound, newSingleEntry);
+            }
+        }
+
+        public static void StopSingleSound(string sound)
+        {
+            Tuple<SoundEffectInstance, int> singleEntry;
+            if (singleSoundMap.TryGetValue(sound, out singleEntry))
+            {
+                singleSoundMap.Remove(sound);
+                Tuple<SoundEffectInstance, int> newSingleEntry = new Tuple<SoundEffectInstance, int>(singleEntry.Item1, singleEntry.Item2 - 1);
+                Console.WriteLine("decrimented singleSound: " + newSingleEntry.Item2);
+                if (newSingleEntry.Item2 <= 0)
+                {
+                    newSingleEntry.Item1.Stop();
+                }
+                else
+                {
+                    singleSoundMap.Add(sound, newSingleEntry);
+                }                
+            }
         }
 
         public static void StopAllMusic()
