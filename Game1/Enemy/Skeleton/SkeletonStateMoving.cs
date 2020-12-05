@@ -18,6 +18,7 @@ namespace Game1.Enemy
         private double totalElapsedSeconds = 0;
         private double MovementChangeTimeSeconds;
         private IItem item;
+        private const int xDiff = 8, yDiff = 5;
 
         private float timeUntilNextFrame; // ms
         private const float animationTime = 200f; // ms per frame
@@ -58,6 +59,7 @@ namespace Game1.Enemy
 
         public void Update(GameTime gameTime, Rectangle drawingLimits)
         {
+            drawingLimits = new Rectangle(32, 32, 192, 112);
             if (skeleton.StunnedTimer == 0)
             {
                 totalElapsedSeconds += gameTime.ElapsedGameTime.TotalSeconds;
@@ -68,15 +70,11 @@ namespace Game1.Enemy
                     direction = GetRandomDirection();
                     MovementChangeTimeSeconds = GetRandomDirectionMovementChangeTimeSeconds();
                 }
-                if (drawingLimits.Contains(position.X + direction.X, position.Y + direction.Y))
+                    
+                position += direction;
+                if (item != null)
                 {
-                    const int xDiff = 8, yDiff = 4;
-                    position += direction;
-                    if (item != null)
-                    {
-                        item.Position = new Vector2(position.X - xDiff, position.Y - yDiff);
-                    }
-
+                    item.Position = new Vector2(position.X - xDiff, position.Y - yDiff);
                 }
             }
 
@@ -146,7 +144,12 @@ namespace Game1.Enemy
         }
         public void editPosition(Vector2 amount)
         {
+           
             position = Vector2.Add(position, amount);
+            if (item != null)
+            {
+                item.Position = new Vector2(position.X - xDiff, position.Y - yDiff);
+            }
         }
     }
 }
