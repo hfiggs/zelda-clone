@@ -1,9 +1,6 @@
 ﻿/* Author: Hunter Figgs.3 */
 
-using Game1.Audio;
 using Game1.GameState;
-using Game1.RoomLoading;
-using System;
 using System.Diagnostics;
 
 namespace Game1.Command
@@ -27,14 +24,12 @@ namespace Game1.Command
             {
                 if (game.State.GetType() == typeof(GameStateStart))
                 {
-                    AudioManager.PlayFireForget("swordBeam");
                     game.SetMode((game.State as GameStateStart).GetOption());
                     game.SetState(new GameStateStartDifficulty(game));
                 }
                 else
                 {
-                    game.Screen.LoadAllRooms((game.State as GameStateStartDifficulty).GetOption());
-                    AudioManager.ResetAudioManager();
+                    game.Screen.LoadAllRooms((game.State as GameStateStartDifficulty).GetOption());                    
                     game.SetState(new GameStateStartToSpawn(game));
                 }
                 

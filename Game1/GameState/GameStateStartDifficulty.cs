@@ -48,6 +48,7 @@ namespace Game1.GameState
         public GameStateStartDifficulty(Game1 game)
         {
             this.game = game;
+            AudioManager.PlayFireForget("swordBeam");
 
             controllerList = new List<IController>
             {

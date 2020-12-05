@@ -48,6 +48,24 @@ Difficulty Settings:
 	-Hard:
 		This diffuclty adds more mechanics to the monsters and incresase certain monsters health and damage.
 
+All Extra Features
+
+- Multiplayer - split keyboard controls for 2 humans
+
+- AI - pathfinds to the player until finding an enemy, at which point it attacks, for 1 human
+
+- Difficulty - 3 difficulty settings to choose from
+
+- Added extra rooms - Exterior of dungeon and portal rooms to the right
+
+- Portals - Portals can only be created on white tiles in the rooms to the right of the starting room (overworld)
+
+- Full Screen vs Windowed option - Maximize with the typical windows button or by pressing F4
+
+- Persistant Volume Controls - increase, decrease, and mute all sound using F1, F2, and F3 using built in project properties
+
+- Special Death sequence - plays once to avoid player annoyance
+
 Current Bugs:
 
 	- Bats collision in "Bow Room" can be buggy (vibrating effect)

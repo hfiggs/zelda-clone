@@ -60,8 +60,6 @@ namespace Game1.Player
                 {
                     DecideDirection(controlledPlayerHB, nonControlledPlayerHB, obstacles);
                 }
-
-
             }
             else if(target == null || target.ShouldRemove())
             {

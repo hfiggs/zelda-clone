@@ -7,13 +7,18 @@ DATE - 12/4/2020
 SPRINT # 5
 
 
-NAME OF FILE BEING REVIEWED - GameStateDifficulty.cs
+NAME OF FILE BEING REVIEWED - XMLLoader.cs
 
 
-AUTHOR OF FILE BEING REVIEWED Sergei Fedulov
+AUTHOR OF FILE BEING REVIEWED - Sergei Fedulov
 
 
-NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 
+NUMBER OF MINUTES TAKEN TO COMPLETE REVIEW - 7:25 (M:SS)
 
 
-SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - 
+SPECIFIC COMMENTS ON WHAT IS READABLE AND WHAT ISN'T (AT LEAST 5) - For the switch statement involving difficulty, one would expect there to be a case for "Easy", "Meadium", and "Hard", but
+																	there is only a case for "Hard" and "Medium" and then it defaults to "Medium". If this is intended behavior, a comment would
+																	be beneficial to explain why "Medium" is default and not "Easy". All string constants have the form"[Name]Tag", except for
+																	"NonInteractEnvironment" Consider renaming the variable to tell the reader that it is used in the same way as the other string
+																	constants. All functions act as wrappers around the necessary XML getters, so this increases readability not only in this file
+																	but all the files that use there functions. Code is short and in general very straightforward.
