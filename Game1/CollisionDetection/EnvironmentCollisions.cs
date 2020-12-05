@@ -30,7 +30,6 @@ namespace Game1.CollisionDetection
             // Projectile collides with Environment
             foreach (IProjectile proj in ProjectileList)
             {
-                bool collision = false;
                 foreach (IEnvironment environment in EnvironmentList)
                 {
                     foreach (Rectangle envHitbox in environment.GetHitboxes())
@@ -41,12 +40,8 @@ namespace Game1.CollisionDetection
                         {
                             char side = DetermineSide(projHitbox, envHitbox, intersectEnv);
                             collisionList.Add(new Collision(side, intersectEnv, proj, environment));
-                            collision = true;
-                            break;
                         }
                     }
-                    if (collision)
-                        break;
                 }
             }
 
