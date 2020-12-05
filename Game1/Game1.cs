@@ -45,6 +45,8 @@ namespace Game1
         {
             IsMouseVisible = false;
 
+            AudioManager.InitializeAudioManager(this);
+
             base.Initialize();
         }
 

@@ -94,7 +94,6 @@ namespace Game1.Environment
             {
                 hasMovedDir = CompassDirection.North;
             }
-            Console.WriteLine("Has Moved: " + hasMovedDir + ", " + normalized);
         }
 
         public bool Pushable { get; set; } = true;
