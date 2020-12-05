@@ -312,15 +312,13 @@ namespace Game1.Audio
                     break;
                 case ItemBoomerang:
                 case Bow:
-                    soundQueue.Clear();
-                    delays.Clear();
+                    ClearQueue();
                     StopAllMusic();
                     StopAllSound();
                     AudioFactory.Instance.SoundBow(gameRef.Screen.CurrentRoom);
                     break;
                 case Triforce:
-                    soundQueue.Clear();
-                    delays.Clear();
+                    ClearQueue();
                     StopAllMusic();
                     StopAllSound();
                     AudioFactory.Instance.SoundTriforce();
@@ -341,6 +339,12 @@ namespace Game1.Audio
         public static void ResetAudioManager()
         {
             stopSoundInit = false;
+        }
+
+        public static void ClearQueue()
+        {
+            soundQueue.Clear();
+            delays.Clear();
         }
     }
 }
