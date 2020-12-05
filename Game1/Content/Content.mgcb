@@ -43,6 +43,18 @@
 /processorParam:Quality=Best
 /build:audio/music/overworld.wav
 
+#begin audio/music/overworldIntro.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/music/overworldIntro.wav
+
+#begin audio/music/overworldLoop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/music/overworldLoop.wav
+
 #begin audio/music/title.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

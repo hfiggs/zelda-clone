@@ -4,6 +4,7 @@ using Game1.ResolutionManager;
 using Game1.RoomLoading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Game1.GameState
 {
@@ -33,8 +34,12 @@ namespace Game1.GameState
             {
                 AudioManager.StopAllMusic();
 
-                const string overworldMusic = "overworld";
-                AudioManager.PlayLooped(overworldMusic);
+                const string overworldIntro = "overworldIntro";
+                Tuple<string, float> overworldLoopedTuple;
+                AudioManager.musicWithIntros.TryGetValue(overworldIntro, out overworldLoopedTuple);
+
+                AudioManager.PlayFireForget(overworldIntro);
+                AudioManager.PlayLooped(overworldLoopedTuple.Item1, overworldLoopedTuple.Item2);
 
                 game.SetState(new GameStateRoom(game));
             }

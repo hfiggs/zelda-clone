@@ -23,6 +23,8 @@ namespace Game1.Audio
         private static Dictionary<string, SoundEffect> musicMap = new Dictionary<string, SoundEffect>();
         private static Dictionary<string, SoundEffect> soundMap = new Dictionary<string, SoundEffect>();
 
+        public static Dictionary<string, Tuple<string, float>> musicWithIntros = new Dictionary<string, Tuple<string, float>>() { { "overworldIntro", new Tuple<string, float>("overworldLoop", 6.5f) } };
+
         //used for muting an entire subset of sounds instantaneously
         private static List<SoundEffectInstance> activeMusicList = new List<SoundEffectInstance>();
         private static List<SoundEffectInstance> activeSoundList = new List<SoundEffectInstance>();
@@ -31,6 +33,13 @@ namespace Game1.Audio
         private static bool paused = false;
 
         const string errorMessage = " is not a supported name.";
+
+        private static Game1 gameRef;
+
+        public static void InitializeAudioManager(Game1 game)
+        {
+            gameRef = game;
+        }
 
         public static void LoadContent(ContentManager content)
         {
@@ -307,7 +316,7 @@ namespace Game1.Audio
                     delays.Clear();
                     StopAllMusic();
                     StopAllSound();
-                    AudioFactory.Instance.SoundBow();
+                    AudioFactory.Instance.SoundBow(gameRef.Screen.CurrentRoom);
                     break;
                 case Triforce:
                     soundQueue.Clear();

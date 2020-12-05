@@ -1,4 +1,4 @@
-﻿using Game1.AudioManagement;
+﻿using Game1.Audio;
 using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
@@ -439,6 +439,20 @@ namespace Game1.RoomLoading
             }
 
             return soundList;
+        }
+
+        public AmbientSound GetMusicNode(float baseVolume)
+        {
+            XmlNodeList musicNode = roomData.getMusic();
+            //unused rooms do not have this node. Add if desired
+            if (musicNode[0] != null)
+            {
+                string sound = musicNode[0].InnerText;
+                return new AmbientSound(sound, 0.0f, baseVolume, false);
+            } else
+            {
+                return null;
+            }
         }
 
         public IPuzzle GetPuzzle()

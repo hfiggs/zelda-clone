@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Audio;
+﻿using Game1.RoomLoading;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,14 @@ namespace Game1.Audio
     public class AudioFactory
     {
         // Map Keys for audio
-        const string overworld = "overworld", dungeon = "dungeon", dungeon2 = "dungeon2", title = "title", title2 = "title2", gameOver = "gameOver", gameOver2 = "gameOver2";
+        const string overworldIntro = "overworldIntro", overworldLoop = "overworldLoop", dungeon = "dungeon", dungeon2 = "dungeon2", title = "title", title2 = "title2", gameOver = "gameOver", gameOver2 = "gameOver2";
         const string aquamentusScream = "aquamentusScream", boomerang = "boomerang", lowHealth = "lowHealth", death = "death", linkPop = "linkPop", shield = "shield", sword = "sword";
         const string swordBeam = "swordBeam", aquamentusHurt = "aquamentusHurt", bombExplode = "bombExplode", bombPlace = "bombPlace", chest = "chest", enemyDeath = "enemyDeath";
         const string powerPickUp = "powerPickUp", ocarina = "ocarina", reveal = "reveal", itemPickUp = "itemPickUp", key = "key", rupeePickUp = "rupeePickUp", rupeeAddShort = "rupeeAddShort";
         const string rupeeAddLong = "rupeeAddLong", stairs = "stairs", linkHurt = "linkHurt", enemyHurt = "enemyHurt", triforce = "triforce", doorLock = "doorLock";
 
         // Map values for audio
-        const string overworldPath = "audio/music/overworld", dungeonPath = "audio/music/dungeon", dungeon2Path = "audio/music/dungeonBass", titlePath = "audio/music/title", title2Path = "audio/music/titleBass", gameOverPath = "audio/music/gameOver", gameOver2Path = "audio/music/gameOverBlasted";
+        const string overworldIntroPath = "audio/music/overworldIntro", overworldLoopPath = "audio/music/overworldLoop", dungeonPath = "audio/music/dungeon", dungeon2Path = "audio/music/dungeonBass", titlePath = "audio/music/title", title2Path = "audio/music/titleBass", gameOverPath = "audio/music/gameOver", gameOver2Path = "audio/music/gameOverBlasted";
         const string aquamentusScreamPath = "audio/sounds/AquamentusScream", boomerangPath = "audio/sounds/Boomerang", lowHealthPath = "audio/sounds/HealthLow", deathPath = "audio/sounds/death", linkPopPath = "audio/sounds/LinkPop", shieldPath = "audio/sounds/Shield", swordPath = "audio/sounds/Sword";
         const string swordBeamPath = "audio/sounds/SwordBeam", aquamentusHurtPath = "audio/sounds/AquamentusHurt", bombExplodePath = "audio/sounds/BombExplode", bombPlacePath = "audio/sounds/BombPlace", chestPath = "audio/sounds/Chest", enemyDeathPath = "audio/sounds/EnemyDeath";
         const string powerPickUpPath = "audio/sounds/FairyAppear", ocarinaPath = "audio/sounds/Flute", revealPath = "audio/sounds/Hole", itemPickUpPath = "audio/sounds/ItemPickUp1", keyPath = "audio/sounds/KeyAppear", rupeePickUpPath = "audio/sounds/Rupee", rupeeAddShortPath = "audio/sounds/RupeeAddShort";
@@ -33,8 +34,9 @@ namespace Game1.Audio
         //NOTE: Requires musicMap and soundMap to be properly initialized by AudioManager
         public void LoadContent(ContentManager content, Dictionary<string, SoundEffect> musicMap, Dictionary<string, SoundEffect> soundMap)
         {
-            //looped sounds
-            musicMap.Add(overworld, content.Load<SoundEffect>(overworldPath));
+            //designated music
+            musicMap.Add(overworldIntro, content.Load<SoundEffect>(overworldIntroPath));
+            musicMap.Add(overworldLoop, content.Load<SoundEffect>(overworldLoopPath));
             musicMap.Add(dungeon, content.Load<SoundEffect>(dungeonPath));
             musicMap.Add(dungeon2, content.Load<SoundEffect>(dungeon2Path));
             musicMap.Add(title, content.Load<SoundEffect>(titlePath));
@@ -45,7 +47,7 @@ namespace Game1.Audio
             soundMap.Add(boomerang, content.Load<SoundEffect>(boomerangPath));
             soundMap.Add(lowHealth, content.Load<SoundEffect>(lowHealthPath));
 
-            //fire-forget sounds
+            //designated sounds
             soundMap.Add(death, content.Load<SoundEffect>(deathPath));
             soundMap.Add(linkPop, content.Load<SoundEffect>(linkPopPath));
             soundMap.Add(shield, content.Load<SoundEffect>(shieldPath));
@@ -88,11 +90,11 @@ namespace Game1.Audio
             AudioManager.PlayFireForget(powerPickUp);
         }
 
-        public void SoundBow()
+        public void SoundBow(Room currentRoom)
         {
             AudioManager.PlayFireForget(powerPickUp);
             AudioManager.PlayFireForget(chest);
-            AudioManager.PlayLooped(dungeon, chestSoundLength);
+            currentRoom.PlayMusic(chestSoundLength);            
         }
 
         public void SoundTriforce()

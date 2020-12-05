@@ -1,5 +1,4 @@
-﻿using Game1.AudioManagement;
-using Game1.Enemy;
+﻿using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
 using Game1.Projectile;
@@ -9,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;
+using Game1.Audio;
 
 namespace Game1.RoomLoading
 {
@@ -26,8 +26,11 @@ namespace Game1.RoomLoading
         private readonly IPuzzle puzzle;
         private readonly ItemDropper itemDrops;
         private readonly List<AmbientSound> ambienceList;
+        private readonly AmbientSound music;
         private float ambienceVolume = 1.0f;
         private readonly RoomParser parser;
+        private const float musicVolume = 1.0f;
+
         private const int roomWidth = 256;
         private const int roomHeight = 176;
 
@@ -47,6 +50,8 @@ namespace Game1.RoomLoading
             UnDecoratedEnemyList = new List<IEnemy>();
 
             ambienceList = parser.GetAmbienceNode();
+            music = parser.GetMusicNode(musicVolume);
+
             itemDrops = new ItemDropper(game.Screen);
             puzzle = parser.GetPuzzle();
 
@@ -145,6 +150,11 @@ namespace Game1.RoomLoading
         public void SetAmbienceVolume(float vol)
         {
             ambienceVolume = vol;
+        }
+
+        public void PlayMusic(float delay = 0.0f)
+        {
+            music.Play(musicVolume, delay);
         }
 
         public void RespawnEnemies()
