@@ -33,16 +33,22 @@ namespace Game1.Audio
 
         public void Play(float runtimeVolume = 1.0f, float runtimeDelay = 0.0f)
         {
-            if (looped)
+            if (intro)
             {
-                soundRef = AudioManager.PlayLooped(sound, timeDelay + runtimeDelay, vol * runtimeVolume);
+                soundRef = AudioManager.PlayFireForget(sound, timeDelay + runtimeDelay, vol * runtimeVolume);
+                if (intro)
+                    soundSecondaryRef = AudioManager.PlayLooped(introLoopedTuple.Item1, introLoopedTuple.Item2 + runtimeDelay, vol * runtimeVolume);
             }
             else
             {
-                soundRef = AudioManager.PlayFireForget(sound, timeDelay + runtimeDelay, vol * runtimeVolume);                
-                if (intro)
-                    soundSecondaryRef = AudioManager.PlayLooped(introLoopedTuple.Item1, introLoopedTuple.Item2 + runtimeDelay, vol * runtimeVolume);
-                
+                if (looped)
+                {
+                    soundRef = AudioManager.PlayLooped(sound, timeDelay + runtimeDelay, vol * runtimeVolume);
+                }
+                else
+                {
+                    soundRef = AudioManager.PlayFireForget(sound, timeDelay + runtimeDelay, vol * runtimeVolume);
+                }
             }
         }
 

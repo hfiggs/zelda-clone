@@ -452,7 +452,7 @@ namespace Game1.RoomLoading
             if (musicNode[0] != null)
             {
                 string sound = musicNode[0].InnerText;
-                return new AmbientSound(sound, 0.0f, baseVolume, false);
+                return new AmbientSound(sound, 0.0f, baseVolume, true);
             } else
             {
                 return null;
