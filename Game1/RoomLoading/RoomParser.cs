@@ -482,6 +482,9 @@ namespace Game1.RoomLoading
                     case "PuzzleSpawnBoomerang":
                         puzzle = new PuzzleSpawnBoomerang();
                         break;
+                    case "PuzzleShootFireballs":
+                        puzzle = new PuzzleShootFireballs(game.Screen);
+                        break;
                 }
             }
             return puzzle;
