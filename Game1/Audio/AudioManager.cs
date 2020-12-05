@@ -156,7 +156,6 @@ namespace Game1.Audio
                 singleSoundMap.TryGetValue(sound, out singleEntry);
                 singleSoundMap.Remove(sound);                
                 Tuple<SoundEffectInstance, int> newSingleEntry = new Tuple<SoundEffectInstance, int>(singleEntry.Item1, singleEntry.Item2 + 1);
-                Console.WriteLine("Incrimented singleSound: " + newSingleEntry.Item2);
                 singleSoundMap.Add(sound, newSingleEntry);
             }
         }
@@ -167,8 +166,7 @@ namespace Game1.Audio
             if (singleSoundMap.TryGetValue(sound, out singleEntry))
             {
                 singleSoundMap.Remove(sound);
-                Tuple<SoundEffectInstance, int> newSingleEntry = new Tuple<SoundEffectInstance, int>(singleEntry.Item1, singleEntry.Item2 - 1);
-                Console.WriteLine("decrimented singleSound: " + newSingleEntry.Item2);
+                Tuple<SoundEffectInstance, int> newSingleEntry = new Tuple<SoundEffectInstance, int>(singleEntry.Item1, singleEntry.Item2 - 1);                
                 if (newSingleEntry.Item2 <= 0)
                 {
                     newSingleEntry.Item1.Stop();
