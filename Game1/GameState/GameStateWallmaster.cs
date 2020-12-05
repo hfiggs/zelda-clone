@@ -10,6 +10,7 @@ using Game1.Particle;
 using Game1.Sprite;
 using Game1.Player;
 using Game1.Enemy;
+using Game1.RoomLoading;
 
 namespace Game1.GameState
 {
@@ -79,6 +80,11 @@ namespace Game1.GameState
 
             if (playerPosition.Y >= finishY)
             {
+
+                foreach (Room room in game.Screen.RoomsDict.Values)
+                {
+                    room.RespawnEnemies();
+                }
                 game.SetState(new GameStatePlayerToStart(game));
             }
         }

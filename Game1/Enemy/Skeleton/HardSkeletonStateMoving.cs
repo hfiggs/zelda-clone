@@ -27,7 +27,7 @@ namespace Game1.Enemy
 
         public HardSkeletonStateMoving(Vector2 position, IEnemy skeleton, Screen screen)
         {
-            this.Sprite = EnemySpriteFactory.Instance.CreateSkeletonSprite();
+            this.Sprite = EnemySpriteFactory.Instance.CreateGraySkeletonSprite();
 
             this.position = position;
             this.player = screen.Players[0];

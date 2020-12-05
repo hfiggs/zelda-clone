@@ -41,14 +41,9 @@ namespace Game1.Enemy
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            if (color.Equals(Color.White))
-            {
-                state.Draw(spriteBatch, Color.DarkSlateGray);
-            }
-            else
-            {
-                state.Draw(spriteBatch, color);
-            }
+
+            state.Draw(spriteBatch, color);
+
             
         }
 

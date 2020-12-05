@@ -28,6 +28,7 @@ namespace Game1.RoomLoading
         private readonly List<AmbientSound> ambienceList;
         private readonly AmbientSound music;
         private float ambienceVolume = 1.0f;
+        private readonly RoomParser parser;
         private const float musicVolume = 1.0f;
 
         private const int roomWidth = 256;
@@ -35,7 +36,7 @@ namespace Game1.RoomLoading
 
         public Room(Game1 game, string file, int difficulty)
         {
-            RoomParser parser = new RoomParser(game, this, file, difficulty);
+            parser = new RoomParser(game, this, file, difficulty);
 
             ItemList = new List<IItem>(parser.GetItems());
 
@@ -154,6 +155,15 @@ namespace Game1.RoomLoading
         public void PlayMusic(float delay = 0.0f)
         {
             music.Play(musicVolume, delay);
+        }
+
+        public void RespawnEnemies()
+        {
+            this.DecoratedEnemyList.Clear();
+            this.EnemyList.Clear();
+
+            this.EnemyList = parser.GetEnemies();
+
         }
     }
 }
