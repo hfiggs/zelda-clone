@@ -26,7 +26,8 @@ namespace Game1.Command
                 }
                 else
                 {
-                    (game.State as GameStateStartDifficulty).MoveCursor();
+                    if(game.State as GameStateStartDifficulty != null)
+                        (game.State as GameStateStartDifficulty).MoveCursor();
                 }
                 
                 AudioManager.PlayFireForget("rupeeAddShort");

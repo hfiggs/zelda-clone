@@ -21,10 +21,10 @@ namespace Game1.RoomLoading
         public List<IEnemy> EnemyList { get; private set; }
         public List<IEnemy> DecoratedEnemyList { get; private set; }
         public List<IEnemy> UnDecoratedEnemyList { get; private set; }
+        public bool Clocked;
 
         private readonly IPuzzle puzzle;
         private readonly ItemDropper itemDrops;
-
         private readonly List<AmbientSound> ambienceList;
         private float ambienceVolume = 1.0f;
 
@@ -47,15 +47,16 @@ namespace Game1.RoomLoading
             UnDecoratedEnemyList = new List<IEnemy>();
 
             ambienceList = parser.GetAmbienceNode();
-
             itemDrops = new ItemDropper(game.Screen);
             puzzle = parser.GetPuzzle();
+
         }
 
         public void Update(GameTime gameTime)
         {
 
             ItemList.ForEach(item => item.Update(gameTime));
+
 
             CheckClocksAndStunEnemies();
 
@@ -121,7 +122,8 @@ namespace Game1.RoomLoading
             {
                 if(item.GetType() == typeof(Clock) && item.ShouldDelete)
                 {
-                    foreach(IEnemy enemy in EnemyList)
+                    Clocked = true;
+                    foreach (IEnemy enemy in EnemyList)
                     {
                         enemy.StunnedTimer = int.MaxValue;
                     }
