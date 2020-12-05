@@ -183,6 +183,10 @@ namespace Game1.RoomLoading
                     case "Black":
                         nonInteractEnviornment = new Black(position);
                         break;
+                    case "BlackCover":
+                        float existTime = float.Parse(n["Exist"].InnerText);
+                        nonInteractEnviornment = new BlackSelfDestruct(position, existTime);
+                        break;
                     case "Bricks":
                         nonInteractEnviornment = new Bricks(position);
                         break;
@@ -481,6 +485,9 @@ namespace Game1.RoomLoading
                         break;
                     case "PuzzleSpawnBoomerang":
                         puzzle = new PuzzleSpawnBoomerang();
+                        break;
+                    case "PuzzleShootFireballs":
+                        puzzle = new PuzzleShootFireballs(game.Screen);
                         break;
                 }
             }
