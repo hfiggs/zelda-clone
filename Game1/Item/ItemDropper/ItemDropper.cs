@@ -62,24 +62,27 @@ namespace Game1.Item.ItemDropper
             Random random = new Random(Guid.NewGuid().GetHashCode());
             var type = enemy.GetType();
 
-            if (type == typeof(Goriya))
+            if (type == typeof(Goriya) || type == typeof(HardGoriya))
             {
-                const int randomMax = 10, fairySpawnCase = 0, heartSpawnCase1 = 1, heartSpawnCase2 = 2, heartSpawnCase3 = 3, heartSpawnCase4 = 4;
+                const int randomMax = 10, bombCase1 = 0, bombCase2 =1, bombCase3 = 3, heartSpawnCase1 = 4, heartSpawnCase2 = 5, heartSpawnCase3 = 6, clockCase1 = 7;
                 int randomDrop = random.Next(randomMax);
                 switch (randomDrop)
                 {
-                    case fairySpawnCase:
-                        screen.CurrentRoom.SpawnItem(new Fairy(enemy.GetPosition()));
+                    case bombCase1: case bombCase2: case bombCase3:
+                        screen.CurrentRoom.SpawnItem(new Bomb(enemy.GetPosition()));
                         break;
-                    case heartSpawnCase1: case heartSpawnCase2: case heartSpawnCase3: case heartSpawnCase4:
+                    case heartSpawnCase1: case heartSpawnCase2: case heartSpawnCase3:
                         screen.CurrentRoom.SpawnItem(new Heart(enemy.GetPosition()));
+                        break;
+                    case clockCase1:
+                        screen.CurrentRoom.SpawnItem(new Clock(enemy.GetPosition()));
                         break;
                     default:
                         screen.CurrentRoom.SpawnItem(new RupeeYellow(enemy.GetPosition()));
                         break;
                 }
             }
-            else if (type == typeof(Skeleton) || type == typeof(Hand) || type == typeof(Snake))
+            else if (type == typeof(Skeleton) || type == typeof(Hand) || type == typeof(Snake) || type == typeof(ShootingSkeleton) || type == typeof(HardSkeleton))
             {
                 const int randomMax = 10, clockSpawnCase = 0, heartSpawnCase1 = 1, heartSpawnCase2 = 2, blueRupeeSpawnCase1 = 3, blueRupeeSpawnCase2 = 4;
                 int randomDrop = random.Next(randomMax);
