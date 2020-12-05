@@ -157,13 +157,14 @@ namespace Game1.RoomLoading
             music.Play(musicVolume, delay);
         }
 
-        public void RespawnEnemies()
+        public void ResurrectEnemies()
         {
-            this.DecoratedEnemyList.Clear();
-            this.EnemyList.Clear();
+            EnemyList = new List<IEnemy>(parser.GetEnemies());
+        }
 
-            this.EnemyList = parser.GetEnemies();
-
+        public void Unclock()
+        {
+            Clocked = false;
         }
     }
 }

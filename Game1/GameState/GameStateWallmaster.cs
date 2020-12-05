@@ -66,6 +66,9 @@ namespace Game1.GameState
 
             playerPosition = Vector2.Add(player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
             wallmasterPosition = Vector2.Add(playerPosition, new Vector2(wallmasterXOffset, wallmasterYOffset));
+
+            game.Screen.ResurrectEnemies();
+            game.Screen.UnclockRooms();
         }
 
         public void Update(GameTime gameTime)
@@ -80,11 +83,6 @@ namespace Game1.GameState
 
             if (playerPosition.Y >= finishY)
             {
-
-                foreach (Room room in game.Screen.RoomsDict.Values)
-                {
-                    room.RespawnEnemies();
-                }
                 game.SetState(new GameStatePlayerToStart(game));
             }
         }

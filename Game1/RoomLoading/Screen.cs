@@ -150,5 +150,20 @@ namespace Game1.RoomLoading
 
             game.HUD = new HUDInterface(Players, game.Screen);
         }
+
+        public void ResurrectEnemies() {
+            foreach (KeyValuePair<(char, int), Room> room in RoomsDict)
+            {
+                room.Value.ResurrectEnemies();
+            }
+        }
+
+        public void UnclockRooms()
+        {
+            foreach (KeyValuePair<(char, int), Room> room in RoomsDict)
+            {
+                room.Value.Unclock();
+            }
+        }
     }
 }
