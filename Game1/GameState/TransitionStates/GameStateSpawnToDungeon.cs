@@ -4,6 +4,7 @@ using Game1.Audio;
 using Game1.Controller;
 using Game1.Player;
 using Game1.ResolutionManager;
+using Game1.RoomLoading;
 using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -36,6 +37,9 @@ namespace Game1.GameState
 
         private readonly Vector2 newRoomOffset = new Vector2(0, -vertRoomDim);
 
+        private readonly Room newRoom;
+        private readonly (char, int) newRoomKey = ('F', 2);
+
         private readonly Vector2 newPlayerPosition = new Vector2(newPlayerX, newPlayerY);
 
         private readonly (char, int) northRoomKey;
@@ -43,6 +47,7 @@ namespace Game1.GameState
         public GameStateSpawnToDungeon(Game1 game)
         {
             this.game = game;
+            game.Screen.RoomsDict.TryGetValue(newRoomKey, out newRoom);
 
             controllerList = new List<IController>
             {
@@ -82,8 +87,9 @@ namespace Game1.GameState
 
             if (oldRoomPos.Y >= oldRoomEndPos.Y)
             {
-                const string dungeonMusic = "dungeon";
-                AudioManager.PlayLooped(dungeonMusic);
+                AudioManager.ClearQueue();
+                AudioManager.StopAllMusic();
+                newRoom.PlayMusic();
 
                 game.Screen.CurrentRoomKey = northRoomKey;
                 game.SetState(new GameStateRoom(game));

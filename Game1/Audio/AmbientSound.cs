@@ -19,8 +19,7 @@ namespace Game1.Audio
         private SoundEffectInstance soundRef = null;
         private SoundEffectInstance soundSecondaryRef = null;
 
-        private Tuple<string, float> introLoopedTuple;
-        private const float typicalIfStatementTime = 0.05f; //in seconds - constant since non-critical
+        private Tuple<string, float> introLoopedTuple;        
 
         public AmbientSound(string sound, float timeDelay = 0.0f, float vol = 1.0f, bool looped = true)
         {
@@ -42,7 +41,7 @@ namespace Game1.Audio
             {
                 soundRef = AudioManager.PlayFireForget(sound, timeDelay + runtimeDelay, vol * runtimeVolume);                
                 if (intro)
-                    soundSecondaryRef = AudioManager.PlayLooped(introLoopedTuple.Item1, introLoopedTuple.Item2 + runtimeDelay - typicalIfStatementTime, vol * runtimeVolume);
+                    soundSecondaryRef = AudioManager.PlayLooped(introLoopedTuple.Item1, introLoopedTuple.Item2 + runtimeDelay, vol * runtimeVolume);
                 
             }
         }
