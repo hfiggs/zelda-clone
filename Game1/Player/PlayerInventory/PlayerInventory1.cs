@@ -8,6 +8,7 @@ namespace Game1.Player.PlayerInventory
         private const int maxMaxHalfHearts = 26; // 16 full hearts (max from all heart pieces)
         private const int fullHeart = 2; // 2 half hearts = 1 full heart
 
+        private const int halfMaxBombCount = 4;
         private const int maxBombCount = 8;
         private const int maxRupeeCount = 255;
         private const int maxKeyCount = 255;
@@ -23,14 +24,11 @@ namespace Game1.Player.PlayerInventory
             HalfHeartCount = defaultHalfHearts;
             MaxHalfHearts = defaultHalfHearts;
 
-            //hasItem = new bool[numItems] { true, false, false, false, true, false, false , true };
-
-            hasItem = new bool[numItems] { true, true, true, true, true, false, false , true };
-            RupeeCount = 16;
+            hasItem = new bool[numItems] { true, false, false, false, true, false, false , true };
 
             isItemInUse = new bool[numItems] { false, false, false, false, false, false, false , false };
 
-            BombCount = maxBombCount;
+            BombCount = halfMaxBombCount;
 
             // everything else auto-initializes to 0 or false
         }

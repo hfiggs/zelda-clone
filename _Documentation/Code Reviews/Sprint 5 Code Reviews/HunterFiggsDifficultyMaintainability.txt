@@ -1,0 +1,36 @@
+﻿AUTHOR (OF THE REVIEW) - Hunter Figgs.3
+
+
+DATE - 12/4/2020
+
+
+SPRINT # - 5
+
+
+NAME OF FILE BEING REVIEWED - "...Game1\GameState\GameStateStartDifficulty.cs"
+
+
+AUTHOR OF FILE BEING REVIEWED -  Sergei Fedulov.1
+
+
+SPECIFIC COMMENTS ABOUT CODE QUALITY (AT LEAST 5) -
+
+
+1. Starting at the top of the class, there are QUITE a few private declartions, particularly of the struct Vector2. This makes sense although if there are this many, they could probably be outsourced to a utility class where multiple classes could make use of them. This could improve the maintainability of the class and project, because these Vector2 values would only have to be changed/updated in one place and it could be reflected across several classes.
+
+
+2. Also at the top of the file, there are several lists that look like they are used to handle the user interface used to select between difficulty. Because this is a one-off specific UI implementation that is housed inside the class, it cannot be reused by any other classes, and it also decreases the cohesion of the class. Not only is it housing logic for difficulty settings, but it also contains the implementation of a UI. To improve cohesion of the class and project, this code should probably be moved to it's own class, where it can build and offer dynamic UI's to other classes.
+
+
+3. The constructor also demonstrates the issue raised in comment #2. There are many lines in the constructor used to initialize the lists for the UI. Again these should be outsourced to a separate class. The constructor is hard to maintain because it is so long and fills multiple roles.
+
+
+4. This comment applies to all the game state classes as well this one. The code to handle the spritebatch and drawing should be moved into a game state utility class. There are pretty heavy implementation details about drawing that have nothing to do with the game state difficulty menu. Not only does it lower cohesion in this class, it unnecessarily increases coupling with drawing behavior.
+
+
+5. The fact that this class implements an interface (IGameState) is very helpful for keeping cohesion low for the project. That means that this class can be dynamically loaded/swapped for other IGameState concrete classes, and no class has to necessarily know about the implementation details of this particular class.
+
+
+A HYPOTHETICAL CHANGE THAT COULD BE MADE TO THE FILE, AND HOW HARD IT WOULD BE TO IMPLEMENT THAT CHANGE - 
+
+As stated in comment #2, all the code in this class dealing with the user interface doesn't really belong in this class. Having this code present makes the responsibility of this class pretty large. It would require a fair bit of work to build a UI class that is dynamic enough to service multiple other classes, but it would greatly improve the cohesion and lower the coupling of the project.
