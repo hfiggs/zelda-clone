@@ -20,7 +20,7 @@ namespace Game1.Util
         private const char North = 'N', South = 'S', West = 'W', East = 'E';
         private const char north = 'n', south = 's', west = 'w', east = 'e';
 
-        private static Dictionary<CompassDirection, Vector2> directionVectorMap = new Dictionary<CompassDirection, Vector2>()
+        private static readonly Dictionary<CompassDirection, Vector2> directionVectorMap = new Dictionary<CompassDirection, Vector2>()
         {
             { CompassDirection.North, new Vector2(0, -1) },
             { CompassDirection.East, new Vector2(1, 0) },
@@ -28,9 +28,22 @@ namespace Game1.Util
             { CompassDirection.West, new Vector2(-1, 0) }
         };
 
+        private static readonly Dictionary<CompassDirection, Vector2> oppositeDirectionVectorMap = new Dictionary<CompassDirection, Vector2>()
+        {
+            { CompassDirection.North, new Vector2(0, 1) },
+            { CompassDirection.East, new Vector2(-1, 0) },
+            { CompassDirection.South, new Vector2(0, -1) },
+            { CompassDirection.West, new Vector2(1, 0) }
+        };
+
         public static Vector2 GetDirectionVector(CompassDirection direction)
         {
             return directionVectorMap[direction];
+        }
+
+        public static Vector2 GetOppositeDirectionVector(CompassDirection direction)
+        {
+            return oppositeDirectionVectorMap[direction];
         }
 
         public static Vector2 GetDirectionVector(char direction)

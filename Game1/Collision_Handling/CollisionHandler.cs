@@ -64,10 +64,10 @@ namespace Game1.Collision_Handling
                 {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IPlayer),south), new ProjectileToPlayerSouthSideCommand() },
                 {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IPlayer),west), new ProjectileToPlayerWestSideCommand() },
                 //Projectile hits enemy
-                {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IEnemy),east), new ProjectileToEnemyEastSideCommand() },
-                {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IEnemy),north), new ProjectileToEnemyNorthSideCommand() },
-                {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IEnemy),south), new ProjectileToEnemySouthSideCommand() },
-                {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IEnemy),west), new ProjectileToEnemyWestSideCommand() },
+                {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IEnemy),east), new ProjectileToEnemyCommand() },
+                {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IEnemy),north), new ProjectileToEnemyCommand() },
+                {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IEnemy),south), new ProjectileToEnemyCommand() },
+                {new Tuple<Type,Type,CompassDirection>(typeof(IProjectile),typeof(IEnemy),west), new ProjectileToEnemyCommand() },
                 //Player hits Item
                 {new Tuple<Type,Type,CompassDirection>(typeof(IPlayer),typeof(IItem),east), new LinkToItemCommand(game) },
                 {new Tuple<Type,Type,CompassDirection>(typeof(IPlayer),typeof(IItem),north), new LinkToItemCommand(game) },

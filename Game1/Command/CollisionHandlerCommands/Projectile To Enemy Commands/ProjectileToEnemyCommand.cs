@@ -1,21 +1,21 @@
 ﻿using Game1.Collision_Handling;
 using Game1.Enemy;
-using Game1.Player;
 using Game1.Projectile;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
-    class ProjectileToEnemyEastSideCommand : ICollisionCommand
+    class ProjectileToEnemyCommand : ICollisionCommand
     {
         private const int boomerangStunTime = 10000; // ms
         private const int bombStunTime = 5000; // ms
         private const float halfHeart = 0.5f, oneHeart = 1.0f, twoHearts = 2.0f, fourHearts = 4.0f;
 
-        public ProjectileToEnemyEastSideCommand()
-        {
+        private const int bombWidth = 16, bombHeight = 16; // bomb's width/height before explosion
+        private const int dodongoHeadHeight = 4, dodongoHeadWidth = 4;
 
-        }
+        public ProjectileToEnemyCommand() { }
 
         public void Execute(Collision collision)
         {
@@ -23,7 +23,7 @@ namespace Game1.Command.CollisionHandlerCommands
             IEnemy enemy = (IEnemy)collision.Collidee;
             Vector2 knockbackDirect = new Vector2(0, 0);
             if (enemy.GetType() != typeof(Aquamentus) || proj.GetType() == typeof(Boomerang))
-                knockbackDirect = new Vector2(-1, 0);
+                knockbackDirect = CompassDirectionUtil.GetOppositeDirectionVector(collision.Side);
 
             if (collision.Collider.GetType() == typeof(Boomerang))
             {
@@ -41,7 +41,7 @@ namespace Game1.Command.CollisionHandlerCommands
                         proj.BeginDespawn();
                         break;
                     default:
-                        if(enemy.StunnedTimer != int.MaxValue)
+                        if (enemy.StunnedTimer != int.MaxValue)
                         {
                             enemy.StunnedTimer = boomerangStunTime;
                         }
@@ -61,12 +61,10 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (proj.GetType() == typeof(BombProjectile))
             {
-                const int bombWidth = 16; // bomb's width before explosion
-                const int bombHeight = 16; // bomb's height before explosion
+                
                 if (enemy.GetType() == typeof(Dodongo) && proj.GetHitbox().Width == bombWidth && proj.GetHitbox().Height == bombHeight)
                 {
-                    const int dodongoHeadWidth = 4;
-                    if (collision.IntersectionRec.Width < dodongoHeadWidth)
+                    if (collision.IntersectionRec.Height < dodongoHeadHeight || collision.IntersectionRec.Width < dodongoHeadWidth)
                     {
                         enemy.ReceiveDamage(0f, knockbackDirect);
                         proj.BeginDespawn();

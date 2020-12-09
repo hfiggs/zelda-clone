@@ -73,6 +73,7 @@
     <Compile Include="CollisionDetection\EnvironmentCollisions.cs" />
     <Compile Include="Command\AudioCommands\VolumeUpCommand.cs" />
     <Compile Include="Command\AudioCommands\VolumeDownCommand.cs" />
+    <Compile Include="Command\CollisionHandlerCommands\Projectile To Enemy Commands\ProjectileToEnemyCommand.cs" />
     <Compile Include="Command\SelectPlayerOneHUDCommand.cs" />
     <Compile Include="Command\SelectPlayerTwoHUDCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\PlayerToPlayerCommand.cs" />
@@ -213,10 +214,6 @@
     <Compile Include="Command\CollisionHandlerCommands\Enemy To Player Commands\EnemyToPlayerWestSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\PlayerToEnemy.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ProjectileToItemCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Projectile To Enemy Commands\ProjectileToEnemyEastSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Projectile To Enemy Commands\ProjectileToEnemyNorthSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Projectile To Enemy Commands\ProjectileToEnemySouthSideCommand.cs" />
-    <Compile Include="Command\CollisionHandlerCommands\Projectile To Enemy Commands\ProjectileToEnemyWestSideCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\LinkToItemCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\ICollisionCommand.cs" />
     <Compile Include="Command\CollisionHandlerCommands\Projectile To Player Commands\ProjectileToPlayerEastSideCommand.cs" />
