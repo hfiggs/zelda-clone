@@ -28,8 +28,6 @@ namespace Game1.Item.ItemDropper
 
                 if (randomDrop == dropInt)
                     ItemDropperUtil.DropItem(screen, enemy);
-
-                System.Console.Out.WriteLine(randomDrop);
             }
         }
     }
