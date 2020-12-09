@@ -1,6 +1,7 @@
 ﻿/* Author: Hunter Figgs.3 */
 
 using Game1.Controller;
+using Game1.GameState.GameStateUtil;
 using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -38,22 +39,9 @@ namespace Game1.GameState
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
         {
-            game.GraphicsDevice.Clear(Color.Black);
+            DrawUtil.ClearScreen(game);
 
-
-            var drawMatrix = resolutionManager.GetResolutionMatrix();
-
-
-            drawMatrix.Translation = new Vector3(0, hudOffset * resolutionManager.GetResolutionScale(), 0);
-
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
-
-            game.HUD.Draw(spriteBatch, new Vector2(0, 0), Color.White);
-
-            spriteBatch.End();
-
-
-            drawMatrix.Translation = new Vector3(0, 0, 0);
+            DrawUtil.DrawHUD(game.HUD, spriteBatch, resolutionManager, new Vector2(0, hudOffset));
         }
     }
 }

@@ -26,8 +26,6 @@ namespace Game1.GameState
         private const int newPlayerY = 142;
         private const int newPlayerYLockedOffset = -16;
 
-        private Color color = Color.White;
-
         private readonly Vector2 oldRoomStartPos = new Vector2(0, vertRoomOffset);
         private readonly Vector2 oldRoomEndPos = new Vector2(0, vertRoomOffset + vertRoomDim);
         private Vector2 oldRoomPos;
@@ -96,38 +94,13 @@ namespace Game1.GameState
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
         {
-            game.GraphicsDevice.Clear(Color.Black);
+            DrawUtil.ClearScreen(game);
 
-            var drawMatrix = resolutionManager.GetResolutionMatrix();
+            DrawUtil.DrawRoom(game.Screen.CurrentRoom, spriteBatch, resolutionManager, new Vector2(oldRoomPos.X, oldRoomPos.Y));
 
+            DrawUtil.DrawRoomAndPlayers(game.Screen.RoomsDict[northRoomKey], game.Screen.Players, spriteBatch, resolutionManager, Vector2.Add(oldRoomPos, newRoomOffset));
 
-            drawMatrix.Translation = new Vector3(oldRoomPos.X * resolutionManager.GetResolutionScale(), oldRoomPos.Y * resolutionManager.GetResolutionScale(), 0);
-
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, drawMatrix);
-
-            game.Screen.CurrentRoom.Draw(spriteBatch, color);
-
-            spriteBatch.End();
-
-
-            var newRoom = game.Screen.RoomsDict[northRoomKey];
-
-            drawMatrix.Translation = Vector3.Add(drawMatrix.Translation, new Vector3(newRoomOffset.X * resolutionManager.GetResolutionScale(), newRoomOffset.Y * resolutionManager.GetResolutionScale(), 0));
-
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, drawMatrix);
-
-            newRoom.Draw(spriteBatch, color);
-
-            foreach (IPlayer p in game.Screen.Players)
-            {
-                p.Draw(spriteBatch, Color.White);
-            }
-
-            spriteBatch.End();
-
-            DrawUtil.DrawHUDOffset(game.HUD, spriteBatch, resolutionManager);
-
-            drawMatrix.Translation = new Vector3(0, 0, 0);
+            DrawUtil.DrawHUD(game.HUD, spriteBatch, resolutionManager);
         }
     }
 }

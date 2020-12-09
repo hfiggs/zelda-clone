@@ -49,7 +49,7 @@ namespace Game1.GameState
 
             DrawUtil.DrawScreen(game.Screen, spriteBatch, resolutionManager);
 
-            DrawUtil.DrawHUDOffset(game.HUD, spriteBatch, resolutionManager);
+            DrawUtil.DrawHUD(game.HUD, spriteBatch, resolutionManager);
         }
     }
 }

@@ -25,10 +25,7 @@ namespace Game1.GameState
             AudioManager.ResetAudioManager();
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
-        {
-            // do nothing for now
-        }
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager) { }
 
         public void Update(GameTime gameTime)
         {

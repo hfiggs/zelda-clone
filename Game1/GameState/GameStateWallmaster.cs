@@ -104,7 +104,7 @@ namespace Game1.GameState
 
             spriteBatch.End();
 
-            DrawUtil.DrawHUDOffset(game.HUD, spriteBatch, resolutionManager);
+            DrawUtil.DrawHUD(game.HUD, spriteBatch, resolutionManager);
 
             drawMatrix.Translation = new Vector3(0, 0, 0);
         }
