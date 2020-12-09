@@ -1,5 +1,6 @@
 ﻿using Game1.Player.PlayerInventory;
 using Game1.RoomLoading;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -25,7 +26,7 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement, Color color)
         {
-            HUDSprite.Draw(spriteBatch, location + movement, color);
+            HUDSprite.Draw(spriteBatch, location + movement, color, SpriteLayerUtil.topLayer);
         }
 
         public void Update(GameTime time)

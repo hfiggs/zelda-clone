@@ -1,4 +1,5 @@
 ﻿using Game1.Player.PlayerInventory;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -30,7 +31,7 @@ namespace Game1.HUD
         {
             if (inv.HasCompass)
             {
-                displaySprite.Draw(spriteBatch, location + movement, color);
+                displaySprite.Draw(spriteBatch, location + movement, color, SpriteLayerUtil.topLayer);
             }
         }
 
