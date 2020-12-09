@@ -120,11 +120,13 @@ namespace Game1.Collision_Handling
             { typeof(Bat), halfHeart },
             { typeof(Dodongo), fullHeart },
             { typeof(Goriya), fullHeart },
+            { typeof(HardGoriya), fullHeart },
             { typeof(Hand), noDamage },
             { typeof(Jelly), halfHeart },
             { typeof(Merchant), noDamage },
             { typeof(OldMan), noDamage },
             { typeof(Skeleton), halfHeart },
+            { typeof(ShootingSkeleton), halfHeart },
             { typeof(HardSkeleton), fullHeart },
             { typeof(Snake), halfHeart },
             { typeof(SpikeTrap), halfHeart }

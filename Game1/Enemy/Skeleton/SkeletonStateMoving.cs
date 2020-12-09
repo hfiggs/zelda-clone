@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Game1.Item;
 using System.Collections.Generic;
 using Game1.RoomLoading;
+using Game1.Util;
 
 namespace Game1.Enemy
 {
@@ -123,25 +124,16 @@ namespace Game1.Enemy
             Random random = new Random();
             return (float)(random.NextDouble() * 1.0 + minimumTime);
         }
+
         private Vector2 GetRandomDirection()
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
             const int randomNumberMax = 4;
-            int randomDirection = random.Next(randomNumberMax);
+            var randomDirection = (CompassDirection)random.Next(randomNumberMax);
 
-            const int goLeft = 0, goRight = 1, goUp = 2;
-            switch (randomDirection)
-            {
-                case goLeft:
-                    return new Vector2(-1 * moveSpeed, 0);
-                case goRight:
-                    return new Vector2(moveSpeed, 0);
-                case goUp:
-                    return new Vector2(0, -1 * moveSpeed);
-                default:
-                    return new Vector2(0, moveSpeed);
-            }
+            return Vector2.Multiply(new Vector2(moveSpeed, moveSpeed), CompassDirectionUtil.GetDirectionVector(randomDirection));
         }
+
         public void editPosition(Vector2 amount)
         {
            

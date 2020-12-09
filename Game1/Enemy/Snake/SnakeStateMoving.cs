@@ -1,4 +1,5 @@
 ﻿using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -15,7 +16,7 @@ namespace Game1.Enemy
         private bool isFacingLeft;
 
         // N=0, S=1, E=2, W=3
-        private int moveDirection;
+        private CompassDirection moveDirection;
         private bool playerSpotted;
         private Game1 game;
 
@@ -47,7 +48,7 @@ namespace Game1.Enemy
             timeUntilNewDirection = moveTime;
 
             const int randomDirectionMax = 4;
-            moveDirection = rand.Next(randomDirectionMax);
+            moveDirection = (CompassDirection)rand.Next(randomDirectionMax);
 
             timeUntilNextFrame = animationTime;
 
@@ -72,19 +73,7 @@ namespace Game1.Enemy
 
         public Vector2 GetDirection()
         {
-            const int north = 0, south = 1, east = 2, west = 3;
-            switch (moveDirection)
-            {
-                case north:
-                    return new Vector2(0, -1);
-                case south:
-                    return new Vector2(0, 1);
-                case east:
-                    return new Vector2(1, 0);
-                case west:
-                default:
-                    return new Vector2(-1, 0);
-            }
+            return CompassDirectionUtil.GetDirectionVector(moveDirection);
         }
 
         public List<Rectangle> GetHitboxes()
@@ -104,24 +93,22 @@ namespace Game1.Enemy
         {
             if (snake.StunnedTimer == 0)
             {
-                const int right = 2, left = 3;
-
                 timeUntilNewDirection -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
 
                 if (timeUntilNewDirection <= 0 && !playerSpotted)
                 {
                     const int randomNumberMax = 4;
-                    moveDirection = rand.Next(randomNumberMax);
+                    moveDirection = (CompassDirection)rand.Next(randomNumberMax);
 
                     timeUntilNewDirection += moveTime;
                 }
 
-                if (isFacingLeft && moveDirection == right)
+                if (isFacingLeft && moveDirection == CompassDirection.East)
                 {
                     isFacingLeft = false;
                     Sprite = EnemySpriteFactory.Instance.CreateSnakeRightSprite();
                 }
-                else if (!isFacingLeft && moveDirection == left)
+                else if (!isFacingLeft && moveDirection == CompassDirection.West)
                 {
                     isFacingLeft = true;
                     Sprite = EnemySpriteFactory.Instance.CreateSnakeLeftSprite();
@@ -133,41 +120,18 @@ namespace Game1.Enemy
                     if (isFacingLeft && playerRect.Intersects(new Rectangle((int)(position.X - windowDims.X), (int)position.Y, (int)windowDims.X, viewWidth)))
                     {
                         playerSpotted = true;
-                        moveDirection = left;
+                        moveDirection = CompassDirection.West;
                     }
                     else if (!isFacingLeft && playerRect.Intersects(new Rectangle((int)position.X, (int)position.Y, (int)windowDims.X, viewWidth)))
                     {
                         playerSpotted = true;
-                        moveDirection = right;
+                        moveDirection = CompassDirection.East;
                     }
                 }
 
-                int speed;
-                if (playerSpotted)
-                {
-                    speed = fastSpeed;
-                }
-                else
-                {
-                    speed = normalSpeed;
-                }
+                var speed = playerSpotted ? fastSpeed : normalSpeed;
 
-                const int north = 0, south = 1, east = 2, west = 3;
-                switch (moveDirection)
-                {
-                    case north:
-                        position.Y -= speed;
-                        break;
-                    case south:
-                        position.Y += speed;
-                        break;
-                    case east:
-                        position.X += speed;
-                        break;
-                    case west:
-                        position.X -= speed;
-                        break;
-                }
+                position = Vector2.Add(position, Vector2.Multiply(CompassDirectionUtil.GetDirectionVector(moveDirection), speed));
             }
 
             timeUntilNextFrame -= (float)gametime.ElapsedGameTime.TotalMilliseconds;
