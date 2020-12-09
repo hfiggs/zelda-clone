@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Game1.Audio;
+using Game1.Environment.EnvironmentUtil;
 
 namespace Game1.Environment
 {
-    class DoorNLocked : IEnvironment
+    class DoorLocked : IEnvironment
     {
         private ISprite spriteBelow;
         private ISprite spriteAbove;
@@ -15,27 +16,28 @@ namespace Game1.Environment
 
         private const int widthAndHeight = 32;
         private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
-        private const int width = 8, height = 32, xDiff = 24;
-        private Rectangle hitboxOpen1 = new Rectangle(0, 0, width, height);
-        private Rectangle hitboxOpen2 = new Rectangle(xDiff, 0, width, height);
+        private Rectangle hitboxOpen1;
+        private Rectangle hitboxOpen2;
         private List<Rectangle> hitboxes = new List<Rectangle>();
         private float timeTillOpen;
         public int open; // 0 = locked, 1 = opening, 2 = open
         private const int openDoor = 2;
         private const float openTime = 250f;
 
-        public DoorNLocked(Vector2 position)
+        public CompassDirection direction;
+
+        public DoorLocked(Vector2 position, CompassDirection direction)
         {
-            spriteBelow = EnvironmentSpriteFactory.instance.createDoorNLockedBelow();
-            spriteAbove = EnvironmentSpriteFactory.instance.createDoorNLockedAbove();
             this.position = position;
+            this.direction = direction;
+
+            DoorUtil.SetLockedDoorSprites(out spriteBelow, out spriteAbove, direction);
+            
             hitbox1.Location += position.ToPoint();
             hitboxes.Add(hitbox1);
+
             timeTillOpen = -1;
             open = 0;
-
-            hitboxOpen1.Location += position.ToPoint();
-            hitboxOpen2.Location += position.ToPoint();
         }
 
         public void Update(GameTime gameTime)
@@ -45,15 +47,7 @@ namespace Game1.Environment
                 timeTillOpen -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (timeTillOpen <= 0)
                 {
-                    spriteBelow = EnvironmentSpriteFactory.instance.createDoorNOpenBelow();
-                    spriteAbove = EnvironmentSpriteFactory.instance.createDoorNOpenAbove();
-                    open = openDoor;
-
-                    hitboxes = new List<Rectangle>()
-                    {
-                        hitboxOpen1,
-                        hitboxOpen2
-                    };
+                    Open(true);
                 }
             }
         }
@@ -84,12 +78,13 @@ namespace Game1.Environment
                 open = openDoor;
                 timeTillOpen = 0;
 
-                spriteBelow = EnvironmentSpriteFactory.instance.createDoorNOpenBelow();
-                spriteAbove = EnvironmentSpriteFactory.instance.createDoorNOpenAbove();
+                DoorUtil.SetOpenDoorSprites(out spriteBelow, out spriteAbove, direction);
+
+                DoorUtil.SetOpenDoorHitboxes(out hitboxOpen1, out hitboxOpen2, direction, position);
 
                 hitboxes = new List<Rectangle>()
                 {
-                    hitboxOpen1,
+                    hitboxOpen1, 
                     hitboxOpen2
                 };
             }

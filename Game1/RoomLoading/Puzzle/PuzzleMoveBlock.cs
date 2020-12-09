@@ -1,12 +1,8 @@
 ﻿using Game1.Audio;
 using Game1.Environment;
-using Game1.Item;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.RoomLoading.Puzzle
 {
@@ -35,28 +31,12 @@ namespace Game1.RoomLoading.Puzzle
                 {
                     foreach (IEnvironment e in room.InteractEnviornment)
                     {
-                        var type = e.GetType();
-                        if (type == typeof(DoorEClosed))
+                        if (e is DoorClosed door)
                         {
-                            DoorEClosed temp = (DoorEClosed)e;
-                            temp.open = 1;
-                        }
-                        else if (type == typeof(DoorWClosed))
-                        {
-                            DoorWClosed temp = (DoorWClosed)e;
-                            temp.open = 1;
-                        }
-                        else if (type == typeof(DoorSClosed))
-                        {
-                            DoorSClosed temp = (DoorSClosed)e;
-                            temp.open = 1;
-                        }
-                        else if(type == typeof(DoorNClosed))
-                        {
-                            DoorNClosed temp = (DoorNClosed)e;
-                            temp.open = 1;
+                            door.Open(false);
                         }
                     }
+
                     complete = true;
                     const string revealAudio = "reveal";
                     AudioManager.PlayFireForget(revealAudio);

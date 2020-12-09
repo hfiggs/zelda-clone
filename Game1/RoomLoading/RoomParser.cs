@@ -3,6 +3,7 @@ using Game1.Enemy;
 using Game1.Environment;
 using Game1.Item;
 using Game1.RoomLoading.Puzzle;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -273,76 +274,76 @@ namespace Game1.RoomLoading
                         interactEnviornment = new MovableBlock(position, north);
                         break;
                     case "DoorEBlank":
-                        interactEnviornment = new DoorEBlank(position);
+                        interactEnviornment = new DoorBlank(position, CompassDirection.East);
                         break;
                     case "DoorEClosed":
-                        interactEnviornment = new DoorEClosed(position);
+                        interactEnviornment = new DoorClosed(position, CompassDirection.East);
                         break;
                     case "DoorEHole":
-                        interactEnviornment = new DoorEBombable(position, true);
+                        interactEnviornment = new DoorBombable(position, CompassDirection.East, true);
                         break;
                     case "DoorEOpen":
-                        interactEnviornment = new DoorEOpen(position);
+                        interactEnviornment = new DoorOpen(position, CompassDirection.East);
                         break;
                     case "DoorELocked":
-                        interactEnviornment = new DoorELocked(position);
+                        interactEnviornment = new DoorLocked(position, CompassDirection.East);
                         break;
                     case "DoorNBlank":
-                        interactEnviornment = new DoorNBlank(position);
+                        interactEnviornment = new DoorBlank(position, CompassDirection.North);
                         break;
                     case "DoorNClosed":
-                        interactEnviornment = new DoorNClosed(position);
+                        interactEnviornment = new DoorClosed(position, CompassDirection.North);
                         break;
                     case "DoorNHole":
-                        interactEnviornment = new DoorNBombable(position, true);
+                        interactEnviornment = new DoorBombable(position, CompassDirection.North, true);
                         break;
                     case "DoorNOpen":
-                        interactEnviornment = new DoorNOpen(position);
+                        interactEnviornment = new DoorOpen(position, CompassDirection.North);
                         break;
                     case "DoorNLocked":
-                        interactEnviornment = new DoorNLocked(position);
+                        interactEnviornment = new DoorLocked(position, CompassDirection.North);
                         break;
                     case "DoorSBlank":
-                        interactEnviornment = new DoorSBlank(position);
+                        interactEnviornment = new DoorBlank(position, CompassDirection.South);
                         break;
                     case "DoorSClosed":
-                        interactEnviornment = new DoorSClosed(position);
+                        interactEnviornment = new DoorClosed(position, CompassDirection.South);
                         break;
                     case "DoorSHole":
-                        interactEnviornment = new DoorSBombable(position, true);
+                        interactEnviornment = new DoorBombable(position, CompassDirection.South, true);
                         break;
                     case "DoorSOpen":
-                        interactEnviornment = new DoorSOpen(position);
+                        interactEnviornment = new DoorOpen(position, CompassDirection.South);
                         break;
                     case "DoorSLocked":
-                        interactEnviornment = new DoorSLocked(position);
+                        interactEnviornment = new DoorLocked(position, CompassDirection.South);
                         break;
                     case "DoorWBlank":
-                        interactEnviornment = new DoorWBlank(position);
+                        interactEnviornment = new DoorBlank(position, CompassDirection.West);
                         break;
                     case "DoorWClosed":
-                        interactEnviornment = new DoorWClosed(position);
+                        interactEnviornment = new DoorClosed(position, CompassDirection.West);
                         break;
                     case "DoorWHole":
-                        interactEnviornment = new DoorWBombable(position, true);
+                        interactEnviornment = new DoorBombable(position, CompassDirection.West, true);
                         break;
                     case "DoorWOpen":
-                        interactEnviornment = new DoorWOpen(position);
+                        interactEnviornment = new DoorOpen(position, CompassDirection.West);
                         break;
                     case "DoorWLocked":
-                        interactEnviornment = new DoorWLocked(position);
+                        interactEnviornment = new DoorLocked(position, CompassDirection.West);
                         break;
                     case "DoorSBombable":
-                        interactEnviornment = new DoorSBombable(position, false);
+                        interactEnviornment = new DoorBombable(position, CompassDirection.South, false);
                         break;
                     case "DoorNBombable":
-                        interactEnviornment = new DoorNBombable(position, false);
+                        interactEnviornment = new DoorBombable(position, CompassDirection.North, false);
                         break;
                     case "DoorEBombable":
-                        interactEnviornment = new DoorEBombable(position, false);
+                        interactEnviornment = new DoorBombable(position, CompassDirection.East, false);
                         break;
                     case "DoorWBombable":
-                        interactEnviornment = new DoorWBombable(position, false);
+                        interactEnviornment = new DoorBombable(position, CompassDirection.West, false);
                         break;
                     case "EnterBasementLoadZone":
                         interactEnviornment = new EnterBasementLoadZone(position);

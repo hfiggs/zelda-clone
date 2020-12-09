@@ -133,45 +133,12 @@ namespace Game1.Util
         public static void OpenLockedDoor(Screen screen, IEnvironment envo, IPlayer player)
         {
             bool playerHasKey = player.PlayerInventory.KeyCount > 0;
-            bool doorOpened = false;
 
-            switch (envo)
+            if(envo is DoorLocked door && door.open == 0 && playerHasKey)
             {
-                case DoorNLocked _:
-                    if (((DoorNLocked)envo).open == 0 && playerHasKey)
-                    {
-                        ((DoorNLocked)envo).Open(false);
-                        OpenAdjacentLockedDoor(screen, CompassDirection.North);
-                        doorOpened = true;
-                    }
-                    break;
-                case DoorELocked _:
-                    if (((DoorELocked)envo).open == 0 && playerHasKey)
-                    {
-                        ((DoorELocked)envo).Open(false);
-                        OpenAdjacentLockedDoor(screen, CompassDirection.East);
-                        doorOpened = true;
-                    }
-                    break;
-                case DoorSLocked _:
-                    if (((DoorSLocked)envo).open == 0 && playerHasKey)
-                    {
-                        ((DoorSLocked)envo).Open(false);
-                        OpenAdjacentLockedDoor(screen, CompassDirection.South);
-                        doorOpened = true;
-                    }
-                    break;
-                case DoorWLocked _:
-                    if (((DoorWLocked)envo).open == 0 && playerHasKey)
-                    {
-                        ((DoorWLocked)envo).Open(false);
-                        OpenAdjacentLockedDoor(screen, CompassDirection.West);
-                        doorOpened = true;
-                    }
-                    break;
-            }
+                door.Open(false);
+                OpenAdjacentLockedDoor(screen, door.direction);
 
-            if (doorOpened) {
                 foreach (IPlayer Player in screen.Players)
                 {
                     Player.PlayerInventory.SubKey();
@@ -183,21 +150,7 @@ namespace Game1.Util
         {
             var enviroList = screen.RoomsDict[GetAdjacentRoomKey(screen.CurrentRoomKey, adjacentDirection)].InteractEnviornment;
 
-            switch (adjacentDirection)
-            {
-                case CompassDirection.North:
-                    ((DoorSLocked)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorSLocked)))?.Open(true);
-                    break;
-                case CompassDirection.East:
-                    ((DoorWLocked)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorWLocked)))?.Open(true);
-                    break;
-                case CompassDirection.South:
-                    ((DoorNLocked)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorNLocked)))?.Open(true);
-                    break;
-                case CompassDirection.West:
-                    ((DoorELocked)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorELocked)))?.Open(true);
-                    break;
-            }
+            ((DoorLocked)enviroList.FirstOrDefault(e => e is DoorLocked door && door.direction == CompassDirectionUtil.GetOppositeDirection(adjacentDirection)))?.Open(true);
         }
 
         public static bool IsAdjacentDoorClosed(Screen screen, CompassDirection adjacentDirection)
@@ -206,21 +159,7 @@ namespace Game1.Util
 
             var isLocked = false;
 
-            switch (adjacentDirection)
-            {
-                case CompassDirection.North:
-                    isLocked = ((DoorSClosed)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorSClosed)))?.open == 0;
-                    break;
-                case CompassDirection.East:
-                    isLocked = ((DoorWClosed)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorWClosed)))?.open == 0;
-                    break;
-                case CompassDirection.South:
-                    isLocked = ((DoorNClosed)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorNClosed)))?.open == 0;
-                    break;
-                case CompassDirection.West:
-                    isLocked = ((DoorEClosed)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorEClosed)))?.open == 0;
-                    break;
-            }
+            isLocked = ((DoorClosed)(enviroList.FirstOrDefault(e => e is DoorClosed door && door.direction == CompassDirectionUtil.GetOppositeDirection(adjacentDirection))))?.open == 0;
 
             return isLocked;
         }
@@ -231,36 +170,10 @@ namespace Game1.Util
 
         public static void OpenBombableDoor(Screen screen, IEnvironment envo)
         {
-            switch (envo)
+            if (envo is DoorBombable door && !door.open)
             {
-                case DoorNBombable dN:
-                    if (!dN.open)
-                    {
-                        dN.OpenDoor(true);
-                        OpenAdjacentBombableDoor(screen, CompassDirection.North);
-                    }
-                    break;
-                case DoorEBombable dE:
-                    if (!dE.open)
-                    {
-                        dE.OpenDoor(true);
-                        OpenAdjacentBombableDoor(screen, CompassDirection.East);
-                    }
-                    break;
-                case DoorSBombable dS:
-                    if (!dS.open)
-                    {
-                        dS.OpenDoor(true);
-                        OpenAdjacentBombableDoor(screen, CompassDirection.South);
-                    }
-                    break;
-                case DoorWBombable dW:
-                    if (!dW.open)
-                    {
-                        dW.OpenDoor(true);
-                        OpenAdjacentBombableDoor(screen, CompassDirection.West);
-                    }
-                    break;
+                door.Open(true);
+                OpenAdjacentBombableDoor(screen, door.direction);
             }
         }
 
@@ -268,21 +181,7 @@ namespace Game1.Util
         {
             var enviroList = screen.RoomsDict[GetAdjacentRoomKey(screen.CurrentRoomKey, adjacentDirection)].InteractEnviornment;
 
-            switch (adjacentDirection)
-            {
-                case CompassDirection.North:
-                    ((DoorSBombable)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorSBombable)))?.OpenDoor(false);
-                    break;
-                case CompassDirection.East:
-                    ((DoorWBombable)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorWBombable)))?.OpenDoor(false);
-                    break;
-                case CompassDirection.South:
-                    ((DoorNBombable)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorNBombable)))?.OpenDoor(false);
-                    break;
-                case CompassDirection.West:
-                    ((DoorEBombable)enviroList.FirstOrDefault(e => e.GetType() == typeof(DoorEBombable)))?.OpenDoor(false);
-                    break;
-            }
+            ((DoorBombable)enviroList.FirstOrDefault(e => e is DoorBombable door && door.direction == CompassDirectionUtil.GetOppositeDirection(adjacentDirection)))?.Open(false);
         }
 
         #endregion

@@ -1,37 +1,41 @@
-﻿using System;
-using Game1.Sprite;
+﻿using Game1.Sprite;
 using Game1.Util;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Game1.Environment.EnvironmentUtil;
 
 namespace Game1.Environment
 {
-    class DoorNOpen : IEnvironment
+    class DoorOpen : IEnvironment
     {
         private ISprite spriteBelow;
         private ISprite spriteAbove;
         private Vector2 position;
 
-        private const int width = 8, height = 32, xDiff = 24;
-        private Rectangle hitbox1 = new Rectangle(0, 0, width, height);
-        private Rectangle hitbox2 = new Rectangle(xDiff, 0, width, height);
-        private List<Rectangle> hitboxes = new List<Rectangle>();
+        private Rectangle hitbox1;
+        private Rectangle hitbox2;
+        private List<Rectangle> hitboxes;
 
-        public DoorNOpen(Vector2 position)
+        public CompassDirection direction;
+
+        public DoorOpen(Vector2 position, CompassDirection direction)
         {
-            spriteBelow = EnvironmentSpriteFactory.instance.createDoorNOpenBelow();
-            spriteAbove = EnvironmentSpriteFactory.instance.createDoorNOpenAbove();
             this.position = position;
-            hitbox1.Location += position.ToPoint();
-            hitbox2.Location += position.ToPoint();
-            hitboxes.Add(hitbox1);
-            hitboxes.Add(hitbox2);
+            this.direction = direction;
+
+            DoorUtil.SetOpenDoorSprites(out spriteBelow, out spriteAbove, direction);
+
+            DoorUtil.SetOpenDoorHitboxes(out hitbox1, out hitbox2, direction, position);
+
+            hitboxes = new List<Rectangle>()
+            {
+                hitbox1,
+                hitbox2
+            };
         }
 
-public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             //throw new NotImplementedException("For later collision mechanics");
         }

@@ -38,6 +38,16 @@ namespace Game1.Util
             { CompassDirection.None, new Vector2(0, 0) }
         };
 
+
+        private static readonly Dictionary<CompassDirection, CompassDirection> oppositeDirectionMap = new Dictionary<CompassDirection, CompassDirection>()
+        {
+            { CompassDirection.North, CompassDirection.South },
+            { CompassDirection.East, CompassDirection.West },
+            { CompassDirection.South, CompassDirection.North },
+            { CompassDirection.West, CompassDirection.East },
+            { CompassDirection.None, CompassDirection.None }
+        };
+
         public static Vector2 GetDirectionVector(CompassDirection direction)
         {
             return directionVectorMap[direction];
@@ -46,6 +56,11 @@ namespace Game1.Util
         public static Vector2 GetOppositeDirectionVector(CompassDirection direction)
         {
             return oppositeDirectionVectorMap[direction];
+        }
+
+        public static CompassDirection GetOppositeDirection(CompassDirection direction)
+        {
+            return oppositeDirectionMap[direction];
         }
 
         public static Vector2 GetDirectionVector(char direction)
