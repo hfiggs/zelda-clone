@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Game1.Environment;
-using Game1.Enemy;
 using Game1.Projectile;
-using Game1.Player;
 using Game1.Collision_Handling;
 using Game1.RoomLoading;
+using Game1.CollisionDetection.CollisionDetectionUtil;
 
 namespace Game1.CollisionDetection
 {
@@ -38,7 +37,7 @@ namespace Game1.CollisionDetection
                         Rectangle intersectEnv = Rectangle.Intersect(projHitbox, envHitbox);
                         if (!intersectEnv.IsEmpty)
                         {
-                            char side = DetermineSide(projHitbox, envHitbox, intersectEnv);
+                            char side = CollisonDetectionUtil.DetermineSide(projHitbox, envHitbox, intersectEnv);
                             collisionList.Add(new Collision(side, intersectEnv, proj, environment));
                         }
                     }
@@ -46,31 +45,6 @@ namespace Game1.CollisionDetection
             }
 
             return collisionList;
-        }
-
-        private char DetermineSide(Rectangle colider, Rectangle colidee, Rectangle intersectionRec)
-        {
-            const char north = 'N', south = 'S', west = 'W', east = 'E';
-            int xOverlap = intersectionRec.Width;
-            int yOverlap = intersectionRec.Height;
-            char side;
-
-            if (xOverlap > yOverlap)
-            {
-                if (colider.Y < colidee.Y) {
-                    side = north;
-                } else {
-                    side = south;
-                }
-            } else {
-                if (colider.X < colidee.X) {
-                    side = west;
-                }
-                else {
-                    side = east;
-                }
-            }
-            return side;
         }
     }
 }

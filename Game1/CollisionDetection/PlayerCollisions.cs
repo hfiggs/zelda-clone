@@ -8,6 +8,7 @@ using Game1.RoomLoading;
 using Game1.Environment;
 using System;
 using Game1.Util;
+using Game1.CollisionDetection.CollisionDetectionUtil;
 
 namespace Game1.CollisionDetection
 {
@@ -60,7 +61,7 @@ namespace Game1.CollisionDetection
                     Rectangle intersection = Rectangle.Intersect(itemHitbox, playerHitbox);
                     if (!intersection.IsEmpty)
                     {
-                        char side = DetermineSide(playerHitbox, itemHitbox, intersection);
+                        char side = CollisonDetectionUtil.DetermineSide(playerHitbox, itemHitbox, intersection);
                         collisionList.Add(new Collision(side, intersection, player, item));
                     }
                     else
@@ -68,7 +69,7 @@ namespace Game1.CollisionDetection
                         intersection = Rectangle.Intersect(itemHitbox, swordHitbox);
                         if (!intersection.IsEmpty && !InvalidSwordPickups.Contains(item.GetType()))
                         {
-                            char side = DetermineSide(swordHitbox, itemHitbox, intersection);
+                            char side = CollisonDetectionUtil.DetermineSide(swordHitbox, itemHitbox, intersection);
                             collisionList.Add(new Collision(side, intersection, player, item));
                         }
                     }
@@ -97,7 +98,7 @@ namespace Game1.CollisionDetection
                         Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, envHitbox);
                         if (!intersectPlayer.IsEmpty)
                         {
-                            char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
+                            char side = CollisonDetectionUtil.DetermineSide(playerHitbox, envHitbox, intersectPlayer);
                             collisionList.Add(new Collision(side, intersectPlayer, player, environment));
                             
                             if(environment is LoadZone)
@@ -120,7 +121,7 @@ namespace Game1.CollisionDetection
                         Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, envHitbox);
                         if (!intersectPlayer.IsEmpty)
                         {
-                            char side = DetermineSide(playerHitbox, envHitbox, intersectPlayer);
+                            char side = CollisonDetectionUtil.DetermineSide(playerHitbox, envHitbox, intersectPlayer);
                             collisionList.Add(new Collision(side, intersectPlayer, player, environment));
                         }
                     }
@@ -137,7 +138,7 @@ namespace Game1.CollisionDetection
                         // Do nothing if they are the same or if player is requesting
                     } else if (!intersectPlayer.IsEmpty)
                     {
-                        char side = DetermineSide(playerHitbox, player2Hitbox, intersectPlayer);
+                        char side = CollisonDetectionUtil.DetermineSide(playerHitbox, player2Hitbox, intersectPlayer);
                         collisionList.Add(new Collision(side, intersectPlayer, player, player2));
                         collision = true;
                         break;
@@ -155,7 +156,7 @@ namespace Game1.CollisionDetection
                     Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, bound);
                     if(!intersectPlayer.IsEmpty)
                     {
-                        char side = DetermineSide(playerHitbox, bound, intersectPlayer);
+                        char side = CollisonDetectionUtil.DetermineSide(playerHitbox, bound, intersectPlayer);
                         collisionList.Add(new Collision(side, intersectPlayer, player, EnvironmentList[0])); //environment object here is passed as a "dummy". There will always be at least 1 evnironment object
                         foundLoadZoneCollision[outerLoadZoneLoopCounter] = true;
                     }
@@ -175,38 +176,6 @@ namespace Game1.CollisionDetection
                 outerLoadZoneLoopCounter++;
             }
             return collisionList;
-        }
-
-        private char DetermineSide(Rectangle colider, Rectangle colidee, Rectangle intersectionRec)
-        {
-            const char north = 'N', south = 'S', west = 'W', east = 'E';
-            int xOverlap = intersectionRec.Width;
-            int yOverlap = intersectionRec.Height;
-            char side;
-
-            if (xOverlap > yOverlap)
-            {
-                if (colider.Y < colidee.Y)
-                {
-                    side = north;
-                }
-                else
-                {
-                    side = south;
-                }
-            }
-            else
-            {
-                if (colider.X < colidee.X)
-                {
-                    side = west;
-                }
-                else
-                {
-                    side = east;
-                }
-            }
-            return side;
         }
     }
 }
