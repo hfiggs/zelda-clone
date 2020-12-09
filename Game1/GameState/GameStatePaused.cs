@@ -6,6 +6,7 @@ using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Game1.GameState.GameStateUtil;
 
 namespace Game1.GameState
 {
@@ -15,7 +16,6 @@ namespace Game1.GameState
         private readonly List<IController> controllerList;
 
         private const float roomOffset = 40f;
-        private const float hudOffset = -136f;
 
         private Color color = Color.White;
 
@@ -53,15 +53,7 @@ namespace Game1.GameState
 
             spriteBatch.End();
 
-
-            drawMatrix.Translation = new Vector3(0, hudOffset * resolutionManager.GetResolutionScale(), 0);
-
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
-
-            game.HUD.Draw(spriteBatch, new Vector2(0, 0), color);
-
-            spriteBatch.End();
-
+            DrawUtil.DrawHUDOffset(game.HUD, spriteBatch, resolutionManager);
 
             drawMatrix.Translation = new Vector3(0, 0, 0);
         }

@@ -135,6 +135,7 @@
     <Compile Include="GameState\GameStateLosePhase1.cs" />
     <Compile Include="GameState\GameStatePlayerToStart.cs" />
     <Compile Include="GameState\GameStateStartDifficulty.cs" />
+    <Compile Include="GameState\GameStateUtil\DrawUtil.cs" />
     <Compile Include="GameState\GameStateWallmaster.cs" />
     <Compile Include="GameState\GameStatePaused.cs" />
     <Compile Include="GameState\GameStateWin.cs" />
@@ -192,7 +193,7 @@
     <Compile Include="Util\EnemyAStarUtil.cs" />
     <Compile Include="CollisionDetection\CollisionDetectionUtil\CollisonDetectionUtil.cs" />
     <Compile Include="Util\ColorIterator.cs" />
-    <Compile Include="Util\GameStateUtil.cs" />
+    <Compile Include="GameState\GameStateUtil\PickupUtil.cs" />
     <Compile Include="Util\ContentUtil.cs" />
     <Compile Include="ResolutionManager\IResolutionManager.cs" />
     <Compile Include="ResolutionManager\ResolutionManager1.cs" />

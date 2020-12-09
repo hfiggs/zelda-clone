@@ -1,6 +1,7 @@
 ﻿/* Author: Hunter Figgs.3 */
 
 using Game1.Controller;
+using Game1.GameState.GameStateUtil;
 using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,10 +15,7 @@ namespace Game1.GameState
         private readonly Game1 game;
         private readonly List<IController> controllerList;
 
-        private const float roomOffset = 40f;
-        private const float hudOffset = -136f;
-
-        private Color color = Color.White;
+        private const int mousePosition = 150;
 
         public GameStateRoom(Game1 game)
         {
@@ -37,10 +35,10 @@ namespace Game1.GameState
             {
                 controller.Update();
             }
-            game.HUD.Update(gameTime);
 
-            const int mousePosition = 150;
             Mouse.SetPosition(mousePosition, mousePosition);
+
+            game.HUD.Update(gameTime);
 
             game.Screen.Update(gameTime);
         }
@@ -49,28 +47,9 @@ namespace Game1.GameState
         {
             game.GraphicsDevice.Clear(Color.Black);
 
-            var drawMatrix = resolutionManager.GetResolutionMatrix();
+            DrawUtil.DrawScreen(game.Screen, spriteBatch, resolutionManager);
 
-
-            drawMatrix.Translation = new Vector3(0, roomOffset * resolutionManager.GetResolutionScale(), 0);
-
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, drawMatrix);
-
-            game.Screen.Draw(spriteBatch, color);
-
-            spriteBatch.End();
-
-
-            drawMatrix.Translation = new Vector3(0, hudOffset * resolutionManager.GetResolutionScale(), 0);
-
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
-
-            game.HUD.Draw(spriteBatch, new Vector2(0, 0), color);
-
-            spriteBatch.End();
-
-
-            drawMatrix.Translation = new Vector3(0, 0, 0);
+            DrawUtil.DrawHUDOffset(game.HUD, spriteBatch, resolutionManager);
         }
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using Game1.GameState.GameStateUtil;
 
 namespace Game1.GameState
 {
@@ -30,7 +31,6 @@ namespace Game1.GameState
         private readonly Vector2 itemPositionOffset = new Vector2(itemXOffset, itemYOffset);
 
         private const float roomOffset = 40f;
-        private const float hudOffset = -136f;
 
         private float stateTimer;
         private const float stateTime = 1000f; // ms
@@ -49,8 +49,8 @@ namespace Game1.GameState
 
             game.Screen.CurrentRoom.ItemList.Remove(itemToRemove);
 
-            playerSprite = GameStateUtil.GetPlayerPickupSprite(pickupItem, player);
-            itemSprite = GameStateUtil.GetPickupItemSprite(pickupItem);
+            playerSprite = PickupUtil.GetPlayerPickupSprite(pickupItem, player);
+            itemSprite = PickupUtil.GetPickupItemSprite(pickupItem);
 
             playerPosition = Vector2.Add(player.GetPlayerHitbox().Location.ToVector2(), new Vector2(playerXOffset, playerYOffset));
 
@@ -93,15 +93,7 @@ namespace Game1.GameState
 
             spriteBatch.End();
 
-
-            drawMatrix.Translation = new Vector3(0, hudOffset * resolutionManager.GetResolutionScale(), 0);
-
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
-
-            game.HUD.Draw(spriteBatch, new Vector2(0, 0), color);
-
-            spriteBatch.End();
-
+            DrawUtil.DrawHUDOffset(game.HUD, spriteBatch, resolutionManager);
 
             drawMatrix.Translation = new Vector3(0, 0, 0);
         }

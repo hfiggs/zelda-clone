@@ -1,6 +1,7 @@
 ﻿/* Author: Hunter Figgs.3 */
 
 using Game1.Controller;
+using Game1.GameState.GameStateUtil;
 using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.Util;
@@ -126,15 +127,7 @@ namespace Game1.GameState
 
             spriteBatch.End();
 
-
-            drawMatrix.Translation = new Vector3(0, hudOffset * resolutionManager.GetResolutionScale(), 0);
-
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
-
-            game.HUD.Draw(spriteBatch, new Vector2(0, 0), color);
-
-            spriteBatch.End();
-
+            DrawUtil.DrawHUDOffset(game.HUD, spriteBatch, resolutionManager);
 
             drawMatrix.Translation = new Vector3(0, 0, 0);
         }

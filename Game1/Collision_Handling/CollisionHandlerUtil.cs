@@ -3,7 +3,7 @@ using Game1.GameState;
 using Game1.Item;
 using Game1.Player;
 using Game1.Player.PlayerInventory;
-using Game1.Util;
+using Game1.GameState.GameStateUtil;
 using System;
 using System.Collections.Generic;
 

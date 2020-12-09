@@ -2,6 +2,7 @@
 
 using Game1.Audio;
 using Game1.Controller;
+using Game1.GameState.GameStateUtil;
 using Game1.Particle;
 using Game1.Player;
 using Game1.ResolutionManager;
@@ -9,7 +10,6 @@ using Game1.Sprite;
 using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 namespace Game1.GameState
@@ -23,12 +23,10 @@ namespace Game1.GameState
         private const float playerYOffset = -20f;
 
         private const float roomOffset = 40f;
-        private const float hudOffset = -136f;
 
         private const float initialStareTime = 1000.0f; //ms
         private float initialStareTimer = 1000.0f;
 
-        private readonly Color colorHUD = Color.White;
         private Color colorRoom = Color.White;
         private readonly Color colorRoomRed = new Color(new Vector4(1.0f, 0.0f, 0.0f, 0.5f)); //room "draw" color
         private readonly Color flashColorRed1 = new Color(new Vector4(0.0f, 0.0f, 0.0f, 0.5f)); //layered below flash2
@@ -119,15 +117,7 @@ namespace Game1.GameState
 
             spriteBatch.End();
 
-
-            drawMatrix.Translation = new Vector3(0, hudOffset * resolutionManager.GetResolutionScale(), 0);
-
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, null, null, null, drawMatrix);
-
-            game.HUD.Draw(spriteBatch, new Vector2(0, 0), colorHUD);
-
-            spriteBatch.End();
-
+            DrawUtil.DrawHUDOffset(game.HUD, spriteBatch, resolutionManager);
 
             drawMatrix.Translation = new Vector3(0, 0, 0);
         }

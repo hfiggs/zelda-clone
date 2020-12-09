@@ -3,7 +3,7 @@
 using Game1.Player;
 using Game1.Sprite;
 
-namespace Game1.Util
+namespace Game1.GameState.GameStateUtil
 {
     public enum PickupItem
     {
@@ -14,7 +14,7 @@ namespace Game1.Util
         Triforce = 4
     }
 
-    public static class GameStateUtil
+    public static class PickupUtil
     {
         public static ISprite GetPlayerPickupSprite(PickupItem pickupItem, IPlayer player)
         {
