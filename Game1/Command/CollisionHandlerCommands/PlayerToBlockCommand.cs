@@ -22,9 +22,9 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IEnvironment enviro = (IEnvironment)collision.collidee;
-            IPlayer player = (IPlayer)collision.collider;
-            char side = collision.side;
+            IEnvironment enviro = (IEnvironment)collision.Collidee;
+            IPlayer player = (IPlayer)collision.Collider;
+            var side = collision.Side;
 
             // side is side of block (collidee)
 
@@ -50,13 +50,13 @@ namespace Game1.Command.CollisionHandlerCommands
 
                 RoomUtil.EnterExitBasement(game, enviro);
 
-                Vector2 moveAmount = Vector2.Multiply(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height), CompassDirectionUtil.GetDirectionVector(side));
+                Vector2 moveAmount = Vector2.Multiply(new Vector2(collision.IntersectionRec.Width, collision.IntersectionRec.Height), CompassDirectionUtil.GetDirectionVector(side));
                 player.EditPosition(moveAmount);
             }
 
             if (player is DamagedPlayer dP && dP.stillSlide)
             {
-                dP.StopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
+                dP.StopKnockback(new Vector2(collision.IntersectionRec.Width, collision.IntersectionRec.Height));
             }
 
         }

@@ -21,8 +21,8 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IProjectile proj = (IProjectile)collision.collider;
-            IPlayer player = (IPlayer)collision.collidee;
+            IProjectile proj = (IProjectile)collision.Collider;
+            IPlayer player = (IPlayer)collision.Collidee;
 
             switch (proj)
             {

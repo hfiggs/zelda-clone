@@ -43,7 +43,7 @@ namespace Game1.CollisionDetection
                         Rectangle intersectPlayer = Rectangle.Intersect(enemyHitbox, playerHitbox);
                         if (!intersectPlayer.IsEmpty)
                         {
-                            char side = CollisonDetectionUtil.DetermineSide(enemyHitbox, playerHitbox, intersectPlayer);
+                            var side = CollisonDetectionUtil.DetermineSide(enemyHitbox, playerHitbox, intersectPlayer);
                             collisionList.Add(new Collision(side, intersectPlayer, enemy, player));
                         }
                     }
@@ -62,7 +62,7 @@ namespace Game1.CollisionDetection
                             Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, envHitbox);
                             if (!intersectEnemy.IsEmpty)
                             {
-                                char side = CollisonDetectionUtil.DetermineSide(enemyHitbox, envHitbox, intersectEnemy);
+                                var side = CollisonDetectionUtil.DetermineSide(enemyHitbox, envHitbox, intersectEnemy);
                                 collisionList.Add(new Collision(side, intersectEnemy, enemy, environment));
                                 collision = true;
                                 break;

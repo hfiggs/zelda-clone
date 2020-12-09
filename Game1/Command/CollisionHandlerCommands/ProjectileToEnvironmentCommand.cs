@@ -22,8 +22,8 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IProjectile proj = ((IProjectile)collision.collider);
-            IEnvironment envo = (IEnvironment)collision.collidee;
+            IProjectile proj = ((IProjectile)collision.Collider);
+            IEnvironment envo = (IEnvironment)collision.Collidee;
 
             if (envo is LaserField)
             {
@@ -39,7 +39,7 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else if (!(proj is SwordBeam) && !(proj is BombProjectile))
             {
-                if (collision.intersectionRec.X >= rightBorder || collision.intersectionRec.X <= leftBorder || collision.intersectionRec.Y >= bottomBorder || collision.intersectionRec.Y <= topBorder)
+                if (collision.IntersectionRec.X >= rightBorder || collision.IntersectionRec.X <= leftBorder || collision.IntersectionRec.Y >= bottomBorder || collision.IntersectionRec.Y <= topBorder)
                     proj.BeginDespawn();
             } else if (proj is Fireballs)
             {

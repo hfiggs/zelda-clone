@@ -16,8 +16,8 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IPlayer player = (IPlayer)collision.collider;
-            IItem item = (IItem)collision.collidee;
+            IPlayer player = (IPlayer)collision.Collider;
+            IItem item = (IItem)collision.Collidee;
 
             if (!(player.GetType() == typeof(Player2) && game.Mode == 2))
             {

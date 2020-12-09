@@ -46,7 +46,7 @@ namespace Game1.CollisionDetection
                     Rectangle intersectPlayer = Rectangle.Intersect(projHitbox, playerHitbox);
                     if (!intersectPlayer.IsEmpty)
                     {
-                        char side = CollisonDetectionUtil.DetermineSide(projHitbox, playerHitbox, intersectPlayer);
+                        var side = CollisonDetectionUtil.DetermineSide(projHitbox, playerHitbox, intersectPlayer);
                         collisionList.Add(new Collision(side, intersectPlayer, proj, player));
                     }
                 }
@@ -58,7 +58,7 @@ namespace Game1.CollisionDetection
                         Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, projHitbox);
                         if (!intersectEnemy.IsEmpty)
                         {
-                            char side = CollisonDetectionUtil.DetermineSide(projHitbox, enemyHitbox, intersectEnemy);
+                            var side = CollisonDetectionUtil.DetermineSide(projHitbox, enemyHitbox, intersectEnemy);
                             collisionList.Add(new Collision(side, intersectEnemy, proj, enemy));
                         }
                     }
@@ -71,7 +71,7 @@ namespace Game1.CollisionDetection
                     Rectangle interscetItem = Rectangle.Intersect(itemHitbox, projHitbox);
                     if (!interscetItem.IsEmpty)
                     {
-                        char side = CollisonDetectionUtil.DetermineSide(projHitbox, itemHitbox, interscetItem);
+                        var side = CollisonDetectionUtil.DetermineSide(projHitbox, itemHitbox, interscetItem);
                         collisionList.Add(new Collision(side, interscetItem, proj, item));
                     }
                 }

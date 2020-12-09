@@ -14,16 +14,16 @@ namespace Game1.Command.CollisionHandlerCommands
         {
             if (game.Mode != 2)
             {
-                IPlayer player1 = (IPlayer)collision.collider;
-                char side = collision.side;
+                IPlayer player1 = (IPlayer)collision.Collider;
+                var side = collision.Side;
 
                 // side is side of player2 (collidee)
-                Vector2 moveAmount = Vector2.Multiply(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height), CompassDirectionUtil.GetDirectionVector(side));
+                Vector2 moveAmount = Vector2.Multiply(new Vector2(collision.IntersectionRec.Width, collision.IntersectionRec.Height), CompassDirectionUtil.GetDirectionVector(side));
                 player1.EditPosition(moveAmount);
 
                 if (player1 is DamagedPlayer dP && dP.stillSlide)
                 {
-                    dP.StopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
+                    dP.StopKnockback(new Vector2(collision.IntersectionRec.Width, collision.IntersectionRec.Height));
                 }
             }
         }

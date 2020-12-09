@@ -19,13 +19,13 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IProjectile proj = (IProjectile)collision.collider;
-            IEnemy enemy = (IEnemy)collision.collidee;
+            IProjectile proj = (IProjectile)collision.Collider;
+            IEnemy enemy = (IEnemy)collision.Collidee;
             Vector2 knockbackDirect = new Vector2(0, 0);
             if (enemy.GetType() != typeof(Aquamentus) || proj.GetType() == typeof(Boomerang))
                 knockbackDirect = new Vector2(0, 1);
 
-            if (collision.collider.GetType() == typeof(Boomerang))
+            if (collision.Collider.GetType() == typeof(Boomerang))
             {
                 switch (enemy)
                 {
@@ -66,7 +66,7 @@ namespace Game1.Command.CollisionHandlerCommands
                 if (enemy.GetType() == typeof(Dodongo) && proj.GetHitbox().Width == bombWidth && proj.GetHitbox().Height == bombHeight)
                 {
                     const int dodongoHeadHeight = 4;
-                    if (collision.intersectionRec.Height < dodongoHeadHeight)
+                    if (collision.IntersectionRec.Height < dodongoHeadHeight)
                     {
                         enemy.ReceiveDamage(0f, knockbackDirect);
                         proj.BeginDespawn();

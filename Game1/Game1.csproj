@@ -189,7 +189,7 @@
     <Compile Include="Sprite\StartSprite.cs" />
     <Compile Include="Sprite\StartSpriteFactory.cs" />
     <Compile Include="Util\EnemyAStarUtil.cs" />
-    <Compile Include="Util\CollisonDetectionUtil.cs" />
+    <Compile Include="CollisionDetection\CollisionDetectionUtil\CollisonDetectionUtil.cs" />
     <Compile Include="Util\ColorIterator.cs" />
     <Compile Include="Util\GameStateUtil.cs" />
     <Compile Include="Util\ContentUtil.cs" />

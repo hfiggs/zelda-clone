@@ -20,15 +20,15 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IEnemy enemy = (IEnemy)collision.collider;
+            IEnemy enemy = (IEnemy)collision.Collider;
 
-            Vector2 movementAmount = new Vector2(0, -collision.intersectionRec.Height);
+            Vector2 movementAmount = new Vector2(0, -collision.IntersectionRec.Height);
             if (enemy.GetType() != typeof(Bat) && enemy.GetType() != typeof(Hand))
             {
 
                 if (enemy.GetType() == typeof(EnemyDamageDecorator) && ((EnemyDamageDecorator)enemy).stillSlide)
                 {
-                    ((EnemyDamageDecorator)enemy).stopKnockback(new Vector2(collision.intersectionRec.Width, collision.intersectionRec.Height));
+                    ((EnemyDamageDecorator)enemy).stopKnockback(new Vector2(collision.IntersectionRec.Width, collision.IntersectionRec.Height));
                 }
                 else
                 {
@@ -37,14 +37,14 @@ namespace Game1.Command.CollisionHandlerCommands
             }
             else
             {
-                if (collision.intersectionRec.X >= rightXBorder)
-                    enemy.EditPosition(new Vector2(-collision.intersectionRec.Width, 0));
-                else if (collision.intersectionRec.Y <= topYBorder)
-                    enemy.EditPosition(new Vector2(0, collision.intersectionRec.Height));
-                else if (collision.intersectionRec.Y >= botYBorder)
-                    enemy.EditPosition(new Vector2(0, -collision.intersectionRec.Height));
-                else if (collision.intersectionRec.X <= leftXBorder)
-                    enemy.EditPosition(new Vector2(collision.intersectionRec.Width, 0));
+                if (collision.IntersectionRec.X >= rightXBorder)
+                    enemy.EditPosition(new Vector2(-collision.IntersectionRec.Width, 0));
+                else if (collision.IntersectionRec.Y <= topYBorder)
+                    enemy.EditPosition(new Vector2(0, collision.IntersectionRec.Height));
+                else if (collision.IntersectionRec.Y >= botYBorder)
+                    enemy.EditPosition(new Vector2(0, -collision.IntersectionRec.Height));
+                else if (collision.IntersectionRec.X <= leftXBorder)
+                    enemy.EditPosition(new Vector2(collision.IntersectionRec.Width, 0));
             }
         }
     }

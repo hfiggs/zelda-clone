@@ -19,8 +19,8 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IEnemy enemy = (IEnemy)collision.collider;
-            IPlayer player = (IPlayer)collision.collidee;
+            IEnemy enemy = (IEnemy)collision.Collider;
+            IPlayer player = (IPlayer)collision.Collidee;
 
             if (enemy is OldMan)
             {

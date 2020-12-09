@@ -16,9 +16,9 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IPlayer player = (IPlayer)collision.collider;
-            IEnemy enemy = (IEnemy)collision.collidee;
-            if (collision.intersectionRec.Width != 0 || collision.intersectionRec.Height != 0)
+            IPlayer player = (IPlayer)collision.Collider;
+            IEnemy enemy = (IEnemy)collision.Collidee;
+            if (collision.IntersectionRec.Width != 0 || collision.IntersectionRec.Height != 0)
             {
                 if (player.GetDirection() == east)
                     enemy.ReceiveDamage(1f, new Vector2(1, 0));

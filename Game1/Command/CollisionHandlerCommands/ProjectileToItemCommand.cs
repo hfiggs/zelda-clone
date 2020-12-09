@@ -17,8 +17,8 @@ namespace Game1.Command.CollisionHandlerCommands
 
         public void Execute(Collision collision)
         {
-            IProjectile projectile = (IProjectile)collision.collider;
-            IItem item = (IItem)collision.collidee;
+            IProjectile projectile = (IProjectile)collision.Collider;
+            IItem item = (IItem)collision.Collidee;
 
             IPlayer player;
             switch(projectile)
