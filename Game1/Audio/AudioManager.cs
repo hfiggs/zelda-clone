@@ -187,6 +187,7 @@ namespace Game1.Audio
                     music.Stop();
                 }
             }
+            activeMusicList.Clear();
         }
 
         public static void StopMusic(SoundEffectInstance musicRef)
@@ -216,9 +217,14 @@ namespace Game1.Audio
 
         public static void PauseAllAudio()
         {
+            List<SoundEffectInstance> musicToRemove = new List<SoundEffectInstance>();
             foreach (SoundEffectInstance music in activeMusicList)
             {
-                if (music.State.HasFlag(SoundState.Playing))
+                if(music.State.HasFlag(SoundState.Stopped) && soundQueue.IndexOf(music) == -1)
+                {
+                    musicToRemove.Add(music);
+                }
+                else if (music.State.HasFlag(SoundState.Playing))
                 {
                     music.Pause();
                 }
@@ -230,6 +236,12 @@ namespace Game1.Audio
                     sound.Pause();
                 }
             }
+
+            foreach (SoundEffectInstance toRemove in musicToRemove)
+            {
+                activeMusicList.Remove(toRemove);
+            }
+            
             paused = true;
         }
 
