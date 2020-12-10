@@ -12,68 +12,52 @@ namespace Game1.CollisionDetection
 {
     class ProjectileCollisions
     {
-        private List<Collision> collisionList;
-        private List<IProjectile> ProjectileList;
-        private List<IPlayer> players;
-        private Rectangle playerHitbox;
-        private List<IEnemy> EnemyList;
-        private List<IItem> ItemList;
+        private readonly List<Collision> collisionList;
+        private readonly List<IProjectile> projectileList;
+        private readonly List<IPlayer> players;
+        private readonly List<IEnemy> enemyList;
+        private readonly List<IItem> itemList;
 
         public ProjectileCollisions(Screen screen)
         {
             collisionList = new List<Collision>();
 
-            ItemList = screen.CurrentRoom.ItemList;
+            itemList = screen.CurrentRoom.ItemList;
 
-            EnemyList = screen.CurrentRoom.EnemyList;
+            enemyList = screen.CurrentRoom.EnemyList;
 
-            ProjectileList = screen.CurrentRoom.ProjectileList;
+            projectileList = screen.CurrentRoom.ProjectileList;
 
             players = screen.Players;
-
         }
 
         // Collision order: projectile to player, projectile to enemy, projectile to item
         public List<Collision> GetCollisionList()
         {
             // Projectile hits Player
-            foreach (IProjectile proj in ProjectileList)
+            foreach (IProjectile proj in projectileList)
             {
                 Rectangle projHitbox = proj.GetHitbox();
+
+                // Projectile hits Player
                 foreach (IPlayer player in players)
                 {
-                    playerHitbox = player.GetPlayerHitbox();
-                    Rectangle intersectPlayer = Rectangle.Intersect(projHitbox, playerHitbox);
-                    if (!intersectPlayer.IsEmpty)
-                    {
-                        var side = CollisonDetectionUtil.DetermineSide(projHitbox, playerHitbox, intersectPlayer);
-                        collisionList.Add(new Collision(side, intersectPlayer, proj, player));
-                    }
+                    DetectionUtil.AddCollision(projHitbox, player.GetPlayerHitbox(), proj, player, collisionList);
                 }
+
                 // Projectile hits Enemy
-                foreach (IEnemy enemy in EnemyList)
+                foreach (IEnemy enemy in enemyList)
                 {
                     foreach (Rectangle enemyHitbox in enemy.GetHitboxes())
                     {
-                        Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, projHitbox);
-                        if (!intersectEnemy.IsEmpty)
-                        {
-                            var side = CollisonDetectionUtil.DetermineSide(projHitbox, enemyHitbox, intersectEnemy);
-                            collisionList.Add(new Collision(side, intersectEnemy, proj, enemy));
-                        }
+                        DetectionUtil.AddCollision(projHitbox, enemyHitbox, proj, enemy, collisionList);
                     }
                 }
 
                 // Projectile hits Item
-                foreach (IItem item in ItemList)
+                foreach (IItem item in itemList)
                 {
-                    Rectangle itemHitbox = item.GetHitbox();
-                    Rectangle interscetItem = Rectangle.Intersect(itemHitbox, projHitbox);
-                    if (!interscetItem.IsEmpty)
-                    {
-                        var side = CollisonDetectionUtil.DetermineSide(projHitbox, itemHitbox, interscetItem);
-                        collisionList.Add(new Collision(side, interscetItem, proj, item));
-                    }
+                    DetectionUtil.AddCollision(projHitbox, item.GetHitbox(), proj, item, collisionList);
                 }
             }
 

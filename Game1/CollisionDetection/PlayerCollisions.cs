@@ -54,43 +54,25 @@ namespace Game1.CollisionDetection
             {
                 playerHitbox = player.GetPlayerHitbox();
                 swordHitbox = player.GetSwordHitbox();
-                // Player collides with Item
+
+                // Player/Sword collides with Item
                 foreach (IItem item in ItemList)
                 {
-                    Rectangle itemHitbox = item.GetHitbox();
-                    Rectangle intersection = Rectangle.Intersect(itemHitbox, playerHitbox);
-                    if (!intersection.IsEmpty)
-                    {
-                        var side = CollisonDetectionUtil.DetermineSide(playerHitbox, itemHitbox, intersection);
-                        collisionList.Add(new Collision(side, intersection, player, item));
-                    }
-                    else
-                    {
-                        intersection = Rectangle.Intersect(itemHitbox, swordHitbox);
-                        if (!intersection.IsEmpty && !InvalidSwordPickups.Contains(item.GetType()))
-                        {
-                            var side = CollisonDetectionUtil.DetermineSide(swordHitbox, itemHitbox, intersection);
-                            collisionList.Add(new Collision(side, intersection, player, item));
-                        }
-                    }
+                    if (!DetectionUtil.AddCollision(playerHitbox, item.GetHitbox(), player, item, collisionList) && !InvalidSwordPickups.Contains(item.GetType()))
+                        DetectionUtil.AddCollision(swordHitbox, item.GetHitbox(), player, item, collisionList);
                 }
 
-                // Player collides with Enemy
+                // Sword collides with Enemy
                 foreach (IEnemy enemy in EnemyList)
                 {
                     foreach (Rectangle enemyHitbox in enemy.GetHitboxes())
                     {
-                        Rectangle intersectSword = Rectangle.Intersect(swordHitbox, enemyHitbox);
-                        if (!intersectSword.IsEmpty)
-                        {
-                            var side = CompassDirectionUtil.GetCompassDirection(player.GetDirection());
-                            collisionList.Add(new Collision(side, intersectSword, player, enemy));
-                        }
+                        DetectionUtil.AddCollision(swordHitbox, enemyHitbox, player, enemy, collisionList);
                     }
                 }
 
                 bool collision = false;
-                foreach (IEnvironment environment in CollisonDetectionUtil.GetSingleCollisionObjects(EnvironmentList))
+                foreach (IEnvironment environment in CollisionDetectionUtil.DetectionUtil.GetSingleCollisionObjects(EnvironmentList))
                 {
                     foreach (Rectangle envHitbox in environment.GetHitboxes())
                     {
@@ -98,7 +80,7 @@ namespace Game1.CollisionDetection
                         Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, envHitbox);
                         if (!intersectPlayer.IsEmpty)
                         {
-                            var side = CollisonDetectionUtil.DetermineSide(playerHitbox, envHitbox, intersectPlayer);
+                            var side = CollisionDetectionUtil.DetectionUtil.DetermineSide(playerHitbox, envHitbox, intersectPlayer);
                             collisionList.Add(new Collision(side, intersectPlayer, player, environment));
                             
                             if(environment is LoadZone)
@@ -114,16 +96,12 @@ namespace Game1.CollisionDetection
                         break;
                 }
 
-                foreach (IEnvironment environment in CollisonDetectionUtil.GetMultiCollisionObjects(EnvironmentList))
+                // Player collides with multi-collision environment
+                foreach (IEnvironment environment in CollisionDetectionUtil.DetectionUtil.GetMultiCollisionObjects(EnvironmentList))
                 {
                     foreach (Rectangle envHitbox in environment.GetHitboxes())
                     {
-                        Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, envHitbox);
-                        if (!intersectPlayer.IsEmpty)
-                        {
-                            var side = CollisonDetectionUtil.DetermineSide(playerHitbox, envHitbox, intersectPlayer);
-                            collisionList.Add(new Collision(side, intersectPlayer, player, environment));
-                        }
+                        DetectionUtil.AddCollision(playerHitbox, envHitbox, player, environment, collisionList);
                     }
                 }
 
@@ -138,7 +116,7 @@ namespace Game1.CollisionDetection
                         // Do nothing if they are the same or if player is requesting
                     } else if (!intersectPlayer.IsEmpty)
                     {
-                        var side = CollisonDetectionUtil.DetermineSide(playerHitbox, player2Hitbox, intersectPlayer);
+                        var side = CollisionDetectionUtil.DetectionUtil.DetermineSide(playerHitbox, player2Hitbox, intersectPlayer);
                         collisionList.Add(new Collision(side, intersectPlayer, player, player2));
                         collision = true;
                         break;
@@ -156,7 +134,7 @@ namespace Game1.CollisionDetection
                     Rectangle intersectPlayer = Rectangle.Intersect(playerHitbox, bound);
                     if(!intersectPlayer.IsEmpty)
                     {
-                        var side = CollisonDetectionUtil.DetermineSide(playerHitbox, bound, intersectPlayer);
+                        var side = CollisionDetectionUtil.DetectionUtil.DetermineSide(playerHitbox, bound, intersectPlayer);
                         collisionList.Add(new Collision(side, intersectPlayer, player, EnvironmentList[0])); //environment object here is passed as a "dummy". There will always be at least 1 evnironment object
                         foundLoadZoneCollision[outerLoadZoneLoopCounter] = true;
                     }

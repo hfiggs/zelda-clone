@@ -12,68 +12,52 @@ namespace Game1.CollisionDetection
     class EnemyCollisions
     {
         
-        private readonly List<IEnemy> EnemyList;
-        private List<IPlayer> players;
-        private Rectangle playerHitbox;
-        private readonly List<IEnvironment> EnvironmentList;
+        private readonly List<IEnemy> enemyList;
+        private readonly List<IPlayer> players;
+        private readonly List<IEnvironment> environmentList;
         private readonly List<Collision> collisionList;
 
         public EnemyCollisions(Screen screen)
         {
             collisionList = new List<Collision>();
 
-            EnemyList = screen.CurrentRoom.EnemyList;
+            enemyList = screen.CurrentRoom.EnemyList;
 
-            EnvironmentList = screen.CurrentRoom.InteractEnviornment;
+            environmentList = screen.CurrentRoom.InteractEnviornment;
 
             players = screen.Players;
-
         }
 
         public List<Collision> GetCollisionList()
         {
             // Enemy collides with Player
-            foreach (IEnemy enemy in EnemyList)
+            foreach (IEnemy enemy in enemyList)
             {
                 foreach (Rectangle enemyHitbox in enemy.GetHitboxes())
                 {
                     foreach (IPlayer player in players)
                     {
-                        playerHitbox = player.GetPlayerHitbox();
-                        Rectangle intersectPlayer = Rectangle.Intersect(enemyHitbox, playerHitbox);
-                        if (!intersectPlayer.IsEmpty)
-                        {
-                            var side = CollisonDetectionUtil.DetermineSide(enemyHitbox, playerHitbox, intersectPlayer);
-                            collisionList.Add(new Collision(side, intersectPlayer, enemy, player));
-                        }
+                        DetectionUtil.AddCollision(enemyHitbox, player.GetPlayerHitbox(), enemy, player, collisionList);
                     }
                 }
             }
 
-            foreach (IEnemy enemy in EnemyList)
+            // Enemy collides with Environment
+            foreach (IEnemy enemy in enemyList)
             {
-                bool collision = false;
                 foreach (Rectangle enemyHitbox in enemy.GetHitboxes())
                 {
-                    foreach (IEnvironment environment in EnvironmentList)
+                    foreach (IEnvironment environment in environmentList)
                     {
                         foreach (Rectangle envHitbox in environment.GetHitboxes())
                         {
-                            Rectangle intersectEnemy = Rectangle.Intersect(enemyHitbox, envHitbox);
-                            if (!intersectEnemy.IsEmpty)
-                            {
-                                var side = CollisonDetectionUtil.DetermineSide(enemyHitbox, envHitbox, intersectEnemy);
-                                collisionList.Add(new Collision(side, intersectEnemy, enemy, environment));
-                                collision = true;
-                                break;
-                            }
+                            if (DetectionUtil.AddCollision(enemyHitbox, envHitbox, enemy, environment, collisionList))
+                                goto NextEnemy;
                         }
-                        if (collision)
-                            break;
                     }
-                    if (collision)
-                        break;
                 }
+            NextEnemy:
+                continue;
             }
 
             return collisionList;
