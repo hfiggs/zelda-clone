@@ -7,6 +7,7 @@ namespace Game1.Environment.EnvironmentUtil
     public static class DoorUtil
     {
         private static readonly int openHitboxShort = 8, openHitboxLong = 32, openHitboxDiff = 24;
+        private static readonly int doorFloorShort = 8, doorFloorLong = 17;
 
         public static void SetLockedDoorSprites(out ISprite spriteBelow, out ISprite spriteAbove, CompassDirection direction)
         {
@@ -120,6 +121,22 @@ namespace Game1.Environment.EnvironmentUtil
             }
         }
 
+        public static ISprite GetDoorFloorSprite(CompassDirection direction)
+        {
+            switch (direction)
+            {
+                case CompassDirection.North:
+                    return EnvironmentSpriteFactory.instance.CreateDoorNFloor();
+                case CompassDirection.East:
+                    return EnvironmentSpriteFactory.instance.CreateDoorEFloor();
+                case CompassDirection.South:
+                    return EnvironmentSpriteFactory.instance.CreateDoorSFloor();
+                case CompassDirection.West:
+                default:
+                    return EnvironmentSpriteFactory.instance.CreateDoorWFloor();
+            }
+        }
+
         public static void SetOpenDoorHitboxes(out Rectangle hitbox1, out Rectangle hitbox2, CompassDirection direction, Vector2 position)
         {
             switch (direction)
@@ -139,6 +156,22 @@ namespace Game1.Environment.EnvironmentUtil
 
             hitbox1.Location += position.ToPoint();
             hitbox2.Location += position.ToPoint();
+        }
+
+        public static Vector2 GetDoorFloorOffset(CompassDirection direction)
+        {
+            switch (direction)
+            {
+                case CompassDirection.North:
+                    return new Vector2(doorFloorShort, doorFloorLong);
+                case CompassDirection.East:
+                    return new Vector2(0, doorFloorShort);
+                case CompassDirection.South:
+                    return new Vector2(doorFloorShort, 0);
+                case CompassDirection.West:
+                default:
+                    return new Vector2(doorFloorLong, doorFloorShort);
+            }
         }
     }
 }

@@ -207,16 +207,16 @@ namespace Game1.RoomLoading
                         nonInteractEnviornment = new SecretRoom(position);
                         break;
                     case "DoorNFloor":
-                        nonInteractEnviornment = new DoorNFloor(position);
+                        nonInteractEnviornment = new DoorFloor(position, CompassDirection.North);
                         break;
                     case "DoorEFloor":
-                        nonInteractEnviornment = new DoorEFloor(position);
+                        nonInteractEnviornment = new DoorFloor(position, CompassDirection.East);
                         break;
                     case "DoorSFloor":
-                        nonInteractEnviornment = new DoorSFloor(position);
+                        nonInteractEnviornment = new DoorFloor(position, CompassDirection.South);
                         break;
                     case "DoorWFloor":
-                        nonInteractEnviornment = new DoorWFloor(position);
+                        nonInteractEnviornment = new DoorFloor(position, CompassDirection.West);
                         break;
 
                     case "OverworldFloor":

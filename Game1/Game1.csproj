@@ -114,6 +114,7 @@
     <Compile Include="Environment\Doors\DoorClosed.cs" />
     <Compile Include="Environment\Doors\DoorBlank.cs" />
     <Compile Include="Environment\Doors\DoorBombable.cs" />
+    <Compile Include="Environment\Doors\DoorFloor.cs" />
     <Compile Include="Environment\Doors\DoorOpen.cs" />
     <Compile Include="Environment\EnterBasementLoadZone.cs" />
     <Compile Include="Environment\EnvironmentUtil\DoorUtil.cs" />
@@ -282,10 +283,6 @@
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackSouth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateAttackNorth.cs" />
     <Compile Include="Enemy\SpikeTrap\SpikeTrapStateHome.cs" />
-    <Compile Include="Environment\Doors\DoorWFloor.cs" />
-    <Compile Include="Environment\Doors\DoorSFloor.cs" />
-    <Compile Include="Environment\Doors\DoorNFloor.cs" />
-    <Compile Include="Environment\Doors\DoorEFloor.cs" />
     <Compile Include="Environment\SecretRoom.cs" />
     <Compile Include="Environment\Tiles\InvisibleWall.cs" />
     <Compile Include="Environment\Tiles\MovableBlock.cs" />

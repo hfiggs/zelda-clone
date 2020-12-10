@@ -3,6 +3,7 @@ using Game1.HUD.HUDItems;
 using Game1.Player.PlayerInventory;
 using Game1.RoomLoading;
 using Game1.Sprite;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -183,18 +184,18 @@ namespace Game1.HUD
             int roomColumn = 0;
             foreach(IEnvironment env in room.NonInteractEnviornment)
             {
-                if (env.GetType() == typeof(DoorWFloor))
+                if (env is DoorFloor floor1 && floor1.Direction == CompassDirection.West)
                 {
                     roomColumn += westColumnModifier;
-                }else if (env.GetType() == typeof(DoorEFloor))
+                }else if (env is DoorFloor floor2 && floor2.Direction == CompassDirection.East)
                 {
                     roomColumn += eastColumnModifier;
                 }
-                else if (env.GetType() == typeof(DoorSFloor))
+                else if (env is DoorFloor floor3 && floor3.Direction == CompassDirection.South)
                 {
                     roomColumn += southColumnModifier;
                 }
-                else if (env.GetType() == typeof(DoorNFloor))
+                else if (env is DoorFloor floor4 && floor4.Direction == CompassDirection.North)
                 {
                     roomColumn += northColumnModifier;
                 }
