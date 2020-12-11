@@ -37,7 +37,7 @@ namespace Game1.Command.CollisionHandlerCommands
                     break;
             }
 
-            if (!projectile.GetType().Equals(typeof(SwordBeam)) && !projectile.GetType().Equals(typeof(EnemyBoomerang)) && !projectile.GetType().Equals(typeof(Fireballs)) && !(projectile is PortalProjectile)) {
+            if (!projectile.GetType().Equals(typeof(SwordBeam)) && !projectile.GetType().Equals(typeof(EnemyBoomerang)) && !projectile.GetType().Equals(typeof(Fireballs)) && !(projectile is PortalProjectile) && !(projectile is CandleFire)) {
                 AudioManager.PlayItemSound(item);
             }
         }

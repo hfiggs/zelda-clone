@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game1.Audio;
+using System;
 
 namespace Game1.Player.PlayerInventory
 {
@@ -18,6 +19,8 @@ namespace Game1.Player.PlayerInventory
         private const int numItems = 8;
         private bool[] hasItem; // based on ItemEnum (None, Bow, Arrow, Boomerang, Bomb, BluePotion, BlueCandle, PortalGun)
         private bool[] isItemInUse;
+
+        private const float rupeeSoundShortDelay = 0.25f;
 
         public PlayerInventory1()
         {
@@ -128,6 +131,8 @@ namespace Game1.Player.PlayerInventory
             }
             else
             {
+                AudioManager.PlayFireForget("rupeeAddLong");
+                AudioManager.PlayFireForget("rupeeAddShort", rupeeSoundShortDelay);
                 BluePotionCount--;
                 hasItem[(int)ItemEnum.BluePotion] = false;
                 return true;

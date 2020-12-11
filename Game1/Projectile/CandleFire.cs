@@ -5,6 +5,8 @@ using Game1.Environment;
 using Game1.Sprite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Game1.Audio;
+using Game1.Util;
 
 namespace Game1.Projectile
 {
@@ -31,6 +33,8 @@ namespace Game1.Projectile
             despawnTimer = despawnTimerMax;
 
             sprite = EnvironmentSpriteFactory.instance.CreateFire();
+
+            AudioManager.PlayFireForget("flames");
         }
 
         public void Update(GameTime gameTime)
@@ -67,7 +71,7 @@ namespace Game1.Projectile
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, position, color);
+            sprite.Draw(spriteBatch, position, color, SpriteLayerUtil.topLayer);
         }
 
         public override bool Equals(object obj)
