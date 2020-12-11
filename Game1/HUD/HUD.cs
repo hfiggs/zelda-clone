@@ -141,6 +141,11 @@ namespace Game1.HUD
 
         public void Draw(SpriteBatch spriteBatch, Vector2 movement ,Color color)
         {
+            //saving a copy of the player 1 items for heart mechanics and since iterators are not reset
+            int length = Items[0].Count;
+            IHudItem[] saveItems0 = new IHudItem[length];
+            Items[0].CopyTo(saveItems0, 0);
+            
             // Draw appropriate top
             if (displayHUD1 || !twoPlayers) {
                 foreach (IHudItem Item in Items[0])
@@ -150,7 +155,12 @@ namespace Game1.HUD
             } else if (displayHUD2) {
                 foreach (IHudItem Item in Items[1])
                 {
-                    Item.Draw(spriteBatch, movement, color);
+                        Item.Draw(spriteBatch, movement, color);
+                }
+                foreach (IHudItem Item0 in saveItems0)
+                {
+                    if (Item0.GetType() == typeof(HUDHeartBar))
+                        Item0.Draw(spriteBatch, movement, color);
                 }
             }
 
