@@ -16,14 +16,14 @@ namespace Game1.Audio
         const string aquamentusScream = "aquamentusScream", boomerang = "boomerang", lowHealth = "lowHealth", death = "death", linkPop = "linkPop", shield = "shield", sword = "sword";
         const string swordBeam = "swordBeam", aquamentusHurt = "aquamentusHurt", bombExplode = "bombExplode", bombPlace = "bombPlace", chest = "chest", enemyDeath = "enemyDeath";
         const string powerPickUp = "powerPickUp", ocarina = "ocarina", reveal = "reveal", itemPickUp = "itemPickUp", key = "key", rupeePickUp = "rupeePickUp", rupeeAddShort = "rupeeAddShort";
-        const string rupeeAddLong = "rupeeAddLong", stairs = "stairs", linkHurt = "linkHurt", enemyHurt = "enemyHurt", triforce = "triforce", doorLock = "doorLock";
+        const string rupeeAddLong = "rupeeAddLong", stairs = "stairs", linkHurt = "linkHurt", enemyHurt = "enemyHurt", triforce = "triforce", doorLock = "doorLock", flames = "flames";
 
         // Map values for audio
         const string overworldIntroPath = "audio/music/overworldIntro", overworldLoopPath = "audio/music/overworldLoop", dungeonPath = "audio/music/dungeon", dungeon2Path = "audio/music/dungeonBass", titlePath = "audio/music/title", title2Path = "audio/music/titleBass", gameOverPath = "audio/music/gameOver", gameOver2Path = "audio/music/gameOverBlasted";
         const string aquamentusScreamPath = "audio/sounds/AquamentusScream", boomerangPath = "audio/sounds/Boomerang", lowHealthPath = "audio/sounds/HealthLow", deathPath = "audio/sounds/death", linkPopPath = "audio/sounds/LinkPop", shieldPath = "audio/sounds/Shield", swordPath = "audio/sounds/Sword";
         const string swordBeamPath = "audio/sounds/SwordBeam", aquamentusHurtPath = "audio/sounds/AquamentusHurt", bombExplodePath = "audio/sounds/BombExplode", bombPlacePath = "audio/sounds/BombPlace", chestPath = "audio/sounds/Chest", enemyDeathPath = "audio/sounds/EnemyDeath";
         const string powerPickUpPath = "audio/sounds/FairyAppear", ocarinaPath = "audio/sounds/Flute", revealPath = "audio/sounds/Hole", itemPickUpPath = "audio/sounds/ItemPickUp1", keyPath = "audio/sounds/KeyAppear", rupeePickUpPath = "audio/sounds/Rupee", rupeeAddShortPath = "audio/sounds/RupeeAddShort";
-        const string rupeeAddLongPath = "audio/sounds/RupeeAddLong", stairsPath = "audio/sounds/Stairs", linkHurtPath = "audio/sounds/PlayerHurt", enemyHurtPath = "audio/sounds/EnemyHurt", triforcePath = "audio/sounds/triforceTheme", doorLockPath = "audio/sounds/LockedDoor";
+        const string rupeeAddLongPath = "audio/sounds/RupeeAddLong", stairsPath = "audio/sounds/Stairs", linkHurtPath = "audio/sounds/PlayerHurt", enemyHurtPath = "audio/sounds/EnemyHurt", triforcePath = "audio/sounds/triforceTheme", doorLockPath = "audio/sounds/LockedDoor", flamesPath = "audio/sounds/FlamesShot";
 
         private static readonly float chestSoundLength = 2.0f;
 
@@ -71,6 +71,7 @@ namespace Game1.Audio
             soundMap.Add(enemyHurt, content.Load<SoundEffect>(enemyHurtPath));
             soundMap.Add(triforce, content.Load<SoundEffect>(triforcePath));
             soundMap.Add(doorLock, content.Load<SoundEffect>(doorLockPath));
+            soundMap.Add(flames, content.Load<SoundEffect>(flamesPath));
         }
 
         public void SoundRupeeBlue()

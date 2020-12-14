@@ -127,6 +127,12 @@
 /processorParam:Quality=Best
 /build:audio/sounds/FairyAppear.wav
 
+#begin audio/sounds/FlamesShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/sounds/FlamesShot.wav
+
 #begin audio/sounds/Flute.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
