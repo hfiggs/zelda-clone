@@ -12,8 +12,6 @@ namespace Game1.Environment
         private ISprite sprite;
         private Vector2 position;
 
-        const int widthAndHeight = 32;
-        private Rectangle hitbox1 = new Rectangle(0, 0, widthAndHeight, widthAndHeight);
         private List<Rectangle> hitboxes = new List<Rectangle>();
 
         public DoorBlank(Vector2 position, CompassDirection direction)
@@ -21,15 +19,11 @@ namespace Game1.Environment
             this.position = position;
 
             sprite = DoorUtil.GetBlankDoorSprite(direction);
-            
-            hitbox1.Location += position.ToPoint();
-            hitboxes.Add(hitbox1);
+
+            hitboxes.Add(DoorUtil.GetBlankDoorHitbox(direction, position));
         }
 
-        public void Update(GameTime gameTime)
-        {
-            //throw new NotImplementedException("For later collision mechanics");
-        }
+        public void Update(GameTime gameTime) { }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game1.RoomLoading.Puzzle
 {
-    interface IPuzzle
+    public interface IPuzzle
     {
         void Update(GameTime gameTime, Room room);
     }

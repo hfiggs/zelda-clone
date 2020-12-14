@@ -802,6 +802,9 @@
 			<H>22</H>
 		</InteractEnviornment>
 
+		
+    	<Lit></Lit>
+
 		<InteractEnviornment>
 			<Type>ExitBasementLoadZone</Type>
 			<X>48</X>

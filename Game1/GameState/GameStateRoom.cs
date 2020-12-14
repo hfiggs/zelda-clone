@@ -2,6 +2,7 @@
 
 using Game1.Controller;
 using Game1.GameState.GameStateUtil;
+using Game1.Graphics;
 using Game1.ResolutionManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -25,8 +26,9 @@ namespace Game1.GameState
             {
                 new KeyboardController(game),
                 new GamepadController(game, PlayerIndex.One)
-            };            
-            game.Screen.CurrentRoom.PlayRoomAmbience();
+            };       
+            
+            game.Screen.CurrentRoom.RoomMeta.PlayRoomAmbience();
         }
 
         public void Update(GameTime gameTime)
@@ -45,11 +47,24 @@ namespace Game1.GameState
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
         {
-            game.GraphicsDevice.Clear(Color.Black);
+            DrawUtil.ClearScreen(game);
+
+            Texture2D shadowMask = null;
+
+            if (!game.Screen.CurrentRoom.RoomMeta.IsLit)
+            {
+                ShadowMask.SetMaskData(game.Screen);
+                shadowMask = ShadowMask.GetShadowMask(game.GraphicsDevice, spriteBatch);
+            }
 
             DrawUtil.DrawScreen(game.Screen, spriteBatch, resolutionManager);
 
             DrawUtil.DrawHUD(game.HUD, spriteBatch, resolutionManager);
+
+            if (!game.Screen.CurrentRoom.RoomMeta.IsLit)
+            {
+                DrawUtil.DrawShadowMask(shadowMask, spriteBatch, resolutionManager);
+            }
         }
     }
 }

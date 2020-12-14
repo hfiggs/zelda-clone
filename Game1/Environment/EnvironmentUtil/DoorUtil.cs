@@ -9,6 +9,8 @@ namespace Game1.Environment.EnvironmentUtil
         private static readonly int openHitboxShort = 8, openHitboxLong = 32, openHitboxDiff = 24;
         private static readonly int doorFloorShort = 8, doorFloorLong = 17;
 
+        private static readonly int blankDoorHitboxShort = 32, blankDoorHitboxLong = 34;
+
         public static void SetLockedDoorSprites(out ISprite spriteBelow, out ISprite spriteAbove, CompassDirection direction)
         {
             switch (direction)
@@ -143,19 +145,41 @@ namespace Game1.Environment.EnvironmentUtil
             {
                 case CompassDirection.North:
                 case CompassDirection.South:
-                    hitbox1 = new Rectangle(0, 0, openHitboxShort, openHitboxLong);
-                    hitbox2 = new Rectangle(openHitboxDiff, 0, openHitboxShort, openHitboxLong);
+                    hitbox1 = new Rectangle(-1, 0, openHitboxShort+1, openHitboxLong);
+                    hitbox2 = new Rectangle(openHitboxDiff, 0, openHitboxShort+1, openHitboxLong);
                     break;
                 case CompassDirection.East:
                 case CompassDirection.West:
                 default:
-                    hitbox1 = new Rectangle(0, 0, openHitboxLong, openHitboxShort);
-                    hitbox2 = new Rectangle(0, openHitboxDiff, openHitboxLong, openHitboxShort);
+                    hitbox1 = new Rectangle(0, -1, openHitboxLong, openHitboxShort+1);
+                    hitbox2 = new Rectangle(0, openHitboxDiff, openHitboxLong, openHitboxShort+1);
                     break;
             }
 
             hitbox1.Location += position.ToPoint();
             hitbox2.Location += position.ToPoint();
+        }
+
+        public static Rectangle GetBlankDoorHitbox(CompassDirection direction, Vector2 position)
+        {
+            Rectangle hitbox;
+
+            switch (direction)
+            {
+                case CompassDirection.North:
+                case CompassDirection.South:
+                    hitbox = new Rectangle(-1, 0, blankDoorHitboxLong, blankDoorHitboxShort);
+                    break;
+                case CompassDirection.East:
+                case CompassDirection.West:
+                default:
+                    hitbox = new Rectangle(0, -1, blankDoorHitboxShort, blankDoorHitboxLong);
+                    break;
+            }
+
+            hitbox.Location += position.ToPoint();
+
+            return hitbox;
         }
 
         public static Vector2 GetDoorFloorOffset(CompassDirection direction)

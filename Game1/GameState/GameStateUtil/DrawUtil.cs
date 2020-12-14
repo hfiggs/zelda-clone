@@ -1,4 +1,5 @@
-﻿using Game1.HUD;
+﻿using Game1.Graphics;
+using Game1.HUD;
 using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.RoomLoading;
@@ -71,6 +72,51 @@ namespace Game1.GameState.GameStateUtil
 
             EndDraw(spriteBatch, resolutionManager);
         }
+
+        public static void DrawShadowMask(Texture2D shadowMask, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
+        {
+            SetupDraw(spriteBatch, resolutionManager, zeroOffset, roomOffset);
+
+            spriteBatch.Draw(shadowMask, new Rectangle(0, 0, 256, 176), Color.White);
+
+            EndDraw(spriteBatch, resolutionManager);
+
+            ShadowMask.toDispose.ForEach(t => t.Dispose());
+
+            ShadowMask.toDispose.Clear();
+
+            shadowMask.Dispose();
+        }
+
+        public static void DrawShadowMask(Texture2D shadowMask, SpriteBatch spriteBatch, IResolutionManager resolutionManager, Vector2 offset)
+        {
+            SetupDraw(spriteBatch, resolutionManager, offset.X, offset.Y);
+
+            spriteBatch.Draw(shadowMask, new Rectangle(0, 0, 256, 176), Color.White);
+
+            EndDraw(spriteBatch, resolutionManager);
+
+            ShadowMask.toDispose.ForEach(t => t.Dispose());
+
+            ShadowMask.toDispose.Clear();
+
+            shadowMask.Dispose();
+        }
+
+        /*                var bsInverter = new BlendState()
+    {
+        ColorSourceBlend = Blend.Zero,
+        ColorDestinationBlend = Blend.InverseSourceColor,
+    };
+
+    var drawMatrix = resolutionManager.GetResolutionMatrix();
+    drawMatrix.Translation = new Vector3(0, 40f * resolutionManager.GetResolutionScale(), 0);
+
+    spriteBatch.Begin(blendState: bsInverter, samplerState: SamplerState.PointClamp, transformMatrix: drawMatrix);
+
+    Raycast.DrawRaycastLines(Raycast.GetHitboxes(game.Screen.CurrentRoom), centerPoint, game.GraphicsDevice, spriteBatch);
+
+    spriteBatch.End();*/
 
         public static void ClearScreen(Game1 game)
         {

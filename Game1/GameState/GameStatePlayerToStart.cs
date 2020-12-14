@@ -60,7 +60,7 @@ namespace Game1.GameState
                 newPlayerPosition.Y -= newPlayerOffset;
             }
 
-            game.Screen.CurrentRoom.StopRoomAmbience();
+            game.Screen.CurrentRoom.RoomMeta.StopRoomAmbience();
 
             game.Screen.CurrentRoomKey = startRoomKey;
         }

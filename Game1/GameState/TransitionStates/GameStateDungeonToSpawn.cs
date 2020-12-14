@@ -3,6 +3,7 @@
 using Game1.Audio;
 using Game1.Controller;
 using Game1.GameState.GameStateUtil;
+using Game1.Graphics;
 using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.RoomLoading;
@@ -29,8 +30,6 @@ namespace Game1.GameState
         private const int newPlayerY = 72;
 
         private const int playerOffset = 16;
-
-        private Color color = Color.White;
 
         private readonly Vector2 oldRoomStartPos = new Vector2(0, vertRoomOffset);
         private readonly Vector2 oldRoomEndPos = new Vector2(0, vertRoomOffset - vertRoomDim);
@@ -89,7 +88,7 @@ namespace Game1.GameState
             {
                 AudioManager.ClearQueue();
                 AudioManager.StopAllMusic();
-                newRoom.PlayMusic();
+                newRoom.RoomMeta.PlayMusic();
 
                 game.Screen.CurrentRoomKey = southRoomKey;
                 game.SetState(new GameStateRoom(game));
@@ -100,9 +99,16 @@ namespace Game1.GameState
         {
             DrawUtil.ClearScreen(game);
 
+            Texture2D shadowMask = null;
+            if (!game.Screen.CurrentRoom.RoomMeta.IsLit)
+                shadowMask = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch);
+
             DrawUtil.DrawRoom(game.Screen.CurrentRoom, spriteBatch, resolutionManager, new Vector2(oldRoomPos.X, oldRoomPos.Y));
 
             DrawUtil.DrawRoomAndPlayers(game.Screen.RoomsDict[southRoomKey], game.Screen.Players, spriteBatch, resolutionManager, Vector2.Add(oldRoomPos, newRoomOffset));
+
+            if (shadowMask != null)
+                DrawUtil.DrawShadowMask(shadowMask, spriteBatch, resolutionManager, new Vector2(oldRoomPos.X, oldRoomPos.Y));
 
             DrawUtil.DrawHUD(game.HUD, spriteBatch, resolutionManager);
         }

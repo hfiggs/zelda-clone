@@ -221,6 +221,8 @@
 		<Y>128</Y>
 	</InteractEnviornment>
 
+	<Lit></Lit>
+
 	<InteractEnviornment>
 		<Type>LoadZoneN</Type>
 		<X>112</X>

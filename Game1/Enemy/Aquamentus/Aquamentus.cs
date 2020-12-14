@@ -69,15 +69,15 @@ namespace Game1.Enemy
         {
             if (health <= 0)
             {
-                game.Screen.CurrentRoom.StopRoomAmbience();
-                game.Screen.CurrentRoom.SetAmbienceVolume(0.0f);
+                game.Screen.CurrentRoom.RoomMeta.StopRoomAmbience();
+                game.Screen.CurrentRoom.RoomMeta.SetAmbienceVolume(0.0f);
                 RoomLoading.Room roomBelow;
 
                 const char handRoomChar = 'C';
                 const int handRoomInt = 4;
                 game.Screen.RoomsDict.TryGetValue((handRoomChar, handRoomInt), out roomBelow);
 
-                roomBelow.SetAmbienceVolume(0.0f);
+                roomBelow.RoomMeta.SetAmbienceVolume(0.0f);
             }
             if(state.GetType() == typeof(EnemyStateDying))
             {

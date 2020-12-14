@@ -94,7 +94,7 @@ namespace Game1.Audio
         {
             AudioManager.PlayFireForget(powerPickUp);
             AudioManager.PlayFireForget(chest);
-            currentRoom.PlayMusic(chestSoundLength);            
+            currentRoom.RoomMeta.PlayMusic(chestSoundLength);            
         }
 
         public void SoundTriforce()

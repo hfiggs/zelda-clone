@@ -2,6 +2,7 @@
 
 using Game1.Controller;
 using Game1.GameState.GameStateUtil;
+using Game1.Graphics;
 using Game1.ResolutionManager;
 using Game1.Util;
 using Microsoft.Xna.Framework;
@@ -64,7 +65,14 @@ namespace Game1.GameState
         {
             DrawUtil.ClearScreen(game);
 
+            Texture2D shadowMask = null;
+            if (!game.Screen.CurrentRoom.RoomMeta.IsLit)
+                shadowMask = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch);
+
             DrawUtil.DrawScreen(game.Screen, spriteBatch, resolutionManager, new Vector2(0, roomOffset));
+
+            if (shadowMask != null)
+                DrawUtil.DrawShadowMask(shadowMask, spriteBatch, resolutionManager, new Vector2(0, roomOffset));
 
             DrawUtil.DrawHUD(game.HUD, spriteBatch, resolutionManager, new Vector2(0, hudOffset));
         }

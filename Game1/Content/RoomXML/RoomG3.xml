@@ -374,6 +374,8 @@
 		<Y>128</Y>
 	</InteractEnviornment>
 
+	<Lit></Lit>
+
 	<InteractEnviornment>
 		<Type>LoadZoneE</Type>
 		<X>255</X>

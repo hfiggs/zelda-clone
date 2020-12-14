@@ -11,7 +11,7 @@ using System.Xml;
 
 namespace Game1.RoomLoading
 {
-    class RoomParser
+    public class RoomParser
     {
         private readonly XMLLoader roomData;
         private readonly Game1 game;
@@ -493,6 +493,18 @@ namespace Game1.RoomLoading
                 }
             }
             return puzzle;
+        }
+
+        public bool IsLit()
+        {
+            var isLit = false;
+
+            XmlNodeList litNodes = roomData.getLitNodes();
+
+            if (litNodes.Count > 0)
+                isLit = true;
+
+            return isLit;
         }
     }
 }

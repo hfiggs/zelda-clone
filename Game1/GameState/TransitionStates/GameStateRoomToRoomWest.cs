@@ -2,6 +2,7 @@
 
 using Game1.Controller;
 using Game1.GameState.GameStateUtil;
+using Game1.Graphics;
 using Game1.Player;
 using Game1.ResolutionManager;
 using Game1.Util;
@@ -70,7 +71,7 @@ namespace Game1.GameState
 
             westRoomKey = RoomUtil.GetAdjacentRoomKey(game.Screen.CurrentRoomKey, CompassDirection.West);
 
-            game.Screen.CurrentRoom.StopRoomAmbience();
+            game.Screen.CurrentRoom.RoomMeta.StopRoomAmbience();
         }
 
         public void Update(GameTime gameTime)
@@ -97,9 +98,21 @@ namespace Game1.GameState
         {
             DrawUtil.ClearScreen(game);
 
+            Texture2D shadowMaskNew = null, shadowMaskOld = null;
+            if (!game.Screen.CurrentRoom.RoomMeta.IsLit)
+                shadowMaskOld = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch);
+            if (!game.Screen.RoomsDict[westRoomKey].RoomMeta.IsLit)
+                shadowMaskNew = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch);
+
             DrawUtil.DrawRoom(game.Screen.CurrentRoom, spriteBatch, resolutionManager, new Vector2(oldRoomPos.X, oldRoomPos.Y));
 
             DrawUtil.DrawRoomAndPlayers(game.Screen.RoomsDict[westRoomKey], game.Screen.Players, spriteBatch, resolutionManager, Vector2.Add(oldRoomPos, newRoomOffset));
+
+            if (shadowMaskOld != null)
+                DrawUtil.DrawShadowMask(shadowMaskOld, spriteBatch, resolutionManager, new Vector2(oldRoomPos.X, oldRoomPos.Y));
+
+            if (shadowMaskNew != null)
+                DrawUtil.DrawShadowMask(shadowMaskNew, spriteBatch, resolutionManager, Vector2.Add(oldRoomPos, newRoomOffset));
 
             DrawUtil.DrawHUD(game.HUD, spriteBatch, resolutionManager);
         }

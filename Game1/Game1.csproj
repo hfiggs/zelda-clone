@@ -163,6 +163,11 @@
     <Compile Include="GameState\TransitionStates\GameStateStartToSpawn.cs" />
     <Compile Include="GameState\GameStateStart.cs" />
     <Compile Include="GameState\IGameState.cs" />
+    <Compile Include="Graphics\Line.cs" />
+    <Compile Include="Graphics\LineSorter.cs" />
+    <Compile Include="Graphics\Raycast.cs" />
+    <Compile Include="Graphics\ShadowMask.cs" />
+    <Compile Include="Graphics\Util.cs" />
     <Compile Include="HUD\HUDItems\HUDBlueCandle.cs" />
     <Compile Include="HUD\HUDItems\HUDBluePotion.cs" />
     <Compile Include="HUD\HUDItems\HUDPortalGun.cs" />
@@ -195,6 +200,7 @@
     <Compile Include="RoomLoading\Puzzle\PuzzleMoveBlockNS.cs" />
     <Compile Include="RoomLoading\Puzzle\PuzzleShootFireballs.cs" />
     <Compile Include="RoomLoading\Puzzle\PuzzleSpawnBoomerang.cs" />
+    <Compile Include="RoomLoading\RoomMeta.cs" />
     <Compile Include="Sprite\StartSprite.cs" />
     <Compile Include="Sprite\StartSpriteFactory.cs" />
     <Compile Include="Util\EnemyAStarUtil.cs" />

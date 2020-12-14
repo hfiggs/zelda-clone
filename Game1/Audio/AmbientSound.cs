@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Game1.Audio
 {
-    class AmbientSound
+    public class AmbientSound
     {
         private string sound;
         private float timeDelay;

@@ -167,6 +167,8 @@
 			<H>48</H>
 		</InteractEnviornment>
 
+    <Lit></Lit>
+
 		<InteractEnviornment>
 			<Type>LoadZoneE</Type>
 			<X>255</X>

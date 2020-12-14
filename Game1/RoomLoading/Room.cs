@@ -23,13 +23,11 @@ namespace Game1.RoomLoading
         public List<IEnemy> UnDecoratedEnemyList { get; private set; }
         public bool Clocked;
 
+        public RoomMeta RoomMeta { get; private set; }
+
         private readonly IPuzzle puzzle;
         private readonly ItemDropper itemDrops;
-        private readonly List<AmbientSound> ambienceList;
-        private readonly AmbientSound music;
-        private float ambienceVolume = 1.0f;
         private readonly RoomParser parser;
-        private const float musicVolume = 1.0f;
 
         private const int roomWidth = 256;
         private const int roomHeight = 176;
@@ -49,12 +47,10 @@ namespace Game1.RoomLoading
             DecoratedEnemyList = new List<IEnemy>();
             UnDecoratedEnemyList = new List<IEnemy>();
 
-            ambienceList = parser.GetAmbienceNode();
-            music = parser.GetMusicNode(musicVolume);
-
             itemDrops = new ItemDropper(game.Screen);
             puzzle = parser.GetPuzzle();
 
+            RoomMeta = new RoomMeta(parser);
         }
 
         public void Update(GameTime gameTime)
@@ -135,26 +131,6 @@ namespace Game1.RoomLoading
                     break;
                 }
             }
-        }
-
-        public void StopRoomAmbience()
-        {
-            ambienceList.ForEach(sound => sound.Stop());
-        }
-
-        public void PlayRoomAmbience()
-        {
-            ambienceList.ForEach(sound => sound.Play(ambienceVolume));
-        }
-
-        public void SetAmbienceVolume(float vol)
-        {
-            ambienceVolume = vol;
-        }
-
-        public void PlayMusic(float delay = 0.0f)
-        {
-            music.Play(musicVolume, delay);
         }
 
         public void ResurrectEnemies()

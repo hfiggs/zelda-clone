@@ -33,7 +33,7 @@ namespace Game1.GameState
             {
                 AudioManager.StopAllMusic();
 
-                newRoom.PlayMusic();
+                newRoom.RoomMeta.PlayMusic();
 
                 game.SetState(new GameStateRoom(game));
             }
