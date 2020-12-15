@@ -27,8 +27,7 @@ namespace Game1
 
         public IResolutionManager ResolutionManager { get; private set; }
         private Point virtualResolution = new Point(256, 216);
-        //private Point targetResolution = new Point(1024, 864);
-        private Point targetResolution = new Point(1536, 1296);
+        private Point targetResolution = new Point(1024, 864);
 
         public Screen Screen { get; set; }
         public HUDInterface HUD { get; set; }
