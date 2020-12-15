@@ -27,7 +27,8 @@ namespace Game1
 
         public IResolutionManager ResolutionManager { get; private set; }
         private Point virtualResolution = new Point(256, 216);
-        private Point targetResolution = new Point(1024, 864);
+        //private Point targetResolution = new Point(1024, 864);
+        private Point targetResolution = new Point(1536, 1296);
 
         public Screen Screen { get; set; }
         public HUDInterface HUD { get; set; }
@@ -35,6 +36,7 @@ namespace Game1
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+
             Content.RootDirectory = "Content";
 
             ResolutionManager = new ResolutionManager1(this, graphics, virtualResolution, targetResolution);

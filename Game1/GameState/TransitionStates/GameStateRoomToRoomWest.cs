@@ -100,9 +100,9 @@ namespace Game1.GameState
 
             Texture2D shadowMaskNew = null, shadowMaskOld = null;
             if (!game.Screen.CurrentRoom.RoomMeta.IsLit)
-                shadowMaskOld = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch);
+                shadowMaskOld = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch, game.ResolutionManager);
             if (!game.Screen.RoomsDict[westRoomKey].RoomMeta.IsLit)
-                shadowMaskNew = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch);
+                shadowMaskNew = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch, game.ResolutionManager);
 
             DrawUtil.DrawRoom(game.Screen.CurrentRoom, spriteBatch, resolutionManager, new Vector2(oldRoomPos.X, oldRoomPos.Y));
 

@@ -1,4 +1,6 @@
-﻿using Game1.RoomLoading;
+﻿using Game1.GameState.GameStateUtil;
+using Game1.ResolutionManager;
+using Game1.RoomLoading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -10,6 +12,8 @@ namespace Game1.Graphics
     public static class ShadowMask
     {
         private static readonly float gradientStep = 120f;
+        private static readonly float lineTolerance = 3f;
+        private static readonly float lineStep = 1f;
 
         private static Texture2D textureTemp;
 
@@ -34,14 +38,10 @@ namespace Game1.Graphics
         public static void SetMaskData(Screen screen)
         {
             if (!screen.CurrentRoom.RoomMeta.IsLit)
-            {
-                var centerPoint = Vector2.Add(screen.Players.First().GetPlayerHitbox().Location.ToVector2(), new Vector2(7.5f, 5f));
-
-                lineList = Raycast.GetRaycastLines(Raycast.GetHitboxes(screen.CurrentRoom), centerPoint);
-            }
+                lineList = Raycast.GetRaycastLines(screen);
         }
 
-        public static Texture2D GetShadowMask(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch)
+        public static Texture2D GetShadowMask(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
         {
             var renderTarget = new RenderTarget2D(graphicsDevice, 256, 176);
 
@@ -71,15 +71,11 @@ namespace Game1.Graphics
                 var line0 = sortedLines.ElementAt<Line>(i);
                 var line1 = sortedLines.ElementAt<Line>((i + 1) % sortedLines.Count);
 
-                var tolerance = 3f;
-
-                var step = 1f;
-
-                if (Math.Abs(line0.X2 - line1.X2) < tolerance)
+                if (Math.Abs(line0.X2 - line1.X2) < lineTolerance)
                 {
-                    for (var k = 0f; k < Math.Abs(line0.Y2 - line1.Y2) / step; k++)
+                    for (var k = 0f; k < Math.Abs(line0.Y2 - line1.Y2) / lineStep; k++)
                     {
-                        var line = new Line(line0.X1, line0.Y1, line0.X2, Math.Min(line0.Y2, line1.Y2) + k * step);
+                        var line = new Line(line0.X1, line0.Y1, line0.X2, Math.Min(line0.Y2, line1.Y2) + k * lineStep);
 
                         SetRayTexture(graphicsDevice, line);
 
@@ -89,11 +85,11 @@ namespace Game1.Graphics
                     }
                 }
                 
-                if (Math.Abs(line0.Y2 - line1.Y2) < tolerance)
+                if (Math.Abs(line0.Y2 - line1.Y2) < lineTolerance)
                 {
-                    for (var k = 0f; k < Math.Abs(line0.X2 - line1.X2) / step; k++)
+                    for (var k = 0f; k < Math.Abs(line0.X2 - line1.X2) / lineStep; k++)
                     {
-                        var line = new Line(line0.X1, line0.Y1, Math.Min(line0.X2, line1.X2) + k * step, line0.Y2);
+                        var line = new Line(line0.X1, line0.Y1, Math.Min(line0.X2, line1.X2) + k * lineStep, line0.Y2);
 
                         SetRayTexture(graphicsDevice, line);
 
@@ -111,19 +107,17 @@ namespace Game1.Graphics
             return renderTarget;
         }
 
-        public static Texture2D GetBlankShadowMask(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch)
+        public static Texture2D GetBlankShadowMask(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch, IResolutionManager resolutionManager)
         {
+            var targets = graphicsDevice.GetRenderTargets();
+
             var renderTarget = new RenderTarget2D(graphicsDevice, 256, 176);
 
             graphicsDevice.SetRenderTarget(renderTarget);
 
             graphicsDevice.Clear(new Color(Color.Black, Util.ShadowMaskAlpha));
 
-            spriteBatch.Begin(blendState: blendState);
-
-            spriteBatch.End();
-
-            graphicsDevice.SetRenderTarget(null);
+            graphicsDevice.SetRenderTargets(targets);
 
             return renderTarget;
         }

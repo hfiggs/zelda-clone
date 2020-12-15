@@ -1,13 +1,9 @@
-﻿using Game1.CollisionDetection.CollisionDetectionUtil;
-using Game1.Environment;
+﻿using Game1.Environment;
 using Game1.RoomLoading;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game1.Graphics
 {
@@ -29,64 +25,12 @@ namespace Game1.Graphics
             return hitboxList;
         }
 
-        public static List<Line> DrawRaycastLines(List<Rectangle> rectList, Vector2 centerPoint, GraphicsDevice graphicsDevice, SpriteBatch spriteBatch)
+        public static List<Line> GetRaycastLines(Screen screen)
         {
-            var textureBlue = new Texture2D(graphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            var rectList = GetHitboxes(screen.CurrentRoom);
+                
+            var centerPoint = Vector2.Add(screen.Players.First().GetPlayerHitbox().Location.ToVector2(), new Vector2(7.5f, 5f));
 
-            textureBlue.SetData(new[] { new Color(Color.Magenta, 0.4f) });
-
-            var textureYellow = new Texture2D(graphicsDevice, 1, 1, false, SurfaceFormat.Color);
-
-            textureYellow.SetData(new[] { new Color(Color.Green, 0.4f) });
-
-            var textureWhite = new Texture2D(graphicsDevice, 1, 1, false, SurfaceFormat.Color);
-
-            textureWhite.SetData(new[] { new Color(Color.White, 0.4f) });
-
-
-            var angleOffset = 0.001f;
-
-            var lineList = new List<Line>();
-
-            foreach (Rectangle rect in rectList)
-            {
-                foreach (Vector2 vertex in GetRectVerts(rect))
-                {
-                    var line0 = new Line(centerPoint.X, centerPoint.Y, vertex.X, vertex.Y);
-
-                    var line = GetRayCastLine(rectList, new Vector2(line0.X1, line0.Y1), new Vector2(line0.X2, line0.Y2));
-
-                    spriteBatch.Draw(textureBlue, new Rectangle(new Point((int)line.X1, (int)line.Y1), new Point((int)line.GetLength(), 1)), null, Color.White, line.GetAngle(), new Vector2(0, 0), SpriteEffects.None, 1.0f);
-
-                    line0.Elongate();
-
-                    line0.Rotate(angleOffset);
-
-                    line = GetRayCastLine(rectList, new Vector2(line0.X1, line0.Y1), new Vector2(line0.X2, line0.Y2));
-
-                    spriteBatch.Draw(textureYellow, new Rectangle(new Point((int)line.X1, (int)line.Y1), new Point((int)line.GetLength(), 1)), null, Color.White, line.GetAngle(), new Vector2(0, 0), SpriteEffects.None, 1.0f);
-
-                    line0.Rotate(-2 * angleOffset);
-
-                    line = GetRayCastLine(rectList, new Vector2(line0.X1, line0.Y1), new Vector2(line0.X2, line0.Y2));
-
-                    spriteBatch.Draw(textureYellow, new Rectangle(new Point((int)line.X1, (int)line.Y1), new Point((int)line.GetLength(), 1)), null, Color.White, line.GetAngle(), new Vector2(0, 0), SpriteEffects.None, 1.0f);
-                }
-            }
-
-            foreach (Rectangle rect in rectList)
-            {
-                foreach (Line line in GetRectLines(rect))
-                {
-                    spriteBatch.Draw(textureWhite, new Rectangle(new Point((int)line.X1, (int)line.Y1), new Point((int)line.GetLength(), 1)), null, Color.White, line.GetAngle(), new Vector2(0, 0), SpriteEffects.None, 1.0f);
-                }
-            }
-
-            return lineList;
-        }
-
-        public static List<Line> GetRaycastLines(List<Rectangle> rectList, Vector2 centerPoint)
-        {
             var angleOffset = 0.001f;
 
             var lineList = new List<Line>();
@@ -179,10 +123,6 @@ namespace Game1.Graphics
             var width = rect.Width;
             var height = rect.Height;
 
-            var vectorHorizOffset = new Vector2(1, 0);
-            var vectorVertOffset = new Vector2(0, -1);
-            var vectorBothOffset = Vector2.Add(vectorVertOffset, vectorHorizOffset);
-
             return new List<Vector2>()
             {
                 Vector2.Add(location, new Vector2(0, 0)),
@@ -192,14 +132,6 @@ namespace Game1.Graphics
                 Vector2.Add(location, new Vector2(0, height)),
 
                 Vector2.Add(location, new Vector2(width, height))
-
-        /*                Vector2.Add(location, new Vector2(0, 0)),
-
-                Vector2.Add(location, new Vector2(width, 0)),
-
-                Vector2.Add(location, new Vector2(0, height)),
-
-                Vector2.Add(location, new Vector2(width, height))*/
             };
         }
 
@@ -212,14 +144,6 @@ namespace Game1.Graphics
 
             return new List<Line>()
             {
-/*                new Line(location.X, location.Y, location.X + width, location.Y + 0),
-
-                new Line(location.X + 1, location.Y, location.X + 1, location.Y + height),
-
-                new Line(location.X, location.Y + height - 1, location.X + width, location.Y + height - 1),
-
-                new Line(location.X + width, location.Y, location.X + width, location.Y + height)*/
-
                 // Four sides of rectangle
                 new Line(location.X, location.Y, location.X + width, location.Y + 0),
 

@@ -54,17 +54,15 @@ namespace Game1.GameState
             if (!game.Screen.CurrentRoom.RoomMeta.IsLit)
             {
                 ShadowMask.SetMaskData(game.Screen);
-                shadowMask = ShadowMask.GetShadowMask(game.GraphicsDevice, spriteBatch);
+                shadowMask = ShadowMask.GetShadowMask(game.GraphicsDevice, spriteBatch, resolutionManager);
             }
 
             DrawUtil.DrawScreen(game.Screen, spriteBatch, resolutionManager);
 
             DrawUtil.DrawHUD(game.HUD, spriteBatch, resolutionManager);
 
-            if (!game.Screen.CurrentRoom.RoomMeta.IsLit)
-            {
+            if (shadowMask != null)
                 DrawUtil.DrawShadowMask(shadowMask, spriteBatch, resolutionManager);
-            }
         }
     }
 }

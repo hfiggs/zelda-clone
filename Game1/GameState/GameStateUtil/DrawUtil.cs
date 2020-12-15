@@ -123,7 +123,7 @@ namespace Game1.GameState.GameStateUtil
             game.GraphicsDevice.Clear(Color.Black);
         }
 
-        private static void EndDraw(SpriteBatch spriteBatch, IResolutionManager resolutionManager)
+        public static void EndDraw(SpriteBatch spriteBatch, IResolutionManager resolutionManager)
         {
             spriteBatch.End();
 
@@ -132,13 +132,22 @@ namespace Game1.GameState.GameStateUtil
             drawMatrix.Translation = new Vector3(0, 0, 0);
         }
 
-        private static void SetupDraw(SpriteBatch spriteBatch, IResolutionManager resolutionManager, float xOffset = 0f, float yOffset = 0f)
+        public static void SetupDraw(SpriteBatch spriteBatch, IResolutionManager resolutionManager, float xOffset = 0f, float yOffset = 0f)
         {
             var drawMatrix = resolutionManager.GetResolutionMatrix();
 
             drawMatrix.Translation = new Vector3(xOffset * resolutionManager.GetResolutionScale(), yOffset * resolutionManager.GetResolutionScale(), 0);
 
             spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.PointClamp, null, null, null, drawMatrix);
+        }
+
+        public static void SetupDraw(SpriteBatch spriteBatch, IResolutionManager resolutionManager, BlendState blendState, float xOffset = 0f, float yOffset = 0f)
+        {
+            var drawMatrix = resolutionManager.GetResolutionMatrix();
+
+            drawMatrix.Translation = new Vector3(xOffset * resolutionManager.GetResolutionScale(), yOffset * resolutionManager.GetResolutionScale(), 0);
+
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, blendState, SamplerState.PointClamp, null, null, null, drawMatrix);
         }
     }
 }

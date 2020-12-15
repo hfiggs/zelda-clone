@@ -91,7 +91,7 @@ namespace Game1.GameState
 
             Texture2D shadowMask = null;
             if (!game.Screen.RoomsDict[northRoomKey].RoomMeta.IsLit)
-                shadowMask = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch);
+                shadowMask = ShadowMask.GetBlankShadowMask(game.GraphicsDevice, spriteBatch, game.ResolutionManager);
 
             DrawUtil.DrawRoom(game.Screen.CurrentRoom, spriteBatch, resolutionManager, new Vector2(oldRoomPos.X, oldRoomPos.Y));
 
