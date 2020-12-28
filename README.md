@@ -1,11 +1,15 @@
-﻿Authors: 
+      ______    _     _                   _____ _                  
+     |___  /   | |   | |                 / ____| |                 
+        / / ___| | __| | __ _   ______  | |    | | ___  _ __   ___ 
+       / / / _ \ |/ _` |/ _` | |______| | |    | |/ _ \| '_ \ / _ \
+      / /_|  __/ | (_| | (_| |          | |____| | (_) | | | |  __/
+     /_____\___|_|\__,_|\__,_|           \_____|_|\___/|_| |_|\___|
+     
+     by Hunter Figgs, Jared Perkins, Patrick Haughn, Sergei Fedulov, and Jeffrey Gaydos
+     
+About:
 
-	-Jared Perkins
-	-Hunter Figgs
-	-Sergei Fedulov
-	-Patrick Haughn
-	-Jeff Gaydos
-
+	A clone of the original Zelda, built from the ground up during a semester-long project with MonoGame/C#.
 
 Current Game Controls: 	
 
@@ -56,21 +60,21 @@ Difficulty Settings:
 
 All Extra Features
 
-- Multiplayer - split keyboard controls for 2 humans
+	- Multiplayer - split keyboard controls for 2 humans
 
-- AI - pathfinds to the player until finding an enemy, at which point it attacks, for 1 human
+	- AI - pathfinds to the player until finding an enemy, at which point it attacks, for 1 human
 
-- Difficulty - 3 difficulty settings to choose from
+	- Difficulty - 3 difficulty settings to choose from
 
-- Added extra rooms - Exterior of dungeon and portal rooms to the right
+	- Added extra rooms - Exterior of dungeon and portal rooms to the right
 
-- Portals - Portals can only be created on white tiles in the rooms to the right of the starting room (overworld)
+	- Portals - Portals can only be created on white tiles in the rooms to the right of the starting room (overworld)
 
-- Full Screen vs Windowed option - Maximize with the typical windows button or by pressing F4
+	- Full Screen vs Windowed option - Maximize with the typical windows button or by pressing F4
 
-- Persistant Volume Controls - increase, decrease, and mute all sound using F1, F2, and F3 using built in project properties
+	- Persistant Volume Controls - increase, decrease, and mute all sound using F1, F2, and F3 using built in project properties
 
-- Special Death sequence - only plays once to avoid player annoyance
+	- Special Death sequence - only plays once to avoid player annoyance
 
 
 Current Bugs:
