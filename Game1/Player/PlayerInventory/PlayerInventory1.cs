@@ -33,8 +33,6 @@ namespace Game1.Player.PlayerInventory
 
             BombCount = halfMaxBombCount;
 
-            KeyCount = 16;
-
             // everything else auto-initializes to 0 or false
         }
 
