@@ -2,17 +2,16 @@
 using Game1.Enemy;
 using Game1.GameState;
 using Game1.Player;
+using Game1.Util;
 using Microsoft.Xna.Framework;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
-    class EnemyToPlayerEastSideCommand : ICollisionCommand
+    class EnemyToPlayerCommand : ICollisionCommand
     {
-        private readonly Vector2 eastVector = new Vector2(-1, 0);
-
         private readonly Game1 game;
 
-        public  EnemyToPlayerEastSideCommand(Game1 game)
+        public EnemyToPlayerCommand(Game1 game)
         {
             this.game = game;
         }
@@ -41,7 +40,7 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 int damage = CollisionHandlerUtil.GetEnemyDamage(enemy.GetType());
 
-                player.ReceiveDamage(damage, eastVector);
+                player.ReceiveDamage(damage, CompassDirectionUtil.GetOppositeDirectionVector(collision.Side));
             }
         }
     }

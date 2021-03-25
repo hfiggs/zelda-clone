@@ -2,22 +2,17 @@
 using Game1.Collision_Handling;
 using Game1.Player;
 using Game1.Projectile;
-using Microsoft.Xna.Framework;
+using Game1.Util;
 
 namespace Game1.Command.CollisionHandlerCommands
 {
-    class ProjectileToPlayerSouthSideCommand : ICollisionCommand
+    class ProjectileToPlayerCommand : ICollisionCommand
     {
         private const int boomerangDamage = 2; // 1 full heart
         private const int fireballDamage = 1; // 1 half heart
-        private const char south = 'S';
         private const string shield = "shield";
-        private readonly Vector2 southVector = new Vector2(0, -1);
 
-        public ProjectileToPlayerSouthSideCommand()
-        {
-
-        }
+        public ProjectileToPlayerCommand() {}
 
         public void Execute(Collision collision)
         {
@@ -28,10 +23,11 @@ namespace Game1.Command.CollisionHandlerCommands
             {
                 case EnemyBoomerang _:
 
-                    if (player.GetDirection() != south)
+                    if (player.GetDirection() != CompassDirectionUtil.GetDirectionCharCaps(collision.Side))
                     {
-                        player.ReceiveDamage(boomerangDamage, southVector);
-                    } else
+                        player.ReceiveDamage(boomerangDamage, CompassDirectionUtil.GetOppositeDirectionVector(collision.Side));
+                    } 
+                    else
                     {
                         AudioManager.PlayFireForget(shield);
                     }
@@ -42,12 +38,12 @@ namespace Game1.Command.CollisionHandlerCommands
 
                 case Fireballs _:
 
-                    player.ReceiveDamage(fireballDamage, southVector);
+                    player.ReceiveDamage(fireballDamage, CompassDirectionUtil.GetOppositeDirectionVector(collision.Side));
                     proj.BeginDespawn();
 
                     break;
                 case CandleFire _:
-                    player.ReceiveDamage(fireballDamage, southVector);
+                    player.ReceiveDamage(fireballDamage, CompassDirectionUtil.GetOppositeDirectionVector(collision.Side));
                     break;
             }
         }

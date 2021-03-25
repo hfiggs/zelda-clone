@@ -19,6 +19,7 @@ namespace Game1.Util
     {
         private const char North = 'N', South = 'S', West = 'W', East = 'E';
         private const char north = 'n', south = 's', west = 'w', east = 'e';
+        private const char None = '\0', none = '\0';
 
         private static readonly Dictionary<CompassDirection, Vector2> directionVectorMap = new Dictionary<CompassDirection, Vector2>()
         {
@@ -102,6 +103,24 @@ namespace Game1.Util
                     return CompassDirection.West;
                 default:
                     throw new ArgumentException();
+            }
+        }
+
+        public static char GetDirectionCharCaps(CompassDirection direction)
+        {
+            switch(direction)
+            {
+                case CompassDirection.North:
+                    return North;
+                case CompassDirection.East:
+                    return East;
+                case CompassDirection.South:
+                    return South;
+                case CompassDirection.West:
+                    return West;
+                case CompassDirection.None:
+                default:
+                    return None;
             }
         }
     }
